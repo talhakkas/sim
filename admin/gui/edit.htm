@@ -1,0 +1,45 @@
+<div class="page">
+  <h2 id="headline">Kayıt Düzenle</h2>
+  <form name="login" action="update" method="POST" id="login" 
+    enctype="multipart/form-data">
+    <table class="custom">
+      <tr>
+        <strong>{{@SESSION.key}}</strong> id'li {{@SESSION.TABLE}} bilgileri</p>
+        <F3:repeat group="{{@data}}" key="{{@gnl}}" value="{{@blg}}" >
+        <F3:check if="{{@gnl != @SESSION.KEY}}">
+        <F3:true>
+        <tr>
+          <td class="label"> {{@gnl}} </td>
+          <td class="field">
+            <F3:check if="{{@gnl=='content'}}">
+            <F3:true>
+            <textarea name="{{@blg['Field']}}">{{@blg}}</textarea>
+            </F3:true>
+            <F3:false>
+              <F3:check if="{{@gnl=='photo'}}">
+              <F3:true>
+              <input type="file" name="{{@gnl}}" id="{{@gnl}}" 
+              value="{{uploaddir}}/{{@blg}}" />
+              </F3:true>
+              <F3:false>
+              <input type="text" name="{{@gnl}}" id="{{@gnl}}" value="{{@blg}}" 
+              />
+              </F3:false>
+              </F3:check>
+            </F3:false>
+          </td>
+        </tr>
+        </F3:true>
+        </F3:check>
+        </F3:repeat>
+      </tr>
+      <tr>
+        <td></td>
+        <td>
+          <input id="submit_button" type="submit" value="Güncelle" />
+        </td>
+      </tr>
+    </table>
+  </form>
+</div>
+

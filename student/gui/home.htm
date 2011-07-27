@@ -1,0 +1,104 @@
+<!--meta http-equiv="refresh" content="5;url=olgu"-->
+
+<style>
+  #contentarea {
+    float:left;
+    display:block;
+    width:650px;
+  }
+
+  #sidebar {
+    float:right;
+    display:block;
+    width:250px;
+  }
+
+  .feature {
+    float:left;
+    margin:0px 0px;
+    width:250px;
+  }
+  .feature li {
+    list-style-image: url('gui/images/next.png');
+    font-size:13px;
+  }
+  #content{height:420px;}
+  #contentarea{height:auto;}
+  a {color:#007d9a;}
+</style>
+
+<link href="gui/css/facebox.css" rel="stylesheet" type="text/css" />
+<script src="gui/js/jquery.js" type="text/javascript"></script>
+<script src="gui/js/facebox.js" type="text/javascript"></script>
+<script type="text/javascript">
+  jQuery(document).ready(function($) {
+      $('a[rel*=facebox]').facebox({
+loadingImage : 'gui/images/loading.gif',
+closeImage   : 'gui/images/closelabel.png'
+})
+      })
+</script>
+
+<h2 class="home">Web Tabanlı Simülasyon Eğitimi Yazılımına Hoşgeldiniz</h2>
+
+<div id="contentarea">
+  <center><p><b>Using simulation to improve safety, quality and education in 
+      healthcare
+  </b></p></center>
+  <img align=left height=250 width=350 src=gui/images/nursing.jpg />
+  <ul class="feature">
+    <li>Unlimited Categories, Unlimited Products</li>
+    <li>Unlimited Manufacturers, Multi Currency</li>
+    <li>Multi Language, Product Reviews</li>
+    <li>Product Ratings, Open Source</li>
+    <li>Product Ratings, Open Source</li>
+    <li>Product Ratings, Open Source</li>
+    <li>Free Documentation, Templatable</li>
+    <li>Automatic Image Resize</li>
+    <li>20+ Payment Gateways</li>
+    <li>8+ Shipping Methods</li>
+    <li>Product Ratings, Open Source</li>
+    <li>Free Documentation, Templatable</li>
+    <li>Automatic Image Resize</li>
+    <li>20+ Payment Gateways</li>
+    <li>20+ Payment Gateways</li>
+    <li>8+ Shipping Methods</li>
+    <li>8+ Shipping Methods</li>
+  </ul>
+</div><!-- end content area -->
+
+<div id="sidebar">
+  <h3 style="color:#007d9a;">Duyurular</h3>
+  <F3:repeat group="{{@announcement}}" key="{{@key}}" value="{{@value}}">
+    <img src="gui/images/next.png"/>
+  <a href="#info{{@value[announcement_id]}}" rel="facebox" 
+    style="color:#555;font-weight:bold;line-height:18px;">{{@value[title]}}</a>
+  <br>
+  <div id="info{{@value[announcement_id]}}" style="display:none;">
+    {{@value[content]}}
+  </div>
+  </F3:repeat>
+</div>
+
+
+<div style="float:left;margin-top:40px;width:900px;text-align:center;">
+  Unlimited Categories, Unlimited Products
+  Unlimited Manufacturers, Multi Currency
+  Multi Language, Product Reviews
+  Product Ratings, Open Source
+  Free Documentation, Templatable
+  Automatic Image Resize
+  20+ Payment Gateways
+  8+ Shipping Methods
+  <br><br>
+
+  Unlimited Categories, Unlimited Products
+  Unlimited Manufacturers, Multi Currency
+  Multi Language,<br> Product Reviews
+  Product Ratings, Open Source
+  Free Documentation, Templatable
+  Automatic Image Resize
+  20+ Payment Gateways
+  8+ Shipping Methods
+</div>
+

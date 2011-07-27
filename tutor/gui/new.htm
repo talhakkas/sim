@@ -1,0 +1,32 @@
+<div class="page">
+  <h2 id="headline">Yeni Kayıt</h2>
+  <form name="login" action="add" method="POST" id="login" 
+    enctype="multipart/form-data">
+    <table class="custom">
+      <tr>
+        <F3:repeat group="{{@DB->result}}" key="{{@gnl}}" value="{{@blg}}" >
+        <tr>
+          <td class="label"> {{@blg['Field']}} </td>
+          <td class="field">
+            <F3:check if="{{@blg['Field']=='content'}}">
+            <F3:true>
+            <textarea name="{{@blg['Field']}}"></textarea>
+            </F3:true>
+            <F3:false>
+            <input type="text" name="{{@blg['Field']}}"/>
+            </F3:false>
+            </F3:check>
+          </td>
+        </tr>
+        </F3:repeat>
+      </tr>
+      <tr>
+        <td></td>
+        <td>
+          <input id="submit_button" type="submit" value="{{@title}}" />
+        </td>
+      </tr>
+    </table>
+  </form>
+</div>
+

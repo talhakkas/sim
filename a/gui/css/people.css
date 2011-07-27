@@ -1,0 +1,535 @@
+div#wrapper { border-color: #2daebf }
+div#wrapper { border-color: red }
+
+/*	--------------------------------------------------
+=Dashboard Pages: Add/Edit
+-------------------------------------------------- */
+/* Change it to green for the dashboard */
+div#wrapper, div#wrapper, body#editPage div#wrapper { border-color: #b8d30b; }
+ul.tabs li.current a { color: #fff; background: #b8d30b;  }
+
+/*	--------------------------------------------------
+=Talent
+-------------------------------------------------- */
+
+/*	Global Tweaks (also do it for the jobs page) -------------------------------------------------- */	
+div#wrapper, body#showPage div#wrapper, 
+div#wrapper, body#jobListingsPage div#wrapper,
+div#wrapper { border-color: #a9014b;  }
+ul.nav li#ZURBmenu strong { background-color: #a9014b; }
+div.page-header, body#showPage div.page-header, 
+div.page-header, body#jobListingsPage div.page-header,
+div.page-header  { background: url(../images/thumbs-up.jpg) no-repeat right bottom; }
+
+div.page-header  { background: url(../images/people_network.gif) no-repeat right top; }
+
+ul.tabs li.current a,
+ul.tabs li.current a,
+ul.tabs li.current a,
+ul.tabs li.current a,
+ul.tabs li.current a { color: #fff; background: #a9014b; }
+
+/* Change this page's link colors ----- */
+#ourCulture a, #ourTeam a, #cultureMatters a, div#jobDescription a { color: #a9014b; }
+
+
+/*	Change this page's link hover colors now ----- */
+div#content a:hover, body#talentPage div#content h1 a:hover, 
+div#content h2 a:hover, body#talentPage div#content div.page-header h2 a:hover,
+div#content a:hover, body#showPage div#content h1 a:hover, 
+div#content h2 a:hover, body#showPage div#content div.page-header h2 a:hover,
+div#content a:hover, body#culturePage div#content h1 a:hover, 
+div#content h2 a:hover, body#culturePage div#content div.page-header h2 a:hover
+div#content a:hover, body#jobListingsPage div#content h1 a:hover, 
+div#content h2 a:hover, body#jobListingsPage div#content div.page-header h2 a:hover { color: #c9025c; }
+
+
+/* adjusting subnav */
+div.simple-sub-nav ul,
+div.simple-sub-nav ul,
+div.simple-sub-nav ul { margin-top: -16px; }
+div.simple-sub-nav ul { margin-bottom: 0; }
+/*team adjustment in index_controller.css */
+
+
+/*top team text*/
+div.half-column { width: 300px; float: left; margin-left: 20px; }
+div.half-column.first { margin-left: 0; }
+h4 a { color: #A9014B; }
+body#showPage div.page-header { background: none; border: 0; }
+
+
+/*	Job Listings -------------------------------------------------- */	
+div.zurb-job a { white-space: nowrap; }
+
+ul.recent-updates li small a:link, 
+ul.recent-updates li small a:visited  { color: #777; }
+
+/*	Uploads  ---------- */
+div#uploads .button { -webkit-box-shadow: none; -moz-box-shadow: none; }
+div#uploads h4 { color: #777; text-shadow: 0 1px 1px #fff; }
+div#uploads ul { margin: 9px 0; border-top: 1px solid #ddd; border-bottom: 1px solid #fff; }
+div#uploads ul li { height: 26px; padding: 7px 0; overflow: hidden; border-top: 1px solid #fff; border-bottom: 1px solid #ddd; line-height: 26px; }
+div#uploads ul li * { float: left; }
+div#uploads ul li strong { width: 180px; font-weight: normal; }
+div#uploads ul li input.input-text { width:  440px; margin: 0; }
+div#uploads ul li a.delete img { margin: 4px 0 0 5px; opacity: .5; -moz-opacity: .5; filter: alpha(opacity=50); }
+div#uploads ul li a.delete:hover img { opacity: 1; -moz-opacity: 1; filter: alpha(opacity=100); }
+
+/*	--------------------------------------------------
+=Culture
+-------------------------------------------------- */
+
+h4 { display: inline; line-height: 24px; margin-bottom: 4px; font-weight: normal; }
+
+div#ourCulture p { margin-top: 4px; }
+
+#onVimeo object, #ourTeam li img { display: block; margin: 0 0 5px; padding: 4px; border: 1px solid #ccc; border-color: rgba(0,0,0,.25); -moz-border-radius: 5px; -moz-box-shadow: 0 1px 3px rgba(0,0,0,.15); -webkit-border-radius: 5px; -webkit-box-shadow: 0 1px 3px rgba(0,0,0,.15); -webkit-transition: all 0.15s ease-out; }
+
+ul.images.awesome { margin-left: 0; }
+ul.images.awesome li { margin: 0 0 0 0px; }
+ul.images.awesome a:hover img { border-color: rgba(169,1,75,.5); -moz-box-shadow: 0 0 9px rgba(169,1,75,.5); -webkit-box-shadow: 0 0 9px rgba(169,1,75,.5); box-shadow: 0 0 9px rgba(169,1,75,.5); }
+
+#onVimeo { background: #eee; margin: 5px 0 18px; -webkit-border-radius: 3px; -moz-border-radius: 3px; }
+#onVimeo h5{ float: left; font-size: 12px; }
+#onVimeo a { float: right; color: #a9014b; }
+
+#onFlickr a.super.magenta.button { margin: 10px 0 0 0; }
+#onFlickr { margin-top: 50px; }
+#onFlickr li img, #ourTeam li { float: left; margin: 10px 10px 0 0; }
+
+div#traits { margin-top: 50px; }
+ol#traitsList li { list-style-type:none; margin-left: -30px; float: left; margin-bottom: 10px; width: 520px; }
+ol#traitsList li img { float: left; margin-right: 15px; }
+
+img#floorplan { margin-bottom: 10px; } 
+img.office-icon { margin-left: 10px; }
+div#officeIconsWrapper { margin: 10px 0 0 -10px; }
+
+.caption { padding: 0 10px; margin-left: 5px;  border-left: 1px solid #eee; font-style: italic; }
+
+
+/* ----- Sliding Boxes on 20 reasons ----- (thanks to buildinternet.com) -- */
+.boxgrid{ 
+  width: 170px; 
+  height: 140px;
+  float:left; 
+  /*overflow: hidden; 
+  position: relative;*/
+margin: 0;
+background: #a9014b;
+  }
+  .boxgrid img{ 
+    position: absolute; 
+    top: 4px; 
+    left: 4px; 
+    border: 0; 
+    z-index: 10
+  }
+  .boxgrid p{ 
+    position: relative; 
+    padding: 0 10px; 
+    color:#eee; 
+    z-index: 9;
+  }
+
+  div.boxgrid.awesome.image { 
+    margin: 0 0 8px 8px;
+  }
+
+  div.boxgrid:hover img { 
+    display: none; 
+  }
+
+  div#twenty-reasons { margin-left: 15px; }
+  div#twenty-reasons h3 { margin: 4px 0 4px 10px; color: #fff; }
+
+  /*	--------------------------------------------------
+  =Job_Listings
+  -------------------------------------------------- */
+
+#jobOpenings { margin-top: 30px; }
+#jobOpenings a { color: #a9014b; }
+ul.recent-updates li h5 { font-size: 13px; margin-bottom:-5px; }
+ul.recent-updates li { margin-top: 10px; }
+ul.recent-updates { margin-top: -5px; }
+ul.recent-updates small a { text-decoration: none; }
+ul.recent-updates small a:hover { text-decoration: underline; }
+/*The font color for the sublinks on the Recent Blog Posts needs to be changed, but it won't for some reason?*/
+
+div.simple.divider { background-repeat: no-repeat; background-position: center top; width: 100%; height: 10px; margin: 18px 0 27px; border-bottom: 1px solid #d1d1d1; }
+
+/*	--------------------------------------------------
+=Values
+-------------------------------------------------- */	
+
+div.value h1 { display: block; font-size: 80px; margin-bottom: 30px; }
+div.value.left { float: left; }
+div.value p { font-size: 18px; line-height: 26px;}
+div.value.right, 
+div.value.right h1,
+div.value.right p { float: right; text-align: right;  }
+div.value { width: 550px; }
+
+body.ie7 div.value.right p { min-width: 200px; }
+
+div.value-wrapper img { position: absolute; bottom: 0; }
+#beACoach img, #failFast img { position: absolute; right: 0; }
+#failFast img { right: -20px; }
+
+div.value-wrapper { border-top: 2px dotted #ddd; padding: 20px 0; position: relative; overflow: hidden;  }
+div.our-belief { margin-bottom: 30px; }
+
+div#beACoach { padding: 40px 0; }
+div#failFast { border-bottom: 2px dotted #ddd; padding: 40px 0; }
+
+div.sub-values { margin-top: 40px; }
+div.sub-values h4 { margin: 10px 0 8px 0; }
+
+#businessStructure { margin-top: 50px; margin-bottom: 50px; }
+
+/*	--------------------------------------------------
+=Jobs_Listings && Culture
+-------------------------------------------------- */	
+#availableJobs a, #availableGigs a { text-decoration:none; display: block; }
+#availableJobs h4, #ourTeam h4, #availableGigs h4 { margin-bottom: 4px; }
+
+#availableJobs li, #availableGigs li { margin: 8px 0; border-bottom: 1px dotted #ddd; padding-bottom: 8px; }
+
+#availableJobs a, #availableGigs a,  h6 a { color: #a9014b; }
+#availableJobs a:hover, #availableGigs a:hover, h6 a:hover { color: #c9025c; }
+
+
+
+
+blockquote { background: url(../images/quote.jpg) no-repeat; padding: 9px 20px 0 35px; border: none; font-style: italic; color: #444; font-size: 15px;  }
+blockquote cite { margin-top: 10px; }
+
+
+
+/* ------------------------------------------------------------------------------------------------------ */
+
+/*	Global Tweaks -------------------------------------------------- */	
+	div#wrapper { border-color: #b8d30b;  }
+	ul.nav li#ZURBmenu strong { background-color: #b8d30b; }
+	ul.tabs li.current a { color: #fff; background: #b8d30b; }
+
+	/* Change this page's link colors ----- */
+	a, div.page-header h2 a { color: #95a105; }
+
+	/* Change this page's link hover colors now ----- */
+	a:hover, h1 a:hover, h2 a:hover, div.page-header h2 a:hover { color: #b8d30b; }
+
+
+	#our-services ol { margin: 0; padding: 0; list-style: none; }
+	#our-services ol li { padding: 0px 15px 18px 0; }
+	body.ie #our-services ol { margin-top: -7px; }
+
+	#worlds-greatest { margin: 0; padding: 0; list-style: none; }
+	#worlds-greatest li { height: 36px; padding: 0 0 18px; line-height: 1; }
+	#worlds-greatest li img { float: left; margin-top: 7px; }
+	#worlds-greatest li p { margin: 0 0 0 130px; width: 150px; color: #777; font-size: 12px; font-weight: normal; }
+	#worlds-greatest li p span { display: block; line-height: inherit; }
+
+/*	----------------------------------------------
+	=Contact Page
+	---------------------------------------------- */
+
+/*	Global Tweaks -------------------------------------------------- */	
+	body#contactPage div.page-header { background: url(/images/index/phone-us.jpg) no-repeat 98% top; }
+
+	body#contactPage div#wrapper { border-color: #fc9200;	 }
+	body#contactPage ul.nav li#ZURBmenu strong { background-color: #fc9200; }
+	body#contactPage ul.tabs li.current a { color: #fff; background: #fc9200; text-shadow: 0 -1px 1px #d17200; } 
+
+	/* Change this page's link colors ----- */
+	body#contactPage div#content a, 
+	body#contactPage div#content div.page-header h2 a { color: #fc9200; }
+
+	/* Change this page's link hover colors now ----- */
+	body#contactPage div#content a:hover, body#contactPage div#content h1 a:hover, 
+	body#contactPage div#content h2 a:hover, body#contactPage div#content div.page-header h2 a:hover { color: #d17200; }
+	
+	/* vCard Layout ----- */
+	div.vcard { background: #fff url(/images/vcard-background.gif) no-repeat; height: 145px; margin: 0 0 36px; padding: 36px 30px 18px; position: relative; }
+	div.vcard ul { margin: 0 0 18px; padding: 0; list-style: none; position: absolute; top: 63px; right: 30px; }
+	div.vcard li { color: #777; }
+	div.vcard address { color: #777; }
+	div.vcard address strong { font-size: 18px; line-height: 1.5; font-weight: 300; color: #333; }
+	div.vcard p { position: absolute; width: 100%; text-align: center; bottom: 9px; left: 0; }
+	body.ie6 div.vcard p { left: 30px; }
+
+	body#contactPage div#content div.vcard p a, body#contactPage div#content div.vcard p a:visited { color: #777; }
+
+	ul.photostrip { width: 360px; margin: 18px 0 18px -20px; padding: 0; list-style: none; height: 81px; }
+	ul.photostrip li { float: left; display: inline; width: 100px; margin: 0 0 0 20px; }
+
+	div.map { margin: 0 0 18px; }
+	
+	ul.more-zurb { height: 27px; margin: 0 0 9px; padding: 0; list-style: none; }
+	ul.more-zurb li { display: inline; }
+	ul.more-zurb li a { float: left; display: inline; margin: 0 10px 0 0; padding: 5px 10px 4px 20px; background-position: left center; background-repeat: no-repeat; }
+	body#contactPage div#content ul.more-zurb li a { color: #777; }
+	ul.more-zurb li.twitter a { background-image: url(/images/icons/16px/twitter.png); }
+	ul.more-zurb li.flickr a { background-image: url(/images/icons/16px/flickr.png); }
+	ul.more-zurb li.delicious a { background-image: url(/images/icons/16px/delicious.gif); }
+	ul.more-zurb li.rss a { background-image: url(/images/icons/16px/rss-white.gif); }
+
+/*	----------------------------------------------
+	=TEAM PAGE
+	---------------------------------------------- */
+
+/*	Global Tweaks -------------------------------------------------- */	
+	body#teamPage div#wrapper { border-color: #a9014b;	 }
+	body#teamPage ul.nav li#ZURBmenu strong { background-color: #a9014b; }
+	body#teamPage ul.tabs li.current a,
+	body#teamPage div#pageHeader div.sub-nav ul li a:hover,
+	body#teamPage div#pageHeader div.sub-nav ul li.current a { color: #fff; background: #a9014b; }
+
+/*	Change this page's link colors ----- */
+	body#teamPage div#content a, body#teamPage div#content a:visited,
+	body#teamPage div#content div.page-header h2 a, body#teamPage div#content div.page-header h2 a:visited { color: #a9014b; }
+
+/*	Change this page's link hover colors now ----- */
+	body#teamPage div#content a:hover, body#teamPage div#content h1 a:hover, body#teamPage div#content h2 a:hover, body#teamPage div#content div.page-header h2 a:hover { color: #c9025c; }
+		
+	body#teamPage div.secondary.page-header { margin: 0 0 -18px; padding-top: 108px; border: 0; }
+	body#teamPage div.secondary.page-header h2 { margin-right: 0; }
+	
+	body#teamPage div#content .fearless-entry h3 a,
+	body#teamPage div#content .fearless-entry h4 a { color: #444; text-decoration: none; }
+
+
+	/*	Animations ---------------------------------------- */
+/*
+	ul.the-team { float: left; width: 100%; margin: 0 0 36px -20px; list-style: none; }
+	ul.the-team li { float: left; width: 200px; height: 200px; position: relative; margin: 0 0 0 20px; padding: 0; font-size: 1em; line-height: 1; }
+	ul.the-team li img { width: 200px; }
+	ul.the-team li h3 { position: absolute; bottom: 0; left: 0; display: none; padding: 5px; line-height: 1.125; font-weight: bold; color: #fff; background: #007d9a; }
+	ul.the-team li a, ul.the-team li a:visited { display: block; width: 200px; height: 200px; overflow: hidden; position: absolute; text-decoration: none; }
+	ul.the-team li a:hover h3 { opacity: .9; display: block; }
+*/
+	
+/*
+	ul.ZURBians { margin-left: -20px; }
+	ul.ZURBians li { display: inline; float: left; width: 100px; margin: 0 0 18px 20px; }
+	ul.ZURBians a h5 { color: #a9014b; }
+	ul.ZURBians a:hover h5 { color: #c9025c; }
+	ul.ZURBians img { width: 90px; height: 90px; }
+	div.ZURBian-pic img { width: 210px; height: 210px; margin: 0 0 18px; }
+	ul.ZURBians img, div.ZURBian-pic img { -webkit-border-radius: 5px; border: 1px solid rgba(0,0,0,.25); -webkit-box-shadow: 0 1px 3px rgba(0,0,0,.15); padding: 4px; -webkit-transition: all 0.15s ease-out; }
+	ul.ZURBians a:hover img { border-color: rgba(201,2,92,.5); -webkit-box-shadow: 0 0 5px rgba(201,2,92,.5); }
+*/
+
+	ul.skills { margin: 0 0 18px; padding: 0; list-style: none; }
+
+	body#teamPage ul#skillsList { height: 31px;	}
+	body#teamPage ul#skillsList li { margin: 0 45px 0 0; float: left;	 }
+	body#teamPage ul#tweets { margin-bottom: 15px }
+	body#teamPage ul#tweets li {	}
+
+	body#teamPage div.team-member-pic img { margin: 49px 0 0; }
+
+	/* SIDENAV */
+	ul#teamNav { list-style: none; margin-left: 0; }
+	ul#teamNav li { line-height: 24px; }
+
+	/* TEAM / INDEX PAGE */
+	div.team_member { width: 240px; height: 240px; float: left; }
+	div.team_member div.team_picture { width: 180px; height: 180px; background: #ccc; }
+
+	ul#teamMembers { list-style: none; float: left; width: 100%; margin-left: 0; }
+	ul#teamMembers li { font-size: 10px; width: 220px; margin: 0 25px 20px 0; height: 260px; float: left; }
+	ul#teamMembers li a { display: block; float: left; }
+	ul#teamMembers li a img { display: block; margin-bottom: 0.75em; background: #ddd; padding: 1px; border: 4px solid #f5f5f5; width: 216px; height: 216px; }
+	ul#teamMembers li a:hover img { background: #aabf30; border-color: #e2ef95; }
+	ul#teamMembers li p { font: bold 14px Arial; }
+	ul#teamMembers li p a { text-decoration: none }
+	ul#teamMembers li p a:hover { text-decoration: underline; color: #aabf30 }
+
+	ul#flickrPhotos { list-style-type: none; margin: 0; height: 172px; }
+	ul#flickrPhotos li { float: left; margin: 1px 1px 0 0; }
+	ul#flickrPhotos li a { display: block; width: 65px; height: 65px; overflow: hidden; }
+
+	body.in_ie6 ul#teamMembers li { margin-right: 21px }
+	
+	body#teamPage div#content div.simple-sub-nav li a { text-decoration: none; color: #868686; }
+	body#teamPage div#content div.simple-sub-nav li a:hover { color: #a9014b; }
+	body#teamPage div#content div.simple-sub-nav li.current { border-top: 5px solid #a9014b; }
+	body#teamPage div#content div.simple-sub-nav li.current a { color: #3b3b3b; }
+	
+	
+	body#teamPage div.simple-sub-nav ul { margin-top: -16px; padding-bottom: 30px; }
+
+	/* APPLY FORM */
+	div#applyForm fieldset { border: none; }
+	div#applyForm label { float: left; width: 25%; }
+	div#applyForm textarea { width: 250px; }
+	div#applyForm input.button { width: 40%; margin-left: 30%; }
+	
+	div#fearlessLeaders img { float: left; margin: 0 15px 15px 0; }
+	div.fearless-entry { float: left; margin-top: 15px; }
+	div.fearless-entry h4 { margin-bottom: 15px; }
+	div#fearlessLeaders p.large { font-size: 16px; line-height: 22px; }
+	
+	.six-and-one-half { width: 360px; }
+	
+	
+
+/*	----------------------------------------------
+	=Product Page
+	---------------------------------------------- */
+	div.secondary.page-header { background: none; margin-bottom: 36px; padding-bottom: 17px; border-bottom: 1px solid #ddd; }
+	div.secondary h1 { font-size: 54px; letter-spacing: -1px; padding-bottom: 9px; }
+	div.secondary.page-header h2 { position: relative; top: 0; left: 0; font-size: 18px; line-height: 1.5; margin-right: 0; }
+
+/*	----------------------------------------------
+	=ZURBwired
+	---------------------------------------------- */
+
+	body#zurbwired2Page { background: url(/images/zurbwired/zurbwired-2009-horizon-2.gif) no-repeat center 298px;  }
+
+/*	Change this page's link colors ----- */
+	body#zurbwired2Page div#content a, body#zurbwired2Page div#content a:visited,
+	body#zurbwired2Page div#content div.page-header h2 a, body#zurbwired2Page div#content div.page-header h2 a:visited { color: #2daebf; }
+
+/*	Change this page's link hover colors now ----- */
+	body#zurbwired2Page div#content a:hover, body#zurbwired2Page div#content h1 a:hover, body#zurbwired2Page div#content h2 a:hover, body#zurbwired2Page div#content div.page-header h2 a:hover { color: #007d9a; }
+
+	
+	body#zurbwired2Page div#wrapper { background: transparent; border-color: #eee; }
+	body#zurbwired2Page div.coffee-cups {  position: absolute; top: 513px; left: 17px; width: 100%; height: 47px; background: url(/images/zurbwired/coffee-cups.gif) no-repeat 0 0; }
+	body#zurbwired2Page div.cup-set { position: absolute; top: 1750px; left: -65px; width: 177px; height: 126px; background: url(/images/zurbwired/coffee-cups-3.gif) no-repeat 0 0; }
+	
+	body#zurbwired2Page div#header { position: relative; height: auto; margin: -5px 0 0; height: 24px; padding: 0 0 18px; background: url(/images/zurb-color-strip-full.gif) no-repeat 0 0; }
+
+	body#zurbwired2Page ul.tabs { display: none; }
+
+	body#zurbwired2Page div#content p { font-size: 14px; line-height: 21px; margin: 0; padding-bottom: 21px; }
+	body#zurbwired2Page span.highlight { font-weight: bold; color: #222; background: #ff9; padding: 0px 5px 2px; }
+	
+	body#zurbwired2Page div.page-header { width: 100%; margin: 0; padding: 72px 0 298px; border: 0; }
+	body#zurbwired2Page div.page-header h1 { font-size: 54px; line-height: 1; letter-spacing: -1px; text-align: center; }
+	body#zurbwired2Page div#content div.page-header h2 { font-size: 24px; line-height: 30px; letter-spacing: -.5px; text-align: center; color: #555; }
+	body#zurbwired2Page div#content div.page-header h2 strong { color: #222; background: #ff9; padding: 0px 5px 2px; }
+	body#zurbwired2Page div#content div.page-header h3 { font-size: 20px; line-height: 10px; letter-spacing: -.5px; text-align: center; color: #555; }
+
+	body#zurbwired2Page div.narrowify { width: 700px; margin: 0 90px; }
+	
+	body#zurbwired2Page div#intro p {margin-top: 20px;}
+	
+	body#zurbwired2Page div#content h2,
+	body#zurbwired2Page div#content h3,
+	body#zurbwired2Page div#content h4,
+	body#zurbwired2Page div#content h5,
+	body#zurbwired2Page div#content p,
+	body#zurbwired2Page div#content li { text-align: center; }
+	body#zurbwired2Page div#content ul { list-style: none; margin: 10px 0 0; }
+	
+	body#zurbwired2Page div#content h2 { color: #d45500; margin: 12px 0 6px; }
+	
+	div#thisIsHowWeDoIt, div.downloads { background: #fff8e8; margin: 18px 0 36px; padding: 18px 20px; -webkit-border-radius: 6px;  -moz-border-radius: 6px; }
+	body.ie6 div#thisIsHowWeDoIt, body.ie6 div.downloads, body.ie7 div#thisIsHowWeDoIt { width: 670px; }
+	body.ie7 div.downloads { height: 180px; }
+	div#thisIsHowWeDoIt div.zurb, div#thisIsHowWeDoIt div.your { margin: 0; }
+	div#thisIsHowWeDoIt div.zurb,
+	div.downloads div.first { width: 300px; margin-left: 0; padding-right: 34px; padding-bottom: 42px; border-right: 1px solid #ffe9b9; }
+	div#thisIsHowWeDoIt div.your,
+	div.downloads div.second { width: 300px; padding-left: 24px; border-left: 1px solid #fff; }
+	
+	div.downloads { margin: 0 0 21px; }
+	div.downloads div.download { float: left; width: 300px; }
+	body#zurbwired2Page div#content div.downloads p { margin: 0; padding: 0 0 18px; }
+	div.downloads div.first { padding: 10px 34px 0 0; }
+	div.downloads div.second { padding: 10px 0 0 24px; }
+	
+	div#tinyTeamGrid, div#yourTeam { margin: 0 0 18px; text-align: center; }
+	div#tinyTeamGrid img { border: 1px solid #ffe9b9; }
+	div#yourTeam img { border: 1px solid #fff; }
+	div#thisIsHowWeDoIt div.your div#tinyTeamGrid { margin: 0 0 18px 25px; }
+	
+	/* Submit Button */
+	body#zurbwired2Page div#content div.submit { margin: 0 0 18px; }
+	body#zurbwired2Page div#content div.submit p { margin: 0; padding: 0 0 10px; }
+	
+	a.submitButton, a.submitButton:visited { background: url(/images/zurbwired/submit-button-glyph.gif) no-repeat 0 0; display: block; width: 280px; height: 72px; margin: 0 auto; text-indent: -999em; }
+	a.submitButton:hover { background-position: 0 -72px; }
+	a.submitButton:active { background-position: 0 -144px; }	
+	
+	
+	/* --------------------------------------------------
+	ZURBWIRED PAGE
+	-------------------------------------------------- */
+	body#zurbwiredPage div.page-header { position: relative; }	
+	body#zurbwiredPage div.page-header h1 { position: relative; z-index: 10; }
+	body#zurbwiredPage div.page-header h2 { margin-right: 280px; font-size: 20px; position: relative; z-index: 10; }
+	body#zurbwiredPage div.page-header h2 a { display: block; margin: 10px 0 0; }
+	body#zurbwiredPage div.page-header img { position: absolute; right: -15px; bottom: 20px; }
+	body#zurbwiredPage div.post-header { margin: 0 0 20px; }
+	body#zurbwiredPage h3#noPosts { line-height: 32px; }
+	body#zurbwiredPage div.post.secondary div.post-header { margin: 0; }
+	body#zurbwiredPage div.post.secondary div.post-header h4 { font-size: 15px; margin: 0 0 4px; }
+	body#zurbwiredPage div.post.secondary div.post-header h5 { font-size: 12px; font-weight: normal; }
+	body#zurbwiredPage div.post.secondary.read-more div.post-header h4 a { font-weight: normal; }
+
+	body#zurbwiredPage p#watchItUnfold { margin: 30px 0; padding: 15px 15px 9px; }
+	body#zurbwiredPage p#watchItUnfold a#watchTitle { font-size: 24px; position: relative; top: -65px; margin: 0 0 0 10px; }
+	
+	body#zurbwiredPage ul#theTeam { list-style: none; margin: 0 0 30px; padding: 0 20px 0 0; }
+	body#zurbwiredPage ul#theTeam li { float: left; margin: 0 5px 5px 0; }
+
+	body#zurbwiredPage div#sidebar { background: #f5f5f5; width: 284px; padding: 0 18px; overflow: hidden; margin: 0 0 0 40px; }
+	body#zurbwiredPage div#sidebar a#timer { display: block; text-decoration: none; background: #555; border-bottom: 1px solid #222; text-shadow: 0 -1px 1px #222; color: #fff; text-align: center; font-weight: bold; font-size: 24px; margin: 18px 0; padding: 15px 0; -webkit-border-radius: 5px; -moz-border-radius: 5px; }
+	body#zurbwiredPage div#sidebar a#timer.live { background: #b8d30b; border-color: #769926; text-shadow: 0 -1px 1px #708b30; }
+	body#zurbwiredPage div#sidebar a#timer span#timerLabel { display: block; font-size: 13px; opacity: 0.9; margin: 4px 0 0; }
+	body#zurbwiredPage div#sidebar a#timer:hover { background: #2daebf; border-color: #007d9a; text-shadow: 0 -1px 1px #007d9a; }
+	body#zurbwiredPage div#sidebar div.section { background: #fff; border: 1px solid #ddd; margin: 18px 0; padding: 15px; }
+	body#zurbwiredPage div#sidebar div.section h4 { color: #999; font-weight: normal; position: relative; margin: 0 0 15px; }
+	body#zurbwiredPage div#sidebar div.section h4 a { position: absolute; right: 0; bottom: 0; font-size: 13px; font-weight: normal; }
+	body#zurbwiredPage div#sidebar div.section ul.flickr-photos { margin: 0 0 -4px; list-style: none; overflow: hidden; padding: 0; width: 300px; }
+	body#zurbwiredPage div#sidebar div.section ul.flickr-photos li { float: left; margin: 0 4px 4px 0; }
+	body#zurbwiredPage div#sidebar div.section ul.flickr-photos li a { display: block; border: 1px solid #ddd; padding: 2px; background: #fff; }
+	body#zurbwiredPage div#sidebar div.section ul.flickr-photos li a:hover { background: #ddd; border-color: #aaa; }
+	body#zurbwiredPage div#sidebar div.section ul.flickr-photos li a img { display: block; }
+	body#zurbwiredPage div#sidebar div.section ul.tweets { margin: 0; list-style: none; }
+	body#zurbwiredPage div#sidebar div.section ul.tweets li { border-bottom: 1px solid #ddd; padding: 0 0 15px; margin: 0 0 15px; }
+	body#zurbwiredPage div#sidebar div.section ul.tweets li span { color: #999; font-size: 11px; }
+	body#zurbwiredPage div#sidebar div.section ul.tweets li a.tweet-user { text-decoration: none; }
+	body#zurbwiredPage div#sidebar div.section ul.tweets li a.tweet-user:hover { text-decoration: underline; }
+	body#zurbwiredPage div#sidebar div.section ul.tweets li:last-child { border: 0; margin: 0; padding: 0; }
+	body#zurbwiredPage div#sidebar div.section embed { width: 100%; }
+	body#zurbwiredPage div#sidebar div.section object { width: 100%; }
+	
+	
+	/* --------------------------------------------------
+	FOUR OH FOUR PAGE (404)
+	-------------------------------------------------- */
+	body#fourOhFourPage div.page-header { background: url(/images/index/buddha.jpg) no-repeat 95% bottom; border: 5px solid #eee; padding: 40px 40px 55px; margin: 50px 0 153px; width: 790px; }
+	body#fourOhFourPage div.page-header h1 { font-size: 70px; }
+	body#fourOhFourPage div.page-header h2 { width: 600px; }
+	
+	body#fourOhFourPage ul#topSiteLinks { background: #f3f3f3; list-style: none; -webkit-border-radius: 5px; margin: 0; padding; 0 }
+	body#fourOhFourPage ul#topSiteLinks li { border-bottom: 1px solid #e3e3e3; border-top: 1px solid #fff; padding: 5px 10px; }
+	body#fourOhFourPage ul#topSiteLinks li:first-child { border-top: 0; }
+	body#fourOhFourPage ul#topSiteLinks li:last-child { border-bottom: 0; }
+	
+	
+	
+	
+	/* --------------------------------------------------
+	NEWSLETTER ARCHIVE
+	-------------------------------------------------- */
+	div.page-header.newsletter { background: url(/images/zurbnews/pizza.jpg) no-repeat 95% 0%; }
+	
+	div.newLinks { padding-bottom: 30px; }
+	div.newLinks a { color:#95A105;}
+	div.newLinks li { list-style: none;}
+	
+	ul.recent.blog-posts.delicious li { float: left; margin-bottom: 15px; }
+	ul.recent.blog-posts.delicious h5.date { float: left; color: #777; font-weight: normal; font-size: 12px; margin-top: 1px; }
+	ul.recent.blog-posts.delicious li div { display: block; float: left; width: 455px; margin-left: 12px; }
+
+	
+	div.awesome.box.newsletter  { -moz-background-clip:border; -moz-background-origin:padding; -moz-background-size:auto auto; -moz-border-radius-bottomleft:6px; -moz-border-radius-bottomright:6px; -moz-border-radius-topleft:6px; -moz-border-radius-topright:6px; background-attachment:scroll; background-color:#EFEFEF; background-image:none; background-position:0 0; background-repeat:repeat; border-bottom-color:#EEEEEE; border-bottom-style:solid; border-bottom-width:1px; border-left-color-ltr-source:physical; border-left-color-rtl-source:physical; border-left-color-value:#EEEEEE; border-left-style-ltr-source:physical; border-left-style-rtl-source:physical; border-left-style-value:solid; border-left-width-ltr-source:physical; border-left-width-rtl-source:physical; border-left-width-value:1px; border-right-color-ltr-source:physical; border-right-color-rtl-source:physical; border-right-color-value:#EEEEEE; border-right-style-ltr-source:physical; border-right-style-rtl-source:physical; border-right-style-value:solid; 
+	border-right-width-ltr-source:physical; border-right-width-rtl-source:physical; border-right-width-value:1px; border-top-color:#DDDDDD; border-top-style:solid; border-top-width:0px; margin-left:0; margin-right:0; margin-top:0; padding-left:19px; padding-right:19px; padding-top:17px; padding-bottom: 15px; }
+

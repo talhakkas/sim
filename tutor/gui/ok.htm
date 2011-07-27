@@ -1,0 +1,33 @@
+<div class="page">
+  <h2 id="headline">İnceleme Sonuçları</h2>
+  <table class="custom">
+    <tr>
+      <strong>{{@SESSION.key}}</strong> id'sine ait tüm bilgiler</p>
+      <F3:repeat group="{{@data}}" key="{{@gnl}}" value="{{@blg}}" >
+      <F3:check if="{{@gnl != @SESSION.KEY}}">
+      <F3:true>
+      <tr>
+        <td class="label"> {{@gnl}} </td>
+        <td class="field"> {{@blg}} </td>
+      </tr>
+      </F3:true>
+      </F3:check>
+      </F3:repeat>
+    </tr>
+    <tr>
+      <td></td>
+      <td>
+        <form name="login" action="edit" method="POST" id="login" 
+          enctype="multipart/form-data">
+          <input id="submit_button" type="submit" value="Düzenle" />
+        </form>
+        <form name="login" action="del" method="POST" id="login" 
+          enctype="multipart/form-data">
+          <input id="submit_button" type="submit" value="Sil" />
+        </form>
+      </td>
+    </tr>
+  </table>
+</form>
+</div>
+

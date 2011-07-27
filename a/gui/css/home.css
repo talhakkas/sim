@@ -1,0 +1,53 @@
+div#wrapper { border-color: #2daebf;  }
+ul.nav li#ZURBmenu strong { background-color: #2daebf; }
+ul.tabs li.current a { color: #fff; background: #2daebf; }
+/* Change this page's link colors ----- */
+a, div.page-header h2 a, h3 a { color: #2daebf; }
+/* Change this page's link hover colors now ----- */
+a:hover, h1 a:hover, h2 a:hover, div.page-header h2 a:hover, h3 a:hover { color: #007d9a; }
+div#content p { font-size: 14px; line-height: 21px; }
+div#content ul#ourWork p,
+div#content #ourServices p { font-size: 13px; line-height: 18px; }
+div.page-header { background: url(../images/boxing-gloves.jpg) no-repeat 98% top; }
+
+/* ------------------------------------------
+ *  SHARED STYLES
+ * ---------------------------------------- */
+img.screenshot { margin: 0 0 36px; }
+body.safari img.screenshot { -webkit-box-shadow: 0 3px 6px #999; }
+
+div.secondary.page-header { background: none; margin-bottom: 36px; padding-bottom: 17px; border-bottom: 1px solid #ddd; }
+div.secondary h1 { font-size: 54px; letter-spacing: -1px; padding-bottom: 9px; }
+div.secondary.page-header h2 { position: relative; top: 0; left: 0; font-size: 18px; line-height: 1.5; margin-right: 0; }
+
+
+ul.case-nav { width: 100%; height: ; margin: 0 0 18px; padding: 0; float: left; border: 1px solid #ddd; border-width: 1px 0; }
+ul.case-nav li { display: inline; }
+ul.case-nav li a { float: left; display: inline; padding: 17px 15px; }
+ul.case-nav li.next a { float: right; border-right: 0; }
+ul.case-nav li a:hover { background: #f5f5f5; }
+
+ul.serviceTasks { margin: 0 30px 21px; width: ; float: left; display: inline; }
+ul.serviceTasks li { float: left; width: 50%; font-size: 14px; color: #555; }
+ul.servicesList { margin: 0 0 21px; padding: 0; list-style: none; }
+ul.servicesList li { font-size: 14px; }
+
+div#ourServices h4 { margin-top: 18px; }
+div#moreServices { padding-top: 18px; }
+div#moreServices h5 { margin: 6px 0 4px; }
+div#moreServices p, div#ourServices p { font-size: 13px; line-height: 18px; }
+
+ul#ourWork { width: 900px; margin: 0 0 0 0px; padding: 0; list-style: none; overflow: hidden; }
+ul#ourWork li { display: inline; float: left; width: 200px; margin-left: 50px; margin-right:50px;
+	font-size: 12px; }
+ul#ourWork li img { margin-bottom: 9px; -webkit-box-shadow: 0 2px 6px #ccc; }
+.eight ul#ourWork { width: 480px; } /* For services pages */
+
+.content-sec, .content-main { float: left; display: inline; margin-left: 20px; }
+.content-main { width: 520px; margin-right: 60px; }
+.content-sec { width: 280px; }
+.content-sec ul { margin: 0 0 18px; }
+.content-sec ul li { color: #555; }
+
+.case-study p { font-size: 14px; }
+

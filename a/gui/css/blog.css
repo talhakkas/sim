@@ -1,0 +1,359 @@
+div#wrapper { border-color: #ff6908; }
+ul.nav li#ZURBmenu strong { background-color: #ff6908; }
+ul.tabs li.current a { color: #fff; background: #ff6908; }
+
+/* Change it to green for the dashboard ---------- */
+div#wrapper,
+div#wrapper { border-color: #b8d30b; }
+ul.tabs li.current a,
+ul.tabs li.current a { color: #fff; background: #b8d30b; }
+ul.nav li#ZURBmenu strong,
+ul.nav li#ZURBmenu strong { background-color: #b8d30b; }
+
+/*	Change this page's link colors ---------- */
+a, div.post-header h2 a { color: #d45500; }
+
+/*	Change this page's link hover colors now ---------- */
+a:hover, h1 a:hover, h2 a:hover, div.post-header h2 a:hover { color: #ff6908; }
+
+/*	Change page header links */
+div#pageHeader li a:hover,
+div#pageHeader li.current a { background: #ff6908; }
+div#pageHeader ul.options { margin-top: 13px; }
+div.simple-sub-nav.blog ul{ float: left; width: 100%; border-top: 2px solid #eee; padding-bottom: 30px; margin-top: -16px; }
+div.simple-sub-nav li.current {border-top-color:#ff6908; border-top-style:solid; border-top-width:5px;}
+div.simple-sub-nav.blog ul a:hover{ color:#ff6908;}
+
+
+/*	Edit/New Post Form -------------------------------------------------- */
+form#blogForm label { font-size: 14px; line-height: 18px; }
+form#blogForm ul.options label { font-size: 13px; color: #777; }
+form#blogForm input.input-text, form#blogForm textarea { width: 680px; }
+form#blogForm ul.options-list li label { font-size: 12px; padding: 2px 0; }
+
+div.sub-header { margin: 0 0 18px; padding: 9px 0 8px; }
+div.sub-header h3 { margin: 0; }
+
+/*	Update the Pagination to Match Blog CSS */
+div.pagination { padding: 35px 0 0; border-top: 1px solid #eee; }
+div.pagination a:hover { text-shadow: 0 -1px 1px #d45500; background: #ff6908; border-color: #d45500; }
+
+/*	ZURBlog Grid ----- */
+div#content-main { width: 520px; }
+div#content-sec { width: 280px; margin-left: 70px; xmargin-left: 39px; padding: 18px 0; xborder-left: 1px solid #ddd; }
+
+/*	--------------------------------------------------
+Featured Posts
+-------------------------------------------------- */
+
+ul#featuredPosts { width: 960px; margin: 0 0 0 -16px; padding: 0; list-style: none; overflow: hidden; }
+ul#featuredPosts li { display: inline; float: left; width: 220px; margin-left: 16px; font-size: 1em; border: 1px solid #999; height: 250px; }
+ul#featuredPosts li img { margin-bottom: 9px; -webkit-box-shadow: 0 2px 6px #ccc; }
+ul#featuredPosts li p { padding: 0 10px; }
+ul#featuredPosts h5 { padding: 0 10px -5px; }
+ul#featuredPosts div.attribution { color: #898989; padding: 0 10px; font-size: 10px; }
+
+/*	--------------------------------------------------
+Blog Posts
+-------------------------------------------------- */
+div.blog-posts div.post { margin-bottom: 36px; }
+
+div.post { margin: 0; }
+div.post img { margin: 0 0 18px; }
+div.post div.body ul { margin-left: 24px; list-style: square outside; }
+
+/* Blog Post Header */
+div.post-header { margin-bottom: 18px; }
+div.post-header h2, div.post-header h1.inside { letter-spacing: -.03em; line-height: 1; position: relative; font-size: 30px; margin: 9px 0; }
+div.post-header h2 small,
+div.post-header h1.inside small,
+div.post-header h2 small a,
+div.post-header h1.inside small a { font-weight: bold; font-size: 24px; line-height: 1; color: #999; text-decoration: none; }
+div.post-header h2 small a:hover, div.post-header h1.inside small a:hover { color: #ff6908; }
+div.post-header h5 { font-weight: normal; color: #777; line-height: 18px; }
+div.post-header ul.admin { display: block; margin: 9px 0 0 -9px; padding: 0; }
+div.post-header ul.admin li {  }
+
+/*	Red flag for unpublished posts */
+div.post-header h1 span.important, div.post-header h3 span.important { display: block; position: absolute; top: 0; left: -80px; text-align: right; width: auto; padding: 0 10px; font-size: 14px; font-weight: bold; line-height: 27px; height: 27px; background: #e33100; color: #fff; text-transform: uppercase; -webkit-border-radius: 3px; -moz-border-radius: 3px; letter-spacing: 0; }
+
+/*	Admin actions for comments and posts ---------- */
+ul.admin { margin: 0; padding: 0; list-style: none; overflow: hidden; }
+ul.admin li { display: inline; font-size: 12px; line-height: 1.5; padding-left: 10px; }
+
+/* Blog Post Body */
+div.post div.body h4 { margin-bottom: 8px; }
+
+/* Blog Post Footer */
+div.footer { margin-top: ; }
+div.footer ul.more-link { margin-top: -18px; }
+
+div.footer ul.recent { margin-top: 9px; }
+div#sharePost { float: right; width: 200px; margin-left: 20px; }
+div#sharePost ul.widgets { margin: 9px 0 9px -10px; width: 100%; overflow: auto; }
+div#sharePost ul.widgets li { float: left; display: inline; width: auto; margin: 0 0 0 10px; }
+div#sharePost ul.links a { padding-left: 22px; line-height: 22px; background-repeat: no-repeat; background-position: left center; }
+div#sharePost ul.links .delicious a { background-image: url(../images/delicious.gif); }
+div#sharePost ul.links .stumbleupon a { background-image: url(../images/stumbleupon.gif); }
+div#sharePost ul.links .technorati a { background-image: url(../images/technorati.gif); }
+
+/*	=Archives -------------------------------------------------- */
+div.archives { padding: 0 0 0px; }
+
+div#content-sec p { color: #555; }
+div#content-sec h4 { margin: 0 0 9px; padding: 0 0 8px; font-size: 16px; line-height: 18px; color: #555; xborder-top: 2px solid #ccc; border-bottom: 1px solid #ddd; }
+div#content-sec li h6 { font-size: 1em; }
+div#content-sec li h6 a, div#content-sec li h6 a:visited { padding: 0; font-weight: normal; }
+div#content-sec li h6 a:hover { text-decoration: underline; }
+/*
+div#content-sec li span { color: #777; }
+div#content-sec li span a, div#content-sec li span a:visited { color: #777; text-decoration: none; }
+div#content-sec li span a:hover { text-decoration: underline; }
+ */
+
+ul.photos { margin-bottom: 0;}
+ul.photos a:hover img { border-color: #999; border-color: rgba(244,123,32,.5); -moz-box-shadow: 0 0 5px rgba(244,123,32,.5); -webkit-box-shadow: 0 0 5px rgba(244,123,32,.5); }
+
+
+
+/*	ZURBword form styling - COMBINE WITH FOOTER CSS? -------------------- */
+div.zurbword { background: #f5f5f5; margin: 0 0 17px; padding: 18px 20px 1px; -moz-border-radius: 3px; -webkit-border-radius: 3px; }
+div.zurbword h5 { display: none; }
+div.zurbword form { background: url(../images/zurbword-bg.gif) no-repeat 0 0; margin: 5px 0 4px; padding: 0; height: 27px; position: relative; }
+div.zurbword form div.wrapper { background: url(../images/zurbword-bg.gif) no-repeat right -27px; position: relative; width: 206px; height: 26px; margin: 0 !important; padding: 1px 0 0 34px; }
+div.zurbword form input.input-text { background: #fff !important; display: block; width: 140px; margin: 2px 0 0; padding: 4px 0 0; border: 0; color: #333; font-size: 12px; }
+div.zurbword form input.input-text:focus { background: #fff; outline: none; }
+div.zurbword form button { background-position: 0 0; background-repeat: no-repeat; height: 27px; position: absolute; top: 0; right: 0; text-indent: -999em; cursor: pointer; }
+div.zurbword form button:hover { background-position: 0 -27px; }
+
+div.zurbword #zurbword p { margin: 9px 0 0; padding: 0 5px; }
+
+div.zurbword form div { background-image: url(../images/zurbword-bg.gif); }
+div.zurbword form button { background-image: url(../images/zurbword-button.gif); width: 40px; }	
+
+a.continue-reading, a.continue-reading:visited { font-weight: bold; }
+
+/*	Comments ---------- */
+#comments { margin-top: -18px; }
+#comments div.comment-header h4 { padding: 0 0 8px; margin: 0 0 18px; border-bottom: 1px solid #ddd; }
+
+#comments form {  }
+#comments form input.input-text { width: 270px; }
+#comments form input.large, #comments form textarea.large { width: 503px; }
+#comments button { margin: 0; }
+#comments p.note { margin: 0; color: #777; }
+#comments p.note.bottom { margin-bottom: 10px; color: #777; }
+#comments p.note input.input-text { display: inline-block; margin-right: 5px; }
+#comments ul#commentList li h5 a { text-decoration: underline; }
+
+#comments ul.admin { position: absolute; top: 1px; right: 10px; }
+
+/*
+#comments form div.wrap { margin-left: -20px; width: 540px; }
+#comments form div.wrap div { float: left; width: 250px; margin-left: 20px; display: inline; }
+ */
+
+ul#commentList { margin: 0 0 18px; padding: 0; list-style: none; position: relative; }
+ul#commentList li.comment { margin: 0 0 17px; font-size: 13px; line-height: 18px; position: relative; border-bottom: 1px dotted #ddd; }
+ul#commentList li.comment h5 { font-size: 14px; color: #333; }
+ul#commentList li.comment h5 a {  }
+ul#commentList li.comment p { padding-right: 25px; 
+	white-space: pre-wrap;       /* css-3 */
+	white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+	white-space: -pre-wrap;      /* Opera 4-6 */
+	white-space: -o-pre-wrap;    /* Opera 7 */
+	word-wrap: break-word;       /* Internet Explorer 5.5+ */ }
+ul#commentList li.zurb { background: #f5f5f5; margin-top: -17px; padding: 18px 20px 1px; }
+ul#commentList li.zurb p { color: #111; }
+ul#commentList li.zurb ul.admin { top: 10px; right: 10px; }
+ul#commentList li.waiting_review { background: #ffc; }
+
+
+/*	New Share Links for below each post ---------- */
+div#shareLinks { padding: 0 0 0px; margin-top: 0px; }
+div#shareLinks h5 { margin: 0 0 9px; }
+div#shareLinks ul { margin: 0; padding: 0; list-style: none; }
+div#shareLinks li { float: left; display: inline; width: auto; margin: 0 10px 0 0; }
+div#shareLinks li a, div#shareLinks li a:visited { display: block; text-decoration: none; padding: 1px 0 0; }
+div#shareLinks li.tweet { width: 110px;} 
+div#shareLinks li.fb { width: 86px;} 
+div#shareLinks li.rss { background-image:url("../images/rss-white.gif"); background-position: left; background-repeat:no-repeat; line-height: 18px; margin: 0; padding-left: 23px; padding-right: 15px; color: #333;} 
+div#shareLinks li.email { background-image:url("../images/mailico.png"); background-position: left top; background-repeat: no-repeat; line-height: 18px; margin: 0; padding-left:23px; color: #333;}
+div#shareLinks li.email p { margin: 0; }
+li.email a { color: #333; }
+li.rss a { color: #333; }
+
+/*	Add your comment  ---------- */
+
+h4#addcomment {margin-bottom: 10px;}
+
+/*	Tweet This for every post */
+span.tweet-this { width: 45px; margin: 0; }
+span.tweet-this img { display: block; padding: 0; }
+a.tweet-this, a.tweet-this:visited {  }
+
+div.aside { padding-bottom: 9px; }
+
+/*	Sidebar Listing Blocks ---------- */
+div#content-sec ul.listing {  }
+div#content-sec ul.listing li { padding: 0 0 9px; color: #777; }
+div#content-sec ul.listing span a { color: #777; }
+div#content-sec ul.listing h6 { margin-bottom: 0; }
+
+/*	Recent Comments ---------- */
+div#content-sec ul#recentComments li { padding: 0 0 9px; }
+div#content-sec ul#recentComments li p { margin: 0; display: inline; 
+	white-space: pre-wrap;       /* css-3 */
+	white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+	white-space: -pre-wrap;      /* Opera 4-6 */
+	white-space: -o-pre-wrap;    /* Opera 7 */
+	word-wrap: break-word;       /* Internet Explorer 5.5+ */ }
+
+/*	Recent Blog Posts ---------- */
+div#content-sec div#recentPosts ul.listing li {  }
+div#content-sec div#recentPosts ul.listing li a { padding: 0; line-height: inherit; }
+div#content-sec div#recentPosts ul.listing li span a { padding: 0; line-height: inherit; }
+
+/*	Youtube Videos ----- */
+div#videos { margin: 0 0 31px; }
+
+/*	Delicious Bookmarks ----- */
+div#bookmarks {  }
+
+/*	Tweets ----- */
+div#twitter { padding: 9px 0; }
+div#twitter p { margin-bottom: 9px; }
+div#twitter div { background: url(../images/twitter-bird.gif) no-repeat 0 0; padding-left: 60px; height: 40px; margin-bottom: 18px; }
+div#twitter div p { padding-top: 5px; }
+
+/*	--------------------------------------------------
+Flickr Page
+-------------------------------------------------- */
+div.zurb-media {  }
+div.zurb-media h3 small { color: #777; font-size: 18px; }
+
+
+div#latestFollower { position: absolute; top: -9px; right: 0; width: 340px; }
+div#latestFollower h6 { float: left; text-align: right; width: 160px; margin-top: 9px; line-height: 15px; color: #777; }
+div#latestFollower div { background: #f1f1f1; padding: 9px; margin-left: 175px; -webkit-border-radius: 3px; -moz-border-radius: 3px; }
+div#latestFollower img { width: 30px; height: 30px; float: left; margin: 0 6px 0 0; background: #fff; }
+div#latestFollower p { line-height: 15px; margin: 0; color: #777; }
+div#latestFollower p span { font-size: 12px; }
+
+ul.flickr { margin: 0; }
+ul.flickr li {  }
+ul.flickr li span { color: #777; }
+ul.flickr li a.thumb { display: block; margin: 0 0 9px; text-align: center; }
+ul.flickr li a.thumb:hover{  }
+ul.flickr li a.thumb img{ display: block; margin: 0 auto; }
+
+ul.comments li a.thumb { width: 220px; height: auto; max-height: 162px; overflow: hidden; }
+ul.comments li a.thumb img { margin: 0 0 0 -10px; }
+ul.comments li a.thumb p { margin: 0; }
+
+ul.stream { float: left; margin: 0 0 18px -12px; overflow: hidden; }
+ul.stream li { display: inline; }
+ul.stream li a.thumb { display: inline; float: left; xwidth: 73px; xheight: 73px; margin: 0 0 11px 12px; overflow: hidden; xborder: 1px solid #ddd; padding: 0px; }
+ul.stream li a.thumb img { margin: 0; }
+ul.stream li a.thumb p { margin: 0; }
+
+ul.favs li { margin: 0 0 9px; }
+ul.favs	li a.thumb { width: 98px; height: 88px; margin: 0; }
+
+div.flickr-image { margin: 0 0 18px; padding-right: 10px; }
+div.flickr-image img { margin: 0 0 9px; }
+
+/*	--------------------------------------------------
+Twitter Page
+-------------------------------------------------- */
+
+ol.twitter { margin: -13px 0 18px; padding: 0; list-style: none; }
+ol.twitter li { min-height: 36px; padding: 13px 0; font-size: 10px; line-height: 1; clear: both; border-bottom: 1px solid #eee; }
+ol.twitter img { width: 36px; height: 36px; float: left; }
+ol.twitter div.body { margin: 0 0 0 46px; }
+ol.twitter p { display: inline; font-size: 14px; line-height: 18px; margin: 0; color: #333; }
+ol.twitter a { line-height: inherit; color: #777; text-decoration: none; }
+ol.twitter a:hover { color: #555; }
+ol.twitter a.user { font-weight: bold; color: #d45500; }
+ol.twitter a.user:hover { color: #ff6908; }
+ol.twitter small { display: inline; font-size: 12px; line-height: 18px; color: #777; margin: 0 0 0 2px; }
+ol.twitter small a { color: #777; text-decoration: none; }
+ol.twitter small a:hover { text-decoration: underline; }
+
+ol.twitter.search { margin: 0 0 26px; }
+ol.twitter.search li { padding: 8px 0; }
+ol.twitter.search div.body { margin: 0; }
+ol.twitter.search p { font-size: 12px; color: #555; }
+ol.twitter.search small,
+ol.twitter.search small a { color: #999; }
+
+ol.follow { margin: 0 0 18px; }
+ol.follow li { margin: 0 0 9px; padding: 0; border: 0; }
+ol.follow p { font-size: 13px; }
+ol.follow small { margin: 0; }
+
+div#aboutTwitter { background: url(../images/twitter-bird.gif) no-repeat 270px 60px; height: 159px; padding: 0 0 18px 0; }
+div#aboutTwitter p { font-size: 14px; line-height: 21px; color: #777; }
+
+
+div.notable-cta { background: #f5f5f5; border: dotted #eaeaea; border-width: 1px 0; margin: 9px 0 47px; position: relative; }
+div.notable-cta a { display: block; height: 30px; padding: 14px; color: #333; text-decoration: none; }
+div.notable-cta a:hover { color: #222; }
+div.notable-cta a h3 { float: left; display: block; width: 126px; height: 47px; margin: 0; padding: 9px 0 0 57px; background: url(../images/notable-app-icon.gif) no-repeat 0 0; font-size: 30px; line-height: 1; }
+div.notable-cta a p { margin: 0; padding: 8px 15px 0; font-size: 12px; line-height: 15px; }
+
+div.previousPost {width: 240px; float: left; display: inline; margin-bottom: 20px;}
+div.nextPost {width: 240px; float: right; display: inline; margin-bottom: 20px;}
+
+li.mail.footer {background-image:url("../images/mailico.png"); background-position: 6% 5%; background-repeat:no-repeat; line-height:18px; margin-bottom:0; margin-left:0; margin-right:0; margin-top:0; padding-bottom:0; padding-left:30px; padding-right:0; padding-top:0; color: #333333;}
+
+li.mail.footer a{color: #333333;}
+
+li.rss.footer {background-image:url("../images/rss-white.gif");background-position:left;background-repeat:no-repeat;line-height:18px; margin:0; padding-bottom:0;padding-left: 28px; padding-right:0;padding-top:0;color: #333333;} 
+
+li.rss.footer a{color: #333333;}
+
+li.divider {margin-right: 5px;}
+
+/*	Blog Topics  ---------- */
+
+h3.topicCategory {font-size: 20px;}
+
+/*	Date Badge  ---------- */
+
+p.dateBadge {width: 57px;height: 32px;padding: 32px 0 14px 0;text-align: center; font-size: 26px; font-weight: bolder; letter-spacing: -1px;}
+
+p.dateBadge.December {background-image:url("../images/date_badge12.jpg"); background-repeat: no-repeat;background-position: 0 0; }
+p.dateBadge.November {background-image:url("../images/date_badge11.jpg"); background-repeat: no-repeat;background-position: 0 0; }
+p.dateBadge.October {background-image:url("../images/date_badge10.jpg"); background-repeat: no-repeat;background-position: 0 0; }
+p.dateBadge.September {background-image:url("../images/date_badge9.jpg"); background-repeat: no-repeat;background-position: 0 0; }
+p.dateBadge.August {background-image:url("../images/date_badge8.jpg"); background-repeat: no-repeat;background-position: 0 0; }
+p.dateBadge.July {background-image:url("../images/date_badge7.jpg"); background-repeat: no-repeat;background-position: 0 0; }
+p.dateBadge.June {background-image:url("../images/date_badge6.jpg"); background-repeat: no-repeat;background-position: 0 0; }
+p.dateBadge.May {background-image:url("../images/date_badge5.jpg"); background-repeat: no-repeat;background-position: 0 0; }
+p.dateBadge.April {background-image:url("../images/date_badge4.jpg"); background-repeat: no-repeat;background-position: 0 0; }
+p.dateBadge.March {background-image:url("../images/date_badge3.jpg"); background-repeat: no-repeat;background-position: 0 0; }
+p.dateBadge.February {background-image:url("../images/date_badge2.jpg"); background-repeat: no-repeat;background-position: 0 0; }
+p.dateBadge.January {background-image:url("../images/date_badge1.jpg"); background-repeat: no-repeat;background-position: 0 0; }
+
+
+/*	Archive Dates  ---------- */
+div.archives h1 {font-size: 76px; letter-spacing: -3px;}
+
+ul.postinate { height: 34px; border: dotted #ddd; border-width: 1px 0; }
+ul.postinate li { display: inline; }
+ul.postinate a { float: left; display: inline; padding: 8px 0; }
+ul.postinate .next { float: right; }
+
+/*	Uploads  ---------- */
+div#uploads .button { -webkit-box-shadow: none; -moz-box-shadow: none; }
+div#uploads h4 { color: #777; text-shadow: 0 1px 1px #fff; }
+div#uploads ul { margin: 9px 0; border-top: 1px solid #ddd; border-bottom: 1px solid #fff; }
+div#uploads ul li { height: 26px; padding: 7px 0; overflow: hidden; border-top: 1px solid #fff; border-bottom: 1px solid #ddd; line-height: 26px; }
+div#uploads ul li * { float: left; }
+div#uploads ul li strong { width: 180px; font-weight: normal; }
+div#uploads ul li input.input-text { width:  440px; margin: 0; }
+div#uploads ul li a.delete img { margin: 4px 0 0 5px; opacity: .5; -moz-opacity: .5; filter: alpha(opacity=50); }
+div#uploads ul li a.delete:hover img { opacity: 1; -moz-opacity: 1; filter: alpha(opacity=100); }
+
+

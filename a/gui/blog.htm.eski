@@ -1,0 +1,215 @@
+<link href="gui/css/blog.css" media="all" rel="stylesheet" type="text/css" />
+
+<div id="pageHeader">
+  <h1>The ZURBlog <small>is where we discuss interaction design and 
+      strategy.</small></h1>
+</div>
+
+<div class="simple-sub-nav blog">
+  <ul>
+    <li  class="current"><a href="http://www.zurb.com/blog">Latest 
+      Posts</a></li>
+    <li ><a href="http://www.zurb.com/blog/topics">Blog Topics</a></li>
+    <li ><a href="http://www.zurb.com/blog/archive">Blog Archives</a></li>
+    <li ><a href="/blog/flickr">Photos</a></li>
+    <li ><a href="/blog/twitter">Updates</a></li>
+  </ul>
+</div>
+
+
+<div class="column-row">
+  <div class="column" id="content-main">
+    <div class="blog-posts">
+      <div class="post">
+	<div class="post-header">		
+	  <h2><a href="/article/736/how-design-teamwork-crushes-bureaucracy">How Design Teamwork Crushes&nbsp;Bureaucracy</a> <small>by&nbsp;<a href="http://www.zurb.com/team/jeremy-britton">Jeremy</a></small></h2>
+
+
+	  <h5 class="post-meta">
+	    July 18, 2011 in 
+	    <a href="/zurbapps/design-strategy">Design Strategy</a>,
+	    with <a 
+	      href="/article/736/how-design-teamwork-crushes-bureaucracy#comments">2 
+	      comments</a>
+	  </h5>
+	</div>
+	<h3>In Practice</h3>
+
+
+	<p>We use this technique for our tests in <a href="http://verifyapp.com">Verify</a>. Each test consists of multiple steps, so we structured each test as a page load, and each step as a stacked div within the test. This provided a couple different benefits:</p>
+
+	<ul>
+	  <li>Animated transitions to communicate progress (watch the direction the instructions tab moves when clicked)</li>
+	  <li>Frictionless movements between test steps (accomplished by removing page loads)</li>
+	  <li>All the markup can be generated server side (thanks to page loads between tests)</li>
+	  <li>Asynchronous persistance of data (by sending AJAX requests in the background)</li>
+	</ul>
+
+
+	<p><a class="super large green button" href="http://zurb.verifyapp.com/y/9688"><span>See a Sample Verify Test in Action</span></a></p>
+
+	<div class="body">
+	  <p>I have a two month old son. His super power is crying, but he’s also developing a hearty laugh to balance out that rebel yell. Getting to know him has made it obvious that the first form of communication between people is raw emotion, especially those subtle flashes of expression around the eyes just before a mood swing. We’re getting good at anticipating each other. I think we make a great team.</p>
+	  <blockquote>The results ranged from the sobering (managers signing off 
+	    on inferior products because customers "had no choice") to the 
+	    hilarious (Cadillac ashtrays that wouldn't open because of corporate 
+	    mandates that they be designed to function at -40°F). </blockquote>
+
+	  <p><object width="520" height="390"> <param name="flashvars" value="offsite=true&amp;lang=en-us&amp;page_show_url=%2Fphotos%2Fzurbinc%2Fsets%2F72157627103476211%2Fshow%2F&amp;page_show_back_url=%2Fphotos%2Fzurbinc%2Fsets%2F72157627103476211%2F&amp;set_id=72157627103476211&amp;jump_to="></param> <param name="movie" value="http://www.flickr.com/apps/slideshow/show.swf?v=104087"></param> <param name="allowFullScreen" value="true"></param><embed type="application/x-shockwave-flash" src="http://www.flickr.com/apps/slideshow/show.swf?v=104087" allowFullScreen="true" flashvars="offsite=true&amp;lang=en-us&amp;page_show_url=%2Fphotos%2Fzurbinc%2Fsets%2F72157627103476211%2Fshow%2F&amp;page_show_back_url=%2Fphotos%2Fzurbinc%2Fsets%2F72157627103476211%2F&amp;set_id=72157627103476211&amp;jump_to=" width="520" height="390"></embed></object></p>
+
+	  <p><strong>Design sometimes feels like therapy.</strong> We met a lot of awesome people after our recent talks at BayCHI and Open Source Bridge and took the time afterward to field their questions. It was clear many people entered the talks hoping for some silver bullet in the form of a design process or technique they could take back with them to their work day.</p>
+
+	  <p>Many folks were shocked by the idea of operating without requirements or other heavy documentation to communicate their work. When we asked them a few questions back, it was clear they were afraid to look their coworkers in the eye and confront real issues, big and small.</p>
+
+	  <p>As Kevin Hale mentioned in <a href="http://www.zurb.com/soapbox/events/21/Wufoo-Kevin-Hale">his hilarious Soapbox</a> talk comparing business relationships to marriage, an inability to face each other, anticipate each others’ emotions, and even argue can prevent people from clicking. The guests at our talks weren’t on teams, they were just people who happened to be showing up to work at the same building. How are you going to build anything great under those conditions?</p>
+
+	  <p><strong>People who can’t communicate with each other get stuck making complicated ‘stuff’ to make up for it.</strong> Frustration turns into PowerPoints, complicated charts, and lots of meetings. Stuff which requires layers upon layers of management to keep organized. Stuff that weighs companies down. Stuff that creates no direct value to their customers. This is why there are so many lame products in the world. There’s not a wireframe or chart or design method that is going to save you if you can’t look your team members in the eye.</p>
+
+	  <p>In our talks we told the story of how we built Verify from pile of sketches to static prototype to functional release – making money from day one. Our teamwork made up for the lack of ‘stuff’ other companies would use because we:
+	  <ul>
+	    <li><strong>Shared a clear goal that we all understood</strong> -- design and build out would have five short phases, culminating in a money-making launch </li>
+	    <li><strong>Worked physically close to each other</strong> and stayed connected by IM and phone when we didn’t </li>
+	    <li><strong>Spoke in pictures</strong>, sketching to simulate the actual UI and avoid abstractions of simple, detailed problems </li>
+
+	    <li><strong>Shared feedback</strong> with each other and from customers out in the open every day, which builds confidence in arguing and makes new conversations really easy to begin </li>
+	    <li><strong>Stayed together</strong> through thick and thin to build trust in one another -- this takes time and can’t be forced! </li>
+	  </ul></p>
+
+	  <p><strong>The surest way to complicate something is to make it in to two things.</strong> By focusing on the interface without accompanying documentation, we could imagine our customers better and even test ideas out with them. If it worked, we went with our collective gut and built that sketch on the spot. If an idea was dumb, we weren’t afraid to tell each other about it. We would quickly replace it with a better idea.</p>
+
+	  <p>Verify benefited from this. The emotion of the team is literally embedded in the energetic decisions that made our application what it is.</p>
+
+	  <p>Contrary to the feedback we heard at our talks, we don’t think our team should be unique or rare in this approach. We know anybody can do this. It takes openness every day, getting really good at reading your teammates’ emotions, and practicing again and again together without straying far from the finished product.</p>
+
+	</div>
+
+      </div> 
+
+
+	</div>
+      </div>
+
+
+
+      <div class="column" id="content-sec">
+	<div class="aside" id="aboutZURBlog">
+	  <h4>About the ZURBlog</h4>
+	  <p>The ZURBlog is where we discuss design interaction and strategy. We use design thinking to challenge businesses and designers to improve the products and services they create.</p>
+	</div>
+
+
+	<div class="aside">
+	  <h4>Blog Topics</h4>
+	  <ul class="topics">
+	    <li><a href="/blog/topic/design-strategy">Design Strategy</a></li>
+	    <li><a href="/blog/topic/interaction-design">Interaction Design</a></li>
+	    <li><a href="/blog/topic/sparks">Sparks</a></li>
+
+	    <li><a href="/blog/topic/implementation">Implementation</a></li>
+	    <li><a href="/blog/topic/zurb">ZURB</a></li>
+	    <li><a href="/blog/topic/happy-clients">Happy Clients</a></li>
+	    <li><a href="/blog/topic/business-and-startups">Business and Startups</a></li>
+	    <li><a href="/blog/topic/zurbwired">ZURBWired</a></li>
+	  </ul>
+
+	</div>
+
+	<div class="aside">
+	  <div class="zurbword">
+	    <h4>What's the ZURBword?</h4>
+	    <h5>What's the ZURBword?</h5>
+
+	    <form action="http://www.zurb.com/word_searches" id="zurbWordSearch" method="post">
+	      <div class="wrapper">
+		<input class="input-text" id="" name="word[name]" size="21" type="text" value="Christmas Pigs" />
+
+		<button type="submit">Go</button>
+	      </div>
+	    </form>
+	    <p><a href="http://www.zurb.com/word/" title="Visit ZURBword">ZURBword.com</a> is our thoughts on interaction design and strategy. <a href="http://www.zurb.com/words/what" title="Find out what ZURBword is.">What?</a></p>
+
+	  </div>
+	</div>
+
+	<div class="aside" id="xphotos">
+	  <div class="header">
+	    <h4>Photos on <a href="http://www.flickr.com/photos/zurbinc" title="ZURB on Flickr">Flickr</a></h4>
+	  </div>
+	  <div class="section">
+	    <ul class="recent photos">
+
+	      <li><a href="http://flickr.com/photos/zurbinc/5952670540"><img alt="5952670540_393a5efcf8_s" src="http://farm7.static.flickr.com/6022/5952670540_393a5efcf8_s.jpg" /></a></li>
+
+
+	      <li><a href="http://flickr.com/photos/zurbinc/5952670388"><img alt="5952670388_92e6431460_s" src="http://farm7.static.flickr.com/6150/5952670388_92e6431460_s.jpg" /></a></li>
+
+	      <li><a href="http://flickr.com/photos/zurbinc/5952117559"><img alt="5952117559_d780b899bd_s" src="http://farm7.static.flickr.com/6141/5952117559_d780b899bd_s.jpg" /></a></li>
+
+	      <li><a href="http://flickr.com/photos/zurbinc/5952670110"><img alt="5952670110_8288edaf1e_s" src="http://farm7.static.flickr.com/6001/5952670110_8288edaf1e_s.jpg" /></a></li>
+
+	      <li><a href="http://flickr.com/photos/zurbinc/5952117265"><img alt="5952117265_d3578ce380_s" src="http://farm7.static.flickr.com/6023/5952117265_d3578ce380_s.jpg" /></a></li>
+
+	      <li><a href="http://flickr.com/photos/zurbinc/5952117101"><img alt="5952117101_62d4e724ae_s" src="http://farm7.static.flickr.com/6017/5952117101_62d4e724ae_s.jpg" /></a></li>
+
+	      <li><a href="http://flickr.com/photos/zurbinc/5952669754"><img alt="5952669754_bc64395102_s" src="http://farm7.static.flickr.com/6003/5952669754_bc64395102_s.jpg" /></a></li>
+
+	      <li><a href="http://flickr.com/photos/zurbinc/5952116899"><img alt="5952116899_4c9eb4c261_s" src="http://farm7.static.flickr.com/6145/5952116899_4c9eb4c261_s.jpg" /></a></li>
+
+	      <li><a href="http://flickr.com/photos/zurbinc/5952669448"><img alt="5952669448_8b5bfa9e78_s" src="http://farm7.static.flickr.com/6149/5952669448_8b5bfa9e78_s.jpg" /></a></li>
+
+	    </ul>
+
+	    <br class="clear" />
+	  </div>
+	</div>
+
+	<div class="aside" id="videos">
+	  <div class="header">
+	    <h4>Videos on <a href="http://www.youtube.com/zurb">YouTube</a></h4>
+	  </div>
+	  <div class="section">
+
+	    <object width="280" height="230">
+	      <param name="movie" value="http://www.youtube.com/v/5UojV-NNtXE&feature=youtube_gdata_player"></param>
+	      <param name="wmode" value="transparent"></param>
+	      <embed src="http://www.youtube.com/v/5UojV-NNtXE&feature=youtube_gdata_player" type="application/x-shockwave-flash" 
+	      wmode="transparent" width="280" height="230"></embed>
+	    </object>
+
+	  </div>
+	</div>
+
+	<div class="aside" id="bookmarks">
+	  <div class="header">
+
+	    <h4>Bookmarks on <a href="http://www.delicious.com/zurb">Delicious</a></h4>
+	  </div>
+	  <div class="section">
+	    <ul class="recent blog-posts">
+
+	      <li>
+	      <h5><a href="http://www.webdesignerdepot.com/2011/07/whats-new-for-web-designers-july-2011/">WebDesignDepot covers Flickrbomb</a></h5>
+	      <small>A big thanks to Walter for showcasing our latest flickrBomb plugin in his latest roundup of the best resources for July.</small>
+
+	      </li>
+
+	      <li>
+	      <h5><a href="http://coding.smashingmagazine.com/2011/07/15/orbit-and-reveal-jquery-plug-ins-that-will-breathe-life-into-your-pages/">Our Smashing Magazine Post on Orbit, Reveal and others</a></h5>
+	      <small>We're glad to publish a guest post on Smashing Magazine sharing some of our latest JQuery plugins. </small>
+	      </li>
+
+	      <li>
+	      <h5><a href="http://www.smashingmagazine.com/smashing-newsletter-issue-38/">Smashing Magazine covers our HTML5 Video Voting Experiment</a></h5>
+
+	      <small>Thanks to Vitaly for sharing our HTML5 Video Voting plugin with SmashingMag readers.</small>
+	      </li>
+
+	    </ul>
+	  </div>
+	</div>
+      </div> <!-- Wrapper -->
+    </div>
+  </div>
+</div>
+
+

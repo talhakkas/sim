@@ -1,0 +1,107 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+
+<html xmlns = "http://www.w3.org/1999/xhtml" xml:lang = "TR" lang = "tr">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Language" content="en-us" />
+    <meta name="keywords" content="simulation" />
+    <meta name="description" content="OMÜ Simulation center" />
+    <meta name="author" content="emineker" />
+    <meta name="copyright" content="OMÜ, inc. Copyright (c) 2011" />
+    <link rel="icon" href="gui/images/favicon.ico" type="image/x-icon" />
+    <title>{{@page_title}}</title>
+
+    <link href="gui/css/default.css" media="all" rel="stylesheet" 
+    type="text/css" />
+
+  </head>
+
+  <body id="indexPage">
+    <div id="wrapper">
+      <div id="container">
+	<div id="header">
+	  <ul class="tabs" id="mainNav">
+	    <li class="home">
+	    <a href="{{ @SERVICEROOT }}" title="Ana Sayfa">
+	      <span>Ana Sayfa</span></a></li>
+	    <li class="magenta">
+	    <a href="people" title="Ekibimiz"><span>Ekibimiz</span></a></li>
+	    <li class="green">
+	    <a href="work" title="Çalışmalar">
+	      <span>Çalışmalar</span></a></li>
+	    <li class="orange">
+	    <a href="about" class="orange" title="Hakkında">
+	      <span>Hakkında</span></a></li>
+	    <li class="yellow">
+	    <a href="contact" title="Bize Ulaşın"><span>İletişim</span></a></li>
+	  </ul>
+	  
+  
+  <a href="{{@SERVICEROOT}}" title="{{@SERVICEROOT">
+    <h3>Medikal Simülasyon Merkezi</h3></a>
+	</div>
+	
+	<div id="content">
+	  <F3:include href="{{@template}}.htm"/>
+	</div>
+      </div>
+
+      <div id="site-info">
+	<div class="container">
+	  <div class="column-row" style="display:none;">
+	    <div class="six columns" id="zurbcontact">
+	      <h4>Wanna talk? <strong>Call us at (408) 341-0600.</strong></h4>
+	      <p>Hmm, not a big talker. Email us at <a href="mailto:getstarted@zurb.com" title="Send us an email!">getstarted@zurb.com</a>.</p>
+
+	      <h6>Still here? Great, we're hiring.</h6>
+	      <p>We need people with chops to join our quest<br /> for world domination. <a href="http://www.zurb.com/talent" class="talent" title="Check out our available jobs and gigs">Want a job, nerd?</a></p>
+	    </div>
+
+	    <div class="five columns" id="zurbword">
+	      <h5>What's the ZURBword?</h5>
+
+	      <form action="http://www.zurb.com/word_searches" id="zurbWordSearch" method="post">
+		<div class="wrapper">
+		  <input class="input-text" id="" name="word[name]" size="21" type="text" value="Christmas Pigs" />
+		  <button type="submit">Go</button>
+		</div>
+	      </form>
+	      <p><a href="http://www.zurb.com/word/" title="Visit ZURBword">ZURBword.com</a> is our thoughts on interaction design and strategy. <a href="http://www.zurb.com/words/what" title="Find out what ZURBword is.">What?</a></p>
+
+	    </div>
+
+	    <div class="five columns" id="zurbnews">
+	      <h5>Subscribe to ZURBnews</h5>
+	      <form action="http://www.zurb.com/newsletter/sign_up" id="newsSubscribe" method="post">
+		<div class="wrapper">
+		  <input class="input-text" id="groupie_email" name="groupie[email]" size="21" type="text" value="Enter your e-mail..." />
+		  <button class="playground" type="submit">Get It</button>
+		</div>
+
+	      </form>
+	      <!-- 	<p>Get our monthly newsletter, ZURBnews.<br /> Check out <a href="http://www.zurb.net/newsletter/june-2011/" title="Read last month's edition of ZURBnews">last month's edition &raquo;</a></p> -->
+	      <p>Get our monthly newsletter, ZURBnews.<br /> Check out the <a href="/news" title="Read last month's edition of ZURBnews">latest news and buzz &raquo;</a></p>
+
+	    </div>
+	  </div>
+
+	  <div id="footer">
+	    <ul>
+	      <li><a href="" class="home" title="Ana Sayfa">Ana Sayfa</a></li>
+	      <li><a href="people" title="Ekibimiz">Ekibimiz</a></li>
+	      <li><a href="work" title="Çalışmalarımız">Çalışmalar</a></li>
+	      <li><a href="about" title="Hakkında">Hakkında</a></li>
+	      <li style="display:none;"><a href="playground" class="playground" 
+		title="The Playground">Playground</a></li>
+	      <li><a href="contact" class="end"
+		title="Bize Ulaşın">İletişim</a></li>
+	    </ul>
+	    <p class="copyright">&copy; 2011 - 2013 Omü Sim.  Tüm Hakları 
+	    Saklıdır.</p>
+	  </div>
+	</div>
+      </div>
+    </div>
+  </body>
+</html>
+

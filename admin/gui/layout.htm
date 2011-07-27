@@ -1,0 +1,92 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html xmlns = "http://www.w3.org/1999/xhtml" xml:lang = "TR" lang = "tr">
+  <head>
+    <meta http-equiv = "Pragma" content = "no-cache" />
+    <meta http-equiv = "Expires" content = "-1" />
+    <meta http-equiv = "Content-Type" content = "text/html; charset=utf-8" />
+    <link rel = "stylesheet" type = "text/css" href = "gui/css/admin.css" />
+    <link rel = "stylesheet" type = "text/css" href = "gui/css/login.css" />
+    <link rel = "stylesheet" type = "text/css" href = "gui/css/style.css" />
+    <title>{{@title}}</title>
+  </head>
+
+  <body>
+    <F3:check if="{{@SESSION.admin}}">
+    <F3:true>
+    <div id="wrapper">
+      <div id="container">
+        <ul class="tabs" id="mainNav">
+          <li class="current home">
+          <a href="{{@SERVICEROOT}}"
+            title="Kullanıcı adınız">{{@SESSION.adminusername}}</a>
+          </li>
+          <li class="magenta">
+            <a href="info" title="Bilgilendirme sayfası">Bilgilendirme</a>
+          </li>
+          <li class="green">
+            <a href="logout" title="Çıkış">Çıkış</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    </F3:true>
+    </F3:check>
+
+    <F3:check if="{{@correct}}">
+    <F3:true>
+    <div id="notice"><p class="success">{{@correct}}</p></div>
+    </F3:true>
+    </F3:check>
+
+    <F3:check if="{{@error}}">
+    <F3:true>
+    <div id="notice"><p class="fail">{{@error}}</p></div>
+    </F3:true>
+    </F3:check>
+
+    <div id="content">
+      <F3:check if="{{@SESSION.admin}}">
+      <F3:true>
+      <div id="leftcolumn">
+        <table>
+          <tr><td>
+              <img src="gui/images/table.png"/>{{@SESSION.TABLE}}
+          </td></tr>
+          <tr><td>
+              <img src="gui/images/save.png"/>{{@SESSION.SAVE}}
+          </td></tr>
+          <tr><td>
+              <a href="{{@SERVICEROOT}}" title=""><img
+                src="gui/images/tables.png"/>Tablolar</a>
+          </td></tr>
+          <tr><td>
+              <a href="review" title="">
+                <img src="gui/images/review.png"/>Tablo İncele</a>
+          </td></tr>
+          <tr><td>
+              <a href="new" title="">
+                <img src="gui/images/add.png"/>Ekle</a>
+          </td></tr>
+          <tr><td>
+              <a href="find" title="">
+                <img src="gui/images/find.png"/>Bul</a>
+          </td></tr>
+          <tr><td>
+              <a href="csv" title="">
+                <img src="gui/images/csv.png"/>Csv Çıktı</a>
+          </td></tr>
+          <tr><td>
+              <a href="csv" title="">
+                <img src="gui/images/pdf.png"/>Pdf Çıktı</a>
+          </td></tr>
+        </table>
+      </div>
+      </F3:true>
+      </F3:check>
+
+      <F3:include href="{{@template}}.htm"/>
+    </div>
+
+  </body>
+</html>
+

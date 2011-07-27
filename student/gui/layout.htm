@@ -1,0 +1,50 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+
+<html xmlns = "http://www.w3.org/1999/xhtml" xml:lang = "TR" lang = "tr">
+  <head>
+    <meta http-equiv = "Pragma" content = "no-cache" />
+    <meta http-equiv = "Expires" content = "-1" />
+    <meta http-equiv = "Content-Type" content = "text/html; charset=utf-8" />
+    <link type="text/css" href="gui/css/style.css" rel="stylesheet" />
+
+    <title>{{@title}}</title>
+
+  </head>
+
+  <body>
+    <F3:check if="{{@SESSION.special==1}}">
+    <F3:true>
+    <div id="wrapper">
+      <div id="container">
+        <ul class="tabs" id="mainNav">
+          <li class="current home"><a href="{{@SERVICEROOT}}" 
+            title="">Anasayfa</a>
+          </li>
+          <li class="green"><a href="olgu" title="">Olgu Ekranı</a></li>
+          <li class="magenta"><a href="ekg" title="">Ekg Ekranı</a></li>
+          <li class="orange"><a href="bulgu" title="">Bulgu Ekranı</a></li>
+          <li class="yellow"><a href="personal" 
+            title="">{{@SESSION.student}}</a></li>
+          <li class="home"><a href="logout" title="">Çıkış</a></li>
+        </ul>
+      </div>
+    </div>
+    </F3:true>
+    </F3:check>
+
+    <F3:check if="{{@error}}"><F3:true>
+      <div id="notice"><p class="fail">{{@error}}</p></div>
+    </F3:true></F3:check>
+
+    <div id="content">
+      <F3:include href="{{@template}}.htm"/>
+    </div>
+
+    <div class="footer" style="display:none;">
+      <a target="_blank" href="http://sks.omu.edu.tr">
+        © 2011-2013 / OMÜ Simülasyon Merkezi</a>
+    </div>
+
+  </body>
+</html>
+
