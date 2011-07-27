@@ -9,6 +9,7 @@ a, div.page-header h2 a { color: #95a105; }
 a:hover, h1 a:hover, h2 a:hover, div.page-header h2 a:hover { color: #b8d30b; }
 
 div.page-header { background: url(../images/work.png) no-repeat 98% top; }
+div.page-header { background: url(../images/works.jpg) no-repeat 98% top; }
 
 #our-services ol { margin: 0; padding: 0; list-style: none; }
 #our-services ol li { padding: 0px 15px 18px 0; }
