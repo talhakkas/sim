@@ -41,25 +41,34 @@ not : tabloda photo, content isimlerinin özellikleri var
 ## Dizin Yapısı
 
     /
-        a
-        admin
+        a/
             gui
             inc
             index.php
             temp
+        admin/
+            gui
+            inc
+            index.php
+            temp
+        asset/
+            css
+            img
+            js
+            upload
         db
         .f3.ini
         fonts
         .gitignore
-        img
+        github
         lib
         README.md
-        student
+        student/
             gui
             inc
             index.php
             temp
-        tutor
+        tutor/
             gui
             inc
             index.php
