@@ -42,37 +42,37 @@ not : tabloda photo, content isimlerinin özellikleri var
 
     /
         a/
-            gui
-            inc
+            gui/
+            inc/
             index.php
-            temp
+            temp/
         admin/
-            gui
-            inc
+            gui/
+            inc/
             index.php
-            temp
+            temp/
         asset/
-            css
-            img
-            js
-            upload
-        db
+            css/
+            img/
+            js/
+            upload/
+        db/
         .f3.ini
-        fonts
+        fonts/
         .gitignore
-        github
-        lib
+        github/
+        lib/
         README.md
         student/
-            gui
-            inc
+            gui/
+            inc/
             index.php
-            temp
+            temp/
         tutor/
-            gui
-            inc
+            gui/
+            inc/
             index.php
-            temp
+            temp/
 
 
 
