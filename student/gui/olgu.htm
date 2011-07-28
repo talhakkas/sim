@@ -41,7 +41,6 @@
 
       function getPage() {
         var data = 'page=' + encodeURIComponent(document.location.hash);
-        //var data = $('#hmm').serialize();
         $.ajax({
             url: "inc/tabss.php",
             type: "GET",
@@ -53,20 +52,6 @@
               $('#booody').fadeIn('slow');
             }
          });
-
-        //var data = 'page=' + encodeURIComponent(document.location.hash);
-        //$.ajax({
-        //    url: "inc/tabss.php",
-        //    type: "GET",
-        //    data: data,
-        //    cache: false,
-        //    success: function (html) {
-        //      $('.loading').hide();
-        //      $('#con').html(html);
-        //      $('#booody').fadeIn('slow');
-        //    }
-        // });
- 
       }
 </script>
 
@@ -76,7 +61,7 @@
     <h3 class="green">{{@story->topic}}</h3>
     <p>{{@story->content}}</p>
   </div>
-  <img width=300 src="/{{@uploaddir}}{{@story->photo}}">
+  <img width=300 src="/asset/{{@uploaddir}}{{@story->photo}}">
 </div>
 
 

@@ -78,7 +78,7 @@ ul.tabss li a.active:hover  {
 .checklist li {
 	float: left;
 	margin-right: 10px;
-        background: url(../images/checkboxbg.gif) no-repeat 0 0;
+        background: url(../img/checkboxbg.gif) no-repeat 0 0;
 	width: 105px;
 	height: 150px;
 	position: relative;
@@ -158,8 +158,8 @@ a.checkbox-deselect {
 }
 
 /* states */
-.custom-checkbox label { background: url(../images/checkbox.gif) no-repeat; }
-.custom-radio label { background: url(../images/radiobutton.gif) no-repeat; }
+.custom-checkbox label { background: url(../img/checkbox.gif) no-repeat; }
+.custom-radio label { background: url(../img/radiobutton.gif) no-repeat; }
 .custom-checkbox label, .custom-radio label {background-position: -10px -14px;}
 
 .custom-checkbox label.hover,

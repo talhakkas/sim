@@ -19,7 +19,7 @@
     width:250px;
   }
   .feature li {
-    list-style-image: url('gui/images/next.png');
+    list-style-image: url('gui/img/next.png');
     font-size:13px;
   }
   #content{height:420px;}
@@ -33,8 +33,8 @@
 <script type="text/javascript">
   jQuery(document).ready(function($) {
       $('a[rel*=facebox]').facebox({
-loadingImage : 'gui/images/loading.gif',
-closeImage   : 'gui/images/closelabel.png'
+loadingImage : 'gui/img/loading.gif',
+closeImage   : 'gui/img/closelabel.png'
 })
       })
 </script>
@@ -45,7 +45,7 @@ closeImage   : 'gui/images/closelabel.png'
   <center><p><b>Using simulation to improve safety, quality and education in 
       healthcare
   </b></p></center>
-  <img align=left height=250 width=350 src=gui/images/nursing.jpg />
+  <img align=left height=250 width=350 src=gui/img/nursing.jpg />
   <ul class="feature">
     <li>Unlimited Categories, Unlimited Products</li>
     <li>Unlimited Manufacturers, Multi Currency</li>
@@ -70,7 +70,7 @@ closeImage   : 'gui/images/closelabel.png'
 <div id="sidebar">
   <h3 style="color:#007d9a;">Duyurular</h3>
   <F3:repeat group="{{@announcement}}" key="{{@key}}" value="{{@value}}">
-    <img src="gui/images/next.png"/>
+    <img src="gui/img/next.png"/>
   <a href="#info{{@value[announcement_id]}}" rel="facebox" 
     style="color:#555;font-weight:bold;line-height:18px;">{{@value[title]}}</a>
   <br>

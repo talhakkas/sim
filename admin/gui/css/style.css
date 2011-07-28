@@ -48,7 +48,7 @@ a {
 }
 
 .header {
-    background:url(../images/header.png) repeat-x;
+    background:url(../img/header.png) repeat-x;
     overflow: hidden;
     position: relative;
     height: 81px;
