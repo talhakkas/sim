@@ -1,4 +1,4 @@
-## Ondokuz mayıs Üniversitesi Web Tabanlı Simülasyon Merkezi
+## Ondokuz Mayıs Üniversitesi Web Tabanlı Simülasyon Merkezi
 
 ### f3-version: 2.0
 
