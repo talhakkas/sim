@@ -41,16 +41,14 @@ function review() {
 function giris() {
 	// nerede bizim istediğimiz tablolar ?
 	F3::set('SESSION.TABLES', array(
-				      'admin' => 'username',
-				      'tutor' => 'username',
-				      'student' => 'no',
+				      'people' => 'tc',
 				      'discipline' => 'discipline_id',
 				      'parent' => 'parent_id',
 				      'd_survey' => 'd_survey_id',
 				      'story' => 'story_id',
 				      'patient' => 'patient_id',
 				      'survey' => 'survey_id',
-				      'event' => 'event_id',
+				      'case' => 'case_id',
 				      'result' => 'result_id',
 				      'announcement' => 'announcement_id'
 			      ));

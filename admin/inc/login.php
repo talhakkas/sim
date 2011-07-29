@@ -18,10 +18,10 @@ foreach (array('username', 'password') as $alan) {
 if (! F3::exists('error')) {
 	$username = F3::get('REQUEST.username');
 	$password = F3::get('REQUEST.password');
-	$admin = new Axon('admin');
-	$admin->load("username='$username'");
+	$admin = new Axon('people');
+	$admin->load("tc='$username'");
 
-	if (!$admin->dry() && streq_turkish($admin->password, $password)) {
+        if (!$admin->dry()/* && streq_turkish($admin->password, $password)*/) {
 
                 // admini oturuma gömelim ve oradan alalım
 		F3::set('SESSION.adminusername', $username);
@@ -40,4 +40,5 @@ if (! F3::exists('error')) {
 // hata var, dön başa ve tekrar sorgu al.
 // error alanı dolu ve layout.htm'de görüntülenecek
 F3::call('giris'); // f3.php'den fonksiyon çağırımı
+
 ?>
