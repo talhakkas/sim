@@ -59,7 +59,7 @@ COLLATE = utf8_general_ci;
 DROP TABLE IF EXISTS `sim`.`d_survey` ;
 
 CREATE  TABLE IF NOT EXISTS `sim`.`d_survey` (
-  `d_survey_id` INT NOT NULL AUTO_INCREMENT ,
+  `d_survey_id` VARCHAR(45) CHARACTER SET 'utf8' COLLATE 'utf8_general_ci' NOT NULL ,
   `name` VARCHAR(45) CHARACTER SET 'utf8' COLLATE 'utf8_general_ci' NOT NULL ,
   `type` VARCHAR(45) CHARACTER SET 'utf8' COLLATE 'utf8_general_ci' NOT NULL ,
   `value` VARCHAR(45) CHARACTER SET 'utf8' COLLATE 'utf8_general_ci' NOT NULL ,
@@ -76,7 +76,7 @@ DROP TABLE IF EXISTS `sim`.`survey` ;
 
 CREATE  TABLE IF NOT EXISTS `sim`.`survey` (
   `survey_id` INT NOT NULL AUTO_INCREMENT ,
-  `d_survey_id` INT NOT NULL ,
+  `d_survey_id` VARCHAR(45) CHARACTER SET 'utf8' COLLATE 'utf8_general_ci' NOT NULL ,
   `name` VARCHAR(45) CHARACTER SET 'utf8' COLLATE 'utf8_general_ci' NOT NULL ,
   `value` VARCHAR(45) CHARACTER SET 'utf8' COLLATE 'utf8_general_ci' NOT NULL ,
   PRIMARY KEY (`survey_id`) ,
