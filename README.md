@@ -76,4 +76,3 @@ not : tabloda photo, content isimlerinin özellikleri var
             temp/
 
 
-
