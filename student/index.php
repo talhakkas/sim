@@ -57,6 +57,19 @@ function login() {
                 return F3::call('home');
 	page('Öğrenci Girişi', 'login');
 }
+function logout() {
+        echo 'hmmm';
+	if (F3::get('SESSION.special') == 1) {
+                F3::clear('error');
+                F3::set('SESSION.special', '0');
+                F3::set('SESSION.username', '');
+                F3::clear('SESSION.special');
+                F3::clear('SESSION.username');
+                F3::reroute("/");
+        }
+	F3::reroute('/');
+}
+
 
 
 F3::config("../.f3.ini");
@@ -65,7 +78,7 @@ F3::set('SERVICEROOT', '/' . strtok($_SERVER["SCRIPT_NAME"], '/'));
 
 F3::route("GET /*"      , 'login');
 F3::route("POST /login", 'login.php');
-F3::route("GET /logout", 'logout.php');
+F3::route("GET /logout", 'logout');
 F3::route("GET /about",  'about');
 F3::route("GET /ekg",    'ekg');
 F3::route("GET /bulgu",  'bulgu');

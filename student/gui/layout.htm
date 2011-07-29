@@ -5,6 +5,7 @@
     <meta http-equiv = "Pragma" content = "no-cache" />
     <meta http-equiv = "Expires" content = "-1" />
     <meta http-equiv = "Content-Type" content = "text/html; charset=utf-8" />
+    <link type="text/css" href="/asset/css/login.css" rel="stylesheet" />
     <link type="text/css" href="/asset/css/base.css" rel="stylesheet" />
 
     <title>{{@title}}</title>
@@ -12,7 +13,7 @@
   </head>
 
   <body>
-    <F3:check if="{{@SESSION.special==1}}">
+    <F3:check if="{{ @SESSION.special==1 }}">
     <F3:true>
     <div id="wrapper">
       <div id="container">

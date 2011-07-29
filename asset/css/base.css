@@ -1,4 +1,3 @@
-
 body {
     font-family: "Helvetica Neue", Helvetica, Corbel, Arial, sans-serif;
     font-size: 12px;
@@ -188,76 +187,7 @@ h2.yellow {color:#d17200;}
 }
 /* ------------------------------------------------------------------ */
 
-/* ------------------------ login.css ------------------------- */
-table.login {
-    border-spacing: 5px;
-    border-collapse: separate;
-}
 
-table.login th,
-table.login td {
-    padding: 8px;
-    font-size: 13px;
-    -moz-border-radius: 5px;
-    -webkit-border-radius: 5px;
-    border-radius: 5px;
-}
-
-table.login input[type=text],
-table.login input[type=password]{
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    padding: 8px;
-    margin: 0;
-    font-size: 13px;
-    color: #555;
-    width: 220px;
-    border: 1px solid #ccc;
-    -moz-border-radius: 3px;
-    -webkit-border-radius: 3px;
-    border-radius: 3px;
-}
-
-table.login input[type=text]:focus,
-table.login input[type=password]:focus {
-    outline: 0;
-    border: 1px solid #35addf;
-}
-
-table.login td.label {
-    text-align: right;
-    vertical-align: top;
-    color: #333;
-    width: 120px;
-    font-weight: bold;
-    font-size: 11px;
-    border-top: 1px solid #ddd;
-    -moz-border-radius: 0;
-    -webkit-border-radius: 0;
-    border-radius: 0;
-}
-
-table.login td.field {
-    width: 220px;
-    background: #ededed;
-}
-
-#submit_button {
-    height:23px;
-    color:#2F7CA2;
-    text-align:center;
-    padding-top:6px;
-    background:url(../img/btn.png) no-repeat top;
-    font-weight:bold;
-    width:96px;
-    font-size:13px;
-    display:block;
-    cursor:pointer;
-    border:none;
-    height:auto;
-    padding-bottom:7px;
-}
-#submit_button:active { background-position:bottom;}
-/* ---------------------------------------------------------------------- */
 
 /* ------------------------ custom table form ----------------------------- */
 table.custom th,

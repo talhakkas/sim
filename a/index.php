@@ -17,7 +17,7 @@ function page($title, $template, $layout="render") {
 }
 
 function home() {
-	page('Simülasyon Merkezi', 'home');
+	page('Hoşgeldiniz', 'home');
 }
 
 function people() {
