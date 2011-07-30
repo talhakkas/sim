@@ -141,7 +141,7 @@ COLLATE = utf8_general_ci;
 DROP TABLE IF EXISTS `sim`.`people` ;
 
 CREATE  TABLE IF NOT EXISTS `sim`.`people` (
-  `tc` INT(12) NOT NULL ,
+  `tc` BIGINT NOT NULL ,
   `name` VARCHAR(45) CHARACTER SET 'utf8' COLLATE 'utf8_general_ci' NOT NULL ,
   `surname` VARCHAR(45) CHARACTER SET 'utf8' COLLATE 'utf8_general_ci' NOT NULL ,
   `password` VARCHAR(45) CHARACTER SET 'utf8' COLLATE 'utf8_general_ci' NOT NULL ,
@@ -161,7 +161,7 @@ DROP TABLE IF EXISTS `sim`.`result` ;
 
 CREATE  TABLE IF NOT EXISTS `sim`.`result` (
   `result_id` INT NOT NULL ,
-  `tc` INT(12) NOT NULL ,
+  `tc` BIGINT NOT NULL ,
   `case_id` INT NOT NULL ,
   `date` DATE NOT NULL ,
   `time` TIME NOT NULL ,
