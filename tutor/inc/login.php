@@ -18,7 +18,7 @@ foreach (array('username', 'password') as $alan) {
 if (! F3::exists('error')) {
 	$username = F3::get('REQUEST.username');
 	$password = F3::get('REQUEST.password');
-	$tutor = new Axon('tutor');
+	$tutor = new Axon('people');
 	$tutor->load("username='$username'");
 
 	if (!$tutor->dry() && streq_turkish($tutor->password, $password)) {

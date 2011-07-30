@@ -1,14 +1,16 @@
 <?php
+
 include 'init.php';
 
 foreach (array('username', 'password') as $alan) {
         F3::input($alan,
                 function($value) use($alan) {
                         $ne = $alan;
+                        $alan = array('username'=>'Kullanıcı Adı', 'password'=>'Parola');
                         if ($hata = denetle($value, array(
-                                'dolu'    => array(true, "$ne boş bırakılamaz"),
-                                'enaz'    => array(2,    "$ne çok kısa"),
-                                'enfazla' => array(127,  "$ne çok uzun"),
+                                'dolu'    => array(true, "$alan[$ne] boş bırakılamaz"),
+                                'enaz'    => array(2,    "$alan[$ne] çok kısa"),
+                                'enfazla' => array(50,   "$alan[$ne] çok uzun"),
                         ))) { F3::set('error', $hata); return; }
                         F3::set("REQUEST.$alan", $value);
                 }
@@ -18,8 +20,8 @@ foreach (array('username', 'password') as $alan) {
 if (! F3::exists('error')) {
 	$username = F3::get('REQUEST.username');
 	$password = F3::get('REQUEST.password');
-	$admin = new Axon('admin');
-	$admin->load("username='$username'");
+	$admin = new Axon('people');
+	$admin->load("tc='$username'");
 
         if (!$admin->dry()/* && streq_turkish($admin->password, $password)*/) {
 

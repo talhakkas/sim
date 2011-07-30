@@ -15,19 +15,15 @@
 <h2 class="yellow">Kişisel Öğrenci Sayfası</h2>
 
 <div id="student_image">
-  <img width=150 height=180 alt="{{ @personal->photo }}"
+  <img width=120 height=140 alt="{{ @personal->photo }}"
   src="/asset/{{ @uploaddir }}{{ @personal->photo }}">
 </div>
 
 <table class="custom">
   <colgroup><col width=200 /><col width=200 /></colgroup>
   <tr>
-    <td class="label">Okul Numaranız</td>
-    <td class="field">{{@personal->no}}</td>
-  </tr>
-  <tr>
     <td class="label">Kullanıcı Adınız</td>
-    <td class="field">{{@personal->username}}</td>
+    <td class="field">{{@personal->tc}}</td>
   </tr>
   <tr>
     <td class="label">Parolanız</td>
@@ -40,9 +36,6 @@
   </tr>
   <tr><td class="label">Soyadınız</td>
     <td class="field">{{@personal->surname}}</td>
-  </tr>
-  <tr><td class="label">Sınıfınız</td>
-    <td class="field">{{@personal->class}}</td>
   </tr>
 </table>
 

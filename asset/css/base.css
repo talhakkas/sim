@@ -317,7 +317,7 @@ h5#headline{
 }
 
 tr, td, th {text-align:left;}
-#student_image { width:150px; height:210px;border: 1px dotted #ccc;float:left}
+#student_image { width:120px; height:140px;border: 1px dotted #ccc;float:left}
 
 #leftcolumn {height:auto;width:130px;float:left; font-size:13px;border-right:1px dotted #ccc;}
 #leftcolumn tr img {width:35px;}

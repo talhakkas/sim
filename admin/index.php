@@ -41,21 +41,21 @@ function review() {
 function giris() {
 	// nerede bizim istediğimiz tablolar ?
 	F3::set('SESSION.TABLES', array(
-				      'admin' => 'username',
-				      'tutor' => 'username',
-				      'student' => 'username',
-				      //'people' => 'tc',
-				      'discipline' => 'discipline_id',
-				      'parent' => 'parent_id',
-				      'd_survey' => 'd_survey_id',
-				      'story' => 'story_id',
-				      'patient' => 'patient_id',
+				      //'admin' => 'username',
+				      //'tutor' => 'username',
+				      //'student' => 'username',
+				      'people' => 'tc',
+				      'event' => 'event_id',
 				      'survey' => 'survey_id',
-				      'case' => 'case_id',
+				      'd_survey' => 'd_survey_id',
+				      'patient' => 'patient_id',
+				      'story' => 'story_id',
 				      'result' => 'result_id',
+				      'parent' => 'parent_id',
+				      'discipline' => 'discipline_id',
 				      'announcement' => 'announcement_id'
 			      ));
-	F3::set('SESSION.TABLE_INIT', 'admin'); // login olursa, default olarak admin tablosu seçilsin
+	F3::set('SESSION.TABLE_INIT', 'people'); // login olursa, default olarak admin tablosu seçilsin
 
 	if (F3::get('SESSION.admin'))
 		return F3::call('home');

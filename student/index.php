@@ -39,10 +39,10 @@ function about() {
 function personal() {
         if (F3::get("SESSION.special") != 1)
                 return F3::call('login');
-        $person = new Axon('student');
-        $kisi = F3::get('SESSION.student');
-        $person->load("username='$kisi'");
-        F3::set("personal", $person);
+        $student = new Axon('people');
+        $std = F3::get('SESSION.student');
+        $student->load("tc='$std'");
+        F3::set("personal", $student);
 	page('Kişisel Sayfa', 'personal');
 }
 
@@ -58,14 +58,12 @@ function login() {
 	page('Öğrenci Girişi', 'login');
 }
 function logout() {
-        echo 'hmmm';
 	if (F3::get('SESSION.special') == 1) {
                 F3::clear('error');
                 F3::set('SESSION.special', '0');
                 F3::set('SESSION.username', '');
-                F3::clear('SESSION.special');
-                F3::clear('SESSION.username');
-                F3::reroute("/");
+                //F3::clear('SESSION.special');
+                //F3::clear('SESSION.username');
         }
 	F3::reroute('/');
 }
