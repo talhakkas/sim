@@ -38,12 +38,14 @@ not : tabloda photo, content isimlerinin özellikleri var
         cd /srv/www/test.omu.edu.tr
         sudo ln -s /opt/sim site
 
-- yereldeki db'yi sunucuya taşıyalım
 
+### Veritabanı taşıma işlemleri
+
+- yereldeki db'yi sunucuya taşıyalım
 
         mysqldump -u sim -p sim > sim.sql (yerelde)
 
-sql dosyasını sunucuya taşıyalım
+- sql dosyasını sunucuya taşıyalım
 
         mysql -u sim -p sim < sim.sql (sunucuda)
 
