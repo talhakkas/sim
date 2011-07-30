@@ -20,8 +20,14 @@ $event->load("event_id='$olgu'");
 $story = new Axon('story');
 $story->load("story_id='$event->story_id'");
 F3::set('story', $story);
-$story->close;
+
+$patient = new Axon('patient');
+$patient->load("patient_id='$event->patient_id'");
+F3::set('patient', $patient);
+
 $event->close;
+$story->close;
+$patient->close;
 
 
 F3::set('template', 'olgu');

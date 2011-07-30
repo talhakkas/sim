@@ -15,11 +15,11 @@ if (!F3::exists('error')) {
 	$table->load("$KEY='$key'");
 
 	foreach($_POST as $gnl => $blg)
-		//if ($gnl != 'photo') // photo'yu kaydetme
+		if ($gnl != 'photo') // photo'yu kaydetme
 			$table->$gnl = $blg;
 
 	$resim = "$TABLE/" . $table->$KEY . '.jpg';
-	if (yukle(F3::get('uploaddir') . $resim, "photo", true)) // önceden bir resim var ise üzerine yaz gitsin
+	if (yukle("asset" . F3::get('uploaddir') . $resim, "photo", true)) // önceden bir resim var ise üzerine yaz gitsin
 		$table->photo = $resim;
 
 	if (F3::exists('error')) // yükleme sırasında hata var mı?

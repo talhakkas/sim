@@ -57,15 +57,28 @@
 
 
 <div style="margin: 10px 0">
-  <div style="float:left;width:560px;font-size:13px;margin-right:40px;">
+  <div style="float:left;width:420px;font-size:13px;margin-right:40px;">
     <h3 class="green">{{@story->topic}}</h3>
     <p>{{@story->content}}</p>
   </div>
+
+  <div style="float:left;width:140px;font-size:13px;margin-right:20px;">
+    <h3 class="green">Hasta Bilgileri</h3>
+    <table>
+
+      <colgroup><col width=60 /><col width=80 /></colgroup>
+      <tr><th>ad:</th><td>{{ @patient->name }}</td></tr>
+      <tr><th>soyad:</th><td>{{ @patient->surname }}</td></tr>
+      <tr><th>yaş:</th><td>{{ @patient->age }}</td></tr>
+      <tr><th>cinsiyet:</th><td>{{ @patient->gender }}</td></tr>
+    </table>
+  </div>
+
   <img width=300 src="/asset/{{@uploaddir}}{{@story->photo}}">
 </div>
 
 
-<form id="hmm" method="post" action="degerlendir">
+<form method="post" action="degerlendir">
   <input type="hidden" name="event" value="{{@SESSION.event}}"/>
   <input type="hidden" name="stdno" value="{{@SESSION.stdno}}"/>
   <div id="contain">
