@@ -92,18 +92,18 @@ COLLATE = utf8_general_ci;
 
 
 -- -----------------------------------------------------
--- Table `sim`.`case`
+-- Table `sim`.`event`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `sim`.`case` ;
+DROP TABLE IF EXISTS `sim`.`event` ;
 
-CREATE  TABLE IF NOT EXISTS `sim`.`case` (
-  `case_id` INT NOT NULL AUTO_INCREMENT ,
+CREATE  TABLE IF NOT EXISTS `sim`.`event` (
+  `event_id` INT NOT NULL AUTO_INCREMENT ,
   `patient_id` INT NOT NULL ,
   `story_id` INT NOT NULL ,
   `name` VARCHAR(45) CHARACTER SET 'utf8' COLLATE 'utf8_general_ci' NOT NULL ,
   `surveys` VARCHAR(45) CHARACTER SET 'utf8' COLLATE 'utf8_general_ci' NOT NULL ,
   `results` VARCHAR(45) CHARACTER SET 'utf8' COLLATE 'utf8_general_ci' NOT NULL ,
-  PRIMARY KEY (`case_id`) ,
+  PRIMARY KEY (`event_id`) ,
   INDEX `patient_id` (`patient_id` ASC) ,
   INDEX `story_id` (`story_id` ASC) ,
   CONSTRAINT `patient_id`
@@ -162,17 +162,17 @@ DROP TABLE IF EXISTS `sim`.`result` ;
 CREATE  TABLE IF NOT EXISTS `sim`.`result` (
   `result_id` INT NOT NULL ,
   `tc` BIGINT NOT NULL ,
-  `case_id` INT NOT NULL ,
+  `event_id` INT NOT NULL ,
   `date` DATE NOT NULL ,
   `time` TIME NOT NULL ,
   `results` VARCHAR(45) CHARACTER SET 'utf8' COLLATE 'utf8_general_ci' NOT NULL ,
   `comment` VARCHAR(45) CHARACTER SET 'utf8' COLLATE 'utf8_general_ci' NOT NULL ,
   PRIMARY KEY (`result_id`) ,
-  INDEX `case_id` (`case_id` ASC) ,
+  INDEX `case_id` (`event_id` ASC) ,
   INDEX `tc` (`tc` ASC) ,
   CONSTRAINT `case_id`
-    FOREIGN KEY (`case_id` )
-    REFERENCES `sim`.`case` (`case_id` )
+    FOREIGN KEY (`event_id` )
+    REFERENCES `sim`.`event` (`event_id` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `tc`
