@@ -73,7 +73,7 @@ function config($file) {
 
 $db_name = "sim";
 $db_user = "sim";
-$db_pass = "maslak55";
+$db_pass = "sim";
 
 /*
 $DB = mysql_connect("localhost", $db_name, $db_pass) or die ('veri tabanına bağlanılamadı...');
