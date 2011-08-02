@@ -8,7 +8,7 @@
       <tr>
         <td class="label">tablo:</td>
         <td class="field">
-          <select name="table">
+          <select name="table" onchange='this.form.submit()'>
             <F3:repeat group='{{@SESSION.TABLES}}' key='{{@table}}' >
             <F3:check if='{{@table==@SESSION.TABLE}}'>
             <F3:true>
@@ -22,11 +22,7 @@
           </select>
         </td>
       </tr>
-      <tr>
-        <td></td>
-        <td><input id="submit_button" type="submit" value="Seç" /></td>
-      </form>
-    </div>
-  </div>
+    </table>
+  </form>
 </div>
 
