@@ -85,13 +85,13 @@ F3::route('GET  /logout', 'logout');
 F3::route('POST /table',  'table.php');
 
 //F3::route("GET /pdf",    'pdf.php'); TODO halen sorunlu yapılmadı.
-F3::route("GET /info",   'info');
-F3::route("GET /review", 'review.php');
-F3::route("GET /csv",    'csv.php');
-F3::route("GET /new",    'new.php');
-F3::route("GET /find",   'find');
-F3::route("GET /add",    'add');
-F3::route("GET /show",   'show');
+F3::route("GET /info*",   'info');
+F3::route("GET /review*", 'review.php');
+F3::route("GET /csv*",    'csv.php');
+F3::route("GET /new*",    'new.php');
+F3::route("GET /find*",   'find');
+F3::route("GET /add*",    'add');
+F3::route("GET /show*",   'show');
 F3::route("POST /show",   'show');
 F3::route("POST /add",   'add.php');
 F3::route("POST /find",  'find.php');

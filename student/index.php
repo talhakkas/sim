@@ -13,8 +13,7 @@ function page($title, $template, $layout="render") {
 }
 
 function home() {
-        $ann = DB::sql("select * from announcement");
-        F3::set('announcement', $ann);
+        F3::set('announcement', DB::sql("select * from announcement"));
         page('Ana Sayfa', 'home');
 }
 
@@ -62,8 +61,6 @@ function logout() {
                 F3::clear('error');
                 F3::set('SESSION.special', '0');
                 F3::set('SESSION.username', '');
-                //F3::clear('SESSION.special');
-                //F3::clear('SESSION.username');
         }
 	F3::reroute('/');
 }
@@ -77,12 +74,12 @@ F3::set('SR', '/' . strtok($_SERVER["SCRIPT_NAME"], '/'));
 F3::route("GET /*"      , 'login');
 F3::route("POST /login", 'login.php');
 F3::route("GET /logout", 'logout');
-F3::route("GET /about",  'about');
-F3::route("GET /ekg",    'ekg');
-F3::route("GET /bulgu",  'bulgu');
-F3::route("GET /personal",  'personal');
+F3::route("GET /about*",  'about');
+F3::route("GET /ekg*",    'ekg');
+F3::route("GET /bulgu*",  'bulgu');
+F3::route("GET /personal*",  'personal');
 
-F3::route("GET /olgu",  'olgu.php');
+F3::route("GET /olgu*",  'olgu.php');
 F3::route("POST /degerlendir", 'degerlendir.php');
 F3::route("POST /son", 'son');
 
