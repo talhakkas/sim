@@ -19,7 +19,7 @@ if (! F3::exists('error')) {
 	$username = F3::get('REQUEST.username');
 	$password = F3::get('REQUEST.password');
 	$tutor = new Axon('people');
-	$tutor->load("username='$username'");
+	$tutor->load("tc='$username'");
 
 	if (!$tutor->dry() && streq_turkish($tutor->password, $password)) {
 

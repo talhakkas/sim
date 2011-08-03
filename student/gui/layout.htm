@@ -8,8 +8,19 @@
     <link type="text/css" href="/asset/css/login.css" rel="stylesheet" />
     <link type="text/css" href="/asset/css/base.css" rel="stylesheet" />
 
-    <title>{{@title}}</title>
+    <link href="/asset/css/facebox.css" rel="stylesheet" type="text/css" />
+    <script src="/asset/js/jquery.js" type="text/javascript"></script>
+    <script src="/asset/js/facebox.js" type="text/javascript"></script>
+    <script type="text/javascript">
+      jQuery(document).ready(function($) {
+        $('a[rel*=facebox]').facebox({
+          loadingImage : '/asset/img/loading.gif',
+          closeImage   : '/asset/img/closelabel.png'
+        })
+      })
+    </script>
 
+    <title>{{ @page_title }}</title>
   </head>
 
   <body>
@@ -18,14 +29,11 @@
     <div id="wrapper">
       <div id="container">
         <ul class="tabs" id="mainNav">
-          <li class="current home"><a href="{{@SERVICEROOT}}" 
-            title="">Anasayfa</a>
-          </li>
-          <li class="green"><a href="olgu" title="">Olgu Ekranı</a></li>
-          <li class="magenta"><a href="ekg" title="">Ekg Ekranı</a></li>
-          <li class="orange"><a href="bulgu" title="">Bulgu Ekranı</a></li>
-          <li class="yellow"><a href="personal" 
-            title="">{{@SESSION.student}}</a></li>
+          <li class="current home"><a href="{{ @SR }}" >Anasayfa</a></li>
+          <li class="green"><a href="olgu" >Olgu Ekranı</a></li>
+          <li class="magenta"><a href="ekg" >Ekg Ekranı</a></li>
+          <li class="orange"><a href="bulgu" >Bulgu Ekranı</a></li>
+          <li class="yellow"><a href="personal">{{@SESSION.student}}</a></li>
           <li class="home"><a href="logout" title="">Çıkış</a></li>
         </ul>
       </div>

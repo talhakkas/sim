@@ -33,12 +33,8 @@ body {
     border-radius: 5px;
     -webkit-box-shadow:0 2px 2px rgba(0,0,0,0.2);
     -moz-box-shadow:0 2px 2px rgba(0,0,0,0.2);
-
     box-shadow:0 5px 20px rgba(0, 0, 0, 0.3);
-
 }
-
-h2 {margin-bottom:30px;}
 
 h2.headline {
     padding: 10px 20px;
@@ -57,14 +53,6 @@ a {
     -moz-outline-style: none;
     text-decoration:none
 }
-
-.header {
-    background:url(../img/header.png) repeat-x;
-    overflow: hidden;
-    position: relative;
-    height: 81px;
-}
-
 
 .error {
     font-size:   13px;
@@ -113,13 +101,18 @@ ul.tabs li.orange a:hover {background:#ff6908}
 ul.tabs li.yellow a:hover {background:#fc9200}
 
 
-h2.home, h2.green, h3.green, h2.magenta, h2.orange, h2.yellow {margin-top:2px;}
+h1.home, h2.home, h3.home, h4.home, h5.home,
+h1.green, h2.green, h3.green, h4.green, h5.green,
+h1.magenta, h2.magenta, h3.magenta, h4.magenta, h5.magenta,
+h1.orange, h2.orange, h3.orange, h4.orange, h5.orange,
+h1.yellow, h2.yellow, h3.yellow, h4.yellow, h5.yellow
+{ margin-top:2px;margin-bottom:20px; }
 
-h2.home {color:#007d9a}
-h2.green, h3.green{color:#95a105}
-h2.magenta {color:#a9014b}
-h2.orange {color:#d45500}
-h2.yellow {color:#d17200;}
+.home {color:#007d9a}
+.green {color:#95a105}
+.magenta {color:#a9014b}
+.orange {color:#d45500}
+.yellow{color:#d17200;}
 /* ------------------------------------------------------- */
 
 
@@ -319,7 +312,7 @@ h5#headline{
 }
 
 tr, td, th {text-align:left;}
-#student_image { width:120px; height:140px;border: 1px dotted #ccc;float:left}
+#student_image { width:120px; height:140px;border: 1px dotted #ccc;float:left;margin:0 40px 0 30px;}
 
 #leftcolumn {height:auto;width:130px;float:left; font-size:13px;border-right:1px dotted #ccc;}
 #leftcolumn tr img {width:35px;}

@@ -16,8 +16,7 @@
     <div id="wrapper">
       <div id="container">
         <ul class="tabs" id="mainNav">
-          <li class="current home">
-          <a href="{{@SERVICEROOT}}"
+          <li class="current home"><a href="{{ @SR }}"
             title="Kullanıcı adınız">{{@SESSION.adminusername}}</a>
           </li>
           <li class="magenta">
@@ -56,7 +55,7 @@
               <img src="/asset/img/save.png"/>{{@SESSION.SAVE}}
           </td></tr>
           <tr><td>
-              <a href="{{@SERVICEROOT}}" title=""><img
+              <a href="{{ @SR }}" title=""><img
                 src="/asset/img/tables.png"/>Tablolar</a>
           </td></tr>
           <tr><td>

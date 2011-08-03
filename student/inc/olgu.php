@@ -29,9 +29,6 @@ $event->close;
 $story->close;
 $patient->close;
 
-
-F3::set('template', 'olgu');
-F3::set('title', 'Olgu Ekranı');
-F3::call('render');
+page('Olgu Ekranı', 'olgu');
 
 ?>
