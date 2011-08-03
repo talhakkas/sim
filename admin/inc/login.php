@@ -23,7 +23,7 @@ if (! F3::exists('error')) {
 	$admin = new Axon('people');
 	$admin->load("tc='$username'");
 
-        if (!$admin->dry()/* && streq_turkish($admin->password, $password)*/) {
+        if (!$admin->dry() && streq_turkish($admin->password, $password)) {
 
                 // admini oturuma gömelim ve oradan alalım
 		F3::set('SESSION.adminusername', $username);

@@ -3,7 +3,7 @@
 require_once  '../lib/base.php';
 
 function page($title, $template, $layout='render') {
-	F3::set('title', $title);
+	F3::set('page_title', $title);
 	F3::set('template', $template);
 	F3::call($layout);
 }

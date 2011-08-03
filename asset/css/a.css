@@ -44,10 +44,6 @@ h4 a:hover, h5 a:hover { text-decoration: underline; }
 p a { line-height: inherit; }
 
 /* More Links (Can be applied to a <ul> or a <p>) */
-.more-link { width: 100%; height: 27px; margin: 0 0 18px; }
-.more-link a { background: #eee; display: inline; float: left; padding: 4px 15px; text-decoration: none; -webkit-border-radius: 13px; -moz-border-radius: 13px; -webkit-transition: all 0.1s ease-out; }
-.more-link.green a { background: #f1f6ce; color: #95a105 !important; }
-.more-link.green a:hover { background: #95a105; }
 
 h1, h2, h3, h4, h5, h6 { color: #333; font-weight: bold; }
 h1, h2, h3 { letter-spacing: -1px; }
