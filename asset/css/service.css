@@ -75,6 +75,7 @@ div#container {
     height:25px;
     margin:0 auto 16px
 }
+
 ul.tabs {float:right;margin:0}
 ul.tabs li {display:block;float:left;line-height:1}
 ul.tabs li a {display:block;font-weight:bold;margin:9px 0 0 -1px;margin-right:10px;padding:2px 5px 11px 15px;border-left:1px solid #eee;text-decoration:none;color:#333;cursor:pointer}
@@ -85,18 +86,26 @@ ul.tabs li a:hover {
     margin:0;
     padding-top:11px;
     padding-right:15px;
-    text-shadow:0 -1px 1px rgba(0,0,0,.25);
-    -webkit-border-bottom-left-radius:3px;
-    -webkit-border-bottom-right-radius:3px;
+    -webkit-border-bottom-radius:3px;
+    -webkit-border-bottom-radius:3px;
     -moz-border-radius:0 0 3px 3px;
+    text-shadow:0 -1px 1px rgba(0,0,0,.25);
     position:relative;
     z-index:2;
 }
 
-ul.tabs li.home, li.green, li.magenta, li.orange, li.yellow {
-    /*text-shadow:0 -1px 1px rgba(0,0,0,.25);*/
-    -webkit-border-bottom-left-radius:3px;
-    -webkit-border-bottom-right-radius:3px;
+ul.tabs li.home,
+ul.tabs li.home a,
+ul.tabs li.green,
+ul.tabs li.green a,
+ul.tabs li.magenta,
+ul.tabs li.magenta a,
+ul.tabs li.orange,
+ul.tabs li.orange a,
+ul.tabs li.yellow,
+ul.tabs li.yellow a {
+    -webkit-border-bottom-radius:3px;
+    -webkit-border-bottom-radius:3px;
     -moz-border-radius:0 0 3px 3px;
 }
 
@@ -106,7 +115,7 @@ ul.tabs li.magenta a:hover {background:#a9014b}
 ul.tabs li.orange a:hover {background:#ff6908}
 ul.tabs li.yellow a:hover {background:#fc9200}
 
-
+/*h1, h2, h3, h4, h5 {margin:0}*/
 h1.home, h2.home, h3.home, h4.home, h5.home,
 h1.green, h2.green, h3.green, h4.green, h5.green,
 h1.magenta, h2.magenta, h3.magenta, h4.magenta, h5.magenta,
