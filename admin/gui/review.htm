@@ -12,7 +12,8 @@
 	<F3:repeat group="{{@row}}" key="{{@field}}" value="{{@value}}" >
 	  <F3:check if="{{@field=='photo'}}">
 	  <F3:true>
-	    <td class="label"><img src="{{@uploaddir}}{{@value}}"/></td>
+	    <td class="label"><img width=80
+	      src="/asset/{{@uploaddir}}{{@value}}"/></td>
 	  </F3:true>
 	  <F3:false>
 	    <td class="label"> {{@value}} </td>

@@ -1,16 +1,19 @@
 <?php
 
-require_once  '../lib/base.php';
+require_once '../lib/base.php';
 
-function page($title, $template, $layout='render') {
+function page($title, $template, $layout='layout') {
 	F3::set('page_title', $title);
+	F3::set('SESSION.template', $template);
 	F3::set('template', $template);
-	F3::call($layout);
+	//F3::call($layout);
+	echo Template::serve($layout.'.htm');
 }
 
 function render() {
 	echo Template::serve('layout.htm');
 }
+
 function home() {
 	page('Yönetici Paneli', 'home');
 }
@@ -38,12 +41,13 @@ function show() {
 function review() {
 	page('Listelendi', 'review');
 }
+function printly(){
+	page('Yönetici Paneli', F3::get('SESSION.template'), 'printly');
+}
+
 function giris() {
 	// nerede bizim istediğimiz tablolar ?
 	F3::set('SESSION.TABLES', array(
-				      //'admin' => 'username',
-				      //'tutor' => 'username',
-				      //'student' => 'username',
 				      'people' => 'tc',
 				      'event' => 'event_id',
 				      'survey' => 'survey_id',
@@ -80,6 +84,7 @@ F3::set('DB', new DB('mysql:host=localhost;port=3306;dbname=' . F3::get('dbname'
 F3::set('SR', '/' . strtok($_SERVER["SCRIPT_NAME"], '/'));
 
 F3::route("GET  /*",      'giris');
+F3::route("GET /print",  'printly');
 F3::route("POST /login",  'login.php');
 F3::route('GET  /logout', 'logout');
 F3::route('POST /table',  'table.php');
