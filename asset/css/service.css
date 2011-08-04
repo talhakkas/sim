@@ -78,8 +78,7 @@ div#container {
 ul.tabs {float:right;margin:0}
 ul.tabs li {display:block;float:left;line-height:1}
 ul.tabs li a {display:block;font-weight:bold;margin:9px 0 0 -1px;margin-right:10px;padding:2px 5px 11px 15px;border-left:1px solid #eee;text-decoration:none;color:#333;cursor:pointer}
-ul.tabs li a:hover,
-ul.tabs li.current a {
+ul.tabs li a:hover {
     background:#2daebf;
     color:#fff;
     border:0;
@@ -92,6 +91,13 @@ ul.tabs li.current a {
     -moz-border-radius:0 0 3px 3px;
     position:relative;
     z-index:2;
+}
+
+ul.tabs li.home, li.green, li.magenta, li.orange, li.yellow {
+    /*text-shadow:0 -1px 1px rgba(0,0,0,.25);*/
+    -webkit-border-bottom-left-radius:3px;
+    -webkit-border-bottom-right-radius:3px;
+    -moz-border-radius:0 0 3px 3px;
 }
 
 ul.tabs li.home a:hover {background:#2daebf}

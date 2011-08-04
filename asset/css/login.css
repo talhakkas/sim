@@ -75,3 +75,15 @@ table.login td.select{
     padding-bottom:7px;
 }
 #submit_button:active { background-position:bottom;}
+
+.forgot-pass{
+    margin-top:-5px;
+    font-size:13px;
+    float:right;
+    background-color: rgba(0, 0, 0, 0.08);
+    box-shadow:0 1px 5px rgba(0, 0, 0, 0.2);
+    display:none;
+}
+
+#content{margin-top:8%;width:400px;min-height:240px;}
+p.fail{ margin:50px auto -84px;}

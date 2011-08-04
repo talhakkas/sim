@@ -6,10 +6,10 @@
     <meta http-equiv = "Expires" content = "-1" />
     <meta http-equiv = "Content-Type" content = "text/html; charset=utf-8" />
     <link rel="shortcut icon" href="/asset/img/favicon.ico" />
-    <link type="text/css" href="/asset/css/login.css" rel="stylesheet" />
-    <link type="text/css" href="/asset/css/service.css" rel="stylesheet" />
 
-    <link href="/asset/css/facebox.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="/asset/css/service.css" />
+    <link rel="stylesheet" type="text/css" href="/asset/css/facebox.css" />
+
     <script src="/asset/js/jquery.js" type="text/javascript"></script>
     <script src="/asset/js/facebox.js" type="text/javascript"></script>
     <script type="text/javascript">
@@ -30,12 +30,12 @@
     <div id="wrapper">
       <div id="container">
         <ul class="tabs" id="mainNav">
-          <li class="current home"><a href="{{ @SR }}" >Anasayfa</a></li>
+          <li class="home"><a href="{{ @SR }}" >Anasayfa</a></li>
           <li class="green"><a href="olgu" >Olgu Ekranı</a></li>
           <li class="magenta"><a href="ekg" >Ekg Ekranı</a></li>
           <li class="orange"><a href="bulgu" >Bulgu Ekranı</a></li>
           <li class="yellow"><a href="personal">{{@SESSION.student}}</a></li>
-          <li class="home"><a href="logout" title="">Çıkış</a></li>
+          <li class="logout"><a href="logout" title="">Çıkış</a></li>
         </ul>
       </div>
     </div>
