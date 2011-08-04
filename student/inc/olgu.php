@@ -8,7 +8,7 @@ $discipline = array();
 foreach ($dis as $key => $value)
 	$discipline[$key+1] = $value['name'];
 
-F3::set('discipline', $discipline);
+F3::set('SESSION.discipline', $discipline);
 
 
 $olgu = 1;
@@ -19,11 +19,11 @@ $event->load("event_id='$olgu'");
 
 $story = new Axon('story');
 $story->load("story_id='$event->story_id'");
-F3::set('story', $story);
+F3::set('SESSION.story', $story);
 
 $patient = new Axon('patient');
 $patient->load("patient_id='$event->patient_id'");
-F3::set('patient', $patient);
+F3::set('SESSION.patient', $patient);
 
 $event->close;
 $story->close;

@@ -336,3 +336,10 @@ tr, td, th {text-align:left;}
 }
 
 .footer {font: 10px Verdana, Helvetica, sans-serif; text-align: center; margin-top: 20px;margin-bottom:10px;}
+
+
+/* -------------------- printly ----------------------- */
+ul.tabs li.printly a {margin-top:3px;width:5px;height:25px;background:url(/asset/img/printly.png) no-repeat;background-size:25px;}
+/* ---------------------------------------------------- */
+
+

@@ -42,7 +42,7 @@ function review() {
 	page('Listelendi', 'review');
 }
 function printly(){
-	page('Yönetici Paneli', F3::get('SESSION.template'), 'printly');
+	page('Çıktı Alabilirsiniz', F3::get('SESSION.template'), 'printly');
 }
 
 function giris() {
@@ -84,7 +84,7 @@ F3::set('DB', new DB('mysql:host=localhost;port=3306;dbname=' . F3::get('dbname'
 F3::set('SR', '/' . strtok($_SERVER["SCRIPT_NAME"], '/'));
 
 F3::route("GET  /*",      'giris');
-F3::route("GET /print",  'printly');
+F3::route("GET /printly",  'printly');
 F3::route("POST /login",  'login.php');
 F3::route('GET  /logout', 'logout');
 F3::route('POST /table',  'table.php');

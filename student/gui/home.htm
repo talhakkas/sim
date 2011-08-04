@@ -63,13 +63,14 @@
 
 <div id="sidebar">
   <h3 style="color:#007d9a;">Duyurular</h3>
-  <F3:repeat group="{{@announcement}}" key="{{@key}}" value="{{@value}}">
+  <F3:repeat group="{{ @SESSION.announcement }}" key="{{@key}}" 
+  value="{{@value}}">
     <img src="/asset/img/next.png"/>
-  <a href="#info{{@value[announcement_id]}}" rel="facebox" 
+  <a href="#info{{ @value[announcement_id] }}" rel="facebox" 
     style="color:#555;font-weight:bold;line-height:18px;">{{@value[title]}}</a>
   <br>
-  <div id="info{{@value[announcement_id]}}" style="display:none;">
-    {{@value[content]}}
+  <div id="info{{ @value[announcement_id] }}" style="display:none;">
+    {{ @value[content] }}
   </div>
   </F3:repeat>
 </div>

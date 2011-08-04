@@ -6,13 +6,11 @@ include 'init.php';
 $TABLE = F3::get('SESSION.TABLE');
 
 F3::get('DB')->schema($TABLE, 0);// 0 nolu kayıt gibi Field alanlarını al.
-F3::set('SESSION.DB', F3::get('DB'));// 0 nolu kayıt gibi Field alanlarını al.
+F3::set('SESSION.DB', F3::get('DB')); // Yazıcı çıktısında verilerin sayfada kalmaları için.
 
 $fields = array();
-foreach (F3::get('DB->result') as $gnl => $blg){
-	echo $blg['Field'];
+foreach (F3::get('DB->result') as $gnl => $blg)
 	array_push($fields, $blg['Field']);
-}
 
 F3::set('SESSION.fields', $fields);
 
