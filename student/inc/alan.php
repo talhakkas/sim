@@ -6,13 +6,16 @@ $parent = $_POST["parent_id"];
 
 $DB = mysql_connect("localhost", $db_user, $db_pass) or die (mysql_error());
 mysql_select_db($db_name, $DB) or die (mysql_error());
-$table = mysql_query("select name from d_survey where parent_id='$parent'") or die (mysql_error());
+//$table = mysql_query("select name from d_survey where d_survey_id='$parent'") or die (mysql_error());
+$table = mysql_query("select * from d_survey") or die (mysql_error());
 
 $tetkik = array();
 $k = 1;
-while($row = mysql_fetch_array($table))
-    $tetkik[$k++] = $row['name'];
-
+while($row = mysql_fetch_array($table)){
+    $p = substr($row['d_survey_id'], 0, 2);
+    if ($p == $parent)
+        $tetkik[$k++] = $row['name'];
+}
 mysql_close();
 
 
