@@ -10,9 +10,9 @@ function page($title='Ana Sayfa', $template='home', $layout='layout') {
 }
 
 function home() {
-        $duyuru =DB::sql("select * from announcement");
+        $duyuru = DB::sql("select * from announcement");
         rsort($duyuru); // son eklenen duyuru en üstte görünsün
-        F3::set('SESSION.announcement',$duyuru);
+        F3::set('SESSION.announcement', $duyuru);
         page('Ana Sayfa', 'home');
 }
 
