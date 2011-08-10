@@ -1,17 +1,24 @@
-## Ondokuz Mayıs Üniversitesi Web Tabanlı Simülasyon Merkezi
+## Ondokuz Mayıs Üniversitesi Web Tabanlı Simülasyon Eğitimi Merkezi
 
 ### f3-version: 2.0
+
+### Veritabanı Yapılandırılması
 
 - veritabanı yapılandırması :
 
     $ mysql -u sim -p sim < db/db.sql
 
-.f3.ini içinde gerekli yerlerin düzenlenmesi
+yerelde çalışılan db'yi sunucuda güncelleme
 
-- yerelde çalışılan veritabanını sisteme aktarma
+- mysqldump ile db yedeğini alalım
 
-    $ mysqldump -u sim -p sim > db/sim.sql
-    $ mysql -u sim -p sim < db/sim.sql
+        mysqldump -u sim -p sim > sim.sql
+
+- sql dosyasını sunucuya taşıyalım ve db'yi oluşturalım
+
+        mysql -u sim -p sim < sim.sql
+
+#### .f3.ini içinde gerekli yerlerin düzenlenmesi
 
 - admin servisi tablo yapılandırması :
 
@@ -44,16 +51,6 @@ not : tabloda photo, content isimlerinin özellikleri var
         sudo ln -s /opt/sim site
 
 
-### Veritabanı taşıma işlemleri
-
-- yereldeki db'yi sunucuya taşıyalım
-
-        mysqldump -u sim -p sim > sim.sql (yerelde)
-
-- sql dosyasını sunucuya taşıyalım
-
-        mysql -u sim -p sim < sim.sql (sunucuda)
-
 
 ## Dizin Yapısı
 
@@ -63,23 +60,6 @@ not : tabloda photo, content isimlerinin özellikleri var
             inc/
             index.php
             temp/
-        admin/
-            gui/
-            inc/
-            index.php
-            temp/
-        asset/
-            css/
-            img/
-            js/
-            upload/
-        db/
-        .f3.ini
-        fonts/
-        .gitignore
-        github/
-        lib/
-        README.md
         student/
             gui/
             inc/
@@ -91,4 +71,21 @@ not : tabloda photo, content isimlerinin özellikleri var
             index.php
             temp/
 
+        admin/
+            gui/
+            inc/
+            index.php
+            temp/
+        asset/
+            css/
+            img/
+            js/
+            upload/
+        db/
+        fonts/
+        github/
+        lib/
+        .f3.ini
+        .gitignore
+        README.md
 
