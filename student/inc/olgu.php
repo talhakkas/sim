@@ -10,7 +10,6 @@ foreach ($dis as $key => $value)
 
 F3::set('SESSION.discipline', $discipline);
 
-
 $olgu = 2;
 
 F3::set('SESSION.event', $olgu);
