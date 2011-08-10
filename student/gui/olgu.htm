@@ -51,29 +51,28 @@
 
 
 <div style="margin: 10px 0">
-  <div style="float:left;width:420px;font-size:13px;margin-right:40px;">
-    <h3 class="green">{{@SESSION.story->topic}}</h3>
+  <div style="float:left;width:560px;font-size:13px;margin-right:40px;">
+    <h3 class="green">{{@SESSION.story->topic}} (üzerinde çalışılıyor)</h3>
     <p>{{@SESSION.story->content}}</p>
+    <p>
+    <strong>öykü: </strong>
+    Resimde görüldüğü şekilde sera içinde ilaçlama yaptığını, sonrasında bulantı 
+    hissinin olduğunu, ancak işlerini bugün tamamlaması gerektiğini bu nedenle 
+    seranın içinde tamirat işi için çıktığı merdiven üzerinde iken fenalaşıp 5 
+    basamaklı merdivenden düştüğünü, seranın zemininde bulunan beton çıktıya 
+    çarptığını, boynunu ve belini incittiğini, halen bulantısı ve terlemeleri 
+    olduğunu belirtti.
+    </p>
   </div>
 
-  <div style="float:left;width:140px;font-size:13px;margin-right:20px;">
-    <h3 class="green">Hasta Bilgileri</h3>
-    <table>
-
-      <colgroup><col width=60 /><col width=80 /></colgroup>
-      <tr><th>ad:</th><td>{{ @SESSION.patient->name }}</td></tr>
-      <tr><th>soyad:</th><td>{{ @SESSION.patient->surname }}</td></tr>
-      <tr><th>yaş:</th><td>{{ @SESSION.patient->age }}</td></tr>
-      <tr><th>cinsiyet:</th><td>{{ @SESSION.patient->gender }}</td></tr>
-    </table>
-  </div>
-
-  <img width=300 src="/asset/{{@uploaddir}}{{@SESSION.story->photo}}">
+  <img width=300 src="/asset/{{@uploaddir , @SESSION.story->photo}}">
 </div>
 
+<br><hr width=800 style="border:0 solid #ccc;">
 
-<select name="table" onchange='this.form.submit()' 
-  style="display:none;">
+
+
+<select name="table" onchange='this.form.submit()' style="display:none;">
   <F3:repeat group='{{@SESSION.TABLES}}' key='{{@table}}' >
   <F3:check if='{{@table==@SESSION.TABLE}}'>
   <F3:true>
@@ -129,6 +128,7 @@
 Ambulans merkezine haber verilmesini sağladınız. Sonrasında bir paramedik sağlık 
 memuru da, size yardımcı olabileceğini belirterek sizinle beraber hasta başına 
 geldi.
+<br /><br br />
 Hasta seranın içinde, açık kapının yanındaki kanepede uzanmaktadır. Halen 
 bulantısı olduğunu belirten hasta, doktor bey bana yardımcı olur musunuz, 
 kendimi iyi hissetmiyorum  demektedir ? Kanepenin yanında, ağzı açık metal 
@@ -138,15 +138,141 @@ yardım istemektedir.
 
 <br /><br /><br />
 
+
+<strong>-</strong>
+Olay yeri ve çevresini hızlıca incelerim. Aynı anda havayolu, solunum dolaşım 
+ kontrolü için hastayı değerlendiririm. Kanepe yanındaki teneke kutuların ne 
+ için kullanıldığını sorarım.
+
+<br /><br />
+
+<strong>Cevap:</strong>
+Doktor bey bunlar senelerdir çiçek serasında kullandığımız tarım ilaçlarının 
+ kutuları. Çiçeklerin üzerinde yerleşen böceklerin öldürülmesi için 
+ kullanıyoruz. Ancak bugün ilaçlamada kullanılan kimyasal maddeyi yeni temin 
+ ettiğimiz için kutusunu burada depolamadık. Burada yok isterseniz, siz hastaya 
+ müdahale ederken ilgili tarım ilacı kutusunu incelemeniz için size 
+ getirebiliriz.
+ <br /><br />
+
+<strong>Bundan sonraki aşamada ne yaparsınız ? </strong>
+<br /><br />
+
+4a1 - Hastanın zehirlenmiş olabileceğini de düşünüp, yeni kullanıldığı 
+belirtilen  tarım ilacı kutusunu da getirmelerini isterim ve derhal hastanın 
+öyküsünü alıp, muayenesine geçerim.
+<br /><br />
+
+4a2 - Hastanın ..............................
+
+<br /><br />
+
+4a1 işaretlendi ise Paramedik konuşur. Doktor bey öncelikle hastanın ve sağlık 
+ çalışanlarının güvenliği için hastanın seradan uzak havadar bir yere 
+ transportunu öneriyorum.
+<br /><br />
+
+4a2 boşluğu dolduruldu ise Paramedik konuşur. Doktor bey ben de öncelikle 
+ hastanın ve sağlık çalışanlarının güveliği için hastanın seradan uzak havadar 
+ bir yere transportunun faydalı olduğu inancındayım.
+<br /><br />
+
+7- Hastanın transportu sırasında nelere dikkat edersiniz ?
+<br /><br />
+<br /><br />
+
+
+
+5- 4a1 işaretlendi ise Paramedik konuşur. Doktor bey öncelikle hastanın ve 
+sağlık çalışanlarının güvenliği için hastanın seradan uzak havadar bir yere 
+transportunu öneriyorum.
+6-  4a2 boşluğu dolduruldu ise Paramedik konuşur. Doktor bey ben de öncelikle 
+hastanın ve sağlık çalışanlarının güveliği için hastanın seradan uzak havadar 
+bir yere transportunun faydalı olduğu inancındayım.
+7- Hastanın transportu sırasında nelere dikkat edersiniz ?
+  8a1- hastanın, hasta yakınlarının da yardımı ile bir battaniye üzerine 
+  alınarak, belirtilen yere taşınmasını sağlarım.
+    8a2-  Hastanın
+
+
+
+    8a1 işaretlendi ise paramedik konuşur: Doktor bey öncelikle hastanın boynuna 
+    boyunluk takılması ve sert taşıma tahtası üzerinde olası boyun ve bel 
+    zedelenmesine yönelik olarak dikkatlice taşınmasını öneriyorum.
+    9- 8a2 işaretlendi ise paramedik konuşur: Doktor bey öncelikle hastanın 
+    boynuna boyunluk takılması ve sert taşıma tahtası üzerinde olası boyun ve 
+    bel zedelenmesine yönelik olarak dikkatlice taşınmasını) destekliyorum. Bu 
+    noktalar acil müdahale edilen hastanın taşınmasında temel ilkelerdir.  10- 
+    Hastanın uygun şartlarda transportu acil olarak sağlandı. Sonrasında 
+    havayolu, solunum ve dolaşım değerlendirldi. Olayın öyküsü soruldu. Olayın 
+    öyküsü resim:
+
+    12. Sera çalışanının mevcut resim ve öykü kayıtları doğrultusunda 
+    şikayetlerine neden olabilecek nedenler nelerdir?
+
+
+
+    11- Halen açık alanda bir set zemin üzerinde yatan hastanın gömleğinin yaka 
+    bölgesinde boyundaki künt travmatik yaralanmadan kaynaklanan kan bulaşı 
+    görülmekte, aktif kanama  izlenmemektedir. Düşündüğünüz ön tanılar 
+    doğrultusunda, hastanın tedavisinde acilen yapılması gereken hangi işlem 
+    hastanın yaşamının kurtulması açısından önemlidir ?
+
+    13a1. Hastanın gömleğinin düğmelerini açmasını söyler, pantolonunu 
+    çıkartmasını söyleyip,  tüm vücuduna hızlıca bakar, patolojik lezyonları not 
+    eder ve elbiselerini tekrar giymesi için yakınlarının yardım etmesini 
+    sağlarım.
+
+    13a2. Öncelikle;
+
+
+     14. Hastanın gelen ambulans ile tam teşekkülü devlet hastanesi acil 
+     servisine sevki gerçekleşmiştir.  Ambulans gelene kadar bol ılık su ile 
+     vücudu yıkanmış ve üzerine temiz bir çarşaf örtülmüştür. Tarım ilacı ile 
+     kontaminasyon şüphesi olan elbiseleri imha edilmek üzere tehlikeli tıbbi 
+     atık çöpüne atılmıştır.
+
+     15- Acil serviste bu hastaya yönelik olarak tetkikleri istersiniz. Web 
+     sayfası üzerinden tetkikleri seçecek.
+
+
+     16- 1- Rutin biyokimya
+             2-Kan kolinesteraz düzeyi
+
+             18- Tarım ilacı zehirlenmesine yönelik tedavi yaklaşımınızı 
+             (Basmaklar halinde belirtin) belirtiniz.  18a1- ABC
+             18a2-
+             18a3-
+             18a4-
+             18a5-
+             19- Travmaya yönelik hangi incelemeleri yaparsınız ?
+             20- istenen tetkik sonuçlarını değerlendirin?  17-  Radyoloji 
+             tetkiki
+                 18- Boyun omur filmi :işaretlemesi gerekiyor.
+                     
+
+                 <img src="/asset/upload/boyun-omur.jpg">
+**resim var**
+
+                 bel ve göğüs omur filmi: normal
+                 Kafa grafisi: Kırık Yok.  6- diğer bulgular normal
+
+                 Teşekkürler.
+
+
+
+
+
+
+
+
+
 <table>
   <tr>
     <td>
       <input type="radio" name="radio" class="" />
     </td>
     <td>
-1- Olay yeri ve çevresini hızlıca incelerim. Aynı anda havayolu, solunum dolaşım 
-kontrolü için hastayı değerlendiririm. Kanepe yanındaki teneke kutuların ne için 
-kullanıldığını sorarım.
     </td>
   </tr>
   <tr>
@@ -164,47 +290,5 @@ kullanıldığını sorarım.
     </td>
   </tr>
 </table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<form method="post" action="degerlendir">
-  <input type="hidden" name="event" value="{{@SESSION.event}}"/>
-  <input type="hidden" name="stdno" value="{{@SESSION.stdno}}"/>
-  <div id="contain" style="display:none;">
-    <ul class="tabss">
-      <F3:repeat group="{{@SESSION.discipline}}" key="{{@key}}" 
-      value="{{@value}}">
-      <input type="hidden" name="sayfa" value="#{{@key}}" />
-      <li><a href="#{{@key}}" rel="ajax">{{@value}}</a></li>
-      </F3:repeat>
-    </ul>
-    <div class="tab_container">
-      <div class="loading"></div>
-      <div id="booody">
-        <div id="con">
-          <!-- Ajax Content -->
-          <center>
-            <p style="margin-top:60px; margin-bottom:70px;font-size:17px;">
-            Tetkiklere başlamak için lütfen menüden seçim yapınız...</p>
-          </center>
-        </div>
-      </div>
-    </div>
-  </div>
-  <input type="submit" value="Tetkikleri Yorumla »"
-  class="large green awesome" style="float:right;margin-top:15px;"/>
-</form>
 
 

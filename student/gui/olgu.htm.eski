@@ -68,7 +68,7 @@
     </table>
   </div>
 
-  <img width=300 src="/asset/{{@uploaddir}}{{@SESSION.story->photo}}">
+  <img width=300 src="/asset/{{@uploaddir , @SESSION.story->photo}}">
 </div>
 
 
