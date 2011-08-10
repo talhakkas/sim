@@ -8,7 +8,7 @@
 
     $ mysql -u sim -p sim < db/db.sql
 
-yerelde çalışılan db'yi sunucuda güncelleme
+#### yerelde çalışılan db'yi sunucuda güncelleme
 
 - mysqldump ile db yedeğini alalım
 
@@ -30,7 +30,7 @@ index.php içindeki `giris()` fonksiyonunda
 
 gerekli `tablo + key` bilgilerinin eklenmesi.
 
-- img dizini `sudo chmod 777 img` diyerek izinlerinin değiştirilmesi
+- upload dizini `sudo chmod 777 upload` diyerek izinlerinin değiştirilmesi
 
 not : tabloda photo, content isimlerinin özellikleri var
 
@@ -70,7 +70,6 @@ not : tabloda photo, content isimlerinin özellikleri var
             inc/
             index.php
             temp/
-
         admin/
             gui/
             inc/
