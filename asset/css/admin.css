@@ -93,23 +93,6 @@ table.custom td.captcha {
     margin-right: -12em;
 }
 
-#submit_button {
-    height:23px;
-    color:#2F7CA2;
-    text-align:center;
-    padding-top:6px;
-    background:url(../img/btn.png) no-repeat top;
-    font-weight:bold;
-    width:96px;
-    font-size:13px;
-    display:block;
-    cursor:pointer;
-    border:none;
-    height:auto;
-    padding-bottom:7px;
-}
-#submit_button:active { background-position:bottom;}
-
 /* -------------------------------------------------------------------- */
 
 

@@ -342,4 +342,21 @@ tr, td, th {text-align:left;}
 ul.tabs li.printly a {margin-top:3px;width:5px;height:25px;background:url(/asset/img/printly.png) no-repeat;background-size:25px;}
 /* ---------------------------------------------------- */
 
+#submit_button {
+    height:23px;
+    color:#2F7CA2;
+    text-align:center;
+    padding-top:6px;
+    background:url(../img/btn.png) no-repeat top;
+    font-weight:bold;
+    width:96px;
+    font-size:13px;
+    display:block;
+    cursor:pointer;
+    border:none;
+    height:auto;
+    padding-bottom:7px;
+}
+#submit_button:hover {background:url(../img/btn2.png) no-repeat top;color: #fff;}
+
 
