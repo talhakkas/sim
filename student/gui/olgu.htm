@@ -72,7 +72,114 @@
 </div>
 
 
-<form method="post" action="degerlendir">
+<select name="table" onchange='this.form.submit()' 
+  style="display:none;">
+  <F3:repeat group='{{@SESSION.TABLES}}' key='{{@table}}' >
+  <F3:check if='{{@table==@SESSION.TABLE}}'>
+  <F3:true>
+  <option value='{{@table}}' selected>{{@table}}</option>
+  </F3:true>
+  <F3:false>
+  <option value='{{@table}}'>{{@table}}</option>
+  </F3:false>
+  </F3:check>
+  </F3:repeat>
+</select>
+
+
+1- Bundan sonraki yaklaşımınız ne olur ?
+<table>
+  <tr>
+    <td>
+      <input type="radio" name="radio" class="" />
+    </td>
+    <td>
+      1a1-Hastalara ilk acil müdahalenin, 112 acil ambulans merkezi 
+      tarafından yapılmasının gerektiğini, bu nedenle aile hekimliği 
+      kliniğini terk edemeyeceğimi belirtirim. Bu belirtilen hususu ilgili 
+      klinik muayene defterine kayıt ederim.
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <input type="radio" name="radio" class="" />
+    </td>
+    <td>
+      1a2- Hastanın durumunu görmek ve gerekirse tıbbi müdahale etmek için, 
+      varsa yardımcı sağlık personeli eşliğinde, yoksa bizzat kendim acil 
+      hastaya müdahale etmek için çiçek serasına giderim.
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <input type="radio" name="radio" class="" />
+    </td>
+    <td>
+      1a3- Aile hekimliği merkezi sorumlusunun resmi iznini beklerim.  
+      Gerekli izin alınınca olay yerine giderim.
+    </td>
+  </tr>
+</table>
+
+
+<br /><br /><br />
+
+
+5 dakika içinde gerekli tıbbi aletleriniz ile olay yerine ulaştınız. 112 
+Ambulans merkezine haber verilmesini sağladınız. Sonrasında bir paramedik sağlık 
+memuru da, size yardımcı olabileceğini belirterek sizinle beraber hasta başına 
+geldi.
+Hasta seranın içinde, açık kapının yanındaki kanepede uzanmaktadır. Halen 
+bulantısı olduğunu belirten hasta, doktor bey bana yardımcı olur musunuz, 
+kendimi iyi hissetmiyorum  demektedir ? Kanepenin yanında, ağzı açık metal 
+kutular bulunmaktadır. Hasta karın ağrısı şikayetininde olduğunu belirtmekte ve 
+yardım istemektedir.
+<strong>Bundan sonraki aşamada ne yaparsınız?</strong>
+
+<br /><br /><br />
+
+<table>
+  <tr>
+    <td>
+      <input type="radio" name="radio" class="" />
+    </td>
+    <td>
+1- Olay yeri ve çevresini hızlıca incelerim. Aynı anda havayolu, solunum dolaşım 
+kontrolü için hastayı değerlendiririm. Kanepe yanındaki teneke kutuların ne için 
+kullanıldığını sorarım.
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <input type="radio" name="radio" class="" />
+    </td>
+    <td>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <input type="radio" name="radio" class="" />
+    </td>
+    <td>
+    </td>
+  </tr>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<form method="post" action="degerlendir" style="display:none;">
   <input type="hidden" name="event" value="{{@SESSION.event}}"/>
   <input type="hidden" name="stdno" value="{{@SESSION.stdno}}"/>
   <div id="contain">

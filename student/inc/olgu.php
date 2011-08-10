@@ -11,7 +11,7 @@ foreach ($dis as $key => $value)
 F3::set('SESSION.discipline', $discipline);
 
 
-$olgu = 1;
+$olgu = 2;
 
 F3::set('SESSION.event', $olgu);
 $event = new Axon('event');
