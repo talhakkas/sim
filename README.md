@@ -59,28 +59,25 @@ not : tabloda photo, content isimlerinin özellikleri var
             gui/
             inc/
             index.php
-            temp/
         student/
             gui/
             inc/
             index.php
-            temp/
         tutor/
             gui/
             inc/
             index.php
-            temp/
         admin/
             gui/
             inc/
             index.php
-            temp/
         asset/
             css/
             img/
             js/
             upload/
         db/
+        tmp/
         fonts/
         github/
         lib/

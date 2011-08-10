@@ -76,9 +76,9 @@ F3::set('DB', new DB('mysql:host=localhost;port=3306;dbname=' . F3::get('dbname'
 F3::set('SR', '/' . strtok($_SERVER["SCRIPT_NAME"], '/'));
 
 F3::route("GET /*"      , 'login');
-F3::route("GET /printly"      , 'printly');
+F3::route("GET /printly*"      , 'printly');
 F3::route("POST /login", 'login.php');
-F3::route("GET /logout", 'logout');
+F3::route("GET /logout*", 'logout');
 F3::route("GET /about*",  'about');
 F3::route("GET /ekg*",    'ekg');
 F3::route("GET /bulgu*",  'bulgu');
