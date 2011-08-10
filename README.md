@@ -8,6 +8,11 @@
 
 .f3.ini içinde gerekli yerlerin düzenlenmesi
 
+- yerelde çalışılan veritabanını sisteme aktarma
+
+    $ mysqldump -u sim -p sim > db/sim.sql
+    $ mysql -u sim -p sim < db/sim.sql
+
 - admin servisi tablo yapılandırması :
 
 index.php içindeki `giris()` fonksiyonunda

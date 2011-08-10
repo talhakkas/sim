@@ -179,10 +179,10 @@ kullanıldığını sorarım.
 
 
 
-<form method="post" action="degerlendir" style="display:none;">
+<form method="post" action="degerlendir">
   <input type="hidden" name="event" value="{{@SESSION.event}}"/>
   <input type="hidden" name="stdno" value="{{@SESSION.stdno}}"/>
-  <div id="contain">
+  <div id="contain" style="display:none;">
     <ul class="tabss">
       <F3:repeat group="{{@SESSION.discipline}}" key="{{@key}}" 
       value="{{@value}}">
