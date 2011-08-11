@@ -6,12 +6,9 @@ function page($title, $template, $layout='layout') {
 	F3::set('page_title', $title);
 	F3::set('SESSION.template', $template);
 	F3::set('template', $template);
-	//F3::call($layout);
-	echo Template::serve($layout.'.htm');
-}
-
-function render() {
-	echo Template::serve('layout.htm');
+        if (F3::get('printly')) // printly modu için ufak bir ayar
+                $layout = "printly";
+	echo Template::serve($layout . '.htm');
 }
 
 function home() {
@@ -41,8 +38,15 @@ function show() {
 function review() {
 	page('Listelendi', 'review');
 }
+
 function printly(){
-	page('Çıktı Alabilirsiniz', F3::get('SESSION.template'), 'printly');
+        F3::set('printly', 'printly');
+        $template = F3::get('SESSION.template');
+	$inc = array('add', 'del', 'edit', 'find', 'login', 'new', 'review', 'show', 'table', 'update');
+	if (in_array($template, $inc)) {
+		return F3::call($template . '.php');
+	}
+        F3::call($template);
 }
 
 function giris() {

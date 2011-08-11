@@ -10,14 +10,14 @@
 
 <div id="student_image">
   <img width=120 height=140 alt="photo"
-  src="/asset/{{ @uploaddir }}{{ @SESSION.personal->photo }}">
+  src="/asset/{{ @uploaddir }}{{ @personal->photo }}">
 </div>
 
 <table class="custom">
   <colgroup><col width=200 /><col width=200 /></colgroup>
   <tr>
     <td class="label">Kullanıcı Adınız</td>
-    <td class="field">{{@SESSION.personal->tc}}</td>
+    <td class="field">{{@personal->tc}}</td>
   </tr>
   <tr>
     <td class="label">Parolanız</td>
@@ -26,10 +26,10 @@
   </tr>
   <tr>
     <td class="label">Adınız</td>
-    <td class="field">{{@SESSION.personal->name}}</td>
+    <td class="field">{{@personal->name}}</td>
   </tr>
   <tr><td class="label">Soyadınız</td>
-    <td class="field">{{@SESSION.personal->surname}}</td>
+    <td class="field">{{@personal->surname}}</td>
   </tr>
 </table>
 

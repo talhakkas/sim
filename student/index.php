@@ -6,13 +6,15 @@ function page($title='Ana Sayfa', $template='home', $layout='layout') {
 	F3::set('page_title', $title);
 	F3::set('SESSION.template', $template);
 	F3::set('template', $template);
+        if (F3::get('printly')) // printly modu için ufak bir ayar
+                $layout = "printly";
  	echo Template::serve($layout.'.htm');
 }
 
 function home() {
         $duyuru = DB::sql("select * from announcement");
         rsort($duyuru); // son eklenen duyuru en üstte görünsün
-        F3::set('SESSION.announcement', $duyuru);
+        F3::set('announcement', $duyuru);
         page('Ana Sayfa', 'home');
 }
 
@@ -40,7 +42,7 @@ function personal() {
         $student = new Axon('people');
         $std = F3::get('SESSION.student');
         $student->load("tc='$std'");
-        F3::set("SESSION.personal", $student);
+        F3::set("personal", $student);
 	page('Kişisel Sayfa', 'personal');
 }
 
@@ -53,13 +55,20 @@ function son() {
 function printly() {
         if (F3::get("SESSION.special") != 1)
                 return F3::call('home');
-        page('Çıktı alabilirsiniz', F3::get('SESSION.template'), 'printly');
+        F3::set('printly', 'printly');
+        $template = F3::get('SESSION.template');
+        $inc = array('olgu', 'degerlendir');
+        if (in_array($template, $inc))
+                return F3::call($template . '.php');
+        F3::call($template);
 }
+
 function login() {
         if (F3::get("SESSION.special") == 1)
                 return F3::call('home');
 	page('Öğrenci Girişi', 'login');
 }
+
 function logout() {
 	if (F3::get('SESSION.special') == 1) {
                 F3::clear('error');

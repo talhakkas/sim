@@ -2,19 +2,18 @@
   <h2 id="headline">{{@SESSION.TABLE}} tablosu inceleniyor</h2>
   <table class="custom">
     <tr>
-      <F3:repeat group="{{@SESSION.fields}}" key="{{@gnl}}" value="{{@blg}}" >
+      <F3:repeat group="{{@fields}}" key="{{@gnl}}" value="{{@blg}}" >
 	<td class="label" style="color:#2f7ca2"> {{@blg}}</td>
       </F3:repeat>
     </tr>
     <tr>
-      <F3:repeat group="{{@SESSION.DB->result}}" key="{{ @index }}" value="{{ 
-      @row }}" >
+      <F3:repeat group="{{@DB->result}}" key="{{ @index }}" value="{{ @row }}" >
       <tr>
 	<F3:repeat group="{{ @row }}" key="{{ @field }}" value="{{ @value }}" >
 	  <F3:check if="{{ @field=='photo' }}">
 	  <F3:true>
 	    <td class="label"><img width=80
-	      src="/asset/{{ @uploaddir }}{{ @value }}"/></td>
+	      src="/asset/{{ @uploaddir , @value }}"/></td>
 	  </F3:true>
 	  <F3:false>
 	    <td class="label">{{ @value }}</td>
