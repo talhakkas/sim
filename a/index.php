@@ -2,18 +2,10 @@
 
 require_once  '../lib/base.php';
 
-function render() {
- 	echo Template::serve('layout.htm');
-}
-
-function render2() {
- 	echo Template::serve('nolayout.htm');
-}
-
-function page($title, $template, $layout="render") {
+function page($title, $template, $layout='layout') {
 	F3::set('page_title', $title);
 	F3::set('template', $template);
-	F3::call($layout);
+ 	echo Template::serve($layout.'.htm');
 }
 
 function home() {
@@ -33,7 +25,7 @@ function contact() {
 	page('Bize Ulaşın', 'contact');
 }
 function playground() {
-	page(' ', 'playground', 'render2');
+	page(' ', 'playground', 'nolayout');
 }
 
 F3::config("../.f3.ini");
