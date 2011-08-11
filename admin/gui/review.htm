@@ -16,7 +16,11 @@
 	      src="/asset/{{ @uploaddir , @value }}"/></td>
 	  </F3:true>
 	  <F3:false>
-	    <td class="label">{{ @value }}</td>
+	    <F3:check if="{{in_array(@field, @fields)}}">
+	    <F3:true>
+	      <td class="label">{{ @value }}</td>
+	    </F3:true>
+	    </f3:check>
 	  </f3:false>
 	  </f3:check>
 	</F3:repeat>
