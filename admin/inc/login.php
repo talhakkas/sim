@@ -34,7 +34,7 @@ if (! F3::exists('error')) {
                         F3::set('SESSION.adminsuper', $admin->super);
                 F3::clear('error');
 
-		return F3::call('table.php'); // default tablo bilgilerimizi seçelim
+	        return F3::reroute('/'); // default tablo bilgileri seçili olmalı
 	} else
         	F3::set('error', "Lütfen girdiğiniz bilgileri kontrol edin.");
 }

@@ -34,7 +34,7 @@ if (! F3::exists('error')) {
                 F3::set('SESSION.student', $username);
                 F3::set('SESSION.stdno', $student->no);
                 F3::set('SESSION.special', 1);
-                return F3::call('home');
+	        return F3::reroute('/');
         }
 
         F3::set('error', "Yanlış kullanıcı adı veya parola");
