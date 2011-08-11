@@ -42,10 +42,9 @@ function review() {
 function printly(){
         F3::set('printly', 'printly');
         $template = F3::get('SESSION.template');
-	$inc = array('add', 'del', 'edit', 'find', 'login', 'new', 'review', 'show', 'table', 'update');
-	if (in_array($template, $inc)) {
+	$inc = array('add', 'del', 'edit', 'login', 'new', 'review', 'table', 'update');
+	if (in_array($template, $inc))
 		return F3::call($template . '.php');
-	}
         F3::call($template);
 }
 
