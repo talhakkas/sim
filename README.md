@@ -1,5 +1,5 @@
 ## Ondokuz Mayıs Üniversitesi Web Tabanlı Simülasyon Eğitimi Merkezi
-fooooooooooooooooo
+
 ### f3-version: 2.0
 
 ### Veritabanı Yapılandırılması
@@ -49,6 +49,24 @@ not : tabloda photo, content isimlerinin özellikleri var
 
         cd /srv/www/test.omu.edu.tr
         sudo ln -s /opt/sim site
+
+- nginx yapılandırılması (yerelde çalışılıyorsa)
+
+	set $service "";
+	if ($request_uri ~* ^(/[^/]+)/.*$) {
+		set $service $1;
+	}
+
+	location / {
+		try_files $uri $uri/ $service/index.php;
+	}
+
+	location ~ \.php$ {
+		fastcgi_pass 127.0.0.1:9000;
+		fastcgi_index index.php;
+		fastcgi_param SCRIPT_FILENAME $request_filename;
+		include fastcgi_params;
+	}
 
 
 
