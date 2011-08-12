@@ -50,6 +50,7 @@ not : tabloda photo, content isimlerinin özellikleri var
         cd /srv/www/test.omu.edu.tr
         sudo ln -s /opt/sim site
 
+
 ## nginx yapılandırılması (yerelde çalışılıyorsa)
 
     rewrite ^/*$ /a/ redirect;
@@ -69,27 +70,6 @@ not : tabloda photo, content isimlerinin özellikleri var
 	        fastcgi_param SCRIPT_FILENAME $request_filename;
 	        include fastcgi_params;
 	}
-
-
-## nginx yapılandırılması (yerelde çalışılıyorsa)
-
-        rewrite ^/*$ /a/ redirect;
-
-        set $service "";
-        if ($request_uri ~* ^(/[^/]+)/.*$) {
-	   	    set $service $1;
-	    }
-
-	    location / {
-	            try_files $uri $uri/ $service/index.php;
-	    }
-
-	    location ~ \.php$ {
-	            fastcgi_pass 127.0.0.1:9000;
-	            fastcgi_index index.php;
-	            fastcgi_param SCRIPT_FILENAME $request_filename;
-	            include fastcgi_params;
-	    }
 
 
 ## Dizin Yapısı
