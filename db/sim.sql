@@ -36,7 +36,7 @@ CREATE TABLE `announcement` (
 
 LOCK TABLES `announcement` WRITE;
 /*!40000 ALTER TABLE `announcement` DISABLE KEYS */;
-INSERT INTO `announcement` VALUES (1,'Deneme Olgusu Sisteme işlendi','Olguya Müdahil olabilmek için bilmem ne yapınız'),(2,'Sistem Üzerinde Çalışmalar Devam ediyor','Çalışılıyo öyle işte'),(3,'Simulation v1.4.9.5 has been released!','Full and Patch Only: http://test.omu.edu.tr');
+INSERT INTO `announcement` VALUES (1,'Deneme Olgusu Sisteme işlendi','Olguya Müdahil olabilmek için bilmem ne yapınız'),(2,'Sistemd Çalışmalar Devam ediyor','Çalışılıyo öyle işte'),(3,'Simulation v1.4.9.5 has been released!','Full and Patch Only: http://test.omu.edu.tr');
 /*!40000 ALTER TABLE `announcement` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -116,7 +116,7 @@ CREATE TABLE `event` (
 
 LOCK TABLES `event` WRITE;
 /*!40000 ALTER TABLE `event` DISABLE KEYS */;
-INSERT INTO `event` VALUES (1,1,1,'deneme-olgu','12:1,5,7,8,12','1;2,5,6'),(2,1,2,'olgu2','null','null');
+INSERT INTO `event` VALUES (1,1,1,'deneme-olgu','12:1,5,7,8,12','1;2,5,6'),(2,1,2,'Tarım ilacı Zehirlenmesi','null','null');
 /*!40000 ALTER TABLE `event` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -294,4 +294,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2011-08-10 10:31:51
+-- Dump completed on 2011-08-12 11:49:31
