@@ -59,6 +59,30 @@ not : tabloda photo, content isimlerinin özellikleri var
 	    	    set $service $1;
 	    }
 
+
+
+        set $service "";
+        if ($request_uri ~* ^(/[^/]+)/.*$) {
+	    	    set $service $1;
+	    }
+
+	    set $service "";
+        if ($request_uri ~* ^(/[^/]+)/.*$) {
+	        set $service $1;
+	}
+
+	set $service "";
+        if ($request_uri ~* ^(/[^/]+)/.*$) {
+	        set $service $1;
+	}
+
+        location / {
+    	        try_files $uri $uri/ $service/index.php;
+        }
+
+
+
+
 	    location / {
 		    try_files $uri $uri/ $service/index.php;
 	    }
