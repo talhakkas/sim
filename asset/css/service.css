@@ -357,7 +357,11 @@ ul.tabs li.printly a {margin-top:3px;width:5px;height:25px;background:url(/asset
     height:auto;
     padding-bottom:7px;
 }
-#submit_button:hover {background:url(../img/btn2.png) no-repeat top;color: #fff;}
+#submit_button:hover {
+    background:url(../img/btn2.png) no-repeat top;
+    color: #fff;
+    box-shadow:0 3px 10px rgba(0, 0, 0, 0.2);
+}
 
 
 textarea { border: 1px solid #ccc; padding:4px 7px;}
