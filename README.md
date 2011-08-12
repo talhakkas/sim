@@ -55,7 +55,8 @@ not : tabloda photo, content isimlerinin özellikleri var
         rewrite ^/*$ /a/ redirect;
 
 	set $service "";
-	if ($request_uri ~* ^(/[^/]+)/.*$) {
+
+        if ($request_uri ~* ^(/[^/]+)/.*$) {
 		set $service $1;
 	}
 
