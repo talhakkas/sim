@@ -50,7 +50,7 @@ not : tabloda photo, content isimlerinin özellikleri var
         cd /srv/www/test.omu.edu.tr
         sudo ln -s /opt/sim site
 
-- nginx yapılandırılması (yerelde çalışılıyorsa)
+## nginx yapılandırılması (yerelde çalışılıyorsa)
 
         rewrite ^/*$ /a/ redirect;
 
