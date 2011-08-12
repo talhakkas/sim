@@ -52,10 +52,10 @@ not : tabloda photo, content isimlerinin özellikleri var
 
 - nginx yapılandırılması (yerelde çalışılıyorsa)
 
-            rewrite ^/*$ /a/ redirect;
+        rewrite ^/*$ /a/ redirect;
 
-            set $service "";
-            if ($request_uri ~* ^(/[^/]+)/.*$) {
+        set $service "";
+        if ($request_uri ~* ^(/[^/]+)/.*$) {
 	   	    set $service $1;
 	    }
 
