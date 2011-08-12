@@ -10,7 +10,8 @@ foreach ($dis as $key => $value)
 
 F3::set('discipline', $discipline);
 
-$olgu = 2;
+//$olgu = 2;
+$olgu = F3::get('SESSION.olgu');
 
 F3::set('event', $olgu);
 $event = new Axon('event');

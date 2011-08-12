@@ -35,6 +35,30 @@
 
 <h2 class="home">Web Tabanlı Simülasyon Eğitimi Yazılımına Hoşgeldiniz</h2>
 
+<form name="login" action="cases" method="POST" id="login"
+  enctype="multipart/form-data">
+  <table class="custom">
+    <tr>
+      <td class="label">Olgu Seçiniz:</td>
+      <td class="field">
+        <select name="OLGU" onchange='this.form.submit()'>
+          <F3:repeat group='{{@olgu}}' key='{{@key}}' value='{{@val}}' >
+          <F3:check if='{{@val[event_id]==@SESSION.olgu}}'>
+          <F3:true>
+          <option value='{{@val[event_id]}}' selected>{{@val[name]}}</option>
+          </F3:true>
+          <F3:false>
+          <option value='{{@val[event_id]}}'>{{@val[name]}}</option>
+          </F3:false>
+          </F3:check>
+          </F3:repeat>
+        </select>
+      </td>
+    </tr>
+  </table>
+</form>
+
+
 <div id="contentarea">
   <center><p><b>Using simulation to improve safety, quality and education in 
       healthcare
@@ -95,4 +119,5 @@
   20+ Payment Gateways
   8+ Shipping Methods
 </div>
+
 

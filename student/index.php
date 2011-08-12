@@ -15,6 +15,9 @@ function home() {
         $duyuru = DB::sql("select * from announcement");
         rsort($duyuru); // son eklenen duyuru en üstte görünsün
         F3::set('announcement', $duyuru);
+        F3::set('olgu', DB::sql("select * from event"));
+        if (! F3::get("SESSION.olgu")) // default olgu
+                F3::set("SESSION.olgu", 2); // default olgu
         page('Ana Sayfa', 'home');
 }
 
@@ -69,6 +72,14 @@ function login() {
 	page('Öğrenci Girişi', 'login');
 }
 
+function cases() {
+        if (F3::get("SESSION.special") != 1)
+                return F3::call('home');
+        F3::set("SESSION.olgu", $_POST['OLGU']);
+        page('Ana Sayfa', 'home');
+        F3::reroute('/');
+}
+
 function logout() {
 	if (F3::get('SESSION.special') == 1) {
                 F3::clear('error');
@@ -95,6 +106,8 @@ F3::route("GET /personal*",  'personal');
 F3::route("GET /olgu*",  'olgu.php');
 F3::route("POST /degerlendir", 'degerlendir.php');
 F3::route("POST /son", 'son');
+
+F3::route("POST /cases", 'cases');
 
 F3::run();
 
