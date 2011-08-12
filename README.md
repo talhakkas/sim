@@ -54,13 +54,6 @@ not : tabloda photo, content isimlerinin özellikleri var
 
         rewrite ^/*$ /a/ redirect;
 
-	    set $service "";
-        if ($request_uri ~* ^(/[^/]+)/.*$) {
-	    	    set $service $1;
-	    }
-
-
-
         set $service "";
         if ($request_uri ~* ^(/[^/]+)/.*$) {
 	    	    set $service $1;
@@ -77,6 +70,17 @@ not : tabloda photo, content isimlerinin özellikleri var
 	        fastcgi_param SCRIPT_FILENAME $request_filename;
 	        include fastcgi_params;
 	}
+
+            location / {
+	            try_files $uri $uri/ $service/index.php;
+            }
+
+	    location ~ \.php$ {
+	            fastcgi_pass 127.0.0.1:9000;
+	            fastcgi_index index.php;
+    	            fastcgi_param SCRIPT_FILENAME $request_filename;
+	            include fastcgi_params;
+	    }
 
 
 
