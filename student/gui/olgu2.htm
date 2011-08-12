@@ -7,118 +7,76 @@
 </style>
 
 <link type="text/css" href="/asset/css/olgu.css" rel="stylesheet" />
-<script type="text/javascript" src="/asset/js/jquery.min.js"></script>
-<script type="text/javascript" src="/asset/jquery.history.js"></script>
-<script type="text/javascript" src="gui/js/olgu.js"></script>
-
-<script type="text/javascript">
-  $(document).ready(function () {
-      $.history.init(pageload);
-      $('a[href=' + window.location.hash + ']').addClass('active');
-      $('a[rel=ajax]').click(function () {
-        var hash = this.href;
-        hash = hash.replace(/^.*#/, '');
-        $.history.load(hash);
-        $('a[rel=ajax]').removeClass('active');
-        $(this).addClass('active');
-        $('#booody').hide();
-        $('.loading').show();
-        getPage();
-        return false;
-        });
-      });
-
-      function pageload(hash) {
-        if (hash)
-          getPage();
-      }
-
-      function getPage() {
-        var data = 'page=' + encodeURIComponent(document.location.hash);
-        $.ajax({
-            url: "inc/tabss.php",
-            type: "GET",
-            data: data,
-            cache: false,
-            success: function (html) {
-              $('.loading').hide();
-              $('#con').html(html);
-              $('#booody').fadeIn('slow');
-            }
-         });
-      }
-</script>
 
 
 <div style="margin: 10px 0">
   <div style="float:left;width:560px;font-size:13px;margin-right:40px;">
-    <h3 class="green">{{@SESSION.story->topic}} (üzerinde çalışılıyor)</h3>
-    <p>{{@SESSION.story->content}}</p>
-    <p>
-    <strong>öykü: </strong>
-    Resimde görüldüğü şekilde sera içinde ilaçlama yaptığını, sonrasında bulantı 
-    hissinin olduğunu, ancak işlerini bugün tamamlaması gerektiğini bu nedenle 
-    seranın içinde tamirat işi için çıktığı merdiven üzerinde iken fenalaşıp 5 
-    basamaklı merdivenden düştüğünü, seranın zemininde bulunan beton çıktıya 
-    çarptığını, boynunu ve belini incittiğini, halen bulantısı ve terlemeleri 
-    olduğunu belirtti.
-    </p>
+    <h3 class="green">{{@story->topic}}</h3>
+    <p>{{@story->content}}</p>
   </div>
 
-  <img width=300 src="/asset/{{@uploaddir , @SESSION.story->photo}}">
+  <img width=300 src="/asset/{{@uploaddir , @story->photo}}">
 </div>
 
-<br><hr width=800 style="border:0 solid #ccc;">
 
+<form method="post" action="degerlendir">
 
-
-<select name="table" onchange='this.form.submit()' style="display:none;">
-  <F3:repeat group='{{@SESSION.TABLES}}' key='{{@table}}' >
-  <F3:check if='{{@table==@SESSION.TABLE}}'>
-  <F3:true>
-  <option value='{{@table}}' selected>{{@table}}</option>
-  </F3:true>
-  <F3:false>
-  <option value='{{@table}}'>{{@table}}</option>
-  </F3:false>
+  <F3:check if='{{ @SESSION.olgustate==1 }}'>
+  <strong>Bundan sonraki yaklaşımınız ne olur ?</strong>
+  <table>
+    <tr>
+      <td>
+        <input type="radio" name="cevap{{ @SESSION.olgustate }}" value="1"/>
+      </td>
+      <td>
+        1a1-Hastalara ilk acil müdahalenin, 112 acil ambulans merkezi 
+        tarafından yapılmasının gerektiğini, bu nedenle aile hekimliği 
+        kliniğini terk edemeyeceğimi belirtirim. Bu belirtilen hususu ilgili 
+        klinik muayene defterine kayıt ederim.
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <input type="radio" name="cevap{{ @SESSION.olgustate }}" value="1" />
+      </td>
+      <td>
+        1a2- Hastanın durumunu görmek ve gerekirse tıbbi müdahale etmek için, 
+        varsa yardımcı sağlık personeli eşliğinde, yoksa bizzat kendim acil 
+        hastaya müdahale etmek için çiçek serasına giderim.
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <input type="radio" name="cevap{{ @SESSION.olgustate }}" value="3" />
+      </td>
+      <td>
+        1a3- Aile hekimliği merkezi sorumlusunun resmi iznini beklerim.  
+        Gerekli izin alınınca olay yerine giderim.
+      </td>
+    </tr>
+  </table>
   </F3:check>
-  </F3:repeat>
-</select>
+  <input type="submit" value="Devam »"
+  class="large green awesome" style="float:right;margin-top:15px;"/>
+
+  <F3:check if='{{ @SESSION.olgustate==2 }}'>
+Bu şık işaretlendi ise soru olay yerine gidilmeyerek hekimin hangi yasal 
+sorumluluğu yerine getirmemiş oldunuz ? 
+
+Olay yerine gitmeniz, hekimin yasal sorumluluklarından hangisi içine girer? 
+
+Bu şık işaretlendi ise: olay yerine gidilmeyerek hekimin hangi yasal sorumluluğu 
+yerine getirilmemiş oldu?
+
+  </F3:check>
+
+</form>
 
 
-1- Bundan sonraki yaklaşımınız ne olur ?
-<table>
-  <tr>
-    <td>
-      <input type="radio" name="radio" class="" />
-    </td>
-    <td>
-      1a1-Hastalara ilk acil müdahalenin, 112 acil ambulans merkezi 
-      tarafından yapılmasının gerektiğini, bu nedenle aile hekimliği 
-      kliniğini terk edemeyeceğimi belirtirim. Bu belirtilen hususu ilgili 
-      klinik muayene defterine kayıt ederim.
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <input type="radio" name="radio" class="" />
-    </td>
-    <td>
-      1a2- Hastanın durumunu görmek ve gerekirse tıbbi müdahale etmek için, 
-      varsa yardımcı sağlık personeli eşliğinde, yoksa bizzat kendim acil 
-      hastaya müdahale etmek için çiçek serasına giderim.
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <input type="radio" name="radio" class="" />
-    </td>
-    <td>
-      1a3- Aile hekimliği merkezi sorumlusunun resmi iznini beklerim.  
-      Gerekli izin alınınca olay yerine giderim.
-    </td>
-  </tr>
-</table>
+<br /><br /><br />
+<br /><br /><br />
+
+
 
 
 <br /><br /><br />
