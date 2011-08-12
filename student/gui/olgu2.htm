@@ -26,7 +26,7 @@
   <table>
     <tr>
       <td>
-        <input type="radio" name="cevap{{ @SESSION.olgustate }}" value="1"/>
+        <input type="radio" name="cevap1" value="1"/>
       </td>
       <td>
         1a1-Hastalara ilk acil müdahalenin, 112 acil ambulans merkezi 
@@ -37,7 +37,7 @@
     </tr>
     <tr>
       <td>
-        <input type="radio" name="cevap{{ @SESSION.olgustate }}" value="1" />
+        <input type="radio" name="cevap1" value="1" />
       </td>
       <td>
         1a2- Hastanın durumunu görmek ve gerekirse tıbbi müdahale etmek için, 
@@ -47,7 +47,7 @@
     </tr>
     <tr>
       <td>
-        <input type="radio" name="cevap{{ @SESSION.olgustate }}" value="3" />
+        <input type="radio" name="cevap1" value="3" />
       </td>
       <td>
         1a3- Aile hekimliği merkezi sorumlusunun resmi iznini beklerim.  
@@ -60,14 +60,16 @@
   class="large green awesome" style="float:right;margin-top:15px;"/>
 
   <F3:check if='{{ @SESSION.olgustate==2 }}'>
-Bu şık işaretlendi ise soru olay yerine gidilmeyerek hekimin hangi yasal 
-sorumluluğu yerine getirmemiş oldunuz ? 
-
-Olay yerine gitmeniz, hekimin yasal sorumluluklarından hangisi içine girer? 
-
-Bu şık işaretlendi ise: olay yerine gidilmeyerek hekimin hangi yasal sorumluluğu 
-yerine getirilmemiş oldu?
-
+  <F3:check if='{{ @SESSION.cevap[1]==1 }}'>
+  Bu şık işaretlendi ise soru olay yerine gidilmeyerek hekimin hangi yasal 
+  sorumluluğu yerine getirmemiş oldunuz ?  </F3:check>
+  </F3:check>
+  <F3:check if='{{ @SESSION.cevap[1]==2 }}'>
+  Olay yerine gitmeniz, hekimin yasal sorumluluklarından hangisi içine girer? 
+  </F3:check>
+  <F3:check if='{{ @SESSION.cevap[1]==3 }}'>
+  Bu şık işaretlendi ise: olay yerine gidilmeyerek hekimin hangi yasal sorumluluğu 
+  yerine getirilmemiş oldu?
   </F3:check>
 
 </form>

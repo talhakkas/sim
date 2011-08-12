@@ -29,12 +29,14 @@ $event->close;
 $story->close;
 $patient->close;
 
-print_r(F3::get('SESSION.cevap'));
 //F3::set('SESSION.olgustate', 1);
+//F3::set('SESSION.cevap', array());
+//print_r(F3::get('SESSION.cevap'));
 if (! F3::get('SESSION.olgustate')){
 	F3::set('SESSION.cevap', array());
 	F3::set('SESSION.olgustate', 1);
 }
-page('Olgu Ekranı', 'olgu1');
+
+page('Olgu Ekranı', 'olgu');
 
 ?>
