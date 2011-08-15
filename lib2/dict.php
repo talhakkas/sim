@@ -1,5 +1,6 @@
 <?php
 
+// Çeviri Alanındaki kelimeler
 function dict(){
 	return array(
 		'Anasayfa' => 'Home',
@@ -40,6 +41,25 @@ function dict(){
 		// Tutor Panel
 		'' => '',
 		'' => '',
+		'' => '',
+	);
+}
+
+// sabit kelimeler örneğin veritabını tablo isimleri
+function dict2(){
+	return array(
+
+		// Admin Tablosu
+		'people' => 'Kişiler',
+		'event' => 'Olgular (Case)',
+		'survey' => 'Değiştirilebilir Tetkikler',
+		'd_survey' => 'Temel Tetkikler',
+		'patient' => 'Hastalar',
+		'story' => 'Hikayeler',
+		'result' => 'Sonuçlar',
+		'parent' => 'Ara Başlıklar',
+		'discipline' => 'Bilim Dalları',
+		'announcement' => 'Duyurular',
 		'' => '',
 	);
 }

@@ -17,9 +17,8 @@ $table = new Axon($TABLE);
 // tablo kayıt sayısını kaydedelim
 F3::set('SESSION.SAVE', count($table->find()));
 
-F3::set('correct', "'$TABLE' tablosu başarıyla seçildi.");
+F3::set('correct', "<u>"._et($TABLE)."</u> tablosu başarıyla seçildi.");
 
-// hata var, dön başa ve tekrar sorgu al.
-// error alanı dolu ve layout.htm'de görüntülenecek
-F3::call('home'); // f3.php'den fonksiyon çağırımı
+F3::call('home');
+
 ?>
