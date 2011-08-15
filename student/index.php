@@ -1,6 +1,7 @@
 <?php
 
 require_once  '../lib/base.php';
+require_once  '../lib2/lib.php';
 
 function page($title='Ana Sayfa', $template='home', $layout='layout') {
 	F3::set('page_title', $title);

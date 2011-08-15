@@ -1,7 +1,5 @@
 <?php
 
-include 'init.php';
-
 // table & key
 $TABLE = F3::get('SESSION.TABLE');
 $KEY = F3::get('SESSION.KEY');

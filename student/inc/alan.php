@@ -1,6 +1,6 @@
 <?php
 
-include 'depo.php';
+include '../../lib2/depo.php';
 
 $parent = $_POST["parent_id"];
 

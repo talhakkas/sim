@@ -1,14 +1,6 @@
 <?php
 
-include 'depo.php';
-
-//echo $_GET['page']."<br>";
-//print_r($_GET);
-//echo "<br>";
-//echo $_GET['event']."<br>";
-//echo $_GET['stdno']."<br>";
-//print_r($_POST);
-
+include '../../lib2/depo.php';
 
 $page = substr($_GET['page'], 1);
 

@@ -1,6 +1,7 @@
 <?php
 
 require_once  '../lib/base.php';
+require_once  '../lib2/lib.php';
 
 function page($title, $template, $layout='render') {
 	F3::set('title', $title);

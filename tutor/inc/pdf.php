@@ -1,7 +1,5 @@
 <?php
 
-include 'init.php';
-
 $TABLE = F3::get('SESSION.TABLE');
 
 $table = new Axon($TABLE);

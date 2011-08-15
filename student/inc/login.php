@@ -1,7 +1,5 @@
 <?php
 
-include 'denetle.php';
-
 F3::clear('error');
 
 foreach (array('username','password') as $alan) {
