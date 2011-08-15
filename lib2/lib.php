@@ -10,18 +10,16 @@ function dict(){
 }
 
 function _e($str){
-	$_from = 'tr'; //burda tarayıcı dilini al //echo $_SERVER['HTTP_ACCEPT_LANGUAGE'];
-
-	if ($_from == 'tr')
+	$_lang = $_SERVER["HTTP_ACCEPT_LANGUAGE"];
+	if ( substr($_lang, 0, 2) == "tr")
 		return $str;
+	else {
+		$dict = dict();
+		if (in_array($str, array_keys($dict)))
+			return $dict[$str];
 
-	$_to = 'en'; // burayı da zamanı gelince set edilince alırısın
-
-	$dict = dict();
-	if ($dict[$str])
-		return $dict[$str];
-
-	return Google::translate($str, $_from, $_to);
+		return Google::translate($str, 'tr', 'en');
+	}
 }
 
 ?>
