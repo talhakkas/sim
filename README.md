@@ -101,6 +101,7 @@ not : tabloda photo, content isimlerinin özellikleri var
         fonts/
         github/
         lib/
+        lib2/
         .f3.ini
         .gitignore
         README.md

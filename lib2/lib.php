@@ -1,5 +1,7 @@
 <?php
 
+include 'init.php';
+
 function dict(){
 	return array(
 		'Anasayfa' => 'Home',

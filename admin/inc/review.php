@@ -1,7 +1,5 @@
 <?php
 
-include 'init.php';
-
 // table
 $TABLE = F3::get('SESSION.TABLE');
 

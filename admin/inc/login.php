@@ -1,7 +1,5 @@
 <?php
 
-include 'init.php';
-
 foreach (array('username', 'password') as $alan) {
         F3::input($alan,
                 function($value) use($alan) {

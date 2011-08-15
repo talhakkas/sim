@@ -1,7 +1,5 @@
 <?php
 
-include 'init.php';
-
 if (!F3::exists('error')) {
 
 	// table & key
