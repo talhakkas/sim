@@ -1,13 +1,7 @@
 <?php
 
 include 'init.php';
-
-function dict(){
-	return array(
-		'Anasayfa' => 'Home',
-		'Yönetici Paneli' => 'Admin Panel',
-	);
-}
+include 'dict.php';
 
 function _e($str){
 	$_lang = $_SERVER["HTTP_ACCEPT_LANGUAGE"];

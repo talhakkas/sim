@@ -7,7 +7,7 @@
     <link rel="shortcut icon" href="/asset/img/favicon.ico" />
     <link rel="stylesheet" type="text/css" href="/asset/css/service.css" />
     <link rel="stylesheet" type="text/css" href="/asset/css/admin.css" />
-    <title>{{@page_title}}</title>
+    <title>{{_e(@page_title)}}</title>
   </head>
 
   <body>
@@ -20,10 +20,11 @@
             title="Kullanıcı adınız">{{@SESSION.adminusername}}</a>
           </li>
           <li class="magenta">
-            <a href="info" title="Bilgilendirme sayfası">Bilgilendirme</a>
+          <a href="info"
+            title="Bilgilendirme sayfası">{{_e('Bilgilendirme')}}</a>
           </li>
           <li class="logout">
-            <a href="logout" title="Çıkış">Çıkış</a>
+          <a href="logout" title="Çıkış">{{_e('Çıkış')}}</a>
           </li>
         </ul>
       </div>
@@ -56,31 +57,31 @@
           </td></tr>
           <tr><td>
               <a href="{{ @SR }}" title=""><img
-                src="/asset/img/tables.png"/> Tablolar</a>
+                src="/asset/img/tables.png"/> {{_e('Tablolar')}}</a>
           </td></tr>
           <tr><td>
               <a href="review" title="">
-                <img src="/asset/img/review.png"/> Tablo İncele</a>
+                <img src="/asset/img/review.png"/> {{_e('Tablo İncele')}}</a>
           </td></tr>
           <tr><td>
               <a href="new" title="">
-                <img src="/asset/img/add.png"/> Ekle</a>
+                <img src="/asset/img/add.png"/> {{_e('Ekle')}}</a>
           </td></tr>
           <tr><td>
               <a href="find" title="">
-                <img src="/asset/img/find.png"/> Bul</a>
+                <img src="/asset/img/find.png"/> {{_e('Bul')}}</a>
           </td></tr>
           <tr><td>
               <a href="csv" title="">
-                <img src="/asset/img/csv.png"/> Csv Çıktı</a>
+                <img src="/asset/img/csv.png"/> {{_e('Csv Çıktı')}}</a>
           </td></tr>
           <tr><td>
               <a href="csv" title="">
-                <img src="/asset/img/pdf.png"/> Pdf Çıktı</a>
+                <img src="/asset/img/pdf.png"/> {{_e('Pdf Çıktı')}}</a>
           </td></tr>
           <tr><td>
               <a href="printly" title="">
-                <img src="/asset/img/printly.png"/> Yazıcı Dostu</a>
+                <img src="/asset/img/printly.png"/> {{_e('Yazıcı Dostu')}}</a>
           </td></tr>
         </table>
       </div>
