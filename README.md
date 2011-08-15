@@ -97,7 +97,7 @@ not : tabloda photo, content isimlerinin özellikleri var
             js/
             upload/
         db/
-        tmp/
+        temp/
         fonts/
         github/
         lib/
