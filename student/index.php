@@ -81,6 +81,11 @@ function cases() {
 }
 
 function logout() {
+	foreach(array('SESSION', 'REQUEST') as $alan) {
+		foreach(F3::get("$alan") as $key => $value) {
+			F3::clear("$alan.$key");
+		}
+	}
 	if (F3::get('SESSION.special') == 1) {
                 F3::clear('error');
                 F3::set('SESSION.special', '0');

@@ -11,7 +11,8 @@
     box-shadow:0 5px 10px rgba(0, 0, 0, 0.2);
 }
 #leftcolumn tr img {width:35px;}
-#leftcolumn tr{font-size:12px;font-weight:bold;}
+#leftcolumn tr {font-size:12px;font-weight:bold;}
+#leftcolumn tr td{color: #3b5998;}
 
 .page {
     width: 770px;

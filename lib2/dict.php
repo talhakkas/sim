@@ -57,7 +57,7 @@ function dict2(){
 		'patient' => 'Hastalar',
 		'story' => 'Hikayeler',
 		'result' => 'Sonuçlar',
-		'parent' => 'Ara Başlıklar',
+		'parent' => 'Tetkik Ebeveyn',
 		'discipline' => 'Bilim Dalları',
 		'announcement' => 'Duyurular',
 		'' => '',

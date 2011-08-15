@@ -7,6 +7,7 @@
     <link rel="shortcut icon" href="/asset/img/favicon.ico" />
     <link rel="stylesheet" type="text/css" href="/asset/css/service.css" />
     <link rel="stylesheet" type="text/css" href="/asset/css/admin.css" />
+
     <title>{{_e(@page_title)}}</title>
   </head>
 
@@ -16,7 +17,7 @@
     <div id="wrapper">
       <div id="container">
         <ul class="tabs" id="mainNav">
-          <li class="home"><a href="{{ @SR }}"
+          <li class="home"><a href="{{@SR}}"
             title="Kullanıcı adınız">{{@SESSION.adminusername}}</a>
           </li>
           <li class="magenta">
@@ -33,15 +34,11 @@
     </F3:check>
 
     <F3:check if="{{@correct}}">
-    <F3:true>
-    <div id="notice"><p class="success">{{@correct}}</p></div>
-    </F3:true>
+      <div id="notice"><p class="success">{{@correct}}</p></div>
     </F3:check>
 
     <F3:check if="{{@error}}">
-    <F3:true>
-    <div id="notice"><p class="fail">{{@error}}</p></div>
-    </F3:true>
+      <div id="notice"><p class="fail">{{@error}}</p></div>
     </F3:check>
 
     <div id="content">
@@ -49,10 +46,10 @@
       <F3:true>
       <div id="leftcolumn">
         <table>
-          <tr><td class="home">
-              <img src="/asset/img/table.png"/> {{@SESSION.TABLE}}
+          <tr><td>
+              <img src="/asset/img/table.png"/> {{_et(@SESSION.TABLE)}}
           </td></tr>
-          <tr><td class="home">
+          <tr><td>
               <img src="/asset/img/save.png"/> {{@SESSION.SAVE}}
           </td></tr>
           <tr><td>

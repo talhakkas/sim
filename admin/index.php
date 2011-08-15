@@ -71,17 +71,14 @@ function giris() {
 }
 
 function logout() {
-	if (F3::get('SESSION.admin')) {
-		F3::clear('SESSION.adminusername'); // admin özelliği sil
-		F3::clear('SESSION.adminpassword'); // ek admin özellikleri sil
-		F3::clear('SESSION.admin');         // admin özelliği sil
-		F3::clear('SESSION.adminsuper');    // ek admin özellikleri sil
-		F3::clear("SESSION.TABLE_INIT");    // ilk_tablo bilgisini sil
-		F3::clear("SESSION.TABLE");         // tablo bilgisini sil
-		F3::clear("SESSION.KEY");           // tablo uniq key'i sil
+	foreach(array('SESSION', 'REQUEST') as $alan) {
+		foreach(F3::get("$alan") as $key => $value) {
+			F3::clear("$alan.$key");
+		}
 	}
 	F3::reroute('/');
 }
+
 
 F3::config("../.f3.ini");
 F3::set('DB', new DB('mysql:host=localhost;port=3306;dbname=' . F3::get('dbname'), F3::get('dbuser'), F3::get('dbpass')));

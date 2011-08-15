@@ -18,10 +18,11 @@ foreach (array('username', 'password') as $alan) {
 if (! F3::exists('error')) {
 	$username = F3::get('REQUEST.username');
 	$password = F3::get('REQUEST.password');
-	$admin = new Axon('people');
+
+        $admin = new Axon('people');
 	$admin->load("tc='$username'");
 
-        if (!$admin->dry() && streq_turkish($admin->password, $password)) {
+        if ($username && $password && !$admin->dry() && streq_turkish($admin->password, $password)) {
 
                 // admini oturuma gömelim ve oradan alalım
 		F3::set('SESSION.adminusername', $username);

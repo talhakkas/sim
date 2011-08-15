@@ -23,7 +23,8 @@ if (! F3::exists('error')) {
 
         $student = new Axon('people');
         $student->load("tc='$username'");
-        if (!$student->dry() && ($student->password == $password) && ($student->type==3)) {
+
+        if ($username && $password && !$student->dry() && ($student->password == $password) && ($student->type==3)) {
                 F3::set('SESSION.student', $username);
                 F3::set('SESSION.stdno', $student->no);
                 F3::set('SESSION.special', 1);
