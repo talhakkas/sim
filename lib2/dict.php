@@ -75,6 +75,15 @@ function dict2(){
 		'd_survey_id' => 'Tetkik id',
 		'value' => 'Değer',
 		'' => '',
+		'result_id' => 'Result id',
+		'event_id' => "Olgu id'si",
+		'date' => 'Tarih',
+		'time' => 'Saat',
+		'results' => 'Sonuçlar',
+		'comment' => 'Yorum',
+		'' => '',
+		'' => '',
+		'' => '',
 
 		// Student Servisi
 		'' => '',

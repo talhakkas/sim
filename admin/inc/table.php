@@ -17,7 +17,7 @@ $table = new Axon($TABLE);
 // tablo kayıt sayısını kaydedelim
 F3::set('SESSION.SAVE', count($table->find()));
 
-F3::set('correct', "<u>"._et($TABLE)."</u> tablosu başarıyla seçildi.");
+F3::set('correct', "'"._et($TABLE)."' tablosu başarıyla seçildi.");
 
 F3::call('home');
 

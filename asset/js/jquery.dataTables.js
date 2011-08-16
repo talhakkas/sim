@@ -966,21 +966,21 @@
 			 */
 			this.oLanguage = {
 				"sProcessing": "Processing...",
-				"sLengthMenu": "Show _MENU_ entries",
-				"sZeroRecords": "No matching records found",
-				"sEmptyTable": "No data available in table",
-				"sLoadingRecords": "Loading...",
-				"sInfo": "Showing _START_ to _END_ of _TOTAL_ entries",
-				"sInfoEmpty": "Showing 0 to 0 of 0 entries",
-				"sInfoFiltered": "(filtered from _MAX_ total entries)",
+				"sLengthMenu": "Göster _MENU_ ",
+				"sZeroRecords": "Gösterilecek sonuç bulunamadı",
+				"sEmptyTable": "Tabloda hiç veri bulunamadı",
+				"sLoadingRecords": "Yükleniyor...",
+				"sInfo": "_TOTAL_ adet veriden _START_ ile _END_ arası gösteriliyor",
+				"sInfoEmpty": "Toplam 0 adet veriden 0 ile 0 arası gösteriliyor",
+				"sInfoFiltered": "(_MAX_ adet veriden filtrelendi)",
 				"sInfoPostFix": "",
-				"sSearch": "Search:",
+				"sSearch": "Arama:",
 				"sUrl": "",
 				"oPaginate": {
-					"sFirst":    "First",
-					"sPrevious": "Previous",
-					"sNext":     "Next",
-					"sLast":     "Last"
+					"sFirst":    "ilk",
+					"sPrevious": "Geri",
+					"sNext":     "İleri",
+					"sLast":     "Son"
 				},
 				"fnInfoCallback": null
 			};
