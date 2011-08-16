@@ -1,4 +1,11 @@
-## nginx yapılandırılması (yerelde çalışılıyorsa)
+## nginx yapılandırılması
+
+### sunucuda
+
+	hmmm
+
+
+### yerelde çalışılıyorsa
 
     rewrite ^/*$ /a/ redirect;
 
@@ -17,6 +24,7 @@
 	        fastcgi_param SCRIPT_FILENAME $request_filename;
 	        include fastcgi_params;
 	}
+
 
 ### db, doc, lib, lib2 dizinlerine direk erişimi kısıtlayalım 404 dönsün
 
