@@ -1,5 +1,6 @@
 <?php
 
+// ajax kodlarını kullanması için veritabanı parola ve şifresini üretelim
 function config($file) {
 	$_file = file($file);
 	$_ini = array();
