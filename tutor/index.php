@@ -2,42 +2,34 @@
 
 require_once  '../lib/base.php';
 require_once  '../lib2/lib.php';
+require_once  '../lib2/F3.php';
 
-function page($title, $template, $layout='render') {
-	F3::set('title', $title);
-	F3::set('template', $template);
-	F3::call($layout);
-}
-
-function render() {
-	echo Template::serve('layout.htm');
-}
 function home() {
-	page('Yönetici Paneli', 'home');
+	render('home', 'Öğretim Üyesi Paneli');
 }
 function info() {
 	if (! F3::get('SESSION.tutor'))
 		return F3::call('giris');
-	page('Bilgilendirme Sayfası', 'info');
+	render('info', 'Bilgilendirme Sayfası');
 }
 function add() {
 	if (F3::exists('SESSION.key')) // bu bir direkt erişim mi?
 		return F3::call('giris');
-	page('Kaydet', 'new');
+	render('new', 'Kaydet');
 }
 function edit() {
 	if (! F3::exists('data')) // bu bir direkt erişim mi?
 		return F3::call('giris');
-	page('Düzenle', 'edit');
+	render('edit', 'Düzenle');
 }
 function find() {
-	page('Bul', 'find');
+	render('find', 'Bul');
 }
 function ok() {
-	page('İnceleme Sonuçları', 'ok');
+	render('ok', 'İnceleme Sonuçları');
 }
 function review() {
-	page('Listelendi', 'review');
+	render('review', 'Listelendi');
 }
 function giris() {
 	// nerede bizim istediğimiz tablolar ?
@@ -56,25 +48,8 @@ function giris() {
 
 	if (F3::get('SESSION.tutor'))
 		return F3::call('home');
-	page('Yönetici Paneli', 'login'); // adminlayout sadece login sayfası için
+	render('login', 'Öğretim Üyesi Paneli'); // adminlayout sadece login sayfası için
 }
-
-function logout() {
-	if (F3::get('SESSION.tutor')) {
-		F3::clear('SESSION.tutorusername'); // admin özelliği sil
-		F3::clear('SESSION.tutorpassword'); // ek admin özellikleri sil
-		F3::clear('SESSION.tutor');         // admin özelliği sil
-		F3::clear('SESSION.tutorsuper');    // ek admin özellikleri sil // TODO bu özelliğin silinmesi mantıklı
-		F3::clear("SESSION.TABLE_INIT");    // ilk_tablo bilgisini sil
-		F3::clear("SESSION.TABLE");         // tablo bilgisini sil
-		F3::clear("SESSION.KEY");           // tablo uniq key'i sil
-	}
-	F3::reroute('/');
-}
-
-F3::config("../.f3.ini");
-F3::set('DB', new DB('mysql:host=localhost;port=3306;dbname=' . F3::get('dbname'), F3::get('dbuser'), F3::get('dbpass')));
-F3::set('SR', '/' . strtok($_SERVER["SCRIPT_NAME"], '/'));
 
 F3::route("GET  /*",      'giris');
 F3::route("POST /login",  'login.php');

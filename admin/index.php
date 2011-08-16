@@ -2,42 +2,34 @@
 
 require_once '../lib/base.php';
 require_once '../lib2/lib.php';
-
-function page($title, $template, $layout='layout') {
-	F3::set('page_title', $title);
-	F3::set('SESSION.template', $template);
-	F3::set('template', $template);
-        if (F3::get('printly')) // printly modu için ufak bir ayar
-                $layout = "printly";
-	echo Template::serve($layout . '.htm');
-}
+require_once '../lib2/F3.php';
 
 function home() {
-	page('Yönetici Paneli', 'home');
+	render('home', 'Yönetici Paneli');
 }
 function info() {
 	if (! F3::get('SESSION.admin'))
 		return F3::call('giris');
-	page('Bilgilendirme Sayfası', 'info');
+	render('info', 'Bilgilendirme Sayfası');
 }
 function add() {
 	if (F3::get('SESSION.key')) // bu bir direkt erişim mi?
 		return F3::call('giris');
-	page('Kaydet', 'new');
+	render('new', 'Kaydet');
 }
 function edit() {
 	if (! F3::exists('data')) // bu bir direkt erişim mi?
 		return F3::call('giris');
-	page('Düzenle', 'edit');
+	render('edit', 'Düzenle');
 }
 function find() {
-	page('Bul', 'find');
+	render('find', 'Bul');
 }
 function show() {
-	page('İnceleme Sonuçları', 'show');
+	render('show', 'İnceleme Sonuçları');
 }
 function review() {
-	page('Listelendi', 'review');
+	render('review', 'Listelendi');
 }
 
 function printly(){
@@ -67,22 +59,9 @@ function giris() {
 
 	if (F3::get('SESSION.admin'))
 		return F3::call('home');
-	page('Yönetici Paneli', 'login'); // adminlayout sadece login sayfası için
+	render('login', 'Yönetici Paneli'); // adminlayout sadece login sayfası için
 }
 
-function logout() {
-	foreach(array('SESSION', 'REQUEST') as $alan) {
-		foreach(F3::get("$alan") as $key => $value) {
-			F3::clear("$alan.$key");
-		}
-	}
-	F3::reroute('/');
-}
-
-
-F3::config("../.f3.ini");
-F3::set('DB', new DB('mysql:host=localhost;port=3306;dbname=' . F3::get('dbname'), F3::get('dbuser'), F3::get('dbpass')));
-F3::set('SR', '/' . strtok($_SERVER["SCRIPT_NAME"], '/'));
 
 F3::route("GET  /*",      'giris');
 F3::route("GET /printly",  'printly');

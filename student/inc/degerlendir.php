@@ -15,7 +15,7 @@ F3::set('SESSION.olgustate', $state+1);
 F3::reroute('/olgu');
 
 
-//page('Değerlendirme Ekranı', 'degerlendir');
+//render('degerlendir', 'Değerlendirme Ekranı');
 
 ?>
 

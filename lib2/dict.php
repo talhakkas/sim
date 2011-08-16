@@ -61,6 +61,16 @@ function dict2(){
 		'discipline' => 'Bilim Dalları',
 		'announcement' => 'Duyurular',
 		'' => '',
+		'' => '',
+
+		// Student Servisi
+		'' => '',
+		'' => '',
+		'' => '',
+
+		// Tutor Servisi
+		'' => '',
+		'' => '',
 	);
 }
 

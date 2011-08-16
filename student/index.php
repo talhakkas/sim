@@ -2,15 +2,7 @@
 
 require_once  '../lib/base.php';
 require_once  '../lib2/lib.php';
-
-function page($title='Ana Sayfa', $template='home', $layout='layout') {
-	F3::set('page_title', $title);
-	F3::set('SESSION.template', $template);
-        F3::set('template', $template);
-        if (F3::get('printly')) // printly modu için ufak bir ayar
-                $layout = "printly";
- 	echo Template::serve($layout.'.htm');
-}
+require_once  '../lib2/F3.php';
 
 function home() {
         $duyuru = DB::sql("select * from announcement");
@@ -19,25 +11,25 @@ function home() {
         F3::set('olgu', DB::sql("select * from event"));
         if (! F3::get("SESSION.olgu")) // default olgu
                 F3::set("SESSION.olgu", 2); // default olgu
-        page('Ana Sayfa', 'home');
+        render('home', 'Ana Sayfa');
 }
 
 function ekg() {
         if (F3::get("SESSION.special") != 1)
                 return F3::call('login');
-	page('Ekg Ekranı', 'ekg');
+	render('ekg', 'Ekg Ekranı');
 }
 
 function bulgu() {
         if (F3::get("SESSION.special") != 1)
                 return F3::call('login');
-	page('Bulgu Ekranı', 'bulgu');
+	render('bulgu', 'Bulgu Ekranı');
 }
 
 function about() {
         if (F3::get("SESSION.special") != 1)
                 return F3::call('login');
-	page('Hakkında', 'about');
+	render('about', 'Hakkında');
 }
 
 function personal() {
@@ -47,13 +39,13 @@ function personal() {
         $std = F3::get('SESSION.student');
         $student->load("tc='$std'");
         F3::set("personal", $student);
-	page('Kişisel Sayfa', 'personal');
+	render('personal', 'Kişisel Sayfa');
 }
 
 function son() {
         if (F3::get("SESSION.special") != 1)
                 return F3::call('login');
-	page('Son Oturum', 'son');
+	render('son', 'Son Oturum');
 }
 
 function printly() {
@@ -70,35 +62,17 @@ function printly() {
 function login() {
         if (F3::get("SESSION.special") == 1)
                 return F3::call('home');
-	page('Öğrenci Girişi', 'login');
+	render('login', 'Öğrenci Girişi');
 }
 
 function cases() {
         if (F3::get("SESSION.special") != 1)
                 return F3::call('home');
         F3::set("SESSION.olgu", $_POST['OLGU']);
-        page('Ana Sayfa', 'home');
+        render('home', 'Ana Sayfa');
         F3::reroute('/');
 }
 
-function logout() {
-	foreach(array('SESSION', 'REQUEST') as $alan) {
-		foreach(F3::get("$alan") as $key => $value) {
-			F3::clear("$alan.$key");
-		}
-	}
-	if (F3::get('SESSION.special') == 1) {
-                F3::clear('error');
-                F3::set('SESSION.special', '0');
-                F3::set('SESSION.username', '');
-        }
-	F3::reroute('/');
-}
-
-
-F3::config("../.f3.ini");
-F3::set('DB', new DB('mysql:host=localhost;port=3306;dbname=' . F3::get('dbname'), F3::get('dbuser'), F3::get('dbpass')));
-F3::set('SR', '/' . strtok($_SERVER["SCRIPT_NAME"], '/')); // SERVICEROOT
 
 F3::route("GET /*"      , 'login');
 F3::route("GET /printly*"      , 'printly');

@@ -22,7 +22,7 @@ if (! F3::exists('error')) {
 
 	if (!$tutor->dry() && streq_turkish($tutor->password, $password)) {
 
-                // tutori oturuma gömelim ve oradan alalım
+                // tutor'u oturuma gömelim ve oradan alalım
 		F3::set('SESSION.tutorusername', $username);
                 F3::set('SESSION.tutorpassword', $password);
                 F3::set('SESSION.tutor', true);  // tutor özelliği ekle
@@ -39,4 +39,5 @@ if (! F3::exists('error')) {
 // hata var, dön başa ve tekrar sorgu al.
 // error alanı dolu ve layout.htm'de görüntülenecek
 F3::call('giris'); // f3.php'den fonksiyon çağırımı
+
 ?>

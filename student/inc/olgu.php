@@ -37,6 +37,6 @@ if (! F3::get('SESSION.olgustate')){
 	F3::set('SESSION.olgustate', 1);
 }
 
-page('Olgu Ekranı', 'olgu');
+render('olgu', 'Olgu Ekranı');
 
 ?>
