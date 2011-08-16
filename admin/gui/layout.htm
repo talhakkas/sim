@@ -56,6 +56,8 @@
               <a href="{{@SR}}" title=""><img
                 src="/asset/img/tables.png"/> {{_e('Tablolar')}}</a>
           </td></tr>
+          <F3:check if="{{@SESSION.adminsuper}}">
+          <F3:true>
           <tr><td>
               <a href="review" title="">
                 <img src="/asset/img/review.png"/> {{_e('Tablo İncele')}}</a>
@@ -68,6 +70,8 @@
               <a href="find" title="">
                 <img src="/asset/img/find.png"/> {{_e('Bul')}}</a>
           </td></tr>
+          </F3:true>
+          </F3:check>
           <tr><td>
               <a href="csv" title="">
                 <img src="/asset/img/csv.png"/> {{_e('Csv Çıktı')}}</a>

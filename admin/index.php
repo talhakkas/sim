@@ -4,6 +4,9 @@ require_once '../lib/base.php';
 require_once '../lib2/lib.php';
 require_once '../lib2/F3.php';
 
+function adminsuper() {
+	return F3::get('SESSION.adminsuper');
+}
 function home() {
 	render('home', 'Yönetici Paneli');
 }
@@ -13,22 +16,27 @@ function info() {
 	render('info', 'Bilgilendirme Sayfası');
 }
 function add() {
+	if (!adminsuper()) return F3::call('home');
 	if (F3::get('SESSION.key')) // bu bir direkt erişim mi?
 		return F3::call('giris');
 	render('new', 'Kaydet');
 }
 function edit() {
+	if (!adminsuper()) return F3::call('home');
 	if (! F3::exists('data')) // bu bir direkt erişim mi?
 		return F3::call('giris');
 	render('edit', 'Düzenle');
 }
 function find() {
+	if (!adminsuper()) return F3::call('home');
 	render('find', 'Bul');
 }
 function show() {
+	if (!adminsuper()) return F3::call('home');
 	render('show', 'İnceleme Sonuçları');
 }
 function review() {
+	if (!adminsuper()) return F3::call('home');
 	render('review', 'Listelendi');
 }
 

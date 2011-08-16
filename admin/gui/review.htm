@@ -54,6 +54,17 @@
 	      <input type="hidden" name="key" id="key" value="{{@value}}" />
 	      <input id="submit_button" type="submit" value = "incele">
 	    </form>
+	    <form name="login" action="edit" method="POST" id="login" 
+	      enctype="multipart/form-data">
+	      <input type="hidden" name="key" id="key" value="{{@value}}" />
+	      <input id="submit_button" type="submit" value = "düzenle">
+	    </form>
+	    <form name="login" action="del" method="POST" id="login" 
+	      enctype="multipart/form-data">
+	      <input type="hidden" name="key" id="key" value="{{@value}}" />
+	      <input id="submit_button" type="submit" value = "sil"
+	      onClick="return confirm('Silmek istediğinizden emin misiniz?');"/>
+	    </form>
 	  </td>
 	  </F3:true>
 	  </F3:check>

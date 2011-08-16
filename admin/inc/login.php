@@ -30,7 +30,7 @@ if (! F3::exists('error')) {
                 F3::set('SESSION.admin', true);  // admin özelliği ekle
 
                 if ($admin->super)               // ek admin özellikleri ekle
-                        F3::set('SESSION.adminsuper', $admin->super);
+                        F3::set('SESSION.adminsuper', true);
                 F3::clear('error');
 
                 return F3::call('table.php'); // default tablo bilgileri seçili olmalı
