@@ -30,7 +30,8 @@
         </form>
         <form name="login" action="del" method="POST" id="login" 
           enctype="multipart/form-data">
-          <input id="submit_button" type="submit" value="Sil" class="delete" />
+          <input id="submit_button" type="submit" value="Sil"
+          onClick="return confirm('Silmek istediğinizden emin misiniz?');"/>
         </form>
       </td>
     </tr>
