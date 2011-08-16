@@ -33,6 +33,8 @@ function dict(){
 		'super' => 'Özellik',
 		'type' => 'Tip',
 		'photo' => 'Resim',
+
+		'' => '',
 		'' => '',
 		'' => '',
 		'' => '',
@@ -61,6 +63,17 @@ function dict2(){
 		'discipline' => 'Bilim Dalları',
 		'announcement' => 'Duyurular',
 		'' => '',
+
+		'tc' => 'TC Kimlik',
+		'name' => 'Ad',
+		'surname' => 'Soyad',
+		'password' => 'Parola',
+		'super' => 'Özellik',
+		'type' => 'Tip',
+		'photo' => 'Resim',
+
+		'd_survey_id' => 'Tetkik id',
+		'value' => 'Değer',
 		'' => '',
 
 		// Student Servisi
