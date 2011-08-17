@@ -8,7 +8,7 @@
     <link rel="stylesheet" type="text/css" href="/asset/css/service.css" />
     <link rel="stylesheet" type="text/css" href="/asset/css/admin.css" />
 
-    <title>{{_e(@page_title)}}</title>
+    <title>{{e(@page_title)}}</title>
   </head>
 
   <body>
@@ -22,10 +22,10 @@
           </li>
           <li class="magenta">
           <a href="info"
-            title="Bilgilendirme sayfası">{{_e('Bilgilendirme')}}</a>
+            title="Bilgilendirme sayfası">{{e('Bilgilendirme')}}</a>
           </li>
           <li class="logout">
-          <a href="logout" title="Çıkış">{{_e('Çıkış')}}</a>
+          <a href="logout" title="Çıkış">{{e('Çıkış')}}</a>
           </li>
         </ul>
       </div>
@@ -47,42 +47,42 @@
       <div id="leftcolumn">
         <table>
           <tr><td>
-              <img src="/asset/img/table.png"/>{{_et(@SESSION.TABLE)}}
+              <img src="/asset/img/table.png"/> {{e(@SESSION.TABLE)}}
           </td></tr>
           <tr><td>
               <img src="/asset/img/save.png"/> {{@SESSION.SAVE}}
           </td></tr>
           <tr><td>
               <a href="{{@SR}}" title=""><img
-                src="/asset/img/tables.png"/> {{_e('Tablolar')}}</a>
+                src="/asset/img/tables.png"/> {{e('Tablolar')}}</a>
           </td></tr>
           <F3:check if="{{@SESSION.adminsuper}}">
           <F3:true>
           <tr><td>
               <a href="review" title="">
-                <img src="/asset/img/review.png"/> {{_e('Tablo İncele')}}</a>
+                <img src="/asset/img/review.png"/> {{e('Tablo İncele')}}</a>
           </td></tr>
           <tr><td>
               <a href="new" title="">
-                <img src="/asset/img/add.png"/> {{_e('Ekle')}}</a>
+                <img src="/asset/img/add.png"/> {{e('Ekle')}}</a>
           </td></tr>
           <tr><td>
               <a href="find" title="">
-                <img src="/asset/img/find.png"/> {{_e('Bul')}}</a>
+                <img src="/asset/img/find.png"/> {{e('Bul')}}</a>
           </td></tr>
           </F3:true>
           </F3:check>
           <tr><td>
               <a href="csv" title="">
-                <img src="/asset/img/csv.png"/> {{_e('Csv Çıktı')}}</a>
+                <img src="/asset/img/csv.png"/> {{e('Csv Çıktı')}}</a>
           </td></tr>
           <tr><td>
               <a href="csv" title="">
-                <img src="/asset/img/pdf.png"/> {{_e('Pdf Çıktı')}}</a>
+                <img src="/asset/img/pdf.png"/> {{e('Pdf Çıktı')}}</a>
           </td></tr>
           <tr><td>
               <a href="printly" title="">
-                <img src="/asset/img/printly.png"/> {{_e('Yazıcı Dostu')}}</a>
+                <img src="/asset/img/printly.png"/> {{e('Yazıcı Dostu')}}</a>
           </td></tr>
         </table>
       </div>

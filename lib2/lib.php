@@ -3,27 +3,41 @@
 include 'init.php';
 include 'dict.php';
 
-
-// genel terimlerin çevirisi
-function _et($str){
-	$dict = dict2();
-	if (in_array($str, array_keys($dict)))
-		return $dict[$str];
-	return Google::translate($str, 'tr', 'en');
+function render($template, $title, $layout='layout') {
+	F3::set('page_title', $title);
+	F3::set('SESSION.template', $template); // printly için
+	F3::set('template', $template);
+        if (F3::get('printly')) // printly modu için ufak bir değişkencik
+                $layout = "printly";
+	echo Template::serve($layout . '.htm');
 }
 
-// ingilizce türkçe çeviri
-function _e($str){
-	$_lang = $_SERVER["HTTP_ACCEPT_LANGUAGE"];
-	if ( substr($_lang, 0, 2) == "tr")
-		return $str;
-	else {
-		$dict = dict();
-		if (in_array($str, array_keys($dict)))
-			return $dict[$str];
-
-		return Google::translate($str, 'tr', 'en');
+function logout() {
+	foreach(array('SESSION', 'REQUEST') as $alan) {
+		foreach(F3::get("$alan") as $key => $value) {
+			F3::clear("$alan.$key");
+		}
 	}
+	F3::reroute('/');
+}
+
+
+F3::config("../.f3.ini");
+F3::set('DB', new DB('mysql:host=localhost;port=3306;dbname=' . F3::get('dbname'), F3::get('dbuser'), F3::get('dbpass')));
+F3::set('SR', '/' . strtok($_SERVER["SCRIPT_NAME"], '/'));
+
+
+// tüm termilerin çevirisi
+function e($str){
+	//$_lang = $_SERVER["HTTP_ACCEPT_LANGUAGE"];
+	//if ( substr($_lang, 0, 2) == "tr")
+	//	return $str;
+	//return Google::translate($str, 'tr', 'en');
+
+	$dict = dict();
+	if (in_array($str, array_keys($dict)))
+		return $dict[$str];
+	return $str;
 }
 
 ?>

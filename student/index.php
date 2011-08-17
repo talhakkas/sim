@@ -2,7 +2,6 @@
 
 require_once  '../lib/base.php';
 require_once  '../lib2/lib.php';
-require_once  '../lib2/F3.php';
 
 function home() {
         $duyuru = DB::sql("select * from announcement");

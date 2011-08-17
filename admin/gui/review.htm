@@ -14,7 +14,7 @@
 </script>
 
 <div class="page">
-  <h2 id="headline">{{_et(@SESSION.TABLE)}} tablosu inceleniyor</h2>
+  <h2 id="headline">{{e(@SESSION.TABLE)}} tablosu inceleniyor</h2>
 
   <div id="dt_example">
     <table cellpadding="0" cellspacing="0" border="0" class="display" 
@@ -22,20 +22,20 @@
       <thead>
 	<tr>
 	  <F3:repeat group="{{@fields}}" key="{{@gnl}}" value="{{@blg}}" >
-	    <th>{{_et(@blg)}}</th>
+	    <th>{{e(@blg)}}</th>
 	  </F3:repeat>
 	  <th></th>
 	</tr>
       </thead>
       <tbody>
 
-	<F3:repeat group="{{@DB->result}}" key="{{ @index }}" value="{{ @row }}" >
+	<F3:repeat group="{{@DB->result}}" key="{{@index}}" value="{{@row}}" >
 	<tr>
-	  <F3:repeat group="{{ @row }}" key="{{ @field }}" value="{{ @value }}" >
-	  <F3:check if="{{ @field=='photo' }}">
+	  <F3:repeat group="{{@row}}" key="{{@field}}" value="{{@value}}" >
+	  <F3:check if="{{@field=='photo'}}">
 	  <F3:true>
 	  <td class="label"><img width=80
-	    src="/asset/{{ @uploaddir , @value }}"/></td>
+	    src="/asset/{{@uploaddir,@value}}"/></td>
 	  </F3:true>
 	  <F3:false>
 	  <F3:check if="{{in_array(@field, @fields)}}">
@@ -50,17 +50,17 @@
 	  <F3:check if="{{@field == @SESSION.KEY}}">
 	  <F3:true>
 	  <td class="label" style="width:96px">
-	    <form name="login" action="find" method="POST" id="login" enctype="multipart/form-data">
+	    <form name="login" action="find" method="POST" id="login">
 	      <input type="hidden" name="key" id="key" value="{{@value}}" />
 	      <input id="submit_button" type="submit" value = "incele">
 	    </form>
 	    <form name="login" action="edit" method="POST" id="login" 
-	      enctype="multipart/form-data">
+	      style="display:none;">
 	      <input type="hidden" name="key" id="key" value="{{@value}}" />
 	      <input id="submit_button" type="submit" value = "düzenle">
 	    </form>
 	    <form name="login" action="del" method="POST" id="login" 
-	      enctype="multipart/form-data">
+	      style="display:none;">
 	      <input type="hidden" name="key" id="key" value="{{@value}}" />
 	      <input id="submit_button" type="submit" value = "sil"
 	      onClick="return confirm('Silmek istediğinizden emin misiniz?');"/>

@@ -7,8 +7,7 @@
 
 - servislerin sahibini ve grubunu `www-data` ayarla
 
-        sudo chown www-data -R sim
-        sudo chgrp www-data -R sim
+        sudo chown www-data:www-data -R sim
 
 - test.omu.edu.tr altına sembolik gönder
 

@@ -4,7 +4,7 @@
 </style>
 
 <div class="page">
-  <h2 id="headline">{{ _e(@page_title) }}</h2>
+  <h2 id="headline">{{e(@page_title)}}</h2>
   <br /><br />
   Veritabanının ilgili tablosunu seçiniz.
   <form name="login" action="table" method="POST" id="login"
@@ -17,10 +17,10 @@
             <F3:repeat group='{{@SESSION.TABLES}}' key='{{@table}}' >
             <F3:check if='{{@table==@SESSION.TABLE}}'>
             <F3:true>
-            <option value='{{@table}}' selected>{{_et(@table)}}</option>
+            <option value='{{@table}}' selected>{{e(@table)}}</option>
             </F3:true>
             <F3:false>
-            <option value='{{@table}}'>{{_et(@table)}}</option>
+            <option value='{{@table}}'>{{e(@table)}}</option>
             </F3:false>
             </F3:check>
             </F3:repeat>

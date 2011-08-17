@@ -25,6 +25,11 @@
 	        include fastcgi_params;
 	}
 
+**NOT** sanal makinada çalışılıyorsa
+
+server_name  localhost; yerine
+server_name  192.168.1.4; IP adresi yazmak gerekli
+
 
 ### db, doc, lib, lib2 dizinlerine direk erişimi kısıtlayalım 404 dönsün
 

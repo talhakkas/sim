@@ -1,7 +1,7 @@
   <table class="custom">
     <tr>
       <F3:repeat group="{{@fields}}" key="{{@gnl}}" value="{{@blg}}" >
-      <td class="label" style="color:#2f7ca2"> {{_e(@blg)}}</td>
+      <td class="label" style="color:#2f7ca2"> {{e(@blg)}}</td>
       </F3:repeat>
     </tr>
     <tr>
