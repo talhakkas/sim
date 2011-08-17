@@ -1,11 +1,11 @@
 #dt_example {
+	float:left;
 	font: 80%/1.45em "Lucida Grande", Verdana, Arial, Helvetica, sans-serif;
 	padding: 0;
 	color: #333;
 	background-color: #fff;
-	width: 740px;
+	width: 760px;
 	padding: 0;
-	margin: 30px auto 0 auto;
 }
 
 /* -------------------------------------------------------------------------------------------*/
@@ -202,8 +202,23 @@ input.ui-button { padding: .4em 1em; }
 
 /*button sets*/
 .ui-buttonset { margin-right: 7px; }
-.ui-buttonset .ui-button { margin-left: 0; margin-right: -.3em; }
+.ui-buttonset .ui-button { margin-left: 0; margin-right: -.3em;}
 
 /* workarounds */
 button.ui-button::-moz-focus-inner { border: 0; padding: 0; } /* reset extra padding in Firefox */
 
+
+/* ------------------------------------------------------------ */
+/* --------- bu noktadan sonra hmm demeye başlıyoruz ---------- */
+/* ------------------------------------------------------------ */
+
+#content {height:540px;}
+
+.ui-widget-header {border: 1px solid #d3d3d3;background: #f8f8f8;}
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {border-top:none;}
+.ui-buttonset .ui-button {
+	color:#2F7CA2; font-size:11px; font-family: "Helvetica Neue", Helvetica, Corbel, Arial, sans-serif;
+	border-top: 1px solid #d3d3d3; background:#fff;
+}
+
+#example {border-left: 1px solid #d3d3d3;border-right: 1px solid #d3d3d3;}
