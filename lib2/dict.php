@@ -7,7 +7,7 @@ function dict(){
 		// Tablo İsimleri
 		'people' => 'Kişiler',
 		'event' => 'Olgular (Case)',
-		'survey' => 'Değiştirilebilir Tetkikler',
+		'survey' => 'Etkileşimli Tetkikler',
 		'd_survey' => 'Temel Tetkikler',
 		'patient' => 'Hastalar',
 		'story' => 'Hikayeler',
@@ -66,8 +66,7 @@ function dict(){
 		'results' => 'Sonuçlar',
 
 		// parent
-		'parent_id' => '',
-		'discipline_id' => '',
+		'parent_id' => 'Tetkik Ebeveyn id',
 
 
 		// Student Servisi özel değişkenleri
@@ -85,7 +84,7 @@ function dict(){
 }
 
 
-// Çeviri Alanındaki kelimeler
+// İngilizce Çeviri Alanındaki kelimeler
 function eski_dict(){
 	return array(
 		'Anasayfa' => 'Home',

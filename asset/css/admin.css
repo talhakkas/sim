@@ -1,6 +1,6 @@
 #leftcolumn {
     height:auto;
-    width:125px;
+    width:120px;
     float:left;
     font-size:13px;
     -moz-border-radius: 5px;
@@ -11,16 +11,15 @@
     box-shadow:0 5px 10px rgba(0, 0, 0, 0.2);
 }
 
-#leftcolumn tr td a {margin-top:140px;}
 #leftcolumn tr img {width:35px; float:left;}
 #leftcolumn tr {font-size:12px;font-weight:bold;}
 #leftcolumn tr td{color: #3b5998;}
 
 .page {
-    width: 770px;
+    width: 780px;
     height: auto;
     font-size:13px;
-    margin-left:150px;
+    margin-left:140px;
     min-height:340px;
 }
 
