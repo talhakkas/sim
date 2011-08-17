@@ -1,11 +1,8 @@
-#dt_example {
+.dt_example {
 	float:left;
 	font: 80%/1.45em "Lucida Grande", Verdana, Arial, Helvetica, sans-serif;
-	padding: 0;
 	color: #333;
-	background-color: #fff;
 	width: 760px;
-	padding: 0;
 }
 
 /* -------------------------------------------------------------------------------------------*/

@@ -402,3 +402,21 @@ input[type=text]:focus {
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
+.module {
+  background: none repeat scroll 0 0 #EEEEEE;
+  border-radius:5px 5px 5px 5px;
+  margin:0 0 10px;
+  padding:5px;
+}
+
