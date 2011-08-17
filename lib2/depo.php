@@ -1,7 +1,7 @@
 <?php
 
 // ajax kodlarını kullanması için veritabanı parola ve şifresini üretelim
-function config($file) {
+function ini_config($file) {
 	$_file = file($file);
 	$_ini = array();
 	foreach ($_file as $row) {
@@ -13,7 +13,7 @@ function config($file) {
 	return $_ini;
 }
 
-$db = config("../.f3.ini");
+$db = ini_config("../.f3.ini");
 $db_name = $db['dbname'];
 $db_user = $db['dbuser'];
 $db_pass = $db['dbpass'];
