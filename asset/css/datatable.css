@@ -1,9 +1,4 @@
-.dt_example {
-	float:left;
-	font: 80%/1.45em "Lucida Grande", Verdana, Arial, Helvetica, sans-serif;
-	color: #333;
-	width: 760px;
-}
+.dt_example {font: 11px "Lucida Grande", Verdana, Arial, Helvetica, sans-serif;width: 770px;float:left;}
 
 /* -------------------------------------------------------------------------------------------*/
 
@@ -37,7 +32,7 @@ table.display thead th div.DataTables_sort_wrapper span {position: absolute;top:
 	top: 0px;
 	left: 50%;
 	width: 250px;
-	margin-left: -125px;
+	/*margin-left: -125px;*/
 	border: 1px solid #ddd;
 	text-align: center;
 	color: #999;
@@ -219,3 +214,4 @@ button.ui-button::-moz-focus-inner { border: 0; padding: 0; } /* reset extra pad
 }
 
 #example {border-left: 1px solid #d3d3d3;border-right: 1px solid #d3d3d3;}
+#example_length select {width:60px;}

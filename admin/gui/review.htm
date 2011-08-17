@@ -1,16 +1,14 @@
-<link rel="stylesheet" type="text/css" href="/asset/css/datatable.css" />
-<script type="text/javascript" language="javascript" 
-  src="/asset/js/jquery.js"> </script>
-<script type="text/javascript" language="javascript" 
-  src="/asset/js/jquery.dataTables.js"></script>
+<link type="text/css" rel="stylesheet" href="/asset/css/datatable.css" />
+<script type="text/javascript" src="/asset/js/jquery.js"></script>
+<script type="text/javascript" src="/asset/js/jquery.dataTables.js"></script>
 
 <script type="text/javascript" charset="utf-8">
   $(document).ready(function() {
       oTable = $('#example').dataTable({
 	"bJQueryUI": true,
 	"sPaginationType": "full_numbers"
-	});
-      } );
+      });
+  } );
 </script>
 
 <div class="page">
@@ -50,19 +48,17 @@
 	  <F3:check if="{{@field == @SESSION.KEY}}">
 	  <F3:true>
 	  <td class="label" style="width:96px">
-	    <form name="login" action="find" method="POST" id="login">
+	    <form name="login" action="find" method="POST" id="login" >
 	      <input type="hidden" name="key" id="key" value="{{@value}}" />
-	      <input id="submit_button" type="submit" value = "incele">
+	      <input type="submit" id="button-preview" title="İncele" value="">
 	    </form>
-	    <form name="login" action="edit" method="POST" id="login" 
-	      style="display:none;">
+	    <form name="login" action="edit" method="POST" id="login" >
 	      <input type="hidden" name="key" id="key" value="{{@value}}" />
-	      <input id="submit_button" type="submit" value = "düzenle">
+	      <input type="submit" id="button-edit" title="Düzenle" value="">
 	    </form>
-	    <form name="login" action="del" method="POST" id="login" 
-	      style="display:none;">
+	    <form name="login" action="del" method="POST" id="login" >
 	      <input type="hidden" name="key" id="key" value="{{@value}}" />
-	      <input id="submit_button" type="submit" value = "sil"
+	      <input type="submit" id="button-delete" title="Sil" value=""
 	      onClick="return confirm('Silmek istediğinizden emin misiniz?');"/>
 	    </form>
 	  </td>

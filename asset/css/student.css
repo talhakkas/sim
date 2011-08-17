@@ -9,21 +9,14 @@
 
 
 .sidebar {
-  background: none repeat scroll 0 0 #FAFAFA;
+  background: none repeat scroll 0 0 #FFF;
   border:1px solid #DDDDDD;
   border-radius:4px 4px 4px 4px;
   overflow:hidden;
   padding:10px 8px 25px;;
 }
 
-.sidebar h3{margin:0px;}
-
-.module {
-  background: none repeat scroll 0 0 #EEEEEE;
-  border-radius:5px 5px 5px 5px;
-  margin:0 0 10px;
-  padding:5px;
-}
+.sidebar h3 {padding-bottom:4px;margin:0px;}
 
 .sidebar-right{
   float:right;
