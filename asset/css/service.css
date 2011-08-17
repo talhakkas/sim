@@ -222,7 +222,7 @@ h1.yellow, h2.yellow, h3.yellow, h4.yellow, h5.yellow
 /* ------------------------ custom table form ----------------------------- */
 table.custom th,
 table.custom td {
-    padding: 8px;
+    padding: 6px;
     font-size: 12px;
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
@@ -400,18 +400,6 @@ input[type=text]:focus {
     outline: 0;
     border: 1px solid #35addf;
 }
-
-
-
-
-
-
-
-
-
-
-
-
 
 .module {
   background: none repeat scroll 0 0 #EEEEEE;
