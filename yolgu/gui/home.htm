@@ -1,0 +1,27 @@
+<div class="page">
+  <h2 id="headline">Olgu</h2>
+	<h3>{{@SESSION.data['title']}}</h3>
+	
+		<F3:check if="{{@SESSION.data['media'] != ''}}">
+		<F3:true>
+			<img src="/asset/img/{{@SESSION.data['media']}}">
+		</F3:true>
+		</F3:check>
+	
+		<div class="content">
+			{{@SESSION.data['content']}}
+		</div>
+
+		<hr>
+
+		<div class="question">
+			{{@SESSION.data['question']}}
+		</div>
+		
+		<F3:repeat group="{{@SESSION.data['options']}}" key="{{@gnl}}" value="{{@blg}}" >
+			<F3:repeat group="{{@blg}}" key="{{@gnl2}}" value="{{@blg2}}" >
+				<a href="/show/{{@blg2}}"><img src=/asset/img/vp_button.png>{{@gnl2}}</a> <br>
+			</F3:repeat>
+		</F3:repeat>
+
+</div>

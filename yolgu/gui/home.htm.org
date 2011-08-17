@@ -1,0 +1,52 @@
+<style>
+#contentarea {
+    float:left;
+    display:block;
+    width:650px;
+}
+
+#sidebar {
+    float:right;
+    display:block;
+    width:250px;
+}
+
+.feature {
+    float:left;
+    margin:0px 0px;
+    width:250px;
+}
+.feature li {
+    list-style-image: url('/asset/img/next.png');
+    font-size:13px;
+}
+#content{height:420px;}
+#contentarea{height:auto;}
+
+#contentarea img {
+    -webkit-box-shadow:0 2px 2px rgba(0,0,0,0.2);
+    -moz-box-shadow:0 2px 2px rgba(0,0,0,0.2);
+    box-shadow:0 5px 20px rgba(0, 0, 0, 0.3);
+}
+  
+  ul.tabs li.home {
+    text-shadow:0 -1px 1px rgba(0,0,0,.25);
+    background:#2daebf;position:relative;}
+  ul.tabs li.home a{color:#fff;}
+</style>
+
+<h2 class="home">Web Tabanlı Simülasyon Eğitimi Yazılımına Hoşgeldiniz</h2>
+
+
+<div id="contentarea">
+
+<code>
+10 - Patient Presentation [+] [-] [u] [ ] Hatali mi? <br>
+20 - Order Tests: Tests   [+] [-] [u] [ ] Hatali mi? <br>
+31 - CT Scan: CT Results  [+] [-] [u] [ ] Hatali mi? <br>
+32 - Foo: Results  	  [+] [-] [u] [X] Hatali mi? <br>
+</code>
+
+
+</div><!-- end content area -->
+
