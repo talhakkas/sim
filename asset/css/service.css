@@ -373,5 +373,22 @@ ul.tabs li.printly a {margin-top:3px;width:5px;height:25px;background:url(/asset
     box-shadow:0 3px 10px rgba(0, 0, 0, 0.2);
 }
 
+textarea,
+input[type=text]{
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    padding: 4px 6px;
+    margin: 0;
+    font-size: 13px;
+    color: #555;
+    border: 1px solid #ccc;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+}
 
-textarea { border: 1px solid #ccc; padding:4px 7px;}
+input[type=text]:focus {
+    outline: 0;
+    border: 1px solid #35addf;
+}
+
+
