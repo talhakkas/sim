@@ -1,0 +1,59 @@
+<style>
+  div#wrapper {border-color:#ff5c00;}
+  ul.tabs li.orange {
+    background:#ff5c00;
+    text-shadow:0 -1px 1px rgba(0,0,0,.25);
+    -webkit-border-bottom-left-radius:3px;
+    -webkit-border-bottom-right-radius:3px;
+    -moz-border-radius:0 0 3px 3px;
+    position:relative;
+  }
+  ul.tabs li.orange a {color:#fff;}
+</style>
+
+<script type="text/javascript" src="/asset/js/jquery-1.5.1.min.js"></script>
+<script type="text/javascript"
+src="/asset/js/jquery.orbit-1.2.3.min.js"></script>
+<link rel="stylesheet" href="/asset/css/orbit-1.2.3.css">
+
+<!-- Run the plugin -->
+<script type="text/javascript">
+  $(window).load(function() {
+      $('#featured').orbit();
+      });
+</script>
+
+
+<style>
+  .content {background: url(/asset/img/slide/coffee.jpg); }
+  .content h1 {font-size: 50px;font-weight: bold;
+    text-align: center; margin-top: 180px;color: #222;line-height: 50px;}
+  .content h3 {text-align: center;font-size: 30px;color: #222; }
+  a {color: #00baff;text-decoration: none; font-weight: bold;font-size: 12px; }
+  a:hover { text-decoration: underline; }
+</style>
+
+
+<div id="featured">
+  <div class="content">
+    <h1>Ondokuz Mayıs Üniversitesi</h1>
+    <h3>Web Tabanlı Simülasyon Eğitim Merkezi</h3>
+  </div>
+
+  <img src="/asset/img/slide/coffee.jpg" data-caption="#Caption1" />
+  <img src="/asset/img/slide/coffee.jpg" data-caption="#Caption2" />
+  <img src="/asset/img/slide/coffee.jpg" data-caption="#Caption3" />
+
+</div>
+
+<span class="orbit-caption" id="Caption1">
+  <strong>Açıklama 1</strong>
+</span>
+
+<span class="orbit-caption" id="Caption2">
+  <strong>Açıklama 2</strong>
+</span>
+
+<span class="orbit-caption" id="Caption3">
+  <strong>Açıklama 3</strong>
+</span>

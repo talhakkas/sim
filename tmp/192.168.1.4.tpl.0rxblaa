@@ -1,0 +1,36 @@
+<div class="page">
+  <h2 id="headline">Yeni Kayıt</h2>
+  <form name="login" action="add" method="POST" id="login" 
+    enctype="multipart/form-data">
+    <table class="custom">
+      <tr>
+        <?php foreach ((F3::get('DB->result')?:array()) as $_gnl=>$_blg): ?>
+        <tr>
+          <td class="label"> <?php echo $_blg['Field']; ?> </td>
+          <td class="field">
+            <?php if ($_blg['Field']=='content'): ?>
+            
+            <textarea name="<?php echo $_blg['Field']; ?>"></textarea>
+            
+            <?php else: ?>
+              <?php if ($_blg['Field']=='photo'): ?>
+              
+                <input type="file" name="<?php echo $_blg['Field']; ?>"/>
+              
+              <?php else: ?>
+                <input type="text" name="<?php echo $_blg['Field']; ?>"/>
+              
+              <?php endif; ?>
+            
+            <?php endif; ?>
+          </td>
+        </tr>
+        <?php endforeach; ?>
+      </tr>
+      <tr>
+        <td></td>
+        <td><input id="submit_button" type="submit" value="Kaydet" /></td>
+      </tr>
+    </table>
+  </form>
+</div>

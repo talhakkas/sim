@@ -1,0 +1,19 @@
+<div class="page">
+  <h2 id="headline">Kayıt Bul</h2>
+  <br /><br />
+  <form name="login" action="find" method="POST" id="login" 
+    enctype="multipart/form-data">
+    <table class="custom">
+      <tr>
+        <td class="label"><?php echo F3::get('SESSION.KEY'); ?> :</td>
+        <td class="field">
+          <input type="text" name="key" id="key" value="<?php echo F3::get('REQUEST.key'); ?>" />
+        </td>
+      </tr>
+      <tr>
+        <td></td>
+        <td><input id="submit_button" type="submit" value="Bul" /></td>
+      </tr>
+    </table>
+  </form>
+</div>

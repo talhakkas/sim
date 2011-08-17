@@ -1,0 +1,40 @@
+<div class="page">
+  <h2 id="headline">İnceleme Sonuçları</h2>
+  <table class="custom">
+    <tr>
+      <strong><?php echo F3::get('SESSION.key'); ?></strong> id'sine ait tüm bilgiler</p>
+      <?php foreach ((F3::get('SESSION.data')?:array()) as $_gnl=>$_blg): ?>
+      <?php if ($_gnl != F3::get('SESSION.KEY')): ?>
+      
+        <tr>
+          <td class="label"> <?php echo $_gnl; ?> </td>
+        <?php if ($_gnl == 'photo'): ?>
+        
+        <td class="field"><img src="/asset/<?php echo ($_uploaddir=F3::get('uploaddir')); ?>/<?php echo $_blg; ?>" /></td>
+        
+        <?php else: ?>
+          <td class="field"> <?php echo $_blg; ?> </td>
+        
+        <?php endif; ?>
+        <tr>
+      
+      <?php endif; ?>
+      <?php endforeach; ?>
+    </tr>
+    <tr>
+      <td></td>
+      <td>
+        <form name="login" action="edit" method="POST" id="login" 
+          enctype="multipart/form-data">
+          <input id="submit_button" type="submit" value="Düzenle" />
+        </form>
+        <form name="login" action="del" method="POST" id="login" 
+          enctype="multipart/form-data">
+          <input id="submit_button" type="submit" value="Sil"
+          onClick="return confirm('Silmek istediğinizden emin misiniz?');"/>
+        </form>
+      </td>
+    </tr>
+  </table>
+</form>
+</div>

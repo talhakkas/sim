@@ -1,0 +1,102 @@
+<style>
+  div#wrapper {border-color:#a9014b;}
+  ul.tabs li.magenta {
+    background:#a9014b;
+    text-shadow:0 -1px 1px rgba(0,0,0,.25);
+    -webkit-border-bottom-left-radius:3px;
+    -webkit-border-bottom-right-radius:3px;
+    -moz-border-radius:0 0 3px 3px;
+    position:relative;
+  }
+  ul.tabs li.magenta a {color:#fff;}
+
+  div.page-header  { background: url(/asset/img/people_network.gif) no-repeat 
+    right top; }
+  h4 { display: inline; line-height: 24px; margin-bottom: 4px; font-weight: normal; }
+  h4 a { color: #A9014B; }
+
+  #availableJobs a, #availableGigs a { text-decoration:none; display: block; }
+  #availableJobs h4, #ourTeam h4, #availableGigs h4 { margin-bottom: 4px; }
+  #availableJobs li, #availableGigs li { margin: 8px 0; border-bottom: 1px dotted #ddd; padding-bottom: 8px; }
+  #availableJobs a, #availableGigs a,  h6 a { color: #a9014b; }
+  #availableJobs a:hover, #availableGigs a:hover, h6 a:hover { color: #c9025c; }
+
+  div#fearlessLeaders img { float: left; margin: 0 15px 15px 0; }
+  div.fearless-entry { float: left; margin-top: 15px; }
+  div.fearless-entry h4 { margin-bottom: 15px; }
+  div#fearlessLeaders p.large { font-size: 16px; line-height: 22px; }
+  .six-and-one-half { width: 360px; }
+
+</style>
+
+
+
+<div class="page-header">
+  <h1>Ekibimiz</h1>
+  <h2>Web Tabanlı Simülasyon Eğitimi Projesi<br />Çalışma Ekibimiz ve Çalışma 
+    Gruplarımız</h2>
+</div>
+
+<div class ="column-row">
+
+  <div class="nine columns" id="fearlessLeaders">
+    <h2>Proje Sorumluları</h2>
+    <p class="large">Bu Proje Ondokuz Mayıs Üniversitesi Tıp Fakültesi Adli Tıp 
+    Anabilim Dalı Öğretim Üyelerinden Yrd.Doç.Dr. Akan Karakuş ile Bilgisayar 
+    Mühendisliği Bölüm Başkanı Yrd.Doç.Dr. Nurettin Şenyer ile 
+    Yürütülmektedir.</p>
+
+    <div class="fearless-entry">
+      <a href="#"><img src="/asset/img/user-man.png" class="awesome image" 
+        alt="Bryan" /></a>
+      <h3><a href="#">Akan Karakuş</a></h3>
+      <h4><a href="#">Proje Sorumlusu</a></h4>
+
+      <p>Our fearless leader has 15 years of experience in consulting and the web industry. He fosters ZURB's talent and creative culture while consistently challenging both the team and our clients to strive for something better.</p>
+    </div>
+    <div class="fearless-entry">
+      <a href="#"><img src="/asset/img/user-man.png" class="awesome image" 
+        alt="Jeremy" /></a>
+      <h3><a href="#">Nurettin Şenyer</a></h3>
+      <h4><a href="#">Proje Sorumlusu</a></h4>
+      <p>Jeremy is a partner & design lead here at ZURB. He spends his time here setting up problems that people care about and then solving them in ways that work for businesses and delight customers</p>
+
+    </div>
+  </div>
+  <div class="six-and-one-half columns offset-by-one-half">
+    <h2>Dinamik Bir Yönetim</h2>
+    <p>Projenin Geliştirilmesi Sırasında Projeye Destek Veren Çalışanlar 
+    Birbirleri ile Tamamen Uyumlu çalışabilmektedirler.</p>
+    <img src="/asset/img/teamwork.jpg" width=350 height=200 class="awesome 
+    image" alt="team dynamic" />	<br />
+    <h2>Çalışanlarımız</h2>
+    <p>Proje Yönetimi Kapsamında Üniversitemiz Bilgisayar Mühendisliği 
+    Öğrencileri de Çalışmalarda Etkin Rol Almaktadırlar.</p>
+
+    <ul class="small recent photos">
+
+      <li>
+      <a href="#" title="Emin Eker">
+	<img alt="Emin Eker"
+        src="/asset/img/emineker.jpeg"
+        style="width: 65px; height: 65px;" />
+      </a>
+      </li>
+
+      <li>
+      <a href="#" title="Emre Can Yılmaz">
+        <img alt="Emre Can Yılmaz" src="/asset/img/ecylmz.jpeg"
+       style="width: 65px; height: 65px;" />
+      </a>
+      </li>
+
+      <li>
+      <a href="#" title="Gökhan Demir">
+        <img alt="Gökhan Demir" src="/asset/img/gdemir.jpeg"
+        style="width: 65px; height: 65px;" />
+      </a>
+      </li>
+
+    </ul>
+  </div>
+</div>
