@@ -31,9 +31,19 @@ body {
     /*-moz-border-radius: 5px;
     -webkit-border-radius: 5px;
     border-radius: 5px;*/
-    -webkit-box-shadow:0 2px 2px rgba(0,0,0,0.2);
+
+    /*-webkit-box-shadow:0 2px 2px rgba(0,0,0,0.2);
     -moz-box-shadow:0 2px 2px rgba(0,0,0,0.2);
-    box-shadow:0 5px 20px rgba(0, 0, 0, 0.3);
+    box-shadow:0 5px 20px rgba(0, 0, 0, 0.3);*/
+
+    position:relative;
+    border:3px solid rgba(0,0,0,0);
+    /*-webkit-border-radius:5px;
+    -moz-border-radius:5px;
+    border-radius:5px;*/
+    -webkit-box-shadow:0 0 18px rgba(0,0,0,0.4);
+    -moz-box-shadow:0 0 18px rgba(0,0,0,0.4);
+    box-shadow:0 0 18px rgba(0,0,0,0.4);
 }
 
 h2.headline {
@@ -212,7 +222,7 @@ h1.yellow, h2.yellow, h3.yellow, h4.yellow, h5.yellow
 /* ------------------------ custom table form ----------------------------- */
 table.custom th,
 table.custom td {
-    padding: 8px;
+    padding: 6px;
     font-size: 12px;
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
@@ -391,4 +401,10 @@ input[type=text]:focus {
     border: 1px solid #35addf;
 }
 
+.module {
+  background: none repeat scroll 0 0 #EEEEEE;
+  border-radius:5px 5px 5px 5px;
+  margin:0 0 10px;
+  padding:5px;
+}
 

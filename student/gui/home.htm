@@ -1,34 +1,4 @@
 <style>
-  #contentarea {
-    float:left;
-    display:block;
-    width:650px;
-  }
-
-  #sidebar {
-    float:right;
-    display:block;
-    width:250px;
-  }
-
-  .feature {
-    float:left;
-    margin:0px 0px;
-    width:250px;
-  }
-  .feature li {
-    list-style-image: url('/asset/img/next.png');
-    font-size:13px;
-  }
-  #content{height:420px;}
-  #contentarea{height:auto;}
-
-  #contentarea img {
-    -webkit-box-shadow:0 2px 2px rgba(0,0,0,0.2);
-    -moz-box-shadow:0 2px 2px rgba(0,0,0,0.2);
-    box-shadow:0 5px 20px rgba(0, 0, 0, 0.3);
-  }
-
   ul.tabs li.home {
     text-shadow:0 -1px 1px rgba(0,0,0,.25);
     background:#2daebf;position:relative;}
@@ -60,12 +30,13 @@
   </table>
 </form>
 
-
 <div id="contentarea">
   <center><p><b>Using simulation to improve safety, quality and education in 
       healthcare
   </b></p></center>
-  <img align=left height=250 width=350 src=/asset/img/nursing.jpg />
+  <div class="module" style="float:left;">
+    <img height=250 width=350 src=/asset/img/nursing.jpg />
+    </div>
   <ul class="feature">
     <li>Unlimited Categories, Unlimited Products</li>
     <li>Unlimited Manufacturers, Multi Currency</li>
@@ -87,17 +58,21 @@
   </ul>
 </div><!-- end content area -->
 
-<div id="sidebar">
-  <h3 class="home">Duyurular</h3>
-  <F3:repeat group="{{ @announcement }}" key="{{@key}}" value="{{@value}}">
+<div class="module sidebar-right">
+  <div class="sidebar">
+    <div style="border-bottom:1px solid #DDD; margin-bottom:15px;">
+      <h3 class="home">Duyurular</h3>
+    </div>
+    <F3:repeat group="{{ @announcement }}" key="{{@key}}" value="{{@value}}">
     <img src="/asset/img/next.png"/>
-  <a href="#info{{ @value[announcement_id] }}" rel="facebox" 
-    style="color:#555;font-weight:bold;line-height:18px;">{{@value[title]}}</a>
-  <br>
-  <div id="info{{ @value[announcement_id] }}" style="display:none;">
-    {{ @value[content] }}
+    <a href="#info{{ @value[announcement_id] }}" rel="facebox" 
+      style="color:#555;font-weight:bold;line-height:18px;">{{@value[title]}}</a>
+    <br>
+    <div id="info{{ @value[announcement_id] }}" style="display:none;">
+      {{ @value[content] }}
+    </div>
+    </F3:repeat>
   </div>
-  </F3:repeat>
 </div>
 
 

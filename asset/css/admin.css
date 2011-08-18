@@ -15,12 +15,10 @@
 #leftcolumn tr {font-size:12px;font-weight:bold;}
 #leftcolumn tr td{color: #3b5998;}
 
-.page {
-    width: 780px;
-    height: auto;
-    font-size:13px;
-    margin-left:140px;
-    min-height:340px;
-}
+.page {width: 780px;height: auto;font-size:12px;margin-left:140px;min-height:340px;}
 
-
+#button-preview,
+#button-edit,
+#button-delete{background:url(/asset/img/preview24.png) no-repeat center; border:none;cursor:pointer;float:left;margin-right:17px;}
+#button-edit{background:url(/asset/img/edit24.png) no-repeat center;}
+#button-delete{background:url(/asset/img/delete24.png) no-repeat center;margin-right:0px;}
