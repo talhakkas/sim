@@ -1,0 +1,27 @@
+<div class="page">
+  <h2 id="headline">Olgu</h2>
+	<h3><?php echo F3::get('SESSION.data[\'title\']'); ?></h3>
+	
+		<?php if (F3::get('SESSION.data[\'media\']') != ''): ?>
+		
+			<img src="/asset/img/<?php echo F3::get('SESSION.data[\'media\']'); ?>">
+		
+		<?php endif; ?>
+	
+		<div class="content">
+			<?php echo F3::get('SESSION.data[\'content\']'); ?>
+		</div>
+
+		<hr>
+
+		<div class="question">
+			<?php echo F3::get('SESSION.data[\'question\']'); ?>
+		</div>
+		
+		<?php foreach ((F3::get('SESSION.data[\'options\']')?:array()) as $_gnl=>$_blg): ?>
+			<?php foreach (($_blg?:array()) as $_gnl2=>$_blg2): ?>
+				<a href="/yolgu/show/<?php echo $_blg2; ?>"><img src=/asset/img/vp_button.png><?php echo $_gnl2; ?></a> <br>
+			<?php endforeach; ?>
+		<?php endforeach; ?>
+
+</div>
