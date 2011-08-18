@@ -33,8 +33,18 @@ function show() {
 		$datas[0]['options'] = array();
 
 	F3::set('SESSION.data', $datas[0]);
-        render('home', 'Ana Sayfa');
-	//render('show', 'Gösteri');
+        render('show', 'Olgu');
+}
+
+function edit() {
+	$key = F3::get('PARAMS.id') ? F3::get('PARAMS.id'):1;
+	F3::set('SESSION.key', $key);
+
+	$table = new Axon("node");
+	$datas = $table->afind("id='$key'");
+
+	F3::set('SESSION.data', $datas[0]);
+        render('edit', 'Düzenle');
 }
 
 function test() {
@@ -47,7 +57,8 @@ F3::route("GET /logout*",  'logout');
 F3::route("GET /test", 	   'test');
 
 F3::route("GET /show/@id", 'show');
-//F3::route("POST /show/@id", 'show');
+F3::route("GET /edit/@id", 'edit');
+F3::route("POST /edit/@id", 'update');
 
 F3::run();
 
