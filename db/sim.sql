@@ -107,7 +107,7 @@ CREATE TABLE `event` (
   PRIMARY KEY (`event_id`),
   KEY `patient_id` (`patient_id`),
   KEY `story_id` (`story_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -118,6 +118,38 @@ LOCK TABLES `event` WRITE;
 /*!40000 ALTER TABLE `event` DISABLE KEYS */;
 INSERT INTO `event` VALUES (1,1,1,'deneme-olgu','12:1,5,7,8,12','1;2,5,6'),(2,1,2,'Tarım ilacı Zehirlenmesi','null','null');
 /*!40000 ALTER TABLE `event` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `node`
+--
+
+DROP TABLE IF EXISTS `node`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `node` (
+  `id` int(10) unsigned NOT NULL,
+  `title` varchar(50) COLLATE utf8_turkish_ci NOT NULL,
+  `media` varchar(50) COLLATE utf8_turkish_ci NOT NULL,
+  `content` varchar(250) COLLATE utf8_turkish_ci NOT NULL,
+  `question` varchar(50) COLLATE utf8_turkish_ci NOT NULL,
+  `options` varchar(500) COLLATE utf8_turkish_ci NOT NULL,
+  `type` tinyint(3) unsigned NOT NULL,
+  `parent` int(10) unsigned NOT NULL,
+  `isOnset` tinyint(1) NOT NULL,
+  `isWrong` tinyint(1) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_turkish_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `node`
+--
+
+LOCK TABLES `node` WRITE;
+/*!40000 ALTER TABLE `node` DISABLE KEYS */;
+INSERT INTO `node` VALUES (1,'Patient Presentation','','','','Order Tests:2',0,0,1,0),(2,'Tests','nursing.jpg','The patient is waiting and the nurse asks what tests you\'d like to order.','Which tests would you like to order?','Lumbar puncture:3, CT Scan:4',1,1,0,0),(3,'Results','','','','Incorrect -- try again:2',0,2,0,1),(4,'CT Results','tutor-service.jpg','Başarıyla tamamladınız.','','',0,2,0,0);
+/*!40000 ALTER TABLE `node` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -198,7 +230,7 @@ CREATE TABLE `people` (
 
 LOCK TABLES `people` WRITE;
 /*!40000 ALTER TABLE `people` DISABLE KEYS */;
-INSERT INTO `people` VALUES (32977301484,'emin','eker','bal19',1,1,'32977301484.jpg'),(11111111111,'bal19','bal19','bal19',1,1,'11111111111.jpg');
+INSERT INTO `people` VALUES (32977301484,'emin','eker','bal19',1,1,'32977301484.jpg'),(11111111111,'bal19','bal19','bal19',1,1,'11111111111.jpg'),(22768864182,'Gökhan','Demir','159654kafkef55',1,1,'default.jpg');
 /*!40000 ALTER TABLE `people` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -294,4 +326,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2011-08-12 11:49:31
+-- Dump completed on 2011-08-18 16:00:46
