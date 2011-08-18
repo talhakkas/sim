@@ -1,10 +1,11 @@
 <div class="page">
   <h2 id="headline">Olgu Düzenleme</h2>
 
-	<a href="/yolgu/show/{{@SESSION.key}}"><img src="/asset/img/play.png" height="25" align="right"></a>
+	<a href="/yolgu/show/{{@SESSION.key}}"><img src="/asset/img/play.png" height="50" align="right"></a>
 	
-	<form action="/yolgu/edit/" method="post">
+	<form name="node" action="/yolgu{{@PARAMS.0}}" method="post">
 	
+		<input type="hidden" name="id" value="{{@SESSION.data['id']}}">
 		Başlık: <input type="text" name="title"   value="{{@SESSION.data['title']}}"> <br>
 		Medya:  <input type="text" name="media"   value="{{@SESSION.data['media']}}"> <br>
 		İçerik: <input type="text" name="content" value="{{@SESSION.data['content']}}"> 
@@ -13,6 +14,10 @@
 		Soru cümlesi: <input type="text" name="question" value="{{@SESSION.data['question']}}"> <br>
 		Seçenekler:   <input type="text" name="options"  value="{{@SESSION.data['options']}}"> <br>
 
+		<input type="hidden" name="type" value="{{@SESSION.data['type']}}">
+		<input type="hidden" name="parent" value="{{@SESSION.data['parent']}}">
+		<input type="hidden" name="isOnset" value="{{@SESSION.data['isOnset']}}">
+		<input type="hidden" name="isWrong" value="{{@SESSION.data['isWrong']}}">
 		<input type="submit" value="Güncelle">
 	</form>
 </div>

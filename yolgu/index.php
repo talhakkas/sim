@@ -47,6 +47,21 @@ function edit() {
         render('edit', 'Düzenle');
 }
 
+function update() {
+	$key = F3::get('PARAMS.id');
+
+	$table = new Axon("node");
+	$table->load("id='$key'");
+	//FIXME: $table->copyFrom('REQUEST');
+	foreach($_POST as $gnl => $blg) {
+		$table->$gnl = $blg;
+	}
+
+	$table->save();
+	
+	F3::reroute("/show/$key");
+}
+
 function test() {
 	echo "foo";
 }
