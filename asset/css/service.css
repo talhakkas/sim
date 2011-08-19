@@ -347,17 +347,6 @@ h5#headline{
 tr, td, th {text-align:left;}
 #student_image { width:120px; height:140px;border: 1px dotted #ccc;float:left;margin:0 40px 0 30px;}
 
-.page {
-    width: 770px;
-    height: auto;
-    font-size:13px;
-    margin-left:150px;
-    min-height:340px;
-}
-
-.footer {font: 10px Verdana, Helvetica, sans-serif; text-align: center; margin-top: 20px;margin-bottom:10px;}
-
-
 /* -------------------- printly ----------------------- */
 ul.tabs li.printly a {margin-top:3px;width:5px;height:25px;background:url(/asset/img/printly.png) no-repeat;background-size:25px;}
 /* ---------------------------------------------------- */
