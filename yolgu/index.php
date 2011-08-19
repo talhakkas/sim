@@ -16,17 +16,17 @@ function show() {
 	$table = new Axon("node");
 	$datas = $table->afind("id='$key'");
 
-	$options = $datas[0]['options'];
+	$options = trim($datas[0]['options']);
 	
 	if (!empty($options)) {
-		$opts = preg_split("/,/", $options);
-		
+		$opts = preg_split("/,,/", $options);
+
 		$options2 = array();
 		foreach($opts as $k=>$v) {
-			$t = preg_split("/:/", $v);
-			$options2[$k][$t[0]] = $t[1];
+			$t = preg_split("/::/", $v);
+			$options2[$k]['text'] = $t[0];
+			$options2[$k]['link'] = $t[1];
 		}
-
 		$datas[0]['options'] = $options2;
 	}
 	else

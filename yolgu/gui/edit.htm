@@ -6,13 +6,17 @@
 	<form name="node" action="/yolgu{{@PARAMS.0}}" method="post">
 	
 		<input type="hidden" name="id" value="{{@SESSION.data['id']}}">
-		Başlık: <input type="text" name="title"   value="{{@SESSION.data['title']}}"> <br>
-		Medya:  <input type="text" name="media"   value="{{@SESSION.data['media']}}"> <br>
-		İçerik: <input type="text" name="content" value="{{@SESSION.data['content']}}"> 
+		Başlık: <input type="text" name="title"   size="50" value="{{@SESSION.data['title']}}"> <br>
+		Medya:  <input type="text" name="media"   size="50" value="{{@SESSION.data['media']}}"> <br>
+		İçerik: <textarea rows="10" cols="50" name="content">
+		{{@SESSION.data['content']}}
+		</textarea>
 		<hr>
 
-		Soru cümlesi: <input type="text" name="question" value="{{@SESSION.data['question']}}"> <br>
-		Seçenekler:   <input type="text" name="options"  value="{{@SESSION.data['options']}}"> <br>
+		Soru cümlesi: <input type="text" name="question" size="50" value="{{@SESSION.data['question']}}"> <br>
+		Seçenekler:   <textarea rows="10" cols="50" name="options">
+			{{@SESSION.data['options']}}
+		</textarea> <br>
 
 		<input type="hidden" name="type" value="{{@SESSION.data['type']}}">
 		<input type="hidden" name="parent" value="{{@SESSION.data['parent']}}">
