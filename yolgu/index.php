@@ -4,8 +4,8 @@ require_once  '../lib/base.php';
 require_once  '../lib2/lib.php';
 
 function login() {
-    if (F3::get("SESSION.special") == 1)
-       return F3::call('show');
+	if (F3::get("SESSION.special") == 1)
+		return F3::call('show');
 	render('login', 'Yolgu bu Yolgu');
 }
 
@@ -17,7 +17,7 @@ function show() {
 	$datas = $table->afind("id='$key'");
 
 	$options = trim($datas[0]['options']);
-	
+
 	if (!empty($options)) {
 		$opts = preg_split("/,,/", $options);
 
@@ -59,18 +59,13 @@ function update() {
 	}
 
 	$table->save();
-	
-	F3::reroute("/show/$key");
-}
 
-function test() {
-	echo "foo";
+	F3::reroute("/show/$key");
 }
 
 F3::route("GET /*", 	   'login');
 F3::route("POST /login",   'login.php');
 F3::route("GET /logout*",  'logout');
-F3::route("GET /test", 	   'test');
 
 F3::route("GET /show/@id", 'show');
 F3::route("GET /edit/@id", 'edit');

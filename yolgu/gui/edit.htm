@@ -1,27 +1,75 @@
 <div class="page">
   <h2 id="headline">Olgu Düzenleme</h2>
 
-	<a href="/yolgu/show/{{@SESSION.key}}"><img src="/asset/img/play.png" height="50" align="right"></a>
-	
-	<form name="node" action="/yolgu{{@PARAMS.0}}" method="post">
-	
-		<input type="hidden" name="id" value="{{@SESSION.data['id']}}">
-		Başlık: <input type="text" name="title"   size="50" value="{{@SESSION.data['title']}}"> <br>
-		Medya:  <input type="text" name="media"   size="50" value="{{@SESSION.data['media']}}"> <br>
-		İçerik: <textarea rows="10" cols="50" name="content">
-		{{@SESSION.data['content']}}
-		</textarea>
-		<hr>
+  <form name="node" action="/yolgu{{@PARAMS.0}}" method="post">
 
-		Soru cümlesi: <input type="text" name="question" size="50" value="{{@SESSION.data['question']}}"> <br>
-		Seçenekler:   <textarea rows="10" cols="50" name="options">
-			{{@SESSION.data['options']}}
-		</textarea> <br>
+    <table class="custom">
+      <tr>
+        <td class="label">
+          Başlık:
+        </td>
+        <td class="field">
+          <input type="text" name="title" value="{{@SESSION.data['title']}}"> <br>
+        </td>
+      </tr>
+      <tr>
+        <td class="label">
+          Medya:
+        </td>
+        <td class="field">
+          <input type="text" name="media" value="{{@SESSION.data['media']}}"> <br>
+        </td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>
+          <input type="hidden" name="id" value="{{@SESSION.data['id']}}">
+        </td>
+      </tr>
 
-	    <input type="hidden" name="type" value="{{@SESSION.data['type']}}">
-	    <input type="hidden" name="parent" value="{{@SESSION.data['parent']}}">
-	    <input type="hidden" name="isOnset" value="{{@SESSION.data['isOnset']}}">
-	    <input type="hidden" name="isWrong" value="{{@SESSION.data['isWrong']}}">
-	    <input type="submit" value="Güncelle">
-	  </form>
+      <tr>
+        <td class="label">
+          İçerik:
+        </td>
+        <td class="field">
+          <textarea name="content">{{@SESSION.data['content']}}</textarea>
+        </td>
+      </tr>
+
+      <tr><td></td><td><hr /></td></tr>
+
+      <tr>
+        <td class="label">
+          Soru cümlesi:
+        </td>
+        <td class="field">
+          <input type="text" name="question" value="{{@SESSION.data['question']}}" 
+          />
+        </td>
+      </tr>
+      <tr>
+        <td class="label">
+          Seçenekler:
+        </td>
+        <td class="field">
+          <textarea name="options">{{@SESSION.data['options']}}</textarea>
+        </td>
+      </tr>
+
+      <input type="hidden" name="type" value="{{@SESSION.data['type']}}"/>
+      <input type="hidden" name="parent" value="{{@SESSION.data['parent']}}"/>
+      <input type="hidden" name="isOnset" value="{{@SESSION.data['isOnset']}}"/>
+      <input type="hidden" name="isWrong" value="{{@SESSION.data['isWrong']}}"/>
+
+      <tr>
+        <td>
+        </td>
+        <td>
+          <input type="submit" id="submit_button" value="Güncelle"/>
+        </td>
+      </tr>
+    </table>
+
+  </form>
+
 </div>

@@ -234,7 +234,7 @@ table.custom {
     border-collapse: separate;
 }
 
-table.custom textarea {height:140px;}
+table.custom textarea {height:150px;}
 table.custom textarea,
 table.custom input[type=text],
 table.custom input[type=password]{

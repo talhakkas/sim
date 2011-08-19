@@ -29,14 +29,6 @@ $event->close;
 $story->close;
 $patient->close;
 
-//F3::set('SESSION.olgustate', 1);
-//F3::set('SESSION.cevap', array());
-//print_r(F3::get('SESSION.cevap'));
-if (! F3::get('SESSION.olgustate')){
-	F3::set('SESSION.cevap', array());
-	F3::set('SESSION.olgustate', 1);
-}
-
 render('olgu', 'Olgu Ekranı');
 
 ?>

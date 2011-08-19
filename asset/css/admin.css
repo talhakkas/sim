@@ -11,6 +11,7 @@
     box-shadow:0 5px 10px rgba(0, 0, 0, 0.2);
 }
 
+#leftcolumn table{margin:5px 0;}
 #leftcolumn tr img {width:35px; float:left;}
 #leftcolumn tr {font-size:12px;font-weight:bold;}
 #leftcolumn tr td {float:left;margin-bottom:4px;color: #3b5998;}

@@ -19,7 +19,7 @@
     <div id="wrapper">
       <div id="container">
         <ul class="tabs" id="mainNav">
-          <li class="home"><a href="{{ @SR }}" >Anasayfa</a></li>
+          <li class="home"><a href="{{@SR}}" >Anasayfa</a></li>
           <li class="logout"><a href="logout" title="">Çıkış</a></li>
         </ul>
       </div>
@@ -32,25 +32,40 @@
     </F3:true></F3:check>
 
     <div id="content">
-      <F3:check if="{{ 1==1 }}">
+      <F3:check if="{{ @SESSION.template !=='login' }}">
       <F3:true>
       <div id="leftcolumn">
         <table>
           <tr><td>
-              <a href="{{@SR}}" title=""><img
-                src="/asset/img/narrative.png"/> {{e('NARRATİVE')}}</a>
+              <a href="#" title=""><img
+                src="/asset/img/narrative.png"/> NARRATİVE</a>
           </td></tr>
           <tr><td>
               <a href="#" title="">
-                <img src="/asset/img/narrative.png"/> {{e('MCQ')}}</a>
+                <img src="/asset/img/list-type-icon.png"/> MCQ</a>
           </td></tr>
           <tr><td>
               <a href="#" title="">
-                <img src="/asset/img/narrative.png"/> {{e('BRANCHING')}}</a>
+                <img src="/asset/img/branch-icon.png"/> BRANCHING</a>
           </td></tr>
           <tr><td>
               <a href="#" title="">
-                <img src="/asset/img/narrative.png"/> {{e('INQUIRY')}}</a>
+                <img src="/asset/img/list-type-icon.png"/> INQUIRY</a>
+          </td></tr>
+
+          <tr><td><br><br></td></tr>
+
+          <tr><td>
+              <F3:check if="{{@SESSION.template!='edit'}}">
+              <F3:true>
+              <a href="{{@SR}}/edit/{{@SESSION.key}}">
+                <img src="/asset/img/edit2.png"> Düzenle</a>
+              </F3:true>
+              <F3:false>
+              <a href="{{@SR}}/show/{{@SESSION.key}}">
+                <img src="/asset/img/play.png"> Devam</a>
+              </F3:false>
+              </F3:check>
           </td></tr>
         </table>
       </div>
