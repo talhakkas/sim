@@ -24,6 +24,7 @@ function show() {
 		$options2 = array();
 		foreach($opts as $k=>$v) {
 			$t = preg_split("/::/", $v);
+			// bu tasarim daha kullanisli
 			$options2[$k]['text'] = $t[0];
 			$options2[$k]['link'] = $t[1];
 		}
