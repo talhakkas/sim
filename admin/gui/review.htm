@@ -47,7 +47,7 @@
 	  <F3:repeat group="{{@row}}" key="{{@field}}" value="{{@value}}" >
 	  <F3:check if="{{@field == @SESSION.KEY}}">
 	  <F3:true>
-	  <td class="label" style="width:96px">
+	  <td class="label" style="float:left;width:92px">
 	    <form name="login" action="find" method="POST" id="login" >
 	      <input type="hidden" name="key" id="key" value="{{@value}}" />
 	      <input type="submit" id="button-preview" title="İncele" value="">

@@ -40,6 +40,7 @@ function giris() {
 				      'patient' => 'patient_id',
 				      'survey' => 'survey_id',
 				      'event' => 'event_id',
+				      'node' => 'id',
 				      'result' => 'result_id',
 				      'announcement' => 'announcement_id'
 			      ));

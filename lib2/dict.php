@@ -12,11 +12,12 @@ function dict(){
 		'patient' => 'Hastalar',
 		'story' => 'Hikayeler',
 		'result' => 'Sonuçlar',
-		'parent' => 'Tetkik Ebeveyn',
+		'parent' => 'Ebeveyn',
 		'discipline' => 'Bilim Dalları',
 		'announcement' => 'Duyurular',
 
 		// Genel (ortak) sütun isimleri
+		'id' => 'id',
 		'tc' => 'TC Kimlik',
 		'name' => 'Ad',
 		'surname' => 'Soyad',
@@ -49,6 +50,14 @@ function dict(){
 		// event
 		'event_id' => 'Olgu id',
 		'surveys' => 'Tetkikler',
+
+		// node
+		'node' => 'Düğüm',
+		'media' => 'Medya',
+		'question' => 'Soru',
+		'options' => 'Ayarlar',
+		'isOnset' => 'isOnset',
+		'isWrong' => 'isWrong',
 
 		// discipline
 		'discipline_id' => 'Bilim Dalı id',

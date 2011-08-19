@@ -6,7 +6,7 @@ require_once  '../lib2/lib.php';
 function login() {
     if (F3::get("SESSION.special") == 1)
        return F3::call('show');
-	render('login', 'Öğrenci Girişi');
+	render('login', 'Yolgu bu Yolgu');
 }
 
 function show() {

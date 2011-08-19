@@ -1,27 +1,24 @@
-<div class="page">
-  <h2 id="headline">Olgu Göster</h2>
+<h2 id="headline">Olgu Göster</h2>
 
-	<a href="/yolgu/edit/<?php echo F3::get('SESSION.key'); ?>"><img src="/asset/img/edit2.png" height="50" align="right"></a>
-	<h3><?php echo F3::get('SESSION.data[\'title\']'); ?></h3>
-	
-		<?php if (F3::get('SESSION.data[\'media\']') != ''): ?>
-		
-			<img src="/asset/img/<?php echo F3::get('SESSION.data[\'media\']'); ?>">
-		
-		<?php endif; ?>
-	
-		<div class="content">
-			<?php echo F3::get('SESSION.data[\'content\']'); ?>
-		</div>
+<a href="/yolgu/edit/<?php echo F3::get('SESSION.key'); ?>"><img src="/asset/img/edit2.png" height="50" align="right"></a>
+<h3><?php echo F3::get('SESSION.data[\'title\']'); ?></h3>
 
-		<hr>
-
-		<div class="question">
-			<?php echo F3::get('SESSION.data[\'question\']'); ?>
-		</div>
-	
-		<?php foreach ((F3::get('SESSION.data[\'options\']')?:array()) as $_gnl=>$_blg): ?>
-			<a href="/yolgu/show/<?php echo $_blg['link']; ?>"><img src=/asset/img/vp_button.png><?php echo $_blg['text']; ?></a> <br>
-		<?php endforeach; ?>
-
+<div class="content">
+  <?php echo F3::get('SESSION.data[\'content\']'); ?>
 </div>
+
+<hr>
+
+<?php if (F3::get('SESSION.data[\'media\']') != ''): ?>
+
+<img src="/asset/img/<?php echo F3::get('SESSION.data[\'media\']'); ?>">
+
+<?php endif; ?>
+
+<div class="question">
+	<?php echo F3::get('SESSION.data[\'question\']'); ?>
+</div>
+
+<?php foreach ((F3::get('SESSION.data[\'options\']')?:array()) as $_gnl=>$_blg): ?>
+	<a href="/yolgu/show/<?php echo $_blg['link']; ?>"><img src=/asset/img/vp_button.png><?php echo $_blg['text']; ?></a> <br>
+<?php endforeach; ?>

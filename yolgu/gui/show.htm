@@ -1,27 +1,25 @@
-<div class="page">
-  <h2 id="headline">Olgu Göster</h2>
+<h2 id="headline">Olgu Göster</h2>
 
-	<a href="/yolgu/edit/{{@SESSION.key}}"><img src="/asset/img/edit2.png" height="50" align="right"></a>
-	<h3>{{@SESSION.data['title']}}</h3>
-	
-		<F3:check if="{{@SESSION.data['media'] != ''}}">
-		<F3:true>
-			<img src="/asset/img/{{@SESSION.data['media']}}">
-		</F3:true>
-		</F3:check>
-	
-		<div class="content">
-			{{@SESSION.data['content']}}
-		</div>
+<a href="/yolgu/edit/{{@SESSION.key}}"><img src="/asset/img/edit2.png" height="50" align="right"></a>
+<h3>{{@SESSION.data['title']}}</h3>
 
-		<hr>
-
-		<div class="question">
-			{{@SESSION.data['question']}}
-		</div>
-	
-		<F3:repeat group="{{@SESSION.data['options']}}" key="{{@gnl}}" value="{{@blg}}" >
-			<a href="/yolgu/show/{{@blg['link']}}"><img src=/asset/img/vp_button.png>{{@blg['text']}}</a> <br>
-		</F3:repeat>
-
+<div class="content">
+  {{@SESSION.data['content']}}
 </div>
+
+<hr>
+
+<F3:check if="{{@SESSION.data['media'] != ''}}">
+<F3:true>
+<img src="/asset/img/{{@SESSION.data['media']}}">
+</F3:true>
+</F3:check>
+
+<div class="question">
+	{{@SESSION.data['question']}}
+</div>
+
+<F3:repeat group="{{@SESSION.data['options']}}" key="{{@gnl}}" value="{{@blg}}" >
+	<a href="/yolgu/show/{{@blg['link']}}"><img src=/asset/img/vp_button.png>{{@blg['text']}}</a> <br>
+</F3:repeat>
+
