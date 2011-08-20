@@ -1,7 +1,7 @@
 <?php
 
 require_once  '../lib/base.php';
-require_once  '../lib2/lib.php';
+require_once  '../asset/lib.php';
 
 function login() {
 	if (F3::get("SESSION.special") == 1)
