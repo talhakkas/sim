@@ -3,5 +3,5 @@
 Sistem için Fat Free [Fat Free Framework](http://fatfree.sourceforge.net/) Versiyon 2.0.0'ı
 kullanıyoruz. (Türkçe kaynağına ulaşabilmek için Türk bayrağına tıklamanız yeterli)
 
-![foto](https://github.com/emineker/sim/raw/master/asset/img/503.jpg)
+![foto](https://github.com/emineker/sim/raw/master/public/img/503.jpg)
 
