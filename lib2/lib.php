@@ -12,7 +12,7 @@ function render($template, $title, $layout='layout') {
         if (F3::get('printly')) {// printly modu için ufak bir değişkencik
 		echo Template::serve('printly.htm');
 	} else {
-		$layout = F3::get('LAYOUTS') . base() . '.layout.htm';
+		$layout = "../".F3::get('LAYOUTS') . base() . '.layout.htm';
 		echo file_exists($layout) ? Template::serve("../" . $layout) : Template::serve("../" . F3::get('LAYOUTS') . 'layout.htm');
 	}
 }
