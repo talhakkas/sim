@@ -28,6 +28,7 @@
             js/
             upload/
         layouts/
+            a.layout.htm
             student.layout.htm
             tutor.layout.htm
             yolgu.layout.htm
