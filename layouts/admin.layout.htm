@@ -4,12 +4,12 @@
     <meta http-equiv = "Pragma" content = "no-cache" />
     <meta http-equiv = "Expires" content = "-1" />
     <meta http-equiv = "Content-Type" content = "text/html; charset=utf-8" />
-    <link rel="shortcut icon" href="/asset/img/favicon.ico" />
-    <link rel="stylesheet" type="text/css" href="/asset/css/service.css" />
-    <link rel="stylesheet" type="text/css" href="/asset/css/admin.css" />
+    <link rel="shortcut icon" href="/public/img/favicon.ico" />
+    <link rel="stylesheet" type="text/css" href="/public/css/service.css" />
+    <link rel="stylesheet" type="text/css" href="/public/css/admin.css" />
 
-    <script type='text/javascript' src='/asset/js/jquery.js'></script>
-    <script type='text/javascript' src='/asset/js/superfish.js'></script>
+    <script type='text/javascript' src='/public/js/jquery.js'></script>
+    <script type='text/javascript' src='/public/js/superfish.js'></script>
 
     <title>{{e(@page_title)}}</title>
   </head>
@@ -28,7 +28,7 @@
         <ul class="tabs" id="mainNav">
           <li class="home">
             <a href="{{@SR}}" title="Kullanıcı adınız">
-            <img src="/asset/upload/{{@SESSION.adminphoto}}" />
+            <img src="/public/upload/{{@SESSION.adminphoto}}" />
             {{@SESSION.adminusername}}</a>
 </li>
 
@@ -60,42 +60,42 @@
       <div id="leftcolumn">
         <table>
           <tr><td>
-              <img src="/asset/img/table.png"/> {{e(@SESSION.TABLE)}}
+              <img src="/public/img/table.png"/> {{e(@SESSION.TABLE)}}
           </td></tr>
           <tr><td>
-              <img src="/asset/img/save.png"/> {{@SESSION.SAVE}}
+              <img src="/public/img/save.png"/> {{@SESSION.SAVE}}
           </td></tr>
           <tr><td>
               <a href="{{@SR}}" title=""><img
-                src="/asset/img/tables.png"/> {{e('Tablolar')}}</a>
+                src="/public/img/tables.png"/> {{e('Tablolar')}}</a>
           </td></tr>
           <F3:check if="{{@SESSION.adminsuper}}">
           <F3:true>
           <tr><td>
               <a href="review" title="">
-                <img src="/asset/img/review.png"/> {{e('Tablo İncele')}}</a>
+                <img src="/public/img/review.png"/> {{e('Tablo İncele')}}</a>
           </td></tr>
           <tr><td>
               <a href="new" title="">
-                <img src="/asset/img/add.png"/> {{e('Ekle')}}</a>
+                <img src="/public/img/add.png"/> {{e('Ekle')}}</a>
           </td></tr>
           <tr><td>
               <a href="find" title="">
-                <img src="/asset/img/find.png"/> {{e('Bul')}}</a>
+                <img src="/public/img/find.png"/> {{e('Bul')}}</a>
           </td></tr>
           </F3:true>
           </F3:check>
           <tr><td>
               <a href="csv" title="">
-                <img src="/asset/img/csv.png"/> {{e('Csv Çıktı')}}</a>
+                <img src="/public/img/csv.png"/> {{e('Csv Çıktı')}}</a>
           </td></tr>
           <tr><td>
               <a href="csv" title="">
-                <img src="/asset/img/pdf.png"/> {{e('Pdf Çıktı')}}</a>
+                <img src="/public/img/pdf.png"/> {{e('Pdf Çıktı')}}</a>
           </td></tr>
           <tr><td>
               <a href="printly" title="">
-                <img src="/asset/img/printly.png"/> {{e('Yazıcı Dostu')}}</a>
+                <img src="/public/img/printly.png"/> {{e('Yazıcı Dostu')}}</a>
           </td></tr>
         </table>
       </div>

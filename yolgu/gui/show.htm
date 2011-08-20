@@ -1,7 +1,7 @@
 <div class="page">
   <h2 id="headline">Olgu Göster
     <a href="{{@SR}}/edit/{{@SESSION.key}}">
-      <img src="/asset/img/edit2.png">Düzenle</a>
+      <img src="/public/img/edit2.png">Düzenle</a>
   </h2>
 
   <h3>{{@SESSION.data['title']}}</h3>
@@ -14,7 +14,7 @@
 
   <F3:check if="{{@SESSION.data['media'] != ''}}">
   <F3:true>
-  <img src="/asset/img/{{@SESSION.data['media']}}">
+  <img src="/public/img/{{@SESSION.data['media']}}">
   </F3:true>
   </F3:check>
 
@@ -23,7 +23,7 @@
   </div>
 
   <F3:repeat group="{{@SESSION.data['options']}}" key="{{@gnl}}" value="{{@blg}}" >
-  <a href="/yolgu/show/{{@blg['link']}}"><img src=/asset/img/vp_button.png>{{@blg['text']}}</a> <br>
+  <a href="/yolgu/show/{{@blg['link']}}"><img src=/public/img/vp_button.png>{{@blg['text']}}</a> <br>
   </F3:repeat>
 </div>
 

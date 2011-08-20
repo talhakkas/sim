@@ -11,7 +11,7 @@
 	<F3:check if="{{ @field=='photo' }}">
 	<F3:true>
 	<td class="label"><img width=80
-	  src="/asset/{{ @uploaddir , @value }}"/></td>
+	  src="/public/{{ @uploaddir , @value }}"/></td>
 	</F3:true>
 	<F3:false>
 	<F3:check if="{{in_array(@field, @fields)}}">

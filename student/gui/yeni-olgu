@@ -6,9 +6,9 @@
   ul.tabs li.green a{color:#fff;}
 </style>
 
-<link type="text/css" href="/asset/css/olgu.css" rel="stylesheet" />
-<script type="text/javascript" src="/asset/js/jquery.min.js"></script>
-<script type="text/javascript" src="/asset/jquery.history.js"></script>
+<link type="text/css" href="/public/css/olgu.css" rel="stylesheet" />
+<script type="text/javascript" src="/public/js/jquery.min.js"></script>
+<script type="text/javascript" src="/public/jquery.history.js"></script>
 <script type="text/javascript" src="gui/js/olgu.js"></script>
 
 <script type="text/javascript">
@@ -65,7 +65,7 @@
     </p>
   </div>
 
-  <img width=300 src="/asset/{{@uploaddir , @SESSION.story->photo}}">
+  <img width=300 src="/public/{{@uploaddir , @SESSION.story->photo}}">
 </div>
 
 <br><hr width=800 style="border:0 solid #ccc;">
@@ -242,7 +242,7 @@ belirtin) belirtiniz.
 <br /><br />
 18- Boyun omur filmi :işaretlemesi gerekiyor.
 <br /><br />
-<img src="/asset/upload/boyun-omur.jpg">
+<img src="/public/upload/boyun-omur.jpg">
 <br /><br />
 bel ve göğüs omur filmi: normal<br />
 Kafa grafisi: Kırık Yok.
