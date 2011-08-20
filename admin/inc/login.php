@@ -27,6 +27,7 @@ if (! F3::exists('error')) {
                 // admini oturuma gömelim ve oradan alalım
 		F3::set('SESSION.adminusername', $username);
                 F3::set('SESSION.adminpassword', $password);
+                F3::set('SESSION.adminphoto', $admin->photo);
                 F3::set('SESSION.admin', true);  // admin özelliği ekle
 
                 if ($admin->super)               // ek admin özellikleri ekle

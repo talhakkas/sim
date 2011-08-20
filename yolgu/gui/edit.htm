@@ -1,7 +1,10 @@
 <div class="page">
-  <h2 id="headline">Olgu Düzenleme</h2>
+  <h2 id="headline">Olgu Düzenleme
+    <a href="{{@SR}}/show/{{@SESSION.key}}">
+      <img src="/asset/img/play.png">Devam</a>
+  </h2>
 
-  <form name="node" action="/yolgu{{@PARAMS.0}}" method="post">
+  <form name="node" action="{{@SR}}{{@PARAMS.0}}" method="post">
 
     <table class="custom">
       <tr>

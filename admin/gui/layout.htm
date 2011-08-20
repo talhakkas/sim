@@ -1,5 +1,5 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html xmlns = "http://www.w3.org/1999/xhtml" xml:lang = "TR" lang = "tr">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="TR" lang="tr">
   <head>
     <meta http-equiv = "Pragma" content = "no-cache" />
     <meta http-equiv = "Expires" content = "-1" />
@@ -11,15 +11,25 @@
     <title>{{e(@page_title)}}</title>
   </head>
 
+  <style>
+    .home a img {float:left; width:22px; height:22px; margin-top:-6px; 
+      margin-right:5px;}
+  </style>
+
+
   <body>
     <F3:check if="{{@SESSION.admin}}">
     <F3:true>
     <div id="wrapper">
       <div id="container">
         <ul class="tabs" id="mainNav">
-          <li class="home"><a href="{{@SR}}"
-            title="Kullanıcı adınız">{{@SESSION.adminusername}}</a>
-          </li>
+          <li class="home">
+            <a href="{{@SR}}" title="Kullanıcı adınız">
+            <img src="/asset/upload/{{@SESSION.adminphoto}}" />
+            {{@SESSION.adminusername}}</a>
+</li>
+
+
           <li class="magenta">
           <a href="info"
             title="Bilgilendirme sayfası">{{e('Bilgilendirme')}}</a>

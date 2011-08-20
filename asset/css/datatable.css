@@ -137,3 +137,5 @@ tr.even td.sorting_3 {background-color: #F9F9FF;}
 
 #example {border-left: 1px solid #d3d3d3;border-right: 1px solid #d3d3d3;}
 #example_length select {width:60px;}
+.dt_example textarea{width:100;}
+

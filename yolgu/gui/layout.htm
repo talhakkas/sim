@@ -10,8 +10,13 @@
     <link rel="stylesheet" type="text/css" href="/asset/css/service.css" />
     <link rel="stylesheet" type="text/css" href="/asset/css/admin.css" />
 
-    <title>{{ @page_title }}</title>
+    <title>{{@page_title}}</title>
   </head>
+
+  <style>
+    .page h2 a {float:right;}
+    .page h2 img {float:left;width:30px;margin-top:-5px;margin-right:2px;}
+  </style>
 
   <body>
     <F3:check if="{{ @SESSION.special==1 }}">
@@ -51,21 +56,6 @@
           <tr><td>
               <a href="#" title="">
                 <img src="/asset/img/list-type-icon.png"/> INQUIRY</a>
-          </td></tr>
-
-          <tr><td><br><br></td></tr>
-
-          <tr><td>
-              <F3:check if="{{@SESSION.template!='edit'}}">
-              <F3:true>
-              <a href="{{@SR}}/edit/{{@SESSION.key}}">
-                <img src="/asset/img/edit2.png"> Düzenle</a>
-              </F3:true>
-              <F3:false>
-              <a href="{{@SR}}/show/{{@SESSION.key}}">
-                <img src="/asset/img/play.png"> Devam</a>
-              </F3:false>
-              </F3:check>
           </td></tr>
         </table>
       </div>

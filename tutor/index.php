@@ -31,6 +31,8 @@ function review() {
 	render('review', 'Listelendi');
 }
 function giris() {
+	return render('bakim', 'Öğretim Üyesi Paneli'); // servisi bakıma gönder
+
 	// nerede bizim istediğimiz tablolar ?
 	F3::set('SESSION.TABLES', array(
 				      'discipline' => 'discipline_id',

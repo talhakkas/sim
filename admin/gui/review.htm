@@ -38,7 +38,12 @@
 	  <F3:false>
 	  <F3:check if="{{in_array(@field, @fields)}}">
 	  <F3:true>
-	  <td class="label">{{ @value }}</td>
+	  <td class="label"> <!--çok uzun metinleri burada kısaltalım-->
+	    <F3:check if="{{strlen(@value)>100}}">
+	    <F3:true>{{substr(@value, 0, 97)}}...</F3:true>
+	    <F3:false>{{@value}}</F3:false>
+	    </f3:check>
+	  </td>
 	  </F3:true>
 	  </f3:check>
 	  </f3:false>
