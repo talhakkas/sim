@@ -28,35 +28,22 @@
 
 
 
-/* ----------------------------- */
-ul,ol { list-style:none; }
-a { text-decoration:none; color:#326693; }
-a:hover { text-decoration:underline; }
+/* --------------------------------------------------------------------------------------- */
+ul, li { list-style:none; }
 
-/* top navigation */
-.topnav { z-index:99; margin:0px; padding:0px; list-style:none; line-height:1; }
-.topnav a { position:relative; color:#666; display:block; z-index:100; text-decoration:none; }
-.topnav li {float:left; width:auto; }
-.topnav li a { padding:0 0px; font-size:11px; line-height:16px; text-decoration:none; line-height:30px; }
-.topnav li a:hover, .topnav li a:active { background-color:#fdfdfd; color:#326693; text-decoration:underline; }
-.topnav li a:visited {  }
+.topnav {margin:0px; padding:0px; list-style:none;font-weight:bold; }
+.topnav a { position:relative; display:block; z-index:100;}
+.topnav li { width:100px;height:35px; margin-left:-30px;margin-bottom:-3;color: #3b5998;}
+.topnav li a {font-size:11px; line-height:16px; line-height:30px; }
 .topnav li a.sf-with-ul {  }
-.topnav li ul { background:#fff; position:absolute; left:-999em; width:120px; margin:0px 0px 0px -1px; border:1px solid #ECEDE8; border-width:1px 1px 0px; z-index:999; }
-.topnav li ul li ul li a {  }
-.topnav li:hover, .topnav li.hover { position:static; }
-.topnav li:hover ul ul,
-.topnav li.sfhover ul ul,
-.topnav li:hover ul ul ul,
-.topnav li.sfhover ul ul ul ul { left:-999em; }
-.topnav li:hover ul,
-.topnav li.sfhover ul,
-.topnav li li:hover ul,
-.topnav li li.sfhover ul,
-.topnav li li li:hover ul,
-.topnav li li li li.sfhover ul { left:auto; }
-
+.topnav li ul {position:absolute; width:90px; /*border:1px solid #ECEDE8;*/}
+.topnav li li a:hover { border-bottom:1px solid #ddd;}
 /* topnav indicator */
 .topnav .sf-sub-indicator { display:none; }
-.topnav li ul .sf-sub-indicator { background:url(images/ico-arrow.png) no-repeat; position:absolute; display:block; right:0.4em; top:0.9em; width:10px; height:10px; text-indent:-999em; overflow:hidden; }
 
-.topnav li img {float:left;width:30px;}
+.topnav li img {float:left;width:27px; margin-right:3px;}
+.topnav a.small {padding-left:10px; text-align:center;width:120px; padding:0px 0px; }
+.topnav {float:right;margin-right:20px;display:non;}
+.topnav ul {padding-top:5px;}
+
+
