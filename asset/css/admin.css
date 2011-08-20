@@ -23,3 +23,40 @@
 #button-delete{background:url(/asset/img/preview24.png) no-repeat center; height:24px; width:24px;border:none;cursor:pointer;float:left;margin-right:10px;}
 #button-edit{background:url(/asset/img/edit24.png) no-repeat center;}
 #button-delete{background:url(/asset/img/delete24.png) no-repeat center;margin-right:0px;}
+
+
+
+
+
+/* ----------------------------- */
+ul,ol { list-style:none; }
+a { text-decoration:none; color:#326693; }
+a:hover { text-decoration:underline; }
+
+/* top navigation */
+.topnav { z-index:99; margin:0px; padding:0px; list-style:none; line-height:1; }
+.topnav a { position:relative; color:#666; display:block; z-index:100; text-decoration:none; }
+.topnav li {float:left; width:auto; }
+.topnav li a { padding:0 0px; font-size:11px; line-height:16px; text-decoration:none; line-height:30px; }
+.topnav li a:hover, .topnav li a:active { background-color:#fdfdfd; color:#326693; text-decoration:underline; }
+.topnav li a:visited {  }
+.topnav li a.sf-with-ul {  }
+.topnav li ul { background:#fff; position:absolute; left:-999em; width:120px; margin:0px 0px 0px -1px; border:1px solid #ECEDE8; border-width:1px 1px 0px; z-index:999; }
+.topnav li ul li ul li a {  }
+.topnav li:hover, .topnav li.hover { position:static; }
+.topnav li:hover ul ul,
+.topnav li.sfhover ul ul,
+.topnav li:hover ul ul ul,
+.topnav li.sfhover ul ul ul ul { left:-999em; }
+.topnav li:hover ul,
+.topnav li.sfhover ul,
+.topnav li li:hover ul,
+.topnav li li.sfhover ul,
+.topnav li li li:hover ul,
+.topnav li li li li.sfhover ul { left:auto; }
+
+/* topnav indicator */
+.topnav .sf-sub-indicator { display:none; }
+.topnav li ul .sf-sub-indicator { background:url(images/ico-arrow.png) no-repeat; position:absolute; display:block; right:0.4em; top:0.9em; width:10px; height:10px; text-indent:-999em; overflow:hidden; }
+
+.topnav li img {float:left;width:30px;}
