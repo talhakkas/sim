@@ -4,55 +4,55 @@
 </style>
 
 <div class="page">
-  <h2 id="headline">{{e(@page_title)}}</h2>
+  <h2 id="headline">{{@page_title}}</h2>
 
-    <ul class="topnav">
-      <li class="menu-item menu-item-231">
-      <a href="#"class="small blue awesome">Menü</a>
-      <ul>
-        <li>
-        <img src="/asset/img/table.png"/>{{e(@SESSION.TABLE)}}
-        </li>
-        <li>
-        <img src="/asset/img/save.png"/>{{@SESSION.SAVE}}
-        </li>
-        <li>
-        <a href="{{@SR}}" title=""><img
-          src="/asset/img/tables.png"/>{{e('Tablolar')}}</a>
-        </li>
-        <F3:check if="{{@SESSION.adminsuper}}">
-        <F3:true>
-        <li>
-        <a href="review" title="">
-          <img src="/asset/img/review.png"/>{{e('Tablo İncele')}}</a>
-        </li>
-        <li>
-        <a href="new" title="">
-          <img src="/asset/img/add.png"/>{{e('Ekle')}}</a>
-        </li>
-        <li>
-        <a href="find" title="">
-          <img src="/asset/img/find.png"/>{{e('Bul')}}</a>
-        </li>
-        </F3:true>
-        </F3:check>
-        <li>
-        <a href="csv" title="">
-          <img src="/asset/img/csv.png"/>{{e('Csv Çıktı')}}</a>
-        </li>
-        <li>
-        <a href="csv" title="">
-          <img src="/asset/img/pdf.png"/>{{e('Pdf Çıktı')}}</a>
-        </li>
-        <li>
-        <a href="printly" title="">
-          <img src="/asset/img/printly.png"/>{{e('Yazıcı Dostu')}}</a>
-        </li>
+  <ul class="topnav">
+    <li>
+    <a href="#" class="small blue awesome">Menü</a>
+    <ul>
+      <li>
+      <img src="/asset/img/table.png"/>{{e(@SESSION.TABLE)}}
+      </li>
+      <li>
+      <img src="/asset/img/save.png"/>{{@SESSION.SAVE}}
+      </li>
+      <li>
+      <a href="{{@SR}}" title=""><img
+        src="/asset/img/tables.png"/>{{e('Tablolar')}}</a>
+      </li>
+      <F3:check if="{{@SESSION.adminsuper}}">
+      <F3:true>
+      <li>
+      <a href="review" title="">
+        <img src="/asset/img/review.png"/>{{e('Tablo İncele')}}</a>
+      </li>
+      <li>
+      <a href="new" title="">
+        <img src="/asset/img/add.png"/>{{e('Ekle')}}</a>
+      </li>
+      <li>
+      <a href="find" title="">
+        <img src="/asset/img/find.png"/>{{e('Bul')}}</a>
+      </li>
+      </F3:true>
+      </F3:check>
+      <li>
+      <a href="csv" title="">
+        <img src="/asset/img/csv.png"/>{{e('Csv Çıktı')}}</a>
+      </li>
+      <li>
+      <a href="csv" title="">
+        <img src="/asset/img/pdf.png"/>{{e('Pdf Çıktı')}}</a>
+      </li>
+      <li>
+      <a href="printly" title="">
+        <img src="/asset/img/printly.png"/>{{e('Yazıcı Dostu')}}</a>
+      </li>
 
-        </li>
-      </ul>
       </li>
     </ul>
+    </li>
+  </ul>
 
 
 
