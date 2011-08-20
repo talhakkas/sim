@@ -4,23 +4,23 @@ require_once  '../lib/base.php';
 require_once  '../asset/lib.php';
 
 function home() {
-	page('Hoşgeldiniz', 'home');
+	render('Hoşgeldiniz', 'home');
 }
 
 function people() {
-	page('Ekibimiz', 'people');
+	render('Ekibimiz', 'people');
 }
 function work() {
-	page('Çalışmalarımız', 'work');
+	render('Çalışmalarımız', 'work');
 }
 function about() {
-	page('Hakkında', 'about');
+	render('Hakkında', 'about');
 }
 function contact() {
-	page('Bize Ulaşın', 'contact');
+	render('Bize Ulaşın', 'contact');
 }
 function playground() {
-	page(' ', 'playground', 'nolayout');
+	render(' ', 'playground', 'nolayout');
 }
 
 F3::route("GET /*"      , 'home');
