@@ -13,24 +13,32 @@
             gui/
             inc/
             index.php
+        yolgu/
+            gui/
+            inc/
+            index.php
         admin/
             gui/
             inc/
             index.php
-        asset/
+        public/
+            fonts/
             css/
             img/
             js/
             upload/
+        layouts/
+            student.layout.htm
+            tutor.layout.htm
+            yolgu.layout.htm
+            admin.layout.htm
+            layout.htm
         db/
         doc/
-        temp/
-        fonts/
-        github/
         lib/
-        lib2/
+        temp/
+        asset/
+        github/
         .f3.ini
         .gitignore
         README.md
-
-
