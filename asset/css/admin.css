@@ -43,7 +43,7 @@ ul, li { list-style:none; }
 
 .topnav li img {float:left;width:27px; margin-right:3px;}
 .topnav a.small {padding-left:10px; text-align:center;width:120px; padding:0px 0px; }
-.topnav {float:right;margin-right:20px;display:non;}
+.topnav {float:right;margin-right:20px;display:none;}
 .topnav ul {padding-top:5px;}
 
 
