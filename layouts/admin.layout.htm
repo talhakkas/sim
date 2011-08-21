@@ -27,6 +27,16 @@
       <div id="container">
         <ul class="tabs topnav" id="mainNav">
 
+          <li class="home">
+            <a href="{{@SR}}" title="Kullanıcı adınız">
+            <img src="/public/upload/{{@SESSION.adminphoto}}" />
+            {{@SESSION.adminusername}}</a>
+          </li>
+          <li class="magenta">
+          <a href="info"
+            title="Bilgilendirme sayfası">{{e('Bilgilendirme')}}</a>
+          </li>
+
           <li>
           <a href="#">Menü</a>
           <ul>
@@ -64,16 +74,6 @@
               <img src="/public/img/printly.png"/>Yazıcı Dostu</a>
             </li>
           </ul>
-          </li>
-
-          <li class="home">
-            <a href="{{@SR}}" title="Kullanıcı adınız">
-            <img src="/public/upload/{{@SESSION.adminphoto}}" />
-            {{@SESSION.adminusername}}</a>
-          </li>
-          <li class="magenta">
-          <a href="info"
-            title="Bilgilendirme sayfası">{{e('Bilgilendirme')}}</a>
           </li>
 
           <li class="logout">
