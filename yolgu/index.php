@@ -94,6 +94,7 @@ function create() {
 	$all_nodes = nodeList();
 	F3::set('SESSION.all_nodes', $all_nodes);
 
+	ilkle();
         render('node', 'Oluştur');
 }
 
@@ -196,6 +197,24 @@ function zip() {
 	}
 	$_POST = $datas;
 
+}
+
+function ilkle() {
+	$datas = F3::get('SESSION.data');
+	switch(F3::get('SESSION.data[type]')) {
+		case "oyku":
+			$datas = array('link_text' => 'foo', 'next_node' => 1);
+			break;
+		case "dal":
+			$datas['nodes'] = array(
+				0=>array('link_text'=>'foo', 'node_link'=>1),
+				1=>array('link_text'=>'foo', 'node_link'=>1),
+				3=>array('link_text'=>'foo', 'node_link'=>1),
+			);
+
+			break;
+	}
+	F3::set('SESSION.data', $datas);
 }
 
 F3::route("GET /*", 	   'login');
