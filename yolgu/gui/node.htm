@@ -1,5 +1,5 @@
 <div class="page">
-  <h2 id="headline">Olgu Düzenleme
+  <h2 id="headline">Olgu::{{@page_title}}
     <a href="{{@SR}}/show/{{@SESSION.key}}">
       <img src="/public/img/play.png">Devam</a>
   </h2>
@@ -68,7 +68,8 @@
         <td>
         </td>
         <td>
-          <input type="submit" id="submit_button" value="Güncelle"/>
+          <input type="submit" id="submit_button" name="default" value="{{@page_title}}"/>
+          <input type="submit" id="submit_button" name="delete"  value="Sil"/>
         </td>
       </tr>
     </table>

@@ -37,25 +37,25 @@
     </F3:true></F3:check>
 
     <div id="content">
-      <F3:check if="{{ @SESSION.template !=='login' }}">
+      <F3:check if="{{ @SESSION.template !=='login' & @SESSION.template != 'show' }}">
       <F3:true>
       <div id="leftcolumn">
         <table>
           <tr><td>
-              <a href="#" title=""><img
-                src="/public/img/narrative.png"/> NARRATİVE</a>
+              <a href="/yolgu/create/oyku/{{@SESSION.key}}" title="">
+		<img src="/public/img/narrative.png"/><br>ÖYKÜ</a>
           </td></tr>
           <tr><td>
-              <a href="#" title="">
-                <img src="/public/img/list-type-icon.png"/> MCQ</a>
+              <a href="/yolgu/create/css/{{@SESSION.key}}" title="">
+                <img src="/public/img/list-type-icon.png"/><br>ÇSS</a>
           </td></tr>
           <tr><td>
-              <a href="#" title="">
-                <img src="/public/img/branch-icon.png"/> BRANCHING</a>
+              <a href="/yolgu/create/dal/{{@SESSION.key}}" title="">
+                <img src="/public/img/branch-icon.png"/><br>DALLANMA</a>
           </td></tr>
           <tr><td>
-              <a href="#" title="">
-                <img src="/public/img/list-type-icon.png"/> INQUIRY</a>
+              <a href="/yolgu/create/anket/{{@SESSION.key}}" title="">
+                <img src="/public/img/list-type-icon.png"/><br>ANKET</a>
           </td></tr>
         </table>
       </div>
