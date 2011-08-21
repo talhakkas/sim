@@ -1,37 +1,89 @@
+<style>#wrapper{margin-top:-161px;}</style>
+<script type="text/javascript" src="/public/js/quirksmode.js"></script>
+<script type="text/javascript">
+  <!--
 
-<F3:repeat group="{{@SESSION.data['nodes']}}" value="{{@blg}}" counter="{{@ctr}}">
+  var counter = 0;
+
+  function init() {
+    document.getElementById('moreFields').onclick = moreFields;
+    moreFields();
+  }
+
+function moreFields() {
+  counter++;
+  var newFields = document.getElementById('readroot').cloneNode(true);
+  newFields.id = '';
+  newFields.style.display = 'block';
+  var newField = newFields.childNodes;
+  for (var i=0;i<newField.length;i++) {
+    var theName = newField[i].name
+      if (theName)
+        newField[i].name = theName + counter;
+  }
+  var insertHere = document.getElementById('writeroot');
+  insertHere.parentNode.insertBefore(newFields,insertHere);
+}
+</script>
+
+
+<F3:repeat group="{{@SESSION.data['nodes']}}" value="{{@blg}}" 
+counter="{{@ctr}}">
 <tr>
-	<td class="label">
-		Dal {{@ctr}}:
-	</td>
-	<td class="field">
-		<textarea name="link_text[]"> {{@blg['link_text']}} </textarea>
-	</td>
+  <td class="label">
+    Dal {{@ctr}}:
+  </td>
+  <td class="field">
+    <textarea name="link_text[]">{{@blg['link_text']}}</textarea>
+  </td>
 </tr>
 <tr>
-	<td class="label">
-		<img src="/public/img/sol-ok.png" width="25">
-	</td>
-	<td class="select">
-		&nbsp;&nbsp;&nbsp;<select name="node_link[]">
-		<F3:repeat group="{{@SESSION.all_nodes}}" value="{{@blg2}}" >	
-			<F3:check if="{{@blg2[0] == @blg['node_link']}}">
-				<F3:true>
-					<option value="{{@blg2[0]}}" selected="selected">{{@blg2[0]}}:{{@blg2[1]}}</option>
-				</F3:true>
-				<F3:false>
-					<option value="{{@blg2[0]}}">{{@blg2[0]}}:{{@blg2[1]}}</option>
-				</F3:false>
-			</F3:check>
-		</F3:repeat>
-		</select>
-	</td>
+  <td class="label" style="padding-top:20px;">
+    <img src="/public/img/sol-ok.png" width="25">
+  </td>
+  <td class="select">
+    &nbsp;&nbsp;&nbsp;<select name="node_link[]">
+      <F3:repeat group="{{@SESSION.all_nodes}}" value="{{@blg2}}" >
+      <F3:check if="{{@blg2[0] == @blg['node_link']}}">
+      <F3:true>
+      <option value="{{@blg2[0]}}" selected="selected">{{@blg2[0]}}:{{@blg2[1]}}</option>
+      </F3:true>
+      <F3:false>
+      <option value="{{@blg2[0]}}">{{@blg2[0]}}:{{@blg2[1]}}</option>
+      </F3:false>
+      </F3:check>
+      </F3:repeat>
+    </select>
+  </td>
 </tr>
-
 </F3:repeat>
+
 <tr>
-	<td> </td>
-	<td>
-		<a href=javascript:;" onclick="addElement();">Yeni dal ekle</a>
-	</td>
+  <td> </td>
+  <td>
+    <a href=javascript:;" onclick="addElement();">Yeni dal ekle</a>
+  </td>
 </tr>
+
+
+
+
+<div id="readroot" style="display: none">
+
+  <input type="button" value="Bu Dalı Sil!" id="submit_button"
+  onclick="this.parentNode.parentNode.removeChild(this.parentNode);" />
+  <br /><br />
+
+  <select name="rankingsel">
+    <option>Rating</option>
+    <option value="excellent">Excellent</option>
+    <option value="good">Good</option>
+  </select><br /><br />
+</div>
+
+<form method="post" action="#">
+  <span id="writeroot"></span>
+  <input type="button" id="moreFields" value="Yeni Dal Ekle!" />
+  <input type="submit" value="Formu Gönder" id="submit_button"/>
+</form>
+

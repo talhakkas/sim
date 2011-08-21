@@ -100,7 +100,7 @@ function create() {
 
 function save() {
 	$key = F3::get('PARAMS.id');
-	
+
 	if (!empty($_REQUEST['delete']))
 		F3::reroute("/delete/$key");
 
@@ -126,9 +126,9 @@ function delete() {
 
 	$table = new Axon("node");
 	$table->load("id='$key'");
-	
+
 	$pid = $table->parent ? $table->parent : 1;
-	
+
 	$table->erase();
 
 	F3::reroute("/show/$pid");
@@ -186,7 +186,7 @@ function zip() {
 			$size = sizeof($datas['link_text']);
 			for($i=0; $i < $size; $i++) {
 				$tmp = $tmp . $datas['link_text'][$i] ."::". $datas['node_link'][$i];
-				
+
 				if ($i < ($size - 1))
 					$tmp = $tmp .",,";
 			}
@@ -236,4 +236,3 @@ F3::route("GET /test", "test");
 F3::run();
 
 ?>
-

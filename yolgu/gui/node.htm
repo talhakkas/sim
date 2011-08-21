@@ -20,7 +20,8 @@
           Medya:
         </td>
         <td class="field">
-          <input type="text" name="media" value="{{@SESSION.data['media']}}"> <br>
+          <input type="file" name="media"
+          value="{{uploaddir}}/{{@SESSION.data['media']}}" />
         </td>
       </tr>
       <tr>
