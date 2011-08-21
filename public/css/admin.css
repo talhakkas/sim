@@ -26,6 +26,7 @@
 
 
 .topnav ul {
+    background:#fff;
     margin-top:22px;
     margin-left:-33px;
     list-style:none;
@@ -35,23 +36,21 @@
     -webkit-box-shadow:0 0 8px rgba(0,0,0,0.4);
     -moz-box-shadow:0 0 8px rgba(0,0,0,0.4);
     box-shadow:0 0 8px rgba(0,0,0,0.4);
- background:#fff; }
+ }
 
 .topnav {}
 .topnav a {display:block;background-color:none;}
 .topnav li { float:left; width:auto;}
 .topnav li a {}
-.topnav li a:hover,
-.topnav li a:active { text-decoration:underline; text-shadow:none;}
-.topnav li a:visited {  }
+.topnav li a:hover {text-decoration:underline;}
 .topnav li li {float:left;width:150px;height:25px;padding-top:8px;}
+.topnav li li:hover {}
 .topnav li li a {border-left:none;margin-left:0.5px;height:5px; margin-top:0px;}
-.topnav li li:hover {background-color:none;}
-.topnav li li a:hover {text-shadow:none;background-color:none; margin-top:-8.0px;}
+.topnav li li a:hover {text-shadow:none;margin-top:-8px;}
 .topnav li a.sf-with-ul {  }
 .topnav li ul { background:#fff; position:absolute;width:150px;z-index:999; }
 .topnav li ul li { border-bottom:1px solid #ECEDE8; }
-.topnav li ul li a{background-color:none;}
+.topnav li ul li a{}
 .topnav li ul li a,
 .topnav li ul li a:visited {background:#fff; width:120px;color:#555;font-weight:normal;}
 
@@ -79,3 +78,5 @@
 
 .topnav li ul li img {float:left;width:25px; margin-left:10px;margin-top:-5px;}
 .topnav li ul a img {margin-left:-5px;margin-right:2px;margin-top:-5px;}
+
+
