@@ -45,14 +45,25 @@ function edit() {
 	$datas = $table->afind("id='$key'");
 
 	F3::set('SESSION.data', $datas[0]);
+
+	unzip();
+
+	$all_nodes = nodeList();
+	F3::set('SESSION.all_nodes', $all_nodes);
+
         render('node', 'Düzenle');
 }
 
 function update() {
 	$key = F3::get('PARAMS.id');
-	
+
+
 	if (!empty($_REQUEST['delete']))
 		F3::reroute("/delete/$key");
+	
+	$next_node = $_POST['next_node'];
+
+	zip();
 
 	$table = new Axon("node");
 	$table->load("id='$key'");
@@ -60,8 +71,12 @@ function update() {
 	foreach($_POST as $gnl => $blg) {
 		$table->$gnl = $blg;
 	}
-
 	$table->save();
+
+	$table2 = new Axon("node");
+	$table2->load("id='$next_node'");
+	$table2->parent = $key;
+	$table2->save();
 
 	F3::reroute("/show/$key");
 }
@@ -75,6 +90,10 @@ function create() {
 	$datas['isOnset']= 0;
 
 	F3::set('SESSION.data', $datas);
+
+	$all_nodes = nodeList();
+	F3::set('SESSION.all_nodes', $all_nodes);
+
         render('node', 'Oluştur');
 }
 
@@ -83,6 +102,8 @@ function save() {
 	
 	if (!empty($_REQUEST['delete']))
 		F3::reroute("/delete/$key");
+
+	zip();
 
 	$table = new Axon("node");
 	//FIXME: $table->copyFrom('REQUEST');
@@ -112,12 +133,69 @@ function delete() {
 	F3::reroute("/show/$pid");
 }
 
-function test() {
-	DB::sql('select max(id) from node where id');
-	$res = F3::get("DB->result");
+function nodeList() {
+	$table = new Axon("node");
+	$list = $table->afind('id > 0', "id asc");
 
-	$mxid = $res[0]['max(id)'];
-	echo $mxid;
+	$nodes = array();
+	foreach($list as $k=>$node) {
+		$nodes[$k] = array($node['id'], $node['title']);
+	}
+
+	return $nodes;
+}
+
+function unzip() {
+	$datas = F3::get('SESSION.data');
+
+	switch($datas['type']) {
+		case "oyku":
+			$opts = $datas['options'];
+			$t = preg_split("/::/", $opts);
+			$datas['link_text'] = $t[0];
+			$datas['next_node'] = $t[1];
+			unset($datas['options']);
+			break;
+		case "dal":
+			$opts = preg_split("/,,/", $datas['options']);
+
+			foreach($opts as $k=>$v) {
+				$t = preg_split("/::/", $v);
+				// bu tasarim daha kullanisli
+				$datas['nodes'][$k]['link_text'] = $t[0];
+				$datas['nodes'][$k]['node_link'] = $t[1];
+			}
+			unset($datas['options']);
+			break;
+	}
+	F3::set('SESSION.data', $datas);
+}
+
+function zip() {
+	// $_POST: type a gore or. oyku, link_text+next_node => options
+	$datas = $_POST;
+	switch($datas['type']) {
+		case "oyku":
+			$datas["options"] = $datas['link_text'] . "::" . $datas['next_node'];
+			unset($datas['link_text']);
+			unset($datas['next_node']);
+			break;
+		case "dal":
+			$tmp = "";
+			$size = sizeof($datas['link_text']);
+			for($i=0; $i < $size; $i++) {
+				$tmp = $tmp . $datas['link_text'][$i] ."::". $datas['node_link'][$i];
+				
+				if ($i < ($size - 1))
+					$tmp = $tmp .",,";
+			}
+			$datas['options'] = $tmp;
+			unset($datas['link_text']);
+			unset($datas['node_link']);
+			break;
+	}
+	$_POST = $datas;
+
 }
 
 F3::route("GET /*", 	   'login');

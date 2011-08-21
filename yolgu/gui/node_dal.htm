@@ -1,0 +1,36 @@
+<F3:repeat group="{{@SESSION.data['nodes']}}" value="{{@blg}}" counter="{{@ctr}}">
+<tr>
+	<td class="label">
+		Dal {{@ctr}}:
+	</td>
+	<td class="field">
+		<textarea name="link_text[]"> {{@blg['link_text']}} </textarea>
+	</td>
+</tr>
+<tr>
+	<td class="label">
+		<img src="/public/img/sol-ok.png" width="25">
+	</td>
+	<td class="select">
+		&nbsp;&nbsp;&nbsp;<select name="node_link[]">
+		<F3:repeat group="{{@SESSION.all_nodes}}" value="{{@blg2}}" >	
+			<F3:check if="{{@blg2[0] == @blg['node_link']}}">
+				<F3:true>
+					<option value="{{@blg2[0]}}" selected="selected">{{@blg2[0]}}:{{@blg2[1]}}</option>
+				</F3:true>
+				<F3:false>
+					<option value="{{@blg2[0]}}">{{@blg2[0]}}:{{@blg2[1]}}</option>
+				</F3:false>
+			</F3:check>
+		</F3:repeat>
+		</select>
+	</td>
+</tr>
+
+</F3:repeat>
+<tr>
+	<td> </td>
+	<td>
+		<a href=javascript:;" onclick="addElement();">Yeni dal ekle</a>
+	</td>
+</tr>
