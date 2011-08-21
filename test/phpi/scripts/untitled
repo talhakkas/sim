@@ -1,3 +1,0 @@
-$str = "foo::2,,bar::3";
-$arr = preg_split("/,,/", $str);
-print_r($arr);
