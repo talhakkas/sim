@@ -25,56 +25,19 @@
     <F3:true>
     <div id="wrapper">
       <div id="container">
-        <ul class="tabs topnav" id="mainNav">
-
-          <li>
-          <a href="#">Menü</a>
-          <ul>
-            <li><img src="/public/img/table.png"/>{{e(@SESSION.TABLE)}}</li>
-            <li><img src="/public/img/save.png"/>{{@SESSION.SAVE}}</li>
-            <li>
-            <a href="{{@SR}}" title=""><img
-              src="/public/img/tables.png"/>Tablolar</a>
-            </li>
-            <F3:check if="{{@SESSION.adminsuper}}">
-            <F3:true>
-            <li>
-            <a href="review" title="">
-              <img src="/public/img/review.png"/>Tablo İncele</a>
-            </li>
-            <li>
-            <a href="new" title="">
-              <img src="/public/img/add.png"/>Ekle</a>
-            </li>
-            <li>
-            <a href="find" title="">
-              <img src="/public/img/find.png"/>Bul</a>
-            </li>
-            </F3:true>
-            </F3:check>
-            <li>
-            <a href="csv" title="">
-              <img src="/public/img/csv.png"/>Csv Çıktı</a>
-            </li>
-            <li>
-            <a href="csv" title="">
-              <img src="/public/img/pdf.png"/>Pdf Çıktı</a>
-            <li>
-            <a href="printly" title="">
-              <img src="/public/img/printly.png"/>Yazıcı Dostu</a>
-            </li>
-          </ul>
-          </li>
-
+        <ul class="tabs" id="mainNav">
           <li class="home">
             <a href="{{@SR}}" title="Kullanıcı adınız">
             <img src="/public/upload/{{@SESSION.adminphoto}}" />
             {{@SESSION.adminusername}}</a>
-          </li>
+</li>
+
+
           <li class="magenta">
           <a href="info"
             title="Bilgilendirme sayfası">{{e('Bilgilendirme')}}</a>
           </li>
+
 
           <li class="logout">
           <a href="logout" title="Çıkış">{{e('Çıkış')}}</a>

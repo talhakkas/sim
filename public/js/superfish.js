@@ -122,6 +122,8 @@
 jQuery(document).ready(function() { 
 	jQuery('ul.nav').superfish(); 
 	jQuery('ul.topnav').superfish(); 
+	jQuery('ul.tabs').superfish(); 
+	//jQuery('ul.topnav-menu').superfish(); 
 }); 
 
 
