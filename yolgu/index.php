@@ -68,9 +68,17 @@ function update() {
 	$table = new Axon("node");
 	$table->load("id='$key'");
 	//FIXME: $table->copyFrom('REQUEST');
-	foreach($_POST as $gnl => $blg) {
-		$table->$gnl = $blg;
-	}
+	foreach($_POST as $gnl => $blg)
+		if($gnl != "media")
+			$table->$gnl = $blg;
+	
+	$fnm = "$key.jpg";
+	$uploaddir = "/public/upload/";
+	$ffnm = $uploaddir . $fnm;
+	if(yukle($ffnm, "media", false))
+		$table->media = $fnm;
+	else
+		$table->media = "default.jpg";
 	$table->save();
 
 	$table2 = new Axon("node");

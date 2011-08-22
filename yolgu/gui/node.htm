@@ -1,3 +1,5 @@
+<script type="text/javascript" src="/public/js/table_ad_remove.js"></script>
+
 <div class="page">
   <h2 id="headline">Olgu::{{@page_title}}
     <a href="{{@SR}}/show/{{@SESSION.key}}">
@@ -6,7 +8,15 @@
 
   <form name="node" action="{{@SR}}{{@PARAMS.0}}" method="post">
 
-    <table class="custom">
+    <table class="custom" id="custom" name="custom">
+      <tr>
+        <td>
+        </td>
+        <td>
+          <input type="submit" id="submit_button" name="default" value="{{@page_title}}"/>
+          <input type="submit" id="submit_button" name="delete"  value="Sil"/>
+        </td>
+      </tr>
       <tr>
         <td class="label">
           Başlık:
@@ -21,7 +31,7 @@
         </td>
         <td class="field">
           <input type="file" name="media"
-          value="{{uploaddir}}/{{@SESSION.data['media']}}" />
+          value="{{@uploaddir}}/{{@SESSION.data['media']}}" />
         </td>
       </tr>
       <tr>
@@ -52,21 +62,13 @@
         </td>
       </tr>
 
-	<F3:include href="node_{{@SESSION.data['type']}}.htm" />  
-
       <input type="hidden" name="type" value="{{@SESSION.data['type']}}"/>
       <input type="hidden" name="parent" value="{{@SESSION.data['parent']}}"/>
       <input type="hidden" name="isOnset" value="{{@SESSION.data['isOnset']}}"/>
       <input type="hidden" name="isWrong" value="{{@SESSION.data['isWrong']}}"/>
 
-      <tr>
-        <td>
-        </td>
-        <td>
-          <input type="submit" id="submit_button" name="default" value="{{@page_title}}"/>
-          <input type="submit" id="submit_button" name="delete"  value="Sil"/>
-        </td>
-      </tr>
+    	<F3:include href="node_{{@SESSION.data['type']}}.htm" />  
+
     </table>
 
   </form>
