@@ -74,9 +74,14 @@ function giris() {
 	// talep : name => true
 	// cevap : name, surname, first_name, last_name, username
 	F3::set('SESSION.FIELDS', array(
-					'_id' =>  true, // içinde _id geçen
-					'tc' => false, // sadece tc diye bir şey varsa
-				        'name' => true, // içinde name geçen
+					'_id' =>  true,
+					'name' => true,
+					'title' => true,
+					'content' => true,
+					'tc' => false,
+					'photo' => false,
+					'type' => false,
+					'topic' => false,
 				));
 
 	if (F3::get('SESSION.admin'))
