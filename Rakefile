@@ -42,7 +42,7 @@ REQUIRE = %w(lib asset public layouts)
 
 require 'highline/import'
 require 'x/util/std'
-# x/util/std'de bazı ayarlamalar hata ayıklamaları yaptım, düzgün çalışması için
+# x/util/std'de bazı ayarlamalar ve hata ayıklamaları yaptım, düzgün çalışması için
 # http://github.com/gdemir/x/tree/master/lib/ruby/x/util
 # da ki güncellediğim yerleri kendi reponuza ekleyin/düzenleyin.
 #
