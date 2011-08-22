@@ -19,33 +19,36 @@
       <thead>
 	<tr>
 	  <F3:repeat group="{{@fields}}" key="{{@gnl}}" value="{{@blg}}" >
+	  <F3:check if="{{in(@blg, @SESSION.FIELDS) && @SESSION.FIELDS}}">
+	  <F3:true>
 	    <th>{{e(@blg)}}</th>
+	  </F3:true>
 	  </F3:repeat>
 	  <th></th>
 	</tr>
       </thead>
       <tbody>
-
 	<F3:repeat group="{{@DB->result}}" key="{{@index}}" value="{{@row}}" >
 	<tr>
 	  <F3:repeat group="{{@row}}" key="{{@field}}" value="{{@value}}" >
-	  <F3:check if="{{@field=='photo'}}">
+	  <F3:check if="{{in(@field, @SESSION.FIELDS) && @SESSION.FIELDS}}">
 	  <F3:true>
-	  <td class="label"><img width=80
-	    src="/public/{{@uploaddir,@value}}"/></td>
-	  </F3:true>
-	  <F3:false>
-	  <F3:check if="{{in_array(@field, @fields)}}">
-	  <F3:true>
-	  <td class="label"> <!--çok uzun metinleri burada kısaltalım-->
-	    <F3:check if="{{strlen(@value)>100}}">
-	    <F3:true>{{substr(@value, 0, 97)}}...</F3:true>
-	    <F3:false>{{@value}}</F3:false>
+	    <F3:check if="{{@field=='photo'}}">
+	    <F3:true>
+	    <td class="label">
+	      <img src="/public/{{@uploaddir,@value}}" width="26" height="26"/>
+	    </td>
+	    </F3:true>
+	    <F3:false>
+	    <td class="label"> <!--çok uzun metinleri burada kısaltalım-->
+	      <F3:check if="{{strlen(@value)>100}}">
+	      <F3:true>{{substr(@value, 0, 97)}}...</F3:true>
+	      <F3:false>{{@value}}</F3:false>
+	      </f3:check>
+	    </td>
+	    </F3:false>
 	    </f3:check>
-	  </td>
-	  </F3:true>
-	  </f3:check>
-	  </f3:false>
+	  </f3:true>
 	  </f3:check>
 	  </F3:repeat>
 	  <F3:repeat group="{{@row}}" key="{{@field}}" value="{{@value}}" >
@@ -71,7 +74,6 @@
 	  </F3:repeat>
 	</tr>
 	</F3:repeat>
-
       </tbody>
     </table>
   </div>

@@ -64,6 +64,9 @@ function giris() {
 				      'announcement' => 'announcement_id'
 			      ));
 	F3::set('SESSION.TABLE_INIT', 'people'); // login olursa, default olarak admin tablosu seçilsin
+	F3::set('SESSION.FIELDS', array(
+					'id','tc','name',
+					)); // login olursa, incele kısmında buna benzer şeyleri görsün
 
 	if (F3::get('SESSION.admin'))
 		return F3::call('home');
