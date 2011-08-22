@@ -5,7 +5,7 @@ require_once  '../asset/lib.php';
 
 function login() {
 	if (F3::get("SESSION.special") == 1)
-		return F3::call('show');
+		return F3::call('cshow');
 	render('login', 'Yolgu bu Yolgu');
 }
 
@@ -57,11 +57,11 @@ function edit() {
 function update() {
 	$key = F3::get('PARAMS.id');
 
-
 	if (!empty($_REQUEST['delete']))
 		F3::reroute("/delete/$key");
 	
-	$next_node = $_POST['next_node'];
+	if($_POST['type'] == 'oyku') 
+		$next_node = $_POST['next_node'];
 
 	zip();
 
@@ -81,10 +81,12 @@ function update() {
 		$table->media = "default.jpg";
 	$table->save();
 
-	$table2 = new Axon("node");
-	$table2->load("id='$next_node'");
-	$table2->parent = $key;
-	$table2->save();
+	if($_POST['type'] == 'oyku') {
+		$table2 = new Axon("node");
+		$table2->load("id='$next_node'");
+		$table2->parent = $key;
+		$table2->save();
+	}
 
 	F3::reroute("/show/$key");
 }
@@ -215,14 +217,52 @@ function ilkle() {
 			break;
 		case "dal":
 			$datas['nodes'] = array(
-				0=>array('link_text'=>'foo', 'node_link'=>1),
-				1=>array('link_text'=>'foo', 'node_link'=>1),
-				3=>array('link_text'=>'foo', 'node_link'=>1),
+				0=>array('link_text'=>'buraya yaz', 'node_link'=>1)
 			);
 
 			break;
 	}
 	F3::set('SESSION.data', $datas);
+}
+
+// case: functions
+function cshow() {
+	$key = F3::get('PARAMS.cid') ? F3::get('PARAMS.cid'):1;
+	F3::set('SESSION.ckey', $key);
+
+	$table = new Axon("ncase");
+	$datas = $table->afind("cid='$key'");
+
+	F3::set('SESSION.cdata', $datas[0]);
+        render('cshow', 'Case Details');
+}
+
+function cedit() {
+	$key = F3::get('PARAMS.cid') ? F3::get('PARAMS.cid'):1;
+	F3::set('SESSION.ckey', $key);
+
+	$table = new Axon("ncase");
+	$datas = $table->afind("cid='$key'");
+
+	F3::set('SESSION.cdata', $datas[0]);
+        render('case', 'Düzenle');
+}
+
+function cupdate() {
+	$key = F3::get('PARAMS.cid');
+
+	if (!empty($_REQUEST['delete']))
+		F3::reroute("/cdelete/$key");
+	
+	$table = new Axon("ncase");
+	$table->load("cid='$key'");
+	//FIXME: $table->copyFrom('REQUEST');
+	foreach($_POST as $gnl => $blg)
+		if($gnl != "media")
+			$table->$gnl = $blg;
+	$table->save();
+
+	F3::reroute("/cshow/$key");
 }
 
 F3::route("GET /*", 	   'login');
@@ -238,6 +278,10 @@ F3::route("GET /create/@type/@id", "create");
 
 F3::route("GET /delete/@id", "delete");
 F3::route("POST /delete/@id", "delete");
+
+F3::route("GET /case/@cid", 'cshow');
+F3::route("GET /cedit/@cid", 'cedit');
+	F3::route("POST /cedit/@cid", 'cupdate');
 
 F3::route("GET /test", "test");
 

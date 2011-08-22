@@ -1,8 +1,15 @@
+<tr>
+<td></td>
+<td>
+	<INPUT type="button" value="Dal Ekle" 	onclick="addRow('custom')" />
+	<INPUT type="button" value="Dal Sil" onclick="deleteRow('custom')" />
+</td>
+</tr>
+
 <F3:repeat group="{{@SESSION.data['nodes']}}" value="{{@blg}}" 
 counter="{{@ctr}}">
 <tr>
-  <td class="label">
-    Dal {{@ctr}}:
+  <td class="label"><input type="checkbox">Dal
   </td>
   <td class="field">
     <textarea name="link_text[]">{{@blg['link_text']}}</textarea>
@@ -29,11 +36,4 @@ counter="{{@ctr}}">
 </tr>
 </F3:repeat>
 
-<tr>
-<td></td>
-<td>
-	<INPUT type="button" value="Add Row" 	onclick="addRow('custom')" />
-	<INPUT type="button" value="Delete Row" onclick="deleteRow('custom')" />
-</td>
-</tr>
 

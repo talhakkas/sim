@@ -1,27 +1,40 @@
 function addRow(tableName) {
 
-    var table = document.getElementsByName(tableName).item(0);
-    //var table = document.getElementByID(tableName);
+	var table = document.getElementsByName(tableName).item(0);
+	//var table = document.getElementByID(tableName);
 
-    var rowCount = table.rows.length;
-    var row = table.insertRow(rowCount);
+	var rowCount = table.rows.length;
 
-    var cell1 = row.insertCell(0);
-    var element1 = document.createElement("input");
-    element1.type = "checkbox";
-    cell1.appendChild(element1);
+	// chk + textarea
+	var row1 = table.insertRow(rowCount);
 
-    /*var cell2 = row.insertCell(1);
-    cell2.innerHTML = rowCount + 1;
+	var cell11 = row1.insertCell(0);
+	var chk = document.createElement("input");
+	cell11.setAttribute('class', 'label');
+	chk.type = "checkbox";
+	cell11.appendChild(chk);
+	cell11.appendChild(document.createTextNode('Dal'));
 
-    var cell3 = row.insertCell(2);
-    var element2 = document.createElement("input");
-    element2.type = "text";
-    cell3.appendChild(element2);*/
+	var cell12 = row1.insertCell(1);
+	var txtarea = document.createElement("textarea");
+	txtarea.setAttribute('name', 'link_text[]');
+	cell12.appendChild(txtarea);
 
-    var cell4 = row.insertCell(1);
-    var element3 = document.getElementsByName("node_link[]").item(0).cloneNode(true);
-    cell4.appendChild(element3);
+	// select
+	var row2 = table.insertRow(rowCount+1);
+	
+	var cell21 = row2.insertCell(0);
+	var im = document.createElement('img');
+	cell21.setAttribute('class', 'label');
+	im.setAttribute('src', '/public/img/sol-ok.png');
+	im.setAttribute('width', '25');
+	cell21.appendChild(im);
+
+	var cell22 = row2.insertCell(1);
+	var slct = document.getElementsByName("node_link[]").item(0).cloneNode(true);
+
+	cell22.setAttribute('class', 'select');
+	cell22.appendChild(slct); 
 }
 
 function deleteRow(tableName) {
@@ -35,7 +48,10 @@ function deleteRow(tableName) {
 	var chkbox = row.cells[0].childNodes[0];
 	if(null != chkbox && true == chkbox.checked) {
 	    table.deleteRow(i);
+	    table.deleteRow(i);
 	    rowCount--;
+	    rowCount--;
+	    i--;
 	    i--;
 	}
 

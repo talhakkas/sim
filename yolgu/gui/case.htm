@@ -1,0 +1,69 @@
+<div class="page">
+  <h2 id="headline">{{@page_title}}
+    <a href="{{@SR}}/cshow/{{@SESSION.ckey}}">
+      <img src="/public/img/play.png">Devam</a>
+  </h2>
+
+<form name="case" action="{{@SR}}{{@PARAMS.0}}" method="post">
+
+<table class="custom" id="custom" name="custom">
+	<tr>
+	 <td class="label">
+		Case Title:
+	 </td>
+	 <td class="field">
+		<input type="text" name="title" value="{{@SESSION.cdata['title']}}">
+	 </td>
+	</tr>
+	<tr>
+	 <td class="label">
+		Tanımlama:
+	 </td>
+	 <td>
+		<textarea name="description">{{@SESSION.cdata['description']}}</textarea>
+	 </td>
+	</tr>
+	<tr>
+	 <td class="label">
+		Playable By:
+	 </td>
+	 <td class="field">
+		<input type="text" name="type_playable_by" value="{{@SESSION.cdata['type_playable_by']}}">
+	 </td>
+	</tr>
+	<tr>
+	 <td class="label">
+		Navidation Panel:
+	 </td>
+	 <td class="field">
+		<input type="text" name="type_navigation_panel" value="{{@SESSION.cdata['type_navigation_panel']}}">
+	 </td>
+	</tr>
+	<tr>
+	 <td class="label">
+		Patient Information:
+	 </td>
+	 <td class="field">
+		<input type="text" name="patient_info" value="{{@SESSION.cdata['patient_info']}}">
+	 </td>
+	</tr>
+	<tr>
+	 <td class="label">
+		Educational Options:
+	 </td>
+	 <td class="field">
+		<input type="text" name="edu_opt" value="{{@SESSION.cdata['edu_opt']}}">
+	 </td>
+	</tr>
+	<tr>
+	 <td class="label">
+		Diğer Ayarlar:
+	 </td>
+	 <td class="field">
+		<input type="text" name="other" value="{{@SESSION.cdata['other']}}">
+	 </td>
+	</tr>
+</table>
+          <input type="submit" id="submit_button" name="default" value="{{@page_title}}"/>
+          <!--input type="submit" id="submit_button" name="delete"  value="Sil"/-->
+</form>
