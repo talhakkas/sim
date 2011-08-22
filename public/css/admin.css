@@ -20,9 +20,9 @@
 
 #button-preview,
 #button-edit,
-#button-delete{background:url(/asset/img/preview24.png) no-repeat center; height:24px; width:24px;border:none;cursor:pointer;float:left;margin-right:10px;}
-#button-edit{background:url(/asset/img/edit24.png) no-repeat center;}
-#button-delete{background:url(/asset/img/delete24.png) no-repeat center;margin-right:0px;}
+#button-delete{background:url(/public/img/preview24.png) no-repeat center; height:24px; width:24px;border:none;cursor:pointer;float:left;margin-right:10px;}
+#button-edit{background:url(/public/img/edit24.png) no-repeat center;}
+#button-delete{background:url(/public/img/delete24.png) no-repeat center;margin-right:0px;}
 
 
 .topnav ul {
