@@ -48,8 +48,11 @@ function e($str){
 }
 
 function in($item, $fields) {
-	foreach ($fields as $field)
-		if (preg_match('/'.$field.'/',$item)) return true;
+	foreach ($fields as $field => $type)
+		if ($type)
+			if (preg_match('/'.$field.'/',$item)) return true;
+		else
+			if ($field == $item) return true;
 	return false;
 }
 ?>

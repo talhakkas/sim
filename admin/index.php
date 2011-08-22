@@ -66,17 +66,18 @@ function giris() {
        	// login olursa, default olarak admin tablosu seçilsin
 	F3::set('SESSION.TABLE_INIT', 'people');
 
-	// tablo incele kısmında buna benzer şeyleri görürsen bizimde görmemize izin ver :-)
+	// tablo incele kısmında buna benzer şeyleri görürsen bizimde görmemize izin ver
 	// Ör :
-	// talep : id
+	// talep : _id => true
 	// cevap : bilmem_id, bilmem2_id, bilmem3_id
 	//
-	// talep : name
-	// cevap : name, surname, first_name, last_name
+	// talep : name => true
+	// cevap : name, surname, first_name, last_name, username
 	F3::set('SESSION.FIELDS', array(
-					'id', 'tc', 'name',
+					'_id' =>  true, // içinde _id geçen
+					'tc' => false, // sadece tc diye bir şey varsa
+				        'name' => true, // içinde name geçen
 				));
-
 
 	if (F3::get('SESSION.admin'))
 		return F3::call('home');
