@@ -63,10 +63,20 @@ function giris() {
 				      'discipline' => 'discipline_id',
 				      'announcement' => 'announcement_id'
 			      ));
-	F3::set('SESSION.TABLE_INIT', 'people'); // login olursa, default olarak admin tablosu seçilsin
+       	// login olursa, default olarak admin tablosu seçilsin
+	F3::set('SESSION.TABLE_INIT', 'people');
+
+	// tablo incele kısmında buna benzer şeyleri görürsen bizimde görmemize izin ver :-)
+	// Ör :
+	// talep : id
+	// cevap : bilmem_id, bilmem2_id, bilmem3_id
+	//
+	// talep : name
+	// cevap : name, surname, first_name, last_name
 	F3::set('SESSION.FIELDS', array(
-					'id','tc','name',
-					)); // login olursa, incele kısmında buna benzer şeyleri görsün
+					'id', 'tc', 'name',
+				));
+
 
 	if (F3::get('SESSION.admin'))
 		return F3::call('home');
