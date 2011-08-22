@@ -10,14 +10,6 @@
 
     <table class="custom" id="custom" name="custom">
       <tr>
-        <td>
-        </td>
-        <td>
-          <input type="submit" id="submit_button" name="default" value="{{@page_title}}"/>
-          <input type="submit" id="submit_button" name="delete"  value="Sil"/>
-        </td>
-      </tr>
-      <tr>
         <td class="label">
           Başlık:
         </td>
@@ -70,6 +62,8 @@
     	<F3:include href="node_{{@SESSION.data['type']}}.htm" />  
 
     </table>
+          <input type="submit" id="submit_button" name="default" value="{{@page_title}}"/>
+          <input type="submit" id="submit_button" name="delete"  value="Sil"/>
 
   </form>
 

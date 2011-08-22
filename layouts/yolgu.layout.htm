@@ -37,7 +37,7 @@
     </F3:true></F3:check>
 
     <div id="content">
-      <F3:check if="{{ @SESSION.template !=='login' & @SESSION.template != 'show' }}">
+      <F3:check if="{{ @SESSION.template !=='login' & @SESSION.template != 'show' & @SESSION.template != 'cshow' & @SESSION.template != 'cedit'}}">
       <F3:true>
       <div id="leftcolumn">
         <table>

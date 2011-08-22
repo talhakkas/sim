@@ -1,0 +1,64 @@
+<div class="page">
+  <h2 id="headline">{{@page_title}}
+    <a href="{{@SR}}/cedit/{{@SESSION.ckey}}">
+      <img src="/public/img/edit2.png">Düzenle</a>
+  </h2>
+
+<table class="custom" id="custom" name="custom">
+	<tr>
+	 <td class="label">
+		Case Title:
+	 </td>
+	 <td class="field">
+		{{@SESSION.cdata['title']}}
+	 </td>
+	</tr>
+	<tr>
+	 <td class="label">
+		Tanımlama:
+	 </td>
+	 <td>
+		{{@SESSION.cdata['description']}}
+	 </td>
+	</tr>
+	<tr>
+	 <td class="label">
+		Playable By:
+	 </td>
+	 <td class="field">
+		{{@SESSION.cdata["type_playable_by"]}}
+	 </td>
+	</tr>
+	<tr>
+	 <td class="label">
+		Navidation Panel:
+	 </td>
+	 <td class="field">
+		{{@SESSION.cdata["type_navigation_panel"]}}
+	 </td>
+	</tr>
+	<tr>
+	 <td class="label">
+		Patient Information:
+	 </td>
+	 <td class="field">
+		{{@SESSION.cdata["patient_info"]}}
+	 </td>
+	</tr>
+	<tr>
+	 <td class="label">
+		Educational Options:
+	 </td>
+	 <td class="field">
+		{{@SESSION.cdata["edu_opts"]}}
+	 </td>
+	</tr>
+	<tr>
+	 <td class="label">
+		Diğer Ayarlar:
+	 </td>
+	 <td class="field">
+		{{@SESSION.cdata["other"]}}
+	 </td>
+	</tr>
+</table>
