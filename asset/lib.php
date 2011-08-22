@@ -4,6 +4,9 @@ include 'access.php';
 include 'init.php';
 include 'dict.php';
 
+// look
+// https://github.com/emineker/sim/blob/master/.f3.ini.example
+
 function render($template, $title) {
 	F3::set('page_title', $title);
 	F3::set('SESSION.template', $template); // printly için
@@ -11,8 +14,7 @@ function render($template, $title) {
         if (F3::get('printly')) { // printly modu için ufak bir değişkencik
 		echo Template::serve('printly.htm');
 	} else {
-		$layout = "../layouts/" . F3::get('LAYOUTS') . base() . '.layout.htm';
-		
+		$layout = F3::get('LAYOUTS') . base() . '.layout.htm';
 		echo file_exists($layout) ? Template::serve("../" . $layout) : Template::serve("../" . F3::get('LAYOUTS') . 'layout.htm');
 	}
 }
@@ -45,4 +47,12 @@ function e($str){
 	return $str;
 }
 
+function in($item, $fields) {
+	foreach ($fields as $field => $type)
+		if ($type)
+			if (preg_match('/'.$field.'/',$item)) return true;
+		else
+			if ($field == $item) return true;
+	return false;
+}
 ?>
