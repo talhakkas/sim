@@ -58,6 +58,7 @@ require 'x/util/std'
 myask = Thor::Shell::Basic.new
 
 task :default do
+  error "servis(#{APPS}) dizini yok çıkıyorum" unless File::exists?("#{APPS}")
   Dir["#{APPS}/*"].each do |app|
     request = true
     app = File.basename(app)
