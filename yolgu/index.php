@@ -279,11 +279,7 @@ function ilkle() {
 			break;
 	}
 
-	DB::sql("select max(id) from node where id AND cid='$cid'");
-	$res = F3::get("DB->result");
-	$id = $res[0]['max(id)'];
-
-	$datas['id'] = $id + 1;
+	$datas['id'] = F3::get('SESSION.id');
 	$datas['cid'] = F3::get('SESSION.cid');
 
 	F3::set('SESSION.data', $datas);
