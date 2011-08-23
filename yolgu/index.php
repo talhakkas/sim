@@ -114,7 +114,7 @@ function create() {
 
 	$datas = array();
 	$datas['cid'] = $cid;
-	$datas['parent'] = $id;
+	$datas['id'] = $id;
 	$datas['type']   = F3::get('PARAMS.type');
 	$datas['isOnset']= 0;
 
