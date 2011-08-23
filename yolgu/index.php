@@ -78,7 +78,6 @@ function update() {
 	foreach($_POST as $gnl => $blg)
 		if($gnl != "media")
 			$table->$gnl = $blg;
-	
 	/*$fnm = "$id.jpg";
 	$uploaddir = "/public/upload/";
 	$ffnm = $uploaddir . $fnm;
@@ -86,7 +85,6 @@ function update() {
 		$table->media = $fnm;
 	else */
 	$table->media = "default.jpg";
-	$table->nid = NULL;
 	$table->save();
 
 	if($_POST['type'] == 'oyku') {
