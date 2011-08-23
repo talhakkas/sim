@@ -6,7 +6,7 @@
       <img src="/public/img/play.png">Devam</a>
   </h2>
 
-  <form name="node" action="{{@SR}}{{@PARAMS.0}}" method="post">
+  <form name="node" action="{{@SR}}{{@PARAMS.0}}" method="post" enctype="multipart/form-data">
 
     <table class="custom" id="custom" name="custom">
       <tr>
@@ -22,8 +22,7 @@
           Medya:
         </td>
         <td class="field">
-          <input type="file" name="media"
-          value="{{@uploaddir}}/{{@SESSION.data['media']}}" />
+          <input type="file" name="media" value="{{@uploaddir}}{{@SESSION.data['media']}}" >
         </td>
       </tr>
       <tr>
