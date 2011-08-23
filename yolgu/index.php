@@ -129,18 +129,30 @@ function save() {
 
 	zip();
 
+	DB::sql("select max(nid) from node where nid");
+	$res = F3::get("DB->result");
+	$nid = $res[0]['max(nid)'];
+
 	$table = new Axon("node");
 	//FIXME: $table->copyFrom('REQUEST');
-	foreach($_POST as $gnl => $blg) {
-		$table->$gnl = $blg;
-	}
+	foreach($_POST as $gnl => $blg)
+		if($gnl != "media")
+			$table->$gnl = $blg;
+	
+	$fnm = "_n". sprintf("%05d", $nid) . ".jpg";
+	$ffnm = F3::get('uploaddir') . $fnm;
+	if(yukle($ffnm, "media", true))
+		$table->media = $fnm;
+	else 
+		$table->media = "default.jpg";
+
 	$table->nid = NULL;
 	$table->save();
 
 	DB::sql("select max(id) from node where id AND cid='$cid'");
 	$res = F3::get("DB->result");
-
 	$id = $res[0]['max(id)'];
+
 	F3::reroute("/show/$cid/$id");
 }
 
