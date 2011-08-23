@@ -12,11 +12,13 @@
 
   <hr>
 
-  <F3:check if="{{@SESSION.data['media'] != ''}}">
-  <F3:true>
-  <img src="{{@SR}}/{{@uploaddir}}kucuk{{@SESSION.data['media']}}">
-  </F3:true>
-  </F3:check>
+  <div align="center"> 
+   <F3:check if="{{@SESSION.data['media'] != ''}}">
+   <F3:true>
+   <img src="{{@SR}}/{{@uploaddir}}kucuk{{@SESSION.data['media']}}" align="middle">
+   </F3:true>
+   </F3:check>
+  </div>
 
   <div class="question">
     {{@SESSION.data['question']}}

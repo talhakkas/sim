@@ -82,12 +82,15 @@ function update() {
 		if($gnl != "media")
 			$table->$gnl = $blg;
 
-	$fnm = "_n". sprintf("%05d", $table->nid) . ".jpg";
-	$ffnm = F3::get('uploaddir') . $fnm;
-	if(yukle($ffnm, "media", true))
-		$table->media = $fnm;
-	else 
-		$table->media = "default.jpg";
+	if(F3::get('FILES.media.name') != "") {
+		$fnm = "_n". sprintf("%05d", $table->nid) . ".jpg";
+		$ffnm = F3::get('uploaddir') . $fnm;
+		if(yukle($ffnm, "media", true))
+			$table->media = $fnm;
+		else 
+			$table->media = "default.jpg";
+	}
+
 	if($_POST['resim_sil'] == 'evet')
 		$table->media = NULL;
 
