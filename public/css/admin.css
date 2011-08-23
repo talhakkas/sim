@@ -25,6 +25,7 @@
 #button-delete{background:url(/public/img/delete24.png) no-repeat center;margin-right:0px;}
 
 
+.topnav .sf-sub-indicator { display:none; }
 .topnav ul {
     background:#fff;
     margin-top:22px;
@@ -41,40 +42,16 @@
 .topnav {}
 .topnav a {display:block;background-color:none;}
 .topnav li { float:left; width:auto;}
-.topnav li a {}
-.topnav li a:hover {text-decoration:underline;}
 .topnav li li {float:left;width:150px;height:25px;padding-top:8px;}
-.topnav li li:hover {}
 .topnav li li a {border-left:none;margin-left:0.5px;height:5px; margin-top:0px;}
 .topnav li li a:hover {text-shadow:none;margin-top:-8px;}
 .topnav li a.sf-with-ul {  }
 .topnav li ul { background:#fff; position:absolute;width:150px;z-index:999; }
 .topnav li ul li { border-bottom:1px solid #ECEDE8; }
 .topnav li ul li a{}
+.topnav li ul li a:hover {padding-top:10px;}
 .topnav li ul li a,
 .topnav li ul li a:visited {background:#fff; width:120px;color:#555;font-weight:normal;}
-
-.topnav li ul ul {}
-.topnav li ul ul li a {  }
-.topnav li ul li ul li a {  }
-.topnav li:hover,
-.topnav li.hover { position:static; }
-.topnav li:hover ul ul,
-.topnav li.sfhover ul ul,
-.topnav li:hover ul ul ul,
-.topnav li.sfhover ul ul ul,
-.topnav li:hover ul ul ul ul,
-.topnav li.sfhover ul ul ul ul { left:-999em; }
-.topnav li:hover ul,
-.topnav li.sfhover ul,
-.topnav li li:hover ul,
-.topnav li li.sfhover ul,
-.topnav li li li:hover ul,
-.topnav li li li.sfhover ul,
-.topnav li li li li:hover ul,
-.topnav li li li li.sfhover ul { left:auto; }
-
-.topnav .sf-sub-indicator { display:none; }
 
 .topnav li ul li img {float:left;width:25px; margin-left:10px;margin-top:-5px;}
 .topnav li ul a img {margin-left:-5px;margin-right:2px;margin-top:-5px;}
