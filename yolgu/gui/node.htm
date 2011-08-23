@@ -22,7 +22,8 @@
           Medya:
         </td>
         <td class="field">
-          <input type="file" name="media" value="{{@uploaddir}}{{@SESSION.data['media']}}" >
+          <input type="file" name="media" value="{{@SR}}/{{@uploaddir}}{{@SESSION.data['media']}}" >
+	  <img src="{{@SR}}/{{@uploaddir}}kucuk{{@SESSION.data['media']}}" height="35">
         </td>
       </tr>
       <tr>

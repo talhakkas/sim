@@ -82,6 +82,7 @@ function yukle($hedef=NULL, $alan='file', $uzerine_yazma=false) {
 		mkdir($dir, 0777, true);
 		chmod($dir, 0777);
 	}
+
 	// tam yol
 	$hedef = getcwd() . "/" . $hedef;
 
@@ -104,6 +105,22 @@ function yukle($hedef=NULL, $alan='file', $uzerine_yazma=false) {
 		else if (!move_uploaded_file($yuklenen, $hedef)) {
 			F3::set('error', 'Dosya yükleme hatası');
 		} else // yok başka bir ihtimal!, doğru yoldasın
+			// image resizing
+			$file_parts = pathinfo($hedef);
+			$klasor = $file_parts['dirname'] . "/";
+			$dosya = $hedef;
+			$resim = imagecreatefromjpeg($dosya);
+
+			$boyutlar = getimagesize($dosya);
+			$resimorani = 300 / $boyutlar[0];
+			$yeniyukseklik = $resimorani * $boyutlar[1];
+			$yeniresim = imagecreatetruecolor("300", $yeniyukseklik);
+			imagecopyresampled($yeniresim, $resim, 0, 0, 0, 0, "300", $yeniyukseklik,
+				$boyutlar[0], $boyutlar[1]);
+			$hedefdosya = $klasor . "kucuk". $file_parts['basename'];
+			imagejpeg($yeniresim, $hedefdosya, 100);
+			chmod($hedefdosya, 0755);
+
 			return true;
 	}
 	else {

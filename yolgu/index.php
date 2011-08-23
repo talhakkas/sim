@@ -78,13 +78,13 @@ function update() {
 	foreach($_POST as $gnl => $blg)
 		if($gnl != "media")
 			$table->$gnl = $blg;
-	/*$fnm = "$id.jpg";
-	$uploaddir = "/public/upload/";
-	$ffnm = $uploaddir . $fnm;
-	if(yukle($ffnm, "media", false))
+
+	$fnm = "_n". sprintf("%05d", $table->nid) . ".jpg";
+	$ffnm = F3::get('uploaddir') . $fnm;
+	if(yukle($ffnm, "media", true))
 		$table->media = $fnm;
-	else */
-	$table->media = "default.jpg";
+	else 
+		$table->media = "default.jpg";
 	$table->save();
 
 	if($_POST['type'] == 'oyku') {
@@ -373,6 +373,10 @@ function cdelete() {
 	F3::reroute("/clist/");
 }
 
+function test() {
+	print_r(F3::get('FILES'));
+}
+
 F3::route("GET /*", 	   'login');
 	F3::route("POST /login",   'login.php');
 F3::route("GET /logout*",  'logout');
@@ -400,6 +404,7 @@ F3::route("GET /cdelete/@cid", "cdelete");
 	F3::route("POST /cdelete/@cid", "cdelete");
 
 F3::route("GET /test", "test");
+	F3::route("POST /test", "test");
 
 F3::run();
 
