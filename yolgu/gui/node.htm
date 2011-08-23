@@ -2,7 +2,7 @@
 
 <div class="page">
   <h2 id="headline">Olgu::{{@page_title}}
-    <a href="{{@SR}}/show/{{@SESSION.key}}">
+    <a href="{{@SR}}/show/{{@SESSION.cid}}/{{@SESSION.id}}">
       <img src="/public/img/play.png">Devam</a>
   </h2>
 
@@ -30,6 +30,7 @@
         <td></td>
         <td>
           <input type="hidden" name="id" value="{{@SESSION.data['id']}}">
+          <input type="hidden" name="cid" value="{{@SESSION.data['cid']}}">
         </td>
       </tr>
 

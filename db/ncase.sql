@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 3.3.7deb6
+-- version 3.3.7deb5
 -- http://www.phpmyadmin.net
 --
 -- Anamakine: localhost
--- Üretim Zamanı: 22 Ağustos 2011 saat 17:01:46
+-- Üretim Zamanı: 23 Ağustos 2011 saat 08:24:43
 -- Sunucu sürümü: 5.1.49
--- PHP Sürümü: 5.3.3-7+squeeze3
+-- PHP Sürümü: 5.3.3-7+squeeze1
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 
@@ -25,6 +25,7 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 -- Tablo için tablo yapısı `ncase`
 --
 
+DROP TABLE IF EXISTS `ncase`;
 CREATE TABLE IF NOT EXISTS `ncase` (
   `cid` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `title` varchar(100) COLLATE utf8_turkish_ci NOT NULL,
@@ -34,12 +35,16 @@ CREATE TABLE IF NOT EXISTS `ncase` (
   `patient_info` int(11) NOT NULL,
   `edu_opts` int(11) NOT NULL,
   `other` int(11) NOT NULL,
+  `bdugumu` int(11) NOT NULL,
   PRIMARY KEY (`cid`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_turkish_ci AUTO_INCREMENT=2 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_turkish_ci AUTO_INCREMENT=14 ;
 
 --
 -- Tablo döküm verisi `ncase`
 --
 
-INSERT INTO `ncase` (`cid`, `title`, `description`, `type_playable_by`, `type_navigation_panel`, `patient_info`, `edu_opts`, `other`) VALUES
-(1, 'Zehirlenme', 'Çiçek serasında zehirlenme', 0, 0, 0, 0, 0);
+INSERT INTO `ncase` (`cid`, `title`, `description`, `type_playable_by`, `type_navigation_panel`, `patient_info`, `edu_opts`, `other`, `bdugumu`) VALUES
+(1, 'Zehirlenme', 'Çiçek serasında zehirlenme', 0, 0, 0, 0, 0, 1),
+(2, 'abc', 'alfabe', 0, 0, 0, 0, 0, 1),
+(3, '65 yaşında', 'ne oldu ki', 0, 0, 0, 0, 0, 2),
+(13, 'qwerty', 'a', 0, 0, 0, 0, 0, 1);

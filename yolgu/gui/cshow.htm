@@ -1,7 +1,7 @@
 <div class="page">
   <h2 id="headline">{{@page_title}}
-    <a href="{{@SR}}/cedit/{{@SESSION.ckey}}">
-      <img src="/public/img/edit2.png">Düzenle</a>
+    <a href="/yolgu/show/{{@SESSION.cid}}/{{@SESSION.cdata['bdugumu']}}"><img src="/public/img/play.png">Olguya Başla</a>
+    <a href="{{@SR}}/cedit/{{@SESSION.cid}}"><img src="/public/img/edit2.png">Case Düzenle&nbsp;&nbsp;</a> 
   </h2>
 
 <table class="custom" id="custom" name="custom">
@@ -59,6 +59,15 @@
 	 </td>
 	 <td class="field">
 		{{@SESSION.cdata["other"]}}
+	 </td>
+	</tr>
+	<tr>
+	 <td class="label">
+		Başlangıç Düğümü:
+	 </td>
+	 <td class="field">
+		<a href="/yolgu/show/{{@SESSION.cid}}/{{@SESSION.cdata['bdugumu']}}">{{@SESSION.cdata['node_title']}}</a>
+		<a href="/yolgu/edit/{{@SESSION.cid}}/{{@SESSION.cdata['bdugumu']}}"><img src="/public/img/edit.png" width="25" align="right"></a>
 	 </td>
 	</tr>
 </table>
