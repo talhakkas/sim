@@ -18,6 +18,9 @@ function show() {
 	$table = new Axon("node");
 	$datas = $table->afind("id='$id' AND cid='$cid'");
 
+	if(empty($datas)) 
+		F3::reroute("/create/dal/$cid/$id");
+
 	$options = trim($datas[0]['options']);
 
 	if (!empty($options)) {
@@ -85,6 +88,9 @@ function update() {
 		$table->media = $fnm;
 	else 
 		$table->media = "default.jpg";
+	if($_POST['resim_sil'] == 'evet')
+		$table->media = NULL;
+
 	$table->save();
 
 	if($_POST['type'] == 'oyku') {
@@ -139,13 +145,15 @@ function save() {
 		if($gnl != "media")
 			$table->$gnl = $blg;
 	
-	$fnm = "_n". sprintf("%05d", $nid) . ".jpg";
-	$ffnm = F3::get('uploaddir') . $fnm;
-	if(yukle($ffnm, "media", true))
-		$table->media = $fnm;
-	else 
-		$table->media = "default.jpg";
-
+	if(F3::get('FILES.media.name') != "") {
+		$fnm = "_n". sprintf("%05d", $nid) . ".jpg";
+		$ffnm = F3::get('uploaddir') . $fnm;
+		if(yukle($ffnm, "media", true))
+			$table->media = $fnm;
+		else 
+			$table->media = "default.jpg";
+	}
+	
 	$table->nid = NULL;
 	$table->save();
 
