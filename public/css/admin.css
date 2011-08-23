@@ -49,16 +49,10 @@
 .topnav li ul { background:#fff; position:absolute;width:150px;z-index:999; }
 .topnav li ul li { border-bottom:1px solid #ECEDE8; }
 .topnav li ul li a{}
-.topnav li ul li a:hover {padding-top:10px;}
+.topnav li ul li a:hover {background:#fff; color:#555;padding-top:10px;}
 .topnav li ul li a,
 .topnav li ul li a:visited {background:#fff; width:120px;color:#555;font-weight:normal;}
 
 .topnav li ul li img {float:left;width:25px; margin-left:10px;margin-top:-5px;}
 .topnav li ul a img {margin-left:-5px;margin-right:2px;margin-top:-5px;}
 
-.topnav li li:hover {background:#fff; color:#555;}
-/*
-.topnav li ul li:hover {background:#fff; color:#555;}
-
-.topnav li ul li a:hover {background:#fff; color:#555;}
- */
