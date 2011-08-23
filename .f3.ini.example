@@ -14,4 +14,4 @@ dbuser="BANA_BIR_KULLANICI_VER"
 dbpass="BANA_BIR_SIFRE_VER"
 
 ; Resim
-uploaddir="public/upload/"
+uploaddir="../public/upload/"

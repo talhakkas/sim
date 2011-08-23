@@ -77,8 +77,13 @@ function yukle($hedef=NULL, $alan='file', $uzerine_yazma=false) {
 	// ör : img/ ve img/student/ 'ı otomatik oluşturur.
 	$dirs = array_slice($split, 0, count($split) - 1);
 	$dir = implode("/", $dirs);
-	if (! file_exists($dir))
+
+	if (! file_exists($dir)) {
 		mkdir($dir, 0777, true);
+		chmod($dir, 0777);
+	}
+	// tam yol
+	$hedef = getcwd() . "/" . $hedef;
 
 	// bu bir uploaded dosya olmalı, fake dosyalara izin yok
 	if (is_uploaded_file($yuklenen)) {
@@ -177,8 +182,4 @@ function csv($TABLE, $table) {
 	header("Content-Disposition: attachment; filename=$TABLE-". date("Y.m.d") . ".csv");
 	exit;
 }
-
-
-
-
 ?>
