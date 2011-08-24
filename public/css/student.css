@@ -1,4 +1,4 @@
-#contentarea {float:left;display:block;width:650px;height:auto;  }
+#contentarea {float:left;display:block;width:650px;height:auto;}
 .feature {float:left;margin:0px 0px;width:250px;}
 .feature li {list-style-image: url('/public/img/next.png');font-size:13px;}
 #contentarea img {
@@ -9,7 +9,7 @@
 
 
 .sidebar {
-  background: none repeat scroll 0 0 #FFF;
+  background: #FFF repeat scroll 0 0;
   border:1px solid #DDDDDD;
   border-radius:4px 4px 4px 4px;
   overflow:hidden;

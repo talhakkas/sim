@@ -1,6 +1,6 @@
 <?php
 
-include '../../lib2/depo.php';
+include '../../asset/depo.php';
 
 $page = substr($_GET['page'], 1);
 

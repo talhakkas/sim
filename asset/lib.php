@@ -3,6 +3,7 @@
 include 'access.php';
 include 'init.php';
 include 'dict.php';
+//include 'panel.php';
 
 // look
 // https://github.com/emineker/sim/blob/master/.f3.ini.example
@@ -11,7 +12,8 @@ function render($template, $title) {
 	F3::set('page_title', $title);
 	F3::set('SESSION.template', $template); // printly için
 	F3::set('template', $template);
-        if (F3::get('printly')) { // printly modu için ufak bir değişkencik
+	//F3::set('menu', menu::PanelMenu($template));
+	if (F3::get('printly')) { // printly modu için ufak bir değişkencik
 		echo Template::serve('printly.htm');
 	} else {
 		$layout = F3::get('LAYOUTS') . base() . '.layout.htm';
