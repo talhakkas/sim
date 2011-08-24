@@ -20,7 +20,7 @@ counter="{{@ctr}}">
     <img src="/public/img/sol-ok.png" width="25">
   </td>
   <td class="select">
-    &nbsp;&nbsp;&nbsp;<select name="node_link[]">
+    &nbsp;&nbsp;&nbsp;<select name="node_link[]" id="select{{@ctr}}">
       <F3:repeat group="{{@SESSION.all_nodes}}" value="{{@blg2}}" >
       <F3:check if="{{@blg2[0] == @blg['node_link']}}">
       <F3:true>
@@ -32,8 +32,9 @@ counter="{{@ctr}}">
       </F3:check>
       </F3:repeat>
     </select>
+	<input name="btnAddItem" type="button" id="btnAddItem" value="Yeni Düğüm" onclick="javascript:addNewListItem('select{{@ctr}}');" />
   </td>
 </tr>
 </F3:repeat>
 
-
+<input type="hidden" name="nonodes" value="{{@ctr}}" />

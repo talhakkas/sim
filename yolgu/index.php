@@ -15,6 +15,9 @@ function show() {
 	F3::set('SESSION.cid', $cid);
 	F3::set('SESSION.id',  $id);
 
+	if($id == "yeni") 
+		F3::reroute("/create/dal/$cid/$id");
+
 	$table = new Axon("node");
 	$datas = $table->afind("id='$id' AND cid='$cid'");
 
@@ -111,6 +114,12 @@ function create() {
 	$id = F3::get('PARAMS.id');
 	F3::set('SESSION.cid', $cid);
 	F3::set('SESSION.id', $id);
+
+	if($id == "yeni") {
+		DB::sql("select max(id) from node where id");
+		$res = F3::get("DB->result");
+		$id = $res[0]['max(id)'];
+	}
 
 	$datas = array();
 	$datas['cid'] = $cid;
