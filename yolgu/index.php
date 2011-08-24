@@ -206,21 +206,22 @@ function save() {
 }
 
 function delete() {
-	$key = F3::get('PARAMS.id');
+	$cid = F3::get('PARAMS.cid');
+	$id  = F3::get('PARAMS.id');
 
 	$table = new Axon("node");
-	$table->load("id='$key'");
+	$table->load("id='$id' AND cid='$cid'");
 
 	$pid = $table->parent ? $table->parent : 1;
 
 	$table->erase();
 
-	F3::reroute("/show/$pid");
+	F3::reroute("/show/$cid/$pid");
 }
 
 function nodeList($cid) {
 	$table = new Axon("node");
-	$list = $table->afind("id > 0 AND cid='$cid'", "id asc");
+	$list = $table->afind("id AND cid='$cid'", "id asc");
 
 	$sz = count($list);
 	if($sz == 0) { // $cid icin ilk kayit ise bir tane baslangic dugumu olustur
@@ -330,7 +331,7 @@ function maxID($idnm, $tablenm) {
         $res = F3::get("DB->result");
         $mid = $res[0]["max($idnm)"];
 
-	return $mid;
+	return intval($mid);
 }
 
 // case: functions
@@ -422,31 +423,24 @@ function clist() {
 }
 
 function cadd() {
-	DB::sql('select max(cid) from ncase where cid');
-	$res = F3::get("DB->result");
-	$cid = $res[0]['max(cid)'] + 1;
+	$cid = maxID("cid", "ncase") + 1;
 	F3::set('SESSION.cid', $cid);
 
 	$all_nodes = nodeList($cid);
 	F3::set('SESSION.all_nodes', $all_nodes);
-
 	//cilkle();
         render('case', 'Yeni Ekle');
 }
 
 function csave() {
+	$cid = F3::get('POST.cid');
+
 	$table = new Axon("ncase");
 	//FIXME: $table->copyFrom('REQUEST');
-	foreach($_POST as $gnl => $blg) {
+	foreach(F3::get('POST') as $gnl => $blg) {
 		$table->$gnl = $blg;
 	}
-	$table->cid = NULL;
 	$table->save();
-
-	DB::sql('select max(cid) from ncase where cid');
-	$res = F3::get("DB->result");
-
-	$cid = $res[0]['max(cid)'];
 
 	F3::reroute("/cshow/$cid");
 }

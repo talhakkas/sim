@@ -23,6 +23,7 @@
 		<textarea name="description">{{@SESSION.cdata['description']}}</textarea>
 	 </td>
 	</tr>
+	<input type="hidden" name="cid" value="{{@SESSION.cid}}">
 	<input type="hidden" name="type_playable_by" value="{{@SESSION.cdata['type_playable_by']}}">
 	<input type="hidden" name="type_navigation_panel" value="{{@SESSION.cdata['type_navigation_panel']}}">
 	<input type="hidden" name="patient_info" value="{{@SESSION.cdata['patient_info']}}">
