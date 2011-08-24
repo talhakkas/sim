@@ -15,7 +15,7 @@ function show() {
 	F3::set('SESSION.cid', $cid);
 	F3::set('SESSION.id',  $id);
 
-	if($id == "yeni") 
+	if(strcmp($id, "yeni") == 0) 
 		F3::reroute("/create/dal/$cid/$id");
 
 	$table = new Axon("node");
@@ -113,14 +113,15 @@ function update() {
 function create() {
 	$cid = F3::get('PARAMS.cid');
 	$id = F3::get('PARAMS.id');
-	F3::set('SESSION.cid', $cid);
-	F3::set('SESSION.id', $id);
 
-	if($id == "yeni") {
+	if(strcmp($id, "yeni") == 0) {
 		DB::sql("select max(id) from node where id AND cid='$cid'");
 		$res = F3::get("DB->result");
 		$id = $res[0]['max(id)'] + 1;
 	}
+
+	F3::set('SESSION.cid', $cid);
+	F3::set('SESSION.id', $id);
 
 	$datas = array();
 	$datas['cid'] = $cid;
@@ -134,6 +135,7 @@ function create() {
 	F3::set('SESSION.all_nodes', $all_nodes);
 
 	ilkle();
+	
         render('node', 'Oluştur');
 }
 
