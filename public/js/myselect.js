@@ -10,7 +10,7 @@ function addNewListItem(slid, cid){
 		var htmlSelect=document.getElementById(slid);
 		var selectBoxOption = document.createElement("option");
 
-		selectBoxOption.value = parseInt(xmlhttp.responseText) + 1;
+		selectBoxOption.value = parseInt(xmlhttp.responseText);
 		selectBoxOption.text = "yeni dugum";
 		selectBoxOption.selected = true;
 		htmlSelect.add(selectBoxOption, null);
