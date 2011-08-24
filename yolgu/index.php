@@ -15,14 +15,14 @@ function show() {
 	F3::set('SESSION.cid', $cid);
 	F3::set('SESSION.id',  $id);
 
-	if(strcmp($id, "yeni") == 0) 
-		F3::reroute("/create/dal/$cid/$id");
-
 	$table = new Axon("node");
 	$datas = $table->afind("id='$id' AND cid='$cid'");
 
 	if(empty($datas)) 
 		F3::reroute("/create/dal/$cid/$id");
+
+	if($datas[0]['title'] == "yeni")
+		F3::reroute("/edit/$cid/$id");
 
 	$options = trim($datas[0]['options']);
 
@@ -229,7 +229,7 @@ function nodeList($cid) {
 		$table->nid = NULL;
 		$table->cid = $cid;
 		$table->id  = 1;
-		$table->title = "İlk öykü"; $table->media = "";
+		$table->title = "yeni"; $table->media = "";
 		$table->content= "";$table->question = "";
 		$table->options = "";$table->type = "oyku";
 		$table->parent = 1; $table->isOnset = 1;

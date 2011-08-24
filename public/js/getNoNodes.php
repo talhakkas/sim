@@ -14,7 +14,7 @@ $result = mysql_query($sql);
 $row = mysql_fetch_array($result);
 $id = $row[0] + 1;
 
-$sql = "INSERT INTO node (nid, id, title, media, content, question, options, type, parent, isOnset, isWrong, cid) VALUES (NULL, '$id', NULL, NULL, NULL, NULL, NULL, 'dal', NULL,  NULL, NULL, '$cid');";
+$sql = "INSERT INTO node (nid, id, title, media, content, question, options, type, parent, isOnset, isWrong, cid) VALUES (NULL, '$id', 'yeni', NULL, NULL, NULL, NULL, 'dal', NULL,  NULL, NULL, '$cid');";
 $result = mysql_query($sql);
 
 echo $id;
