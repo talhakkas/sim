@@ -42,6 +42,30 @@ function show() {
 		$datas[0]['options'] = array();
 
 	F3::set('SESSION.data', $datas[0]);
+
+	// takibe ekle +
+	$tid = F3::get('SESSION.tid');
+	$ttid = new Axon("takip");
+	$ttid->load("tid='$tid'");
+	if(empty($ttid->nodes))	
+		$ttid->nodes = "$id";
+	else
+		$ttid->nodes = "$ttid->nodes , $id";
+	$ttid->save();
+
+	// takip listesini template gonder
+	$list = preg_split('/,/', $ttid->nodes);
+
+	$nodes = array();
+	foreach($list as $k=>$id) {
+		$tid = new Axon("node");
+		$datas = $table->afind("id='$id' AND cid='$cid'");
+		
+		$title = $datas[0]['title'];
+		$nodes[$k] = array($id, $title);
+	}
+	F3::set('SESSION.tdata', $nodes);
+
         render('show', 'Olgu');
 }
 
@@ -301,7 +325,37 @@ function ilkle() {
 	F3::set('SESSION.data', $datas);
 }
 
+function maxID($idnm, $tablenm) {
+	DB::sql("select max($idnm) from $tablenm where $idnm");
+        $res = F3::get("DB->result");
+        $mid = $res[0]["max($idnm)"];
+
+	return $mid;
+}
+
 // case: functions
+function cstart() {
+	$cid = F3::get('PARAMS.cid') ? F3::get('PARAMS.cid'):1;
+	F3::set('SESSION.cid', $cid);
+
+	$table = new Axon("ncase");
+	$datas = $table->afind("cid='$cid'");
+	$cdata = $datas[0];
+
+	$id = $cdata['bdugumu'];
+	F3::set('SESSION.id', $id);
+
+	// takibi başlat
+	$table2 = new Axon("takip");
+	$table2->tid = NULL;
+	$table2->nodes = "";
+	$table2->save();
+	
+	F3::set("SESSION.tid", maxID("tid", "takip"));
+
+	F3::reroute("/show/$cid/$id");	
+}
+
 function cshow() {
 	$cid = F3::get('PARAMS.cid') ? F3::get('PARAMS.cid'):1;
 	F3::set('SESSION.cid', $cid);
@@ -361,7 +415,6 @@ function clist() {
 		$data[$i]['cid']   = $datas[$i]->cid;
 		$data[$i]['title'] = $datas[$i]->title;
 		$data[$i]['description'] = $datas[$i]->description;
-		$data[$i]['bdugumu']    = $datas[$i]->bdugumu;
 	}
 
 	F3::set('SESSION.cdata', $data);
@@ -427,6 +480,8 @@ F3::route("GET /delete/@cid/@id", "delete");
 F3::route("POST /delete/@cid/@id", "delete");
 
 // case routings
+F3::route("GET /cstart/@cid", 'cstart');
+
 F3::route("GET /cshow/@cid", 'cshow');
 F3::route("GET /cedit/@cid", "cedit");
 	F3::route("POST /cedit/@cid", "cupdate");

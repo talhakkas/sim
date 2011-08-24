@@ -7,7 +7,7 @@
 	<F3:repeat group="{{@SESSION.cdata}}" key="{{@gnl}}" value="{{@blg}}" >
 		<tr>
 		 <td>
-			<a href="/yolgu/show/{{@blg['cid']}}/{{@blg['bdugumu']}}">{{@blg['title']}}</a>
+			<a href="/yolgu/cstart/{{@blg['cid']}}">{{@blg['title']}}</a>
 		 </td>
 		 <td>
 			<form name="cedit" action="/yolgu/cedit/{{@blg['cid']}}" method="GET" id="cedit" >

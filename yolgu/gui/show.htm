@@ -1,10 +1,8 @@
 <div class="page">
-  <h2 id="headline">Olgu Göster
+  <h2 id="headline">{{@SESSION.data['title']}}
     <a href="{{@SR}}/edit/{{@SESSION.cid}}/{{@SESSION.id}}">
       <img src="/public/img/edit2.png">Düzenle</a>
   </h2>
-
-  <h3>{{@SESSION.data['title']}}</h3>
 
   <div class="content">
     {{@SESSION.data['content']}}
@@ -26,6 +24,10 @@
 
   <F3:repeat group="{{@SESSION.data['options']}}" key="{{@gnl}}" value="{{@blg}}" >
   <a href="/yolgu/show/{{@SESSION.cid}}/{{@blg['link']}}"><img src=/public/img/vp_button.png>{{@blg['text']}}</a> <br>
+  </F3:repeat>
+
+  <F3:repeat group="{{@SESSION.tdata}}" key="{{@gnl}}" value="{{@blg}}" >
+	<a href="/yolgu/show/{{@SESSION.cid}}/{{@blg['0']}}">{{@blg['1']}}</a> |
   </F3:repeat>
 </div>
 
