@@ -58,6 +58,7 @@ function edit() {
 
 	unzip();
 
+	F3::set('SESSION.nonodes', count(F3::get('SESSION.data[nodes]')));
 	$all_nodes = nodeList($cid);
 	F3::set('SESSION.all_nodes', $all_nodes);
 
@@ -116,9 +117,9 @@ function create() {
 	F3::set('SESSION.id', $id);
 
 	if($id == "yeni") {
-		DB::sql("select max(id) from node where id");
+		DB::sql("select max(id) from node where id AND cid='$cid'");
 		$res = F3::get("DB->result");
-		$id = $res[0]['max(id)'];
+		$id = $res[0]['max(id)'] + 1;
 	}
 
 	$datas = array();
@@ -145,6 +146,12 @@ function save() {
 	if (!empty($_REQUEST['delete']))
 		F3::reroute("/delete/$cid/$id");
 
+	if($id == "yeni") {
+		DB::sql("select max(id) from node where id AND cid='$cid'");
+		$res = F3::get("DB->result");
+		$id = $res[0]['max(id)'] + 1;
+	}
+
 	zip();
 
 	DB::sql("select max(nid) from node where nid");
@@ -168,10 +175,6 @@ function save() {
 	
 	$table->nid = NULL;
 	$table->save();
-
-	DB::sql("select max(id) from node where id AND cid='$cid'");
-	$res = F3::get("DB->result");
-	$id = $res[0]['max(id)'];
 
 	F3::reroute("/show/$cid/$id");
 }
@@ -279,11 +282,13 @@ function ilkle() {
 	switch(F3::get('SESSION.data[type]')) {
 		case "oyku":
 			$datas = array('link_text' => 'foo', 'next_node' => 1);
+			F3::set('SESSION.nonodes', 0);
 			break;
 		case "dal":
 			$datas['nodes'] = array(
-				0=>array('link_text'=>'buraya yaz', 'node_link'=>1)
+				0=>array('link_text'=>'', 'node_link'=>1)
 			);
+			F3::set('SESSION.nonodes', 1);
 
 			break;
 	}

@@ -1,5 +1,4 @@
 function addRow(tableName) {
-
 	var table = document.getElementsByName(tableName).item(0);
 	//var table = document.getElementByID(tableName);
 
@@ -32,9 +31,22 @@ function addRow(tableName) {
 
 	var cell22 = row2.insertCell(1);
 	var slct = document.getElementsByName("node_link[]").item(0).cloneNode(true);
+	var btn = document.createElement('input');
+
+	var nonodes = document.getElementById('nonodes');
+	var nons = parseInt(nonodes.value) + 1;
+	nonodes.setAttribute('value', nons);
 
 	cell22.setAttribute('class', 'select');
+
+	slct.setAttribute('id', 'select' + nons);
 	cell22.appendChild(slct); 
+
+
+	btn.setAttribute('type', 'button');
+	btn.setAttribute('value', 'Yeni Düğüm');
+	btn.setAttribute('onclick', "javascript:addNewListItem('select" + nons + "');");
+	cell22.appendChild(btn); 
 }
 
 function deleteRow(tableName) {
