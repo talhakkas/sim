@@ -27,7 +27,7 @@
 # + foo
 #     gui -> sim/apps/foo/gui
 #     inc -> sim/apps/foo/inc
-#     index.php sim/apps/index.php
+#     index.php sim/apps/foo/index.php
 #     layouts -> sim/layouts
 #     public -> sim/public
 #     asset -> sim/asset
