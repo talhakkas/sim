@@ -33,19 +33,19 @@ function addRow(tableName) {
 	var slct = document.getElementsByName("node_link[]").item(0).cloneNode(true);
 	var btn = document.createElement('input');
 
-	var nonodes = document.getElementById('nonodes');
-	var nons = parseInt(nonodes.value) + 1;
-	nonodes.setAttribute('value', nons);
+	var cid = document.getElementById('cid').getAttribute('value');
+	var eNofBs = document.getElementById('nofbs');
+	var nons = parseInt(eNofBs.value) + 1;
+	eNofBs.setAttribute('value', nons);
 
 	cell22.setAttribute('class', 'select');
 
 	slct.setAttribute('id', 'select' + nons);
 	cell22.appendChild(slct); 
 
-
 	btn.setAttribute('type', 'button');
 	btn.setAttribute('value', 'Yeni Düğüm');
-	btn.setAttribute('onclick', "javascript:addNewListItem('select" + nons + "');");
+	btn.setAttribute('onclick', "javascript:addNewListItem('select" + nons + "', " + cid + ");");
 	cell22.appendChild(btn); 
 }
 

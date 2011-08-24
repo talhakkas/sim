@@ -82,7 +82,7 @@ function edit() {
 
 	unzip();
 
-	F3::set('SESSION.nonodes', count(F3::get('SESSION.data[nodes]')));
+	F3::set('SESSION.nofbs', count(F3::get('SESSION.data[nodes]')));
 	$all_nodes = nodeList($cid);
 	F3::set('SESSION.all_nodes', $all_nodes);
 
@@ -309,13 +309,13 @@ function ilkle() {
 	switch(F3::get('SESSION.data[type]')) {
 		case "oyku":
 			$datas = array('link_text' => 'foo', 'next_node' => 1);
-			F3::set('SESSION.nonodes', 0);
+			F3::set('SESSION.nofbs', 0);
 			break;
 		case "dal":
 			$datas['nodes'] = array(
 				0=>array('link_text'=>'', 'node_link'=>1)
 			);
-			F3::set('SESSION.nonodes', 1);
+			F3::set('SESSION.nofbs', 1);
 
 			break;
 	}
