@@ -15,6 +15,7 @@
 #        bar.layout.htm
 #        layout.htm
 #    + public
+#        fonts
 #        css
 #        img
 #        js
