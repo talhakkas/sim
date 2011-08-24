@@ -458,6 +458,15 @@ function cdelete() {
 	$table->load("cid='$cid'");
 	$table->erase();
 
+	// node lari da sil
+	$tnode = new Axon("node");
+	$nodes = $tnode->load("cid='$cid'");
+
+	while(!$nodes->dry()) {
+		$nodes->erase();
+		$nodes->skip();	
+	}
+
 	F3::reroute("/clist/");
 }
 
