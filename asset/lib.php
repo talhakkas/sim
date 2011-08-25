@@ -12,7 +12,8 @@ function render($template, $title) {
 	F3::set('page_title', $title);
 	F3::set('SESSION.template', $template); // printly için
 	F3::set('template', $template);
-	if ('yolgu' != strtok($_SERVER["SCRIPT_NAME"], '/')) // ortak bir oturum değişkeni oluşturmalıyız
+	// ortak bir oturum değişkeni oluşturmalıyız
+	if ('yolgu' != strtok($_SERVER["SCRIPT_NAME"], '/') && (F3::get('SESSION.special') || F3::get('SESSION.adminusername')))
 		menu::run($template);
 	if (F3::get('printly')) { // printly modu için ufak bir değişkencik
 		echo Template::serve('printly.htm');
