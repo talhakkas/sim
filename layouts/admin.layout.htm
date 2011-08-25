@@ -14,14 +14,10 @@
     <title>{{e(@page_title)}}</title>
   </head>
 
-  <style>
-    .home a img {float:left; width:22px; height:22px; margin-top:-6px; 
-      margin-right:5px;}
-  </style>
-
-
   <body>
-    <F3:check if="{{@SESSION.admin}}">
+    {{@menu}}
+    <style>{{@style}}</style>
+    <F3:check if="{{@SESSION.adminnn}}">
     <F3:true>
     <div id="wrapper">
       <div id="container">
