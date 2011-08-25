@@ -1,5 +1,6 @@
 <?php
 
+
 $renk = array(
 	"blue"   => "#2daebf",
 	"home"   => "#2daebf",
@@ -81,11 +82,9 @@ class menu extends Base {
 	}
 
 	static function PanelMenu($servis, $template) {
-		print_r(F3::get('SESSION'));
 		$menu ='<div id="wrapper"><div id="container"><ul class="tabs topnav" id="mainNav">';
 
 		foreach($servis as $key => $val){
-			//echo $key."-".$val[0]."<br>";
 			if ($key == "#"){
 				$menu .= '<li class="'.$val[1].'"><a href="'.$key.'">'.$val[0].'</a><ul>';
 				foreach($servis['#'][2] as $k => $v){
@@ -128,4 +127,9 @@ class menu extends Base {
 
 };
 
+/* render fonksiyonuna gömecez bunu
+	// ortak bir oturum değişkeni oluşturmalıyız
+	if ('yolgu' != strtok($_SERVER["SCRIPT_NAME"], '/') && (F3::get('SESSION.special') || F3::get('SESSION.adminusername')))
+		menu::run($template);
+ */
 ?>

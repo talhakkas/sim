@@ -6,7 +6,7 @@
   ul.tabs li.home a{color:#fff;}
 </style>
 
-//student
+// olgu
 <style>
   div#wrapper {border-color:#b8d30b;}
   ul.tabs li.green {

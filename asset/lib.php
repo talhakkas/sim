@@ -3,7 +3,6 @@
 include 'access.php';
 include 'init.php';
 include 'dict.php';
-include 'panel.php';
 
 // look
 // https://github.com/emineker/sim/blob/master/.f3.ini.example
@@ -12,9 +11,6 @@ function render($template, $title) {
 	F3::set('page_title', $title);
 	F3::set('SESSION.template', $template); // printly için
 	F3::set('template', $template);
-	// ortak bir oturum değişkeni oluşturmalıyız
-	if ('yolgu' != strtok($_SERVER["SCRIPT_NAME"], '/') && (F3::get('SESSION.special') || F3::get('SESSION.adminusername')))
-		menu::run($template);
 	if (F3::get('printly')) { // printly modu için ufak bir değişkencik
 		echo Template::serve('printly.htm');
 	} else {
