@@ -231,7 +231,7 @@ function nodeList($cid) {
 		$table->id  = 1;
 		$table->title = "yeni"; $table->media = "";
 		$table->content= "";$table->question = "";
-		$table->options = "";$table->type = "oyku";
+		$table->options = "";$table->type = "dal";
 		$table->parent = 1; $table->isOnset = 1;
 		$table->isWrong = 0;
 		$table->save();
@@ -429,7 +429,7 @@ function cadd() {
 	$all_nodes = nodeList($cid);
 	F3::set('SESSION.all_nodes', $all_nodes);
 	//cilkle();
-        render('case', 'Yeni Ekle');
+	render('case', 'Yeni Ekle');
 }
 
 function csave() {
