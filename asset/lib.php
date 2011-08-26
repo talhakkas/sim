@@ -3,7 +3,6 @@
 include 'access.php';
 include 'init.php';
 include 'dict.php';
-//include 'panel.php';
 
 // look
 // https://github.com/emineker/sim/blob/master/.f3.ini.example
@@ -12,7 +11,6 @@ function render($template, $title) {
 	F3::set('page_title', $title);
 	F3::set('SESSION.template', $template); // printly için
 	F3::set('template', $template);
-	//F3::set('menu', menu::PanelMenu($template));
 	if (F3::get('printly')) { // printly modu için ufak bir değişkencik
 		echo Template::serve('printly.htm');
 	} else {
@@ -36,7 +34,7 @@ F3::set('DB', new DB('mysql:host=localhost;port=3306;dbname=' . F3::get('dbname'
 F3::set('SR', '/' . strtok($_SERVER["SCRIPT_NAME"], '/'));
 
 
-// tüm termilerin çevirisi
+// tüm terimlerin çevirisi
 function e($str){
 	//$_lang = $_SERVER["HTTP_ACCEPT_LANGUAGE"];
 	//if ( substr($_lang, 0, 2) == "tr")

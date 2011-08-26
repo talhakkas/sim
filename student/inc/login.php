@@ -31,7 +31,6 @@ if (! F3::exists('error')) {
         else if (!$student->dry() && ($student->password == $password) && ($student->type==1)) {
                 // admin ise
                 F3::set('SESSION.student', $username);
-                F3::set('SESSION.stdno', $student->no);
                 F3::set('SESSION.special', 1);
 	        return F3::reroute('/');
         }
