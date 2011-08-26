@@ -468,6 +468,8 @@ function test() {
 	print_r(F3::get('FILES'));
 }
 
+F3::set('uploaddir', 'upload/');
+
 F3::route("GET /*", 	   'login');
 	F3::route("POST /login",   'login.php');
 F3::route("GET /logout*",  'logout');
