@@ -20,10 +20,29 @@ function addRow(tableName) {
 
 	var cell12 = row1.insertCell(1);
 	var txtarea = document.createElement("textarea");
+	var chkIA = document.createElement('input');
+	var txtIA = document.createElement('input');
 	cell12.setAttribute('class', 'field');
 	cell12.setAttribute('id', 'dal' + nons + 'field');
+
 	txtarea.setAttribute('name', 'link_text[]');
 	cell12.appendChild(txtarea);
+	cell12.appendChild(document.createElement('br'));
+
+	chkIA.setAttribute('type', 'checkbox');
+	chkIA.setAttribute('name', 'isIA' + nons);
+	chkIA.setAttribute('id',   'isIA' + nons);
+	chkIA.setAttribute('checked', 'true');
+	chkIA.setAttribute('onclick', "toggle(this, 'IA" + nons + "')");
+	cell12.appendChild(chkIA);
+	cell12.appendChild(document.createTextNode('Kullanıcı girdisi istiyor musun?'));
+	cell12.appendChild(document.createElement('br'));
+
+	txtIA.setAttribute('type', 'text');
+	txtIA.setAttribute('name', 'IA' + nons);
+	txtIA.setAttribute('id',   'IA' + nons);
+	txtIA.setAttribute('style', 'visibility:visible;');
+	cell12.appendChild(txtIA);
 
 	// select
 	var row2 = table.insertRow(rowCount+1);
