@@ -22,12 +22,28 @@
     {{@SESSION.data['question']}}
   </div>
 
-  <F3:repeat group="{{@SESSION.data['options']}}" key="{{@gnl}}" value="{{@blg}}" >
-  <a href="/yolgu/show/{{@SESSION.cid}}/{{@blg['link']}}"><img src=/public/img/vp_button.png>{{@blg['text']}}</a> <br>
+  <F3:repeat group="{{@SESSION.data['nodes']}}" key="{{@gnl}}" value="{{@blg}}" counter="{{@ctr}}">
+	<F3:check if="{{@blg['chkIA'] == 'yes'}}" >
+	 <F3:true>
+		<img src=/public/img/vp_button.png>{{@blg['link_text']}}
+
+		<div align="middle">
+		<form name="frm{{@ctr}}" action="/yolgu/show/{{@SESSION.cid}}/{{@blg[node_link]}}" method="post">
+		<input type="hidden" name="nid" value="{{@ctr}}">
+		<textarea name="response" cols="75" rows="5"></textarea></br>
+		<input type="submit" value="Gönder"></div>
+		<!--input type="submit" value="Gönder" onclick="location.href='/yolgu/show/{{@SESSION.cid}}/{{@blg[node_link]}}'"></div-->
+		</form>
+	 </F3:true>
+	 <F3:false>
+		<a href="/yolgu/show/{{@SESSION.cid}}/{{@blg['node_link']}}"><img src=/public/img/vp_button.png>{{@blg['link_text']}}</a> <br>
+	 </F3:false>
+    </F3:check>	
+	 
   </F3:repeat>
 
   <F3:repeat group="{{@SESSION.tdata}}" key="{{@gnl}}" value="{{@blg}}" >
-	<a href="/yolgu/show/{{@SESSION.cid}}/{{@blg['0']}}">{{@blg['1']}}</a> &raquo;
+	<a href="/yolgu/show/{{@SESSION.cid}}/{{@blg['0']}}">{{@blg['1']}} ({{@blg['2']}})</a> &raquo;
   </F3:repeat>
 </div>
 

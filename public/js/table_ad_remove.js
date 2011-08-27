@@ -30,8 +30,9 @@ function addRow(tableName) {
 	cell12.appendChild(document.createElement('br'));
 
 	chkIA.setAttribute('type', 'checkbox');
-	chkIA.setAttribute('name', 'isIA' + nons);
-	chkIA.setAttribute('id',   'isIA' + nons);
+	chkIA.setAttribute('name', 'chkIA[]');
+	chkIA.setAttribute('id',   'chkIA' + nons);
+	chkIA.setAttribute('value', nons);
 	chkIA.setAttribute('checked', 'true');
 	chkIA.setAttribute('onclick', "toggle(this, 'IA" + nons + "')");
 	cell12.appendChild(chkIA);
@@ -39,7 +40,7 @@ function addRow(tableName) {
 	cell12.appendChild(document.createElement('br'));
 
 	txtIA.setAttribute('type', 'text');
-	txtIA.setAttribute('name', 'IA' + nons);
+	txtIA.setAttribute('name', 'IA[]');
 	txtIA.setAttribute('id',   'IA' + nons);
 	txtIA.setAttribute('style', 'visibility:visible;');
 	cell12.appendChild(txtIA);

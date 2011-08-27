@@ -24,24 +24,9 @@ function show() {
 	if($datas[0]['title'] == "yeni")
 		F3::reroute("/edit/$cid/$id");
 
-	$options = trim($datas[0]['options']);
-
-	if (!empty($options)) {
-		$opts = preg_split("/,,/", $options);
-
-		$options2 = array();
-		foreach($opts as $k=>$v) {
-			$t = preg_split("/::/", $v);
-			// bu tasarim daha kullanisli
-			$options2[$k]['text'] = $t[0];
-			$options2[$k]['link'] = $t[1];
-		}
-		$datas[0]['options'] = $options2;
-	}
-	else
-		$datas[0]['options'] = array();
-
-	F3::set('SESSION.data', $datas[0]);
+	//F3::set('SESSION.data', unzip($datas[0]));
+	$data = unzip($datas[0]);
+	F3::set('SESSION.data', $data);
 
 	// takibe ekle +
 	$tid = F3::get('SESSION.tid');
@@ -51,10 +36,17 @@ function show() {
 		$ttid->nodes = "$id";
 	else
 		$ttid->nodes = "$ttid->nodes , $id";
+
+	if(empty($_POST['response'])) {
+		if(!empty($ttid->response))
+			$ttid->response = "$ttid->response ,";
+	} else
+		$ttid->response = $ttid->response . $_POST['response'] . ",";
 	$ttid->save();
 
 	// takip listesini template gonder
 	$list = preg_split('/,/', $ttid->nodes);
+	$list_response = preg_split('/,/', $ttid->response);
 
 	$nodes = array();
 	foreach($list as $k=>$id) {
@@ -62,7 +54,7 @@ function show() {
 		$datas = $table->afind("id='$id' AND cid='$cid'");
 		
 		$title = $datas[0]['title'];
-		$nodes[$k] = array($id, $title);
+		$nodes[$k] = array($id, $title, $list_response[$k]);
 	}
 	F3::set('SESSION.tdata', $nodes);
 
@@ -78,9 +70,7 @@ function edit() {
 	$table = new Axon("node");
 	$datas = $table->afind("id='$id' AND cid='$cid'");
 
-	F3::set('SESSION.data', $datas[0]);
-
-	unzip();
+	F3::set('SESSION.data', unzip($datas[0]));
 
 	F3::set('SESSION.nofbs', count(F3::get('SESSION.data[nodes]')));
 	$all_nodes = nodeList($cid);
@@ -101,7 +91,7 @@ function update() {
 	if($_POST['type'] == 'oyku') 
 		$next_node = $_POST['next_node'];
 
-	zip();
+	$_POST = zip($_POST);
 
 	$table = new Axon("node");
 	$table->load("id='$id' AND cid='$cid'");
@@ -178,7 +168,7 @@ function save() {
 		$id = $res[0]['max(id)'] + 1;
 	}
 
-	zip();
+	$_POST = zip($_POST);
 
 	DB::sql("select max(nid) from node where nid");
 	$res = F3::get("DB->result");
@@ -248,8 +238,7 @@ function nodeList($cid) {
 	return $nodes;
 }
 
-function unzip() {
-	$datas = F3::get('SESSION.data');
+function unzip($datas) {
 	if(empty($datas['options'])) $datas['options'] = "::";
 
 	switch($datas['type']) {
@@ -264,20 +253,25 @@ function unzip() {
 			$opts = preg_split("/,,/", $datas['options']);
 
 			foreach($opts as $k=>$v) {
-				$t = preg_split("/::/", $v);
-				// bu tasarim daha kullanisli
-				$datas['nodes'][$k]['link_text'] = $t[0];
-				$datas['nodes'][$k]['node_link'] = $t[1];
+				$t1 = preg_split("/::/", $v);
+				// kullanici girdis var mi?
+				// format: 'text;;response::link'
+				$t2 = preg_split('/;;/', $t1[0]);
+
+				$datas['nodes'][$k]['link_text'] = $t2[0];
+				$datas['nodes'][$k]['chkIA']  	 = empty($t2[1]) ? 'no' : 'yes';
+				$datas['nodes'][$k]['IA'] 		 = empty($t2[1]) ? '' : $t2[1];
+				$datas['nodes'][$k]['node_link'] = $t1[1];
 			}
 			unset($datas['options']);
 			break;
 	}
-	F3::set('SESSION.data', $datas);
+
+	return $datas;
 }
 
-function zip() {
+function zip($datas) {
 	// $_POST: type a gore or. oyku, link_text+next_node => options
-	$datas = $_POST;
 	switch($datas['type']) {
 		case "oyku":
 			$datas["options"] = $datas['link_text'] . "::" . $datas['next_node'];
@@ -288,22 +282,25 @@ function zip() {
 			$tmp = "";
 			$size = sizeof($datas['link_text']);
 			for($i=0; $i < $size; $i++) {
-				$tmp = $tmp . $datas['link_text'][$i] ."::". $datas['node_link'][$i];
+				$response = (in_array(($i+1), $datas['chkIA'])) ? (";;" . $datas['IA'][$i]) : "";
+				$tmp = $tmp . $datas['link_text'][$i] . $response ."::". $datas['node_link'][$i];
 
 				if ($i < ($size - 1))
 					$tmp = $tmp .",,";
 			}
 			$datas['options'] = $tmp;
 			unset($datas['link_text']);
+			unset($datas['chkIA']);
+			unset($datas['IA']);
 			unset($datas['node_link']);
 			break;
 	}
-	$_POST = $datas;
 
+	return $datas;
 }
 
 function ilkle() {
-	$cid = F3::get('SESSION.cid');
+	$cid = F4::get('SESSION.cid');
 	$datas = F3::get('SESSION.data');
 
 	switch(F3::get('SESSION.data[type]')) {
@@ -350,6 +347,7 @@ function cstart() {
 	$table2 = new Axon("takip");
 	$table2->tid = NULL;
 	$table2->nodes = "";
+	$table2->response = "";
 	$table2->save();
 	
 	F3::set("SESSION.tid", maxID("tid", "takip"));
@@ -475,6 +473,7 @@ F3::route("GET /*", 	   'login');
 F3::route("GET /logout*",  'logout');
 
 F3::route("GET /show/@cid/@id", 'show');
+	F3::route("POST /show/@cid/@id", 'show');
 F3::route("GET /edit/@cid/@id", 'edit');
 	F3::route("POST /edit/@cid/@id", 'update');
 

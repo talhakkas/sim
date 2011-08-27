@@ -21,18 +21,14 @@ counter="{{@ctr}}">
   <td class="field" id="dal{{@ctr}}field">
     <textarea name="link_text[]">{{@blg['link_text']}}</textarea><br>
 
-	<F3:check if="{{@blg['isIA'] == 'yes'}}" >
+	<F3:check if="{{@blg['chkIA'] == 'yes'}}" >
 	 <F3:true>
-		<input type="checkbox" name="isIA{{@ctr}}" id="isIA{{@ctr}}" checked="true"
-			onclick="toggle(this, 'IA{{@ctr}}')"> Kullanıcı girdisi istiyor musun? <br>
-		<input type="text" name="IA{{@ctr}}" id="IA{{@ctr}}" value="{{@blg['IA']}}"
-			style="visibility:visible;">
+		<input type="checkbox" name="chkIA[]" id="chkIA{{@ctr}}" value="{{@ctr}}" checked="true" onclick="toggle(this, 'IA{{@ctr}}')"> Kullanıcı girdisi istiyor musun? <br>
+		<input type="text" name="IA[]" id="IA{{@ctr}}" value="{{@blg['IA']}}" style="visibility:visible;">
 	</F3:true>
 	<F3:false>
-		<input type="checkbox" name="isIA{{@ctr}}" id="isIA{{@ctr}}" checked="false"
-			onclick="toggle(this, 'IA{{@ctr}}')"> Kullanıcı girdisi istiyor musun? <br>
-		<input type="text" name="IA{{@ctr}}" id="IA{{@ctr}}" value="{{@blg['IA']}}"
-			style="visibility:hidden;">
+		<input type="checkbox" name="chkIA[]" id="chkIA{{@ctr}}" value="{{@ctr}}" onclick="toggle(this, 'IA{{@ctr}}')"> Kullanıcı girdisi istiyor musun? <br>
+		<input type="text" name="IA[]" id="IA{{@ctr}}" value=""  style="visibility:hidden;">
 	</F3:false>
    </F3:check>	
   </td>
