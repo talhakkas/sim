@@ -43,8 +43,6 @@ h3 a:hover { color: auto; }
 h4 a:hover, h5 a:hover { text-decoration: underline; }
 p a { line-height: inherit; }
 
-/* More Links (Can be applied to a <ul> or a <p>) */
-
 h1, h2, h3, h4, h5, h6 { color: #333; font-weight: bold; }
 h1, h2, h3 { letter-spacing: -1px; }
 h1 { font-size: 45px; line-height: 1; margin: 0 0 9px; }
@@ -108,7 +106,7 @@ a.awesome.image img, img.awesome.image, ul.awesome.images img, div.awesome.image
 
 ul.images.awesome { margin-left: -20px; margin-bottom: 0; padding-top: 9px; margin-top: -9px; }
 ul.images.awesome li { float: left; margin: 0 0 0 20px; position: relative; }
-ul.images.awesome img { height: auto; margin-bottom: 9px; background: #fff; }
+ul.images.awesome img { height: auto; margin-bottom: 19px; background: #fff; }
 ul.images.awesome a { margin: 0; float: none; height: auto; }
 ul.images.awesome a:hover img { border-color: rgba(0,182,222,.5); -moz-box-shadow: 0 0 9px rgba(0,182,222,.5); -webkit-box-shadow: 0 0 9px rgba(0,182,222,.5); }
 ul.images.awesome a h4 { color: #007d9a; -webkit-transition: all 0.15s ease-out; }
