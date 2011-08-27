@@ -1,4 +1,8 @@
 function addRow(tableName) {
+	var eNofBs = document.getElementById('nofbs');
+	var nons = parseInt(eNofBs.value) + 1;
+	eNofBs.setAttribute('value', nons);
+
 	var table = document.getElementsByName(tableName).item(0);
 	//var table = document.getElementByID(tableName);
 
@@ -16,6 +20,8 @@ function addRow(tableName) {
 
 	var cell12 = row1.insertCell(1);
 	var txtarea = document.createElement("textarea");
+	cell12.setAttribute('class', 'field');
+	cell12.setAttribute('id', 'dal' + nons + 'field');
 	txtarea.setAttribute('name', 'link_text[]');
 	cell12.appendChild(txtarea);
 
@@ -34,9 +40,6 @@ function addRow(tableName) {
 	var btn = document.createElement('input');
 
 	var cid = document.getElementById('cid').getAttribute('value');
-	var eNofBs = document.getElementById('nofbs');
-	var nons = parseInt(eNofBs.value) + 1;
-	eNofBs.setAttribute('value', nons);
 
 	cell22.setAttribute('class', 'select');
 

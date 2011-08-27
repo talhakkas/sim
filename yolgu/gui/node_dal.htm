@@ -11,8 +11,12 @@ counter="{{@ctr}}">
 <tr>
   <td class="label"><input type="checkbox">Dal
   </td>
-  <td class="field">
+  <td class="field" id="dal{{@ctr}}field">
     <textarea name="link_text[]">{{@blg['link_text']}}</textarea>
+
+  	<input type="hidden" name="dalIA{{@ctr}}InpArea" id="dalIA{{@ctr}}" value="0" />
+  	<input name="btnAddInpArea" type="button" id="btnAddInpArea" value="+Girdi Alanı" onclick="javascript:addInputArea('dal{{@ctr}}field');" />
+  	<input name="btnRemoveInpArea" type="button" id="btnRemoveInpArea" value="-Girdi Alanı" onclick="javascript:removeInputArea('dal{{@ctr}}field');" />
   </td>
 </tr>
 <tr>
