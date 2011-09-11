@@ -7,7 +7,7 @@ include 'dict.php';
 // look
 // https://github.com/emineker/sim/blob/master/.f3.ini.example
 
-function render($template, $title) {
+function render($template, $title='') {
 	F3::set('page_title', $title);
 	F3::set('SESSION.template', $template); // printly için
 	F3::set('template', $template);
