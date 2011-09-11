@@ -222,7 +222,7 @@ h1.yellow, h2.yellow, h3.yellow, h4.yellow, h5.yellow
 /* ------------------------ custom table form ----------------------------- */
 table.custom th,
 table.custom td {
-    padding: 6px;
+    padding: 4px;
     font-size: 12px;
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
@@ -369,8 +369,6 @@ ul.tabs li.printly a {margin-top:3px;width:5px;height:25px;background:url(/publi
     padding-bottom:7px;
 }
 #submit_button:hover {
-    background:url(../img/btn2.png) no-repeat top;
-    color: #fff;
     box-shadow:0 3px 10px rgba(0, 0, 0, 0.2);
 }
 

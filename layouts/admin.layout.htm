@@ -87,7 +87,103 @@
       <div id="notice"><p class="fail">{{@error}}</p></div>
     </F3:check>
 
+    <style>
+      #yeni {width:920px;border-bottom:1px solid #ddd;margin-top:-10px; margin-bottom:20px;}
+      #yeni table {}
+      #yeni tr {float:left;font-size:12px;font-weight:bold;width:100px;}
+      #yeni tr img {width:34px;height:34px;margin:0 33px;}
+      #yeni tr td {text-top:50px;float:left;margin-bottom:4px;color: #3b5998;}
+      #yeni tr td {text-align:center;width:100px;}
+
+      #yeni ul{float:left;font-size:12px;font-weight:bold;width:920px;list-style-type:none;}
+      #yeni li {float:left;width:100px;}
+      #yeni li img {width:34px;height:34px;margin:0 33px;}
+      #yeni li td {text-top:50px;float:left;margin-bottom:4px;color: #3b5998;}
+      #yeni ul li {text-align:center;width:100px;}
+    </style>
+
     <div id="content">
+
+      <div id="yeni" style="display:none;">
+        <ul>
+            <li><img src="/public/img/table.png"/>{{e(@SESSION.TABLE)}}</li>
+            <li><img src="/public/img/save.png"/>{{e(@SESSION.SAVE)}}</li>
+          <li>
+              <a href="{{@SR}}" title=""><img
+                src="/public/img/tables.png"/> {{e('Tablolar')}}</a>
+          </li>
+          <li>
+              <a href="review" title="">
+                <img src="/public/img/review.png"/> {{e('Tablo İncele')}}</a>
+          </li>
+          <li>
+              <a href="new" title="">
+                <img src="/public/img/add.png"/> {{e('Ekle')}}</a>
+          </li>
+          <li>
+              <a href="find" title="">
+                <img src="/public/img/find.png"/> {{e('Bul')}}</a>
+          </li>
+          <li>
+              <a href="csv" title="">
+                <img src="/public/img/csv.png"/> {{e('Csv Çıktı')}}</a>
+          </li>
+          <li>
+              <a href="csv" title="">
+                <img src="/public/img/pdf.png"/> {{e('Pdf Çıktı')}}</a>
+          </li>
+          <li>
+              <a href="printly" title="">
+                <img src="/public/img/printly.png"/> {{e('Yazıcı Dostu')}}</a>
+          </li>
+        </ul>
+      </div>
+
+      <div id="yeni">
+        <table>
+          <tr>
+            <td><img src="/public/img/table.png"/>{{e(@SESSION.TABLE)}}</td>
+          </tr>
+          <tr>
+            <td><img src="/public/img/save.png"/>{{e(@SESSION.SAVE)}}</td>
+          </tr>
+          <tr><td>
+              <a href="{{@SR}}" title=""><img
+                src="/public/img/tables.png"/> {{e('Tablolar')}}</a>
+          </td></tr>
+          <tr><td>
+              <a href="review" title="">
+                <img src="/public/img/review.png"/> {{e('Tablo İncele')}}</a>
+          </td></tr>
+          <tr><td>
+              <a href="new" title="">
+                <img src="/public/img/add.png"/> {{e('Ekle')}}</a>
+          </td></tr>
+          <tr><td>
+              <a href="find" title="">
+                <img src="/public/img/find.png"/> {{e('Bul')}}</a>
+          </td></tr>
+          <tr><td>
+              <a href="csv" title="">
+                <img src="/public/img/csv.png"/> {{e('Csv Çıktı')}}</a>
+          </td></tr>
+          <tr><td>
+              <a href="csv" title="">
+                <img src="/public/img/pdf.png"/> {{e('Pdf Çıktı')}}</a>
+          </td></tr>
+          <tr><td>
+              <a href="printly" title="">
+                <img src="/public/img/printly.png"/> {{e('Yazıcı Dostu')}}</a>
+          </td></tr>
+        </table>
+      </div>
+
+
+
+
+
+
+
       <F3:check if="{{@SESSION.admin}}">
       <F3:true>
       <div id="leftcolumn">
