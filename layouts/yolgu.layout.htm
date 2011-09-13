@@ -10,6 +10,17 @@
     <link rel="stylesheet" type="text/css" href="/public/css/service.css" />
     <link rel="stylesheet" type="text/css" href="/public/css/admin.css" />
 
+  <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+
+
+  <script>
+  $(document).ready(function() {
+    $("#accordion").accordion({active: false});
+  });
+  </script>
+
     <title>{{@page_title}}</title>
   </head>
 
@@ -17,6 +28,7 @@
     .page h2 a {float:right;}
     .page h2 img {float:left;width:30px;margin-top:-5px;margin-right:2px;}
   </style>
+
 
   <body>
     <F3:check if="{{ @SESSION.special==1 }}">

@@ -241,6 +241,17 @@ function nodeList($cid) {
 }
 
 function unzip($datas) {
+	if(empty($datas['content'])) $datas['content'] = "::";
+	$content = preg_split("/,,/", $datas['content']);
+	
+	foreach($content as $k=>$v) {
+		$t = preg_split("/::/", $v);
+		
+		$datas['content_acc'][$k]['header'] = $t[0];
+		$datas['content_acc'][$k]['content'] = empty($t[1]) ? "NULL" : $t[1];
+	}
+	//unset($datas['content']);
+
 	if(empty($datas['options'])) $datas['options'] = "::";
 
 	switch($datas['type']) {
