@@ -55,8 +55,10 @@
 	 
   </F3:repeat>
 
-  <F3:repeat group="{{@SESSION.tdata}}" key="{{@gnl}}" value="{{@blg}}" >
-	<a href="/yolgu/show/{{@SESSION.cid}}/{{@blg['0']}}">{{@blg['1']}} ({{@blg['2']}})</a> &raquo;
+  <hr>
+  <h3>Hangi sayfalar gezilerek buraya gelindi</h3>
+  <F3:repeat group="{{@SESSION.tdata}}" key="{{@gnl}}" value="{{@blg}}" counter="{{@ctr}}">
+	<a href="/yolgu/show/{{@SESSION.cid}}/{{@blg['0']}}">{{@ctr}}: {{@blg['1']}} ({{@blg['2']}})</a> &raquo;
   </F3:repeat>
 </div>
 

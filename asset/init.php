@@ -60,7 +60,7 @@ function denetle($verilen, $tarif) {
 	}
 }
 
-function yukle($hedef=NULL, $alan='file', $uzerine_yazma=false) {
+function yukle($hedef=NULL, $alan='file', $uzerine_yazma=false, $type='IMAGETYPE_JPEG', $fsz=550000) {
         $yuklenen = F3::get("FILES.$alan.tmp_name");
 
 	// hedef ve yüklenen dosyanın boş olmasına izin veriyoruz
@@ -85,15 +85,14 @@ function yukle($hedef=NULL, $alan='file', $uzerine_yazma=false) {
 
 	// tam yol
 	$hedef = getcwd() . "/" . $hedef;
-
 	// bu bir uploaded dosya olmalı, fake dosyalara izin yok
 	if (is_uploaded_file($yuklenen)) {
 		// boyutu sınırla, değeri öylesine seçtim
-		if (filesize($yuklenen) > 550000) {
+		if (filesize($yuklenen) > $fsz) {
 			F3::set('error', 'Resim çok büyük');
 		}
 		// şimdilik sadece JPEG, dosya tipini içine bakarak tespit ediyoruz
-		else if (exif_imagetype($yuklenen) != IMAGETYPE_JPEG) {
+		else if ($type != 'all' && exif_imagetype($yuklenen) != IMAGETYPE_JPEG) {
 			F3::set('error', 'Resim JPEG değil');
 		}
 		// dosyanın üzerine yazmayalım, ekstra güvenlik
@@ -104,23 +103,30 @@ function yukle($hedef=NULL, $alan='file', $uzerine_yazma=false) {
 		// tamamdır, kalıcı kayıt yapalım
 		else if (!move_uploaded_file($yuklenen, $hedef)) {
 			F3::set('error', 'Dosya yükleme hatası');
-		} else // yok başka bir ihtimal!, doğru yoldasın
-			// image resizing
+		} else {// yok başka bir ihtimal!, doğru yoldasın
 			$file_parts = pathinfo($hedef);
-			$klasor = $file_parts['dirname'] . "/";
-			$dosya = $hedef;
-			$resim = imagecreatefromjpeg($dosya);
 
-			$boyutlar = getimagesize($dosya);
-			$resimorani = 300 / $boyutlar[0];
-			$yeniyukseklik = $resimorani * $boyutlar[1];
-			$yeniresim = imagecreatetruecolor("300", $yeniyukseklik);
-			imagecopyresampled($yeniresim, $resim, 0, 0, 0, 0, "300", $yeniyukseklik,
-				$boyutlar[0], $boyutlar[1]);
-			$hedefdosya = $klasor . "kucuk". $file_parts['basename'];
-			imagejpeg($yeniresim, $hedefdosya, 100);
-			chmod($hedefdosya, 0755);
+			if($file_parts['extension'] == 'jpg') {
+					// image resizing
+					$klasor = $file_parts['dirname'] . "/";
+					$dosya = $hedef;
+					$resim = imagecreatefromjpeg($dosya);
 
+					$boyutlar = getimagesize($dosya);
+					$resimorani = 300 / $boyutlar[0];
+					$yeniyukseklik = $resimorani * $boyutlar[1];
+					$yeniresim = imagecreatetruecolor("300", $yeniyukseklik);
+					imagecopyresampled($yeniresim, $resim, 0, 0, 0, 0, "300", $yeniyukseklik,
+						$boyutlar[0], $boyutlar[1]);
+					$hedefdosya = $klasor . "kucuk". $file_parts['basename'];
+					imagejpeg($yeniresim, $hedefdosya, 100);
+					chmod($hedefdosya, 0755);
+			}
+			else {
+			echo "FOOOOOOOOOO";
+			}
+	
+		}
 			return true;
 	}
 	else {

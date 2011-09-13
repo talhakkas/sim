@@ -110,7 +110,6 @@ function update() {
 		else 
 			$table->media = "default.jpg";
 	}
-
 	if($_POST['resim_sil'] == 'evet')
 		$table->media = NULL;
 
