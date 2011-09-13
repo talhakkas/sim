@@ -104,6 +104,8 @@
 
     <div id="content">
 
+      <F3:check if="{{@SESSION.admin}}">
+      <F3:true>
       <div id="yeni" style="display:none;">
         <ul>
             <li><img src="/public/img/table.png"/>{{e(@SESSION.TABLE)}}</li>
@@ -177,6 +179,8 @@
           </td></tr>
         </table>
       </div>
+      </F3:true>
+      </F3:check>
 
 
 
