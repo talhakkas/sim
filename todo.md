@@ -24,7 +24,10 @@ başlanabilir: jsplumb: http://jsplumb.org/jquery/draggableConnectorsDemo.html,
 http://stackoverflow.com/questions/536676/how-to-draw-a-line-between-draggable-and-droppable
 ve http://is.gd/2obC4 
 
+	phpmyadmin:tasarımcı tam da bunu yapıyor (fazlası bile var)
 
+6- submit butonu için: http://www.bloggerswatch.com/internet/css-trick-submit-button-should-look-same-everywhere/, http://www.mybestworks.com/works/css_button_trick/
+ 
 
 7- http://192.168.56.101/yolgu/ da ki "yeni dal ekle" yi malzeme çalışmasındaki
 ekstra malzeme ekle/çıkart şeklinde javascript ile yeni textarea+select
@@ -53,4 +56,10 @@ ileri/düzenlenemez modu yazılacak
 kullanıcıya en sonunda şu yolu takip ettiniz şuralarda puan kaybettiniz. toplam
 puanınız şudur benzeri bir raporlama yapmak gerekecek
 
+15- Kullanıcı girdisi gereken durumları idare etmek.
 
+16- Media kısmına resim dışında video/youtube/ses/animasyon eklemek gerekecek. @emin youtube video gömmeyle ilgili bir test sayfası ekleyelim. kullanıcının girdiği url yi sayfaya embed edip, sayfaya girildiğinde oynatsın.
+
+17- node:title alanında jqery:accordion'u etkileştirmek gerekecek
+
+18- node:options liste öğeleri için 
