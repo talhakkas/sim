@@ -1,5 +1,6 @@
 <script type="text/javascript" src="/public/js/table_ad_remove.js"></script>
 <script type="text/javascript" src="/public/js/myselect.js"></script>
+<script type="text/javascript" src="/public/js/myjs.js"></script>
 
 <div class="page">
   <h2 id="headline">Düğüm::{{@page_title}}
@@ -46,7 +47,18 @@
           İçerik:
         </td>
         <td class="field">
-          <textarea name="content">{{@SESSION.data['content']}}</textarea>
+          <textarea name="content">{{@SESSION.data['content']}}</textarea><br>
+		
+		  <F3:check if="{{@SESSION.data['content_accordion'] == 'yes'}}" >
+			<F3:true>		
+			  <input type="checkbox" name="content_accordion" id="content_accordion" checked="true" onclick="toggle_accord(this)">Akordiyon istiyor musun? <br>
+			  <fielset id="fs_content_accordion" style="visibility:visible;"><legend>Akord</legend></fielset>
+			</F3:true>
+			<F3:false>
+			  <input type="checkbox" name="content_accordion" id="content_accordion" onclick="toggle_accord(this)">Akordiyon istiyor musun? <br>
+			  <fielset id="fs_content_accordion" style="visibility:hidden;"><legend>Akord</legend></fielset>
+			</F3:false>
+		  </F3:check>
         </td>
       </tr>
 

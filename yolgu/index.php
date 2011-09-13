@@ -52,13 +52,15 @@ function show() {
 	foreach($list as $k=>$id) {
 		$tid = new Axon("node");
 		$datas = $table->afind("id='$id' AND cid='$cid'");
-		
+
 		$title = $datas[0]['title'];
-		$nodes[$k] = array($id, $title, $list_response[$k]);
+		
+		$resp = isset($list_response[$k])?$list_response[$k]:"";
+		$nodes[$k] = array($id, $title, $resp);
 	}
 	F3::set('SESSION.tdata', $nodes);
-
-        render('show', 'Olgu');
+    
+	render('show', 'Olgu');
 }
 
 function edit() {
