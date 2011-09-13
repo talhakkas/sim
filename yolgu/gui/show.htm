@@ -41,7 +41,7 @@
 		<img src=/public/img/vp_button.png>{{@blg['link_text']}}
 
 		<div align="middle">
-		<form name="frm{{@ctr}}" action="/yolgu/show/{{@SESSION.cid}}/{{@blg[node_link]}}" method="post">
+		<form name="frm{{@ctr}}" action="/yolgu/show/{{@SESSION.cid}}/{{@blg[node_link]}}/{{@SESSION.opt}}" method="post">
 		<input type="hidden" name="nid" value="{{@ctr}}">
 		<textarea name="response" cols="75" rows="5"></textarea></br>
 		<input type="submit" value="Gönder"></div>
