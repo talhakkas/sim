@@ -1,4 +1,79 @@
 <?php
+function params2session() {
+	// url den parametreleri oturuma kopyala
+	$params = F3::get('PARAMS');
+
+	unset($params[0]);	// url nin kendisi.
+
+	foreach($params as $k=>$v) {
+		F3::set("SESSION.$k", $v);
+	}
+}
+
+function get_node() {
+	$id  = F3::get('SESSION.id');
+	$cid = F3::get('SESSION.cid');
+
+	$table = new Axon("node");
+	$datas = $table->afind("id='$id' AND cid='$cid'");
+
+	if($datas[0]['title'] == "yeni")
+		F3::reroute("/edit/$cid/$id");
+
+	$node = unzip($datas[0]);
+
+	return $node;
+}
+
+function takip_listesine_ekle($cid, $id) {
+	/* Bir onceki formda girilen yanit ve hangi secenekten bu yeni sayfaya gelindiyse
+	 * takip listesine eklenir
+	 */
+	$beklenen_yanit = empty($_POST['beklenen_yanit']) ? "" : $_POST['beklenen_yanit'];
+	$opt = F3::get('SESSION.opt');
+	$tid = F3::get('SESSION.tid');
+
+	$ttid = new Axon("takip");
+	$ttid->load("tid='$tid'");
+
+	if(empty($ttid->nodes))	
+		$ttid->nodes = "$id:$opt";
+	else
+		$ttid->nodes = "$ttid->nodes , $id:$opt";
+
+	$kullanici_yaniti = empty($_POST['response']) ? "" : $_POST['response'];
+
+	$ttid->response = $ttid->response . "$beklenen_yanit:$kullanici_yaniti" . ",";
+	$ttid->save();
+}
+
+function takip_listesi2dizi() {
+	$id  = F3::get('SESSION.id');
+	$cid = F3::get('SESSION.cid');
+	$tid = F3::get('SESSION.tid');
+
+	$ttid = new Axon("takip");
+	$ttid->load("tid='$tid'");
+
+	$list = preg_split('/,/', $ttid->nodes);
+	$list_response = preg_split('/,/', $ttid->response);
+
+	$nodes = array();
+	foreach($list as $k=>$v) {
+		$t = preg_split('/:/', $v);
+		$id  = $t[0];
+		$opt = $t[1];
+
+		$ntable = new Axon("node");
+		$datas = $ntable->afind("id='$id' AND cid='$cid'");
+		$title = $datas[0]['title'];
+		
+		$resp = isset($list_response[$k]) ? $list_response[$k] : "";
+		$nodes[$k] = array($id, $title, $resp);
+	}
+
+	return $nodes;
+}
 
 function nodeList($cid) {
 	$table = new Axon("node");
@@ -102,7 +177,7 @@ function zip($datas) {
 }
 
 function ilkle() {
-	$cid = F4::get('SESSION.cid');
+	$cid = F3::get('SESSION.cid');
 	$datas = F3::get('SESSION.data');
 
 	switch(F3::get('SESSION.data[type]')) {

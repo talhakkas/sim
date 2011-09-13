@@ -1,8 +1,10 @@
 <?php
 	$cid = F3::get('PARAMS.cid') ? F3::get('PARAMS.cid'):1;
-	$id = F3::get('PARAMS.id') ? F3::get('PARAMS.id'):1;
+	$id  = F3::get('PARAMS.id')  ? F3::get('PARAMS.id') :1;
+	$opt = F3::get('PARAMS.opt') ? F3::get('PARAMS.opt'):1; 
 	F3::set('SESSION.cid', $cid);
 	F3::set('SESSION.id',  $id);
+	F3::set('SESSION.opt', $opt);
 
 	if (!empty($_REQUEST['delete']))
 		F3::reroute("/delete/$cid/$id");
@@ -39,5 +41,5 @@
 		$table2->save();
 	}
 
-	F3::reroute("/show/$cid/$id");
+	F3::reroute("/show/$cid/$id/$opt");
 ?>

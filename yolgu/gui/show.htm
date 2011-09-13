@@ -41,15 +41,15 @@
 		<img src=/public/img/vp_button.png>{{@blg['link_text']}}
 
 		<div align="middle">
-		<form name="frm{{@ctr}}" action="/yolgu/show/{{@SESSION.cid}}/{{@blg[node_link]}}/{{@SESSION.opt}}" method="post">
+		<form name="frm{{@ctr}}" action="/yolgu/show/{{@SESSION.cid}}/{{@blg[node_link]}}/{{@ctr}}" method="post">
 		<input type="hidden" name="nid" value="{{@ctr}}">
+		<input type="hidden" name="beklenen_yanit" value="{{@blg['IA']}}">
 		<textarea name="response" cols="75" rows="5"></textarea></br>
 		<input type="submit" value="Gönder"></div>
-		<!--input type="submit" value="Gönder" onclick="location.href='/yolgu/show/{{@SESSION.cid}}/{{@blg[node_link]}}'"></div-->
 		</form>
 	 </F3:true>
 	 <F3:false>
-		<a href="/yolgu/show/{{@SESSION.cid}}/{{@blg['node_link']}}"><img src=/public/img/vp_button.png>{{@blg['link_text']}}</a> <br>
+		<a href="/yolgu/show/{{@SESSION.cid}}/{{@blg['node_link']}}/{{@ctr}}"><img src=/public/img/vp_button.png>{{@blg['link_text']}}</a> <br>
 	 </F3:false>
     </F3:check>	
 	 
@@ -58,7 +58,7 @@
   <hr>
   <h3>Hangi sayfalar gezilerek buraya gelindi</h3>
   <F3:repeat group="{{@SESSION.tdata}}" key="{{@gnl}}" value="{{@blg}}" counter="{{@ctr}}">
-	<a href="/yolgu/show/{{@SESSION.cid}}/{{@blg['0']}}">{{@ctr}}: {{@blg['1']}} ({{@blg['2']}})</a> &raquo;
+	<a href="/yolgu/show/{{@SESSION.cid}}/{{@blg['0']}}/0">{{@ctr}}: {{@blg['1']}} ({{@blg['2']}})</a> &raquo;
   </F3:repeat>
 </div>
 

@@ -18,5 +18,5 @@
 	
 	F3::set("SESSION.tid", maxID("tid", "takip"));
 
-	F3::reroute("/show/$cid/$id");	
+	F3::reroute("/show/$cid/$id/0");	
 ?>
