@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Anamakine: localhost
--- Üretim Zamanı: 23 Ağustos 2011 saat 08:24:43
+-- Üretim Zamanı: 15 Eylül 2011 saat 17:31:20
 -- Sunucu sürümü: 5.1.49
 -- PHP Sürümü: 5.3.3-7+squeeze1
 
@@ -37,14 +37,11 @@ CREATE TABLE IF NOT EXISTS `ncase` (
   `other` int(11) NOT NULL,
   `bdugumu` int(11) NOT NULL,
   PRIMARY KEY (`cid`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_turkish_ci AUTO_INCREMENT=14 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_turkish_ci AUTO_INCREMENT=2 ;
 
 --
 -- Tablo döküm verisi `ncase`
 --
 
 INSERT INTO `ncase` (`cid`, `title`, `description`, `type_playable_by`, `type_navigation_panel`, `patient_info`, `edu_opts`, `other`, `bdugumu`) VALUES
-(1, 'Zehirlenme', 'Çiçek serasında zehirlenme', 0, 0, 0, 0, 0, 1),
-(2, 'abc', 'alfabe', 0, 0, 0, 0, 0, 1),
-(3, '65 yaşında', 'ne oldu ki', 0, 0, 0, 0, 0, 2),
-(13, 'qwerty', 'a', 0, 0, 0, 0, 0, 1);
+(1, 'Çiçek Serası Çalışanı merdivenden düştü', 'TODO', 0, 0, 0, 0, 0, 1);

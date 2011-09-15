@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Anamakine: localhost
--- Üretim Zamanı: 27 Ağustos 2011 saat 21:14:05
+-- Üretim Zamanı: 15 Eylül 2011 saat 17:31:06
 -- Sunucu sürümü: 5.1.49
 -- PHP Sürümü: 5.3.3-7+squeeze1
 
@@ -29,7 +29,7 @@ DROP TABLE IF EXISTS `takip`;
 CREATE TABLE IF NOT EXISTS `takip` (
   `tid` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `nodes` varchar(250) CHARACTER SET utf8 COLLATE utf8_turkish_ci NOT NULL,
-  `response` varchar(250) CHARACTER SET utf8 COLLATE utf8_turkish_ci NOT NULL,
+  `response` varchar(1250) CHARACTER SET utf8 COLLATE utf8_turkish_ci NOT NULL,
   PRIMARY KEY (`tid`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 

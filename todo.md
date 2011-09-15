@@ -70,5 +70,5 @@ puanınız şudur benzeri bir raporlama yapmak gerekecek
 
 17- node:content alanında jquery:accordion u etkileştirmek gerekecek
 
-18- node:options liste öğeleri için ...
+18- node:options liste öğeleri için görselleştirerek ayırt ediciliği arttır.
 
