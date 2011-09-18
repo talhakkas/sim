@@ -70,5 +70,8 @@ puanınız şudur benzeri bir raporlama yapmak gerekecek
 
 17- node:content alanında jquery:accordion u etkileştirmek gerekecek
 
-18- node:options liste öğeleri için görselleştirerek ayırt ediciliği arttır.
+18- node:options liste öğeleri için görselleştirme
 
+19- ilaç dozajı için input:range benzeri bir yapı
+
+	buradan başla: http://flowplayer.org/tools/demos/rangeinput/index.htm

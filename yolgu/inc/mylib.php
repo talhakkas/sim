@@ -41,7 +41,9 @@ function takip_listesine_ekle($cid, $id) {
 	else
 		$ttid->nodes = "$ttid->nodes , $id:$opt";
 
-	$kullanici_yaniti = empty($_POST['response']) ? "" : $_POST['response'];
+	$kullanici_yaniti  = empty($_POST['response']) ? "" : $_POST['response'];
+	$kullanici_yaniti .= empty($_POST['doz'])  ? "" : implode($_POST['doz']);
+	$kullanici_yaniti .= empty($_POST['ayol']) ? "" : implode($_POST['ayol']);
 
 	$ttid->response = $ttid->response . "$beklenen_yanit:$kullanici_yaniti" . ",";
 	$ttid->save();
