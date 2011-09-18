@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Anamakine: localhost
--- Üretim Zamanı: 18 Eylül 2011 saat 09:42:20
+-- Üretim Zamanı: 18 Eylül 2011 saat 11:51:38
 -- Sunucu sürümü: 5.1.49
 -- PHP Sürümü: 5.3.3-7+squeeze1
 
@@ -40,7 +40,7 @@ CREATE TABLE IF NOT EXISTS `node` (
   `isWrong` tinyint(1) DEFAULT NULL,
   `cid` int(11) NOT NULL,
   PRIMARY KEY (`nid`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_turkish_ci AUTO_INCREMENT=33 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_turkish_ci AUTO_INCREMENT=34 ;
 
 --
 -- Tablo döküm verisi `node`
@@ -63,7 +63,7 @@ INSERT INTO `node` (`nid`, `id`, `title`, `media`, `content`, `question`, `optio
 (20, 14, 'Rutin biyokimya', NULL, 'Sonuçlar: ...', '', 'Başka tetkik yaptırmak için::13,,Tedavi önerisi için::17', 'dal', 0, 0, 0, 1),
 (21, 15, 'Kan kolinesteraz düzeyi', NULL, 'Sonuçlar: ...', '', 'Başka tetkik yaptırmak için::13,,Tedavi önerisi için::17', 'dal', 0, 0, 0, 1),
 (22, 16, 'Hata: XYZ', NULL, 'Bu hasta için XYZ tetkiki gereksizdir.', '', 'Başka tetkik yaptırmak için::13,,Tedavi önerisi için::17', 'dal', 0, 0, 0, 1),
-(23, 17, 'Tedavi', NULL, 'Tarım ilacı zehirlenmesine yönelik tedavi yaklaşımınızı (Basamaklar halinde belirtin) belirtiniz. Hangi ilacı hangi dozda hangi yolla verilmesini önerirsiniz.', '', 'Yanıtınızı aşağıdaki alana yazıp gönder tuşuna tıklayınız.;;doğru yanıt::18', 'dal', 0, 0, 0, 1),
+(23, 17, 'Tedavi', NULL, 'Tarım ilacı zehirlenmesine yönelik tedavi yaklaşımınızı (Basamaklar halinde belirtin) belirtiniz. Hangi ilacı hangi dozda hangi yolla verilmesini önerirsiniz.', '', 'Yanıtınızı aşağıdaki alana yazıp gönder tuşuna tıklayınız.;;İlaçlar: A,B,C,D::26', 'dal', 0, 0, 0, 1),
 (24, 18, 'Tramva', NULL, '::', 'Travmaya yönelik hangi incelemeleri yaparsınız?', 'Yanıtınızı aşağıdaki alana girip gönder tuşuna tıklayınız.;;doğru yanıt::19', 'dal', 0, 0, 0, 1),
 (25, 19, 'Görsel Tetkik', NULL, 'İstenen tetkik sonuçlarını değerlendirin? ', '', 'Radyoloji tetkiki::20,,Boyun omur filmi::21,,XYZ tetkiki::24,,Başka tetkik istemiyorsanız. Yorumlamaya geçmek için tıklayınız.::25', 'dal', 0, 0, 0, 1),
 (26, 20, 'Radyoloji Tetkik Sonuçları', '_n00026.jpg', 'Sonuçlar: <br>\r\n\r\nbel ve göğüs omur filmi: normal <br>\r\nKafa grafisi: Kırık Yok. \r\n', '', 'Başka tetkik için tıklayınız.::19,,Başka tetkik istemiyorsanız. Yorumlamaya geçmek için tıklayınız.::25', 'dal', 0, 0, 0, 1),
@@ -71,4 +71,5 @@ INSERT INTO `node` (`nid`, `id`, `title`, `media`, `content`, `question`, `optio
 (28, 22, 'end', NULL, 'Burada RAPOR sunulacak.', '', 'Başa dönmek için tıklayınız.::1', 'dal', 0, 0, 0, 1),
 (29, 23, 'Boyun Omur Filmi Değerlendirme', '_n00029.jpg', 'xxx i işaretlemeniz beklenirdi.', '', 'Başka tetkik için tıklayınız.::19,,Başka tetkik istemiyorsanız. Yorumlamaya geçmek için tıklayınız.::25', 'dal', 0, 0, 0, 1),
 (30, 24, 'XYZ Tetkiki', NULL, 'Bu tetkik değeri normaldir.', '', 'Başka tetkik için tıklayınız.::19,,Başka tetkik istemiyorsanız. Yorumlamaya geçmek için tıklayınız.::25', 'dal', 0, 0, 0, 1),
-(31, 25, 'Yorum', NULL, '::', 'Ne düşünüyorsunuz?', 'Kişinin servika grafisi normal olarak değerlendirdim.Ancak ayrıntılı inceleme için radyoloji konsültasyonu istiyorum.::22,,Yorumunuzu aşağıdaki alana girip gönder tuşuna tıklayınız.;;ddd::22', 'dal', 0, 0, 0, 1);
+(31, 25, 'Yorum', NULL, '::', 'Ne düşünüyorsunuz?', 'Kişinin servika grafisi normal olarak değerlendirdim.Ancak ayrıntılı inceleme için radyoloji konsültasyonu istiyorum.::22,,Yorumunuzu aşağıdaki alana girip gönder tuşuna tıklayınız.;;ddd::22', 'dal', 0, 0, 0, 1),
+(33, 26, 'doz', NULL, '::', 'Doz miktarını ve hangi uygulanacağını seçiniz.', 'A--50--250--150--1::1,,B--50--250--50--2::1,,C--50--250--200--3::1,,Dozaj ve alım yolu tercihlerini gönder.::18', 'dal', 0, 0, 0, 1);
