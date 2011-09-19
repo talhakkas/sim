@@ -25,28 +25,41 @@ function get_node() {
 	return $node;
 }
 
-function takip_listesine_ekle($cid, $id) {
-	/* Bir onceki formda girilen yanit ve hangi secenekten bu yeni sayfaya gelindiyse
-	 * takip listesine eklenir
-	 */
+function takip_listesine_ekle() {
+	// a) su anki dugum icin 'tet' girdisi olustur. "beklenen" ve "soylenen" bos, simdilik
+	$ttet = new Axon("tet");
+	$ttet->id = NULL;
+	$ttet->skey = intval(F3::get('SESSION.skey'));
+	$ttet->sid = intval(F3::get('SESSION.student'));
+	$ttet->cid = F3::get('SESSION.cid');
+	$ttet->nid = F3::get('SESSION.id');
+	$ttet->beklenen = "";
+	$ttet->soylenen = "";
+	$ttet->zaman = 0;
+	$ttet->save();
+
+	// b) '$_POST' tan gelen veriyle onceki dugumun "beklenen" ve "soylenen" kisimlarini guncelle
 	$beklenen_yanit = empty($_POST['beklenen_yanit']) ? "" : $_POST['beklenen_yanit'];
-	$opt = F3::get('SESSION.opt');
-	$tid = F3::get('SESSION.tid');
 
-	$ttid = new Axon("takip");
-	$ttid->load("tid='$tid'");
+	$kullanici_yaniti  = empty($_POST['response']) ? "" : "resp::".$_POST['response'].",,";
+	$kullanici_yaniti .= empty($_POST['doz'])  ? "" : "doz::". myserialize($_POST['doz']) . ",,";
+	$kullanici_yaniti .= empty($_POST['ayol']) ? "" : "ayol::".myserialize($_POST['ayol']);
 
-	if(empty($ttid->nodes))	
-		$ttid->nodes = "$id:$opt";
-	else
-		$ttid->nodes = "$ttid->nodes , $id:$opt";
+	// bir onceki dugum id sini bul
+	$mid = maxID_v2("id", "tet", "skey=$ttet->skey AND sid=$ttet->sid");
+	$mid--;
 
-	$kullanici_yaniti  = empty($_POST['response']) ? "" : $_POST['response'];
-	$kullanici_yaniti .= empty($_POST['doz'])  ? "" : implode($_POST['doz']);
-	$kullanici_yaniti .= empty($_POST['ayol']) ? "" : implode($_POST['ayol']);
+	if($mid == 0)	// ilk dugum!
+		return; 
 
-	$ttid->response = $ttid->response . "$beklenen_yanit:$kullanici_yaniti" . ",";
-	$ttid->save();
+	$ttet = new Axon("tet");
+	$ttet->load("id=$mid");
+	$ttet->beklenen = $beklenen_yanit;
+	$ttet->soylenen = $kullanici_yaniti;
+	$ttet->zaman = microtime(true) - F3::get('SESSION.stime');
+	$ttet->save();
+
+	return;
 }
 
 function takip_listesi2dizi() {
@@ -208,5 +221,23 @@ function maxID($idnm, $tablenm) {
         $mid = $res[0]["max($idnm)"];
 
 	return intval($mid);
+}
+
+function maxID_v2($idnm, $tablenm, $kisitlama) {
+	DB::sql("select max($idnm) from $tablenm where $kisitlama");
+        $res = F3::get("DB->result");
+        $mid = $res[0]["max($idnm)"];
+
+	return intval($mid);
+}
+
+function myserialize($arr) {
+	$str = "";
+
+	foreach($arr as $i=>$v) {
+		$str .= "$v--";
+	}
+
+	return $str;
 }
 ?>

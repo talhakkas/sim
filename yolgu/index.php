@@ -11,7 +11,7 @@ function login() {
 }
 
 function test() {
-	print_r(F3::get('IMPORTS'));
+	echo F3::get('SESSION.student');
 }
 
 F3::set('uploaddir', 'upload/');
@@ -30,6 +30,8 @@ F3::route("GET /create/@type/@cid/@id", "create.php");
 
 F3::route("GET /delete/@cid/@id", "delete.php");
 F3::route("POST /delete/@cid/@id", "delete.php");
+
+F3::route("GET /rapor", "rapor.php");
 
 // case routings
 F3::route("GET /cstart/@cid", 'cstart.php');

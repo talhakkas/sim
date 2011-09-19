@@ -1,7 +1,20 @@
-  <h3>Rapor</h3>
+<h3>Rapor</h3>
 
-<table>
+<table border=1>
+	<tr>
+		<td>Zaman (sn)</td>
+		<td>Başlık</td>
+		<td>Beklenen</td>
+		<td>Söylenen</td>
+		<td>Hoca</td>
+	</tr>
   <F3:repeat group="{{@SESSION.tdata}}" key="{{@gnl}}" value="{{@blg}}" counter="{{@ctr}}">
-	<tr><td>{{@blg['1']}}</td><td>{{@blg['2']}}</td></tr>
+	<tr>
+		<td>{{@blg['zaman']}}</td>
+		<td>{{@blg['title']}}</td>
+		<td>{{@blg['beklenen']}}</td>
+		<td>{{@blg['soylenen']}}</td>
+		<td></td>
+	</tr>
   </F3:repeat>
 </table>
