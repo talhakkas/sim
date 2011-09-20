@@ -1,13 +1,12 @@
 <h3>Rapor</h3>
 
-{{@SESSION.tpuan}}
 <table border=1>
 	<tr>
 		<td>Zaman (sn)</td>
 		<td>Başlık</td>
 		<td>Beklenen</td>
 		<td>Söylenen</td>
-		<td>Hoca</td>
+		<td>HPuan/oca</td>
 	</tr>
   <F3:repeat group="{{@SESSION.tdata}}" key="{{@gnl}}" value="{{@blg}}" counter="{{@ctr}}">
 	<tr>
@@ -15,7 +14,7 @@
 		<td>{{@blg['title']}}</td>
 		<td>{{@blg['beklenen']}}</td>
 		<td>{{@blg['soylenen']}}</td>
-		<td></td>
+		<td>{{@blg['puan']}}</td>
 	</tr>
   </F3:repeat>
 </table>

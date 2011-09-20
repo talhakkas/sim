@@ -182,7 +182,7 @@ function zip($datas) {
 			$tmp = "";
 			$size = sizeof($datas['link_text']);
 			for($i=0; $i < $size; $i++) {
-				$response = (in_array(($i+1), $datas['chkIA'])) ? (";;" . $datas['IA'][$i]) : "";
+				$response = empty($datas['IA'][$i]) ? "" : (";;" . $datas['IA'][$i]);
 				$tmp = $tmp . $datas['link_text'][$i] . $response ."::". $datas['node_link'][$i];
 				$tmp = $tmp . "::" . $datas['odul'][$i] . "::" . $datas['ceza'][$i];
 
@@ -194,6 +194,8 @@ function zip($datas) {
 			unset($datas['chkIA']);
 			unset($datas['IA']);
 			unset($datas['node_link']);
+			unset($datas['odul']);
+			unset($datas['ceza']);
 			break;
 	}
 
@@ -251,10 +253,13 @@ function myserialize($arr) {
 }
 
 function get_puan($cid, $id, $opt) {
+	$opt--;
+
 	$tnode = new Axon('node');
 	$datas = $tnode->afind("cid='$cid' AND id='$id'");
 	
 	$datas = unzip($datas[0]);
+
 	$odul = empty($datas['nodes'][$opt]['odul']) ? 0 : intval($datas['nodes'][$opt]['odul']);
 	$ceza = empty($datas['nodes'][$opt]['ceza']) ? 0 : intval($datas['nodes'][$opt]['ceza']);
 

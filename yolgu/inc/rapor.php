@@ -15,7 +15,8 @@
 		
 		$datas[$i]['title'] = $tnode->title;
 
-		$tpuan -= $datas[$i]['puan'];
+		$tpuan += $datas[$i]['puan'];
+		$datas[$i]['puan'] = $tpuan;
 	}
 
 	F3::set('SESSION.tdata', $datas);
