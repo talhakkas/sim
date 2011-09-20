@@ -20,6 +20,8 @@ function addRow(tableName) {
 
 	var cell12 = row1.insertCell(1);
 	var txtarea = document.createElement("textarea");
+	var txtOdul = document.createElement('input');
+	var txtCeza = document.createElement('input');
 	var chkIA = document.createElement('input');
 	var txtIA = document.createElement('input');
 	cell12.setAttribute('class', 'field');
@@ -28,6 +30,20 @@ function addRow(tableName) {
 	txtarea.setAttribute('name', 'link_text[]');
 	cell12.appendChild(txtarea);
 	cell12.appendChild(document.createElement('br'));
+
+	txtOdul.setAttribute('type', 'input');
+	txtOdul.setAttribute('name', 'odul[]');
+	txtOdul.setAttribute('maxlength', '3');
+	txtOdul.setAttribute('size', '3');
+	cell12.appendChild(document.createTextNode('Ödül:'));
+	cell12.appendChild(txtOdul);
+
+	txtCeza.setAttribute('type', 'input');
+	txtCeza.setAttribute('name', 'ceza[]');
+	txtCeza.setAttribute('maxlength', '3');
+	txtCeza.setAttribute('size', '3');
+	cell12.appendChild(document.createTextNode('Ceza:'));
+	cell12.appendChild(txtCeza);
 
 	chkIA.setAttribute('type', 'checkbox');
 	chkIA.setAttribute('name', 'chkIA[]');

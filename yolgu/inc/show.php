@@ -1,7 +1,4 @@
 <?php
-	$onceki_cid = F3::get('SESSION.cid');
-	$onceki_id  = F3::get('SESSION.id');
-
 	params2session();
 
 	$node = get_node();

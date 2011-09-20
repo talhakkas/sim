@@ -36,6 +36,7 @@ function takip_listesine_ekle() {
 	$ttet->beklenen = "";
 	$ttet->soylenen = "";
 	$ttet->zaman = 0;
+	$ttet->puan = 0;
 	$ttet->save();
 
 	// b) '$_POST' tan gelen veriyle onceki dugumun "beklenen" ve "soylenen" kisimlarini guncelle
@@ -57,6 +58,11 @@ function takip_listesine_ekle() {
 	$ttet->beklenen = $beklenen_yanit;
 	$ttet->soylenen = $kullanici_yaniti;
 	$ttet->zaman = microtime(true) - F3::get('SESSION.stime');
+	
+	$cid = $ttet->cid;
+	$id  = $ttet->nid;
+	$opt = F3::get('SESSION.opt');
+	$ttet->puan = get_puan($cid, $id, $opt);
 	$ttet->save();
 
 	return;
@@ -147,13 +153,15 @@ function unzip($datas) {
 			foreach($opts as $k=>$v) {
 				$t1 = preg_split("/::/", $v);
 				// kullanici girdis var mi?
-				// format: 'text;;response::link'
+				// format: 'text;;response::link::odul::ceza'
 				$t2 = preg_split('/;;/', $t1[0]);
 
 				$datas['nodes'][$k]['link_text'] = $t2[0];
 				$datas['nodes'][$k]['chkIA']  	 = empty($t2[1]) ? 'no' : 'yes';
 				$datas['nodes'][$k]['IA'] 		 = empty($t2[1]) ? '' : $t2[1];
 				$datas['nodes'][$k]['node_link'] = $t1[1];
+				$datas['nodes'][$k]['odul'] 	 = empty($t1[2]) ? '' : $t1[2];
+				$datas['nodes'][$k]['ceza'] 	 = empty($t1[3]) ? '' : $t1[3];
 			}
 			unset($datas['options']);
 			break;
@@ -176,6 +184,7 @@ function zip($datas) {
 			for($i=0; $i < $size; $i++) {
 				$response = (in_array(($i+1), $datas['chkIA'])) ? (";;" . $datas['IA'][$i]) : "";
 				$tmp = $tmp . $datas['link_text'][$i] . $response ."::". $datas['node_link'][$i];
+				$tmp = $tmp . "::" . $datas['odul'][$i] . "::" . $datas['ceza'][$i];
 
 				if ($i < ($size - 1))
 					$tmp = $tmp .",,";
@@ -202,7 +211,7 @@ function ilkle() {
 			break;
 		case "dal":
 			$datas['nodes'] = array(
-				0=>array('link_text'=>'', 'node_link'=>1)
+				0=>array('link_text'=>'', 'node_link'=>1, 'odul'=>'', 'ceza'=>'')
 			);
 			F3::set('SESSION.nofbs', 1);
 
@@ -239,5 +248,18 @@ function myserialize($arr) {
 	}
 
 	return $str;
+}
+
+function get_puan($cid, $id, $opt) {
+	$tnode = new Axon('node');
+	$datas = $tnode->afind("cid='$cid' AND id='$id'");
+	
+	$datas = unzip($datas[0]);
+	$odul = empty($datas['nodes'][$opt]['odul']) ? 0 : intval($datas['nodes'][$opt]['odul']);
+	$ceza = empty($datas['nodes'][$opt]['ceza']) ? 0 : intval($datas['nodes'][$opt]['ceza']);
+
+	$puan = $odul - $ceza;
+
+	return $puan;
 }
 ?>

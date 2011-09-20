@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Anamakine: localhost
--- Üretim Zamanı: 19 Eylül 2011 saat 18:11:48
+-- Üretim Zamanı: 20 Eylül 2011 saat 03:04:20
 -- Sunucu sürümü: 5.1.49
 -- PHP Sürümü: 5.3.3-7+squeeze1
 
@@ -35,6 +35,7 @@ CREATE TABLE IF NOT EXISTS `tet` (
   `beklenen` varchar(500) COLLATE utf8_turkish_ci NOT NULL,
   `soylenen` varchar(500) COLLATE utf8_turkish_ci NOT NULL,
   `zaman` float NOT NULL,
+  `puan` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_turkish_ci AUTO_INCREMENT=1 ;
 

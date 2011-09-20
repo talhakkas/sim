@@ -15,6 +15,10 @@ counter="{{@ctr}}">
   <td class="field" id="dal{{@ctr}}field">
     <textarea name="link_text[]">{{@blg['link_text']}}</textarea><br>
 
+	Ödül: <input type="text" name="odul[]" value="{{@blg['odul']}}" maxlength="3" size="3">
+	Ceza: <input type="text" name="ceza[]" value="{{@blg['ceza]}}"  maxlength="3" size="3">
+	<br>
+
 	<F3:check if="{{@blg['chkIA'] == 'yes'}}" >
 	 <F3:true>
 		<input type="checkbox" name="chkIA[]" id="chkIA{{@ctr}}" value="{{@ctr}}" checked="true" onclick="toggle(this, 'IA{{@ctr}}')"> Kullanıcı girdisi istiyor musun? <br>
