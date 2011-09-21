@@ -33,16 +33,18 @@ if __name__ == "__main__":
 
         adress = 'http://www.ilacrehberi.com/cgi-bin/ilac_fihrist.asp?h='
         liste = [
-                 "A", "B", "C", "Ç", "D", "E", "F", "G", "H", "I", "İ", "J", "K", "L",
-                 "M", "N", "O", "Ö", "P", "R", "S", "Ş", "T", "U", "Ü", "W", "X",
-                 "V", "Y", "Z", "AL", "AM", "AN", "BE", "CA", "CE", "CO", "DE", "DI",
-                 "FL", "GE", "IN", "KA", "LA", "LI", "ME", "MI", "NA", "NI", "NO", "PA",
-                 "PE", "SE", "SI", "TR", "VI"
+                 "A", "B", "C", "Ç", "D", "E", "F", "G", "H", "I", "İ", "J", "K",
+                 "L", "M", "N", "O", "Ö", "P", "R", "S", "Ş", "T", "U", "Ü", "W",
+                 "X", "V", "Y", "Z", "AL", "AM", "AN", "BE", "CA", "CE", "CO", "DE",
+                 "DI", "FL", "GE", "IN", "KA", "LA", "LI", "ME", "MI", "NA", "NI",
+                 "NO", "PA", "PE", "SE", "SI", "TR", "VI"
         ]
+        liste = ['A', 'B']
         total = 0
         for i in liste:
                 print '%s adresli sayfa indiriliyor...' %i
-                page = site_oku(adress + i)
+                #page = site_oku(adress + i)
+                page = file(i).read()
                 print '%s adresli sayfa okunuyor...' %i
                 new_list = parcala(page)
                 dosyala(dizin, i, new_list)
