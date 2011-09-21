@@ -7,9 +7,9 @@ table.login th,
 table.login td {
     padding: 4px;
     font-size: 13px;
-    -moz-border-radius: 5px;
-    -webkit-border-radius: 5px;
-    border-radius: 5px;
+    -moz-border-radius: 0px;
+    -webkit-border-radius: 0px;
+    border-radius: 0px;
 }
 
 table.login input[type=text],
@@ -21,9 +21,9 @@ table.login input[type=password]{
     color: #555;
     width: 220px;
     border: 1px solid #ccc;
-    -moz-border-radius: 3px;
-    -webkit-border-radius: 3px;
-    border-radius: 3px;
+    -moz-border-radius: 0px;
+    -webkit-border-radius: 0px;
+    border-radius: 0px;
 }
 
 table.login input[type=text]:focus,
@@ -68,5 +68,6 @@ table.login td.select{
     display:none;
 }
 
-#content{margin-top:8%;width:400px;min-height:240px;}
+#content{margin-top:8%;width:400px;min-height:220px;}
 p.fail{ margin:50px auto -84px;}
+#content h2 {font-size:17px;margin-bottom:30px;}
