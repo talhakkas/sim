@@ -10,30 +10,18 @@
     <link rel="stylesheet" type="text/css" href="/public/css/service.css" />
     <link rel="stylesheet" type="text/css" href="/public/css/admin.css" />
 
-  <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
-  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
-
-
-  <script>
-  $(document).ready(function() {
-    $("#accordion").accordion({active: false});
-  });
-  </script>
-<script src="http://cdn.jquerytools.org/1.2.5/full/jquery.tools.min.js"></script> 
-    <link rel="stylesheet" type="text/css" href="http://static.flowplayer.org/tools/css/standalone.css"/>   
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+    <script>
+      $(document).ready(function() {
+        $("#accordion").accordion({active: false});
+      });
+    </script>
+    <script src="http://cdn.jquerytools.org/1.2.5/full/jquery.tools.min.js"></script> 
     <link rel="stylesheet" type="text/css" href="http://static.flowplayer.org/tools/demos/rangeinput/css/skin1.css"/> 
-<style>
-/* Override skin1.css to make it vertical */
 
-    /* height is now larger than width  */
-    .slider {
-        height:10px;
-        width:200px;
-        margin:0 0 0 60px;
-    }
-
-    </style> 
+    <style>
+    .slider {height:10px; width:200px; margin:0 0 0 60px;}
+    </style>
 
     <title>{{@page_title}}</title>
   </head>
@@ -42,7 +30,6 @@
     .page h2 a {float:right;}
     .page h2 img {float:left;width:30px;margin-top:-5px;margin-right:2px;}
   </style>
-
 
   <body>
     <F3:check if="{{ @SESSION.special==1 }}">
