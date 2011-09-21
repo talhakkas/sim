@@ -75,3 +75,6 @@ puanınız şudur benzeri bir raporlama yapmak gerekecek
 19- ilaç dozajı için input:range benzeri bir yapı
 
 	buradan başla: http://flowplayer.org/tools/demos/rangeinput/index.htm
+	Bu tamam gibi.
+
+20- her bir tahlil/film vs i maliyetlendirelim.
