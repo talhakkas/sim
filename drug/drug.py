@@ -22,9 +22,21 @@ def parcala(page):
         return yeni
 
 def dosyala(dizin, file_name, liste):
-        with open(dizin + '/' + file_name, 'w') as dosya:
+        with open(dizin + '/' + file_name, 'w') as f:
                 for i in liste:
-                        dosya.write(i+'\n')
+                        f.write(i+'\n')
+
+def php(main_list):
+        with open("drug.php", 'w') as f:
+                f.write("<?php\n\n")
+                no = 0
+                for i in main_list:
+                        f.write("$drug" + str(no) + " = array(\n")
+                        for j in i:
+                                f.write('\t\t"' + j + '",\n')
+                        f.write(");\n\n")
+                        no += 1
+                f.write("?>")
 
 if __name__ == "__main__":
         dizin = os.path.join(os.getcwd() , 'drugs' )
@@ -39,16 +51,23 @@ if __name__ == "__main__":
                  "DI", "FL", "GE", "IN", "KA", "LA", "LI", "ME", "MI", "NA", "NI",
                  "NO", "PA", "PE", "SE", "SI", "TR", "VI"
         ]
-        liste = ['A', 'B']
+        #liste = ['A', 'B']
         total = 0
+        main_list = []
         for i in liste:
                 print '%s adresli sayfa indiriliyor...' %i
-                #page = site_oku(adress + i)
-                page = file(i).read()
+                page = site_oku(adress + i)
+                #page = file(i).read()
                 print '%s adresli sayfa okunuyor...' %i
                 new_list = parcala(page)
                 dosyala(dizin, i, new_list)
                 total += len(new_list)
+                main_list.append(new_list)
                 print '%s adresli sayfa dosyalandı » ./drugs/%s...\n' %(i, i)
-        print "toplam ilaç sayısı %s" %total
+
+        print "toplam ilaç sayısı %s\n" %total
+
+        print "php kodu üretiliyor..."
+        php(main_list)
+        print "php kodu üretildi » ./drug.php"
 
