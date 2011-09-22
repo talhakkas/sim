@@ -42,8 +42,10 @@
     <F3:check if="{{@blg['dozmu'] == 'E'}}">
     <F3:true>
     {{@blg['isim']}}: Doz:
-    <br><input type="range" name="doz[]" min="{{@blg['dmin']}}" max="{{@blg['dmax']}}" 
-    value="{{@blg['dval']}}" />mg<br>
+    <br>
+    <input type="range" name="doz[]" min="{{@blg['dmin']}}" max="{{@blg['dmax']}}" value="{{@blg['dval']}}" />
+    mg
+    <br>
 
     Hangi yolla:
     <select name="ayol[]">
