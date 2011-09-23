@@ -13,7 +13,7 @@ function ini_config($file) {
 	return $_ini;
 }
 
-$db = ini_config("../.f3.ini");
+$db = ini_config("../../.f3.ini");
 $db_name = $db['dbname'];
 $db_user = $db['dbuser'];
 $db_pass = $db['dbpass'];
