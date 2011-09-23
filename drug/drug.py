@@ -51,13 +51,13 @@ if __name__ == "__main__":
                  "DI", "FL", "GE", "IN", "KA", "LA", "LI", "ME", "MI", "NA", "NI",
                  "NO", "PA", "PE", "SE", "SI", "TR", "VI"
         ]
-        #liste = ['A', 'B']
+        liste = ['A']
         total = 0
         main_list = []
         for i in liste:
                 print '%s adresli sayfa indiriliyor...' %i
-                page = site_oku(adress + i)
-                #page = file(i).read()
+                #page = site_oku(adress + i)
+                page = file(i).read()
                 print '%s adresli sayfa okunuyor...' %i
                 new_list = parcala(page)
                 dosyala(dizin, i, new_list)

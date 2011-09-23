@@ -332,6 +332,10 @@ input[type=text]:focus {
 #leftcolumn tr td {float:left;margin-bottom:4px;color: #3b5998;}
 
 .page {width: 780px;height: auto;font-size:12px;margin-left:140px;min-height:340px;}
+.page h2 a {float:right;}                                                                                                           
+.page h2 img {float:left;width:30px;margin-top:-5px;margin-right:2px;} 
+h2 a {float:right;}                                                                                                           
+h2 img {float:left;width:30px;margin-top:-5px;margin-right:2px;} 
 
 #button-preview,
 #button-edit,
