@@ -1,65 +1,59 @@
-<div class="page">
-  <h2 id="headline">{{@SESSION.data['title']}}
-    <a href="{{@SR}}/edit/{{@SESSION.cid}}/{{@SESSION.id}}">
-      <img src="/public/img/edit2.png">Düzenle</a>
-  </h2>
+<h2>{{@SESSION.data['title']}}
+  <a href="{{@SR}}/edit/{{@SESSION.cid}}/{{@SESSION.id}}"><img src="/public/img/edit2.png">Düzenle</a>
+</h2>
 
-  <p>{{@SESSION.data['content_acc'][0]['header']}}</p>
-  	
-  <div class="content">
-	<div id="accordion">
-	<F3:repeat group="{{@SESSION.data['content_acc']}}" key="{{@gnl}}" value="{{@blg}}">
-		<F3:check if="{{@blg['content'] == 'NULL'}}" >
-		  <F3:false>
-			<h3><a href="#">{{@blg['header']}}</a></h3>
-			<div>
-				{{@blg['content']}}
-			</div>
-		  </F3:false>
-		</F3:check>
-	</F3:repeat>
+<p>{{@SESSION.data['content_acc'][0]['header']}}</p>
+
+<div class="content">
+  <div id="accordion">
+    <F3:repeat group="{{@SESSION.data['content_acc']}}" key="{{@gnl}}" value="{{@blg}}">
+    <F3:check if="{{@blg['content'] == 'NULL'}}" >
+    <F3:false>
+    <h3><a href="#">{{@blg['header']}}</a></h3>
+    <div>
+      {{@blg['content']}}
     </div>
+    </F3:false>
+    </F3:check>
+    </F3:repeat>
   </div>
+</div>
 
-  <hr>
+<div align="center">
+  <F3:check if="{{@SESSION.data['media'] != ''}}">
+  <F3:true>
+  <img src="{{@SR}}/{{@uploaddir}}kucuk{{@SESSION.data['media']}}" align="middle">
+  </F3:true>
+  </F3:check>
+</div>
 
-  <div align="center"> 
-   <F3:check if="{{@SESSION.data['media'] != ''}}">
-   <F3:true>
-   <img src="{{@SR}}/{{@uploaddir}}kucuk{{@SESSION.data['media']}}" align="middle">
-   </F3:true>
-   </F3:check>
-  </div>
-
-  <div class="question">
-    {{@SESSION.data['question']}}
-  </div>
+<p class="doz-question">{{@SESSION.data['question']}}</p>
 
 <form action="/yolgu/show/{{@SESSION.cid}}/{{@SESSION.data['sonraki_id']}}/1" method="post">
-	<input type="hidden" name="beklenen_yanit" value="{{@SESSION.data['beklenen_yanit']}}">
+  <input type="hidden" name="beklenen_yanit" value="{{@SESSION.data['beklenen_yanit']}}">
 
   <F3:repeat group="{{@SESSION.data['nodes']}}" key="{{@gnl}}" value="{{@blg}}" counter="{{@ctr}}">
-	<F3:check if="{{@blg['dozmu'] == 'E'}}">
-	 <F3:true>
-		{{@blg['isim']}}: Doz: 
-		<br><input type="range" name="doz[]" min="{{@blg['dmin']}}" max="{{@blg['dmax']}}" 
-					value="{{@blg['dval']}}" />mg<br>
+  <F3:check if="{{@blg['dozmu'] == 'E'}}">
+  <F3:true>
+  <div class="doz line">
+    <span style="float:left;">{{@blg['isim']}}: Doz:</span>
+    <input type="range" name="doz[]" min="{{@blg['dmin']}}" max="{{@blg['dmax']}}" value="{{@blg['dval']}}"/>mg
 
-		Hangi yolla:
-		<select name="ayol[]">
-			<option value="1">Damar</option>
-			<option value="2">Kas</option>
-			<option value="3">Foo</option>
-		</select>
-	<hr>
-	</F3:true>
+    <div class="select">
+      Hangi yolla:
+      <select name="ayol[]">
+        <option value="1">Damar</option>
+        <option value="2">Kas</option>
+        <option value="3">Foo</option>
+      </select>
+    </div>
+  </div>
+  </F3:true>
   </F3:repeat>
-    <script> 
-    $(":range").rangeinput();
-    </script>
-	<input type="submit" value="Dozaj ve alım yolu tercihlerini gönder">
- </form>
 
-</div>
+  <script>$(":range").rangeinput();</script>
+  <input type="submit" class="dark-blue awesome right doz-send" value="Dozaj ve alım yolu tercihlerini gönder »"/>
+</form>
+
 
 

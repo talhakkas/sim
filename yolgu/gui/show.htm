@@ -1,59 +1,56 @@
-<div class="page">
-  <h2 id="headline">{{@SESSION.data['title']}}
-    <a href="{{@SR}}/edit/{{@SESSION.cid}}/{{@SESSION.id}}">
-      <img src="/public/img/edit2.png">Düzenle</a>
-  </h2>
+<h2>{{@SESSION.data['title']}}
+  <a href="{{@SR}}/edit/{{@SESSION.cid}}/{{@SESSION.id}}">
+    <img src="/public/img/edit2.png">Düzenle</a>
+</h2>
 
-  <p>{{@SESSION.data['content_acc'][0]['header']}}</p>
-  	
-  <div class="content">
-	<div id="accordion">
-	<F3:repeat group="{{@SESSION.data['content_acc']}}" key="{{@gnl}}" value="{{@blg}}">
-		<F3:check if="{{@blg['content'] == 'NULL'}}" >
-		  <F3:false>
-			<h3><a href="#">{{@blg['header']}}</a></h3>
-			<div>
-				{{@blg['content']}}
-			</div>
-		  </F3:false>
-		</F3:check>
-	</F3:repeat>
+<p>{{@SESSION.data['content_acc'][0]['header']}}</p>
+
+<div class="content">
+  <div id="accordion">
+    <F3:repeat group="{{@SESSION.data['content_acc']}}" key="{{@gnl}}" value="{{@blg}}">
+    <F3:check if="{{@blg['content'] == 'NULL'}}" >
+    <F3:false>
+    <h3><a href="#">{{@blg['header']}}</a></h3>
+    <div>
+      {{@blg['content']}}
     </div>
+    </F3:false>
+    </F3:check>
+    </F3:repeat>
   </div>
-
-  <hr>
-
-  <div align="center"> 
-   <F3:check if="{{@SESSION.data['media'] != ''}}">
-   <F3:true>
-   <img src="{{@SR}}/{{@uploaddir}}kucuk{{@SESSION.data['media']}}" align="middle">
-   </F3:true>
-   </F3:check>
-  </div>
-
-  <div class="question">
-    {{@SESSION.data['question']}}
-  </div>
-
-  <F3:repeat group="{{@SESSION.data['nodes']}}" key="{{@gnl}}" value="{{@blg}}" counter="{{@ctr}}">
-	<F3:check if="{{@blg['chkIA'] == 'yes'}}" >
-	 <F3:true>
-		<img src=/public/img/vp_button.png>{{@blg['link_text']}}
-
-		<div align="middle">
-		<form name="frm{{@ctr}}" action="/yolgu/show/{{@SESSION.cid}}/{{@blg[node_link]}}/{{@ctr}}" method="post">
-		<input type="hidden" name="nid" value="{{@ctr}}">
-		<input type="hidden" name="beklenen_yanit" value="{{@blg['IA']}}">
-		<textarea name="response" cols="75" rows="5"></textarea></br>
-		<input type="submit" value="Gönder"></div>
-		</form>
-	 </F3:true>
-	 <F3:false>
-		<a href="/yolgu/show/{{@SESSION.cid}}/{{@blg['node_link']}}/{{@ctr}}"><img src=/public/img/vp_button.png>{{@blg['link_text']}}</a> <br><br>
-	 </F3:false>
-    </F3:check>	
-	 
-  </F3:repeat>
 </div>
 
+<div align="center">
+  <F3:check if="{{@SESSION.data['media'] != ''}}">
+  <F3:true>
+  <img src="{{@SR}}/{{@uploaddir}}kucuk{{@SESSION.data['media']}}" align="middle">
+  </F3:true>
+  </F3:check>
+</div>
+
+<div class="question">
+  {{@SESSION.data['question']}}
+</div>
+
+<F3:repeat group="{{@SESSION.data['nodes']}}" key="{{@gnl}}" value="{{@blg}}" counter="{{@ctr}}">
+<F3:check if="{{@blg['chkIA'] == 'yes'}}" >
+<F3:true>
+<img src=/public/img/vp_button.png>{{@blg['link_text']}}
+
+<div align="middle">
+  <form name="frm{{@ctr}}" action="/yolgu/show/{{@SESSION.cid}}/{{@blg[node_link]}}/{{@ctr}}" method="post">
+    <input type="hidden" name="nid" value="{{@ctr}}">
+    <input type="hidden" name="beklenen_yanit" value="{{@blg['IA']}}">
+    <textarea name="response" cols="75" rows="5"></textarea></br>
+    <input type="submit" value="Gönder"></div>
+</form>
+</F3:true>
+<F3:false>
+<a href="/yolgu/show/{{@SESSION.cid}}/{{@blg['node_link']}}/{{@ctr}}">
+  <img src=/public/img/vp_button.png>{{@blg['link_text']}}</a>
+<br><br>
+</F3:false>
+</F3:check>
+
+</F3:repeat>
 
