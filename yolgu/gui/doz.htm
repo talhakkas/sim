@@ -21,8 +21,6 @@
     </div>
   </div>
 
-  <hr>
-
   <div align="center">
     <F3:check if="{{@SESSION.data['media'] != ''}}">
     <F3:true>
@@ -41,25 +39,24 @@
     <F3:repeat group="{{@SESSION.data['nodes']}}" key="{{@gnl}}" value="{{@blg}}" counter="{{@ctr}}">
     <F3:check if="{{@blg['dozmu'] == 'E'}}">
     <F3:true>
-    {{@blg['isim']}}: Doz:
-    <br>
-    <input type="range" name="doz[]" min="{{@blg['dmin']}}" max="{{@blg['dmax']}}" value="{{@blg['dval']}}" />
-    mg
-    <br>
+    <div class="doz line">
+      <span style="float:left;">{{@blg['isim']}}: Doz:</span>
+      <input type="range" name="doz[]" min="{{@blg['dmin']}}" max="{{@blg['dmax']}}" value="{{@blg['dval']}}"/>mg
 
-    Hangi yolla:
-    <select name="ayol[]">
-      <option value="1">Damar</option>
-      <option value="2">Kas</option>
-      <option value="3">Foo</option>
-    </select>
-    <hr>
+      <div class="select">
+        Hangi yolla:
+        <select name="ayol[]">
+          <option value="1">Damar</option>
+          <option value="2">Kas</option>
+          <option value="3">Foo</option>
+        </select>
+      </div>
+    </div>
     </F3:true>
     </F3:repeat>
-    <script>
-      $(":range").rangeinput();
-    </script>
-    <input type="submit" value="Dozaj ve alım yolu tercihlerini gönder">
+
+    <script>$(":range").rangeinput();</script>
+    <input type="submit" class="dark-blue awesome right doz" value="Dozaj ve alım yolu tercihlerini gönder »"/>
   </form>
 
 </div>

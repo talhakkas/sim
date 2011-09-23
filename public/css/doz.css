@@ -1,42 +1,43 @@
-/* slider root element */
-.slider { 
-	background:#3C72E6 url(../../../img/gradient/h30.png) repeat-x 0 0; 
-	height:9px; 
-	position:relative; 
+.doz {height:40px;margin-top:20px;}
+.doz .select{float:right;margin-top:-10px;}
+
+.slider {
+	background-color:#3C72E6;
+	float:left;
+	height:9px;
+	position:relative;
 	cursor:pointer;
 	border:1px solid #333;
 	width:675px;
-	float:left; 
 	clear:right;
-	margin-top:10px;
-	-moz-border-radius:5px; 
-	-webkit-border-radius:5px; 
+	-moz-border-radius:5px;
+	-webkit-border-radius:5px;
 	-moz-box-shadow:inset 0 0 8px #000;
 }
 
 /* progress bar (enabled with progress: true) */
 .progress {
-	height:9px; 
-	background-color:#C5FF00; 
+	height:9px;
+	background-color:#C5FF00;
 	display:none;
 	opacity:0.6;
 }
 
 /* drag handle */
-.handle { 
-	background:#fff url(../../../img/gradient/h30.png) repeat-x 0 0; 
+.handle {
+	background-color:#fff;
 	height:28px;
 	width:28px;
 	top:-12px;
-	position:absolute; 
-	display:block; 
+	position:absolute;
+	display:block;
 	margin-top:1px;
 	border:1px solid #000;
 	cursor:move;
 	-moz-box-shadow:0 0 6px #000;
 	-webkit-box-shadow:0 0 6px #000;
 	-moz-border-radius:14px;
-	-webkit-border-radius:14px; 
+	-webkit-border-radius:14px;
 
 }
 
@@ -49,8 +50,9 @@
 	padding:3px 0;
 	text-align:center;
 	width:50px;
-	-moz-border-radius:5px; 
-	-webkit-border-radius:5px; 		
+	margin-top:-10px;
+	-moz-border-radius:5px;
+	-webkit-border-radius:5px;
 }
 
 

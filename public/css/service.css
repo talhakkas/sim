@@ -33,7 +33,9 @@ body {
 a {color: #3b5998; cursor: pointer; -moz-outline-style: none; text-decoration:none}
 .error {font-size:13px; color:#872020; margin:10px auto -30px; line-height:20px; width:780px;}
 
-
+.left {float:left;}
+.right {float:right;}
+.line{border:none;border-bottom:1px solid #ddd;}
 /* ------------- wrapper - header ------------------------- */
 
 div#wrapper {border-top:4px solid #2daebf;clear:left;}
@@ -140,6 +142,9 @@ h1.yellow, h2.yellow, h3.yellow, h4.yellow, h5.yellow
 .blue.awesome,
 .blue.awesome:visited { background-color: #2daebf; }
 .blue.awesome:hover { background-color: #007d9a; }
+.dark-blue.awesome,
+.dark-blue.awesome:visited { background-color: #2f7ca2; }
+.dark-blue.awesome:hover { background-color: #2f7ca2; }
 .red.awesome,
 .red.awesome:visited { background-color: #e33100; }
 .red.awesome:hover { background-color: #872300; }
