@@ -156,22 +156,6 @@ h1.yellow, h2.yellow, h3.yellow, h4.yellow, h5.yellow
 /* --------------------- end button ------------------------------ */
 
 
-/* ----------------------- my-color-box ----------------------------*/
-.white_content {
-    position: absolute;top: 30px;width: 820px;height: auto; padding: 20px;
-    background-color: white;z-index:1002;overflow: auto;
-    border: 6px solid #ccc;
-    -moz-border-radius: 5px; border-radius: 5px;
-}
-.black_overlay{
-      position: absolute; top: 0%;left: 0%; width: 100%; height: 100%;
-      background-color: black;z-index:1001;
-      -moz-opacity: 0.8; opacity:.70; filter: alpha(opacity=80);
-}
-/* ------------------------------------------------------------------ */
-
-
-
 /* ------------------------ custom table form ----------------------------- */
 table.custom th,
 table.custom td {
