@@ -26,7 +26,7 @@ $box = '
 <script type="text/javascript" src="gui/js/customInput.jquery.js"></script>
 <script type="text/javascript">
     $(function(){
-	$("input").customInput();
+	$("form#save input").customInput();
     });
 </script>
 ';
