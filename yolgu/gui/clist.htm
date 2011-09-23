@@ -1,29 +1,27 @@
-<div class="page">
-  <h2>{{@page_title}}</h2>
+<h2>{{@page_title}}</h2>
 
-  <table id="hor-minimalist-a">
-    <thead>
-      <tr>
-	<th scope="col">Case Lists</th>
-	<th scope="col">Actions</th>
-      </tr>
-    </thead>
-    <tbody>
+<table id="hor-minimalist-a">
+  <thead>
+    <tr>
+      <th scope="col">Case Lists</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
 
-      <F3:repeat group="{{@SESSION.cdata}}" key="{{@gnl}}" value="{{@blg}}" >
-      <tr>
-	<td>
-	  <a href="/yolgu/cstart/{{@blg['cid']}}">{{@blg['title']}}</a>
-	</td>
-	<td>
-	  <a href="/yolgu/cedit/{{@blg['cid']}}" id="button-edit"></a>
-	  <a href="/yolgu/cdelete/{{@blg['cid']}}" id="button-delete"
-	    onClick="return confirm('Silmek istediğinizden emin misiniz?');"></a>
-	</td>
-      </tr>
-      </F3:repeat>
-    </tbody>
-  </table>
+    <F3:repeat group="{{@SESSION.cdata}}" key="{{@gnl}}" value="{{@blg}}" >
+    <tr>
+      <td>
+	<a href="/yolgu/cstart/{{@blg['cid']}}">{{@blg['title']}}</a>
+      </td>
+      <td>
+	<a href="/yolgu/cedit/{{@blg['cid']}}" id="button-edit"></a>
+	<a href="/yolgu/cdelete/{{@blg['cid']}}" id="button-delete"
+	  onClick="return confirm('Silmek istediğinizden emin misiniz?');"></a>
+      </td>
+    </tr>
+    </F3:repeat>
+  </tbody>
+</table>
 
-  <a href="/yolgu/cadd/" class="large dark-blue awesome right">Yeni case Ekle</a>
-</div>
+<a href="/yolgu/cadd/" class="large dark-blue awesome right">Yeni case Ekle</a>
