@@ -14,8 +14,12 @@ function home() {
 }
 
 function ekg() {
-        if (F3::get("SESSION.special") != 1)
-                return F3::call('login');
+	$isEkgResponse = empty($_POST) ? "no" : "yes";
+	$yorum = empty($_POST) ? "" : $_POST['yorum'];
+
+	F3::set('SESSION.isEkgResponse', $isEkgResponse);
+	F3::set('SESSION.yorum', $yorum);
+
 	render('ekg', 'Ekg Ekranı');
 }
 
@@ -79,6 +83,7 @@ F3::route("POST /login", 'login.php');
 F3::route("GET /logout*", 'logout');
 F3::route("GET /about*",  'about');
 F3::route("GET /ekg*",    'ekg');
+	F3::route("POST /ekg*",    'ekg');
 F3::route("GET /bulgu*",  'bulgu');
 F3::route("GET /personal*",  'personal');
 

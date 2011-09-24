@@ -18,9 +18,12 @@
 
 form.bulgu {height:330px;}
 form.bulgu textarea {float:left;width:467px; height:144px; background:#fff;border:1px solid #ddd;}
+form.bulgu .yorum {float:left;width:467px; height:60px; background:#fff;border:1px solid #ddd;}
+form.bulgu .beklenen {float:left;width:467px; height:60px; background:#B8DE7A;border:1px solid #4D7310;}
 form.bulgu .bulgu-button {float:left;margin-top:20px;}
 form.bulgu span.title {float:left;padding:1px 0;font-weight:bold; color:#2f7ca2;/*color:#ff5c00;*/
-
-padding-left:20px;background:url(/public/img/icon/16x16/next_blue.png) no-repeat;}
+				padding-left:20px;background:url(/public/img/icon/16x16/next_blue.png) no-repeat;}
+form.bulgu span.title_beklenen {float:left;padding:1px 0;font-weight:bold; color:#4D7310;
+				padding-left:20px;background:url(/public/img/icon/16x16/next_green.png) no-repeat;}
 
 

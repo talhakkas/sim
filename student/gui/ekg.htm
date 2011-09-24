@@ -58,9 +58,20 @@
     metre uzağında bulunan aile hekimliği merkezinden, hastaya müdahale etmeniz
     için çağrıldınız.
   </div>
+
+<F3:check if="{{@SESSION.isEkgResponse == 'yes'}}">
+ <F3:true>
+  <span class="title">Girdiğiniz Yorum</span>
+  <textarea name="yorum" class="yorum" readonly="readonly">{{@SESSION.yorum}}</textarea>
+  <span class="title_beklenen">Beklenen Yorum</span>
+  <textarea name="beklenen" class="beklenen" readonly="readonly">Foo bar</textarea>
+ </F3:true>
+ <F3:false>
   <span class="title">Yorumunuzu Buraya Giriniz</span>
   <textarea name="yorum" class=""></textarea>
   <input type="submit" class="bulgu-button" value="Yorumla"/>
+ </F3:false>
+</F3:check>
 </form>
 
 
