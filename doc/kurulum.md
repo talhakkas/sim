@@ -14,4 +14,3 @@
         cd /srv/www/test.omu.edu.tr
         sudo ln -s /opt/sim site
 
-
