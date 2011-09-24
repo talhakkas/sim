@@ -27,7 +27,7 @@
   </F3:check>
 </div>
 
-<p class="doz-question">{{@SESSION.data['question']}}</p>
+<p class="question">{{@SESSION.data['question']}}</p>
 
 <form action="/yolgu/show/{{@SESSION.cid}}/{{@SESSION.data['sonraki_id']}}/1" method="post">
   <input type="hidden" name="beklenen_yanit" value="{{@SESSION.data['beklenen_yanit']}}">

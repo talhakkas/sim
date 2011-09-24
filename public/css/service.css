@@ -162,6 +162,13 @@ h1.yellow, h2.yellow, h3.yellow, h4.yellow, h5.yellow
 
 
 /* ------------------------ custom table form ----------------------------- */
+table.custom {
+    width:599px;
+    margin:0 auto;
+    border-spacing: 5px;
+    border-collapse: separate;
+}
+
 table.custom th,
 table.custom td {
     padding: 4px;
@@ -169,13 +176,6 @@ table.custom td {
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
     border-radius: 5px;
-}
-
-table.custom {
-    width:599px;
-    margin:0 auto;
-    border-spacing: 5px;
-    border-collapse: separate;
 }
 
 table.custom textarea {height:150px;}
@@ -238,6 +238,58 @@ table.custom td.captcha {
 }
 
 /* -------------------------------------------------------------------- */
+
+
+/* ------------------------ label.label custom ----------------------------- */
+label.label {
+    color: #333;
+    width: auto;
+    height: auto;
+    padding: 3px;
+    margin:10px 0;
+    background: #ededed;
+    display: inline-block;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+}
+
+label.label textarea {width:500px;height:120px;}
+label.label textarea,
+label.label input[type=text],
+label.label input[type=password]{
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    padding: 8px;
+    margin: 0;
+    font-size: 13px;
+    color: #555;
+    min-width:370px;
+    border: 1px solid #ccc;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+}
+
+label.label select {
+    border:1px solid #bdc7d8;
+    font:   13px Arial, Helvetica, sans-serif;
+    padding:3px;
+    padding-top:5px;
+    background:#fff;
+    width:  368px;
+    height: 30px;
+    color:  #585858;
+}
+
+label.label input[type=text]:focus,
+label.label input[type=password]:focus {
+    outline: 0;
+    border: 1px solid #35addf;
+}
+
+/* -------------------------------------------------------------------- */
+
+
 
 
 /* ------------------ hata mesajı için --------------------- */
@@ -312,7 +364,6 @@ input[type=text]:focus {
 .module {background: none repeat scroll 0 0 #EEEEEE; border-radius:5px 5px 5px 5px; margin:0 0 10px; padding:4px;}
 
 
-
 #leftcolumn {
     height:auto;
     width:120px;
@@ -343,4 +394,6 @@ h2 img {float:left;width:30px;margin-top:-5px;margin-right:2px;}
 #button-edit{background:url(/public/img/edit24.png) no-repeat center;}
 #button-delete{background:url(/public/img/delete24.png) no-repeat center;margin-right:0px;}
 
+.question {width:100%;font-weight:bold;color:#2f7ca2;font-size:13px;margin-bottom:20px;padding-bottom:5px;border-bottom:1px solid #ddd;}
+.answer{width:100%;float:left;padding-left:20px;padding-top:1px;margin-bottom:10px;background:url(/public/img/vp_button.png) no-repeat;}
 
