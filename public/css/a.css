@@ -279,7 +279,7 @@ div.odditorium.divider { background-image: url(../images/divider-odditorium.gif)
 div.scrumptious.divider { background-image: url(../images/divider-scrumptious.gif); }
 div.zurb.divider { background-image: url(../images/divider-zurb.gif); }
 
-#site-info { background: #f5f5f5 url(../images/footer-shadow.gif) no-repeat top center; margin: 27px 0 0; padding: 27px 0 18px; clear: both; position: relative; }
+#site-info { background: #f5f5f5 url(../img/a/footer-shadow.gif) no-repeat top center; margin: 27px 0 0; padding: 27px 0 18px; clear: both; position: relative; }
 
 #site-info div.column-row { xmargin: 0 10px; xwidth: 880px; position: relative; height: 126px; }
 #site-info div.five { xwidth: 250px; }

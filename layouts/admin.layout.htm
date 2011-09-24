@@ -6,10 +6,7 @@
     <meta http-equiv = "Content-Type" content = "text/html; charset=utf-8" />
     <link rel="shortcut icon" href="/public/img/favicon.ico" />
     <link rel="stylesheet" type="text/css" href="/public/css/service.css" />
-    <link rel="stylesheet" type="text/css" href="/public/css/admin.css" />
-
     <script type='text/javascript' src='/public/js/jquery.js'></script>
-    <script type='text/javascript' src='/public/js/superfish.js'></script>
 
     <title>{{e(@page_title)}}</title>
   </head>
@@ -30,46 +27,6 @@
           <a href="info"
             title="Bilgilendirme sayfası">{{e('Bilgilendirme')}}</a>
           </li>
-
-          <li>
-          <a href="#">Menü</a>
-          <ul>
-            <li><img src="/public/img/table.png"/>{{e(@SESSION.TABLE)}}</li>
-            <li><img src="/public/img/save.png"/>{{@SESSION.SAVE}}</li>
-            <li>
-            <a href="{{@SR}}" title=""><img
-              src="/public/img/tables.png"/>Tablolar</a>
-            </li>
-            <F3:check if="{{@SESSION.adminsuper}}">
-            <F3:true>
-            <li>
-            <a href="review" title="">
-              <img src="/public/img/review.png"/>Tablo İncele</a>
-            </li>
-            <li>
-            <a href="new" title="">
-              <img src="/public/img/add.png"/>Ekle</a>
-            </li>
-            <li>
-            <a href="find" title="">
-              <img src="/public/img/find.png"/>Bul</a>
-            </li>
-            </F3:true>
-            </F3:check>
-            <li>
-            <a href="csv" title="">
-              <img src="/public/img/csv.png"/>Csv Çıktı</a>
-            </li>
-            <li>
-            <a href="csv" title="">
-              <img src="/public/img/pdf.png"/>Pdf Çıktı</a>
-            <li>
-            <a href="printly" title="">
-              <img src="/public/img/printly.png"/>Yazıcı Dostu</a>
-            </li>
-          </ul>
-          </li>
-
           <li class="logout">
           <a href="logout" title="Çıkış">{{e('Çıkış')}}</a>
           </li>
@@ -93,46 +50,36 @@
       <F3:true>
       <div id="admin-panel">
         <ul>
-            <li><img src="/public/img/table.png"/>{{e(@SESSION.TABLE)}}</li>
-            <li><img src="/public/img/save.png"/>{{e(@SESSION.SAVE)}}</li>
+          <li><img src="/public/img/icon/48x48/accept_database.png"/>{{e(@SESSION.TABLE)}}</li>
+            <li><img src="/public/img/icon/48x48/save.png"/>{{e(@SESSION.SAVE)}}</li>
           <li>
               <a href="{{@SR}}" title=""><img
-                src="/public/img/tables.png"/> {{e('Tablolar')}}</a>
+                src="/public/img/icon/48x48/database.png"/> {{e('Tablolar')}}</a>
           </li>
           <li>
               <a href="review" title="">
-                <img src="/public/img/review.png"/> {{e('Tablo İncele')}}</a>
+                <img src="/public/img/icon/48x48/attachment.png"/> {{e('Tablo İncele')}}</a>
           </li>
           <li>
               <a href="new" title="">
-                <img src="/public/img/add.png"/> {{e('Ekle')}}</a>
+                <img src="/public/img/icon/48x48/add_to_database.png"/> {{e('Ekle')}}</a>
           </li>
           <li>
               <a href="find" title="">
-                <img src="/public/img/find.png"/> {{e('Bul')}}</a>
+                <img src="/public/img/icon/48x48/search_database.png"/> {{e('Bul')}}</a>
           </li>
           <li>
               <a href="csv" title="">
-                <img src="/public/img/csv.png"/> {{e('Csv Çıktı')}}</a>
-          </li>
-          <li>
-              <a href="csv" title="">
-                <img src="/public/img/pdf.png"/> {{e('Pdf Çıktı')}}</a>
+                <img src="/public/img/icon/48x48/download_database.png"/> {{e('Csv Çıktı')}}</a>
           </li>
           <li>
               <a href="printly" title="">
-                <img src="/public/img/printly.png"/> {{e('Yazıcı Dostu')}}</a>
+                <img src="/public/img/48x48/printly.png"/> {{e('Yazıcı Dostu')}}</a>
           </li>
         </ul>
       </div>
       </F3:true>
       </F3:check>
-
-
-
-
-
-
 
       <F3:check if="{{@SESSION.admin}}">
       <F3:true>

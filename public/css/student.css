@@ -1,6 +1,6 @@
 #contentarea {float:left;display:block;width:650px;height:auto;}
 .feature {float:left;margin:0px 0px;width:250px;}
-.feature li {list-style-image: url('/public/img/next.png');font-size:13px;}
+.feature li {list-style-image: url('/public/img/icon/16x16/accept.png');font-size:13px;}
 #contentarea img {
   -webkit-box-shadow:0 2px 2px rgba(0,0,0,0.2);
   -moz-box-shadow:0 2px 2px rgba(0,0,0,0.2);

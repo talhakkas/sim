@@ -1,95 +1,87 @@
-<div class="page">
-  <h2>{{@page_title}}
-    <a href="{{@SR}}/cshow/{{@SESSION.cid}}">
-      <img src="/public/img/play.png">Devam</a>
-  </h2>
+<h2>{{@page_title}}
+  <a href="{{@SR}}/cshow/{{@SESSION.cid}}"><img src="/public/img/icon/24x24/continue.png">Devam</a>
+</h2>
 
 <form name="case" action="{{@SR}}{{@PARAMS.0}}" method="post">
 
-<table class="custom" id="custom" name="custom">
-	<tr>
-	 <td class="label">
-		Case Title:
-	 </td>
-	 <td class="field">
-		<input type="text" name="title" value="{{@SESSION.cdata['title']}}">
-	 </td>
-	</tr>
-	<tr>
-	 <td class="label">
-		Tanımlama:
-	 </td>
-	 <td class="field">
-		<textarea name="description">{{@SESSION.cdata['description']}}</textarea>
-	 </td>
-	</tr>
-	<input type="hidden" name="cid" value="{{@SESSION.cid}}">
-	<input type="hidden" name="type_playable_by" value="{{@SESSION.cdata['type_playable_by']}}">
-	<input type="hidden" name="type_navigation_panel" value="{{@SESSION.cdata['type_navigation_panel']}}">
-	<input type="hidden" name="patient_info" value="{{@SESSION.cdata['patient_info']}}">
-	<input type="hidden" name="other" value="{{@SESSION.cdata['other']}}">
-	<input type="hidden" name="edu_opts" value="{{@SESSION.cdata['edu_opts']}}">
-	<!--tr>
-	 <td class="label">
-		Playable By:
-	 </td>
-	 <td class="field">
-		<input type="text" name="type_playable_by" value="{{@SESSION.cdata['type_playable_by']}}">
-	 </td>
-	</tr>
-	<tr>
-	 <td class="label">
-		Navidation Panel:
-	 </td>
-	 <td class="field">
-		<input type="text" name="type_navigation_panel" value="{{@SESSION.cdata['type_navigation_panel']}}">
-	 </td>
-	</tr>
-	<tr>
-	 <td class="label">
-		Patient Information:
-	 </td>
-	 <td class="field">
-		<input type="text" name="patient_info" value="{{@SESSION.cdata['patient_info']}}">
-	 </td>
-	</tr>
-	<tr>
-	 <td class="label">
-		Educational Options:
-	 </td>
-	 <td class="field">
-		<input type="text" name="edu_opts" value="{{@SESSION.cdata['edu_opts']}}">
-	 </td>
-	</tr>
-	<tr>
-	 <td class="label">
-		Diğer Ayarlar:
-	 </td>
-	 <td class="field">
-		<input type="text" name="other" value="{{@SESSION.cdata['other']}}">
-	 </td>
-	</tr>
-	<tr-->
-	 <td class="label">
-		Başlangıç Düğümü:
-	 </td>
-	 <td class="field">
-	    <select name="bdugumu">
-	      <F3:repeat group="{{@SESSION.all_nodes}}" value="{{@blg2}}" >
-	      <F3:check if="{{@blg2[0] == @SESSION.cdata['bdugumu']}}">
-	      <F3:true>
-	      <option value="{{@blg2[0]}}" selected="selected">{{@blg2[0]}}:{{@blg2[1]}}</option>
-	      </F3:true>
-	      <F3:false>
-	      <option value="{{@blg2[0]}}">{{@blg2[0]}}:{{@blg2[1]}}</option>
-	      </F3:false>
-	      </F3:check>
-	      </F3:repeat>
-	    </select> 	
-	    <!--a href="/yolgu/edit/{{@SESSION.cdata['bdugumu']}}"><img src="/public/img/edit.png" width="25" align="right"></a-->
-	 </td>
-	</tr>
+  <table class="custom">
+    <tr>
+      <td class="label">Case Title:</td>
+      <td class="field">
+	<input type="text" name="title" value="{{@SESSION.cdata['title']}}">
+      </td>
+    </tr>
+    <tr>
+      <td class="label">Tanımlama:</td>
+      <td class="field">
+	<textarea name="description">{{@SESSION.cdata['description']}}</textarea>
+      </td>
+    </tr>
+    <input type="hidden" name="cid" value="{{@SESSION.cid}}">
+    <input type="hidden" name="type_playable_by" value="{{@SESSION.cdata['type_playable_by']}}">
+    <input type="hidden" name="type_navigation_panel" value="{{@SESSION.cdata['type_navigation_panel']}}">
+    <input type="hidden" name="patient_info" value="{{@SESSION.cdata['patient_info']}}">
+    <input type="hidden" name="other" value="{{@SESSION.cdata['other']}}">
+    <input type="hidden" name="edu_opts" value="{{@SESSION.cdata['edu_opts']}}">
+    <!--tr>
+    <td class="label">
+      Playable By:
+    </td>
+    <td class="field">
+      <input type="text" name="type_playable_by" value="{{@SESSION.cdata['type_playable_by']}}">
+    </td>
+  </tr>
+  <tr>
+    <td class="label">
+      Navidation Panel:
+    </td>
+    <td class="field">
+      <input type="text" name="type_navigation_panel" value="{{@SESSION.cdata['type_navigation_panel']}}">
+    </td>
+  </tr>
+  <tr>
+    <td class="label">
+      Patient Information:
+    </td>
+    <td class="field">
+      <input type="text" name="patient_info" value="{{@SESSION.cdata['patient_info']}}">
+    </td>
+  </tr>
+  <tr>
+    <td class="label">
+      Educational Options:
+    </td>
+    <td class="field">
+      <input type="text" name="edu_opts" value="{{@SESSION.cdata['edu_opts']}}">
+    </td>
+  </tr>
+  <tr>
+    <td class="label">
+      Diğer Ayarlar:
+    </td>
+    <td class="field">
+      <input type="text" name="other" value="{{@SESSION.cdata['other']}}">
+    </td>
+  </tr>
+  <tr-->
+    <td class="label">Başlangıç Düğümü:</td>
+    <td class="field">
+      <select name="bdugumu">
+	<F3:repeat group="{{@SESSION.all_nodes}}" value="{{@blg2}}" >
+	<F3:check if="{{@blg2[0] == @SESSION.cdata['bdugumu']}}">
+	<F3:true>
+	<option value="{{@blg2[0]}}" selected="selected">{{@blg2[0]}}:{{@blg2[1]}}</option>
+	</F3:true>
+	<F3:false>
+	<option value="{{@blg2[0]}}">{{@blg2[0]}}:{{@blg2[1]}}</option>
+	</F3:false>
+	</F3:check>
+	</F3:repeat>
+      </select>
+      <!--a href="/yolgu/edit/{{@SESSION.cdata['bdugumu']}}"><img src="/public/img/edit.png" width="25" align="right"></a-->
+    </td>
+  </tr>
 </table>
-          <input type="submit" id="submit_button" name="default" value="{{@page_title}}"/>
-          <!--input type="submit" id="submit_button" name="delete"  value="Sil"/-->
+<input type="submit" id="submit_button" name="default" value="{{@page_title}}"/>
+<!--input type="submit" id="submit_button" name="delete"  value="Sil"/-->
 </form>
