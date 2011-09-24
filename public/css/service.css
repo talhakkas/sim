@@ -362,9 +362,9 @@ input[type=text]:focus {outline: 0; border: 1px solid #35addf;}
 
 #button-preview,
 #button-edit,
-#button-delete{background:url(/public/img/preview24.png) no-repeat center; height:24px; width:24px;border:none;cursor:pointer;float:left;margin-right:10px;}
-#button-edit{background:url(/public/img/edit24.png) no-repeat center;}
-#button-delete{background:url(/public/img/delete24.png) no-repeat center;margin-right:0px;}
+#button-delete{background:url(/public/img/icon/preview.png) no-repeat center; height:24px; width:24px;border:none;cursor:pointer;float:left;margin-right:10px;}
+#button-edit{background:url(/public/img/icon/pencil.png) no-repeat center;}
+#button-delete{background:url(/public/img/icon/cross.png) no-repeat center;margin-right:0px;}
 
 .question {width:100%;font-weight:bold;color:#2f7ca2;font-size:13px;margin-bottom:20px;padding-bottom:5px;border-bottom:1px solid #ddd;}
 .answer{width:100%;float:left;padding-left:20px;padding-top:1px;margin-bottom:10px;background:url(/public/img/vp_button.png) no-repeat;}
