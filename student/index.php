@@ -79,6 +79,11 @@ function cases() {
 
 
 F3::route('GET /ilac', function() {render('ilac', 'ilaç ekranı');});
+F3::route('POST /ilac', function() {
+	echo "Secilen ilaclar: ";
+	echo $_POST['token'];
+});
+
 F3::route('GET /test',
         function() {
                 if (F3::get("SESSION.special") != 1)
