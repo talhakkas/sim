@@ -3,7 +3,7 @@
 - her zaman olduğu gibi github ile sunucuya sistemi kurucaz
 
         cd /opt
-        sudo git pull git://github.com/emineker/sim.git
+        sudo git clone git://github.com/emineker/sim.git sim
 
 - servislerin sahibini ve grubunu `www-data` ayarla
 

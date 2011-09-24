@@ -7,17 +7,18 @@
     <meta http-equiv = "Content-Type" content = "text/html; charset=utf-8" />
     <link rel="shortcut icon" href="/public/img/favicon.ico" />
 
-    <link rel="stylesheet" type="text/css" href="/public/css/service.css" />
-    <link rel="stylesheet" type="text/css" href="/public/css/tables.css" />
-    <link rel="stylesheet" type="text/css" href="/public/css/doz.css" />
+    <link rel="stylesheet" type="text/css" href="/public/css/style.css" />
 
+    <!-- doz alımı -->
+    <script src="/public/js/yolgu/jquery.tools.min.js"></script>
+
+    <!-- accordion -->
     <script src="/public/js/yolgu/jquery-ui.min.js"></script>
     <script>
       $(document).ready(function() {
         $("#accordion").accordion({active: false});
       });
     </script>
-    <script src="/public/js/yolgu/jquery.tools.min.js"></script>
 
     <title>{{@page_title}}</title>
   </head>
@@ -44,24 +45,24 @@
       <F3:check if="{{ preg_match('/\/edit/', @PARAMS.0) | preg_match('/\/create/', @PARAMS.0) }}">
       <F3:true>
       <div id="leftcolumn">
-        <table>
-          <tr><td>
-              <a href="/yolgu/create/oyku/{{@SESSION.cid}}/{{@SESSION.id}}" title="">
-		<img src="/public/img/narrative.png"/><br>ÖYKÜ</a>
-          </td></tr>
-          <tr><td>
-              <a href="/yolgu/create/css/{{@SESSION.cid}}/{{@SESSION.id}}" title="">
-                <img src="/public/img/list-type-icon.png"/><br>ÇSS</a>
-          </td></tr>
-          <tr><td>
-              <a href="/yolgu/create/dal/{{@SESSION.cid}}/{{@SESSION.id}}" title="">
-                <img src="/public/img/branch-icon.png"/><br>DALLANMA</a>
-          </td></tr>
-          <tr><td>
-              <a href="/yolgu/create/anket/{{@SESSION.cid}}/{{@SESSION.id}}" title="">
-                <img src="/public/img/list-type-icon.png"/><br>ANKET</a>
-          </td></tr>
-        </table>
+        <ul>
+          <li>
+          <a href="/yolgu/create/oyku/{{@SESSION.cid}}/{{@SESSION.id}}">
+            <img src="/public/img/icon/48x48/edit.png"/>ÖYKÜ</a>
+          </li>
+          <li>
+          <a href="/yolgu/create/css/{{@SESSION.cid}}/{{@SESSION.id}}">
+            <img src="/public/img/icon/48x48/promotion.png"/>ÇSS</a>
+          </li>
+          <li>
+          <a href="/yolgu/create/dal/{{@SESSION.cid}}/{{@SESSION.id}}">
+            <img src="/public/img/icon/48x48/comments.png"/>DALLANMA</a>
+          </li>
+          <li>
+          <a href="/yolgu/create/anket/{{@SESSION.cid}}/{{@SESSION.id}}">
+            <img src="/public/img/icon/48x48/chart_pie.png"/>ANKET</a>
+          </li>
+        </ul>
       </div>
       </F3:true>
       </F3:check>

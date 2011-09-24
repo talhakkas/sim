@@ -53,7 +53,6 @@ function giris() {
 	F3::set('SESSION.TABLES', array(
 				      'people' => 'tc',
 				      'event' => 'event_id',
-				      'node' => 'id',
 				      'survey' => 'survey_id',
 				      'd_survey' => 'd_survey_id',
 				      'patient' => 'patient_id',
@@ -61,8 +60,13 @@ function giris() {
 				      'result' => 'result_id',
 				      'parent' => 'parent_id',
 				      'discipline' => 'discipline_id',
-				      'announcement' => 'announcement_id'
-			      ));
+				      'announcement' => 'announcement_id',
+				      'node' => 'id',
+				      'ncase' => 'cid',
+				      'takip' => 'tid',
+				      'tet' => 'id',
+			      )
+	);
        	// login olursa, default olarak admin tablosu seçilsin
 	F3::set('SESSION.TABLE_INIT', 'people');
 
@@ -75,6 +79,7 @@ function giris() {
 	// cevap : name, surname, first_name, last_name, username
 	F3::set('SESSION.FIELDS', array(
 					'_id' =>  true,
+					'id' =>  true,
 					'name' => true,
 					'title' => true,
 					'content' => true,
@@ -82,6 +87,8 @@ function giris() {
 					'photo' => false,
 					'type' => false,
 					'topic' => false,
+					'skey' => false,
+					'zaman' => true,
 				));
 
 	if (F3::get('SESSION.admin'))
@@ -89,6 +96,8 @@ function giris() {
 	render('login', 'Yönetici Paneli'); // adminlayout sadece login sayfası için
 }
 
+
+F3::route('GET /test', function() { render('test', 'butonlar');});
 
 F3::route("GET  /*",      'giris');
 F3::route("GET /printly",  'printly');

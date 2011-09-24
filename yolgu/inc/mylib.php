@@ -51,14 +51,14 @@ function takip_listesine_ekle() {
 	$mid--;
 
 	if($mid == 0)	// ilk dugum!
-		return; 
+		return;
 
 	$ttet = new Axon("tet");
 	$ttet->load("id=$mid");
 	$ttet->beklenen = $beklenen_yanit;
 	$ttet->soylenen = $kullanici_yaniti;
 	$ttet->zaman = microtime(true) - F3::get('SESSION.stime');
-	
+
 	$cid = $ttet->cid;
 	$id  = $ttet->nid;
 	$opt = F3::get('SESSION.opt');
@@ -88,7 +88,7 @@ function takip_listesi2dizi() {
 		$ntable = new Axon("node");
 		$datas = $ntable->afind("id='$id' AND cid='$cid'");
 		$title = $datas[0]['title'];
-		
+
 		$resp = isset($list_response[$k]) ? $list_response[$k] : "";
 		$nodes[$k] = array($id, $title, $resp);
 	}
@@ -112,7 +112,7 @@ function nodeList($cid) {
 		$table->parent = 1; $table->isOnset = 1;
 		$table->isWrong = 0;
 		$table->save();
-	
+
 		$table = new Axon("node");
 		$list = $table->afind("id > 0 AND cid='$cid'", "id asc");
 	}
@@ -128,10 +128,10 @@ function nodeList($cid) {
 function unzip($datas) {
 	if(empty($datas['content'])) $datas['content'] = "::";
 	$content = preg_split("/,,/", $datas['content']);
-	
+
 	foreach($content as $k=>$v) {
 		$t = preg_split("/::/", $v);
-		
+
 		$datas['content_acc'][$k]['header'] = $t[0];
 		$datas['content_acc'][$k]['content'] = empty($t[1]) ? "NULL" : $t[1];
 	}
@@ -257,7 +257,7 @@ function get_puan($cid, $id, $opt) {
 
 	$tnode = new Axon('node');
 	$datas = $tnode->afind("cid='$cid' AND id='$id'");
-	
+
 	$datas = unzip($datas[0]);
 
 	$odul = empty($datas['nodes'][$opt]['odul']) ? 0 : intval($datas['nodes'][$opt]['odul']);

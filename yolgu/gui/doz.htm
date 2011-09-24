@@ -1,5 +1,6 @@
 <h2>{{@SESSION.data['title']}}
-  <a href="{{@SR}}/edit/{{@SESSION.cid}}/{{@SESSION.id}}"><img src="/public/img/edit2.png">Düzenle</a>
+  <a href="{{@SR}}/edit/{{@SESSION.cid}}/{{@SESSION.id}}">
+    <img src="/public/img/icon/24x24/edit.png">Düzenle</a>
 </h2>
 
 <p>{{@SESSION.data['content_acc'][0]['header']}}</p>
@@ -27,7 +28,7 @@
   </F3:check>
 </div>
 
-<p class="doz-question">{{@SESSION.data['question']}}</p>
+<p class="question">{{@SESSION.data['question']}}</p>
 
 <form action="/yolgu/show/{{@SESSION.cid}}/{{@SESSION.data['sonraki_id']}}/1" method="post">
   <input type="hidden" name="beklenen_yanit" value="{{@SESSION.data['beklenen_yanit']}}">

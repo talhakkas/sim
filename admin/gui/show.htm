@@ -1,40 +1,39 @@
-<div class="page">
-  <h2>İnceleme Sonuçları</h2>
-  <table class="custom">
+<h2>İnceleme Sonuçları</h2>
+
+<table class="custom">
+  <tr>
+    <strong>{{@SESSION.key}}</strong> id'sine ait tüm bilgiler</p>
+    <F3:repeat group="{{@SESSION.data}}" key="{{@gnl}}" value="{{@blg}}" >
+    <F3:check if="{{@gnl != @SESSION.KEY}}">
+    <F3:true>
     <tr>
-      <strong>{{@SESSION.key}}</strong> id'sine ait tüm bilgiler</p>
-      <F3:repeat group="{{@SESSION.data}}" key="{{@gnl}}" value="{{@blg}}" >
-      <F3:check if="{{@gnl != @SESSION.KEY}}">
+      <td class="label"> {{@gnl}} </td>
+      <F3:check if="{{@gnl == 'photo'}}">
       <F3:true>
-      <tr>
-        <td class="label"> {{@gnl}} </td>
-        <F3:check if="{{@gnl == 'photo'}}">
-        <F3:true>
-        <td class="field"><img src="/public/{{@uploaddir}}/{{@blg}}" /></td>
-        </F3:true>
-        <F3:false>
-        <td class="field"> {{@blg}} </td>
-        </F3:false>
-        </F3:check>
-      </tr>
+      <td class="field"><img src="/public/{{@uploaddir}}/{{@blg}}" /></td>
       </F3:true>
+      <F3:false>
+      <td class="field"> {{@blg}} </td>
+      </F3:false>
       </F3:check>
-      </F3:repeat>
     </tr>
-    <tr>
-      <td></td>
-      <td>
-        <form name="login" action="edit" method="POST" id="login" 
-          enctype="multipart/form-data">
-          <input id="submit_button" type="submit" value="Düzenle" />
-        </form>
-        <form name="login" action="del" method="POST" id="login" 
-          enctype="multipart/form-data">
-          <input id="submit_button" type="submit" value="Sil"
-          onClick="return confirm('Silmek istediğinizden emin misiniz?');"/>
-        </form>
-      </td>
-    </tr>
-  </table>
-</div>
+    </F3:true>
+    </F3:check>
+    </F3:repeat>
+  </tr>
+  <tr>
+    <td></td>
+    <td>
+      <form name="login" action="edit" method="POST" id="login" 
+        enctype="multipart/form-data">
+        <input id="submit_button" type="submit" value="Düzenle" />
+      </form>
+      <form name="login" action="del" method="POST" id="login" 
+        enctype="multipart/form-data">
+        <input id="submit_button" type="submit" value="Sil"
+        onClick="return confirm('Silmek istediğinizden emin misiniz?');"/>
+      </form>
+    </td>
+  </tr>
+</table>
 
