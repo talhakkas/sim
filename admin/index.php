@@ -61,8 +61,13 @@ function giris() {
 				      'result' => 'result_id',
 				      'parent' => 'parent_id',
 				      'discipline' => 'discipline_id',
-				      'announcement' => 'announcement_id'
-			      ));
+				      'announcement' => 'announcement_id',
+				      'ncase' => 'cid',
+				      'node' => 'nid',
+				      'takip' => 'tid',
+				      'tet' => 'id',
+			      )
+	);
        	// login olursa, default olarak admin tablosu seçilsin
 	F3::set('SESSION.TABLE_INIT', 'people');
 

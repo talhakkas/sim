@@ -6,7 +6,7 @@
     <tr>
       <F3:repeat group="{{@DB->result}}" key="{{@gnl}}" value="{{@blg}}" >
       <tr>
-        <td class="label"> {{@blg['Field']}} </td>
+        <td class="label"> {{e(@blg['Field'])}} </td>
         <td class="field">
           <F3:check if="{{@blg['Field']=='content'}}">
           <F3:true>

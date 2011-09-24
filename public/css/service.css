@@ -14,7 +14,7 @@ body {
     background: #fff;
     padding: 20px;
     height:auto;
-    min-height:500px;
+    min-height:550px;
     position:relative;
     border:3px solid rgba(0,0,0,0);
     -webkit-box-shadow:0 0 18px rgba(0,0,0,0.4);
@@ -362,7 +362,7 @@ input[type=text]:focus {outline: 0; border: 1px solid #35addf;}
 
 #button-preview,
 #button-edit,
-#button-delete{background:url(/public/img/icon/24x24/process.png) no-repeat center;width:24px;height:24px;border:none;cursor:pointer;float:left;margin-right:10px;}
+#button-delete{background:url(/public/img/icon/24x24/search_page.png) no-repeat center;width:24px;height:24px;border:none;cursor:pointer;float:left;margin-right:10px;}
 #button-edit{background:url(/public/img/icon/24x24/edit.png) no-repeat center;}
 #button-delete{background:url(/public/img/icon/24x24/delete.png) no-repeat center;margin-right:0px;}
 
@@ -398,5 +398,33 @@ h2 img {float:left;margin-top:-2px;margin-right:2px;}
 .home a img {float:left; width:22px; height:22px; margin-top:-6px; margin-right:5px;}
 
 
+
+/* -------------------------------- student.css ------------------------------------ */
+#contentarea {float:left;display:block;width:650px;height:auto;}
+.feature {float:left;margin:0px 0px;width:250px;}
+.feature li {list-style-image: url('/public/img/icon/16x16/accept.png');font-size:13px;}
+#contentarea img {
+  -webkit-box-shadow:0 2px 2px rgba(0,0,0,0.2);
+  -moz-box-shadow:0 2px 2px rgba(0,0,0,0.2);
+  box-shadow:0 5px 20px rgba(0, 0, 0, 0.3);
+}
+
+
+.sidebar {
+  background: #FFF repeat scroll 0 0;
+  border:1px solid #DDDDDD;
+  border-radius:4px 4px 4px 4px;
+  overflow:hidden;
+  padding:10px 8px 25px;;
+}
+
+.sidebar h3 {padding-bottom:4px;margin:0px;}
+
+.sidebar-right{
+  float:right;
+  display:block;
+  width:250px;
+}
+/* --------------------------------------------------------------------------------- */
 
 

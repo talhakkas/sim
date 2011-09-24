@@ -60,20 +60,11 @@ ul.tabss li a.active:hover  {
 	-webkit-border-bottom-left-radius: 5px;
 }
 .tab_content {padding: 20px;font-size: 14px;}
-
-#con {
-	padding:15px;
-}
-
-
+#con {padding:15px;}
 
 
 /* --------------------- checkbox.css ------------------- */
-.checklist {
-	list-style: none;
-	margin: 0;
-	padding: 0;
-}
+.checklist {list-style: none;margin: 0;padding: 0;}
 
 .checklist li {
 	float: left;
@@ -85,13 +76,8 @@ ul.tabss li a.active:hover  {
 	font: normal 11px/1.3 "Lucida Grande","Lucida","Arial",Sans-serif;
 }
 
-.checklist li.selected {
-	background-position: -105px 0;
-}
-
-.checklist li.selected .checkbox-select {
-	display: none;
-}
+.checklist li.selected {background-position: -105px 0;}
+.checklist li.selected .checkbox-select {display: none;}
 
 .checkbox-select {
 	display: block;
@@ -109,9 +95,7 @@ ul.tabss li a.active:hover  {
 	background: #8dc63f;
 }
 
-.checklist li input {
-	display: none;	
-}
+.checklist li input {display: none;}
 
 a.checkbox-deselect {
 	display: none;
@@ -123,25 +107,14 @@ a.checkbox-deselect {
 	right: 10px;
 }
 
-.checklist li.selected a.checkbox-deselect {
-	display: block;
-}
-
-.checklist li label {
-	display: block;
-	text-align: center;
-	padding: 8px;
-	font-size:12px;
-}
+.checklist li.selected a.checkbox-deselect {display: block;}
+.checklist li label {display:block; text-align:center; padding:8px; font-size:12px;}
 
 
 
 /* ------------------------------ demo.css ------------------------------ */
 
-/*	wrapper divs */
 .custom-checkbox, .custom-radio { position: relative; }
-
-/* input, label positioning */
 .custom-checkbox input, .custom-radio input {position: absolute;left: 2px;top: 3px;}
 
 .custom-checkbox label,
