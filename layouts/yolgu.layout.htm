@@ -44,24 +44,24 @@
       <F3:check if="{{ preg_match('/\/edit/', @PARAMS.0) | preg_match('/\/create/', @PARAMS.0) }}">
       <F3:true>
       <div id="leftcolumn">
-        <table>
-          <tr><td>
-              <a href="/yolgu/create/oyku/{{@SESSION.cid}}/{{@SESSION.id}}" title="">
-		<img src="/public/img/narrative.png"/><br>ÖYKÜ</a>
-          </td></tr>
-          <tr><td>
-              <a href="/yolgu/create/css/{{@SESSION.cid}}/{{@SESSION.id}}" title="">
-                <img src="/public/img/list-type-icon.png"/><br>ÇSS</a>
-          </td></tr>
-          <tr><td>
-              <a href="/yolgu/create/dal/{{@SESSION.cid}}/{{@SESSION.id}}" title="">
-                <img src="/public/img/branch-icon.png"/><br>DALLANMA</a>
-          </td></tr>
-          <tr><td>
-              <a href="/yolgu/create/anket/{{@SESSION.cid}}/{{@SESSION.id}}" title="">
-                <img src="/public/img/list-type-icon.png"/><br>ANKET</a>
-          </td></tr>
-        </table>
+        <ul>
+          <li>
+          <a href="/yolgu/create/oyku/{{@SESSION.cid}}/{{@SESSION.id}}">
+            <img src="/public/img/narrative.png"/>ÖYKÜ</a>
+          </li>
+          <li>
+          <a href="/yolgu/create/css/{{@SESSION.cid}}/{{@SESSION.id}}">
+            <img src="/public/img/list-type-icon.png"/>ÇSS</a>
+          </li>
+          <li>
+          <a href="/yolgu/create/dal/{{@SESSION.cid}}/{{@SESSION.id}}">
+            <img src="/public/img/branch-icon.png"/>DALLANMA</a>
+          </li>
+          <li>
+          <a href="/yolgu/create/anket/{{@SESSION.cid}}/{{@SESSION.id}}">
+            <img src="/public/img/list-type-icon.png"/>ANKET</a>
+          </li>
+        </ul>
       </div>
       </F3:true>
       </F3:check>

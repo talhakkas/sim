@@ -356,37 +356,9 @@ input[type=text]{
     border-radius: 3px;
 }
 
-input[type=text]:focus {
-    outline: 0;
-    border: 1px solid #35addf;
-}
+input[type=text]:focus {outline: 0; border: 1px solid #35addf;}
 
 .module {background: none repeat scroll 0 0 #EEEEEE; border-radius:5px 5px 5px 5px; margin:0 0 10px; padding:4px;}
-
-
-#leftcolumn {
-    height:auto;
-    width:120px;
-    float:left;
-    font-size:13px;
-    -moz-border-radius: 5px;
-    -webkit-border-radius: 5px;
-    border-radius: 5px;
-    -webkit-box-shadow:0 2px 2px rgba(0,0,0,0.2);
-    -moz-box-shadow:0 2px 2px rgba(0,0,0,0.2);
-    box-shadow:0 5px 10px rgba(0, 0, 0, 0.2);
-}
-
-#leftcolumn table{margin:5px 0;}
-#leftcolumn tr img {width:35px; float:left;}
-#leftcolumn tr {font-size:12px;font-weight:bold;}
-#leftcolumn tr td {float:left;margin-bottom:4px;color: #3b5998;}
-
-.page {width: 780px;height: auto;font-size:12px;margin-left:140px;min-height:340px;}
-.page h2 a {float:right;}                                                                                                           
-.page h2 img {float:left;width:30px;margin-top:-5px;margin-right:2px;} 
-h2 a {float:right;}                                                                                                           
-h2 img {float:left;width:30px;margin-top:-5px;margin-right:2px;} 
 
 #button-preview,
 #button-edit,
@@ -396,4 +368,34 @@ h2 img {float:left;width:30px;margin-top:-5px;margin-right:2px;}
 
 .question {width:100%;font-weight:bold;color:#2f7ca2;font-size:13px;margin-bottom:20px;padding-bottom:5px;border-bottom:1px solid #ddd;}
 .answer{width:100%;float:left;padding-left:20px;padding-top:1px;margin-bottom:10px;background:url(/public/img/vp_button.png) no-repeat;}
+
+#admin-panel {width:920px;height:70px;border-bottom:1px solid #ddd;margin-top:-20px; margin-bottom:20px;}
+#admin-panel ul {font-size:12px;font-weight:bold;list-style-type:none;margin-left:-40px;}
+#admin-panel li {float:left;width:100px;color:#3b5998;text-align:center;}
+#admin-panel li img {width:34px;height:34px;margin:0 33px;}
+
+#leftcolumn {
+    height:auto;
+    width:110px;
+    float:left;
+    padding:5px;
+    -webkit-box-shadow:0 2px 2px rgba(0,0,0,0.2);
+    -moz-box-shadow:0 2px 2px rgba(0,0,0,0.2);
+    box-shadow:0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+#leftcolumn ul {padding-left:0px;}
+#leftcolumn li {float:left;width:110px;color:#3b5998;list-style-type:none;font-size:12px;
+    font-weight:bold;text-align:center;margin-bottom:20px;}
+#leftcolumn li img {width:35px;margin:0 33px;}
+
+.page {width: 780px;height: auto;font-size:12px;margin-left:140px;min-height:340px;}
+.page h2 a {float:right;}
+.page h2 img {float:left;width:30px;margin-top:-5px;margin-right:2px;}
+h2 a {float:right;}
+h2 img {float:left;width:30px;margin-top:-5px;margin-right:2px;}
+
+
+
+
 

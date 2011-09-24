@@ -87,20 +87,11 @@
       <div id="notice"><p class="fail">{{@error}}</p></div>
     </F3:check>
 
-    <style>
-      #panel {width:920px;height:70px;border-bottom:1px solid #ddd;margin-top:-20px; margin-bottom:20px;}
-      #panel ul {font-size:12px;font-weight:bold;list-style-type:none;margin-left:-40px;}
-      #panel li {float:left;width:100px;color:#3b5998;text-align:center;}
-      #panel li img {width:34px;height:34px;margin:0 33px;}
-
-      .page{margin-left:0px;width:920px;}
-    </style>
-
     <div id="content">
 
       <F3:check if="{{@SESSION.admin}}">
       <F3:true>
-      <div id="panel">
+      <div id="admin-panel">
         <ul>
             <li><img src="/public/img/table.png"/>{{e(@SESSION.TABLE)}}</li>
             <li><img src="/public/img/save.png"/>{{e(@SESSION.SAVE)}}</li>

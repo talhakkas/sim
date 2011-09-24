@@ -10,72 +10,70 @@
   } );
 </script>
 
-<div class="page">
-  <h2>{{e(@SESSION.TABLE)}} tablosu inceleniyor</h2>
+<h2>{{e(@SESSION.TABLE)}} tablosu inceleniyor</h2>
 
-  <div class="dt_example module">
-    <table cellpadding="0" cellspacing="0" border="0" class="display" 
-      id="example">
-      <thead>
-	<tr>
-	  <F3:repeat group="{{@fields}}" key="{{@gnl}}" value="{{@blg}}" >
-	  <F3:check if="{{in(@blg, @SESSION.FIELDS) && @SESSION.FIELDS}}">
-	  <F3:true>
-	    <th>{{e(@blg)}}</th>
-	  </F3:true>
-	  </F3:repeat>
-	  <th></th>
-	</tr>
-      </thead>
-      <tbody>
-	<F3:repeat group="{{@DB->result}}" key="{{@index}}" value="{{@row}}" >
-	<tr>
-	  <F3:repeat group="{{@row}}" key="{{@field}}" value="{{@value}}" >
-	  <F3:check if="{{in(@field, @SESSION.FIELDS) && @SESSION.FIELDS}}">
-	  <F3:true>
-	    <F3:check if="{{@field=='photo'}}">
-	    <F3:true>
-	    <td class="label">
-	      <img src="/public/{{@uploaddir,@value}}" width="26" height="26"/>
-	    </td>
-	    </F3:true>
-	    <F3:false>
-	    <td class="label"> <!--çok uzun metinleri burada kısaltalım-->
-	      <F3:check if="{{strlen(@value)>100}}">
-	      <F3:true>{{substr(@value, 0, 97)}}...</F3:true>
-	      <F3:false>{{@value}}</F3:false>
-	      </f3:check>
-	    </td>
-	    </F3:false>
-	    </f3:check>
-	  </f3:true>
-	  </f3:check>
-	  </F3:repeat>
-	  <F3:repeat group="{{@row}}" key="{{@field}}" value="{{@value}}" >
-	  <F3:check if="{{@field == @SESSION.KEY}}">
-	  <F3:true>
-	  <td class="label" style="float:left;width:92px">
-	    <form name="login" action="find" method="POST" id="login" >
-	      <input type="hidden" name="key" id="key" value="{{@value}}" />
-	      <input type="submit" id="button-preview" title="İncele" value="">
-	    </form>
-	    <form name="login" action="edit" method="POST" id="login" >
-	      <input type="hidden" name="key" id="key" value="{{@value}}" />
-	      <input type="submit" id="button-edit" title="Düzenle" value="">
-	    </form>
-	    <form name="login" action="del" method="POST" id="login" >
-	      <input type="hidden" name="key" id="key" value="{{@value}}" />
-	      <input type="submit" id="button-delete" title="Sil" value=""
-	      onClick="return confirm('Silmek istediğinizden emin misiniz?');"/>
-	    </form>
-	  </td>
-	  </F3:true>
-	  </F3:check>
-	  </F3:repeat>
-	</tr>
+<div class="dt_example module">
+  <table cellpadding="0" cellspacing="0" border="0" class="display" 
+    id="example">
+    <thead>
+      <tr>
+	<F3:repeat group="{{@fields}}" key="{{@gnl}}" value="{{@blg}}" >
+	<F3:check if="{{in(@blg, @SESSION.FIELDS) && @SESSION.FIELDS}}">
+	<F3:true>
+	<th>{{e(@blg)}}</th>
+	</F3:true>
 	</F3:repeat>
-      </tbody>
-    </table>
-  </div>
+	<th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <F3:repeat group="{{@DB->result}}" key="{{@index}}" value="{{@row}}" >
+      <tr>
+	<F3:repeat group="{{@row}}" key="{{@field}}" value="{{@value}}" >
+	<F3:check if="{{in(@field, @SESSION.FIELDS) && @SESSION.FIELDS}}">
+	<F3:true>
+	<F3:check if="{{@field=='photo'}}">
+	<F3:true>
+	<td class="label">
+	  <img src="/public/{{@uploaddir,@value}}" width="26" height="26"/>
+	</td>
+	</F3:true>
+	<F3:false>
+	<td class="label"> <!--çok uzun metinleri burada kısaltalım-->
+	  <F3:check if="{{strlen(@value)>100}}">
+	  <F3:true>{{substr(@value, 0, 97)}}...</F3:true>
+	  <F3:false>{{@value}}</F3:false>
+	  </f3:check>
+	</td>
+	</F3:false>
+	</f3:check>
+	</f3:true>
+	</f3:check>
+	</F3:repeat>
+	<F3:repeat group="{{@row}}" key="{{@field}}" value="{{@value}}" >
+	<F3:check if="{{@field == @SESSION.KEY}}">
+	<F3:true>
+	<td class="label" style="float:left;width:92px">
+	  <form name="login" action="find" method="POST" id="login" >
+	    <input type="hidden" name="key" id="key" value="{{@value}}" />
+	    <input type="submit" id="button-preview" title="İncele" value="">
+	  </form>
+	  <form name="login" action="edit" method="POST" id="login" >
+	    <input type="hidden" name="key" id="key" value="{{@value}}" />
+	    <input type="submit" id="button-edit" title="Düzenle" value="">
+	  </form>
+	  <form name="login" action="del" method="POST" id="login" >
+	    <input type="hidden" name="key" id="key" value="{{@value}}" />
+	    <input type="submit" id="button-delete" title="Sil" value=""
+	    onClick="return confirm('Silmek istediğinizden emin misiniz?');"/>
+	  </form>
+	</td>
+	</F3:true>
+	</F3:check>
+	</F3:repeat>
+      </tr>
+      </F3:repeat>
+    </tbody>
+  </table>
 </div>
 
