@@ -11,7 +11,7 @@ function login() {
 }
 
 function test() {
-	echo F3::get('SESSION.student');
+	echo "test";
 }
 
 F3::set('uploaddir', 'upload/');

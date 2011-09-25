@@ -78,3 +78,9 @@ puanınız şudur benzeri bir raporlama yapmak gerekecek
 	Bu tamam gibi.
 
 20- her bir tahlil/film vs i maliyetlendirelim.
+
+21-css
+
+asıl css ihtiyacı ilça dozajının seçildiği sayfada (http://test.omu.edu.tr/yolgu/show/1/26/1) ve bir de raporlamanın yapıldığı sayfada (http://test.omu.edu.tr/yolgu/rapor)
+
+	@emin: bunlar tamam gibi değil mi?
