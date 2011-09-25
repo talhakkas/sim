@@ -53,7 +53,6 @@ function giris() {
 	F3::set('SESSION.TABLES', array(
 				      'people' => 'tc',
 				      'event' => 'event_id',
-				      'node' => 'id',
 				      'survey' => 'survey_id',
 				      'd_survey' => 'd_survey_id',
 				      'patient' => 'patient_id',
@@ -62,8 +61,8 @@ function giris() {
 				      'parent' => 'parent_id',
 				      'discipline' => 'discipline_id',
 				      'announcement' => 'announcement_id',
+				      'node' => 'id',
 				      'ncase' => 'cid',
-				      'node' => 'nid',
 				      'takip' => 'tid',
 				      'tet' => 'id',
 			      )
