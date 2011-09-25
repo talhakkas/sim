@@ -12,12 +12,12 @@
     <F3:repeat group="{{@SESSION.cdata}}" key="{{@gnl}}" value="{{@blg}}" >
     <tr>
       <td>
-	<a class="answer" href="/yolgu/cstart/{{@blg['cid']}}">{{@blg['title']}}</a>
+        <a class="answer" href="/yolgu/cstart/{{@blg['cid']}}">{{@blg['title']}}</a>
       </td>
       <td>
-	<a href="/yolgu/cedit/{{@blg['cid']}}" id="button-edit"></a>
-	<a href="/yolgu/cdelete/{{@blg['cid']}}" id="button-delete"
-	  onClick="return confirm('Silmek istediğinizden emin misiniz?');"></a>
+        <a href="/yolgu/cedit/{{@blg['cid']}}" id="button-edit"></a>
+        <a href="/yolgu/cdelete/{{@blg['cid']}}" id="button-delete"
+          onClick="return confirm('Silmek istediğinizden emin misiniz?');"></a>
       </td>
     </tr>
     </F3:repeat>
@@ -25,3 +25,4 @@
 </table>
 
 <a href="/yolgu/cadd/" class="large dark-blue awesome right">Yeni case Ekle</a>
+

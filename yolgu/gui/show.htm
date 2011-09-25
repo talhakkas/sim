@@ -20,11 +20,11 @@
   </F3:repeat>
 </div>
 
+<F3:check if="{{@SESSION.data['media'] != ''}}">
 <div class="module" style="margin:0 auto;width:300px;">
-  <F3:check if="{{@SESSION.data['media'] != ''}}">
   <img src="{{@SR}}/{{@uploaddir}}kucuk{{@SESSION.data['media']}}">
-  </F3:check>
 </div>
+</F3:check>
 
 <p class="question">{{@SESSION.data['question']}}</p>
 
