@@ -6,6 +6,71 @@
   ul.tabs li.orange a{color:#fff;}
 </style>
 
+<script src="/public/js/jquery.min.js"></script>
+<script src="/public/js/slides.min.jquery.js"></script>
+<script>
+  $(function(){
+    $('#products').slides({
+      preload: true,
+      preloadImage: '/public/img/bulgu/loading.gif',
+      effect: 'slide, fade',
+      crossfade: true,
+      slideSpeed: 350,
+      fadeSpeed: 500,
+      generateNextPrev: true,
+      generatePagination: false
+    });
+  });
+</script>
+
 <h2 class="orange">Bulgu Ekranı</h2>
+
+<form method="post" action="" style="display:none;">
+  <div class="module" style="height:300px;">
+    <div style="float:left;width:500px; height:300px;background:#fff;border:1px solid #ddd;">
+      images
+    </div>
+    <div style="float:left;width:400px; height:140px;background:#fff;border:1px solid #ddd;">
+      33 yaşındaki Hamdi Mersin, çiçek serasında ilaçlama yaptıktan sonra, çiçek
+      serasının tavanındaki bir hasarı gidermek için merdivene çıkarken, kendini
+      kötü hissetmiş, bulantısı olmuş, kısa süreli bir baygınlık geçirmiş, gözleri
+      kararmış ve 5 basamak yukarıdan yere düşmüştür. Düşme sırasında boyun ve bel
+      bölgesini zemindeki beton çıkıntıya çarpmıştır. Kafasına ise bir darbe
+      almadığını belirtmiştir. Doktor olarak görev yaptığınız, çiçek serasının 50
+      metre uzağında bulunan aile hekimliği merkezinden, hastaya müdahale etmeniz
+      için çağrıldınız.
+    </div>
+    <div style="float:left;width:400px; height:150px; background:#fff;border:1px solid #ddd;">
+    </div>
+    <input type="submit" id="button" value="Yorumla"
+    style="margin-top:15px;"/>
+  </div>
+</form>
+
+
+<div id="products">
+  <div class="slides_container">
+    <a href="#"><img src="/public/img/bulgu/1144953-3-2x.jpg"></a>
+    <a href="#"><img src="/public/img/bulgu/1144953-1-2x.jpg"></a>
+    <a href="#"><img src="/public/img/bulgu/1144953-2-2x.jpg"></a>
+    <a href="#"><img src="/public/img/bulgu/1144953-4-2x.jpg"></a>
+    <a href="#"><img src="/public/img/bulgu/1144953-5-2x.jpg"></a>
+    <a href="#"><img src="/public/img/bulgu/1144953-6-2x.jpg"></a>
+    <a href="#"><img src="/public/img/bulgu/1144953-p-2x.jpg"></a>
+  </div>
+  <ul class="pagination">
+    <li><a href="#"><img src="/public/img/bulgu/1144953-3-2x.jpg"></a></li>
+    <li><a href="#"><img src="/public/img/bulgu/1144953-1-2x.jpg"></a></li>
+    <li><a href="#"><img src="/public/img/bulgu/1144953-2-2x.jpg"></a></li>
+    <li><a href="#"><img src="/public/img/bulgu/1144953-4-2x.jpg"></a></li>
+    <li><a href="#"><img src="/public/img/bulgu/1144953-5-2x.jpg"></a></li>
+    <li><a href="#"><img src="/public/img/bulgu/1144953-6-2x.jpg"></a></li>
+    <li><a href="#"><img src="/public/img/bulgu/1144953-p-2x.jpg"></a></li>
+  </ul>
+</div>
+
+
+
+
 
 

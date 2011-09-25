@@ -271,25 +271,6 @@ tr, td, th {text-align:left;}
 ul.tabs li.printly a {margin-top:3px;width:5px;height:25px;background:url(/public/img/printly.png) no-repeat;background-size:25px;}
 /* ---------------------------------------------------- */
 
-/* bu özelliği düzenlemeyi unutma*/
-#moreFields,
-#submit_button {
-    height:23px;
-    color:#2F7CA2;
-    text-align:center;
-    padding-top:6px;
-    background:url(../img/btn.png) no-repeat top;
-    font-weight:bold;
-    width:96px;
-    font-size:13px;
-    display:block;
-    cursor:pointer;
-    border:none;
-    height:auto;
-    padding-bottom:7px;
-}
-#submit_button:hover {box-shadow:0 3px 10px rgba(0, 0, 0, 0.2);}
-
 textarea,
 input[type=text]{
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
