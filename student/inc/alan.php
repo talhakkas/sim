@@ -51,11 +51,11 @@ $box .= '</form>';
 $box .= '
   <div style="height:40px; width:820px;">
   <form id="close" style="float:left;">
-    <input type="button" onClick="kapat();" value="Kapat" class="small green awesome"/>
+    <input type="button" onClick="kapat();" value="Kapat" class="small green button"/>
   </form>
 
   <form id="save" style="float:right;">
-    <input type="button" onClick="kaydet();" value="Kaydet" class="small green awesome"/>
+    <input type="button" onClick="kaydet();" value="Kaydet" class="small green button"/>
   </form>
 </div>
 

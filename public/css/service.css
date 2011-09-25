@@ -287,6 +287,7 @@ input[type=text]{
 input[type=text]:focus {outline: 0; border: 1px solid #35addf;}
 
 .module {background: none repeat scroll 0 0 #EEEEEE; border-radius:5px 5px 5px 5px; margin:0 0 10px; padding:4px;}
+.module0 {background: none repeat scroll 0 0 #EEEEEE; border-radius:0px 0px 0px 0px; margin:0 0 10px; padding:4px;}
 
 #button-preview,
 #button-edit,
