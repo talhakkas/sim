@@ -97,6 +97,8 @@ function giris() {
 }
 
 
+F3::route('GET /test', function() { render('test', 'butonlar');});
+
 F3::route("GET  /*",      'giris');
 F3::route("GET /printly",  'printly');
 F3::route("POST /login",  'login.php');
