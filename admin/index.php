@@ -79,6 +79,7 @@ function giris() {
 	// cevap : name, surname, first_name, last_name, username
 	F3::set('SESSION.FIELDS', array(
 					'_id' =>  true,
+					'id' =>  true,
 					'name' => true,
 					'title' => true,
 					'content' => true,
@@ -86,6 +87,8 @@ function giris() {
 					'photo' => false,
 					'type' => false,
 					'topic' => false,
+					'skey' => false,
+					'zaman' => true,
 				));
 
 	if (F3::get('SESSION.admin'))
