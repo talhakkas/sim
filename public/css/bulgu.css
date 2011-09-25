@@ -7,20 +7,20 @@
 #products .prev {background:url(../img/bulgu/arrow-prev.png);}
 #products .next {left:405px;background:url(../img/bulgu/arrow-next.png);}
 #products .pagination {width:420px;padding-left:0;float:left}
-#products .pagination li {float:left;margin-left:2px;list-style:none;}
-#products .pagination li a {display:block;width:50px;height:37px;float:left;	background:#f9f9f9;border: 1px solid #ddd;margin-right:5px;}
+#products .pagination li {float:left;margin-left:2px;list-style:none;margin-right:4px;}
+#products .pagination li a {display:block;width:50px;height:37px;float:left;	background:#f9f9f9;border: 1px solid #ddd;}
 #products .pagination li.current a {border:1px solid #7f7f7f;margin:0;}
 #products .pagination li a img { width:50px; height:37px;}
 #products .slides_container a img {width:400px;}
 
-
-.bulgu-story {float:left;width:465px; height:110px;background:#fff;border:1px solid #ddd;margin-bottom:3px;padding:4px 7px;
+.bulgu-story {float:left;width:465px; height:130px;background:#fff;border:1px solid #ddd;margin-bottom:3px;padding:4px 7px;
     border: 1px solid #ddd; -moz-border-radius: 3px; -webkit-border-radius: 3px; border-radius: 3px;}
 
-form.bulgu {}
-form.bulgu .module0 {height:330px;}
-form.bulgu textarea {float:left;width:467px; height:156px; background:#fff;border:1px solid #ddd;}
+form.bulgu {height:330px;}
+form.bulgu textarea {float:left;width:467px; height:144px; background:#fff;border:1px solid #ddd;}
 form.bulgu .bulgu-button {float:left;margin-top:20px;}
-form.bulgu span.title {float:left;padding:3px 0;font-weight:bold; color:#2f7ca2;/*color:#ff5c00;*/}
+form.bulgu span.title {float:left;padding:1px 0;font-weight:bold; color:#2f7ca2;/*color:#ff5c00;*/
+
+padding-left:20px;background:url(/public/img/icon/16x16/next_blue.png) no-repeat;}
 
 
