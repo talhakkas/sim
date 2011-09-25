@@ -5,19 +5,19 @@
 
 <p>{{@SESSION.data['content_acc'][0]['header']}}</p>
 
-<div class="content">
-  <div id="accordion">
-    <F3:repeat group="{{@SESSION.data['content_acc']}}" key="{{@gnl}}" value="{{@blg}}">
-    <F3:check if="{{@blg['content'] == 'NULL'}}" >
-    <F3:false>
-    <h3><a href="#">{{@blg['header']}}</a></h3>
-    <div>
-      {{@blg['content']}}
-    </div>
-    </F3:false>
-    </F3:check>
-    </F3:repeat>
+<div id="accordion">
+  <F3:repeat group="{{@SESSION.data['content_acc']}}" key="{{@gnl}}" value="{{@blg}}">
+  <F3:check if="{{@blg['content'] == 'NULL'}}" >
+  <F3:false>
+  <h3 style="background-color:#fff;">
+    <a href="#"><img src="/public/img/icon/24x24/add_link.png"/>{{@blg['header']}}</a>
+  </h3>
+  <div>
+    {{@blg['content']}}
   </div>
+  </F3:false>
+  </F3:check>
+  </F3:repeat>
 </div>
 
 <div align="center">
