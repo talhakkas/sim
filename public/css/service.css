@@ -254,7 +254,7 @@ label.label {
     border-radius: 5px;
 }
 
-label.label textarea {width:500px;height:120px;}
+label.label textarea {width:880px;height:120px;}
 label.label textarea,
 label.label input[type=text],
 label.label input[type=password]{
