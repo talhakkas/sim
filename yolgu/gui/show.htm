@@ -9,8 +9,8 @@
   <F3:repeat group="{{@SESSION.data['content_acc']}}" key="{{@gnl}}" value="{{@blg}}">
   <F3:check if="{{@blg['content'] == 'NULL'}}" >
   <F3:false>
-  <h3 style="background-color:#fff;">
-    <a href="#"><img src="/public/img/icon/24x24/add_link.png"/>{{@blg['header']}}</a>
+  <h3 style="background-color:#fff;border:none;font-size:13px;">
+    <a href="#"><img class="left"src="/public/img/icon/24x24/blue_arrow_down.png"/>{{@blg['header']}}</a>
   </h3>
   <div>
     {{@blg['content']}}
