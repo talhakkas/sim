@@ -1,0 +1,112 @@
+<h2>Test Sayfası</h2>
+
+<link rel="stylesheet" type="text/css" href="/public/multiselect/jquery-ui.css" />
+
+<script type="text/javascript" src="/public/multiselect/jquery.js"></script>
+<script type="text/javascript" src="/public/multiselect/jquery-ui.min.js"></script>
+<script type="text/javascript" src="/public/multiselect/jquery.multiselect.js"></script>
+<script type="text/javascript" src="/public/multiselect/jquery.multiselect.filter.js"></script>
+<script type="text/javascript">
+  $(function(){
+      $("select").multiselect();
+
+      $("#dialog").dialog({
+	title: "Inside a dialog",
+	height: 200
+	});
+
+      $("#tabs").tabs();
+      $("#accordion").accordion();
+      $("#datepicker").datepicker();
+      $("select").multiselect().multiselectfilter();
+      });
+</script>
+
+<!-- dialog -->
+<div id="dialogi" style="display:none">
+  <form>
+    <select multiple="multiple" size="5">
+      <option value=""></option>
+      <option value="option1">Option 1</option>
+      <option value="option2">Option 2</option>
+      <option value="option3">Option 3</option>
+      <option value="option4">Option 4</option>
+    </select>
+
+    <!-- date picker -->
+    <p>Datepicker: <input type="date" id="datepicker" /></p>
+  </form>
+</div>
+
+
+<!-- tabs -->
+<div id="tabs" class="clear">
+  <ul>
+    <li><a href="#frag-1">Inside tabs</a></li>
+    <li><a href="#frag-2">Tab 2</a></li>
+  </ul>
+
+  <div id="frag-1">
+    <form style="margin:20px 0">
+      <p>
+      <select multiple="multiple" size="5" style="width:370px">
+	<option value="red">Red</option>
+	<option value="green">Green</option>
+	<option value="blue">Blue</option>
+	<option value="orange">Orange</option>
+	<option value="purple">Purple</option>
+	<option value="yellow">Yellow</option>
+	<option value="brown">Brown</option>
+	<option value="black">Black</option>
+      </select>
+      </p>
+      <p>
+      <select multiple="multiple" size="5" style="width:370px">
+	<optgroup label="test">
+	  <option value="red">Red</option>
+	  <option value="green">Green</option>
+	  <option value="blue">Blue</option>
+	</optgroup>
+	<optgroup label="foo">
+	  <option value="orange">Orange</option>
+	  <option value="purple">Purple</option>
+	  <option value="yellow">Yellow</option>
+	  <option value="brown">Brown</option>
+	  <option value="black">Black</option>
+	</optgroup>
+      </select>
+      </p>
+    </form>
+  </div>
+
+  <div id="frag-2">
+    tab 2
+  </div>
+</div>
+
+
+
+
+
+
+
+
+<!-- accordion -->
+<div id="accordion" style="clear:both; margin-top:50px; display:none">
+  <h3><a href="#">Inside an accordion</a></h3>
+  <div>
+    <form>
+      <select multiple="multiple" size="5">
+	<option value=""></option>
+	<option value="option1">Option 1</option>
+	<option value="option2">Option 2</option>
+	<option value="option3">Option 3</option>
+	<option value="option4">Option 4</option>
+      </select>
+    </form>
+  </div>
+  <h3><a href="">test</a></h3>
+  <div>Click on the first item to view the test.</div>
+</div>
+
+
