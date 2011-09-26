@@ -290,7 +290,7 @@ input[type=text]:focus {outline: 0; border: 1px solid #35addf;}
 
 #button-preview,
 #button-edit,
-#button-delete{background:url(/public/img/icon/24x24/search_page.png) no-repeat center;width:24px;height:24px;border:none;cursor:pointer;float:left;margin-right:10px;}
+#button-delete{background:url(/public/img/icon/24x24/search.png) no-repeat center;width:24px;height:24px;border:none;cursor:pointer;float:left;margin-right:10px;}
 #button-edit{background:url(/public/img/icon/24x24/edit.png) no-repeat center;}
 #button-delete{background:url(/public/img/icon/24x24/delete.png) no-repeat center;margin-right:0px;}
 

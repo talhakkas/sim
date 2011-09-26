@@ -41,35 +41,31 @@
 <!-- tabs -->
 <div id="tabs" class="clear">
   <ul>
-    <li><a href="#frag-1">Inside tabs</a></li>
-    <li><a href="#frag-2">Tab 2</a></li>
+      <F3:repeat group="{{@discipline}}" key="{{@key}}" value="{{@value}}">
+      <li><a href="#frag-{{@key}}">{{@value}}</a></li>
+      </F3:repeat>
   </ul>
 
   <div id="frag-1">
-    <form style="margin:20px 0">
+    <form>
       <p>
-      <select multiple="multiple" size="5" style="width:370px">
+      <select multiple="multiple" size="5" style="width:885px;">
 	<option value="red">Red</option>
 	<option value="green">Green</option>
 	<option value="blue">Blue</option>
 	<option value="orange">Orange</option>
 	<option value="purple">Purple</option>
 	<option value="yellow">Yellow</option>
-	<option value="brown">Brown</option>
-	<option value="black">Black</option>
       </select>
       </p>
       <p>
-      <select multiple="multiple" size="5" style="width:370px">
+      <select multiple="multiple" size="5" style="width:885px">
 	<optgroup label="test">
 	  <option value="red">Red</option>
 	  <option value="green">Green</option>
-	  <option value="blue">Blue</option>
 	</optgroup>
 	<optgroup label="foo">
 	  <option value="orange">Orange</option>
-	  <option value="purple">Purple</option>
-	  <option value="yellow">Yellow</option>
 	  <option value="brown">Brown</option>
 	  <option value="black">Black</option>
 	</optgroup>
@@ -79,7 +75,7 @@
   </div>
 
   <div id="frag-2">
-    tab 2
+    Tab2
   </div>
 </div>
 
