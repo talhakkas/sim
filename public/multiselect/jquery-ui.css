@@ -52,7 +52,6 @@ h1, h2, p { margin:10px 0 }
 .atn { color: #606; }
 .atv { color: #080; }
 .dec { color: #606; }
-pre.prettyprint { padding: 5px; border:1px solid #d2d2d2; background:#f5f5f5 }
 
 @media print {
   .str { color: #060; }
@@ -144,7 +143,7 @@ pre.prettyprint { padding: 5px; border:1px solid #d2d2d2; background:#f5f5f5 }
 .ui-widget input, .ui-widget select, .ui-widget textarea, .ui-widget button { font-family: Lucida Grande, Lucida Sans, Arial, sans-serif; font-size: 1em; }
 .ui-widget-content { border: 1px solid #a6c9e2; background: #fcfdfd url(images/ui-bg_inset-hard_100_fcfdfd_1x100.png) 50% bottom repeat-x; color: #222222; }
 .ui-widget-content a { color: #222222; }
-.ui-widget-header { border: 1px solid #4297d7; background: #5c9ccc url(images/ui-bg_gloss-wave_55_5c9ccc_500x100.png) 50% 50% repeat-x; color: #ffffff; font-weight: bold; }
+.ui-widget-header { border: 1px solid #4297d7; background: #2f7ca2; color: #ffffff; font-weight: bold; }
 .ui-widget-header a { color: #ffffff; }
 
 /* Interaction states
@@ -627,10 +626,10 @@ button.ui-button::-moz-focus-inner { border: 0; padding: 0; } /* reset extra pad
 .ui-datepicker-rtl .ui-datepicker-group-last .ui-datepicker-header { border-right-width:0; border-left-width:1px; }
 .ui-datepicker-rtl .ui-datepicker-group-middle .ui-datepicker-header { border-right-width:0; border-left-width:1px; }
 
-/* IE6 IFRAME FIX (taken from datepicker 1.5.3 */
+/* Ie6 Iframe fIx (taken from datepicker 1.5.3 */
 .ui-datepicker-cover {
-    display: none; /*sorry for IE5*/
-    display/**/: block; /*sorry for IE5*/
+    display: none; /*sorry for Ie5*/
+    display/**/: block; /*sorry for Ie5*/
     position: absolute; /*must have*/
     z-index: -1; /*must have*/
     filter: mask(); /*must have*/
@@ -639,13 +638,13 @@ button.ui-button::-moz-focus-inner { border: 0; padding: 0; } /* reset extra pad
     width: 200px; /*must have*/
     height: 200px; /*must have*/
 }/*
- * jQuery UI Progressbar 1.8.16
+ * jquery uI progressbar 1.8.16
  *
- * Copyright 2011, AUTHORS.txt (http://jqueryui.com/about)
- * Dual licensed under the MIT or GPL Version 2 licenses.
+ * copyright 2011, authors.txt (http://jqueryui.com/about)
+ * dual licensed under the mIt or gpl version 2 licenses.
  * http://jquery.org/license
  *
- * http://docs.jquery.com/UI/Progressbar#theming
+ * http://docs.jquery.com/uI/progressbar#theming
  */
 .ui-progressbar { height:2em; text-align: left; }
 .ui-progressbar .ui-progressbar-value {margin: -1px; height:100%; }
