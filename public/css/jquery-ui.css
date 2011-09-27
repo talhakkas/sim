@@ -1,4 +1,4 @@
-.ui-multiselect { padding:2px 0 2px 4px; text-align:left }
+.ui-multiselect { padding:2px 0 2px 4px; text-align:left;}
 .ui-multiselect span.ui-icon { float:right }
 .ui-multiselect-single .ui-multiselect-checkboxes input { position:absolute !important; top: auto !important; left:-9999px; }
 .ui-multiselect-single .ui-multiselect-checkboxes label { padding:5px !important }
@@ -68,7 +68,7 @@ h1, h2, p { margin:10px 0 }
 
 
 .ui-multiselect-hasfilter ul { position:relative; top:2px }
-.ui-multiselect-filter { float:left; margin-right:10px; font-size:11px }
+.ui-multiselect-filter { float:left; margin-right:10px; font-size:11px; color:#fff; }
 .ui-multiselect-filter input { width:100px; font-size:10px; margin-left:5px; height:15px; padding:2px; border:1px solid #292929; -webkit-appearance:textfield; -webkit-box-sizing:content-box; }
 
 
@@ -118,7 +118,7 @@ h1, h2, p { margin:10px 0 }
 .ui-widget input, .ui-widget select, .ui-widget textarea, .ui-widget button { font-family: Lucida Grande, Lucida Sans, Arial, sans-serif; font-size: 1em; }
 .ui-widget-content { border: 1px solid #a6c9e2; background: #fcfdfd; color: #222222; }
 .ui-widget-content a { color: #222222; }
-.ui-widget-header { border: 1px solid #4297d7; background: #2daebf; color: #2f7ca2;#ffffff; font-weight: bold; }
+.ui-widget-header { border: 1px solid #4297d7; background: #2f7ca2; color: #2f7ca2;#ffffff; font-weight: bold; }
 .ui-widget-header a { color: #ffffff; }
 
 /* Interaction states
@@ -131,7 +131,7 @@ h1, h2, p { margin:10px 0 }
  .ui-state-default a { color: #1d5987;  background-color:#fff;}
  .ui-state-hover a, .ui-state-hover a:hover { color: #1d5987; text-decoration: none; }
 .ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active {
-	border: 1px solid #79b7e7; background: #f5f8f9; font-weight: bold; color: red;}
+	border: 1px solid #79b7e7; background: #f5f8f9; font-weight: bold; color: #e17009;}
 .ui-state-active a, .ui-state-active a:link, .ui-state-active a:visited { color: #e17009;text-decoration: none; }
 .ui-widget :active { outline: none; }
 
@@ -547,7 +547,7 @@ button.ui-button::-moz-focus-inner { border: 0; padding: 0; } /* reset extra pad
 .ui-tabs .ui-tabs-nav li.ui-tabs-selected { margin-bottom: 0; padding-bottom: 1px; }
 .ui-tabs .ui-tabs-nav li.ui-tabs-selected a, .ui-tabs .ui-tabs-nav li.ui-state-disabled a, .ui-tabs .ui-tabs-nav li.ui-state-processing a { cursor: text; }
 .ui-tabs .ui-tabs-nav li a, .ui-tabs.ui-tabs-collapsible .ui-tabs-nav li.ui-tabs-selected a { cursor: pointer; } /* first selector in group seems obsolete, but required to overcome bug in Opera applying cursor: text overall if defined elsewhere... */
-.ui-tabs .ui-tabs-panel { display: block; border-width: 0; padding: 5px 10px; background: none; min-height:200px;height:auto; }
+.ui-tabs .ui-tabs-panel { display: block; border-width: 0; padding: 20px 10px 0; background: none; min-height:200px;height:auto; }
 .ui-tabs .ui-tabs-hide { display: none !important; }
 /*
  * jQuery UI Datepicker 1.8.16
@@ -616,14 +616,6 @@ button.ui-button::-moz-focus-inner { border: 0; padding: 0; } /* reset extra pad
     left: -4px; /*must have*/
     width: 200px; /*must have*/
     height: 200px; /*must have*/
-}/*
- * jquery uI progressbar 1.8.16
- *
- * copyright 2011, authors.txt (http://jqueryui.com/about)
- * dual licensed under the mIt or gpl version 2 licenses.
- * http://jquery.org/license
- *
- * http://docs.jquery.com/uI/progressbar#theming
- */
-.ui-progressbar { height:2em; text-align: left; }
-.ui-progressbar .ui-progressbar-value {margin: -1px; height:100%; }
+}
+
+

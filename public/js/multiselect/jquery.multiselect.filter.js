@@ -18,9 +18,9 @@
 	$.widget("ech.multiselectfilter", {
 		
 		options: {
-			label: "Filter:",
+			label: "Filitre:",
 			width: null, /* override default width set in css file (px). null will inherit */
-			placeholder: "Enter keywords"
+			placeholder: "Kelime girin"
 		},
 		
 		_create: function(){

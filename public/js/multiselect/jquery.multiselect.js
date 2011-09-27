@@ -22,17 +22,17 @@
 var multiselectID = 0;
 
 $.widget("ech.multiselect", {
-	
+
 	// default options
 	options: {
 		header: true,
 		height: 175,
 		minWidth: 225,
 		classes: '',
-		checkAllText: 'Check all',
-		uncheckAllText: 'Uncheck all',
-		noneSelectedText: 'Select options',
-		selectedText: '# selected',
+		checkAllText: 'Tümünü seç',
+		uncheckAllText: 'Seçilileri kaldır',
+		noneSelectedText: 'Tetkikleri seçin',
+		selectedText: '# tetkik seçildi',
 		selectedList: 0,
 		show: '',
 		hide: '',

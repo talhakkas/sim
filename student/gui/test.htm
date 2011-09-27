@@ -1,5 +1,7 @@
 <h2>Test Sayfası</h2>
 
+<link rel="stylesheet" type="text/css" href="/public/css/jquery-ui.css" />
+
 <script type="text/javascript" src="/public/js/multiselect/jquery-ui.min.js"></script>
 <script type="text/javascript" src="/public/js/multiselect/jquery.multiselect.js"></script>
 <script type="text/javascript" src="/public/js/multiselect/jquery.multiselect.filter.js"></script>
@@ -19,6 +21,39 @@
       });
 </script>
 
+<!-- tabs -->
+<div id="tabs" class="clear">
+  <ul>
+      <F3:repeat group="{{@discipline}}" key="{{@key}}" value="{{@value}}">
+      <li><a href="#frag-{{@key}}">{{@value}}</a></li>
+      </F3:repeat>
+  </ul>
+
+  <F3:repeat group="{{@discipline}}" key="{{@key}}" value="{{@value}}">
+  <div id="frag-{{@key}}">
+
+      <select multiple="multiple" size="5" style="width:885px;">
+	<option value="red">Red</option>
+	<option value="green">Green</option>
+	<option value="blue">Blue</option>
+	<option value="orange">Orange</option>
+	<option value="purple">Purple</option>
+	<option value="yellow">Yellow</option>
+      </select>
+
+  </div>
+  </F3:repeat>
+
+</div>
+
+
+
+
+
+
+
+
+
 <!-- dialog -->
 <div id="dialogi" style="display:none">
   <form>
@@ -34,54 +69,6 @@
     <p>Datepicker: <input type="date" id="datepicker" /></p>
   </form>
 </div>
-
-
-<!-- tabs -->
-<div id="tabs" class="clear">
-  <ul>
-      <F3:repeat group="{{@discipline}}" key="{{@key}}" value="{{@value}}">
-      <li><a href="#frag-{{@key}}">{{@value}}</a></li>
-      </F3:repeat>
-  </ul>
-
-  <div id="frag-1">
-    <form>
-      <p>
-      <select multiple="multiple" size="5" style="width:885px;">
-	<option value="red">Red</option>
-	<option value="green">Green</option>
-	<option value="blue">Blue</option>
-	<option value="orange">Orange</option>
-	<option value="purple">Purple</option>
-	<option value="yellow">Yellow</option>
-      </select>
-      </p>
-      <p>
-      <select multiple="multiple" size="5" style="width:885px">
-	<optgroup label="test">
-	  <option value="red">Red</option>
-	  <option value="green">Green</option>
-	</optgroup>
-	<optgroup label="foo">
-	  <option value="orange">Orange</option>
-	  <option value="brown">Brown</option>
-	  <option value="black">Black</option>
-	</optgroup>
-      </select>
-      </p>
-    </form>
-  </div>
-
-  <div id="frag-2">
-    Tab2
-  </div>
-</div>
-
-
-
-
-
-
 
 
 <!-- accordion -->
