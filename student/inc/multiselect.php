@@ -41,6 +41,7 @@ function multi(){
                 $a .= '<div id="frag-'.$key.'">';
                 foreach ($parent as $k => $v){
                         if ($v['parent_id'][0] == $key+1){
+                                echo 'hmmm';
                                 $a .= '<p class="answer">' . $v['name'] . '</p>';
                                 $a .= '<select multiple="multiple" size="5" style="width:885px;">';
                                         #foreach ($survey as $a => $b){
