@@ -15,7 +15,6 @@ function test() {
 }
 
 F3::set('uploaddir', 'upload/');
-F3::route('GET /f', function() { render('f', 'video player');});
 
 F3::route("GET /*", 	   'login');
 	F3::route("POST /login",   'login.php');

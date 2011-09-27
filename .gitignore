@@ -6,7 +6,6 @@ tmp/*
 
 adm
 soba
-old
 _*
 
 !/jedit/*

@@ -78,6 +78,7 @@ function cases() {
 }
 
 
+F3::route('GET /f', function() { render('f', 'video player');});
 F3::route('GET /ilac', function() {render('ilac', 'ilaç ekranı');});
 F3::route('POST /ilac', function() {
 	echo "Secilen ilaclar: ";

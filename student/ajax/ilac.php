@@ -26,8 +26,8 @@ if($_GET["callback"]) {
 }
 
 # Return the response
-echo $json_response;
+//echo $json_response;
 
-
+echo '[{"id": "5", "name":"emineker"},{"id": "6", "name":"eker"}]';
 
 ?>
