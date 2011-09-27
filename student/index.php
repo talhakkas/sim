@@ -2,7 +2,7 @@
 
 require_once  '../lib/base.php';
 require_once  '../asset/lib.php';
-require_once  'multiselect.php';
+require_once  'inc/multiselect.php';
 
 function home() {
         $duyuru = DB::sql("select * from announcement");

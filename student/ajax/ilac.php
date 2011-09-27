@@ -6,7 +6,8 @@
 #
 
 # Connect to the database
-mysql_pconnect("localhost", "sim", "maslak55") or die("Could not connect");
+/*
+mysql_pconnect("localhost", "sim", "pass") or die("Could not connect");
 mysql_select_db("sim") or die("Could not select database");
 
 //echo '[{"id":"978","name":'.$_GET["q"].'"cha$e"},{"id":"1530","name":"The Life and Times of Tim"}]';
@@ -30,6 +31,8 @@ if($_GET["callback"]) {
 
 # Return the response
 #echo $json_response;
+ */
+
 
 echo '
 [{"id":"1530","name":"The Life and Times of Tim"},{"id":"1210","name":"Kenny vs. Spenny"},{"id":"1394","name":"Shark"},{"id":"1395","name":"Shaun the Sheep"},{"id":"1398","name":"Side Order of Life"},{"id":"1397","name":"Shear Genius"},{"id":"1396","name":"Seinfeld"}]'
