@@ -35,9 +35,17 @@ function multi(){
                 $a .='<li><a href="#frag-'.$key. '">'.$val['name'].'</a></li>';
         $a .= '</ul>';
 
+        $db = DB::sql('select name from parent where discipline_id="'.$key.'"');
         foreach ($dis as $key => $val){
                 $a .= '<div id="frag-'.$key.'">';
-                $a .= $key;
+                $a .= '<select multiple="multiple" size="5" style="width:885px;">
+                        <option value="red">Red</option>
+                        <option value="green">Green</option>
+                        <option value="blue">Blue</option>
+                        <option value="orange">Orange</option>
+                        <option value="purple">Purple</option>
+                        <option value="yellow">Yellow</option>
+                </select>';
                 $a .= '</div>';
         }
 
