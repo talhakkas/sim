@@ -28,8 +28,36 @@ function multi(){
                 #}
         #}
         #print_r($ana);
-        #
-        #
+
+        $a = '';
+        $a .= '<ul>';
+        foreach ($dis as $key => $val)
+                $a .='<li><a href="#frag-'.$key. '">'.$val['name'].'</a></li>';
+        $a .= '</ul>';
+
+        foreach ($dis as $key => $val){
+                $a .= '<div id="frag-'.$key.'">';
+                $a .= $key;
+                $a .= '</div>';
+        }
+
+        $aa = '
+                <F3:repeat group="{{@discipline}}" key="{{@key}}" value="{{@value}}">                                                                 
+                <div id="frag-{{@key}}">                                                                                                              
+
+                <select multiple="multiple" size="5" style="width:885px;">                                                                        
+                <option value="red">Red</option>                                                                                                
+                <option value="green">Green</option>                                                                                            
+                <option value="blue">Blue</option>                                                                                              
+                <option value="orange">Orange</option>                                                                                          
+                <option value="purple">Purple</option>                                                                                          
+                <option value="yellow">Yellow</option>                                                                                          
+                </select>                                                                                                                         
+
+                </div>                                                                                                                                
+                </F3:repeat>                                                                                                                          
+                ';
+        return $a;
 }
 
 ?>

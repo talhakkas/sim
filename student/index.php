@@ -88,7 +88,7 @@ F3::route('GET /test',
         function() {
                 if (F3::get("SESSION.special") != 1)
                         return F3::call('login');
-                multi();
+                F3::set('tetkikmerkezi', multi());
                 render('test', 'yeni olgu ekranı');
         }
 );

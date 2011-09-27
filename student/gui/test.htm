@@ -21,8 +21,14 @@
       });
 </script>
 
+
 <!-- tabs -->
 <div id="tabs" class="clear">
+{{@tetkikmerkezi}}
+</div>
+
+
+<div style="display:none">
   <ul>
       <F3:repeat group="{{@discipline}}" key="{{@key}}" value="{{@value}}">
       <li><a href="#frag-{{@key}}">{{@value}}</a></li>
@@ -43,9 +49,7 @@
 
   </div>
   </F3:repeat>
-
 </div>
-
 
 
 
