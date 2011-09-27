@@ -81,7 +81,7 @@ function cases() {
 F3::route('GET /ilac', function() {render('ilac', 'ilaç ekranı');});
 F3::route('POST /ilac', function() {
 	echo "Secilen ilaclar: ";
-	echo $_POST['token'];
+	echo $_POST['drugs'];
 });
 
 F3::route('GET /test',

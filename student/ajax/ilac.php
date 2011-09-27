@@ -1,18 +1,14 @@
 <?
 
-#
-# Example PHP server-side script for generating
-# responses suitable for use with jquery-tokeninput
-#
+require_once  '../../asset/depo.php';
 
 # Connect to the database
-/*
-mysql_pconnect("localhost", "sim", "pass") or die("Could not connect");
-mysql_select_db("sim") or die("Could not select database");
+mysql_pconnect("localhost", $db_user, $db_pass) or die("Could not connect");
+mysql_select_db($db_name) or die("Could not select database");
 
-//echo '[{"id":"978","name":'.$_GET["q"].'"cha$e"},{"id":"1530","name":"The Life and Times of Tim"}]';
 # Perform the query
-$query = sprintf("SELECT tc, name from mytable WHERE name LIKE '%%%s%%' ORDER BY popularity DESC LIMIT 10", mysql_real_escape_string($_GET["q"]));
+$query = sprintf("SELECT id, name from drug WHERE name LIKE '%%%s%%' ORDER BY popularity DESC LIMIT 10", mysql_real_escape_string($_GET["drugs"]));
+
 $arr = array();
 $rs = mysql_query($query);
 
@@ -30,14 +26,8 @@ if($_GET["callback"]) {
 }
 
 # Return the response
-#echo $json_response;
- */
+echo $json_response;
 
 
-echo '
-[{"id":"1530","name":"The Life and Times of Tim"},{"id":"1210","name":"Kenny vs. Spenny"},{"id":"1394","name":"Shark"},{"id":"1395","name":"Shaun the Sheep"},{"id":"1398","name":"Side Order of Life"},{"id":"1397","name":"Shear Genius"},{"id":"1396","name":"Seinfeld"}]'
-
-//echo '[{"id":"978","name":"cha$e"},{"id":"1530","name":"The Life and Times of Tim"}]';
-//echo 'emineker';
 
 ?>
