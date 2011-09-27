@@ -35,36 +35,25 @@ function multi(){
                 $a .='<li><a href="#frag-'.$key. '">'.$val['name'].'</a></li>';
         $a .= '</ul>';
 
-        $db = DB::sql('select name from parent where discipline_id="'.$key.'"');
+        $survey = DB::sql('select * from d_survey');
+        $parent = DB::sql('select * from parent');
         foreach ($dis as $key => $val){
                 $a .= '<div id="frag-'.$key.'">';
-                $a .= '<select multiple="multiple" size="5" style="width:885px;">
-                        <option value="red">Red</option>
-                        <option value="green">Green</option>
-                        <option value="blue">Blue</option>
-                        <option value="orange">Orange</option>
-                        <option value="purple">Purple</option>
-                        <option value="yellow">Yellow</option>
-                </select>';
+                foreach ($parent as $k => $v){
+                        if ($v['parent_id'][0] == $key+1){
+                                $a .= '<p class="answer">' . $v['name'] . '</p>';
+                                $a .= '<select multiple="multiple" size="5" style="width:885px;">';
+                                        #foreach ($survey as $a => $b){
+                                        #        if ($v['d_survey_id'][0] == $key+1){
+                                        #                '<option value="">Değer</option>';
+                                        #        }
+                                        #}
+                                $a .= '</select>';
+                        }
+                }
                 $a .= '</div>';
         }
 
-        $aa = '
-                <F3:repeat group="{{@discipline}}" key="{{@key}}" value="{{@value}}">                                                                 
-                <div id="frag-{{@key}}">                                                                                                              
-
-                <select multiple="multiple" size="5" style="width:885px;">                                                                        
-                <option value="red">Red</option>                                                                                                
-                <option value="green">Green</option>                                                                                            
-                <option value="blue">Blue</option>                                                                                              
-                <option value="orange">Orange</option>                                                                                          
-                <option value="purple">Purple</option>                                                                                          
-                <option value="yellow">Yellow</option>                                                                                          
-                </select>                                                                                                                         
-
-                </div>                                                                                                                                
-                </F3:repeat>                                                                                                                          
-                ';
         return $a;
 }
 
