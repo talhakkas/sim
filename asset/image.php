@@ -9,7 +9,7 @@ class Image {
 	static $_extension = '.jpg';
 	static $_dir = "../public/upload";
 
-	public static function upload($subdir, $savename, $uploaded, $overwrite=false, $type='IMAGETYPE_JPEG', $size=550001) {
+	public static function upload($subdir, $savename, $uploaded, $overwrite=false, $size=550001) {
 		$uploaded = $uploaded['tmp_name'];
 
 		$full_savename = $savename . self::$_extension;   // kayıt ismimiz
@@ -41,7 +41,7 @@ class Image {
 				return array(false, 'Resim çok büyük');
 			}
 			// şimdilik sadece JPEG, dosya tipini içine bakarak tespit ediyoruz
-			else if (exif_imagetype($uploaded) != $type) {
+			else if (exif_imagetype($uploaded) != IMAGETYPE_JPEG) {
 				return array(false, 'Resim JPEG değil');
 			}
 			// dosyanın üzerine yazmayalım, ekstra güvenlik
