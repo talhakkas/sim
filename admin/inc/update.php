@@ -16,9 +16,17 @@ if (!F3::exists('error')) {
 		if ($gnl != 'photo') // photo'yu kaydetme
 			$table->$gnl = $blg;
 
-	$resim = "$TABLE/" . $table->$KEY . '.jpg';
-	if (yukle("asset" . F3::get('uploaddir') . $resim, "photo", true)) // önceden bir resim var ise üzerine yaz gitsin
-		$table->photo = $resim;
+
+	$table->photo = "default.jpg"; // default resim
+	$table->save();
+
+	$table = new Axon($TABLE);
+	$table->load("$KEY='$key'");
+
+	// önceden bir resim var ise üzerine yaz gitsin
+	if ($response = Image::upload($TABLE, $table->$KEY, F3::get("FILES.photo"), true))
+		if ($response[0])
+			$table->photo = $response[1];
 
 	if (F3::exists('error')) // yükleme sırasında hata var mı?
 		return F3::call('edit');
