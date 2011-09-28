@@ -12,9 +12,7 @@ $table = new Axon($TABLE);
 $table->load("$KEY='$key'");
 
 // resmi bu olsa gerek.
-$resim = F3::get('uploaddir') . "$TABLE/" . $table->$KEY . '.jpg';
-if (file_exists($resim)) // ama hakiketen var mı?
-	unlink($resim);
+Image::delete($TABLE, $table->$KEY);
 
 $table->erase();
 F3::set('SESSION.SAVE', F3::get('SESSION.SAVE') - 1);

@@ -6,7 +6,7 @@ function myserialize($arr) {
 
 	foreach($arr as $i=>$a) {
 		$str .= '{"id":"' . $a['id'] . '","name":"' . $a['name'] . '"}';
-	
+
 		if($i <> (count($arr) - 1)) $str .= ',';
 	}
 

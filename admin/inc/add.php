@@ -14,11 +14,18 @@ if (!$table->found("$KEY='$key'")) {
 		if ($gnl != "photo") // alan adı photo ise kaydetme!
 			$table->$gnl = $blg;
 
-	$resim = "$TABLE/" . $table->$KEY . '.jpg';
-	if (yukle(F3::get('uploaddir') . $resim, "photo", false)) // resim yükle ve üzerine yazılmasın!
-		$table->photo = $resim;
-	else
-		$table->photo = "default.jpg"; // default resim
+	$table->photo = "default.jpg"; // default resim
+	$table->save();
+
+	$table = new Axon($TABLE);
+	$table->load("$KEY='$key'");
+
+	// resim yükle ve üzerine yazılmasın!
+	if ($response = Image::upload($TABLE, $table->$KEY, F3::get("FILES.photo"), false))
+		if ($response[0]) // istek başarı mı / hata mı ?
+			$table->photo = $response[1];
+		else
+			F3::set('error', $response[1]);
 
 	if (F3::exists('error')) // yükleme sırasında hata var mı?
 		return F3::call('add');

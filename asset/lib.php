@@ -2,6 +2,7 @@
 
 include 'access.php';
 include 'init.php';
+include 'image.php';
 include 'dict.php';
 
 // look

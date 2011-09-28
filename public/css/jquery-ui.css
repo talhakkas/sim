@@ -623,4 +623,5 @@ ul.ui-multiselect-checkboxes {width:865px; padding:5px; 10px}
 ul.ui-multiselect-checkboxes li{ float:left;width:400px;}
 ul.ui-multiselect-checkboxes li select option{ float:left;width:250px;}
 */
+ul.ui-multiselect-checkboxes { padding-top:10px;}
 
