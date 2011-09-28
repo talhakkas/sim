@@ -1,6 +1,9 @@
 <?
+//require_once  '../../asset/depo.php';
 
-require_once  '../../asset/depo.php';
+$db_user = "sim";
+$db_pass = "maslak55";
+$db_name = "sim";
 
 # Connect to the database
 mysql_pconnect("localhost", $db_user, $db_pass) or die("Could not connect");
@@ -21,9 +24,9 @@ while($obj = mysql_fetch_object($rs)) {
 $json_response = json_encode($arr);
 
 # Optionally: Wrap the response in a callback function for JSONP cross-domain support
-if($_GET["callback"]) {
-    $json_response = $_GET["callback"] . "(" . $json_response . ")";
-}
+/*if($_GET["callback"]) {
+	$json_response = $_GET["callback"] . "(" . $json_response . ")";
+}*/
 
 # Return the response
 echo $json_response;
