@@ -1,33 +1,18 @@
-<html> 
-<head> 
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script> 
-    <script type="text/javascript" src="https://github.com/loopj/jquery-tokeninput/raw/master/src/jquery.tokeninput.js"></script> 
- 
-    <link rel="stylesheet" href="http://loopj.com/jquery-tokeninput/styles/token-input.css" type="text/css" /> 
-    <link rel="stylesheet" href="http://loopj.com/jquery-tokeninput/styles/token-input-facebook.css" type="text/css" /> 
- 
-    <script type="text/javascript"> 
-    $(document).ready(function() {
-        $("input[type=button]").click(function () {
-            alert("Would submit: " + $(this).siblings("input[type=text]").val());
-        });
-    });
-    </script> 
-</head> 
- 
-<body> 
-    <h1>jQuery Tokeninput Demos</h1> 
- 
-    <h2>Simple Server-Backed Search</h2> 
-    <div> 
-        <input type="text" id="demo-input" name="blah" /> 
-        <input type="button" value="Submit" /> 
-        <script type="text/javascript"> 
-        $(document).ready(function() {
-            $("#demo-input").tokenInput("ajax/get_drug.php");
-        });
-        </script> 
-    </div> 
-</body>
+<script type="text/javascript" src="/public/js/jquery.tokeninput.js"></script> 
 
-</html>
+<h2>ilaç seçimi</h2>
+
+<div class="tokeninput">
+  <p class="answer">ilaç seçiminizi buradan yapabilirsiniz</p>
+  <label class="label">
+    <input type="text" id="tokeninput" name="blah" />
+  </label>
+  <input type="submit" value="Gönder" />
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $("#tokeninput").tokenInput("ajax/get_drug.php");
+    });
+  </script>
+</div>
+
+

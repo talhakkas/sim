@@ -1,23 +1,4 @@
-<h2>ilaç seçimi</h2>
-
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
-<script type="text/javascript" src="https://github.com/loopj/jquery-tokeninput/raw/master/src/jquery.tokeninput.js"></script> 
-<link rel="stylesheet" href="http://loopj.com/jquery-tokeninput/styles/token-input.css" type="text/css" /> 
-<link rel="stylesheet" href="http://loopj.com/jquery-tokeninput/styles/token-input-facebook.css" type="text/css" /> 
-
-
-    <h2>Simple Server-Backed Search</h2> 
-    <div> 
-        <input type="text" id="demo-input" name="blah" /> 
-        <input type="button" value="Submit" /> 
-        <script type="text/javascript"> 
-        $(document).ready(function() {
-            $("#demo-input").tokenInput("/student/ajax/ilac.php?drugs=");
-        });
-        </script> 
-    </div> 
- 
-<div class="tokeninput" style="display:none">
+<div class="tokeninput">
 <!--form action="ilac" method="post"-->
 <p class="answer left" style="width:230px;">ilaç seçiminizi buradan yapabilirsiniz</p>
   <label class="label">
@@ -30,6 +11,10 @@
 </script>
 <!--/form-->
 </div>
+
+
+
+
 
 
 

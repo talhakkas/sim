@@ -1,5 +1,5 @@
 .tokeninput input[type=submit] {float:right;margin-right:140px;margin-top:15px;}
-.tokeninput .answer {margin-top:20px;}
+.tokeninput .answer {width:230px;margin-top:20px;}
 ul.token-input-list {margin: 0;padding: 0;}
 
 ul.token-input-list li {list-style-type: none;}
