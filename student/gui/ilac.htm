@@ -6,27 +6,23 @@
     <link rel="stylesheet" href="http://loopj.com/jquery-tokeninput/styles/token-input.css" type="text/css" /> 
     <link rel="stylesheet" href="http://loopj.com/jquery-tokeninput/styles/token-input-facebook.css" type="text/css" /> 
  
-    <script type="text/javascript"> 
-    $(document).ready(function() {
-        $("input[type=button]").click(function () {
-            alert("Would submit: " + $(this).siblings("input[type=text]").val());
-        });
-    });
-    </script> 
 </head> 
  
 <body> 
-    <h1>jQuery Tokeninput Demos</h1> 
- 
-    <h2>Simple Server-Backed Search</h2> 
-    <div> 
-        <input type="text" id="demo-input" name="blah" /> 
-        <input type="button" value="Submit" /> 
+    <div class="tokenInput"> 
+	 <form action="ilac" method="post">
+		<p class="answer left" style="width:230px;">ilaç seçiminizi buradan yapabilirsiniz</p>
+        	<label class="label">
+			 <input type="text" id="drugs" name="drugs" /> 
+			</label>
+        	<input type="submit" value="Kaydet" /> 
+
         <script type="text/javascript"> 
         $(document).ready(function() {
-            $("#demo-input").tokenInput("ajax/get_drug.php");
+            $("#drugs").tokenInput("ajax/get_drug.php");
         });
         </script> 
+	 </form>
     </div> 
 </body>
 

@@ -80,10 +80,7 @@ function cases() {
 
 F3::route('GET /f', function() {render('f', 'video player');});
 F3::route('GET /ilac', function() {render('ilac', 'ilaç ekranı');});
-F3::route('POST /ilac', function() {
-	echo "Secilen ilaclar: ";
-	echo $_POST['drugs'];
-});
+F3::route('POST /ilac', 'ilac_sonuc.php');
 
 F3::route('GET /test',
         function() {

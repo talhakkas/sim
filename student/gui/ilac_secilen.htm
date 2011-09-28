@@ -1,0 +1,78 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>qTip - The jQuery tooltip plugin - Demos - Dynamic website thumbnails</title>
+<!--Stylesheets-->
+<link rel="shortcut icon" href="http://craigsworks.com/projects/qtip/favicon.ico" />
+<link type="text/css" rel="stylesheet" href="http://craigsworks.com/projects/qtip/css/master.css"  />
+<link type="text/css" rel="stylesheet" href="http://craigsworks.com/projects/qtip/css/qtip.css"  />
+<link type="text/css" rel="stylesheet" href="http://craigsworks.com/projects/qtip/css/demo.css"  />
+<link type="text/css" rel="stylesheet" href="http://craigsworks.com/projects/qtip/css/highlight.css"  />
+<!--Meta-->
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<!--Header JavaScript-->
+<script type="text/javascript" src="http://craigsworks.com/projects/qtip/packages/jquery-1.3.2.js"></script>
+</head>
+<body>
+<div id="master">
+   
+<div id="content" class="thumbnail">
+   <p class="cloud">
+
+<F3:repeat group="{{@SESSION.ilac}}" key="{{@id}}" value="{{@name}}" >
+      <a class="cloud5" href="http://www.hekimce.com/ilacrehberi.php?ilac={{@id}}">{{@name}}</a> <br>
+</F3:repeat>
+
+   </p>
+</div>
+
+<script type="text/javascript" src="http://www.websnapr.com/js/websnapr.js"></script>
+<script class="example" type="text/javascript">
+// Create the tooltips only on document load
+$(document).ready(function() 
+{
+	/*
+	 * You'll need your own API key, don't abuse mine please!
+	 * Get yours here: http://www.websnapr.com/free_services/
+	 */
+	var apiKey = 'X66vdUIAs9w2';
+
+	// Notice the use of the each method to gain access to each element individually
+	$('#content a').each(function()
+	{
+		// Grab the URL from our link
+		var url = encodeURIComponent( $(this).attr('href') ),
+
+		// Create image thumbnail using Websnapr thumbnail service
+		thumbnail = $('<img />').attr({
+			src: 'http://images.websnapr.com/?url=' + url + '&key=' + apiKey + '&hash=' + encodeURIComponent(websnapr_hash),
+			alt: 'Loading thumbnail...',
+			width: 202,
+			height: 152
+		});
+
+		// Setup the tooltip with the content
+		$(this).qtip(
+		{
+			content: thumbnail,
+			position: {
+				corner: {
+					tooltip: 'bottomMiddle',
+					target: 'topMiddle'
+				}
+			},
+			style: {
+				tip: true, // Give it a speech bubble tip with automatic corner detection
+				name: 'cream'
+			}
+		});
+	});
+});
+</script>
+<!--Footer JavaScript-->
+<script type="text/javascript" src="http://craigsworks.com/projects/qtip/packages/1.0.0-rc3/jquery.qtip-1.0.0-rc3.js"></script>
+<script type="text/javascript" src="http://craigsworks.com/projects/qtip/js/highlight.js"></script>
+<script type="text/javascript" src="http://craigsworks.com/projects/qtip/js/highlight/javascript.js"></script>
+<script type="text/javascript" src="http://craigsworks.com/projects/qtip/js/demo.js"></script>
+</body>
+</html>
