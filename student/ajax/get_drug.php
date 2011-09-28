@@ -6,7 +6,7 @@ function myserialize($arr) {
 
 	foreach($arr as $i=>$a) {
 		$str .= '{"id":"' . $a['id'] . '","name":"' . $a['name'] . '"}';
-
+	
 		if($i <> (count($arr) - 1)) $str .= ',';
 	}
 
@@ -17,10 +17,10 @@ function myserialize($arr) {
 
 $q = empty($_GET['q']) ? "" : $_GET['q'];
 
-mysql_pconnect("localhost", $db_user, $db_pass) or die("Could not connect");
+mysql_connect("localhost", $db_user, $db_pass) or die("Could not connect");
 mysql_select_db($db_name) or die("Could not select database");
 
-$sql = "select * from drug where name LIKE '%$q%'";
+$sql = "select * from drug where name LIKE '%$q%' limit 0,20";
 $res = mysql_query($sql);
 
 $arr = array();
