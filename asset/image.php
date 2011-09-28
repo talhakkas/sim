@@ -32,8 +32,8 @@ class Image {
 		}
 
 		// tam yol
-		$full_destination = getcwd() . "/" . $destination; // hedefin tam yolu
-		$full_image_destination = getcwd() . "/" . $image; // resmimizin tam yolu
+		$full_destination = getcwd() . $destination; // hedefin tam yolu
+		$full_image_destination = getcwd() . $image; // resmimizin tam yolu
 		// bu bir uploaded dosya olmalı, fake dosyalara izin yok
 		if (is_uploaded_file($uploaded)) {
 			// boyutu sınırla, değeri öylesine seçtim
