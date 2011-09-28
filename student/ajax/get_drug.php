@@ -1,4 +1,5 @@
 <?php
+//FIXME:require_once  '../../asset/depo.php';
 
 function myserialize($arr) {
 	$str = '[';
@@ -13,8 +14,9 @@ function myserialize($arr) {
 
 	return $str;
 }
-
-require_once  '../../asset/depo.php';
+$db_name = "sim";
+$db_user = "sim";
+$db_pass = "maslak55";
 
 $q = empty($_GET['q']) ? "" : $_GET['q'];
 
