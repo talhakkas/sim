@@ -8,4 +8,5 @@ adm
 soba
 _*
 
+!/db/*sql
 !/jedit/*
