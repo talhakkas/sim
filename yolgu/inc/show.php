@@ -13,9 +13,24 @@
 		return 1;
 	}
 
-	$tdoz = "";
-	$tayol = "";
-	if($node['title'] == 'doz') {
+	F3::set('SESSION.ilac', 'no');
+
+	if($node['title'] == 'doz')
+		show_node_doz($node);
+	elseif($node['title'] == 'drug')
+		F3::set('SESSION.ilac', 'yes');
+	//else
+render('show', 'Olgu');
+
+
+/* Yerel Islevler */
+function show_node_drug($node) {
+	F3::set('SESSION.ilac', 'yes');
+}
+
+function show_node_doz($node) {
+		$tdoz = "";
+		$tayol = "";
 		$nodes = $node['nodes'];
 		foreach($nodes as $i=>$n) {
 			$t1 = $nodes[$i]["link_text"];
@@ -47,8 +62,5 @@
 		F3::set('SESSION.data', $node);
 
 		render('doz', 'Doz');
-		return 1;
-	}
-
-	render('show', 'Olgu');
+}
 ?>
