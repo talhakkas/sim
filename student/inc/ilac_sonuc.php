@@ -5,9 +5,7 @@ if(empty($_POST)) {
 	return;
 }
 
-echo "<h2>Seçilen İlaçlar</h2>";
-
-$tdrug = new Axon("drug");
+$tdrug = new Axon("drugs");
 
 $drug = preg_split('/,/', $_POST['drugs']);
 
@@ -16,8 +14,9 @@ $ilac_data = array();
 foreach($drug as $i=>$id) {
 	$datas = $tdrug->afind("id='$id'");
 	$name  = $datas[0]['name'];
+	$content  = $datas[0]['content'];
 
-	$ilac_data[$id] = $name;
+	$ilac_data[$id] = array($name, $content);
 
 	//echo "<a href=http://www.hekimce.com/ilacrehberi.php?ilac=$id>$name</a> <br>";
 }
