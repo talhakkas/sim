@@ -13,10 +13,12 @@
 
 - mysqldump ile db yedeğini alalım
 
-        mysqldump -u sim -p sim > sim.sql
+        mysqldump -u sim -p sim > db/sim.sql
 
 - sql dosyasını sunucuya taşıyalım ve db'yi oluşturalım
 
-        mysql -u sim -p sim < sim.sql
+        mysql -u sim -p sim < db/sim.sql
 
+- veritabanından tek bir tablo export etme
 
+	mysqldump -p -u sim sim table > table.sql

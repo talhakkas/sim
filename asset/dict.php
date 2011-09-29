@@ -7,7 +7,7 @@ function dict(){
 		// Tablo İsimleri
 		'people' => 'Kişiler',
 		'event' => 'Olgular (Case)',
-		'drug' => 'İlaçlar',
+		'drugs' => 'İlaçlar',
 		'survey' => 'Etkileşimli Tetkikler',
 		'd_survey' => 'Temel Tetkikler',
 		'patient' => 'Hastalar',

@@ -52,7 +52,7 @@ function giris() {
 	// nerede bizim istediğimiz tablolar ?
 	F3::set('SESSION.TABLES', array(
 				      'people' => 'tc',
-				      'drug' => 'id',
+				      'drugs' => 'id',
 				      'event' => 'event_id',
 				      'survey' => 'survey_id',
 				      'd_survey' => 'd_survey_id',
