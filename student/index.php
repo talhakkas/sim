@@ -117,9 +117,9 @@ F3::route('GET /abc',
                 }
 
                 $drugs = DB::sql("select id from drug");
+                $foo = new Axon('deneme');
                 foreach($drugs as $key => $val){
                         $id = $val['id'];
-                        $foo = new Axon('deneme');
                         $foo->load("id='$id'");
                         if (!$foo->dry())
                                 continue;
