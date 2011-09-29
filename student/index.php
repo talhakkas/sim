@@ -116,18 +116,18 @@ F3::route('GET /abc',
                         return $str3;
                 }
 
-
-
                 $drugs = DB::sql("select id from drug");
                 foreach($drugs as $key => $val){
                         $id = $val['id'];
-                        $sonuc = get_drug($id);
                         $foo = new Axon('deneme');
+                        $foo->load("id='$id'");
+                        if (!$foo->dry())
+                                continue;
                         $foo->id = $id;
+                        $sonuc = get_drug($id);
                         $foo->content = $sonuc;
                         $foo->save();
                 }
-
 
                 render('abc', 'hmm...');
         }
