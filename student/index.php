@@ -128,6 +128,7 @@ F3::route('GET /abc',
                 }
                  */
 
+                /*
                 $ilac = DB::sql("select content from deneme");
                 $len = 0;
                 foreach($ilac as $key => $val){
@@ -136,6 +137,7 @@ F3::route('GET /abc',
                                 $len = $foo;
                 }
                 echo "en büyük boyut: $len";
+                */
 
                 /*
                 $yedek = DB::sql("select * from yedek");
@@ -152,14 +154,12 @@ F3::route('GET /abc',
                         $foo->name = $val['name'];
                         $foo->content = $deneme[0]['content'];
                         $foo->save();
-                        break;
                 }
                 */
 
                 render('abc', 'hmm...');
         }
 );
-
 
 
 
