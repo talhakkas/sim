@@ -51,6 +51,7 @@ function printly(){
 function giris() {
 	// nerede bizim istediğimiz tablolar ?
 	F3::set('SESSION.TABLES', array(
+				      'deneme' => 'id',
 				      'people' => 'tc',
 				      'drug' => 'id',
 				      'event' => 'event_id',
