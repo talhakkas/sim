@@ -93,17 +93,52 @@ F3::route('GET /test',
 
 F3::route('GET /abc',
         function() {
+                function file_get_contents_utf8($fn) {
+                        $content = file_get_contents($fn);
+                        return mb_convert_encoding($content, 'UTF-8',
+                                mb_detect_encoding($content, 'UTF-8, ISO-8859-9', true));
+                }
+
+                function get_drug($id) {
+                        $content = file_get_contents_utf8("http://www.hekimce.com/ilacrehberi.php?ilac=$id");
+
+                        $p1 = strpos($content, 'color:#ffffff;');
+                        $p2 = strpos($content, '>', $p1);
+
+                        $str = substr($content, $p2+1, strlen($content));
+                        $str = trim($str);
+
+                        $p3 = strpos($str, '<br><br><p><b>Toplam Okunma');
+                        $str2 = substr($str, 0, $p3);
+
+                        $str3 = "<table><tr><td>$str2</td></tr></table>";
+
+                        return $str3;
+                }
+
+
+
                 $drugs = DB::sql("select id from drug");
                 foreach($drugs as $key => $val){
                         $id = $val['id'];
-                        $link = "http://www.hekimce.com/ilacrehberi.php?ilac=";
-                        $okunan = file($link.$id);
-                        $okunan = utf8_encode(implode($okunan));
-                        $okunan = substr($okunan, strpos($okunan,'background-color: #4169E1'));
-                        $okunan = substr($okunan, 0, strpos($okunan,'</table>'));
-                        echo $okunan;
-                        break;
+                        $sonuc = get_drug($id);
+                        $foo = new Axon('deneme');
+                        $foo->id = $id;
+                        $foo->content = $sonuc;
+                        $foo->save();
+                        if ($key == 2)
+                                break;
                 }
+
+
+
+
+
+
+
+
+
+
                 render('abc', 'hmm...');
         }
 );
