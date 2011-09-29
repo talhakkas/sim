@@ -6,7 +6,7 @@ ul.token-input-list li {list-style-type: none;}
 ul.token-input-list li input {border: 0; width: 350px; padding: 3px 8px; background-color: white; -webkit-appearance: caret;}
 li.token-input-token {
     overflow: hidden; height: auto !important; margin: 3px; padding: 3px 2px 0px; padding-left:8px;
-    background-color: #2daebf; font-weight:bold; letter-spacing:1px; color: #fff; cursor: default; display: block;
+    background-color: #2daebf; font-weight:bold; color: #fff; cursor: default; display: block;
 }
 li.token-input-token p {float: left;padding: 0; margin: 0;}
 li.token-input-token span { float: right; cursor: pointer;}

@@ -1,29 +1,29 @@
 <?php
 
-	if(empty($_POST)) {
-		echo "Herhangi bir ilaç seçimi yapılmamış";
-		return;
-	}
+if(empty($_POST)) {
+	echo "Herhangi bir ilaç seçimi yapılmamış";
+	return;
+}
 
-	echo "<h2>Seçilen İlaçlar</h2>";
+echo "<h2>Seçilen İlaçlar</h2>";
 
-	$tdrug = new Axon("drug");
-		
-	$drug = preg_split('/,/', $_POST['drugs']);
+$tdrug = new Axon("drug");
 
-	$ilac_data = array();
+$drug = preg_split('/,/', $_POST['drugs']);
 
-	foreach($drug as $i=>$id) {
-		$datas = $tdrug->afind("id='$id'");
-		$name  = $datas[0]['name'];
+$ilac_data = array();
 
-		$ilac_data[$id] = $name;
+foreach($drug as $i=>$id) {
+	$datas = $tdrug->afind("id='$id'");
+	$name  = $datas[0]['name'];
 
-		//echo "<a href=http://www.hekimce.com/ilacrehberi.php?ilac=$id>$name</a> <br>";
-	}
+	$ilac_data[$id] = $name;
 
-	F3::set('SESSION.ilac', $ilac_data);
+	//echo "<a href=http://www.hekimce.com/ilacrehberi.php?ilac=$id>$name</a> <br>";
+}
 
-	render('ilac_secilen', 'Seçilen İlaçlar');
+F3::set('SESSION.ilac', $ilac_data);
+
+render('ilac_secilen', 'Seçilen İlaçlar');
 
 ?>
