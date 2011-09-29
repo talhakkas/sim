@@ -126,17 +126,7 @@ F3::route('GET /abc',
                         $foo->id = $id;
                         $foo->content = $sonuc;
                         $foo->save();
-                        if ($key == 2)
-                                break;
                 }
-
-
-
-
-
-
-
-
 
 
                 render('abc', 'hmm...');
