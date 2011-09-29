@@ -1,8 +1,7 @@
 <?php
 
 function foo($id, $len){
-        $padded = str_pad((string)$id, $len, "0", STR_PAD_LEFT);
-        return $padded;
+        return str_pad((string)$id, $len, "0", STR_PAD_LEFT);
 }
 
 function multi(){
