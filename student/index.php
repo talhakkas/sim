@@ -93,6 +93,7 @@ F3::route('GET /test',
 
 F3::route('GET /abc',
         function() {
+                /*
                 function file_get_contents_utf8($fn) {
                         $content = file_get_contents($fn);
                         return mb_convert_encoding($content, 'UTF-8',
@@ -111,9 +112,7 @@ F3::route('GET /abc',
                         $p3 = strpos($str, '<br><br><p><b>Toplam Okunma');
                         $str2 = substr($str, 0, $p3);
 
-                        $str3 = "<table><tr><td>$str2</td></tr></table>";
-
-                        return $str3;
+                        return "<table><tr><td>$str2</td></tr></table>";
                 }
 
                 $drugs = DB::sql("select id from drug");
@@ -124,10 +123,38 @@ F3::route('GET /abc',
                         if (!$foo->dry())
                                 continue;
                         $foo->id = $id;
-                        $sonuc = get_drug($id);
-                        $foo->content = $sonuc;
+                        $foo->content = get_drug($id);
                         $foo->save();
                 }
+                 */
+
+                $ilac = DB::sql("select content from deneme");
+                $len = 0;
+                foreach($ilac as $key => $val){
+                        $foo = count($val['content']);
+                        if ($foo > $len)
+                                $len = $foo;
+                }
+                echo "en büyük boyut: $len";
+
+                /*
+                $yedek = DB::sql("select * from yedek");
+                //$deneme = DB::sql("select * from deneme");
+                $foo = new Axon('drugs');
+                foreach($yedek as $key => $val){
+                        $id = $val['id'];
+                        $foo->load("id='$id'");
+                        if (!$foo->dry())
+                                continue;
+
+                        $deneme = DB::sql("select * from deneme where id=$id");
+                        $foo->id = $id;
+                        $foo->name = $val['name'];
+                        $foo->content = $deneme[0]['content'];
+                        $foo->save();
+                        break;
+                }
+                */
 
                 render('abc', 'hmm...');
         }
