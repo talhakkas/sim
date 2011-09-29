@@ -1,29 +1,19 @@
-<html> 
-<head> 
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script> 
-    <script type="text/javascript" src="https://github.com/loopj/jquery-tokeninput/raw/master/src/jquery.tokeninput.js"></script> 
- 
-    <link rel="stylesheet" href="http://loopj.com/jquery-tokeninput/styles/token-input.css" type="text/css" /> 
-    <link rel="stylesheet" href="http://loopj.com/jquery-tokeninput/styles/token-input-facebook.css" type="text/css" /> 
- 
-</head> 
- 
-<body> 
-    <div class="tokenInput"> 
-	 <form action="ilac" method="post">
-		<p class="answer left" style="width:230px;">ilaç seçiminizi buradan yapabilirsiniz</p>
-        	<label class="label">
-			 <input type="text" id="drugs" name="drugs" /> 
-			</label>
-        	<input type="submit" value="Kaydet" /> 
+<script type="text/javascript" src="/public/js/jquery.tokeninput.js"></script> 
 
-        <script type="text/javascript"> 
-        $(document).ready(function() {
-            $("#drugs").tokenInput("ajax/get_drug.php");
-        });
-        </script> 
-	 </form>
-    </div> 
-</body>
 
-</html>
+<div class="tokeninput">
+  <form action="ilac" method="post">
+    <p class="answer left">ilaç seçiminizi buradan yapabilirsiniz</p>
+    <label class="label">
+      <input type="text" id="drugs" name="drugs" />
+    </label>
+    <input type="submit" value="Kaydet" />
+
+    <script type="text/javascript">
+      $(document).ready(function() {
+          $("#drugs").tokenInput("ajax/get_drug.php");
+          });
+    </script>
+  </form>
+</div>
+
