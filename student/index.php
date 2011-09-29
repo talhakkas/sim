@@ -91,6 +91,25 @@ F3::route('GET /test',
         }
 );
 
+F3::route('GET /abc',
+        function() {
+                $drugs = DB::sql("select id from drug");
+                foreach($drugs as $key => $val){
+                        $id = $val['id'];
+                        $link = "http://www.hekimce.com/ilacrehberi.php?ilac=";
+                        $okunan = file($link.$id);
+                        $okunan = utf8_encode(implode($okunan));
+                        $okunan = substr($okunan, strpos($okunan,'background-color: #4169E1'));
+                        $okunan = substr($okunan, 0, strpos($okunan,'</table>'));
+                        echo $okunan;
+                        break;
+                }
+                render('abc', 'hmm...');
+        }
+);
+
+
+
 
 F3::route("GET /*"      , 'login');
 F3::route("GET /printly*"      , 'printly');
