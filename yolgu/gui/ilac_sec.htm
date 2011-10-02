@@ -1,12 +1,12 @@
 <tr>
   <td></td>
   <td class="field" id="dal{{@ctr}}field">
-    <textarea name="link_text[]">{{@blg['link_text']}}</textarea><br>
+    <textarea name="link_text[]">{{@SESSION.data['nodes'][0]['link_text']}}</textarea><br>
 
-    Ödül: <input type="text" name="odul[]" value="{{@blg['odul']}}" maxlength="3" size="3">
-    Ceza: <input type="text" name="ceza[]" value="{{@blg['ceza]}}"  maxlength="3" size="3">
+    Ödül: <input type="text" name="odul[]" value="{{@SESSION.data['nodes'][0]['odul']}}" maxlength="3" size="3">
+    Ceza: <input type="text" name="ceza[]" value="{{@SESSION.data['nodes'][0]['ceza]}}"  maxlength="3" size="3">
 
-    <input type="text" name="IA[]" id="IA{{@ctr}}" value="dolu"  style="visibility:hidden;">
+    <input type="checkbox" name="chkIA[]" id="chkIA{{@ctr}}" value="1"><br>
   </td>
 </tr>
 <tr>
@@ -21,7 +21,13 @@
 
     <script type="text/javascript">
       $(document).ready(function() {
-          $("#drugs").tokenInput("/public/ajax/get_drug.php");
+          $("#drugs").tokenInput("/public/ajax/get_drug.php", {
+                prePopulate: [
+		<F3:repeat group="{{@SESSION.ilac}}" key="{{@id}}" value="{{@name}}"> 
+                    {id: {{@id}}, name: "{{@name}}"},
+		</F3:repeat>
+                ]
+            });
           });
     </script>
 </div>
