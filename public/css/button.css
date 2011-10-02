@@ -34,7 +34,7 @@ input.small.button { padding: 5px 19px 4px;}
 input.button { padding: 6px 19px 5px;}
 input.large.button { padding: 7px 19px 7px;}
 
-input, button { margin: 0; padding: 0; border: 0; font-weight: normal; font-style: normal; font-size: 100%; line-height: 1; font-family: inherit; text-align: left;border:1px solid #ddd; }
+input, button { margin: 0; padding: 0; border: 0; font-weight: normal; font-style: normal; font-size: 100%; line-height: 1; font-family: inherit; text-align: left;}
 
 .button { background-color: #2f7ca2; display: inline-block; padding: 5px 15px 6px; color: #fff !important;
     font-size: 13px; font-weight: bold; line-height: 1; text-decoration: none; position: relative; cursor: pointer;
