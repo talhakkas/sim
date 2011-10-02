@@ -23,7 +23,6 @@ if (! F3::exists('error')) {
 	$admin->load("tc='$username'");
 
         if ($username && $password && !$admin->dry() && streq_turkish($admin->password, $password)) {
-
                 // admini oturuma gömelim ve oradan alalım
 		F3::set('SESSION.adminusername', $username);
                 F3::set('SESSION.adminpassword', $password);

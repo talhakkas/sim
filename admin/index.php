@@ -68,7 +68,8 @@ function giris() {
 				      'tet' => 'id',
 			      )
 	);
-       	// login olursa, default olarak admin tablosu seçilsin
+
+	// login olursa, default olarak admin tablosu seçilsin
 	F3::set('SESSION.TABLE_INIT', 'people');
 
 	// tablo incele kısmında buna benzer şeyleri görürsen bizimde görmemize izin ver
