@@ -67,7 +67,7 @@ function giris() {
 				      'takip' => 'tid',
 				      'tet' => 'id',
 			      )
-	);
+		      );
 
 	// login olursa, default olarak admin tablosu seçilsin
 	F3::set('SESSION.TABLE_INIT', 'people');
@@ -98,8 +98,6 @@ function giris() {
 	render('login', 'Yönetici Paneli'); // adminlayout sadece login sayfası için
 }
 
-
-F3::route('GET /test', function() { render('test', 'butonlar');});
 
 F3::route("GET  /*",      'giris');
 F3::route("GET /printly",  'printly');
