@@ -13,21 +13,17 @@
 		return 1;
 	}
 
-	F3::set('SESSION.ilac', 'no');
+	F3::set('SESSION.isspecial', 'no');
+	if(in_array($node['title'], array('drug', 'doz'))
+		F3::set('SESSION.isspecial', 'yes');
 
 	if($node['title'] == 'doz')
 		show_node_doz($node);
-	elseif($node['title'] == 'drug')
-		F3::set('SESSION.ilac', 'yes');
-	//else
+
 render('show', 'Olgu');
 
 
 /* Yerel Islevler */
-function show_node_drug($node) {
-	F3::set('SESSION.ilac', 'yes');
-}
-
 function show_node_doz($node) {
 		$tdoz = "";
 		$tayol = "";
