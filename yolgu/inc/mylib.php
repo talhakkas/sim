@@ -183,8 +183,14 @@ function zip($datas) {
 			$size = sizeof($datas['link_text']);
 			for($i=0; $i < $size; $i++) {
 				$response = empty($datas['IA'][$i]) ? "" : (";;" . $datas['IA'][$i]);
-				$tmp = $tmp . $datas['link_text'][$i] . $response ."::". $datas['node_link'][$i];
-				$tmp = $tmp . "::" . $datas['odul'][$i] . "::" . $datas['ceza'][$i];
+
+				$link_text = isset($datas['link_text'][$i]) ? $datas['link_text'][$i]:"";
+				$node_link = isset($datas['node_link'][$i]) ? $datas['node_link'][$i]:"";
+				$odul = isset($datas['odul'][$i]) ? $datas['odul'][$i]:"";
+				$ceza = isset($datas['ceza'][$i]) ? $datas['ceza'][$i]:"";
+
+				$tmp = $tmp . $link_text . $response ."::". $node_link;
+				$tmp = $tmp . "::" . $odul . "::" . $ceza;
 
 				if ($i < ($size - 1))
 					$tmp = $tmp .",,";

@@ -2,6 +2,13 @@
 <script type="text/javascript" src="/public/js/myselect.js"></script>
 <script type="text/javascript" src="/public/js/myjs.js"></script>
 
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script> 
+<script type="text/javascript" src="https://github.com/loopj/jquery-tokeninput/raw/master/src/jquery.tokeninput.js"></script> 
+
+<link rel="stylesheet" href="http://loopj.com/jquery-tokeninput/styles/token-input.css" type="text/css" /> 
+<link rel="stylesheet" href="http://loopj.com/jquery-tokeninput/styles/token-input-facebook.css" type="text/css" /> 
+
+
 <div class="page">
   <h2>Düğüm::{{@page_title}}
     <a href="{{@SR}}/show/{{@SESSION.cid}}/{{@SESSION.id}}">
@@ -79,7 +86,14 @@
       <input type="hidden" name="isWrong" value="{{@SESSION.data['isWrong']}}"/>
       <input type="hidden" name="NoNodes2" id="NoNodes2" value="0" />
 
-      <F3:include href="node_{{@SESSION.data['type']}}.htm" />
+	  <F3:check if="{{@SESSION.data['title'] == 'drug'}}">
+		<F3:true>
+      		<F3:include href="ilac_sec.htm" />
+		</F3:true>
+		<F3:false>
+      		<F3:include href="node_{{@SESSION.data['type']}}.htm" />
+		</F3:false>
+	  </F3:check>
 
     </table>
     <input type="submit" name="default" value="{{@page_title}}"/>

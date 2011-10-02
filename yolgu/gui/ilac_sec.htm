@@ -1,0 +1,31 @@
+<tr>
+  <td></td>
+  <td class="field" id="dal{{@ctr}}field">
+    <textarea name="link_text[]">{{@blg['link_text']}}</textarea><br>
+
+    Ödül: <input type="text" name="odul[]" value="{{@blg['odul']}}" maxlength="3" size="3">
+    Ceza: <input type="text" name="ceza[]" value="{{@blg['ceza]}}"  maxlength="3" size="3">
+
+    <input type="text" name="IA[]" id="IA{{@ctr}}" value="dolu"  style="visibility:hidden;">
+  </td>
+</tr>
+<tr>
+	<td></td>
+
+<td>
+<div class="tokeninput">
+    <p class="answer left">ilaç seçiminizi buradan yapabilirsiniz</p>
+    <label class="label">
+      <input type="text" id="drugs" name="IA[]" />
+    </label>
+
+    <script type="text/javascript">
+      $(document).ready(function() {
+          $("#drugs").tokenInput("/public/ajax/get_drug.php");
+          });
+    </script>
+</div>
+</td>
+</tr>
+
+
