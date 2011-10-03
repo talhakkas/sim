@@ -1,0 +1,77 @@
+<style>
+  div#wrapper {border-color:#a9014b;}
+  ul.tabs li.magenta {
+    text-shadow:0 -1px 1px rgba(0,0,0,.25);
+    background:#a9014b;position:relative; }
+  ul.tabs li.magenta a{color:#fff;}
+</style>
+
+<script src="/public/js/slides.min.jquery.js"></script>
+<script>
+  $(function(){
+    $('#products').slides({
+      preload: true,
+      preloadImage: '/public/img/loading2.gif',
+      effect: 'slide, fade',
+      crossfade: true,
+      slideSpeed: 350,
+      fadeSpeed: 500,
+      generateNextPrev: true,
+      generatePagination: false
+    });
+  });
+</script>
+
+<h2 class="magenta">EKG Ekranı</h2>
+
+<form method="post" class="module bulgu">
+  <div id="products">
+    <div class="slides_container">
+      <a href="#"><img src="/public/img/bulgu/1.png"></a>
+      <a href="#"><img src="/public/img/bulgu/2.jpeg"></a>
+      <a href="#"><img src="/public/img/bulgu/3.jpg"></a>
+      <a href="#"><img src="/public/img/bulgu/4.jpg"></a>
+      <a href="#"><img src="/public/img/bulgu/5.jpg"></a>
+      <a href="#"><img src="/public/img/bulgu/6.jpg"></a>
+      <a href="#"><img src="/public/img/bulgu/7.jpg"></a>
+    </div>
+    <ul class="pagination">
+      <li><a href="#"><img src="/public/img/bulgu/1.png"></a></li>
+      <li><a href="#"><img src="/public/img/bulgu/2.jpeg"></a></li>
+      <li><a href="#"><img src="/public/img/bulgu/3.jpg"></a></li>
+      <li><a href="#"><img src="/public/img/bulgu/4.jpg"></a></li>
+      <li><a href="#"><img src="/public/img/bulgu/5.jpg"></a></li>
+      <li><a href="#"><img src="/public/img/bulgu/6.jpg"></a></li>
+      <li><a href="#"><img src="/public/img/bulgu/7.jpg"></a></li>
+    </ul>
+  </div>
+
+  <span class="title">Olayın Öyküsü</span>
+  <div class="bulgu-story">
+    33 yaşındaki Hamdi Mersin, çiçek serasında ilaçlama yaptıktan sonra, çiçek
+    serasının tavanındaki bir hasarı gidermek için merdivene çıkarken, kendini
+    kötü hissetmiş, bulantısı olmuş, kısa süreli bir baygınlık geçirmiş, gözleri
+    kararmış ve 5 basamak yukarıdan yere düşmüştür. Düşme sırasında boyun ve bel
+    bölgesini zemindeki beton çıkıntıya çarpmıştır. Kafasına ise bir darbe
+    almadığını belirtmiştir. Doktor olarak görev yaptığınız, çiçek serasının 50
+    metre uzağında bulunan aile hekimliği merkezinden, hastaya müdahale etmeniz
+    için çağrıldınız.
+  </div>
+
+<F3:check if="{{@SESSION.isEkgResponse == 'yes'}}">
+ <F3:true>
+  <span class="title">Girdiğiniz Yorum</span>
+  <textarea name="yorum" class="yorum" readonly="readonly">{{@SESSION.yorum}}</textarea>
+  <span class="title_beklenen">Beklenen Yorum</span>
+  <textarea name="beklenen" class="beklenen" readonly="readonly">Foo bar</textarea>
+ </F3:true>
+ <F3:false>
+  <span class="title">Yorumunuzu Buraya Giriniz</span>
+  <textarea name="yorum" class=""></textarea>
+  <input type="submit" class="bulgu-button" value="Yorumla"/>
+ </F3:false>
+</F3:check>
+</form>
+
+
+
