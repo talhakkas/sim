@@ -13,12 +13,12 @@
 		return 1;
 	}
 
-	F3::set('SESSION.isspecial', 'no');
-	if(in_array($node['title'], array('drug', 'doz'))
-		F3::set('SESSION.isspecial', 'yes');
-
 	if($node['title'] == 'doz')
 		show_node_doz($node);
+
+	F3::set('SESSION.isspecial', 'no');
+	if(in_array($node['title'], array('drug', 'doz')))
+		F3::set('SESSION.isspecial', 'yes');
 
 render('show', 'Olgu');
 
@@ -48,8 +48,8 @@ function show_node_doz($node) {
 			$tdoz  .= $t2[3] . "--";
 			$tayol .= $t2[4] . "--";
 
-			unset($nodes[$i]['link_text']);
-			unset($nodes[$i]['node_link']);
+			//unset($nodes[$i]['link_text']);
+			//unset($nodes[$i]['node_link']);
 		}
 		$beklenen_yanit = "doz::$tdoz,,ayol::$tayol";
 		$node['nodes'] = $nodes;
@@ -57,6 +57,6 @@ function show_node_doz($node) {
 		$node['sonraki_id'] = $sonraki_id;
 		F3::set('SESSION.data', $node);
 
-		render('doz', 'Doz');
+	//render('doz_osec', 'Doz');
 }
 ?>

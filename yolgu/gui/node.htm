@@ -86,7 +86,7 @@
       <input type="hidden" name="isWrong" value="{{@SESSION.data['isWrong']}}"/>
       <input type="hidden" name="NoNodes2" id="NoNodes2" value="0" />
 
-	  <F3:check if="{{in_array(@SESSION.data['title'], array('drug', 'doz'))}}">
+	  <F3:check if="{{@SESSION.isspecial == 'yes'}}">
 		<F3:true>
       		<F3:include href="{{@SESSION.data['title']}}_hsec.htm" />
 		</F3:true>

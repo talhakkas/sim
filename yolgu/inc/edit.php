@@ -8,6 +8,10 @@
 	$all_nodes = nodeList(F3::get('SESSION.cid'));
 	F3::set('SESSION.all_nodes', $all_nodes);
 
+	F3::set('SESSION.isspecial', 'no');
+	if(in_array(F3::get("SESSION.data['title']"), array('drug', 'doz')))
+		F3::set('SESSION.isspecial', 'yes');
+
 	// FIXME: fonksiyona donusturulecek
 	if(F3::get('SESSION.data[title]') == 'drug')
 	{
