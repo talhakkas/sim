@@ -20,11 +20,35 @@
 	if(in_array($node['title'], array('drug', 'doz')))
 		F3::set('SESSION.isspecial', 'yes');
 
+//echo "<pre>";print_r(F3::get('SESSION'));return;
 render('show', 'Olgu');
 
 
 /* Yerel Islevler */
-function show_node_doz($node) {
+function show_node_doz($node) 
+{
+	/*$pid = $_POST['onceki_id'];
+	$cid = F3::get('SESSION.cid');
+
+	$tnode = new Axon('node');
+	$datas = $tnode->afind("id='$pid' AND cid='$cid'");
+	$opts = $datas[0]['options'];
+
+	$tmp = preg_split('/;;/', $opts);
+	$tmp = $tmp[1];
+	$tmp = preg_split('/::/', $tmp);
+	$tmp = $tmp[0];
+	$tmp = preg_split('/,/', $tmp);
+
+
+	$drug_doz = array();
+	foreach($tmp as $i=>$did) {
+		$tdrug = new Axon('drugs');
+		$tdrug->load("id='$did'");
+
+		$drug_doz[$i]['isim'] = $tdrug->name;
+	}*/
+
 		$tdoz = "";
 		$tayol = "";
 		$nodes = $node['nodes'];
