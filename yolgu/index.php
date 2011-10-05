@@ -14,7 +14,7 @@ function test()
 {
 	require_once 'inc/convert/db_opts_convert.php';
 
-	add_new_field();
+	field_update();
 }
 
 F3::set('uploaddir', 'upload/');

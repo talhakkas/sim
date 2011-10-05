@@ -1,5 +1,22 @@
 <?php
 
+function field_update($dbg=true)
+{
+	$tnode = new Axon('node');
+	$tnode->load("cid='1' AND id='25'");
+	
+	$dict = unserialize($tnode->options);
+
+	$i = 1;
+	$dict[$i]['chkIA'] = 'yes';
+	$dict[$i]['IA'] = 'doğru yanıt';
+
+	print_pre($dict, "dict");
+
+	$tnode->options = serialize($dict);
+	$tnode->save();
+}
+
 function add_new_field($dbg=true)
 {
 	$tnode = new Axon('node');
