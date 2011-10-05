@@ -12,9 +12,12 @@ function login() {
 
 function test() 
 {
-	require_once 'inc/convert/db_opts_convert.php';
+	$id = 20;
 
-	field_update();
+	$t = new Axon("tet");
+	$t->load("id='$id'");
+
+	print_pre(unserialize($t->soylenen), 'soylenen');
 }
 
 F3::set('uploaddir', 'upload/');

@@ -25,6 +25,14 @@ function get_node() {
 	return $node;
 }
 
+function get_node_type($cid, $id)
+{
+	$tnode = new Axon("node");
+	$tnode->load("cid='$cid' AND id='$id'");
+
+	return $tnode->ntype;
+}
+
 function get_drug($did)
 {
 	$tdrug = new Axon('drugs');
@@ -53,12 +61,7 @@ function takip_listesine_ekle() {
 	$ttet->save();
 
 	// b) '$_POST' tan gelen veriyle onceki dugumun "beklenen" ve "soylenen" kisimlarini guncelle
-	$beklenen_yanit = empty($_POST['beklenen_yanit']) ? "" : $_POST['beklenen_yanit'];
-
-	$kullanici_yaniti  = empty($_POST['response']) ? "" : "resp::".$_POST['response'].",,";
-	$kullanici_yaniti .= empty($_POST['doz'])  ? "" : "doz::". myserialize($_POST['doz']) . ",,";
-	$kullanici_yaniti .= empty($_POST['ayol']) ? "" : "ayol::".myserialize($_POST['ayol']);
-
+	$dict = array();
 	// bir onceki dugum id sini bul
 	$mid = maxID_v2("id", "tet", "skey=$ttet->skey AND sid=$ttet->sid");
 	$mid--;
@@ -68,12 +71,46 @@ function takip_listesine_ekle() {
 
 	$ttet = new Axon("tet");
 	$ttet->load("id=$mid");
-	$ttet->beklenen = $beklenen_yanit;
+	$cid = $ttet->cid;
+	$id  = $ttet->nid;
+
+	//$dict['beklenen_yanit'] = my_get($_POST, 'beklenen_yanit');
+
+	$ntype = get_node_type($cid, $id);
+
+	if($ntype == 'drug') {
+		$t = $_POST['response'];
+		$dlist = preg_split('/,/', $t);
+
+		foreach($dlist as $i=>$did) {
+			$dict['drugs'][$i] = $did;
+		}
+	} elseif($ntype == 'dose') {
+		foreach($_POST['doz'] as $i=>$d) {
+			$dict['dose'][$i]['did']  = $_POST['did'][$i];
+			$dict['dose'][$i]['doz']  = $_POST['doz'][$i];
+			$dict['dose'][$i]['ayol'] = $_POST['ayol'][$i];
+		}
+	} else {
+		$dict['response'] = my_get($_POST, 'response');
+	}
+	
+	$ttet->soylenen = serialize($dict);
+	$ttet->zaman = microtime(true) - F3::get('SESSION.stime');
+
+	$opt = F3::get('SESSION.opt');
+	$ttet->puan = get_puan($cid, $id, $opt);
+	$ttet->save();
+	return;
+
+	$kullanici_yaniti  = empty($_POST['response']) ? "" : "resp::".$_POST['response'].",,";
+	$kullanici_yaniti .= empty($_POST['doz'])  ? "" : "doz::". myserialize($_POST['doz']) . ",,";
+	$kullanici_yaniti .= empty($_POST['ayol']) ? "" : "ayol::".myserialize($_POST['ayol']);
+
+	$ttet->beklenen = ""; //$beklenen_yanit;
 	$ttet->soylenen = $kullanici_yaniti;
 	$ttet->zaman = microtime(true) - F3::get('SESSION.stime');
 
-	$cid = $ttet->cid;
-	$id  = $ttet->nid;
 	$opt = F3::get('SESSION.opt');
 	$ttet->puan = get_puan($cid, $id, $opt);
 	$ttet->save();
