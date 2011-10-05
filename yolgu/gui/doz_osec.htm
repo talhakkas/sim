@@ -1,37 +1,9 @@
-<h2>{{@SESSION.data['title']}}
-  <a href="{{@SR}}/edit/{{@SESSION.cid}}/{{@SESSION.id}}">
-    <img src="/public/img/icon/24x24/edit.png">Düzenle</a>
-</h2>
+<p class="answer">{{@SESSION.data['nodes'][0]['link_text']}}</p>
 
-<p>{{@SESSION.data['content_acc'][0]['header']}}</p>
-
-<div class="content">
-  <div id="accordion">
-    <F3:repeat group="{{@SESSION.data['content_acc']}}" key="{{@gnl}}" value="{{@blg}}">
-    <F3:check if="{{@blg['content'] == 'NULL'}}" >
-    <F3:false>
-    <h3><a href="#">{{@blg['header']}}</a></h3>
-    <div>
-      {{@blg['content']}}
-    </div>
-    </F3:false>
-    </F3:check>
-    </F3:repeat>
-  </div>
-</div>
-
-<div align="center">
-  <F3:check if="{{@SESSION.data['media'] != ''}}">
-  <F3:true>
-  <img src="{{@SR}}/{{@uploaddir}}kucuk{{@SESSION.data['media']}}" align="middle">
-  </F3:true>
-  </F3:check>
-</div>
-
-<p class="question">{{@SESSION.data['question']}}</p>
-
-<form action="/yolgu/show/{{@SESSION.cid}}/{{@SESSION.data['sonraki_id']}}/1" method="post">
-  <input type="hidden" name="beklenen_yanit" value="{{@SESSION.data['beklenen_yanit']}}">
+<div align="middle">
+  <form name="frm" action="/yolgu/show/{{@SESSION.cid}}/{{@SESSION.data['sonraki_id']}}/0" method="post">
+	<input type="hidden" name="nid" value="0">
+	<input type="hidden" name="beklenen_yanit" value="{{@SESSION.data['beklenen_yanit']}}">
 
   <F3:repeat group="{{@SESSION.data['nodes']}}" key="{{@gnl}}" value="{{@blg}}" counter="{{@ctr}}">
   <F3:check if="{{@blg['dozmu'] == 'E'}}">
@@ -50,9 +22,11 @@
     </div>
   </div>
   </F3:true>
+  </F3:check>
   </F3:repeat>
 
   <script>$(":range").rangeinput();</script>
-  <input type="submit" class="right" value="Gönder »"/>
-</form>
 
+			<input type="submit" value="Gönder">
+		  </form>
+		</div>
