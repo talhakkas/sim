@@ -125,7 +125,11 @@ function nodeList($cid) {
 	return $nodes;
 }
 
-function unzip($datas) {
+function unzip($datas)
+{
+	/* 'content' kisminda accordion koymak icin format turetildi.
+	 * 	accordion = header + content
+     */
 	if(empty($datas['content'])) $datas['content'] = "::";
 	$content = preg_split("/,,/", $datas['content']);
 
@@ -137,35 +141,11 @@ function unzip($datas) {
 	}
 	//unset($datas['content']);
 
-	if(empty($datas['options'])) $datas['options'] = "::";
-
-	switch($datas['type']) {
-		case "oyku":
-			$opts = $datas['options'];
-			$t = preg_split("/::/", $opts);
-			$datas['link_text'] = $t[0];
-			$datas['next_node'] = $t[1];
-			unset($datas['options']);
-			break;
-		case "dal":
-			$opts = preg_split("/,,/", $datas['options']);
-
-			foreach($opts as $k=>$v) {
-				$t1 = preg_split("/::/", $v);
-				// kullanici girdis var mi?
-				// format: 'text;;response::link::odul::ceza'
-				$t2 = preg_split('/;;/', $t1[0]);
-
-				$datas['nodes'][$k]['link_text'] = $t2[0];
-				$datas['nodes'][$k]['chkIA']  	 = empty($t2[1]) ? 'no' : 'yes';
-				$datas['nodes'][$k]['IA'] 		 = empty($t2[1]) ? '' : $t2[1];
-				$datas['nodes'][$k]['node_link'] = $t1[1];
-				$datas['nodes'][$k]['odul'] 	 = empty($t1[2]) ? '' : $t1[2];
-				$datas['nodes'][$k]['ceza'] 	 = empty($t1[3]) ? '' : $t1[3];
-			}
-			unset($datas['options']);
-			break;
-	}
+	/* 'options' kisminda **onceden** stringler ile kendi serilestirmemi
+	 * uretmistim. Simdi dictionary turunde tutulacak ve serialize/unserialize
+	 * ile serileştirilecek.
+	 */
+	$datas['nodes'] = unserialize($datas['options']);
 
 	return $datas;
 }
@@ -272,5 +252,16 @@ function get_puan($cid, $id, $opt) {
 	$puan = $odul - $ceza;
 
 	return $puan;
+}
+
+function print_pre($code, $msj) {
+	echo "$msj = ";
+	echo "<pre>";
+	print_r($code);
+	echo "</pre>";
+}
+
+function my_get($arr, $key) {
+	return array_key_exists($key, $arr) ? $arr[$key] : "";
 }
 ?>

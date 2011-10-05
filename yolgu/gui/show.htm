@@ -28,11 +28,4 @@
 
 <p class="question">{{@SESSION.data['question']}}</p>
 
-<F3:check if="{{@SESSION.isspecial == 'yes'}}">
-<F3:true>
-	<F3:include href="{{@SESSION.data['title']}}_osec.htm" />
-</F3:true>
-<F3:false>
-	<F3:include href="node_o{{@SESSION.data['type']}}.htm" />
-</F3:false>
-</F3:check>
+<F3:include href="node_{{@SESSION.data['ntype']}}_student.htm" />

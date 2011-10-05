@@ -4,23 +4,20 @@
 	$node = get_node();
 	F3::set('SESSION.data', $node);
 
+	/* FIXME: data:options a gore yeniden tasarla.
 	takip_listesine_ekle();
-
 	F3::set('SESSION.tdata', @takip_listesi2dizi());
 
-	if($node['title'] == 'end') {
+	if($node['ntype'] == 'report') {
 		F3::reroute('/rapor');
 		return 1;
 	}
+	*/
 
-	if($node['title'] == 'doz')
+	// FIXME: data:options a gore yeniden tasarla.
+	if($node['ntype'] == 'dose')
 		show_node_doz($node);
 
-	F3::set('SESSION.isspecial', 'no');
-	if(in_array($node['title'], array('drug', 'doz')))
-		F3::set('SESSION.isspecial', 'yes');
-
-//echo "<pre>";print_r(F3::get('SESSION'));return;
 render('show', 'Olgu');
 
 
