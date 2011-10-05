@@ -25,6 +25,19 @@ function get_node() {
 	return $node;
 }
 
+function get_drug($did)
+{
+	$tdrug = new Axon('drugs');
+	$tdrug->load("id='$did'");
+	
+	$drug = array();
+	$drug['id'] = $tdrug->id;
+	$drug['name'] = $tdrug->name;
+	$drug['content'] = $tdrug->content;
+
+	return $drug;
+}
+
 function takip_listesine_ekle() {
 	// a) su anki dugum icin 'tet' girdisi olustur. "beklenen" ve "soylenen" bos, simdilik
 	$ttet = new Axon("tet");

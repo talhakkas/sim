@@ -54,8 +54,7 @@ F3::route("GET /test", "test");
 	F3::route("POST /test", "test");
 
 // ilac durumu
-F3::route("GET /ilac/show", "ilac_sec.php");
-	F3::route("POST /ilac/show", "ilac_goster.php");
+F3::route("GET /drug/@did", "show_drug.php");
 
 F3::run();
 

@@ -14,70 +14,23 @@
 	}
 	*/
 
-	// FIXME: data:options a gore yeniden tasarla.
 	if($node['ntype'] == 'dose')
-		show_node_doz($node);
+		show_node_dose();
 
 render('show', 'Olgu');
 
 
 /* Yerel Islevler */
-function show_node_doz($node) 
+function show_node_dose() 
 {
-	/*$pid = $_POST['onceki_id'];
-	$cid = F3::get('SESSION.cid');
+	$drugs = F3::get('SESSION.data.nodes[0][response]');
 
-	$tnode = new Axon('node');
-	$datas = $tnode->afind("id='$pid' AND cid='$cid'");
-	$opts = $datas[0]['options'];
+	foreach($drugs as $i=>$d) {
+		$drug = get_drug($d['did']);
 
-	$tmp = preg_split('/;;/', $opts);
-	$tmp = $tmp[1];
-	$tmp = preg_split('/::/', $tmp);
-	$tmp = $tmp[0];
-	$tmp = preg_split('/,/', $tmp);
+		$drugs[$i]['name'] = $drug['name'];
+	}
 
-
-	$drug_doz = array();
-	foreach($tmp as $i=>$did) {
-		$tdrug = new Axon('drugs');
-		$tdrug->load("id='$did'");
-
-		$drug_doz[$i]['isim'] = $tdrug->name;
-	}*/
-
-		$tdoz = "";
-		$tayol = "";
-		$nodes = $node['nodes'];
-		foreach($nodes as $i=>$n) {
-			$t1 = $nodes[$i]["link_text"];
-			$t2 = preg_split('/--/', $t1);
-
-			$nodes[$i]['dozmu'] = 'H';
-			if(count($t2) < 5) {
-				$sonraki_id = $nodes[$i]['node_link'];
-				continue;			
-			}
-			$nodes[$i]['dozmu'] = 'E';
-
-			$nodes[$i]['isim'] = $t2[0];
-			$nodes[$i]['dmin'] = $t2[1];
-			$nodes[$i]['dmax'] = $t2[2];
-			$nodes[$i]['dval'] = $t2[3];
-			$nodes[$i]['ayol'] = $t2[4];
-
-			$tdoz  .= $t2[3] . "--";
-			$tayol .= $t2[4] . "--";
-
-			//unset($nodes[$i]['link_text']);
-			//unset($nodes[$i]['node_link']);
-		}
-		$beklenen_yanit = "doz::$tdoz,,ayol::$tayol";
-		$node['nodes'] = $nodes;
-		$node['beklenen_yanit'] = $beklenen_yanit;
-		$node['sonraki_id'] = $sonraki_id;
-		F3::set('SESSION.data', $node);
-
-	//render('doz_osec', 'Doz');
+	F3::set('SESSION.data.nodes[0][response]', $drugs);
 }
 ?>
