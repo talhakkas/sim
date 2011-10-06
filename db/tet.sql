@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Anamakine: localhost
--- Üretim Zamanı: 20 Eylül 2011 saat 03:04:20
+-- Üretim Zamanı: 06 Ekim 2011 saat 06:36:21
 -- Sunucu sürümü: 5.1.49
 -- PHP Sürümü: 5.3.3-7+squeeze1
 
@@ -32,6 +32,7 @@ CREATE TABLE IF NOT EXISTS `tet` (
   `cid` int(11) NOT NULL,
   `nid` int(11) NOT NULL,
   `sid` int(11) NOT NULL,
+  `oid` int(11) NOT NULL,
   `beklenen` varchar(500) COLLATE utf8_turkish_ci NOT NULL,
   `soylenen` varchar(500) COLLATE utf8_turkish_ci NOT NULL,
   `zaman` float NOT NULL,

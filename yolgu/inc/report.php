@@ -13,6 +13,16 @@
 		$tnode = new Axon('node');
 		$tnode->load("id=$nid");
 		
+		$options = unserialize($tnode->options);
+
+		$oid = $datas[$i]['oid'] - 1;	if($oid < 0) $oid = 0;
+		$response = $options[$oid]['response'];
+		$datas[$i]['beklenen'] = response2str_bek($response, $tnode->ntype);
+
+		$t = unserialize($datas[$i]['soylenen']);
+		$response = $t['response'];
+		$datas[$i]['soylenen'] = response2str_soy($response, $tnode->ntype);
+
 		$datas[$i]['title'] = $tnode->title;
 
 		$tpuan += $datas[$i]['puan'];
@@ -22,5 +32,5 @@
 	F3::set('SESSION.tdata', $datas);
 	F3::set('SESSION.tpuan', $tpuan);
 
-	render('rapor', 'Rapor');
+	render('report', 'Rapor');
 ?>

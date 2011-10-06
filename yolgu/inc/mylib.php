@@ -54,6 +54,7 @@ function takip_listesine_ekle() {
 	$ttet->sid = intval(F3::get('SESSION.student'));
 	$ttet->cid = F3::get('SESSION.cid');
 	$ttet->nid = F3::get('SESSION.id');
+	$ttet->oid = "";
 	$ttet->beklenen = "";
 	$ttet->soylenen = "";
 	$ttet->zaman = 0;
@@ -83,13 +84,13 @@ function takip_listesine_ekle() {
 		$dlist = preg_split('/,/', $t);
 
 		foreach($dlist as $i=>$did) {
-			$dict['drugs'][$i] = $did;
+			$dict['response'][$i] = $did;
 		}
 	} elseif($ntype == 'dose') {
 		foreach($_POST['doz'] as $i=>$d) {
-			$dict['dose'][$i]['did']  = $_POST['did'][$i];
-			$dict['dose'][$i]['doz']  = $_POST['doz'][$i];
-			$dict['dose'][$i]['ayol'] = $_POST['ayol'][$i];
+			$dict['response'][$i]['did']  = $_POST['did'][$i];
+			$dict['response'][$i]['doz']  = $_POST['doz'][$i];
+			$dict['response'][$i]['ayol'] = $_POST['ayol'][$i];
 		}
 	} else {
 		$dict['response'] = my_get($_POST, 'response');
@@ -99,6 +100,8 @@ function takip_listesine_ekle() {
 	$ttet->zaman = microtime(true) - F3::get('SESSION.stime');
 
 	$opt = F3::get('SESSION.opt');
+	$ttet->oid = $opt;
+
 	$ttet->puan = get_puan($cid, $id, $opt);
 	$ttet->save();
 	return;
@@ -118,6 +121,59 @@ function takip_listesine_ekle() {
 	return;
 }
 
+function response2str_bek($response, $ntype)
+{
+	$str = '';
+	switch($ntype) {
+		case 'drug':
+			foreach($response as $j=>$did) {
+				$t = get_drug($did);
+				$str .= strval($j+1) . ": <a href=/yolgu/drug/$did>$t[name]</a><br>";
+			}
+			break;
+		case 'dose':
+			foreach($response as $j=>$d) {
+				$did = $d['did'];
+
+				$ayol = array(1=>"Damar", 2=>"Kas", 3=>"Foo");
+	
+				$t = get_drug($did);
+				$str .= strval($j+1) . ": <a href=/yolgu/drug/$did>$t[name]</a>-$d[dval] ($d[dmn]-$d[dmx])" .$ayol[$d['ayol']]. "<br>";
+			}
+			break;
+		default:
+			$str = $response;
+	}
+
+	return $str;
+}
+
+function response2str_soy($response, $ntype)
+{
+	$str = '';
+	switch($ntype) {
+		case 'drug':
+			foreach($response as $j=>$did) {
+				$t = get_drug($did);
+				$str .= strval($j+1) . ": <a href=/yolgu/drug/$did>$t[name]</a><br>";
+			}
+			break;
+		case 'dose':
+			foreach($response as $j=>$d) {
+				$did = $d['did'];
+
+				$ayol = array(1=>"Damar", 2=>"Kas", 3=>"Foo");
+	
+				$t = get_drug($did);
+				$str .= strval($j+1) . ": <a href=/yolgu/drug/$did>$t[name]</a>-$d[doz] - ". $ayol[$d['ayol']] ." <br>";
+			}
+			break;
+		default:
+			$str = $response;
+	}
+
+	return $str;
+}
 function takip_listesi2dizi() {
 	$id  = F3::get('SESSION.id');
 	$cid = F3::get('SESSION.cid');

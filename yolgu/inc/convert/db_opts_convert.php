@@ -3,7 +3,7 @@
 function field_update($dbg=true)
 {
 	$tnode = new Axon('node');
-	$tnode->load("cid='1' AND id='25'");
+	$tnode->load("cid='1' AND id='26'");
 	
 	$dict = unserialize($tnode->options);
 
