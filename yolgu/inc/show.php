@@ -7,12 +7,10 @@
 	// FIXME: data:options a gore yeniden tasarla.
 	takip_listesine_ekle();
 
-	/*
 	if($node['ntype'] == 'report') {
-		F3::reroute('/rapor');
+		F3::reroute('/report');
 		return 1;
 	}
-	*/
 
 	if($node['ntype'] == 'dose')
 		show_node_dose();

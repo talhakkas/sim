@@ -37,7 +37,7 @@ F3::route("GET /create/@type/@cid/@id", "create.php");
 F3::route("GET /delete/@cid/@id", "delete.php");
 F3::route("POST /delete/@cid/@id", "delete.php");
 
-F3::route("GET /rapor", "rapor.php");
+F3::route("GET /report", "report.php");
 
 // case routings
 F3::route("GET /cstart/@cid", 'cstart.php');
