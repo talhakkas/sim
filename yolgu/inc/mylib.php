@@ -27,10 +27,14 @@ function get_node() {
 
 function set_node()
 {
+	$cid = F3::get('SESSION.cid');
+	$id = F3::get('SESSION.id');
+
 	$_POST = zip($_POST);
 
 	$table = new Axon("node");
 	$table->load("id='$id' AND cid='$cid'");
+
 	//FIXME: $table->copyFrom('REQUEST');
 	foreach($_POST as $gnl => $blg)
 		if($gnl != "media")
@@ -281,12 +285,26 @@ function unzip($datas)
 	return $datas;
 }
 
-function zip($datas, $dbg=false) 
+function zip($datas, $dbg=true) 
 {
 	if($dbg) print_pre($datas, 'datas');
 
 	$dict = array();
+
 	$sz = sizeof($datas['link_text']);
+	
+	$chkR = array_pad(array(), $sz, 'no');
+	$sz_chk = sizeof($datas['chkResponse']);
+	if($sz_chk > 0) {
+		$arr = $datas['chkResponse'];
+
+		for($i=0; $i < $sz_chk; $i++) {
+			$j = $arr[$i] - 1;
+			$chkR[$j] = 'yes';
+		}
+	}
+	$datas['chkResponse'] = $chkR;
+
 	for($i=0; $i < $sz; $i++) {
 		$dict[$i] = array(
 						'link_text' => my_get2($datas, 'link_text', $i),
@@ -295,7 +313,11 @@ function zip($datas, $dbg=false)
 						'chkResponse'=>my_get2($datas, 'chkResponse',$i),
 						'odul'      => my_get2($datas, 'odul',      $i),
 						'ceza'      => my_get2($datas, 'ceza',      $i)
-						 );			
+						 );	
+
+		if($dict[$i]['chkResponse'] == 'no') {
+				$dict[$i]['response'] = '';
+		}
 	}
 	
 	$datas['options'] = serialize($dict);
