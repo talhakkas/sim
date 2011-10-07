@@ -22,16 +22,19 @@ function test2()
 
 function test3($dbg=true)
 {
+	$cid = 1;
+
 	$tnode = new Axon('node');
-	$tnode->load("cid='1' AND id='26'");
+	$tnode->load("cid='$cid' AND id='26'");
 	
 	$dict = unserialize($tnode->options);
+	print_pre($dict, "GIRDI:dict");
 
-	$i = 1;
-	$dict[$i]['chkIA'] = 'yes';
-	$dict[$i]['IA'] = 'doğru yanıt';
+	$dict[0]['response'][54] = $dict[0]['response'][2];
+	unset($dict[0]['response'][2]);
+	unset($dict[0]['response'][54]['did']);
 
-	print_pre($dict, "dict");
+	print_pre($dict, "sonuc:dict");
 
 	$tnode->options = serialize($dict);
 	$tnode->save();

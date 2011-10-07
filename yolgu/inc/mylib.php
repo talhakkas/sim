@@ -48,7 +48,7 @@ function set_node()
 		else 
 			$table->media = "default.jpg";
 	}
-	if($_POST['resim_sil'] == 'evet')
+	if(my_get($_POST, 'resim_sil') == 'evet')
 		$table->media = NULL;
 
 	$table->save();
@@ -92,6 +92,43 @@ function get_preselected_drugs()
 
 	return $ilac_data;
 }
+
+function get_drug_id($cid)
+{
+	$tnode = new Axon("node");
+	$tnode->load("cid='$cid' AND ntype='drug'");
+
+	return $tnode->id;
+}
+
+function get_dose_id($cid)
+{
+	$tnode = new Axon("node");
+	$tnode->load("cid='$cid' AND ntype='dose'");
+
+	return $tnode->id;
+}
+
+function check_stamp($cid, $did=NULL, $dsid=NULL)
+{
+	if($did == NULL)	$did  = get_drug_id($cid);
+	if($dsid == NULL)	$dsid = get_dose_id($cid);
+
+	/* $did: drug id ve $dsid: dose id nin stamp lerini denetler */
+	$tdrug = new Axon("node");
+	$tdose = new Axon("node");
+
+	$tdrug->load("cid='$cid' AND id='$did'");
+	$tdose->load("cid='$cid' AND id='$dsid'");
+	
+	$td = unserialize($tdrug->options);
+	$ts = unserialize($tdose->options);
+
+	$drug_stamp = $td['save_stamp'];
+	$dose_stamp = $ts[0]['response']['stamp'];
+
+	return strcmp($drug_stamp, $dose_stamp);
+}	
 
 function takip_listesine_ekle() {
 	// a) su anki dugum icin 'tet' girdisi olustur. "beklenen" ve "soylenen" bos, simdilik
@@ -338,6 +375,9 @@ function zip($datas, $dbg=false)
 		}
 	}
 	
+	$dict['save_stamp'] = microtime();
+	if($dbg) print_pre($dict, 'dict');
+
 	$datas['options'] = serialize($dict);
 
 	$datas = unset_arr($datas, array('link_text', 'node_link', 'response', 'chkResponse',
