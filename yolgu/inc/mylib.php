@@ -75,6 +75,24 @@ function get_drug($did)
 	return $drug;
 }
 
+function get_preselected_drugs()
+{
+	$drugs = F3::get('SESSION.data[nodes][0][response]');
+	$drug = preg_split('/,/', $drugs);
+
+	$tdrug = new Axon("drugs");
+
+	$ilac_data = array();
+	foreach($drug as $i=>$id) {
+		$datas = $tdrug->afind("id='$id'");
+		$name  = $datas[0]['name'];
+
+		$ilac_data[$id] = $name;
+	}
+
+	return $ilac_data;
+}
+
 function takip_listesine_ekle() {
 	// a) su anki dugum icin 'tet' girdisi olustur. "beklenen" ve "soylenen" bos, simdilik
 	$ttet = new Axon("tet");
@@ -109,14 +127,14 @@ function takip_listesine_ekle() {
 	$ntype = get_node_type($cid, $id);
 
 	if($ntype == 'drug') {
-		$t = $_POST['response'];
+		$t = my_get($_POST, 'response');
 		$dlist = preg_split('/,/', $t);
 
 		foreach($dlist as $i=>$did) {
 			$dict['response'][$i] = $did;
 		}
 	} elseif($ntype == 'dose') {
-		foreach($_POST['doz'] as $i=>$d) {
+		foreach(my_get($_POST, 'doz') as $i=>$d) {
 			$dict['response'][$i]['did']  = $_POST['did'][$i];
 			$dict['response'][$i]['doz']  = $_POST['doz'][$i];
 			$dict['response'][$i]['ayol'] = $_POST['ayol'][$i];
@@ -285,7 +303,7 @@ function unzip($datas)
 	return $datas;
 }
 
-function zip($datas, $dbg=true) 
+function zip($datas, $dbg=false) 
 {
 	if($dbg) print_pre($datas, 'datas');
 

@@ -4,7 +4,6 @@
 	$node = get_node();
 	F3::set('SESSION.data', $node);
 
-	// FIXME: data:options a gore yeniden tasarla.
 	takip_listesine_ekle();
 
 	if($node['ntype'] == 'report') {
