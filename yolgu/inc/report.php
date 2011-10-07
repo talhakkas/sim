@@ -5,9 +5,11 @@
 
 	$ttet = new Axon('tet');
 	$datas = $ttet->afind("skey='$skey' AND cid='$cid' AND sid='$sid'");
-	
+
 	$tpuan = 100;
 	foreach($datas as $i=>$t) {
+		if($t['zaman'] == 0) {unset($datas[$i]); continue; }
+
 		$nid = $t['nid'];
 
 		$tnode = new Axon('node');
@@ -19,8 +21,8 @@
 		$response = $options[$oid]['response'];
 		$datas[$i]['beklenen'] = response2str_bek($response, $tnode->ntype);
 
-		$t = unserialize($datas[$i]['soylenen']);
-		$response = $t['response'];
+		$t2 = unserialize($datas[$i]['soylenen']);
+		$response = $t2['response'];
 		$datas[$i]['soylenen'] = response2str_soy($response, $tnode->ntype);
 
 		$datas[$i]['title'] = $tnode->title;

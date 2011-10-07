@@ -25,6 +25,31 @@ function get_node() {
 	return $node;
 }
 
+function set_node()
+{
+	$_POST = zip($_POST);
+
+	$table = new Axon("node");
+	$table->load("id='$id' AND cid='$cid'");
+	//FIXME: $table->copyFrom('REQUEST');
+	foreach($_POST as $gnl => $blg)
+		if($gnl != "media")
+			$table->$gnl = $blg;
+
+	if(F3::get('FILES.media.name') != "") {
+		$fnm = "_n". sprintf("%05d", $table->nid) . ".jpg";
+		$ffnm = F3::get('uploaddir') . $fnm;
+		if(yukle($ffnm, "media", true))
+			$table->media = $fnm;
+		else 
+			$table->media = "default.jpg";
+	}
+	if($_POST['resim_sil'] == 'evet')
+		$table->media = NULL;
+
+	$table->save();
+}
+
 function get_node_type($cid, $id)
 {
 	$tnode = new Axon("node");
@@ -256,40 +281,29 @@ function unzip($datas)
 	return $datas;
 }
 
-function zip($datas) {
-	// $_POST: type a gore or. oyku, link_text+next_node => options
-	switch($datas['type']) {
-		case "oyku":
-			$datas["options"] = $datas['link_text'] . "::" . $datas['next_node'];
-			unset($datas['link_text']);
-			unset($datas['next_node']);
-			break;
-		case "dal":
-			$tmp = "";
-			$size = sizeof($datas['link_text']);
-			for($i=0; $i < $size; $i++) {
-				$response = empty($datas['IA'][$i]) ? "" : (";;" . $datas['IA'][$i]);
+function zip($datas, $dbg=false) 
+{
+	if($dbg) print_pre($datas, 'datas');
 
-				$link_text = isset($datas['link_text'][$i]) ? $datas['link_text'][$i]:"";
-				$node_link = isset($datas['node_link'][$i]) ? $datas['node_link'][$i]:"";
-				$odul = isset($datas['odul'][$i]) ? $datas['odul'][$i]:"";
-				$ceza = isset($datas['ceza'][$i]) ? $datas['ceza'][$i]:"";
-
-				$tmp = $tmp . $link_text . $response ."::". $node_link;
-				$tmp = $tmp . "::" . $odul . "::" . $ceza;
-
-				if ($i < ($size - 1))
-					$tmp = $tmp .",,";
-			}
-			$datas['options'] = $tmp;
-			unset($datas['link_text']);
-			unset($datas['chkIA']);
-			unset($datas['IA']);
-			unset($datas['node_link']);
-			unset($datas['odul']);
-			unset($datas['ceza']);
-			break;
+	$dict = array();
+	$sz = sizeof($datas['link_text']);
+	for($i=0; $i < $sz; $i++) {
+		$dict[$i] = array(
+						'link_text' => my_get2($datas, 'link_text', $i),
+						'node_link' => my_get2($datas, 'node_link', $i),
+						'response'  => my_get2($datas, 'response',  $i),
+						'chkResponse'=>my_get2($datas, 'chkResponse',$i),
+						'odul'      => my_get2($datas, 'odul',      $i),
+						'ceza'      => my_get2($datas, 'ceza',      $i)
+						 );			
 	}
+	
+	$datas['options'] = serialize($dict);
+
+	$datas = unset_arr($datas, array('link_text', 'node_link', 'response', 'chkResponse',
+									 'odul', 'ceza'));
+
+	if($dbg) print_pre($datas, 'datas');
 
 	return $datas;
 }
@@ -360,14 +374,31 @@ function get_puan($cid, $id, $opt) {
 	return $puan;
 }
 
-function print_pre($code, $msj) {
+function print_pre($code, $msj) 
+{
 	echo "$msj = ";
 	echo "<pre>";
 	print_r($code);
 	echo "</pre>";
 }
 
-function my_get($arr, $key) {
+function my_get($arr, $key) 
+{
 	return array_key_exists($key, $arr) ? $arr[$key] : "";
+}
+
+function my_get2($arr, $key, $i) 
+{
+	return array_key_exists($key, $arr) ? (array_key_exists($i, $arr[$key]) ? $arr[$key][$i] : "") : "";
+}
+
+function unset_arr($arr, $keys)
+{
+	/* $arr1 icinde $keys de ki her bir keyi unset et */
+	foreach($keys as $i=>$k) {
+		unset($arr[$k]);
+	}
+
+	return $arr;
 }
 ?>

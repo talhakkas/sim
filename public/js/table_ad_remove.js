@@ -22,8 +22,8 @@ function addRow(tableName) {
 	var txtarea = document.createElement("textarea");
 	var txtOdul = document.createElement('input');
 	var txtCeza = document.createElement('input');
-	var chkIA = document.createElement('input');
-	var txtIA = document.createElement('input');
+	var chkResponse = document.createElement('input');
+	var txtresponse = document.createElement('input');
 	cell12.setAttribute('class', 'field');
 	cell12.setAttribute('id', 'dal' + nons + 'field');
 
@@ -45,21 +45,21 @@ function addRow(tableName) {
 	cell12.appendChild(document.createTextNode('Ceza:'));
 	cell12.appendChild(txtCeza);
 
-	chkIA.setAttribute('type', 'checkbox');
-	chkIA.setAttribute('name', 'chkIA[]');
-	chkIA.setAttribute('id',   'chkIA' + nons);
-	chkIA.setAttribute('value', nons);
-	chkIA.setAttribute('checked', 'true');
-	chkIA.setAttribute('onclick', "toggle(this, 'IA" + nons + "')");
-	cell12.appendChild(chkIA);
+	chkResponse.setAttribute('type', 'checkbox');
+	chkResponse.setAttribute('name', 'chkResponse[]');
+	chkResponse.setAttribute('id',   'chkResponse' + nons);
+	chkResponse.setAttribute('value', nons);
+	chkResponse.setAttribute('checked', 'true');
+	chkResponse.setAttribute('onclick', "toggle(this, 'response" + nons + "')");
+	cell12.appendChild(chkResponse);
 	cell12.appendChild(document.createTextNode('Kullanıcı girdisi istiyor musun?'));
 	cell12.appendChild(document.createElement('br'));
 
-	txtIA.setAttribute('type', 'text');
-	txtIA.setAttribute('name', 'IA[]');
-	txtIA.setAttribute('id',   'IA' + nons);
-	txtIA.setAttribute('style', 'visibility:visible;');
-	cell12.appendChild(txtIA);
+	txtresponse.setAttribute('type', 'text');
+	txtresponse.setAttribute('name', 'response[]');
+	txtresponse.setAttribute('id',   'response' + nons);
+	txtresponse.setAttribute('style', 'visibility:visible;');
+	cell12.appendChild(txtresponse);
 
 	// select
 	var row2 = table.insertRow(rowCount+1);

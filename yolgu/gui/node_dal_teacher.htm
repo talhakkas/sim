@@ -18,14 +18,14 @@
     Ceza: <input type="text" name="ceza[]" value="{{@blg['ceza]}}"  maxlength="3" size="3">
     <br>
 
-    <F3:check if="{{@blg['chkIA'] == 'yes'}}" >
+    <F3:check if="{{@blg['chkResponse'] == 'yes'}}" >
     <F3:true>
-    <input type="checkbox" name="chkIA[]" id="chkIA{{@ctr}}" value="{{@ctr}}" checked="true" onclick="toggle(this, 'IA{{@ctr}}')"> Kullanıcı girdisi istiyor musun? <br>
-		    <input type="text" name="IA[]" id="IA{{@ctr}}" value="{{@blg['IA']}}" style="visibility:visible;">
+    <input type="checkbox" name="chkResponse[]" id="chkResponse{{@ctr}}" value="{{@ctr}}" checked="true" onclick="toggle(this, 'response{{@ctr}}')"> Kullanıcı girdisi istiyor musun? <br>
+		    <input type="text" name="response[]" id="response{{@ctr}}" value="{{@blg['response']}}" style="visibility:visible;">
     </F3:true>
     <F3:false>
-    <input type="checkbox" name="chkIA[]" id="chkIA{{@ctr}}" value="{{@ctr}}" onclick="toggle(this, 'IA{{@ctr}}')"> Kullanıcı girdisi istiyor musun? <br>
-    <input type="text" name="IA[]" id="IA{{@ctr}}" value=""  style="visibility:hidden;">
+    <input type="checkbox" name="chkResponse[]" id="chkResponse{{@ctr}}" value="{{@ctr}}" onclick="toggle(this, 'response{{@ctr}}')"> Kullanıcı girdisi istiyor musun? <br>
+    <input type="text" name="response[]" id="response{{@ctr}}" value=""  style="visibility:hidden;">
     </F3:false>
     </F3:check>	
   </td>
