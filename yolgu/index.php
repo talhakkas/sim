@@ -12,29 +12,12 @@ function login() {
 
 function test() 
 {
-	/*$t = new Axon("node");	$t->load("id='3'");
-	print_pre(unserialize($t->options), 'normal');
-	echo "<hr>";
-	$t = new Axon("node");	$t->load("id='17'");
-	print_pre(unserialize($t->options), 'drug');
-	echo "<hr>";
-	$t = new Axon("node");	$t->load("id='26'");
-	print_pre(unserialize($t->options), 'dose');
-	*/
-	$tnode = new Axon('node');
-	$tnode->load("cid='1' AND id='26'");
+	F3::set('SESSION.cid', 1);
+	F3::set('SESSION.id',  1);
+
+	$node = get_node();
 	
-	$dict = unserialize($tnode->options);
-	print_pre($dict, 'node');
-
-	foreach($dict[0]['response'] as $i=>$d) {
-		$dict[0]['response'][$i]['ayol'] = $i+1;
-	}
-	print_pre($dict, "dict");
-
-	$tnode->options = serialize($dict);
-	$tnode->save();
-
+	print_pre($node, "node");
 }
 
 F3::set('uploaddir', 'upload/');

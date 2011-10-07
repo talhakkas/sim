@@ -86,14 +86,7 @@
       <input type="hidden" name="isWrong" value="{{@SESSION.data['isWrong']}}"/>
       <input type="hidden" name="NoNodes2" id="NoNodes2" value="0" />
 
-	  <F3:check if="{{@SESSION.isspecial == 'yes'}}">
-		<F3:true>
-      		<F3:include href="{{@SESSION.data['ntype']}}_hsec.htm" />
-		</F3:true>
-		<F3:false>
-      		<F3:include href="node_{{@SESSION.data['ntype']}}.htm" />
-		</F3:false>
-	  </F3:check>
+      <F3:include href="node_{{@SESSION.data['ntype']}}_teacher.htm" />
 
     </table>
     <input type="submit" name="default" value="{{@page_title}}"/>
