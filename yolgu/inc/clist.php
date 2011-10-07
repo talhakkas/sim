@@ -11,6 +11,6 @@
 	}
 
 	F3::set('SESSION.cdata', $data);
-    
-	render('clist', 'Listele');
+
+	render('clist', 'Case Lists');
 ?>

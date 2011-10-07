@@ -50,12 +50,12 @@
           <textarea name="content">{{@SESSION.data['content']}}</textarea><br>
 
           <!--F3:check if="{{@SESSION.data['content_accordion'] == 'yes'}}" >
-          <F3:true>		
+          <F3:true>
           <input type="checkbox" name="content_accordion" id="content_accordion" checked="true" onclick="toggle_accord(this)">Akordiyon istiyor musun? <br>
           <fielset id="fs_content_accordion" style="visibility:hidden;">
           <legend>Akord</legend>
           Başlık:<input type="text" name="content_accordion_header[]"><br>
-          İçerik:<textarea name="content_accordion_content[]"></textarea>			
+          İçerik:<textarea name="content_accordion_content[]"></textarea>
           </fielset>
           </F3:true>
           </F3:check-->
@@ -73,6 +73,17 @@
         </td>
       </tr>
 
+      <tr>
+        <td>
+        </td>
+        <td>
+          <div class="button-group">
+            <input type="submit" class="button blue" name="default" value="{{@page_title}}"/>
+            <input type="submit" class="button danger red" name="delete"  value="Sil"/>
+          </div>
+        </td>
+      </tr>
+
       <input type="hidden" name="type" value="{{@SESSION.data['type']}}"/>
       <input type="hidden" name="parent" value="{{@SESSION.data['parent']}}"/>
       <input type="hidden" name="isOnset" value="{{@SESSION.data['isOnset']}}"/>
@@ -82,7 +93,6 @@
       <F3:include href="node_{{@SESSION.data['ntype']}}_teacher.htm" />
 
     </table>
-    <input type="submit" name="default" value="{{@page_title}}"/>
-    <input type="submit" name="delete"  value="Sil"/>
+
   </form>
 </div>

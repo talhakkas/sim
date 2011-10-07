@@ -12,6 +12,10 @@ body {
     width: 920px;
     margin: 30px auto 30px;;
     background: #fff;
+
+    background:#fff url(/public/img/a/simulation.jpg) no-repeat right 0px;;
+    background-size:170px ;
+
     padding: 20px;
     height:auto;
     min-height:550px;
@@ -22,7 +26,7 @@ body {
     box-shadow:0 0 18px rgba(0,0,0,0.4);
 }
 
-#content h2 {color: #2f7ca2; border-bottom:1px solid #ddd; padding:0 5px 8px 5px;margin:5px 0 25px;}
+#content h2 {color: #3072b3; border-bottom:1px solid #ddd; padding:0 5px 8px 5px;margin:5px 0 25px; width:777px;}
 #content h2.magenta {color:#a9014b;}
 #content h2.agenta {color:#a9014b;}
 #content h2.green {color:#b8d30b}
@@ -30,7 +34,7 @@ body {
 #content h2.orange {color:#ff6908}
 #content h2.yellow {color:#fc9200}
 
-a {color: #3b5998; cursor: pointer; -moz-outline-style: none; text-decoration:none}
+a {color: #3072b3; cursor: pointer; -moz-outline-style: none; text-decoration:none}
 .error {font-size:13px; color:#872020; margin:10px auto -30px; line-height:20px; width:780px;}
 
 .left {float:left;}
@@ -38,7 +42,9 @@ a {color: #3b5998; cursor: pointer; -moz-outline-style: none; text-decoration:no
 .line{border:none;border-bottom:1px solid #ddd;}
 /* ------------- wrapper - header ------------------------- */
 
-div#wrapper {border-top:4px solid #2daebf;clear:left;}
+div#wrapper {border-top:4px solid #2daebf;clear:left;
+border-top:4px solid #3072b3;
+}
 div#container {position:relative;width:960px;padding:0;font-size:11px;position:relative;height:25px;margin:0 auto 16px}
 
 ul.tabs {float:right;margin:0}
@@ -55,7 +61,7 @@ ul.tabs li a {
     cursor:pointer
 }
 ul.tabs li a:hover {
-    background:#2daebf;
+    background:#3072b3;
     color:#fff;
     border:0;
     margin:0;
@@ -84,7 +90,8 @@ ul.tabs li.yellow a {
     -moz-border-radius:0 0 3px 3px;
 }
 
-ul.tabs li.home a:hover {background:#2daebf}
+ul.tabs li.home a:hover {background:#3072b3}
+ul.tabs li.light-home a:hover {background:#2daebf}
 ul.tabs li.green a:hover {background:#b8d30b}
 ul.tabs li.magenta a:hover {background:#a9014b}
 ul.tabs li.orange a:hover {background:#ff6908}
@@ -98,7 +105,8 @@ h1.orange, h2.orange, h3.orange, h4.orange, h5.orange,
 h1.yellow, h2.yellow, h3.yellow, h4.yellow, h5.yellow
 { margin-top:2px;margin-bottom:20px; }
 
-.home {color:#007d9a}
+.home {color:#3072b3}
+.light-home {color:#007d9a}
 .green {color:#95a105}
 .magenta {color:#a9014b}
 .orange {color:#d45500}
@@ -268,7 +276,7 @@ tr, td, th {text-align:left;}
 #student_image { width:120px; height:140px;border: 1px dotted #ccc;float:left;margin:0 40px 0 30px;}
 
 /* -------------------- printly ----------------------- */
-ul.tabs li.printly a {margin-top:3px;width:5px;height:25px;background:url(/public/img/printly.png) no-repeat;background-size:25px;}
+ul.tabs li.printly a {margin-top:3px;width:5px;height:25px;background:url(/public/img/icon/32x32/printer.png) no-repeat;background-size:25px;}
 /* ---------------------------------------------------- */
 
 textarea,
@@ -294,13 +302,13 @@ input[type=text]:focus {outline: 0; border: 1px solid #35addf;}
 #button-edit{background:url(/public/img/icon/24x24/edit.png) no-repeat center;}
 #button-delete{background:url(/public/img/icon/24x24/delete.png) no-repeat center;margin-right:0px;}
 
-.question {width:100%;font-weight:bold;color:#2f7ca2;font-size:13px;margin-bottom:20px;padding-bottom:5px;border-bottom:1px solid #ddd;
+.question {width:100%;font-weight:bold;color:#3072b3;font-size:13px;margin-bottom:20px;padding-bottom:5px;border-bottom:1px solid #ddd;
 padding-left:5px;}
 .answer{width:100%;float:left;padding-left:20px;padding-top:1px;margin-bottom:10px;background:url(/public/img/icon/16x16/next_blue.png) no-repeat;}
 
 #admin-panel {width:920px;height:70px;border-bottom:1px solid #ddd;margin-top:-20px; margin-bottom:20px;}
-#admin-panel ul {font-size:12px;font-weight:bold;list-style-type:none;margin-left:-40px;}
-#admin-panel li {float:left;width:115px;color:#3b5998;text-align:center;}
+#admin-panel ul {font-size:11px;font-weight:bold;list-style-type:none;margin-left:-40px;}
+#admin-panel li {float:left;width:115px;color:#3072b3;text-align:center;}
 #admin-panel li img {idth:34px;eight:34px;margin:0 34px;}
 
 #leftcolumn {
@@ -327,5 +335,8 @@ h2 img {float:left;margin-top:-2px;margin-right:2px;}
 .home a img {float:left; width:22px; height:22px; margin-top:-6px; margin-right:5px;}
 
 
+p#vtip { display: none; position: absolute; padding: 10px; font-size: 10px; background-color: white;
+    z-index: 9999; max-width:300px; border: 3px solid #eee; -moz-border-radius: 5px; -webkit-border-radius: 5px;}
+p#vtip #vtipArrow { position: absolute; top: -10px; left: 5px }
 
 
