@@ -262,7 +262,7 @@
 
 .button.pill { -webkit-border-radius: 50em; -moz-border-radius: 50em; border-radius: 50em; }
 .button.disable { opacity: 0.5; }
-.button.big { font-size: 14px; }
+.button.big { font-size: 12px; padding:8px 14px;}
 .button.big.icon:before { top: 0; }
 
 /* ............................................................................................................. Standard */
