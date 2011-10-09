@@ -335,5 +335,8 @@ h2 img {float:left;margin-top:-2px;margin-right:2px;}
 .home a img {float:left; width:22px; height:22px; margin-top:-6px; margin-right:5px;}
 
 
+p#vtip { display: none; position: absolute; padding: 10px; font-size: 10px; background-color: white;
+    z-index: 9999; max-width:300px; border: 3px solid #eee; -moz-border-radius: 5px; -webkit-border-radius: 5px;}
+p#vtip #vtipArrow { position: absolute; top: -10px; left: 5px }
 
 

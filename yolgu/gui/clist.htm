@@ -3,7 +3,8 @@
 <table id="hor-minimalist-a">
   <thead>
     <tr>
-      <th scope="col">Case Lists</th>
+      <th scope="col">Case title</th>
+      <th scope="col">Created time</th>
       <th scope="col">Actions</th>
     </tr>
   </thead>
@@ -12,7 +13,12 @@
     <F3:repeat group="{{@SESSION.cdata}}" key="{{@gnl}}" value="{{@blg}}" >
     <tr>
       <td>
-        <a class="answer" href="/yolgu/cstart/{{@blg['cid']}}">{{@blg['title']}}</a>
+        <a class="answer vtip"
+          title="adam zehirlenmiş işte onun olgusu daha ne bekliyodun"
+          href="/yolgu/cstart/{{@blg['cid']}}">{{@blg['title']}}</a>
+      </td>
+      <td>
+        07-08-2011
       </td>
       <td>
         <a href="/yolgu/cedit/{{@blg['cid']}}" id="button-edit"></a>
