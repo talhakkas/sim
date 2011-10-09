@@ -30,11 +30,7 @@
     *display: inline;
 }
 
-.button.blue,
-.button:hover,
-.button:focus,
-.button:active,
-.button.active {
+.button.blue {
     border-color: #3072b3;
     border-bottom-color: #2a65a0;
     text-decoration: none;
@@ -45,6 +41,21 @@
     background-image: -moz-linear-gradient(#599bdc, #3072b3);
     background-image: -o-linear-gradient(#599bdc, #3072b3);
     background-image: linear-gradient(#599bdc, #3072b3);
+}
+
+.button:hover,
+.button:focus,
+.button:active,
+.button.active {
+    border-color: #3072b3;
+    border-bottom-color: #2a65a0;
+    text-decoration: none;
+    text-shadow: -1px -1px 0 rgba(0,0,0,0.3);
+    color: #fff;
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#3072b3), to(#3C8DDE));
+    background-image: -moz-linear-gradient(#3072b3, #3C8DDE);
+    background-image: -o-linear-gradient(#3072b3, #3C8DDE);
+    background-image: linear-gradient(#3072b3, #3C8DDE);
 }
 
 .button:active,
@@ -233,6 +244,18 @@
 /* ............................................................................................................. Danger */
 
 .button.danger { color: #900; }
+
+.button.danger.red{
+    text-shadow:none;
+    border-color: #b53f3a;
+    border-bottom-color: #a0302a;
+    color: #fff;
+    background-color: #dc5f59;
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#b33630), to(#dc5f59));
+    background-image: -moz-linear-gradient(#b33630, #dc5f59);
+    background-image: -o-linear-gradient(#b33630, #dc5f59);
+    background-image: linear-gradient(#b33630, #dc5f59);
+}
 
 .button.danger:hover,
 .button.danger:focus,
