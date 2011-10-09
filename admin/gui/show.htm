@@ -10,7 +10,9 @@
       <td class="label"> {{@gnl}} </td>
       <F3:check if="{{@gnl == 'photo'}}">
       <F3:true>
-      <td class="field"><img src="/public/{{@uploaddir}}/{{@blg}}" /></td>
+      <td class="field">
+        <img src="/public/upload/{{@blg}}" width="128" height="128"/>
+      </td>
       </F3:true>
       <F3:false>
       <td class="field"> {{@blg}} </td>

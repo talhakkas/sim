@@ -12,7 +12,8 @@ $table = new Axon($TABLE);
 $table->load("$KEY='$key'");
 
 // resmi bu olsa gerek.
-Image::delete($TABLE, $table->$KEY);
+$up = new Upload();
+$up->erase($TABLE, $table->photo);
 
 $table->erase();
 F3::set('SESSION.SAVE', F3::get('SESSION.SAVE') - 1);

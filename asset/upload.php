@@ -12,12 +12,12 @@
 // # ör: (jpeg, png) dosya yükleme
 // $up = new Upload(array('jpeg','png'),'upload', 55000000); //up= new Upload();
 //
-// $up->load('alt-dizin', 'yeni-kayit.jpeg', $_FILE['photo']);
+// $up->load('alt-dizin', 'yeni-kayit', $_FILE['photo']);
 //
 //
 // # ör: (jpeg) dosya silme
 // $up = Upload.new();
-// $up->unload('alt-dizin', 'yeni-kayit.jpeg');
+// $up->erase('alt-dizin', 'yeni-kayit.jpeg');
 //
 //
 // ### EXAMPLE
@@ -28,7 +28,7 @@
 //
 // # örnek (mp4) dosya silme
 // $up = Upload.new(array('mp4'), 'upload-video', 100000000);
-// $up->unload('alt-dizin', 'yeni-kayit.mp4');
+// $up->erase('alt-dizin', 'yeni-kayit.mp4');
 //
 class Upload {
 
