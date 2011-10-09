@@ -6,14 +6,30 @@ body {
     padding:auto;
     color:#555;
     background:#f0f0f0;
+
 }
 
+/*
+.back {
+    height:200px;
+    width:200px;
+    float:left;
+
+    background-color:transparent;
+    background: url(/public/img/a/simulation.jpg) no-repeat;
+    background-attachment: fixed;
+    background-position:left center;
+    background-repeat:no-repeat;
+}
+*/
 #content {
     width: 920px;
     margin: 30px auto 30px;;
     background: #fff;
-    background:#fff url(/public/img/a/simulation.jpg) no-repeat right 0px ;
-    background-size:200px ;
+
+    background:#fff url(/public/img/a/simulation.jpg) no-repeat right 0px;;
+    background-size:170px ;
+
     padding: 20px;
     height:auto;
     min-height:550px;
@@ -24,7 +40,7 @@ body {
     box-shadow:0 0 18px rgba(0,0,0,0.4);
 }
 
-#content h2 {color: #3072b3; border-bottom:1px solid #ddd; padding:0 5px 8px 5px;margin:5px 0 25px;}
+#content h2 {color: #3072b3; border-bottom:1px solid #ddd; padding:0 5px 8px 5px;margin:5px 0 25px; width:750px;}
 #content h2.magenta {color:#a9014b;}
 #content h2.agenta {color:#a9014b;}
 #content h2.green {color:#b8d30b}
@@ -305,8 +321,8 @@ padding-left:5px;}
 .answer{width:100%;float:left;padding-left:20px;padding-top:1px;margin-bottom:10px;background:url(/public/img/icon/16x16/next_blue.png) no-repeat;}
 
 #admin-panel {width:920px;height:70px;border-bottom:1px solid #ddd;margin-top:-20px; margin-bottom:20px;}
-#admin-panel ul {font-size:12px;font-weight:bold;list-style-type:none;margin-left:-40px;}
-#admin-panel li {float:left;width:115px;color:#3b5998;text-align:center;}
+#admin-panel ul {font-size:11px;font-weight:bold;list-style-type:none;margin-left:-40px;}
+#admin-panel li {float:left;width:115px;color:#3072b3;text-align:center;}
 #admin-panel li img {idth:34px;eight:34px;margin:0 34px;}
 
 #leftcolumn {
