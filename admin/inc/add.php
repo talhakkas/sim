@@ -20,8 +20,8 @@ if (!$table->found("$KEY='$key'")) {
 	$table = new Axon($TABLE);
 	$table->load("$KEY='$key'");
 
-	// resim yükle ve üzerine yazılmasın!
-	if ($response = Image::upload($TABLE, $table->$KEY, F3::get("FILES.photo"), false))
+	$up = new Upload();
+	if ($response = ($up->load($TABLE, $table->$KEY, F3::get("FILES.photo"), false)))
 		if ($response[0]) // istek başarı mı / hata mı ?
 			$table->photo = $response[1];
 		else
