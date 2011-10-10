@@ -13,7 +13,7 @@ function login() {
 function test2() 
 {
 	F3::set('SESSION.cid', 1);
-	F3::set('SESSION.id',  17);
+	F3::set('SESSION.id',  26);
 
 	$node = get_node();
 	
@@ -30,9 +30,11 @@ function test3($dbg=true)
 	$dict = unserialize($tnode->options);
 	print_pre($dict, "GIRDI:dict");
 
-	$dict[0]['response'][54] = $dict[0]['response'][2];
-	unset($dict[0]['response'][2]);
-	unset($dict[0]['response'][54]['did']);
+	$dict[0]['dnid'] = 17;
+	$dict[0]['stamp'] = '0.86331300 1318022316';
+
+	unset($dict[0]['response']['dnid']);
+	unset($dict[0]['response']['stamp']);
 
 	print_pre($dict, "sonuc:dict");
 

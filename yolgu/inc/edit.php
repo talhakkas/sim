@@ -19,7 +19,9 @@
 			 * dose:options:dict 'inde keyi did secersek daha iyi olacak 
 			 */
 		}
-		return;
+		else {
+			
+		}
 	}
 
 	render('node', 'Düzenle');
