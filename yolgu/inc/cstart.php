@@ -13,5 +13,5 @@
 	F3::set('SESSION.skey', mt_rand());
 	F3::set('SESSION.stime', microtime(true));
 
-	F3::reroute("/show/$cid/$id/0");	
+	F3::reroute("/show/$cid/$id/1");	
 ?>

@@ -10,9 +10,11 @@ function params2session() {
 	}
 }
 
-function get_node() {
-	$id  = F3::get('SESSION.id');
-	$cid = F3::get('SESSION.cid');
+function get_node($cid=NULL, $id=NULL) 
+{
+	// parametreler NULL ise SESSION dan al
+	if($cid == NULL) 	$cid = F3::get('SESSION.cid');
+	if($id  == NULL) 	$id  = F3::get('SESSION.id');
 
 	$table = new Axon("node");
 	$datas = $table->afind("id='$id' AND cid='$cid'");
@@ -71,6 +73,10 @@ function get_drug($did)
 	$drug['id'] = $tdrug->id;
 	$drug['name'] = $tdrug->name;
 	$drug['content'] = $tdrug->content;
+	$drug['dmn'] = $tdrug->dmn;
+	$drug['dmx'] = $tdrug->dmx;
+	$drug['dval'] = $tdrug->dval;
+	$drug['dayol'] = $tdrug->dayol;
 
 	return $drug;
 }
@@ -125,10 +131,37 @@ function check_stamp($cid, $did=NULL, $dsid=NULL)
 	$ts = unserialize($tdose->options);
 
 	$drug_stamp = $td['save_stamp'];
-	$dose_stamp = $ts[0]['response']['stamp'];
+	$dose_stamp = $ts[0]['stamp'];
 
 	return strcmp($drug_stamp, $dose_stamp);
 }	
+
+function get_dnid()
+{
+	$node = get_node();
+	$dnid = $node['nodes'][0]['dnid'];
+
+	return $dnid;
+}
+
+function get_selected_drug_list()
+{
+	$dnid = get_dnid();
+
+	$cid = F3::get('SESSION.cid');
+	$node = get_node($cid, $dnid);
+
+	$t = $node['nodes'][0]['response'];
+	$t = preg_split('/,/', $t);
+
+	$dlist = array();
+	foreach($t as $i=>$did) {
+		$drug = get_drug($did);
+		$dlist[$did] = $drug;
+	}
+
+	return $dlist;
+}
 
 function takip_listesine_ekle() {
 	// a) su anki dugum icin 'tet' girdisi olustur. "beklenen" ve "soylenen" bos, simdilik
