@@ -8,9 +8,9 @@
 
     <F3:repeat group="{{@SESSION.data['nodes'][0]['response']}}" key="{{@gnl}}" value="{{@blg}}" counter="{{@ctr}}">
     <div class="doz line">
-      <span style="float:left;"><a href="/yolgu/drug/{{@blg['did']}}" target="_blank">{{@blg['name']}}</a> Dozu:</span>
-      <input type="hidden" name="did[]" value="{{@blg['did']}}">
-      <input type="range" name="doz[]" min="{{@blg['dmn']}}" max="{{@blg['dmx']}}" value="{{@blg['dval']}}"/>mg
+      <span style="float:left;"><a href="/yolgu/drug/{{@gnl}}" target="_blank">{{@blg['name']}}</a> Dozu:</span>
+      <input type="hidden" name="did[]" value="{{@gnl}}">
+      <input type="range" name="doz[]" min="{{@blg['dmn']}}" max="{{@blg['dmx']}}" value=""/>mg
 
       <div class="select">
         Hangi yolla:

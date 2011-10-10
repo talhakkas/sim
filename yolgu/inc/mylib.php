@@ -32,7 +32,9 @@ function set_node()
 	$cid = F3::get('SESSION.cid');
 	$id = F3::get('SESSION.id');
 
+print_pre($_POST, 'I-post:');
 	$_POST = zip($_POST);
+print_pre($_POST, 'O-post:');
 
 	$table = new Axon("node");
 	$table->load("id='$id' AND cid='$cid'");
@@ -172,6 +174,7 @@ function check_stamp($cid, $did=NULL, $dsid=NULL, $dbg=false)
 function get_dnid()
 {
 	$node = get_node();
+	print_pre($node, "node");
 	$dnid = $node['nodes'][0]['dnid'];
 
 	return $dnid;
@@ -454,7 +457,7 @@ function zip($datas, $dbg=false)
 		}
 	}
 	
-	$dict['save_stamp'] = microtime();
+	$dict[0]['stamp'] = microtime();
 	if($dbg) print_pre($dict, 'dict');
 
 	$datas['options'] = serialize($dict);

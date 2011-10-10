@@ -30,11 +30,7 @@ function test3($dbg=true)
 	$dict = unserialize($tnode->options);
 	print_pre($dict, "GIRDI:dict");
 
-	$dict[0]['dnid'] = 17;
-	$dict[0]['stamp'] = '0.86331300 1318022316';
-
-	unset($dict[0]['response']['dnid']);
-	unset($dict[0]['response']['stamp']);
+	unset($dict['save_stamp']);
 
 	print_pre($dict, "sonuc:dict");
 
@@ -45,7 +41,7 @@ function test3($dbg=true)
 
 function test()
 {
-	test2();
+	test3();
 }
 
 F3::set('uploaddir', 'upload/');

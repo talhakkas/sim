@@ -22,10 +22,10 @@ function show_node_dose()
 {
 	$drugs = F3::get('SESSION.data.nodes[0][response]');
 
-	foreach($drugs as $i=>$d) {
-		$drug = get_drug($d['did']);
+	foreach($drugs as $did=>$d) {
+		$drug = get_drug($did);
 
-		$drugs[$i]['name'] = $drug['name'];
+		$drugs[$did]['name'] = $drug['name'];
 	}
 
 	F3::set('SESSION.data.nodes[0][response]', $drugs);
