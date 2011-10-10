@@ -6,6 +6,8 @@ body {
     padding:auto;
     color:#555;
     background:#f0f0f0;
+    background: url(/public/img/background_texture.gif) no-repeat;
+
 }
 
 #content {
@@ -21,12 +23,13 @@ body {
     min-height:550px;
     position:relative;
     border:3px solid rgba(0,0,0,0);
-    -webkit-box-shadow:0 0 18px rgba(0,0,0,0.4);
-    -moz-box-shadow:0 0 18px rgba(0,0,0,0.4);
-    box-shadow:0 0 18px rgba(0,0,0,0.4);
+    -webkit-box-shadow:0 0 18px rgba(0,0,0,0.3);
+    -moz-box-shadow:0 0 18px rgba(0,0,0,0.3);
+    box-shadow:0 0 18px rgba(0,0,0,0.3);
 }
 
-#content h2 {color: #3072b3; border-bottom:1px solid #ddd; padding:0 5px 8px 5px;margin:5px 0 25px; width:777px;}
+#content h2 {color: #3072b3; border-bottom:1px solid #ddd; padding:0 5px 8px 5px;margin:5px 0 25px; width:770px;}
+#content .page h2 { width:630px;}
 #content h2.magenta {color:#a9014b;}
 #content h2.agenta {color:#a9014b;}
 #content h2.green {color:#b8d30b}
@@ -56,7 +59,11 @@ ul.tabs li a {
     margin:9px 0 0 -1px;
     margin-right:10px;
     padding:2px 5px 11px 15px;
+    padding:2px 6px 11px 15px;
+    /*
+    padding:2px 5px 11px 15px;
     border-left:1px solid #eee;
+     */
     text-decoration:none;
     cursor:pointer
 }
