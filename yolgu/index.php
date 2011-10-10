@@ -13,7 +13,7 @@ function login() {
 function test2() 
 {
 	F3::set('SESSION.cid', 1);
-	F3::set('SESSION.id',  17);
+	F3::set('SESSION.id',  26);
 
 	$node = get_node();
 	

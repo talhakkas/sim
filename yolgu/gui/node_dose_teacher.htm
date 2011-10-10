@@ -4,9 +4,8 @@
   <td class="field" id="dal{{@ctr}}field">
     <div class="doz line">
       <span style="float:left;"><a href="/yolgu/drug/{{@gnl}}" target="_blank">{{@blg['name']}}</a> Dozu:</span>
-      <input type="hidden" name="did[]" value="{{@blg['did']}}">
+      <input type="hidden" name="did[]" value="{{@gnl}}">
       <input type="range" name="doz[]" min="{{@blg['dmn']}}" max="{{@blg['dmx']}}" value="{{@blg['dval']}}"/>mg
-    <script>$(":range").rangeinput();</script>
 
       <div class="select">
         Hangi yolla:
@@ -18,12 +17,18 @@
       </div>
     </div>
 
-    Ödül: <input type="text" name="odul[]" value="{{@blg['odul']}}" maxlength="3" size="3">
-    Ceza: <input type="text" name="ceza[]" value="{{@blg['ceza]}}"  maxlength="3" size="3">
-    <br>
   </td>
 </tr>
 </F3:repeat>
+    <script>$(":range").rangeinput();</script>
+
+<tr>
+	<td></td>
+	<td class="field">
+	    Ödül: <input type="text" name="odul[]" value="{{@SESSION.data['nodes'][0]['odul']}}" maxlength="3" size="3"> <br>
+	    Ceza: <input type="text" name="ceza[]" value="{{@SESSION.data['nodes'][0]['ceza']}}"  maxlength="3" size="3"><br>
+	</td>
+</tr>
 <tr>
   <td class="label" style="padding-top:15px;">
     <img src="/public/img/icon/32x32/comments.png">

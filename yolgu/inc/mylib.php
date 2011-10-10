@@ -115,24 +115,57 @@ function get_dose_id($cid)
 	return $tnode->id;
 }
 
-function check_stamp($cid, $did=NULL, $dsid=NULL)
+function get_drug_stamp($cid, $id=NULL)
 {
-	if($did == NULL)	$did  = get_drug_id($cid);
+	if($id  == NULL)	$id  = get_drug_id($cid);
+
+	$tdrug = new Axon("node");
+	$tdrug->load("cid='$cid' AND id='$id'");
+
+	$td = unserialize($tdrug->options);
+ 	$drug_stamp = $td['save_stamp'];
+
+	return $drug_stamp;
+}
+
+function get_dose_stamp($cid, $id=NULL)
+{
+	if($id  == NULL)	$id  = get_dose_id($cid);
+
+	$tdose = new Axon("node");
+	$tdose->load("cid='$cid' AND id='$id'");
+
+	$ts = unserialize($tdose->options);
+ 	$dose_stamp = $ts[0]['stamp'];
+
+	return $dose_stamp;
+}
+
+function set_dose_stamp($cid, $id=NULL, $dose_stamp=NULL)
+{
+	if($id  == NULL)	$id  = get_dose_id($cid);
+	if($dose_stamp == NULL) $dose_stamp = get_drug_stamp($cid);
+
+	$tdose = new Axon("node");
+	$tdose->load("cid='$cid' AND id='$id'");
+
+	$ts = unserialize($tdose->options);
+ 	$ts[0]['stamp'] = $dose_stamp;
+
+	$tdose->options = serialize($ts);
+	$tdose->save();
+}
+
+function check_stamp($cid, $did=NULL, $dsid=NULL, $dbg=false)
+{
+	if($did  == NULL)	$did  = get_drug_id($cid);
 	if($dsid == NULL)	$dsid = get_dose_id($cid);
 
-	/* $did: drug id ve $dsid: dose id nin stamp lerini denetler */
-	$tdrug = new Axon("node");
-	$tdose = new Axon("node");
+	$drug_stamp = get_drug_stamp($cid, $did);
+	$dose_stamp = get_dose_stamp($cid, $dsid);
 
-	$tdrug->load("cid='$cid' AND id='$did'");
-	$tdose->load("cid='$cid' AND id='$dsid'");
+	if($dbg) echo "stamp: drug=$drug_stamp, dose=$dose_stamp<br>";
 	
-	$td = unserialize($tdrug->options);
-	$ts = unserialize($tdose->options);
-
-	$drug_stamp = $td['save_stamp'];
-	$dose_stamp = $ts[0]['stamp'];
-
 	return strcmp($drug_stamp, $dose_stamp);
 }	
 
@@ -157,10 +190,23 @@ function get_selected_drug_list()
 	$dlist = array();
 	foreach($t as $i=>$did) {
 		$drug = get_drug($did);
+		unset($drug['content']);
 		$dlist[$did] = $drug;
 	}
 
 	return $dlist;
+}
+
+function set_dose_drug_list($cid, $id, $dslist) 
+{
+	$tdose = new Axon("node");
+	$tdose->load("cid='$cid' AND id='$id'");
+
+	$dict = unserialize($tdose->options);
+	$dict[0]['response'] = $dslist;
+
+	$tdose->options = serialize($dict);
+	$tdose->save();
 }
 
 function takip_listesine_ekle() {

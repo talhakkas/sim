@@ -18,15 +18,37 @@
 			 * 
 			 * dose:options:dict 'inde keyi did secersek daha iyi olacak 
 			 */
-			$dlist = get_selected_drug_list();
-			$sz = count($dlist);
+			$dslist = F3::get("SESSION.data['nodes'][0]['response']");
+			$drlist = get_selected_drug_list();
 
-			print_pre($dlist, "dlist");
-			print_pre(F3::get('SESSION.data'), 'data');
-			return;
+			foreach($drlist as $did=>$drug) {
+				/* dslist te varsa dokunma
+				 * yoksa ekle
+				 */
+				if(array_key_exists($did, $dslist))
+					continue;
+				else
+					$dslist[$did] = $drug;
+			}
+
+			/* dslist ten drlist'te olmayanlari ciakrt */
+			foreach($dslist as $did=>$drug) {
+				if(!array_key_exists($did, $drlist))
+					unset($dslist[$did]);
+			}
+
+			// if(true) print_pre($drlist, "drlist");
+			// if(true) print_pre($dslist, "dslist");
+			// if(true) print_pre(F3::get("SESSION.data['nodes'][0]"), "nodes");
+
+			set_dose_drug_list(F3::get('SESSION.cid'), F3::get('SESSION.id'), $dslist);
+			set_dose_stamp(F3::get("SESSION.cid"));
+
+			F3::set("SESSION.data['nodes'][0]['response']", $dslist);
+			// print_pre(F3::get('SESSION.data[nodes]'), 'nodes'); return;
 		}
 		else {
-			
+			;	
 		}
 	}
 
