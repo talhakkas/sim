@@ -32,9 +32,7 @@ function set_node()
 	$cid = F3::get('SESSION.cid');
 	$id = F3::get('SESSION.id');
 
-print_pre($_POST, 'I-post:');
 	$_POST = zip($_POST);
-print_pre($_POST, 'O-post:');
 
 	$table = new Axon("node");
 	$table->load("id='$id' AND cid='$cid'");
@@ -125,7 +123,7 @@ function get_drug_stamp($cid, $id=NULL)
 	$tdrug->load("cid='$cid' AND id='$id'");
 
 	$td = unserialize($tdrug->options);
- 	$drug_stamp = $td['save_stamp'];
+ 	$drug_stamp = $td[0]['stamp'];
 
 	return $drug_stamp;
 }
@@ -143,16 +141,17 @@ function get_dose_stamp($cid, $id=NULL)
 	return $dose_stamp;
 }
 
-function set_dose_stamp($cid, $id=NULL, $dose_stamp=NULL)
+function set_dose_stamp($cid, $id=NULL, $drug_stamp=NULL)
 {
 	if($id  == NULL)	$id  = get_dose_id($cid);
-	if($dose_stamp == NULL) $dose_stamp = get_drug_stamp($cid);
+	if($drug_stamp == NULL) $drug_stamp = get_drug_stamp($cid);
 
 	$tdose = new Axon("node");
 	$tdose->load("cid='$cid' AND id='$id'");
 
 	$ts = unserialize($tdose->options);
- 	$ts[0]['stamp'] = $dose_stamp;
+
+ 	$ts[0]['stamp'] = $drug_stamp;
 
 	$tdose->options = serialize($ts);
 	$tdose->save();
@@ -174,8 +173,10 @@ function check_stamp($cid, $did=NULL, $dsid=NULL, $dbg=false)
 function get_dnid()
 {
 	$node = get_node();
-	print_pre($node, "node");
-	$dnid = $node['nodes'][0]['dnid'];
+
+	$dnid = my_get($node['nodes'][0], 'dnid');
+
+	if($dnid == "") $dnid = get_drug_id($node['cid']);
 
 	return $dnid;
 }
@@ -202,11 +203,17 @@ function get_selected_drug_list()
 
 function set_dose_drug_list($cid, $id, $dslist) 
 {
+	$dnid = get_drug_id($cid);
+
 	$tdose = new Axon("node");
 	$tdose->load("cid='$cid' AND id='$id'");
 
 	$dict = unserialize($tdose->options);
 	$dict[0]['response'] = $dslist;
+
+	if(isset($dict[0]['dnid']))	$dict[0]['dnid'] = $dnid;
+	if(isset($dict[0]['odul']))	$dict[0]['odul'] = "";
+	if(isset($dict[0]['ceza']))	$dict[0]['ceza'] = "";
 
 	$tdose->options = serialize($dict);
 	$tdose->save();
@@ -428,42 +435,64 @@ function zip($datas, $dbg=false)
 
 	$dict = array();
 
-	$sz = sizeof($datas['link_text']);
-	
-	$chkR = array_pad(array(), $sz, 'no');
-	$sz_chk = sizeof($datas['chkResponse']);
-	if($sz_chk > 0) {
-		$arr = $datas['chkResponse'];
+	if($datas['ntype'] == 'dose') {
+		$dict[0]['link_text'] = $datas['link_text'][0];
+		$dict[0]['node_link'] = $datas['node_link'][0];
+		$dict[0]['odul'] = $datas['odul'][0];
+		$dict[0]['ceza'] = $datas['ceza'][0];
 
-		for($i=0; $i < $sz_chk; $i++) {
-			$j = $arr[$i] - 1;
-			$chkR[$j] = 'yes';
+		$sz = sizeof($datas['did']);
+		for($i=0; $i < $sz; $i++) {
+			$did  = $datas['did'][$i];
+			$dval = $datas['dval'][$i];
+			$dayol = $datas['dayol'][$i];
+
+			$dict[0]['response'][$did] = array('id'=>$did, 'name'=>'', 'dmn'=>'', 
+							   'dmx'=>'',  'dval'=>$dval, 'dayol'=>$dayol);
 		}
+
+		$datas['nodes'] = $dict;
+		$datas['options'] = serialize($dict);
 	}
-	$datas['chkResponse'] = $chkR;
+	else {
 
-	for($i=0; $i < $sz; $i++) {
-		$dict[$i] = array(
-						'link_text' => my_get2($datas, 'link_text', $i),
-						'node_link' => my_get2($datas, 'node_link', $i),
-						'response'  => my_get2($datas, 'response',  $i),
-						'chkResponse'=>my_get2($datas, 'chkResponse',$i),
-						'odul'      => my_get2($datas, 'odul',      $i),
-						'ceza'      => my_get2($datas, 'ceza',      $i)
-						 );	
+		$sz = sizeof($datas['link_text']);
+		
+		$chkR = array_pad(array(), $sz, 'no');
+		$sz_chk = sizeof($datas['chkResponse']);
+		if($sz_chk > 0) {
+			$arr = $datas['chkResponse'];
 
-		if($dict[$i]['chkResponse'] == 'no') {
-				$dict[$i]['response'] = '';
+			for($i=0; $i < $sz_chk; $i++) {
+				$j = $arr[$i] - 1;
+				$chkR[$j] = 'yes';
+			}
 		}
-	}
-	
-	$dict[0]['stamp'] = microtime();
-	if($dbg) print_pre($dict, 'dict');
+		$datas['chkResponse'] = $chkR;
 
-	$datas['options'] = serialize($dict);
+		for($i=0; $i < $sz; $i++) {
+			$dict[$i] = array(
+							'link_text' => my_get2($datas, 'link_text', $i),
+							'node_link' => my_get2($datas, 'node_link', $i),
+							'response'  => my_get2($datas, 'response',  $i),
+							'chkResponse'=>my_get2($datas, 'chkResponse',$i),
+							'odul'      => my_get2($datas, 'odul',      $i),
+							'ceza'      => my_get2($datas, 'ceza',      $i)
+							 );	
 
-	$datas = unset_arr($datas, array('link_text', 'node_link', 'response', 'chkResponse',
-									 'odul', 'ceza'));
+			if($dict[$i]['chkResponse'] == 'no') {
+					$dict[$i]['response'] = '';
+			}
+		}
+		
+		$dict[0]['stamp'] = microtime();
+		if($dbg) print_pre($dict, 'dict');
+
+		$datas['options'] = serialize($dict);
+
+		$datas = unset_arr($datas, array('link_text', 'node_link', 'response', 'chkResponse',
+		  								 'odul', 'ceza'));
+	}										
 
 	if($dbg) print_pre($datas, 'datas');
 

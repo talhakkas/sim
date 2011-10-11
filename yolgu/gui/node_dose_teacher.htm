@@ -5,11 +5,11 @@
     <div class="doz line">
       <span style="float:left;"><a href="/yolgu/drug/{{@gnl}}" target="_blank">{{@blg['name']}}</a> Dozu:</span>
       <input type="hidden" name="did[]" value="{{@gnl}}">
-      <input type="range" name="doz[]" min="{{@blg['dmn']}}" max="{{@blg['dmx']}}" value="{{@blg['dval']}}"/>mg
+      <input type="range" name="dval[]" min="{{@blg['dmn']}}" max="{{@blg['dmx']}}" value="{{@blg['dval']}}"/>mg
 
       <div class="select">
         Hangi yolla:
-        <select name="ayol[]">
+        <select name="dayol[]">
           <option value="1">Damar</option>
           <option value="2">Kas</option>
           <option value="3">Foo</option>
@@ -23,10 +23,14 @@
     <script>$(":range").rangeinput();</script>
 
 <tr>
-	<td></td>
+	<td>Görünecek metin</td>
 	<td class="field">
+    	    <textarea name="link_text[]">{{@SESSION.data['nodes'][0]['link_text']}}</textarea><br>
+
 	    Ödül: <input type="text" name="odul[]" value="{{@SESSION.data['nodes'][0]['odul']}}" maxlength="3" size="3"> <br>
 	    Ceza: <input type="text" name="ceza[]" value="{{@SESSION.data['nodes'][0]['ceza']}}"  maxlength="3" size="3"><br>
+
+    	    <input type="checkbox" name="chkResponse[]" id="chkResponse1" checked="true" value="1"><br>
 	</td>
 </tr>
 <tr>
@@ -53,3 +57,6 @@
 </tr>
 
 <input type="hidden" name="nofbs" id="nofbs" value="{{@SESSION.nofbs}}" />
+
+<input type="hidden" name="stamp" value="{{@SESSION.data['nodes'][0]['stamp']}}" />
+<input type="hidden" name="dnid"  value="{{@SESSION.data['nodes'][0]['dnid']}}" />
