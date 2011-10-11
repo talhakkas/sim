@@ -6,7 +6,7 @@ body {
     padding:auto;
     color:#555;
     background:#f0f0f0;
-    background: url(/public/img/background_texture.gif) no-repeat;
+    background: url(/public/img/background_texture.gif);
 
 }
 
