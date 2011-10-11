@@ -41,11 +41,13 @@
 .vzebra-even {background: #e8edff;}
 #ver-zebra #vzebra-adventure, #ver-zebra #vzebra-children{background: #d0dafd;border-bottom: 1px solid #c8d4fd;}
 #ver-zebra #vzebra-comedy, #ver-zebra #vzebra-action {background: #dce4ff;border-bottom: 1px solid #d6dfff;}
+
 #one-column-emphasis {font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
-	font-size: 12px;margin: 45px;width: 480px;text-align: left;border-collapse: collapse;}
+	font-size: 12px;width:100%;text-align: left;border-collapse: collapse;}
 #one-column-emphasis th {font-size: 14px;font-weight: normal;padding: 12px 15px;color: #039;}
 #one-column-emphasis td {padding: 10px 15px;color: #669;border-top: 1px solid #e8edff;}
-.oce-first{background: #d0dafd;	border-right: 10px solid transparent;border-left: 10px solid transparent;}
+/*.oce-first{border-right: 10px solid transparent;border-left: 10px solid transparent;}*/
+
 #one-column-emphasis tr:hover td {color: #339;background: #eff2ff;}
 #newspaper-a {font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
 	font-size: 12px;margin: 45px;width: 480px;text-align: left;border-collapse: collapse;border: 1px solid #69c;}
