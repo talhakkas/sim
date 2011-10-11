@@ -1,8 +1,6 @@
 <?php
 
 function tamamla($id, $len){
-    if (strlen((string)$id) == $len)
-        return $id;
     return str_pad((string)$id, $len, "0", STR_PAD_LEFT);
 }
 
@@ -30,7 +28,7 @@ function multi(){
                     $survey_id_discipline = substr(tamamla($survey['d_survey_id'], 6), 0, 2);
                     if (($survey_id == $parent_id_survey) & ($survey_id_discipline == $discipline_key+1)){
                         $_id = substr($survey['d_survey_id'], 4, 2);
-                        $a .= '<option value="'. $survey_id_discipline.$survey_id.tamamla($_id, 2) .'">'. $survey['name'] .'</option>';
+                        $a .= '<option value="'. $survey_id_discipline.$survey_id.$_id.'">'. $survey['name'] .'</option>';
                     }
                 }
                 $a .= '</select>';
