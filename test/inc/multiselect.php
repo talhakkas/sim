@@ -1,6 +1,6 @@
 <?php
 
-function foo($id, $len){
+function tamamla($id, $len){
     return str_pad((string)$id, $len, "0", STR_PAD_LEFT);
 }
 
@@ -18,17 +18,17 @@ function multi(){
     foreach ($discipline as $discipline_key => $discipline_val){
         $a .= '<div id="frag-'.$discipline_key.'">';
         foreach ($parent as $parent_key => $parent_val){
-            $parent_id = substr(foo($parent_val['parent_id'], 4), 0, 2);
+            $parent_id = substr(tamamla($parent_val['parent_id'], 4), 0, 2);
             if ($parent_id == $discipline_key+1){
-                $parent_id_survey = substr(foo($parent_val['parent_id'], 4), 2, 4);
+                $parent_id_survey = substr(tamamla($parent_val['parent_id'], 4), 2, 4);
                 $a .= '<p class="answer">' . $parent_val['name'] . '</p>';
-                $a .= '<select multiple="multiple" size="5" name="response[]" style="width:885px;">';
+                $a .= '<select multiple="multiple" size="5" name="response_'.$parent_id_survey.'[]" style="width:885px;">';
                 foreach ($surveys as $survey_key => $survey){
-                    $survey_id = substr(foo($survey['d_survey_id'], 6), 2, 2);
-                    $survey_id_discipline = substr(foo($survey['d_survey_id'], 6), 0, 2);
+                    $survey_id = substr(tamamla($survey['d_survey_id'], 6), 2, 2);
+                    $survey_id_discipline = substr(tamamla($survey['d_survey_id'], 6), 0, 2);
                     if (($survey_id == $parent_id_survey) & ($survey_id_discipline == $discipline_key+1)){
                         $_id = substr($survey['d_survey_id'], 4, 2);
-                        $a .= '<option value="'. $survey_id_discipline . $survey_id . $_id .'">'. $survey['name'] .'</option>';
+                        $a .= '<option value="'. $survey_id_discipline.$survey_id.tamamla($_id, 2) .'">'. $survey['name'] .'</option>';
                     }
                 }
                 $a .= '</select>';

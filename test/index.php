@@ -27,8 +27,18 @@ function page() {
 
 function tetkikler() {
         $select_all = F3::get('REQUEST');
-        $response = $select_all['response'];
-        print_r($response);
+        //print_r($select_all);
+        $baz = array();
+        foreach ($select_all as $key => $value){
+                //echo $value;
+                if (stristr($key, 'response'))
+                        foreach ($select_all[$key] as $k => $v)
+                                $baz[] = $v;
+        }
+
+        //$response = $select_all['response'];
+        //print_r($response);
+        print_r($baz);
         //echo implode(',', $respoense);
 
         render('tetkik', 'Sonuçlar');
