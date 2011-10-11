@@ -1,6 +1,8 @@
 <?php
 
 function tamamla($id, $len){
+    if (strlen((string)$id) == $len)
+        return $id;
     return str_pad((string)$id, $len, "0", STR_PAD_LEFT);
 }
 
@@ -22,7 +24,7 @@ function multi(){
             if ($parent_id == $discipline_key+1){
                 $parent_id_survey = substr(tamamla($parent_val['parent_id'], 4), 2, 4);
                 $a .= '<p class="answer">' . $parent_val['name'] . '</p>';
-                $a .= '<select multiple="multiple" size="5" name="response_'.$parent_id_survey.'" style="width:885px;">';
+                $a .= '<select multiple="multiple" size="5" name="response_'.$parent_id_survey.'[]" style="width:885px;">';
                 foreach ($surveys as $survey_key => $survey){
                     $survey_id = substr(tamamla($survey['d_survey_id'], 6), 2, 2);
                     $survey_id_discipline = substr(tamamla($survey['d_survey_id'], 6), 0, 2);
