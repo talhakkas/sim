@@ -7,91 +7,17 @@
 <script type="text/javascript" src="/public/js/multiselect/jquery.multiselect.filter.js"></script>
 <script type="text/javascript">
   $(function(){
-      $("select").multiselect();
-
-      $("#dialog").dialog({
-	title: "Inside a dialog",
-	height: 200
-	});
-
-      $("#tabs").tabs();
-      $("#accordion").accordion();
-      $("#datepicker").datepicker();
-      $("select").multiselect().multiselectfilter();
-      });
+    $("#tabs").tabs();
+    $("select").multiselect().multiselectfilter();
+  });
 </script>
 
-
 <!-- tabs -->
-<div id="tabs" class="clear">
-  {{@tetkikmerkezi}}
-</div>
-<input type="submit" class="right" value="Gönder"/>
-
-
-<div style="display:none">
-  <ul>
-      <F3:repeat group="{{@discipline}}" key="{{@key}}" value="{{@value}}">
-      <li><a href="#frag-{{@key}}">{{@value}}</a></li>
-      </F3:repeat>
-  </ul>
-
-  <F3:repeat group="{{@discipline}}" key="{{@key}}" value="{{@value}}">
-  <div id="frag-{{@key}}">
-
-      <select multiple="multiple" size="5" style="width:885px;">
-	<option value="red">Red</option>
-	<option value="green">Green</option>
-	<option value="blue">Blue</option>
-	<option value="orange">Orange</option>
-	<option value="purple">Purple</option>
-	<option value="yellow">Yellow</option>
-      </select>
-
+<form method="post" action="bar">
+  <div id="tabs" class="clear">
+    {{@tetkikmerkezi}}
   </div>
-  </F3:repeat>
-</div>
 
-
-
-
-
-
-
-
-<!-- dialog -->
-<div id="dialogi" style="display:none">
-  <form>
-    <select multiple="multiple" size="5">
-      <option value=""></option>
-      <option value="option1">Option 1</option>
-      <option value="option2">Option 2</option>
-      <option value="option3">Option 3</option>
-      <option value="option4">Option 4</option>
-    </select>
-
-    <!-- date picker -->
-    <p>Datepicker: <input type="date" id="datepicker" /></p>
-  </form>
-</div>
-
-
-<!-- accordion -->
-<div id="accordion" style="clear:both; margin-top:50px; display:none;">
-  <h3><a href="#">Inside an accordion</a></h3>
-  <div>
-    <form>
-      <select multiple="multiple" size="5">
-	<option value=""></option>
-	<option value="option1">Option 1</option>
-	<option value="option2">Option 2</option>
-	<option value="option3">Option 3</option>
-	<option value="option4">Option 4</option>
-      </select>
-    </form>
-  </div>
-  <h3><a href="">test</a></h3>
-  <div>Click on the first item to view the test.</div>
-</div>
-
+  <input type="submit" class="button blue right" value="Gönder"/>
+</form>
 

@@ -24,6 +24,17 @@ function page() {
 	//render(F3::get('PARAMS.page'));
 }
 
+
+function bar() {
+        $baz = array();
+        foreach (F3::get('REQUEST') as $key => $value){
+                if (strchr($key, 'multiselect'))
+                        $baz[] = $value;
+        }
+        echo implode(',', $baz);
+        render('tetkik', 'Sonuçlar');
+}
+
 F3::set('tetkikmerkezi', multi());
 
 F3::route('GET /buton', function() { render('buton', 'butonlar');});
@@ -45,6 +56,7 @@ F3::route("GET /ekg*",    'ekg');
 F3::route("GET /@page", 'page');
 
 F3::route('POST /ilac', 'ilac_sonuc.php');
+F3::route('POST /bar', 'bar');
 F3::run();
 
 ?>
