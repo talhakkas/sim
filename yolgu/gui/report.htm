@@ -15,7 +15,7 @@
   <tbody>
     <F3:repeat group="{{@SESSION.tdata}}" key="{{@gnl}}" value="{{@blg}}" counter="{{@ctr}}">
     <tr>
-      <td>{{@blg['zaman']}}</td>
+      <td>{{round(@blg['zaman'], 2)}}</td>
       <td>{{@blg['title']}}</td>
       <td>{{@blg['beklenen']}}</td>
       <td>{{@blg['soylenen']}}</td>
