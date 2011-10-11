@@ -43,10 +43,10 @@
 #ver-zebra #vzebra-comedy, #ver-zebra #vzebra-action {background: #dce4ff;border-bottom: 1px solid #d6dfff;}
 
 #one-column-emphasis {font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
-	font-size: 12px;width:100%;text-align: left;border-collapse: collapse;}
+	font-size: 12px;width:480px;text-align: left;border-collapse: collapse;}
 #one-column-emphasis th {font-size: 14px;font-weight: normal;padding: 12px 15px;color: #039;}
 #one-column-emphasis td {padding: 10px 15px;color: #669;border-top: 1px solid #e8edff;}
-/*.oce-first{border-right: 10px solid transparent;border-left: 10px solid transparent;}*/
+.oce-first{border-right: 10px solid transparent;border-left: 10px solid transparent;}
 
 #one-column-emphasis tr:hover td {color: #339;background: #eff2ff;}
 #newspaper-a {font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
@@ -66,15 +66,17 @@
 	border-right: 1px solid #0865c2;border-top: 1px solid #0865c2;border-left: 1px solid #0865c2;border-bottom: 1px solid #fff;}
 #newspaper-c td {padding: 10px 20px;color: #669;border-right: 1px dashed #6cf;}
 
+
 #rounded-corner {font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
-	font-size: 12px;margin: 45px;width: 480px;text-align: left;border-collapse: collapse;}
-#rounded-corner thead th.rounded-company {background: #b9c9fe url('table-images/left.png') left -1px no-repeat;}
-#rounded-corner thead th.rounded-q4 {background: #b9c9fe url('table-images/right.png') right -1px no-repeat;}
+	font-size: 12px;margin-top:10px; width: 100%;text-align: left;border-collapse: collapse;}
+#rounded-corner thead th.rounded-company {background: #b9c9fe left -1px no-repeat;}
+#rounded-corner thead th.rounded-q4 {background: #b9c9fe right -1px no-repeat;}
 #rounded-corner th {padding: 8px;font-weight: normal;font-size: 13px;color: #039;background: #b9c9fe;}
 #rounded-corner td {padding: 8px;background: #e8edff;border-top: 1px solid #fff;color: #669;}
-#rounded-corner tfoot td.rounded-foot-left {background: #e8edff url('table-images/botleft.png') left bottom no-repeat;}
-#rounded-corner tfoot td.rounded-foot-right {background: #e8edff url('table-images/botright.png') right bottom no-repeat;}
+#rounded-corner tfoot td.rounded-foot-left {background: #e8edff left bottom no-repeat;}
+#rounded-corner tfoot td.rounded-foot-right {background: #e8edff right bottom no-repeat;}
 #rounded-corner tbody tr:hover td {background: #d0dafd;}
+
 
 #background-image {font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
 	font-size: 12px;margin: 45px;width: 480px;text-align: left;border-collapse: collapse;
