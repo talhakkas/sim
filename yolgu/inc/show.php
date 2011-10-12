@@ -13,7 +13,10 @@
 
 	if($node['ntype'] == 'dose')
 		show_node_dose();
+	if($node['ntype'] == 'exam')
+		F3::set('tetkikmerkezi', multi());
 
+	print_pre($_POST, 'post');return;
 render('show', 'Olgu');
 
 

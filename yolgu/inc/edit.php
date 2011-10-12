@@ -52,5 +52,9 @@
 		}
 	}
 
+	// FIXME: db den preselected olanlari cek.
+	if(F3::get('SESSION.data[ntype]') == 'exam')
+		F3::set('tetkikmerkezi', multi());
+
 	render('node', 'Düzenle');
 ?>

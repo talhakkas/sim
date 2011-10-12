@@ -3,6 +3,7 @@
 require_once  '../lib/base.php';
 require_once  '../asset/lib.php';
 require_once('./inc/mylib.php');
+require_once('./inc/tetkik.php');
 
 function login() {
 	if (F3::get("SESSION.special") == 1)
