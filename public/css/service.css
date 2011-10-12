@@ -6,6 +6,7 @@ body {
     padding:auto;
     color:#555;
     background:#f0f0f0;
+    background:url(/public/img/bg_dotted.png);
 }
 
 #content {
@@ -13,7 +14,7 @@ body {
     margin: 30px auto 30px;;
     background: #fff;
 
-    background:#fff url(/public/img/a/simulation.jpg) no-repeat right 0px;;
+    background:#fff url(/public/img/a/simulation.jpg) no-repeat right 0px;
     background-size:170px ;
 
     padding: 20px;
