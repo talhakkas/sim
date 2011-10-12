@@ -10,11 +10,18 @@
   });
 </script>
 
-<form name="frm" action="/yolgu/show/{{@SESSION.cid}}/{{@SESSION.data['nodes'][0]['node_link']}}/0" method="post">
+<p class="answer">{{@SESSION.data['nodes'][0]['link_text']}}</p>
+
+<div align="middle">
+  <form name="frm" action="/yolgu/show/{{@SESSION.cid}}/{{@SESSION.data['nodes'][0]['node_link']}}/0" method="post">
+    <input type="hidden" name="onceki_id" value="{{@SESSION.id}}">
+	<input type="hidden" name="nid" value="0">
+	<input type="hidden" name="beklenen_yanit" value="{{@SESSION.data['beklenen_yanit']}}">
+
   <div id="tabs" class="clear">
     {{@tetkikmerkezi}}
   </div>
 
   <input type="submit" class="button blue right" value="Gönder"/>
 </form>
-
+</div>

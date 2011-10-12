@@ -52,9 +52,11 @@
 		}
 	}
 
-	// FIXME: db den preselected olanlari cek.
-	if(F3::get('SESSION.data[ntype]') == 'exam')
-		F3::set('tetkikmerkezi', multi());
+	if(F3::get('SESSION.data[ntype]') == 'exam') {
+		$csv = F3::get('SESSION.data[nodes][0][response]');
+		$dict = preg_split('/,/', $csv);
+		F3::set('tetkikmerkezi', multi($dict));
+	}
 
 	render('node', 'Düzenle');
 ?>

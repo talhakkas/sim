@@ -14,18 +14,25 @@ function login() {
 function test2() 
 {
 	F3::set('SESSION.cid', 1);
+	F3::set('SESSION.id',  35);
+
+	$node = get_node();
+	
+	print_pre($node, "node:exam");
+
+	F3::set('SESSION.cid', 1);
+	F3::set('SESSION.id',  36);
+
+	$node = get_node();
+	
+	print_pre($node, "<hr>node:result");
+
+	F3::set('SESSION.cid', 1);
 	F3::set('SESSION.id',  17);
 
 	$node = get_node();
 	
-	print_pre($node, "node:drug");
-
-	F3::set('SESSION.cid', 1);
-	F3::set('SESSION.id',  26);
-
-	$node = get_node();
-	
-	print_pre($node, "<hr>node:dose");
+	print_pre($node, "<hr>node");
 }
 
 function test3($dbg=true)

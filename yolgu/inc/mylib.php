@@ -455,8 +455,19 @@ function zip($datas, $dbg=false)
 
 		$datas['nodes'] = $dict;
 		$datas['options'] = serialize($dict);
-	}
-	else {
+	} 
+	elseif($datas['ntype'] == 'exam') {
+		$dict[0]['link_text'] = $datas['link_text'][0];
+		$dict[0]['node_link'] = $datas['node_link'][0];
+		$dict[0]['odul'] = $datas['odul'][0];
+		$dict[0]['ceza'] = $datas['ceza'][0];
+
+		$dict[0]['response'] = get_exams_csv($datas);
+
+		$datas['nodes'] = $dict;
+		$datas['options'] = serialize($dict);
+
+	} else {
 
 		$sz = sizeof($datas['link_text']);
 		
@@ -594,4 +605,22 @@ function unset_arr($arr, $keys)
 
 	return $arr;
 }
+
+function get_exams_csv($arr)
+{
+	$dict = array();
+
+	foreach($arr as $k=>$v) {
+		if(preg_match('/response/', $k)) {
+			foreach($v as $i=>$id)
+				$dict[$id] = true;
+		}
+	}
+
+	$t = array_keys($dict);
+	$csv = implode(",", $t);
+
+	return $csv;
+}
+
 ?>
