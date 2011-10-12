@@ -4,16 +4,18 @@ function tamamla($id, $len){
     return str_pad((string)$id, $len, "0", STR_PAD_LEFT);
 }
 
-function multi(){
+function multi($preselected=array()){
     $discipline = DB::sql('select name from discipline');
-    $surveys = DB::sql('select * from d_survey');
-    $parent = DB::sql('select * from parent');
+    $surveys 	= DB::sql('select * from d_survey');
+    $parent 	= DB::sql('select * from parent');
 
     $a = '';
     $a .= '<ul>';
+
     foreach ($discipline as $key => $val)
         $a .= '<li><a href="#frag-'.$key. '">'.$val['name'].'</a></li>';
-    $a .= '</ul>';
+    
+	$a .= '</ul>';
 
     foreach ($discipline as $discipline_key => $discipline_val){
         $a .= '<div id="frag-'.$discipline_key.'">';
@@ -28,7 +30,13 @@ function multi(){
                     $survey_id_discipline = substr(tamamla($survey['d_survey_id'], 6), 0, 2);
                     if (($survey_id == $parent_id_survey) & ($survey_id_discipline == $discipline_key+1)){
                         $_id = substr($survey['d_survey_id'], 4, 2);
-                        $a .= '<option value="'. $survey_id_discipline.$survey_id.tamamla($_id, 2) .'">'. $survey['name'] .'</option>';
+
+						$val = $survey_id_discipline.$survey_id.tamamla($_id, 2);
+
+						if(in_array($val, $preselected))
+                        	$a .= '<option value="'. $val .'" selected="selected">'. $survey['name'] .'</option>';
+						else
+                        	$a .= '<option value="'. $val .'" >'. $survey['name'] .'</option>';
                     }
                 }
                 $a .= '</select>';
