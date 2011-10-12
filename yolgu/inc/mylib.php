@@ -265,6 +265,8 @@ function takip_listesine_ekle() {
 			$dict['response'][$i]['doz']  = $_POST['doz'][$i];
 			$dict['response'][$i]['ayol'] = $_POST['ayol'][$i];
 		}
+	} elseif($ntype == 'exam') {
+		$dict['response'] = get_exams_csv($_POST);
 	} else {
 		$dict['response'] = my_get($_POST, 'response');
 	}
