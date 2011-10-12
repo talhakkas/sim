@@ -2,7 +2,7 @@
 
 require_once  '../lib/base.php';
 require_once  '../asset/lib.php';
-require_once  'inc/multiselect.php';
+require_once  'inc/tetkik.php';
 
 function home() {
         render('home', 'Ana Sayfa');
@@ -25,23 +25,20 @@ function page() {
 }
 
 
-function tetkikler() {
-        $select_all = F3::get('REQUEST');
-        //print_r($select_all);
-        $baz = array();
-        foreach ($select_all as $key => $value){
-                //echo $value;
-                if (stristr($key, 'response'))
-                        foreach ($select_all[$key] as $k => $v)
-                                $baz[] = $v;
-        }
+function tetkik() {
+	$select_all = F3::get('REQUEST');
+	
+	$preselected = array();
+	foreach ($select_all as $key => $value){
+			if (stristr($key, 'response'))
+					foreach ($select_all[$key] as $k => $v)
+							$preselected[] = $v;
+	}
+	
+	print_r($preselected);
+	F3::set('tetkikmerkezi', multi($preselected));
 
-        //$response = $select_all['response'];
-        //print_r($response);
-        print_r($baz);
-        //echo implode(',', $respoense);
-
-        render('tetkik', 'Sonuçlar');
+    render('tetkik', 'Sonuçlar');
 }
 
 F3::set('tetkikmerkezi', multi());
@@ -65,7 +62,9 @@ F3::route("GET /ekg*",    'ekg');
 F3::route("GET /@page", 'page');
 
 F3::route('POST /ilac', 'ilac_sonuc.php');
-F3::route('POST /tetkikler', 'tetkikler');
+
+F3::route('GET /tetkik',  'tetkik');
+F3::route('POST /tetkik', 'tetkik');
 F3::run();
 
 ?>
