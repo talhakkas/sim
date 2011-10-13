@@ -41,9 +41,11 @@
     </F3:true>
     </F3:check>
 
-    <F3:check if="{{@error}}"><F3:true>
-      <div id="notice"><p class="fail">{{@error}}</p></div>
-    </F3:true></F3:check>
+    <div id="notice">
+      <p class="uni">
+      Ondokuz Mayıs Üniversitesi Medikal Simülasyon Eğitim Merkezi
+      </p>
+    </div>
 
     <div id="content">
       <F3:check if="{{ preg_match('/\/edit/', @PARAMS.0) | preg_match('/\/create/', @PARAMS.0) }}">

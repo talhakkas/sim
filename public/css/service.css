@@ -12,8 +12,6 @@ body {
 #content {
     width: 920px;
     margin: 30px auto 30px;;
-    background: #fff;
-
     background:#fff url(/public/img/a/simulation.jpg) no-repeat right 0px;
     background-size:170px ;
 
@@ -21,7 +19,6 @@ body {
     height:auto;
     min-height:550px;
     position:relative;
-    border:3px solid rgba(0,0,0,0);
     -webkit-box-shadow:0 0 18px rgba(0,0,0,0.3);
     -moz-box-shadow:0 0 18px rgba(0,0,0,0.3);
     box-shadow:0 0 18px rgba(0,0,0,0.3);
@@ -44,9 +41,7 @@ a {color: #3072b3; cursor: pointer; -moz-outline-style: none; text-decoration:no
 .line{border:none;border-bottom:1px solid #ddd;}
 /* ------------- wrapper - header ------------------------- */
 
-div#wrapper {border-top:4px solid #2daebf;clear:left;
-border-top:4px solid #3072b3;
-}
+div#wrapper {border-top:4px solid #2daebf;clear:left; border-top:3px solid #3072b3;}
 div#container {position:relative;width:960px;padding:0;font-size:11px;position:relative;height:25px;margin:0 auto 16px}
 
 ul.tabs {float:right;margin:0}
@@ -251,11 +246,10 @@ label.label input[type=password]:focus {
 /* -------------------------------------------------------------------- */
 
 
-
-
 /* ------------------ hata mesajı için --------------------- */
 #notice {margin:auto; width:960px;}
 
+p.uni,
 p.fail,
 p.success{
     width:       400px;
@@ -274,6 +268,14 @@ p.success{
 }
 
 p.fail {color:white; background: #b22352;}
+
+p.uni {
+   font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif; 
+    background: #3072b3;
+    font-size:   12px;
+}
+
+
 /* ----------------------------------------------------------------- */
 
 select{font:13px Arial,Helvetica,sans-serif;border:1px solid #bdc7d8;padding:3px;background:#fff;width:158px;height:27px;color:#585858;}
