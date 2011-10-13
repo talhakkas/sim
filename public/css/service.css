@@ -317,10 +317,10 @@ p.uni {
     font-size: 15px; font-weight: bold; line-height: 1; letter-spacing: -0.6px;
 }
 
-#footer ul {float:right; width:200px;font-weight:bold;}
+#footer ul {float:right; width:150px;font-weight:bold;}
 #footer ul li a {color:#fff;}
 #footer li {list-style-type:none;float:left; padding:0 10px;border-left:1px dotted #222;}
-#footer li:first-child {float:left; border:none;}
+#footer li:first-child {border:none;}
 
 
 
