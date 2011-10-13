@@ -78,6 +78,18 @@
       <F3:include href="{{@template}}.htm"/>
     </div>
 
+    <F3:check if="{{@template != 'login'}}">
+    <div id="footer">
+      <p class="footer-uni">
+      Ondokuz Mayıs Üniversitesi Medikal Simülasyon Eğitim Merkezi
+      </p>
+      <ul>
+        <li><a href="/yolgu">Anasayfa</a></li>
+        <li class="logout"><a href="logout" title="">Çıkış</a></li>
+      </ul>
+    </div>
+    </F3:check>
+
   </body>
 </html>
 
