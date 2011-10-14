@@ -219,6 +219,33 @@ function set_dose_drug_list($cid, $id, $dslist)
 	$tdose->save();
 }
 
+function get_exam_list($cid, $nid, $dbg=false)
+{
+	if($dbg)	echo "cid=$cid, nid=$nid <br>";
+
+	$node = get_node($cid, $nid);
+	$elist = $node['nodes'][0]['response'];
+
+
+	// default degerleri cek
+	$dict = array();
+
+	$elist = preg_split('/,/', $elist);
+
+	foreach($elist as $sid) {
+		$tsurvey = new Axon('survey');
+		$tsurvey->load("id='$sid'");
+
+		$dict[$sid]   = array(	'name'  => $tsurvey->name,
+								'stype' => $tsurvey->stype,
+								'value' => $tsurvey->value);
+	}
+
+	if($dbg)	print_pre($dict, "dict");
+
+	return $dict;
+}
+
 function takip_listesine_ekle() {
 	// a) su anki dugum icin 'tet' girdisi olustur. "beklenen" ve "soylenen" bos, simdilik
 	$ttet = new Axon("tet");
@@ -457,8 +484,7 @@ function zip($datas, $dbg=false)
 
 		$datas['nodes'] = $dict;
 		$datas['options'] = serialize($dict);
-	} 
-	elseif($datas['ntype'] == 'exam') {
+	} elseif($datas['ntype'] == 'exam') {
 		$dict[0]['link_text'] = $datas['link_text'][0];
 		$dict[0]['node_link'] = $datas['node_link'][0];
 		$dict[0]['odul'] = $datas['odul'][0];
@@ -468,7 +494,22 @@ function zip($datas, $dbg=false)
 
 		$datas['nodes'] = $dict;
 		$datas['options'] = serialize($dict);
+	} elseif($datas['ntype'] == 'result') {
+		$sz = sizeof($datas['eid']);
+		
+		$dict = array();
+		$dict[0]['link_text'] = $datas['link_text'][0];
+		$dict[0]['node_link'] = $datas['node_link'][0];
+		$dict[0]['odul'] = $datas['odul'][0];
+		$dict[0]['ceza'] = $datas['ceza'][0];
 
+		for($i=0; $i < $sz; $i++) {
+			$eid = $datas['eid'][$i];
+
+			$dict[0]['response'][$eid] = array('eid'=>$eid, 'value'=>$datas['evalue'][$i]);
+		}
+		$datas['nodes'] = $dict;
+		$datas['options'] = serialize($dict);
 	} else {
 
 		$sz = sizeof($datas['link_text']);
@@ -625,6 +666,21 @@ function get_exams_csv($arr)
 	return $csv;
 }
 
+function get_exams($arr)
+{
+	$dict = array();
+
+	foreach($arr as $k=>$v) {
+		if(preg_match('/response/', $k)) {
+			foreach($v as $i=>$id)
+				$dict[$id] = true;
+		}
+	}
+
+	//print_pre($arr, "post");
+	//print_pre($dict, "dict"); return;
+	return $dict;
+}
 function tamamla($id, $len){
     return str_pad((string)$id, $len, "0", STR_PAD_LEFT);
 }

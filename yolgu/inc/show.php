@@ -15,8 +15,10 @@
 		show_node_dose();
 	if($node['ntype'] == 'exam')
 		F3::set('tetkikmerkezi', multi());
-	if($node['ntype'] == 'result')
-		F3::set('SESSION.exams', get_exams_csv($_POST));
+	if($node['ntype'] == 'result') {
+		F3::set('SESSION.exams', get_exams($_POST));
+		//return;
+	}
 
 render('show', 'Olgu');
 

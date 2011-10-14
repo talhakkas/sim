@@ -1,6 +1,6 @@
 
 <tr>
-  <td>Görünecek metin</td>
+  <td class="label">Görünecek metin</td>
   <td class="field" id="dal{{@ctr}}field">
     <textarea name="link_text[]">{{@SESSION.data['nodes'][0]['link_text']}}</textarea><br>
 
@@ -15,7 +15,27 @@
 
 <td>
 
-RESULT e ozgu hareketler
+<tr>
+	<td></td>
+	<td class="field">
+		Her bir tahlil için verileri karşılarında ki kutuya girin.
+	</td>
+</tr>
+<F3:repeat group="{{@SESSION.exams}}" key="{{@id}}" value="{{@exam}}">
+
+<tr>
+	<td class="label">
+		{{@exam['name']}}
+	</td>
+
+	<td class="field">
+		<input type="hidden" name="eid[]"  value="{{@id}}">
+		<!-- {{@exam['stype']}} --> 
+		<input type="text"   name="evalue[]" value="{{@exam['value']}}"> <br>
+	</td>
+</tr>
+</F3:repeat>
+
 
 </td>
 </tr>

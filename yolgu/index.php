@@ -55,12 +55,8 @@ function test3($dbg=true)
 }
 function test()
 {
-	//test2();
+	test2();
 
-	$str = "0102";
-	$pid = substr($str, 0, 2);
-
-	echo "str=$str ve pid=$pid";
 }
 
 F3::set('uploaddir', 'upload/');
