@@ -1,42 +1,51 @@
 <?php
 
-function tamamla($id, $len){
-    return str_pad((string)$id, $len, "0", STR_PAD_LEFT);
-}
-
-function multi($preselected=array()){
-    $discipline = DB::sql('select name from discipline');
-    $surveys 	= DB::sql('select * from d_survey');
-    $parent 	= DB::sql('select * from parent');
+function multi($preselected=array(), $dbg=false){
+    $discs = DB::sql('select * from discipline');
+    $parnt = DB::sql('select * from parent');
+    $survs = DB::sql('select * from survey');
 
     $a = '';
+
+	// frag
     $a .= '<ul>';
 
-    foreach ($discipline as $key => $val)
-        $a .= '<li><a href="#frag-'.$key. '">'.$val['name'].'</a></li>';
-    
+    foreach($discs as $dval)
+        $a .= "<li><a href='#frag-$dval[id]'>$dval[name]</a></li>";
+
 	$a .= '</ul>';
 
-    foreach ($discipline as $discipline_key => $discipline_val){
-        $a .= '<div id="frag-'.$discipline_key.'">';
-        foreach ($parent as $parent_key => $parent_val){
-            $parent_id = substr(tamamla($parent_val['parent_id'], 4), 0, 2);
-            if ($parent_id == $discipline_key+1){
-                $parent_id_survey = substr(tamamla($parent_val['parent_id'], 4), 2, 4);
-                $a .= '<p class="answer">' . $parent_val['name'] . '</p>';
-                $a .= '<select multiple="multiple" size="5" name="response_'.$parent_id_survey.'[]" style="width:885px;">';
-                foreach ($surveys as $survey_key => $survey){
-                    $survey_id = substr(tamamla($survey['d_survey_id'], 6), 2, 2);
-                    $survey_id_discipline = substr(tamamla($survey['d_survey_id'], 6), 0, 2);
-                    if (($survey_id == $parent_id_survey) & ($survey_id_discipline == $discipline_key+1)){
-                        $_id = substr($survey['d_survey_id'], 4, 2);
+    foreach($discs as $dval) {
+		$did = $dval['id'];
 
-						$val = $survey_id_discipline.$survey_id.tamamla($_id, 2);
+        $a .= "<div id='frag-$dval[id]'>";
 
-						if(in_array($val, $preselected))
-                        	$a .= '<option value="'. $val .'" selected="selected">'. $survey['name'] .'</option>';
+        foreach ($parnt as $pval){
+			$pid = $pval['id'];
+
+			$pdid = get_dps_id($pid, 'did');
+            $ppid = get_dps_id($pid, 'pid');
+
+			if($dbg)	echo "DEBUG: pid=$pid,	pdid=$pdid ve ppid=$ppid <br>";
+
+            if ($pdid == $did){
+                $a .= '<p class="answer">' . $pval['name'] . '</p>';
+                $a .= '<select multiple="multiple" size="5" name="response_'.$ppid.'[]" style="width:885px;">';
+
+                foreach ($survs as $sval){
+					$sid = $sval['id'];
+
+					$sdid = get_dps_id($sid, 'did');
+					$spid = get_dps_id($sid, 'pid');
+					$ssid = get_dps_id($sid, 'sid');
+
+					if($dbg) echo "DEBUG: sid=$sid,	sdid=$sdid, spid=$spid ve ssid=$ssid<br>";
+
+                    if (($spid == $ppid) & ($sdid == $did)){
+						if(in_array($sid, $preselected))
+                        	$a .= '<option value="'. $sid .'" selected="selected">'. $sval['name'] .'</option>';
 						else
-                        	$a .= '<option value="'. $val .'" >'. $survey['name'] .'</option>';
+                        	$a .= '<option value="'. $sid .'" >'. $sval['name'] .'</option>';
                     }
                 }
                 $a .= '</select>';
@@ -46,5 +55,6 @@ function multi($preselected=array()){
     }
     return $a;
 }
+
 
 ?>
