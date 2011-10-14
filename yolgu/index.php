@@ -102,7 +102,7 @@ F3::route("GET /test", "test");
 // ilac durumu
 F3::route("GET /drug/@did", "show_drug.php");
 
-F3::route("GET /exam/@eid", "show_exam.php");
+F3::route("GET /exam/@cid/@eid", "show_exam.php");
 
 F3::run();
 

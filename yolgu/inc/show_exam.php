@@ -1,6 +1,7 @@
 <?php
 	$dbg = true;
 
+	$cid = F3::get('PARAMS.cid');
 	$eid = F3::get('PARAMS.eid');
 
 	$dict = get_dps_id_helper($eid);
@@ -24,4 +25,16 @@
 	$s_nm = $survs[0]['name'];
 
 	echo "<h2>$d_nm=>$p_nm=>$s_nm</h2>";
+
+    $exam = DB::sql("select * from exam     WHERE cid='$cid' AND sid='$esid'");
+	if(count($exam) == 0) { // ontanimli degeri kullan.
+		$exam = $survs;
+	} else {
+		if($dbg)	print_pre($exam, "DEBUG: exam");
+	}
+
+	if(isset($exam[0]['value'])) {
+		$imgnm = $exam[0]['value'];
+		echo "<img src=/yolgu/upload/$imgnm>";
+	}
 ?>
