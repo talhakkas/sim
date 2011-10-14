@@ -26,7 +26,6 @@ if (! F3::exists('error'))  {
 
                 F3::set('SESSION.key', $key);
 
-                F3::clear('error');F3::clear('correct'); // hataları, başarıları temizleyelim
                 return F3::call('show.php');
         } else
                 F3::set('error', "Böyle bir kayıt bulunmamaktadır");

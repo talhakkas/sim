@@ -15,3 +15,4 @@ dbpass="BANA_BIR_SIFRE_VER"
 
 ; Resim
 uploaddir="../public/upload/"
+default_image="default.png"

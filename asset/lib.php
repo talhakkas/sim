@@ -4,6 +4,7 @@ include 'access.php';
 include 'init.php';
 include 'upload.php';
 include 'dict.php';
+include 'csv.php';
 
 // look
 // https://github.com/emineker/sim/blob/master/.f3.ini.example

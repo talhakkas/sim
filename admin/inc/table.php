@@ -14,13 +14,13 @@ F3::set('SESSION.KEY', $TABLES[$TABLE]);
 
 $table = new Axon($TABLE);
 
-
-$save = $table->find(); // değişkene atayalım ki, hız kazanalım.
+$save = $table->find();
 // tablo kayıt sayısını kaydedelim
 F3::set('SESSION.SAVE', ($save) ? count($save) : "0");
 
-F3::set('correct', "'".e($TABLE)."' tablosu başarıyla seçildi.");
+F3::set('success', "$TABLE tablosu başarıyla seçildi.");
 
-F3::call('home');
-
+// hata var, dön başa ve tekrar sorgu al.
+// error alanı dolu ve layout.htm'de görüntülenecek
+F3::call('home'); // f3.php'den fonksiyon çağırımı
 ?>
