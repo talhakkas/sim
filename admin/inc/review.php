@@ -9,8 +9,6 @@ $fields = array();
 foreach (F3::get('DB->result') as $gnl => $blg)
 	array_push($fields, $blg['Field']);
 
-// özel gösterim
-// $fields = array('id',);
 F3::set('fields', $fields);
 
 $table = new Axon($TABLE);

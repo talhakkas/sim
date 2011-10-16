@@ -12,21 +12,22 @@ if (!F3::exists('error')) {
 	// oturumdan veriyi yükleyelim
 	$table->load("$KEY='$key'");
 
-	foreach($_POST as $gnl => $blg)
+	foreach ($_POST as $gnl => $blg)
 		if ($gnl != 'photo') // photo'yu kaydetme
 			$table->$gnl = $blg;
 
-
-	$table->photo = "default.jpg"; // default resim
 	$table->save();
 
 	$table = new Axon($TABLE);
 	$table->load("$KEY='$key'");
 
+	// önceden bir resim var ise üzerine yaz gitsin
 	$up = new Upload();
 	if ($response = ($up->load($TABLE, $table->$KEY, F3::get("FILES.photo"), true)))
 		if ($response[0]) // istek başarı mı / hata mı ?
 			$table->photo = $response[1];
+		else
+			F3::set('error', $response[1]);
 
 	if (F3::exists('error')) // yükleme sırasında hata var mı?
 		return F3::call('edit');
