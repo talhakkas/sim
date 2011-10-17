@@ -34,6 +34,9 @@ function set_node()
 
 	$_POST = zip($_POST);
 
+	if(get_node_type($cid, $id) == 'result')
+		set_exam_dict($cid, $_POST['nodes'][0]['response']);
+
 	$table = new Axon("node");
 	$table->load("id='$id' AND cid='$cid'");
 
@@ -111,6 +114,14 @@ function get_dose_id($cid)
 {
 	$tnode = new Axon("node");
 	$tnode->load("cid='$cid' AND ntype='dose'");
+
+	return $tnode->id;
+}
+
+function get_exam_id($cid)
+{
+	$tnode = new Axon("node");
+	$tnode->load("cid='$cid' AND ntype='exam'");
 
 	return $tnode->id;
 }
@@ -224,22 +235,7 @@ function get_exam_list($cid, $nid, $dbg=false)
 	if($dbg)	echo "cid=$cid, nid=$nid <br>";
 
 	$node = get_node($cid, $nid);
-	$elist = $node['nodes'][0]['response'];
-
-
-	// default degerleri cek
-	$dict = array();
-
-	$elist = preg_split('/,/', $elist);
-
-	foreach($elist as $sid) {
-		$tsurvey = new Axon('survey');
-		$tsurvey->load("id='$sid'");
-
-		$dict[$sid]   = array(	'name'  => $tsurvey->name,
-								'stype' => $tsurvey->stype,
-								'value' => $tsurvey->value);
-	}
+	$dict = $node['nodes'][0]['response'];
 
 	if($dbg)	print_pre($dict, "dict");
 
@@ -490,7 +486,10 @@ function zip($datas, $dbg=false)
 		$dict[0]['odul'] = $datas['odul'][0];
 		$dict[0]['ceza'] = $datas['ceza'][0];
 
-		$dict[0]['response'] = get_exams_csv($datas);
+		$old = $dict[0]['response'];
+		$new = get_exams_dict($datas);
+
+		$dict[0]['response'] = liste_esle($old, $new);
 
 		$datas['nodes'] = $dict;
 		$datas['options'] = serialize($dict);
@@ -506,7 +505,9 @@ function zip($datas, $dbg=false)
 		for($i=0; $i < $sz; $i++) {
 			$eid = $datas['eid'][$i];
 
-			$dict[0]['response'][$eid] = array('eid'=>$eid, 'value'=>$datas['evalue'][$i]);
+			$dict[0]['response'][$eid] = array('id'=>$eid, 'name'=>$datas['ename'][$i],
+							   'stype'=>$datas['stype'][$i], 
+							   'value'=>$datas['evalue'][$i]);
 		}
 		$datas['nodes'] = $dict;
 		$datas['options'] = serialize($dict);
@@ -681,6 +682,27 @@ function get_exams($arr)
 	//print_pre($dict, "dict"); return;
 	return $dict;
 }
+
+function get_exams_dict($arr) 
+{
+	$dict = array();
+
+	$csv = get_exams_csv($arr);
+	$list = preg_split('/,/', $csv);
+
+	$tsurvey = new Axon('survey');
+
+	foreach($list as $i=>$id) {
+		$tsurvey->load("id='$id'");
+		$dict[$id] = array('id'   => $id, 
+				   'name' => $tsurvey->name,
+				   'stype'=> $tsurvey->stype,
+				   'value'=> $tsurvey->value);
+	}
+
+	return $dict;
+}
+
 function tamamla($id, $len){
     return str_pad((string)$id, $len, "0", STR_PAD_LEFT);
 }
@@ -735,6 +757,39 @@ function get_dps_id($str, $idnm)
 	$dict = get_dps_id_helper($str);
 	
 	return $dict[$idnm];
+}
+
+function liste_esle($old, $new)
+{
+	/* $old listesinde, $new'de olanlar korunur veya $new'den eklenir ve
+	 * $new'de olmayanlar ise silinir.
+	 * `key` e bakilarak karar verilir.
+	 */
+	foreach($new as $id=>$val)
+		if(!array_key_exists($id, $old))
+			$old[$id] = $val;
+	
+	foreach($old as $id=>$val)
+		if(!array_key_exists($id, $new))
+			unset($old[$id]);
+	
+	return $old;
+}
+
+function set_exam_dict($cid, $dict)
+{
+	$id = get_exam_id($cid);
+
+	$tnode = new Axon('node');
+	$tnode->load("cid='$cid' AND id='$id'");
+
+	$tmp = unserialize($tnode->options);
+
+	$tmp[0]['response'] = $dict;
+
+	$tnode->options = serialize($tmp);
+
+	$tnode->save();
 }
 
 ?>

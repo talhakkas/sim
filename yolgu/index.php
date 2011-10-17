@@ -53,10 +53,26 @@ function test3($dbg=true)
 	$tnode->save();
 	
 }
+function test4()
+{
+	$tnode = new Axon('node');
+	$tnode->load("cid='1' AND id='35'");
+	
+	$dict = unserialize($tnode->options);
+
+	$dict[0]['response'] = array('010104'=>array('id'=>010104, 'value'=>'foo'),
+				     '010106'=>array('id'=>010106, 'value'=>'bar'));
+
+	print_pre($dict, "dict");
+
+	$tnode->options = serialize($dict);
+	$tnode->save();
+
+}
+
 function test()
 {
 	test2();
-
 }
 
 F3::set('uploaddir', 'upload/');

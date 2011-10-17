@@ -21,21 +21,7 @@
 			$dslist = F3::get("SESSION.data['nodes'][0]['response']");
 			$drlist = get_selected_drug_list();
 
-			foreach($drlist as $did=>$drug) {
-				/* dslist te varsa dokunma
-				 * yoksa ekle
-				 */
-				if(array_key_exists($did, $dslist))
-					continue;
-				else
-					$dslist[$did] = $drug;
-			}
-
-			/* dslist ten drlist'te olmayanlari ciakrt */
-			foreach($dslist as $did=>$drug) {
-				if(!array_key_exists($did, $drlist))
-					unset($dslist[$did]);
-			}
+			$dslist = lsite_esle($dslist, $drlist);
 
 			// if(true) print_pre($drlist, "drlist");
 			// if(true) print_pre($dslist, "dslist");
@@ -48,13 +34,12 @@
 			// print_pre(F3::get('SESSION.data[nodes]'), 'nodes'); return;
 		}
 		else {
-			;	
+			; // FIXME
 		}
 	}
 
 	if(F3::get('SESSION.data[ntype]') == 'exam') {
-		$csv = F3::get('SESSION.data[nodes][0][response]');
-		$dict = preg_split('/,/', $csv);
+		$dict = F3::get('SESSION.data[nodes][0][response]');
 		F3::set('tetkikmerkezi', multi($dict));
 	}
 

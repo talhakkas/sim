@@ -42,7 +42,8 @@ function multi($preselected=array(), $dbg=false){
 					if($dbg) echo "DEBUG: sid=$sid,	sdid=$sdid, spid=$spid ve ssid=$ssid<br>";
 
                     if (($spid == $ppid) & ($sdid == $did)){
-						if(in_array($sid, $preselected))
+						//if(in_array($sid, $preselected))
+						if(array_key_exists($sid, $preselected))
                         	$a .= '<option value="'. $sid .'" selected="selected">'. $sval['name'] .'</option>';
 						else
                         	$a .= '<option value="'. $sid .'" >'. $sval['name'] .'</option>';
