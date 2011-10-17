@@ -10,5 +10,6 @@ ders
 soba
 _*
 
+!.f3.ini.example
 !/db/*sql
 !/jedit/*
