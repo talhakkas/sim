@@ -23,13 +23,16 @@ include 'csv.php';
 
 function render($template, $title='', $layout='layout') {
 	F3::set('page_title', $title);
-	F3::set('SESSION.template', $template); // printly için
+	//F3::set('SESSION.template', $template); // printly için
 	F3::set('template', $template);
 	if (F3::get('printly')) { // printly modu için ufak bir değişkencik
 		echo Template::serve('printly.htm');
 	}
 	else {
-		echo Template::serve("layout/$layout.htm");
+		if (F3::get('SR') == '/a')
+			echo Template::serve("layout/$layout.htm");
+		else
+			echo Template::serve("$layout.htm");
 	}
 }
 

@@ -13,10 +13,10 @@ function multi($preselected=array(), $dbg=false){
     foreach($discs as $dval)
         $a .= "<li><a href='#frag-$dval[id]'>$dval[name]</a></li>";
 
-	$a .= '</ul>';
+    $a .= '</ul>';
 
     foreach($discs as $dval) {
-		$did = $dval['id'];
+	$did = $dval['id'];
 
         $a .= "<div id='frag-$dval[id]'>";
 

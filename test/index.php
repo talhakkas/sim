@@ -27,21 +27,21 @@ function page() {
 
 function tetkik() {
 	$select_all = F3::get('REQUEST');
-	
+
 	$preselected = array();
 	foreach ($select_all as $key => $value){
 			if (stristr($key, 'response'))
 					foreach ($select_all[$key] as $k => $v)
 							$preselected[] = $v;
 	}
-	
+
 	print_r($preselected);
 	F3::set('tetkikmerkezi', multi($preselected));
 
     render('tetkik', 'Sonuçlar');
 }
 
-F3::set('tetkikmerkezi', multi());
+//F3::set('tetkikmerkezi', multi());
 
 F3::route('GET /buton', function() { render('buton', 'butonlar');});
 F3::route('GET /f', function() {render('f', 'video player');});
