@@ -1,4 +1,4 @@
-<h2 id="headline">Csv Yükleme</h2>
+<h2>Csv Yükleme</h2>
 <form name="login" action="upload" method="POST" id="login" 
   enctype="multipart/form-data">
   <table class="custom">
@@ -6,11 +6,19 @@
       <tr>
         <td class="label"> Csv ayırıcı karakter: </td>
         <td class="field">
-          <input type="text" name="csv_key" value="," maxlength="1"/>
+          <select name="csv_key">
+            <option value='' selected></option>
+            <option value=','>,</option>
+            <option value=';'>;</option>
+            <option value='|'>|</option>
+            <option value='~'>~</option>
+            <option value='$'>$</option>
+            <option value='#'>#</option>
+          </select>
         </td>
       </tr>
       <tr>
-        <td class="label"> Csv dosya: </td>
+        <td class="label"> Csv Dosya: </td>
         <td class="field">
           <input type="file" name="csv_file"/>
         </td>

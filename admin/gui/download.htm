@@ -1,18 +1,21 @@
-<h2 id="headline">Csv Çıktı</h2>
+<h2>Csv çıktı</h2>
+<p style="margin: 0 0 0px 167px;">Csv için ilgili karakteri seçiniz.</p>
 <form name="login" action="download" method="POST" id="login" 
   enctype="multipart/form-data">
   <table class="custom">
     <tr>
-      <tr>
-        <td class="label"> Csv ayırıcı karakter: </td>
-        <td class="field">
-          <input type="text" name="csv_key" value="," maxlength="1"/>
-        </td>
-      </tr>
-    </tr>
-    <tr>
-      <td></td>
-      <td><input type="submit" class="button-submit" value="İndir"/></td>
+      <td class="label"> Karakter: </td>
+      <td class="field">
+        <select name="csv_key" onchange='this.form.submit()'>
+          <option value='' selected></option>
+          <option value=','>,</option>
+          <option value=';'>;</option>
+          <option value='|'>|</option>
+          <option value='~'>~</option>
+          <option value='$'>$</option>
+          <option value='#'>#</option>
+        </select>
+      </td>
     </tr>
   </table>
 </form>

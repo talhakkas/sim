@@ -6,6 +6,9 @@ $KEY = F3::get('SESSION.KEY');
 $csv_key = F3::get('REQUEST.csv_key');
 $csv_file = F3::get('FILES.csv_file');
 
+if (! $csv_key)
+	F3::set('error', 'Ayırıcı karakter girmelisiniz');
+
 $up = new Upload(array('csv'));
 
 if ($response = ($up->load($TABLE, $TABLE, $csv_file, true)))
@@ -18,7 +21,7 @@ if (F3::exists('error')) // yükleme sırasında hata var mı?
 F3::get('DB')->schema($TABLE, 0);// 0 nolu kayıt gibi Field alanlarını al.
 $fields = F3::get('DB->result'); // gerçek alanlar
 
-$csv_path = '../public/upload/' . $TABLE . '/' . $TABLE . '.csv';
+$csv_path = 'public/upload/' . $TABLE . '/' . $TABLE . '.csv';
 
 $_rows = Csv::read($csv_path, $csv_key);
 $_fields = array_shift($_rows);
