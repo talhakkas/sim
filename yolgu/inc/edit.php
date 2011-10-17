@@ -21,7 +21,7 @@
 			$dslist = F3::get("SESSION.data['nodes'][0]['response']");
 			$drlist = get_selected_drug_list();
 
-			$dslist = lsite_esle($dslist, $drlist);
+			$dslist = liste_esle($dslist, $drlist);
 
 			// if(true) print_pre($drlist, "drlist");
 			// if(true) print_pre($dslist, "dslist");

@@ -4,6 +4,6 @@
 	<F3:repeat group="{{@SESSION.exams}}" key="{{@gnl}}" value="{{@blg}}" counter="{{@ctr}}">
 		<a href="/yolgu/exam/{{@SESSION.cid}}/{{@gnl}}">{{@gnl}}</a> <br>
 	</F3:repeat>
-  <input type="submit" class="button blue right" value="Gönder"/>
+  <input type="submit" class="button blue right" value="{{@SESSION.data['nodes'][0]['link_text']}}"/>
 </form>
 
