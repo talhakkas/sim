@@ -18,7 +18,7 @@ $save = $table->find();
 // tablo kayıt sayısını kaydedelim
 F3::set('SESSION.SAVE', ($save) ? count($save) : "0");
 
-F3::set('correct', "$TABLE tablosu başarıyla seçildi.");
+F3::set('success', "$TABLE tablosu başarıyla seçildi.");
 
 // hata var, dön başa ve tekrar sorgu al.
 // error alanı dolu ve layout.htm'de görüntülenecek
