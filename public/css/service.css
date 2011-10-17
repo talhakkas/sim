@@ -7,6 +7,7 @@ body {
     color:#555;
     background:#f0f0f0;
     background:url(/public/img/bg_dotted.png);
+    background:url(/public/img/home-bkg.gif);
 }
 
 #content {

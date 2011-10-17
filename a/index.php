@@ -4,30 +4,21 @@ require_once  '../lib/base.php';
 require_once  '../asset/lib.php';
 
 function home() {
-	render('home', 'Hoşgeldiniz');
+	render('a/home', 'Hoşgeldiniz');
 }
-function people() {
-	render('people', 'Ekibimiz');
-}
-function work() {
-	render('work', 'Çalışmalarımız');
-}
-function about() {
-	render('about', 'Hakkında');
-}
-function contact() {
-	render('contact', 'Bize Ulaşın');
-}
-function playground() {
-	render('playground');
+
+function page() {
+	$pages = array('people', 'work', 'about', 'contact', 'playground');
+
+	$page = F3::get('PARAMS.page');
+	if (in_array($page, $pages))
+		return render("a/$page");
+
+	render("a/home");
 }
 
 F3::route("GET /*"      , 'home');
-F3::route("GET /people*", 'people');
-F3::route("GET /work*"  , 'work');
-F3::route("GET /about*"  , 'about');
-F3::route("GET /contact*", 'contact');
-F3::route("GET /playground*", 'playground');
+F3::route("GET /@page", 'page');
 
 F3::run();
 
