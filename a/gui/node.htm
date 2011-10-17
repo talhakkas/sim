@@ -1,0 +1,98 @@
+<script type="text/javascript" src="/public/js/table_ad_remove.js"></script>
+<script type="text/javascript" src="/public/js/myselect.js"></script>
+<script type="text/javascript" src="/public/js/myjs.js"></script>
+
+<div class="page">
+  <h2>Düğüm::{{@page_title}}
+    <a href="{{@SR}}/show/{{@SESSION.cid}}/{{@SESSION.id}}">
+      <img src="/public/img/icon/24x24/continue.png">Devam</a>
+  </h2>
+
+  <form name="node" action="{{@SR}}{{@PARAMS.0}}" method="post" enctype="multipart/form-data">
+
+    <table class="custom" id="custom" name="custom">
+      <tr>
+        <td class="label">
+          Başlık:
+        </td>
+        <td class="field">
+          <input type="text" name="title" value="{{@SESSION.data['title']}}"> <br>
+        </td>
+      </tr>
+      <tr>
+        <td class="label">
+          Medya:
+        </td>
+        <td class="field">
+          <input type="file" name="media" value="{{@SR}}/{{@uploaddir}}{{@SESSION.data['media']}}" >
+          <F3:check if="{{@SESSION.data['media'] != ''}}">
+          <F3:true>
+          <a href="{{@SR}}/{{@uploaddir}}kucuk{{@SESSION.data['media']}}" target="_blank"><img src="{{@SR}}/{{@uploaddir}}kucuk{{@SESSION.data['media']}}" height="35"></a>
+          <input type="checkbox" name="resim_sil" value="evet" />Kaldır
+          </F3:true>
+          </F3:check>
+        </td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>
+          <input type="hidden" name="nid" value="{{@SESSION.data['nid']}}">
+          <input type="hidden" name="id" value="{{@SESSION.data['id']}}">
+          <input type="hidden" name="cid" id="cid" value="{{@SESSION.data['cid']}}">
+        </td>
+      </tr>
+
+      <tr>
+        <td class="label">
+          İçerik:
+        </td>
+        <td class="field">
+          <textarea name="content">{{@SESSION.data['content']}}</textarea><br>
+
+          <!--F3:check if="{{@SESSION.data['content_accordion'] == 'yes'}}" >
+          <F3:true>
+          <input type="checkbox" name="content_accordion" id="content_accordion" checked="true" onclick="toggle_accord(this)">Akordiyon istiyor musun? <br>
+          <fielset id="fs_content_accordion" style="visibility:hidden;">
+          <legend>Akord</legend>
+          Başlık:<input type="text" name="content_accordion_header[]"><br>
+          İçerik:<textarea name="content_accordion_content[]"></textarea>
+          </fielset>
+          </F3:true>
+          </F3:check-->
+        </td>
+      </tr>
+
+      <tr><td></td><td><hr class="line"/></td></tr>
+
+      <tr>
+        <td class="label">
+          Soru cümlesi:
+        </td>
+        <td class="field">
+          <input type="text" name="question" value="{{@SESSION.data['question']}}"/>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+        </td>
+        <td>
+          <div class="button-group">
+            <input type="submit" class="button blue" name="default" value="{{@page_title}}"/>
+            <input type="submit" class="button danger red" name="delete"  value="Sil"/>
+          </div>
+        </td>
+      </tr>
+
+      <input type="hidden" name="ntype" value="{{@SESSION.data['ntype']}}"/>
+      <input type="hidden" name="parent" value="{{@SESSION.data['parent']}}"/>
+      <input type="hidden" name="isOnset" value="{{@SESSION.data['isOnset']}}"/>
+      <input type="hidden" name="isWrong" value="{{@SESSION.data['isWrong']}}"/>
+      <input type="hidden" name="NoNodes2" id="NoNodes2" value="0" />
+
+      <F3:include href="node_{{@SESSION.data['ntype']}}_teacher.htm" />
+
+    </table>
+
+  </form>
+</div>

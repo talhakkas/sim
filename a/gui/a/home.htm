@@ -37,7 +37,83 @@
   <h2>Web Tabanlı Medikal Simülasyon<br> Eğitim Merkezine Hoş Geldiniz...</h2>
 </div>
 
-<ul id="ourWork">
+<div id="ourWork">
+  <link type="text/css" href="/public/css/login2.css" rel="stylesheet" />
+
+  <div class="home-content">
+    <strong>Sim Nedir?</strong>
+    <p>vpSim is an online virtual patient player, authoring and administration
+    application for medical education, training and assessment.</p>
+
+    <strong>Sanal Hasta Nedir?</strong>
+    <p>Virtual patients are computer simulations of clinical encounters where the
+    learner plays the role of a healthcare provider by interacting with an
+    on-screen patient. Typically this includes interviewing, examining, ordering
+    diagnostic tests, making a diagnosis and prescribing therapy.</p>
+
+    <strong>Sim'i kimler kullanmalıdır?</strong>
+    <p>Medical educators can use vpSim to:
+
+    <ul>
+      <li>
+      create branched-narrative cases that engage student learning through decision
+      points that have consequences affecting the patient
+      </li>
+      <li>
+      design cases using a Flash-based graphical user interface
+      </li>
+      <li>
+      track student performance metrics such as cost, time spent, and quality of care
+      </li>
+      <li>
+      exchange and adapt cases from other institutions using the MedBiquitous Virtual Patient XML data standard
+      </li>
+    </ul>
+    </p>
+
+  </div>
+
+
+  <form action="login" method="post" style="float:right;">
+  <h4>Kullanıcı Girişi<h4>
+    <table class="login">
+      <tr>
+        <td class="label">
+          <label>Kullanıcı Adı </label>
+        </td>
+        <td class="field">
+          <input name="username" size="30" type="text" /></td>
+      </tr>
+      <tr>
+        <td class="label"><label>Parola</label></td>
+        <td class="field"><input name="password" size="30" type="password"/>
+        </td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>
+          <input type="submit" class="button-submit" value="Giriş Yap" />
+        </td>
+      </tr>
+    </table>
+    <p class="forgot-pass"><a href="#">Parolamı Unuttum</a></p>
+  </form>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ul id="ourWork" style="display:none">
   <li>
   <a href="/student" title="Öğrenci Servisi">
     <img alt="student service" src="/public/img/a/student-service.jpg" />

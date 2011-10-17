@@ -1,0 +1,62 @@
+<F3:repeat group="{{@SESSION.data['nodes'][0]['response']}}" key="{{@gnl}}" value="{{@blg}}" counter="{{@ctr}}">
+<tr>
+  <td class="label"> </td>
+  <td class="field" id="dal{{@ctr}}field">
+    <div class="doz line">
+      <span style="float:left;"><a href="/yolgu/drug/{{@gnl}}" target="_blank">{{@blg['name']}}</a> Dozu:</span>
+      <input type="hidden" name="did[]" value="{{@gnl}}">
+      <input type="range" name="dval[]" min="{{@blg['dmn']}}" max="{{@blg['dmx']}}" value="{{@blg['dval']}}"/>mg
+
+      <div class="select">
+        Hangi yolla:
+        <select name="dayol[]">
+          <option value="1">Damar</option>
+          <option value="2">Kas</option>
+          <option value="3">Foo</option>
+        </select>
+      </div>
+    </div>
+
+  </td>
+</tr>
+</F3:repeat>
+    <script>$(":range").rangeinput();</script>
+
+<tr>
+	<td>Görünecek metin</td>
+	<td class="field">
+    	    <textarea name="link_text[]">{{@SESSION.data['nodes'][0]['link_text']}}</textarea><br>
+
+	    Ödül: <input type="text" name="odul[]" value="{{@SESSION.data['nodes'][0]['odul']}}" maxlength="3" size="3"> <br>
+	    Ceza: <input type="text" name="ceza[]" value="{{@SESSION.data['nodes'][0]['ceza']}}"  maxlength="3" size="3"><br>
+
+    	    <input type="checkbox" name="chkResponse[]" id="chkResponse1" checked="true" value="1"><br>
+	</td>
+</tr>
+<tr>
+  <td class="label" style="padding-top:15px;">
+    <img src="/public/img/icon/32x32/comments.png">
+  </td>
+  <td class="select">
+    &nbsp;&nbsp;&nbsp;<select name="node_link[]" id="select0">
+      <F3:repeat group="{{@SESSION.all_nodes}}" value="{{@blg2}}" >
+      <F3:check if="{{@blg2[0] == @SESSION.data['nodes'][0]['node_link']}}">
+      <F3:true>
+      <option value="{{@blg2[0]}}" selected="selected">{{@blg2[0]}}:{{@blg2[1]}}</option>
+      </F3:true>
+      <F3:false>
+      <option value="{{@blg2[0]}}">{{@blg2[0]}}:{{@blg2[1]}}</option>
+      </F3:false>
+      </F3:check>
+      </F3:repeat>
+    </select>
+    <br /><br />
+    <input name="btnAddItem" type="button" id="btnAddItem" class="small button" value="Yeni Düğüm"
+    onclick="javascript:addNewListItem('select0', {{@SESSION.cid}});" />
+  </td>
+</tr>
+
+<input type="hidden" name="nofbs" id="nofbs" value="{{@SESSION.nofbs}}" />
+
+<input type="hidden" name="stamp" value="{{@SESSION.data['nodes'][0]['stamp']}}" />
+<input type="hidden" name="dnid"  value="{{@SESSION.data['nodes'][0]['dnid']}}" />

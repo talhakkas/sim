@@ -1,0 +1,23 @@
+<F3:repeat group="{{@SESSION.data['nodes']}}" key="{{@gnl}}" value="{{@blg}}" counter="{{@ctr}}">
+<F3:check if="{{@blg['chkResponse'] == 'yes'}}" >
+<F3:true>
+<p class="answer">{{@blg['link_text']}}</p>
+
+<div align="middle">
+  <form name="frm{{@ctr}}" action="/yolgu/show/{{@SESSION.cid}}/{{@blg[node_link]}}/{{@ctr}}" method="post">
+    <input type="hidden" name="onceki_id" value="{{@SESSION.id}}">
+    <input type="hidden" name="nid" value="{{@ctr}}">
+    <input type="hidden" name="beklenen_yanit" value="{{@blg['IA']}}">
+    <label class="label">
+      <textarea name="response"></textarea>
+    </label>
+    <input type="submit" class="button" value="Gönder">
+  </form>
+</div>
+</F3:true>
+<F3:false>
+<a class="answer" href="/yolgu/show/{{@SESSION.cid}}/{{@blg['node_link']}}/{{@ctr}}">{{@blg['link_text']}}</a>
+</F3:false>
+</F3:check>
+
+</F3:repeat>
