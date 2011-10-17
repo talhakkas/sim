@@ -328,7 +328,7 @@ function response2str_bek($response, $ntype)
 
 			foreach($response as $j=>$did) {
 				$t = get_drug($did);
-				$str .= strval($j+1) . ": <a href=/yolgu/drug/$did>$t[name]</a><br>";
+				$str .= strval($j+1) . ": <a href=/a/drug/$did>$t[name]</a><br>";
 			}
 			break;
 		case 'dose':
@@ -338,7 +338,7 @@ function response2str_bek($response, $ntype)
 				$ayol = array(1=>"Damar", 2=>"Kas", 3=>"Foo");
 	
 				$t = get_drug($did);
-				$str .= strval($j+1) . ": <a href=/yolgu/drug/$did>$t[name]</a>-$d[dval] ($d[dmn]-$d[dmx])" .$ayol[$d['dayol']]. "<br>";
+				$str .= strval($j+1) . ": <a href=/a/drug/$did>$t[name]</a>-$d[dval] ($d[dmn]-$d[dmx])" .$ayol[$d['dayol']]. "<br>";
 			}
 			break;
 		default:
@@ -355,7 +355,7 @@ function response2str_soy($response, $ntype)
 		case 'drug':
 			foreach($response as $j=>$did) {
 				$t = get_drug($did);
-				$str .= strval($j+1) . ": <a href=/yolgu/drug/$did>$t[name]</a><br>";
+				$str .= strval($j+1) . ": <a href=/a/drug/$did>$t[name]</a><br>";
 			}
 			break;
 		case 'dose':
@@ -365,7 +365,7 @@ function response2str_soy($response, $ntype)
 				$ayol = array(1=>"Damar", 2=>"Kas", 3=>"Foo");
 	
 				$t = get_drug($did);
-				$str .= strval($j+1) . ": <a href=/yolgu/drug/$did>$t[name]</a>-$d[doz] - ". $ayol[$d['ayol']] ." <br>";
+				$str .= strval($j+1) . ": <a href=/a/drug/$did>$t[name]</a>-$d[doz] - ". $ayol[$d['ayol']] ." <br>";
 			}
 			break;
 		default:

@@ -4,7 +4,7 @@
 <p class="answer">{{@blg['link_text']}}</p>
 
 <div align="middle">
-  <form name="frm{{@ctr}}" action="/yolgu/show/{{@SESSION.cid}}/{{@blg[node_link]}}/{{@ctr}}" method="post">
+  <form name="frm{{@ctr}}" action="{{@SR}}/show/{{@SESSION.cid}}/{{@blg[node_link]}}/{{@ctr}}" method="post">
     <input type="hidden" name="onceki_id" value="{{@SESSION.id}}">
     <input type="hidden" name="nid" value="{{@ctr}}">
     <input type="hidden" name="beklenen_yanit" value="{{@blg['IA']}}">
@@ -16,7 +16,7 @@
 </div>
 </F3:true>
 <F3:false>
-<a class="answer" href="/yolgu/show/{{@SESSION.cid}}/{{@blg['node_link']}}/{{@ctr}}">{{@blg['link_text']}}</a>
+<a class="answer" href="{{@SR}}/show/{{@SESSION.cid}}/{{@blg['node_link']}}/{{@ctr}}">{{@blg['link_text']}}</a>
 </F3:false>
 </F3:check>
 

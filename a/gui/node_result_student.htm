@@ -1,8 +1,8 @@
 
-<form name="frm" action="/yolgu/show/{{@SESSION.cid}}/{{@SESSION.data['nodes'][0]['node_link']}}/0" method="post">
+<form name="frm" action="{{@SR}}/show/{{@SESSION.cid}}/{{@SESSION.data['nodes'][0]['node_link']}}/0" method="post">
 
 	<F3:repeat group="{{@SESSION.exams}}" key="{{@gnl}}" value="{{@blg}}" counter="{{@ctr}}">
-		<a href="/yolgu/exam/{{@SESSION.cid}}/{{@gnl}}">{{@gnl}}</a> <br>
+		<a href="{{@SR}}/exam/{{@SESSION.cid}}/{{@gnl}}">{{@gnl}}</a> <br>
 	</F3:repeat>
   <input type="submit" class="button blue right" value="{{@SESSION.data['nodes'][0]['link_text']}}"/>
 </form>

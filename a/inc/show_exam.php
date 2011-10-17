@@ -35,6 +35,6 @@
 
 	if(isset($exam[0]['value'])) {
 		$imgnm = $exam[0]['value'];
-		echo "<img src=/yolgu/upload/$imgnm>";
+		echo "<img src=/a/upload/$imgnm>";
 	}
 ?>
