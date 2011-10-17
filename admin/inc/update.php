@@ -40,7 +40,6 @@ if (!F3::exists('error')) {
 
 	$table->save();
 
-	F3::set('correct', $table->$KEY . ' bilgisine sahip kişi başarıyla güncellendi.');
 	return F3::call('show.php');
 
 } else

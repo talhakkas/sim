@@ -36,13 +36,10 @@ if (!$table->found("$KEY='$key'")) {
 	F3::set('SESSION.SAVE', count($table->find())); // yeni kayıt ekler eklemez toplam kayıtı bir artırsın
 	F3::set('SESSION.key', $table->$KEY);
 
-	// oturumu öldürelim
-	F3::clear('error');F3::clear('correct');
-	F3::set('correct', $table->$KEY . " bilgisine sahip kişi '$TABLE' tablosuna başarıyla eklendi.");
 	return F3::call('show.php');
 } else
-	F3::set('error', "'$TABLE' tablosunda '$key' isminde bir kayıt zaten var.");
+	F3::set('warning', "$TABLE tablosunda $key isminde bir kayıt zaten var.");
 
-F3::call('home'); // index.php'den fonksiyon çağırımı
+F3::call('add'); // index.php'den fonksiyon çağırımı
 
 ?>
