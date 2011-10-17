@@ -5,7 +5,7 @@ require_once  '../asset/lib.php';
 require_once('./inc/mylib.php');
 require_once('./inc/tetkik.php');
 
-function test2() 
+function test2()
 {
 	F3::set('SESSION.cid', 1);
 	F3::set('SESSION.id',  35);
@@ -18,14 +18,14 @@ function test2()
 	F3::set('SESSION.id',  36);
 
 	$node = get_node();
-	
+
 	print_pre($node, "<hr>node:result");
 
 	F3::set('SESSION.cid', 1);
 	F3::set('SESSION.id',  17);
 
 	$node = get_node();
-	
+
 	print_pre($node, "<hr>node");
 }
 
@@ -35,7 +35,7 @@ function test3($dbg=true)
 
 	$tnode = new Axon('node');
 	$tnode->load("cid='$cid' AND id='26'");
-	
+
 	$dict = unserialize($tnode->options);
 	print_pre($dict, "GIRDI:dict");
 
@@ -45,13 +45,13 @@ function test3($dbg=true)
 
 	$tnode->options = serialize($dict);
 	$tnode->save();
-	
+
 }
 function test4()
 {
 	$tnode = new Axon('node');
 	$tnode->load("cid='1' AND id='35'");
-	
+
 	$dict = unserialize($tnode->options);
 
 	$dict[0]['response'] = array('010104'=>array('id'=>010104, 'value'=>'foo'),
@@ -70,7 +70,6 @@ function test()
 }
 
 
-
 function home() {
 	if (F3::get("SESSION.kop"))
 		return F3::call('clist.php');
@@ -84,7 +83,7 @@ function page() {
 	if (in_array($page, $pages))
 		return render("a/$page", 'Title', 'a');
 
-	render("a/home");
+	F3::call('home');
 }
 
 F3::set('uploaddir', 'upload/');

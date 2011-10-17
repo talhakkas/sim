@@ -1,8 +1,9 @@
 
 <style>
-  div#wrapper {border-color:#2daebf;}
+  div#wrapper {border-color:#2daebf;border-color:#3072b3;}
   ul.tabs li.home {
     background:#2daebf;
+    background:#3072b3;
     text-shadow:0 -1px 1px rgba(0,0,0,.25);
     -webkit-border-bottom-left-radius:3px;
     -webkit-border-bottom-right-radius:3px;
@@ -38,7 +39,8 @@
 </div>
 
 <div id="ourWork">
-  <link type="text/css" href="/public/css/login2.css" rel="stylesheet" />
+  <link type="text/css" href="/public/css/login-a.css" rel="stylesheet" />
+  <link type="text/css" href="/public/css/buttons.css" rel="stylesheet" />
 
   <div class="home-content">
     <strong>Sim Nedir?</strong>
@@ -74,8 +76,13 @@
   </div>
 
 
-  <form action="login" method="post" style="float:right;">
-  <h4>Kullanıcı Girişi<h4>
+  <form action="login" method="post" class="login">
+    <h4 class="title">Kullanıcı Girişi</h4>
+
+    <F3:check if="{{@error}}">
+      <span class="login-error">{{@error}}</span>
+    </F3:check>
+
     <table class="login">
       <tr>
         <td class="label">
@@ -92,11 +99,11 @@
       <tr>
         <td></td>
         <td>
-          <input type="submit" class="button-submit" value="Giriş Yap" />
+          <a href="#" class="forgot-pass">Parolamı Unuttum</a>
+          <input type="submit" class="button blue big right" value="Giriş Yap" />
         </td>
       </tr>
     </table>
-    <p class="forgot-pass"><a href="#">Parolamı Unuttum</a></p>
   </form>
 
 </div>

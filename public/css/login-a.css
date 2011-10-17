@@ -49,24 +49,16 @@ table.login td.field {
     width: 220px;
     background: #ededed;
 }
-table.login td.select{
-    border:1px solid #bdc7d8;
-    font:   13px Arial, Helvetica, sans-serif;
-    padding:3px;
-    background:#fff;
-    width:  158px;
-    height: 27px;
-    color:  #585858;
-}
 
 .forgot-pass{
     margin-top:-5px;
-    font-size:13px;
-    float:right;
-    background-color: rgba(0, 0, 0, 0.08);
-    box-shadow:0 1px 5px rgba(0, 0, 0, 0.2);
-    display:none;
+    font-size:12px;
+    font-weight:normal;
+    color:#3072b3;
 }
+a.forgot-pass:hover {color:#3072b3;}
+
+.right {float:right;}
 
 /*
 #content{margin-top:8%;width:400px;min-height:220px;}
@@ -76,26 +68,18 @@ table.login td.select{
 p.fail{ margin:50px auto -84px;}
 .error2{ margin:50px auto -84px;}
 
-.button-submit {
-    height:23px;
-    color:#2F7CA2;
-    text-align:center;
-    padding-top:6px;
-    background:url(../img/btn.png) no-repeat top;
-    font-weight:bold;
-    width:96px;
-    font-size:13px;
-    display:block;
-    cursor:pointer;
-    border:none;
-    height:auto;
-    padding-bottom:7px;
-}
-.button-submit:hover {box-shadow:0 3px 7px rgba(0, 0, 0, 0.2);}
-
+form.login {float:right; width:400px;}
 .home-content {float:left; width:430px;}
-.home-content ul {margin-top:-15px;list-style-type:dotted;}
+.home-content ul {margin-top:-15px;}
 .home-content ul li{margin:10px 8px 10px 10px;width:100%;float:left;padding-left:20px;padding-top:-10px;margin-bottom:10px;background:url(/public/img/icon/16x16/next_blue.png) no-repeat;}
 
 .home-content strong {font-weight:bold;display:block; margin-bottom:5px; color:#3072b3;}
 .home-content p {margin-top:0px; margin-bottom:20px;}
+
+h4.title {font-weight:bold; font-size:17px; display:block; margin-bottom:15px; padding-bottom:10px; border-bottom:1px solid #ddd;}
+
+.login-error {background:url(/public/img/icon/24x24/warning.png) no-repeat; padding-left:25px;padding-top:5px;height:24px; display:block; color:#3072b3; }
+
+
+
+
