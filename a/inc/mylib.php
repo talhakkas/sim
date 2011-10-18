@@ -667,7 +667,7 @@ function get_exams_csv($arr)
 	return $csv;
 }
 
-function get_exams($arr)
+function get_exams($arr) // !SIL
 {
 	$dict = array();
 
@@ -683,23 +683,102 @@ function get_exams($arr)
 	return $dict;
 }
 
-function get_exams_dict($arr) 
+function get_exams_dict($cid, $arr) 
 {
 	$dict = array();
 
 	$csv = get_exams_csv($arr);
 	$list = preg_split('/,/', $csv);
 
-	$tsurvey = new Axon('survey');
-
-	foreach($list as $i=>$id) {
-		$tsurvey->load("id='$id'");
-		$dict[$id] = array('id'   => $id, 
-				   'name' => $tsurvey->name,
-				   'stype'=> $tsurvey->stype,
-				   'value'=> $tsurvey->value);
+	foreach($list as $i=>$eid) {
+		$info = get_exam_info($cid, $eid);
+		$dict = array_merge_recursive($dict, $info);
+		$dict = exam_merge_postprocess($dict);
 	}
 
+	return $dict;
+}
+
+function get_exam_info($cid, $eid, $dbg=false)
+{
+	$dict = get_dps_id_helper($eid);
+	$did = $dict['did'];		$edid = $did;
+	$pid = $dict['pid'];		$epid = $did . $pid;
+	$sid = $dict['sid'];		$esid = $did . $pid . $sid;
+
+	if($dbg)	echo "DEBUG: eid=$eid,  did=$did,  pid=$pid,  sid=$sid <br>";
+	if($dbg)	echo "DEBUG: eid=$eid, edid=$edid,epid=$epid,esid=$esid<br>";
+
+    $discs = DB::sql("select * from discipline WHERE id='$edid'");
+    $parnt = DB::sql("select * from parent     WHERE id='$epid'");
+    $survs = DB::sql("select * from survey     WHERE id='$esid'");
+
+	if($dbg)	print_pre($discs, "DEBUG: discs");
+	if($dbg)	print_pre($parnt, "DEBUG: parnt");
+	if($dbg)	print_pre($survs, "DEBUG: survs");
+
+	$dnm = $discs[0]['name'];
+	$pnm = $parnt[0]['name'];
+	$snm = $survs[0]['name'];
+	$fnm = "$dnm:$pnm:$snm";
+
+	if($dbg)	echo "<h2>$dnm=>$pnm=>$snm</h2>";
+
+    $exam = DB::sql("select * from exam     WHERE cid='$cid' AND sid='$esid'");
+
+	if(count($exam) == 0) { // ontanimli degeri kullan.
+		$exam = $survs;
+	}
+	
+	if($dbg)	print_pre($exam, "DEBUG: exam");
+
+	$imgnm = isset($exam[0]['value']) ? $exam[0]['value'] : 'default.jpg';
+
+	if($imgnm == 'null') $imgnm = 'default.jpg';
+
+	if($dbg)	echo "<img src=/a/upload/$imgnm>";
+
+
+	$info[$did] = array('cid' => $cid, 'eid' => $eid, 'dnm' => $dnm,
+						$pid  => array('pnm' => $pnm,
+									   $sid  => array('snm' => $snm, 'fnm' => $fnm,
+									   				  'imgnm' => $imgnm)
+									  )
+					   );
+
+	return $info;
+}
+
+function exam_merge_postprocess($dict)
+{
+	foreach($dict as $did=>$dval) {
+		$key = 'dnm'; $dict[$did] = emp_helper($dict[$did], $key);
+		$key = 'cid'; $dict[$did] = emp_helper($dict[$did], $key);
+		$key = 'eid'; $dict[$did] = emp_helper($dict[$did], $key);
+
+		foreach($dval as $pid=>$pval) {
+			if(is_numeric($pid)) {
+				$key = 'pnm'; $dict[$did][$pid] = emp_helper($dict[$did][$pid], $key);
+
+				foreach($pval as $sid=>$sval) {
+				  if(is_numeric($sid))
+					foreach($sval as $k=>$v) {
+						$key = $k; $dict[$did][$pid][$sid] = 
+							emp_helper($dict[$did][$pid][$sid], $key);
+					}
+				}
+			}
+		}
+	}
+
+	return $dict;
+}
+
+function emp_helper($dict, $key, $dbg=false)
+{
+	if(count($dict[$key]) > 1)
+		$dict[$key] = $dict[$key][0];
+	
 	return $dict;
 }
 

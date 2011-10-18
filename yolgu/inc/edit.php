@@ -45,9 +45,8 @@
 
 	if(F3::get('SESSION.data[ntype]') == 'result') {
 		$cid = F3::get('SESSION.cid');
-		$eid = 35; // FIXME
 
-		F3::set('SESSION.exams', get_exam_list($cid, $eid));
+		F3::set('SESSION.exams', get_exam_list($cid));
 	}
 
 	render('node', 'Düzenle');

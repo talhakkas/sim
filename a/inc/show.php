@@ -16,8 +16,7 @@
 	if($node['ntype'] == 'exam')
 		F3::set('tetkikmerkezi', multi());
 	if($node['ntype'] == 'result') {
-		F3::set('SESSION.exams', get_exams($_POST));
-		//return;
+		F3::set('SESSION.exams', get_exams_dict(F3::get('SESSION.cid'), $_POST));
 	}
 
 render('show', 'Olgu');

@@ -230,8 +230,10 @@ function set_dose_drug_list($cid, $id, $dslist)
 	$tdose->save();
 }
 
-function get_exam_list($cid, $nid, $dbg=false)
+function get_exam_list($cid, $nid=NULL, $dbg=false)
 {
+	if($nid == NULL) 	$nid = get_exam_id($cid);
+
 	if($dbg)	echo "cid=$cid, nid=$nid <br>";
 
 	$node = get_node($cid, $nid);
@@ -667,7 +669,20 @@ function get_exams_csv($arr)
 	return $csv;
 }
 
-function get_exams($arr)
+function get_exams($cid, $arr, $dbg=false)
+{
+	$st_selected = get_exams_student($arr, $dbg);
+	
+	return $st_selected;
+}
+
+function get_exam_info($cid, $id)
+{
+	// show_exam.php yi kullan
+	return true;
+}
+
+function get_exams_student($arr, $dbg=false) 
 {
 	$dict = array();
 
