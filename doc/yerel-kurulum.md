@@ -22,7 +22,7 @@
 
         sudo chown www-data:www-data -R <kullanıcı adı>
 
-	# www iznine yerelde 777 verin bize bir sıkıntı çıkarmaz
+	// www iznine yerelde 777 verin bize bir sıkıntı çıkarmaz
 	sudo chmod 777 www
 
 
