@@ -13,23 +13,7 @@
   ul.tabs li.home a {color:#fff;}
   ul.tabs li.home {color:#333; text-shadow:none;}
 
-  a:hover, h1 a:hover, h2 a:hover, div.page-header h2 a:hover, h3 a:hover {
-    color:#007d9a; }
-  div#content ul#ourWork p,
-  div#content #ourServices p {font-size:13px; line-height:18px;}
   div.page-header{background:url(/public/img/a/simulation.jpg) no-repeat 98% top;}
-
-  ul#ourWork { width: 900px; margin: 0 0 0 0px; padding: 0; list-style: none; overflow: hidden; }
-  ul#ourWork li { display: inline; float: left; width: 200px; margin-left: 50px;
-    margin-right:50px;
-    font-size: 12px; }
-  ul#ourWork li img { margin-bottom: 9px; -webkit-box-shadow: 0 2px 6px #ccc;
-    -webkit-box-shadow:0 0 18px rgba(0,0,0,0.4);
-    -moz-box-shadow:0 0 18px rgba(0,0,0,0.4);
-    box-shadow:0 0 12px rgba(0,0,0,0.5);
-  }
-  ul#ourWork li p, ul#ourWork li h4 {text-align:center;}
-
 </style>
 
 <div class="page-header">
@@ -61,7 +45,7 @@
     <h4 class="title">Kullanıcı Girişi</h4>
 
     <F3:check if="{{@error}}">
-      <span class="login-error">{{@error}}</span>
+    <span class="login-error">{{@error}}</span>
     </F3:check>
 
     <table class="login">
@@ -107,49 +91,7 @@
       </li>
     </ul>
     </p>
+  </div>
+
 </div>
-
-
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<ul id="ourWork" style="display:none">
-  <li>
-  <a href="/student" title="Öğrenci Servisi">
-    <img alt="student service" src="/public/img/a/student-service.jpg" />
-  </a>
-
-  <h4><a href="/student">Öğrenci Servisi</a></h4><br>
-  <p>Üniversitemizde Tıp Eğitimi Almakta Olan Öğrencilerimiz İçin Hazırlanmış
-  Web Tabanlı Simülasyon Eğitimi Öğrenci Girişi.</p>
-  </li>
-
-  <li>
-  <a href="/tutor" title="Öğretim Üyesi Servisi">
-    <img alt="tutor service" src="/public/img/a/tutor-service.jpg" /></a>
-  <h4><a href="/tutor">
-      Öğretim Üyesi Servisi</a></h4><br>
-  <p>Üniversitemizin Tıp Eğitiminde Aktif Rol Alan Web Tabanlı Simülasyon
-  Eğitimi Yazılımının Öğretim Üyesi Girişi.</p>
-  </li>
-  <li>
-  <a href="/admin" title="Sistem Yönetimi">
-    <img alt="admin service" src="/public/img/a/admin-service.jpg" /></a>
-  <h4><a href="/admin">Sistem Yönetimi</a></h4><br>
-  <p>Web Tabanlı Simülasyon Eğitimi Merkezinin Hazırlanması ve Yönetilmesi İçin
-  Oluşturulan Yönetim ve Bakım Ekibi Girişi.</p>
-  </li>
-
-</ul>
 

@@ -31,13 +31,13 @@ http://localhost dediğimiz zaman sistemin çalışıyor olması gerekli
 
 ### veri tabanının yapılandırılması
 
-yine 19/x betiklerinden mkdb bizim işimizi en iyi göre araç
+- yine 19/x betiklerinden mkdb bizim işimizi en iyi gören araç
 
 	mkdb sim sim
 
 yani malum parola ve şifre ile ...
 
-arkasından veritabanını import edelim
+- arkasından veritabanını import edelim
 
 	cd /var/www
 	mysql -p sim -u sim < db/sim.sql

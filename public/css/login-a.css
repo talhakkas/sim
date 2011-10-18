@@ -32,17 +32,19 @@ table.login input[type=password]:focus {
     border: 1px solid #35addf;
 }
 
+table.login td.label label {font-weight:bold; letter-spacing:0.7px;}
 table.login td.label {
     text-align: right;
     vertical-align: top;
     color: #333;
     width: 180px;
+    font-size: 12px;
     font-weight: bold;
-    font-size: 11px;
     border-top: 1px solid #ddd;
     -moz-border-radius: 0;
     -webkit-border-radius: 0;
     border-radius: 0;
+    padding-top:5px;
 }
 
 table.login td.field {
@@ -53,22 +55,23 @@ table.login td.field {
 a.forgot-pass{ margin-top:-5px; font-size:12px; font-weight:normal; color:#3072b3; text-decoration:none;}
 a.forgot-pass:hover {color:#3072b3;}
 
-/*
-#content{margin-top:8%;width:400px;min-height:220px;}
-#content h2 {font-size:17px;margin-bottom:30px;}
-#content h2 {width:257px;}
-*/
 p.fail{ margin:50px auto -84px;}
 .error2{ margin:50px auto -84px;}
 
 form.login {float:right; width:450px;}
 .right {float:right;}
 
+
 #ourWork .home-content {float:left; width:450px; margin-bottom:20px;}
-#ourWork .home-content img {width:440px;}
+#ourWork .home-content img {width:440px;
+    -webkit-box-shadow:0 0 22px rgba(0,0,0,0.4);
+    -moz-box-shadow:0 0 22px rgba(0,0,0,0.4);
+    box-shadow:0 0 22px rgba(0,0,0,0.4);
+}
+
 #ourWork .home-content.right {float:right;}
 #ourWork ul {margin-top:-15px;}
-#ourWork ul li{left;margin:10px 8px 10px 10px;width:100%;float:left;padding-left:27px;
+#ourWork ul li{margin:10px 8px 20px 10px;width:400px;float:left;padding-left:27px; line-height:17px;
 min-height:24px; background:url(/public/img/icon/24x24/help.png) no-repeat 0px;}
 
 #ourWork strong {font-weight:bold;display:block; margin-bottom:5px; font-size:15px; color:#3072b3;}
