@@ -24,7 +24,7 @@ body {
     	font-family: Corbel, Arial, Helvetica, Helvetica Neue, Verdana, sans-serif;-webkit-font-smoothing: antialiased;
 }
 
-a { color: #2daebf; text-decoration: underline; outline: 0; line-height: inherit; }
+a { color: #2daebf; color:#3072b3; text-decoration: underline; outline: 0; line-height: inherit; }
 a:hover { color: #007d9a; }
 
 h1 a, h2 a, h3 a { color: #333; text-decoration: none; font-weight: bold; }
@@ -150,8 +150,95 @@ div.page-header h2 small { font-size: 75%; font-weight: normal; }
 /* ---------------------------------------------- */
 
 
+/* ------------------------- home --------------------------- */
+#ourWork .home-content {float:left; width:450px; margin-bottom:20px;}
+#ourWork .home-content img {width:440px;
+    -webkit-box-shadow:0 0 22px rgba(0,0,0,0.4);
+    -moz-box-shadow:0 0 22px rgba(0,0,0,0.4);
+    box-shadow:0 0 22px rgba(0,0,0,0.4);
+}
+
+#ourWork .home-content.right {float:right;}
+#ourWork ul {margin-top:-15px;}
+#ourWork ul li{margin:10px 8px 20px 10px;width:400px;float:left;padding-left:27px; line-height:17px;
+min-height:24px; background:url(/public/img/icon/24x24/help.png) no-repeat 0px;}
+
+#ourWork strong {font-weight:bold;display:block; margin-bottom:5px; font-size:15px; color:#3072b3;}
+#ourWork p {margin-top:0px; margin-bottom:20px; font-size:14px; word-spacing:1px;}
+
+/* ---------------------------------------------------------- */
 
 
 
+/* ------------------------ login --------------------------- */
 
+form.login {float:right; width:450px;}
+form.login h4 {font-weight:bold; font-size:17px; display:block; margin-bottom:15px; padding-bottom:10px; border-bottom:1px solid #ddd;}
+
+.right {float:right;}
+
+table.login { border-spacing:5px; border-collapse: separate; margin-bottom:35px;}
+
+table.login th,
+table.login td {
+    padding: 3px;
+    font-size: 13px;
+    -moz-border-radius: 0px;
+    -webkit-border-radius: 0px;
+    border-radius: 0px;
+}
+
+table.login input[type=text],
+table.login input[type=password]{
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    padding: 8px;
+    margin: 0;
+    font-size: 13px;
+    color: #555;
+    width: 300px;
+    border: 1px solid #ccc;
+    -moz-border-radius: 0px;
+    -webkit-border-radius: 0px;
+    border-radius: 0px;
+}
+
+table.login input[type=text]:focus,
+table.login input[type=password]:focus { outline: 0; border: 1px solid #35addf; }
+
+table.login td.label label {font-weight:bold; letter-spacing:0.7px;}
+table.login td.label {
+    text-align: right;
+    vertical-align: top;
+    color: #333;
+    width: 120px;
+    font-size: 11px;
+    font-weight: bold;
+    border-top: 1px solid #ddd;
+    -moz-border-radius: 0;
+    -webkit-border-radius: 0;
+    border-radius: 0;
+    padding-top:10px;
+}
+
+table.login td.field { width: 300px; background: #ededed;}
+
+a.forgot-pass{ margin-top:-5px; font-size:12px; font-weight:normal; color:#3072b3; text-decoration:none;}
+a.forgot-pass:hover {color:#3072b3;}
+
+.login-error {background:url(/public/img/icon/24x24/warning.png) no-repeat;
+margin-left:10px; padding-left:30px;padding-top:7px;height:24px; color:#3072b3; font-size:13px;font-weight:bold; word-spacing:1px;}
+
+.inlogin {
+    float:right; width:450px; height:220px;
+
+}
+
+.inlogin a.in {background:url(/public/img/icon/16x16/next_blue.png) no-repeat; padding-left:20px; text-decoration:none;}
+.inlogin img {display:block;margin: 0 auto;}
+.inlogin span {display:block;text-align:center;}
+.inlogin table {}
+.inlogin table.inlogin-table strong {float:left; color:red;}
+
+
+/* ---------------------------------------------------------- */
 

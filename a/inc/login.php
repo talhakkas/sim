@@ -45,12 +45,12 @@ if (! F3::exists('error')) {
                 F3::set('SESSION.special', 1);
                 F3::set('SESSION.isstudent', TRUE);
                 F3::set('SESSION.kop', TRUE);
-		//return F3::call('clist.php');
-		return F3::reroute('/');
+		return F3::reroute('/clist');
         }
         F3::set('error', "Yanlış kullanıcı adı veya parola");
 }
 
 render('a/home', 'Kullanıcı Girişi Hatası', 'a');
+//F3::call('clist');
 
 ?>
