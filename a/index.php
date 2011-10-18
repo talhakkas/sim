@@ -79,9 +79,17 @@ function home() {
 function page() {
 	$pages = array('people', 'work', 'about', 'contact', 'playground');
 
+	$title = array(
+	       	'people' => 'Ekibimiz',
+		'work' => 'Çalışmalarımız',
+		'about' => 'Hakkımızda',
+		'contact' => 'İletişim',
+		'playground' => 'test'
+	);
+
 	$page = F3::get('PARAMS.page');
 	if (in_array($page, $pages))
-		return render("a/$page", 'Title', 'a');
+		return render("a/$page", $title[$page], 'a');
 
 	F3::call('home');
 }

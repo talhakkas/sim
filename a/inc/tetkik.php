@@ -30,7 +30,7 @@ function multi($preselected=array(), $dbg=false){
 
             if ($pdid == $did){
                 $a .= '<p class="answer">' . $pval['name'] . '</p>';
-                $a .= '<select multiple="multiple" size="5" name="response_'.$ppid.'[]" style="width:885px;">';
+                $a .= '<select multiple="multiple" size="5" name="response_'.$ppid.'[]" class="multi-select">';
 
                 foreach ($survs as $sval){
 					$sid = $sval['id'];

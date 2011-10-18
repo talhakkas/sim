@@ -543,7 +543,7 @@ button.ui-button::-moz-focus-inner { border: 0; padding: 0; } /* reset extra pad
 .ui-tabs { position: relative; padding: 6px; zoom: 1;}
 .ui-tabs .ui-tabs-nav { margin: 0; padding: 3px 3px 0; }
 .ui-tabs .ui-tabs-nav li { list-style: none; float: left; position: relative; top: 1px; margin: 0 0 1px 0; border-bottom: 0 !important; padding: 0; white-space: nowrap; }
-.ui-tabs .ui-tabs-nav li a { float: left; padding: 4px 54.6px; text-decoration: none; }
+.ui-tabs .ui-tabs-nav li a { float: left; padding: 4px 54px; text-decoration: none; }
 .ui-tabs .ui-tabs-nav li.ui-tabs-selected { margin-bottom: 0; padding-bottom: 1px; }
 .ui-tabs .ui-tabs-nav li.ui-tabs-selected a, .ui-tabs .ui-tabs-nav li.ui-state-disabled a, .ui-tabs .ui-tabs-nav li.ui-state-processing a { cursor: text; }
 .ui-tabs .ui-tabs-nav li a, .ui-tabs.ui-tabs-collapsible .ui-tabs-nav li.ui-tabs-selected a { cursor: pointer; } /* first selector in group seems obsolete, but required to overcome bug in Opera applying cursor: text overall if defined elsewhere... */
@@ -624,4 +624,8 @@ ul.ui-multiselect-checkboxes li{ float:left;width:400px;}
 ul.ui-multiselect-checkboxes li select option{ float:left;width:250px;}
 */
 ul.ui-multiselect-checkboxes { padding-top:10px;}
+
+#multi-tabs { text-align:left; clear:both;}
+.multi-select { width:97%}
+
 

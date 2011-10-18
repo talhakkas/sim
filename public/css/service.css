@@ -120,22 +120,22 @@ h1.yellow, h2.yellow, h3.yellow, h4.yellow, h5.yellow
 
 /* ------------------------ custom table form ----------------------------- */
 table.custom {
-    width:599px;
-    margin:0 auto;
+    width:750px;
+    margin:30px auto 10px;
     border-spacing: 5px;
     border-collapse: separate;
 }
 
 table.custom th,
 table.custom td {
-    padding: 4px;
+    padding: 3px;
     font-size: 12px;
-    -moz-border-radius: 5px;
-    -webkit-border-radius: 5px;
-    border-radius: 5px;
+    -moz-border-radius: 0px;
+    -webkit-border-radius: 0px;
+    border-radius: 0px;
 }
 
-table.custom textarea {height:150px;}
+table.custom textarea {height:120px;}
 table.custom textarea,
 table.custom input[type=text],
 table.custom input[type=password]{
@@ -144,11 +144,11 @@ table.custom input[type=password]{
     margin: 0;
     font-size: 13px;
     color: #555;
-    width: 350px;
+    width: 585px;
     border: 1px solid #ccc;
-    -moz-border-radius: 3px;
-    -webkit-border-radius: 3px;
-    border-radius: 3px;
+    -moz-border-radius: 0px;
+    -webkit-border-radius: 0px;
+    border-radius: 0px;
 }
 
 table.custom select {
@@ -275,20 +275,6 @@ p.uni {
     padding:     8px 20px 10px;
     margin-top:   -32px;
     margin-bottom:-20px;
-    /*
-
-    color:       #fff;
-    line-height: 16px;
-    font-size:   13px;
-    font-family: arial, helvetica, sans-serif;
-    -moz-border-radius: 4px;
-    -webkit-border-radius: 4px;
-    border-radius:      4px;
-    box-shadow:0 0px 10px rgba(0, 0, 0, 0.2);
-
-    background: #2daebf;
-    background: #3072b3;
-     */
 
     font-family: Arial, Helvetica, Helvetica Neue, Verdana, sans-serif;
     display: block; font-size: 18px; line-height: 1; font-weight: bold; letter-spacing: -1px;color: #222;
@@ -329,7 +315,6 @@ p.uni {
 select{font:13px Arial,Helvetica,sans-serif;border:1px solid #bdc7d8;padding:3px;background:#fff;width:158px;height:27px;color:#585858;}
 
 tr, td, th {text-align:left;}
-#student_image { width:120px; height:140px;border: 1px dotted #ccc;float:left;margin:0 40px 0 30px;}
 
 /* -------------------- printly ----------------------- */
 ul.tabs li.printly a {margin-top:3px;width:5px;height:25px;background:url(/public/img/icon/32x32/printer.png) no-repeat;background-size:25px;}
@@ -362,11 +347,6 @@ input[type=text]:focus {outline: 0; border: 1px solid #35addf;}
 padding-left:5px;}
 .answer{width:100%;float:left;padding-left:20px;padding-top:1px;margin-bottom:10px;background:url(/public/img/icon/16x16/next_blue.png) no-repeat;}
 
-#admin-panel {width:920px;height:70px;border-bottom:1px solid #ddd;margin-top:-20px; margin-bottom:20px;}
-#admin-panel ul {font-size:11px;font-weight:bold;list-style-type:none;margin-left:-40px;}
-#admin-panel li {float:left;width:100px;color:#3072b3;text-align:center;}
-#admin-panel li img {width:34px;height:34px;margin:0 34px;}
-
 #leftcolumn {
     height:auto;
     width:110px;
@@ -395,35 +375,5 @@ p#vtip { display: none; position: absolute; padding: 10px; font-size: 10px; back
     z-index: 9999; max-width:300px; border: 3px solid #eee; -moz-border-radius: 5px; -webkit-border-radius: 5px;}
 p#vtip #vtipArrow { position: absolute; top: -10px; left: 5px }
 
-
-/* ----------------------------- student.service ------------------------------ */
-#contentarea {float:left;display:block;width:650px;height:auto;}
-.feature {float:left;margin:0px 0px;width:250px;}
-.feature li {list-style-image: url('/public/img/icon/16x16/accept.png');font-size:13px;}
-.feature li {list-style-image: url('/public/img/icon/16x16/attachment2.png');font-size:13px;}
-#contentarea img {
-  -webkit-box-shadow:0 2px 2px rgba(0,0,0,0.2);
-  -moz-box-shadow:0 2px 2px rgba(0,0,0,0.2);
-  box-shadow:0 5px 20px rgba(0, 0, 0, 0.3);
-}
-
-
-.sidebar {
-  background: #FFF repeat scroll 0 0;
-  border:1px solid #DDDDDD;
-  border-radius:4px 4px 4px 4px;
-  overflow:hidden;
-  padding:10px 8px 25px;;
-}
-
-.sidebar h3 {padding-bottom:4px;margin:0px;}
-
-.sidebar-right{
-  float:right;
-  display:block;
-  width:250px;
-}
-
-/* ------------------------------------------------------------------------- */
 
 

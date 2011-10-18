@@ -5,8 +5,8 @@
 <script type="text/javascript" src="/public/js/multiselect/jquery.multiselect.filter.js"></script>
 <script type="text/javascript">
   $(function(){
-    $("#tabs").tabs();
-    $("select").multiselect().multiselectfilter();
+    $("#multi-tabs").tabs();
+    $(".multi-select").multiselect().multiselectfilter();
   });
 </script>
 
@@ -16,14 +16,13 @@
   <form name="frm" action="{{@SR}}/show/{{@SESSION.cid}}/{{@SESSION.data['nodes'][0]['node_link']}}/0" method="post">
     <input type="hidden" name="onceki_id" value="{{@SESSION.id}}">
     <input type="hidden" name="cid" value="{{@SESSION.cid}}">
-	<input type="hidden" name="nid" value="0">
-	<input type="hidden" name="beklenen_yanit" value="{{@SESSION.data['beklenen_yanit']}}">
+    <input type="hidden" name="nid" value="0">
+    <input type="hidden" name="beklenen_yanit" value="{{@SESSION.data['beklenen_yanit']}}">
 
+    <div id="multi-tabs">
+      {{@tetkikmerkezi}}
+    </div>
 
-  <div id="tabs" class="clear">
-    {{@tetkikmerkezi}}
-  </div>
-
-  <input type="submit" class="button blue right" value="Gönder"/>
-</form>
+    <input type="submit" class="button blue right" value="Gönder"/>
+  </form>
 </div>

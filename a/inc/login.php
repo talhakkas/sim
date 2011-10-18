@@ -51,6 +51,6 @@ if (! F3::exists('error')) {
         F3::set('error', "Yanlış kullanıcı adı veya parola");
 }
 
-render('a/home', 'Login Error', 'a');
+render('a/home', 'Kullanıcı Girişi Hatası', 'a');
 
 ?>
