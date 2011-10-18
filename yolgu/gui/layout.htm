@@ -1,0 +1,98 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+
+<html xmlns = "http://www.w3.org/1999/xhtml" xml:lang = "TR" lang = "tr">
+  <head>
+    <meta http-equiv = "Pragma" content = "no-cache" />
+    <meta http-equiv = "Expires" content = "-1" />
+    <meta http-equiv = "Content-Type" content = "text/html; charset=utf-8" />
+    <link rel="shortcut icon" href="/public/img/favicon.ico" />
+
+    <link rel="stylesheet" type="text/css" href="/public/css/style.css" />
+    <link rel="stylesheet" type="text/css" href="/public/css/yeni.css" />
+
+    <!-- doz alımı -->
+    <script src="/public/js/yolgu/jquery.tools.min.js"></script>
+
+    <!-- accordion -->
+    <script src="/public/js/yolgu/jquery-ui.min.js"></script>
+    <script>
+      $(document).ready(function() {
+        $("#accordion").accordion({active: false});
+        vtip();
+      });
+    </script>
+
+    <!-- tooltip » vtip -->
+    <script type="text/javascript" src="/public/js/vtip.js"></script>
+
+    <title>{{@page_title}}</title>
+  </head>
+
+  <body>
+    <F3:check if="{{@SESSION.special==1}}">
+    <F3:true>
+    <div id="wrapper">
+      <div id="container">
+        <ul class="tabs" id="mainNav">
+          <li class="home"><a href="{{@SR}}" >Anasayfa</a></li>
+          <li class="logout"><a href="logout" title="">Çıkış</a></li>
+        </ul>
+      </div>
+    </div>
+    </F3:true>
+    </F3:check>
+
+    <F3:check if="{{@template != 'login'}}">
+    <div id="notice">
+      <p class="uni">
+      Ondokuz Mayıs Üniversitesi Medikal Simülasyon Eğitim Merkezi
+      </p>
+    </div>
+    </F3:check>
+
+    <div id="content">
+      <F3:check if="{{ preg_match('/\/edit/', @PARAMS.0) | preg_match('/\/create/', @PARAMS.0) }}">
+      <F3:true>
+      <div id="leftcolumn">
+        <ul>
+          <li>
+          <a href="{{@SR}}/create/oyku/{{@SESSION.cid}}/{{@SESSION.id}}">
+            <img src="/public/img/icon/48x48/edit.png"/>ÖYKÜ</a>
+          </li>
+          <li>
+          <a href="{{@SR}}/create/css/{{@SESSION.cid}}/{{@SESSION.id}}">
+            <img src="/public/img/icon/48x48/promotion.png"/>ÇSS</a>
+          </li>
+          <li>
+          <a href="{{@SR}}/create/dal/{{@SESSION.cid}}/{{@SESSION.id}}">
+            <img src="/public/img/icon/48x48/comments.png"/>DALLANMA</a>
+          </li>
+          <li>
+          <a href="{{@SR}}/create/anket/{{@SESSION.cid}}/{{@SESSION.id}}">
+            <img src="/public/img/icon/48x48/chart_pie.png"/>ANKET</a>
+          </li>
+        </ul>
+      </div>
+      </F3:true>
+      </F3:check>
+
+      <F3:include href="{{@template}}.htm"/>
+    </div>
+
+    <F3:check if="{{@template != 'login'}}">
+    <div id="footer">
+      <div id="container">
+        <p class="footer-uni">
+        Ondokuz Mayıs Üniversitesi Medikal Simülasyon Eğitim Merkezi
+        </p>
+        <ul>
+          <li><a href="{{@SR}}">Anasayfa</a></li>
+          <li class="logout"><a href="logout" title="">Çıkış</a></li>
+        </ul>
+      </div>
+    </div>
+    </F3:check>
+
+  </body>
+</html>
+

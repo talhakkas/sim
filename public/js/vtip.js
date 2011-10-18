@@ -7,7 +7,7 @@ this.vtip = function() {
             this.title = '';
             this.top = (e.pageY + yOffset); this.left = (e.pageX + xOffset);
             $('body').append( '<p id="vtip"><img id="vtipArrow" />' + this.t + '</p>' );
-            $('p#vtip #vtipArrow').attr("src", 'images/vtip_arrow.png');
+            //$('p#vtip #vtipArrow').attr("src", 'images/vtip_arrow.png');
             $('p#vtip').css("top", this.top+"px").css("left", this.left+"px").fadeIn("slow");
         },
         function() {
@@ -22,5 +22,4 @@ this.vtip = function() {
         }
     );
 };
-
 

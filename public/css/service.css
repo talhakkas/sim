@@ -276,6 +276,7 @@ p.uni {
 
     font-family: Arial, Helvetica, Helvetica Neue, Verdana, sans-serif;
     display: block; font-size: 18px; line-height: 1; font-weight: bold; letter-spacing: -1px;color: #222;
+    background:#fff;;
 }
 
 /* ----------------------------------------------------------------- */
@@ -285,7 +286,7 @@ p.uni {
     color:#fff;
     margin: 0px auto 0px;
     padding: 5px;
-    height:37px;
+    height:50px;
     position:relative;
     -webkit-box-shadow:0 0 18px rgba(0,0,0,0.4);
     -moz-box-shadow:0 0 18px rgba(0,0,0,0.4);
@@ -300,7 +301,7 @@ p.uni {
     font-size: 13px; font-weight: bold; line-height: 1; letter-spacing: -0.6px;
 }
 
-#footer #container { height:37px; width: 950px; background:url(/public/img/doc.png) no-repeat left 0px; }
+#footer #container { margin-top:5px; padding-top:5px; height:37px; width: 950px; background:url(/public/img/doc.png) no-repeat left 5px; border-top:1px solid #ddd;}
 
 #footer ul {float:right; width:140px;font-weight:bold;font-size: 11px;}
 #footer ul li a {color:#fff;}
@@ -368,9 +369,10 @@ h2 img {float:left;margin-top:-2px;margin-right:2px;}
 .home a img {float:left; width:22px; height:22px; margin-top:-6px; margin-right:5px;}
 
 /* clist */
-p#vtip { display: none; position: absolute; padding: 10px; font-size: 10px; background-color: white;
+p#vtip { display: none; position: absolute; padding: 10px; font-size: 11px; letter-spacing:1px; background-color: white;
     z-index: 9999; max-width:300px; border: 3px solid #eee; -moz-border-radius: 5px; -webkit-border-radius: 5px;}
 p#vtip #vtipArrow { position: absolute; top: -10px; left: 5px }
+p#vtip img { background:none; }
 
 
 
