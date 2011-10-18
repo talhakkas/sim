@@ -50,12 +50,7 @@ table.login td.field {
     background: #ededed;
 }
 
-.forgot-pass{
-    margin-top:-5px;
-    font-size:12px;
-    font-weight:normal;
-    color:#3072b3;
-}
+a.forgot-pass{ margin-top:-5px; font-size:12px; font-weight:normal; color:#3072b3; text-decoration:none;}
 a.forgot-pass:hover {color:#3072b3;}
 
 .right {float:right;}
@@ -69,12 +64,12 @@ p.fail{ margin:50px auto -84px;}
 .error2{ margin:50px auto -84px;}
 
 form.login {float:right; width:400px;}
-.home-content {float:left; width:430px;}
+.home-content {float:left; width:460px; margin-bottom:20px;}
 .home-content ul {margin-top:-15px;}
 .home-content ul li{margin:10px 8px 10px 10px;width:100%;float:left;padding-left:20px;padding-top:-10px;margin-bottom:10px;background:url(/public/img/icon/16x16/next_blue.png) no-repeat;}
 
-.home-content strong {font-weight:bold;display:block; margin-bottom:5px; color:#3072b3;}
-.home-content p {margin-top:0px; margin-bottom:20px;}
+.home-content strong {font-weight:bold;display:block; margin-bottom:5px; font-size:15px; color:#3072b3;}
+.home-content p {margin-top:0px; margin-bottom:20px; font-size:14px;}
 
 h4.title {font-weight:bold; font-size:17px; display:block; margin-bottom:15px; padding-bottom:10px; border-bottom:1px solid #ddd;}
 
