@@ -12,13 +12,12 @@ body {
 
 #content {
     width: 920px;
+    height:auto;
+    min-height:550px;
+    padding: 20px;
     margin: 30px auto 30px;;
     background:#fff url(/public/img/a/simulation.jpg) no-repeat right 0px;
     background-size:170px ;
-
-    padding: 20px;
-    height:auto;
-    min-height:550px;
     position:relative;
     -webkit-box-shadow:0 0 18px rgba(0,0,0,0.3);
     -moz-box-shadow:0 0 18px rgba(0,0,0,0.3);
@@ -37,12 +36,10 @@ body {
 a {color: #3072b3; cursor: pointer; -moz-outline-style: none; text-decoration:none}
 .error {font-size:13px; color:#872020; margin:10px auto -30px; line-height:20px; width:780px;}
 
-.left {float:left;}
-.right {float:right;}
 .line{border:none;border-bottom:1px solid #ddd;}
 /* ------------- wrapper - header ------------------------- */
 
-div#wrapper {border-top:4px solid #2daebf;clear:left; border-top:3px solid #3072b3;}
+div#wrapper {border-top:4px solid #2daebf;clear:left; border-top:4px solid #3072b3;}
 div#container {position:relative;width:960px;padding:0;font-size:11px;position:relative;height:25px;margin:0 auto 16px}
 
 ul.tabs {float:right;margin:0}
@@ -121,7 +118,7 @@ h1.yellow, h2.yellow, h3.yellow, h4.yellow, h5.yellow
 /* ------------------------ custom table form ----------------------------- */
 table.custom {
     width:750px;
-    margin:30px auto 10px;
+    margin:50px auto 10px;
     border-spacing: 5px;
     border-collapse: separate;
 }
@@ -172,17 +169,18 @@ table.custom td.label {
     text-align: right;
     vertical-align: top;
     color: #333;
-    width: 200px;
+    width: 150px;
     font-weight: bold;
     font-size: 11px;
     border-top: 1px solid #ddd;
     -moz-border-radius: 0;
     -webkit-border-radius: 0;
     border-radius: 0;
+    padding-top:7px;
 }
 
 table.custom td.field {
-    width: 350px;
+    width: 600px;
     background: #ededed;
 }
 table.custom td.field span{float:left;margin:4px;}
@@ -284,12 +282,9 @@ p.uni {
 
 #footer {
     background: #3072b3;
-    background: #C9D7F1;
     color:#fff;
-    width: 950px;
     margin: 0px auto 0px;
     padding: 5px;
-    background:#3072b3 url(/public/img/doc.png) no-repeat left 0px;
     height:37px;
     position:relative;
     -webkit-box-shadow:0 0 18px rgba(0,0,0,0.4);
@@ -305,7 +300,9 @@ p.uni {
     font-size: 13px; font-weight: bold; line-height: 1; letter-spacing: -0.6px;
 }
 
-#footer ul {float:right; width:150px;font-weight:bold;font-size: 11px;}
+#footer #container { height:37px; width: 950px; background:url(/public/img/doc.png) no-repeat left 0px; }
+
+#footer ul {float:right; width:140px;font-weight:bold;font-size: 11px;}
 #footer ul li a {color:#fff;}
 #footer li {list-style-type:none;float:left; padding:0 10px;border-left:1px dotted #fff;}
 #footer li:first-child {border:none;}
@@ -370,7 +367,7 @@ h2 img {float:left;margin-top:-2px;margin-right:2px;}
 
 .home a img {float:left; width:22px; height:22px; margin-top:-6px; margin-right:5px;}
 
-
+/* clist */
 p#vtip { display: none; position: absolute; padding: 10px; font-size: 10px; background-color: white;
     z-index: 9999; max-width:300px; border: 3px solid #eee; -moz-border-radius: 5px; -webkit-border-radius: 5px;}
 p#vtip #vtipArrow { position: absolute; top: -10px; left: 5px }
