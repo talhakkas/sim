@@ -69,10 +69,13 @@ function test()
 	test2();
 }
 
-
-function home() {
+function clist() {
 	if (F3::get("SESSION.kop"))
 		return F3::call('clist.php');
+	render('a/home', 'Hoşgeldiniz', 'a');
+}
+
+function home() {
 	render('a/home', 'Hoşgeldiniz', 'a');
 }
 
@@ -124,7 +127,7 @@ F3::route("GET /cshow/@cid", 'cshow.php');
 F3::route("GET /cedit/@cid", "cedit.php");
 	F3::route("POST /cedit/@cid", "cupdate.php");
 
-F3::route("GET /clist", "clist.php");
+F3::route("GET /clist", "clist");
 F3::route("GET /cadd", "cadd.php");
 	F3::route("POST /cadd", "csave.php");
 

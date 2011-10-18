@@ -301,7 +301,7 @@ p.uni {
     font-size: 13px; font-weight: bold; line-height: 1; letter-spacing: -0.6px;
 }
 
-#footer #container { margin-top:5px; padding-top:5px; height:37px; width: 950px; background:url(/public/img/doc.png) no-repeat left 5px; border-top:1px solid #ddd;}
+#footer #container { margin-top:5px; padding-top:5px; height:37px; width: 950px; background:url(/public/img/icon/48x48/surgeon.png) no-repeat left 5px; border-top:1px solid #ddd;}
 
 #footer ul {float:right; width:140px;font-weight:bold;font-size: 11px;}
 #footer ul li a {color:#fff;}

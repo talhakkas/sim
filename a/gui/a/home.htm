@@ -27,26 +27,34 @@
 
   <div class="home-content">
     <strong>Sim Nedir?</strong>
-    <p>vpSim is an online virtual patient player, authoring and administration
-    application for medical education, training and assessment.</p>
+    <p>Sim; bir online sanal hasta oyuncusu, medikal eğitim için hazırlanmış bir
+    yönetim uygulaması.</p>
 
     <strong>Sanal Hasta Nedir?</strong>
-    <p>Virtual patients are computer simulations of clinical encounters where the
-    learner plays the role of a healthcare provider by interacting with an
-    on-screen patient. Typically this includes interviewing, examining, ordering
-    diagnostic tests, making a diagnosis and prescribing therapy.</p>
+    <p>Tıp fakültesi öğrencileri için hazırlanmış ilginç bir uygulama şekli.
+    Her türlü hastalık yapay olarak üretilebiliyor.
+    Bu şekilde öğrenciler ve asistanlar sanki gerçek bir hasta
+    ile uğraşıyormuş gibi o mankenin üzerinde uygulama yapıyorlar.
+    Özellikle kadavra bulmakta zorlanıldığı zaman işe yarayan bir uygulamadır.</p>
 
     <img src="/public/img/toshiba-medical-tablet-pc.jpg"/>
-
   </div>
 
-
+  <F3:check if="{{@SESSION.kop}}">
+  <F3:true>
+  <div class="inlogin">
+    <img src="/public/img/icon/128x128/surgeon.png"/>
+    <span>{{@SESSION.student}}</span>
+    <a class="in" href="clist">Olguları Görüntüle</a><br>
+    <a class="in" href="logout">Çıkış</a><br>
+  </div>
+  </F3:true>
+  <F3:false>
   <form action="login" method="post" class="login">
-    <h4 class="title">Kullanıcı Girişi</h4>
-
-    <F3:check if="{{@error}}">
-    <span class="login-error">{{@error}}</span>
-    </F3:check>
+    <h4>
+      Kullanıcı Girişi
+      <F3:check if="{{@error}}"><span class="login-error">{{@error}}</span></F3:check>
+    </h4>
 
     <table class="login">
       <tr>
@@ -70,10 +78,12 @@
       </tr>
     </table>
   </form>
+  </F3:false>
+  </F3:check>
 
   <div class="home-content right">
     <strong>Sim'i kimler kullanmalıdır?</strong>
-    <p>Medical educators can use vpSim to:
+    <p>Medikal eğitimleri için Sim kullanabilirsiniz:
 
     <ul>
       <li>
