@@ -209,6 +209,7 @@ div#header img { display: block; float: left; margin: 25px 0 0; }
 div#header h3 { float: left; font-size: 22px; line-height: 1; margin: 0; position: absolute; top: 21px; left: 0; letter-spacing:-1px;}
 div#header h3 a, div#header h3 a:visited { font-weight: bold; }
 div#header h3 a:hover { color: #777; }
+div#header a { text-decoration:none; }
 
 ul.tabs { float: right; margin: 0; }
 ul.tabs li { display: block; float: left; line-height: 1; }
@@ -223,10 +224,13 @@ ul.tabs li a.yellow:hover { background: #fc9200; }
 
 ul.tabs li.home a:hover { background: #2daebf; }
 ul.tabs li.home a:hover { background: #3072b3; }
-ul.tabs li.magenta a:hover { background: #a9014b; }/* Shortened tabs for within apps (dashboard) */
-ul.tabs li.green a:hover { background: #b8d30b; }  ul.tabs.short li a { padding: 9px 5px 13px 15px; }
-ul.tabs li.orange a:hover { background: #ff6908; } ul.tabs.short li a:hover, 
-ul.tabs li.yellow a:hover { background: #fc9200; } ul.tabs.short li.current a{ padding: 18px 5px 13px 15px; }
+ul.tabs li.magenta a:hover { background: #a9014b; } /* Shortened tabs for within apps (dashboard) */
+ul.tabs li.green a:hover { background: #b8d30b; }
+ul.tabs.short li a { padding: 9px 5px 13px 15px; }
+ul.tabs li.orange a:hover { background: #ff6908; }
+ul.tabs.short li a:hover,
+ul.tabs li.yellow a:hover { background: #fc9200; }
+ul.tabs.short li.current a{ padding: 18px 5px 13px 15px; }
 
 /*	Page headers for marketing pages ---------- */
 div.page-header { width: 100%; position: relative; margin: 0 0 31px; padding: 36px 0 27px; border-bottom: 2px solid #eee; clear: both; background-position: right bottom; background-repeat: no-repeat; }
@@ -282,7 +286,7 @@ div.odditorium.divider { background-image: url(../images/divider-odditorium.gif)
 div.scrumptious.divider { background-image: url(../images/divider-scrumptious.gif); }
 div.zurb.divider { background-image: url(../images/divider-zurb.gif); }
 
-#site-info { background: #f5f5f5 url(../img/a/footer-shadow.gif) no-repeat top center; margin: 27px 0 0; padding: 27px 0 18px; clear: both; position: relative; }
+#site-info {margin: 27px 0 0; padding: 27px 0 18px; clear: both; position: relative; }
 
 #site-info div.column-row { xmargin: 0 10px; xwidth: 880px; position: relative; height: 126px; }
 #site-info div.five { xwidth: 250px; }
