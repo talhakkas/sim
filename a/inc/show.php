@@ -1,4 +1,6 @@
 <?php
+	F3::set('SESSION.error', 'NULL');
+
 	params2session();
 
 	$node = get_node();

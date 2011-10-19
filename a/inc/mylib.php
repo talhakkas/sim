@@ -505,8 +505,7 @@ function zip($cid, $datas, $dbg=false)
 		for($i=0; $i < $sz; $i++) {
 			$eid = $datas['eid'][$i];
 
-			$dict[0]['response'][$eid] = array('id'=>$eid, 'name'=>$datas['ename'][$i],
-							   'stype'=>$datas['stype'][$i], 
+			$dict[0]['response'][$eid] = array('eid'=>$eid, 
 							   'value'=>$datas['evalue'][$i]);
 		}
 		$datas['nodes'] = $dict;
@@ -687,8 +686,14 @@ function get_exams_dict($cid, $arr)
 {
 	$dict = array();
 
+
 	$csv = get_exams_csv($arr);
 	$list = preg_split('/,/', $csv);
+
+	if($csv == "") {
+		F3::set('SESSION.error', 'Herhangi bir tahlil seçilmemiş');
+		return $arr;
+	}
 
 	foreach($list as $i=>$eid) {
 		$dict[$eid]  = get_exam_info($cid, $eid);
@@ -837,7 +842,13 @@ function set_exam_dict($cid, $dict)
 
 	$tmp = unserialize($tnode->options);
 
-	$tmp[0]['response'] = $dict;
+	$resp = $tmp[0]['response'];
+
+	foreach($dict as $eid=>$v) {
+		$resp[$eid]['value'] = $v['value'];
+	}
+
+	$tmp[0]['response'] = $resp;
 
 	$tnode->options = serialize($tmp);
 
