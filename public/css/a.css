@@ -159,12 +159,14 @@ div.page-header h2 small { font-size: 75%; font-weight: normal; }
 }
 
 #ourWork .home-content.right {float:right;}
-#ourWork ul {margin-top:-15px;}
-#ourWork ul li{margin:10px 8px 20px 10px;width:400px;float:left;padding-left:27px; line-height:17px;
+#ourWork .home-content ul {margin-top:-15px;}
+#ourWork .home-content ul li{margin:10px 8px 20px 10px;width:400px;float:left;padding-left:27px; line-height:17px;
 min-height:24px; background:url(/public/img/icon/24x24/help.png) no-repeat 0px;}
 
 #ourWork strong {font-weight:bold;display:block; margin-bottom:5px; font-size:15px; color:#3072b3;}
 #ourWork p {margin-top:0px; margin-bottom:20px; font-size:14px; word-spacing:1px;}
+#ourWork a,
+#ourWork a:hover {color:#3072b3;}
 
 /* ---------------------------------------------------------- */
 
@@ -223,22 +225,30 @@ table.login td.label {
 table.login td.field { width: 300px; background: #ededed;}
 
 a.forgot-pass{ margin-top:-5px; font-size:12px; font-weight:normal; color:#3072b3; text-decoration:none;}
-a.forgot-pass:hover {color:#3072b3;}
 
-.login-error {background:url(/public/img/icon/24x24/warning.png) no-repeat;
-margin-left:10px; padding-left:30px;padding-top:7px;height:24px; color:#3072b3; font-size:13px;font-weight:bold; word-spacing:1px;}
-
-.inlogin {
-    float:right; width:450px; height:220px;
-
+.login-error {
+    background:url(/public/img/icon/24x24/warning.png) no-repeat;
+    margin-left:10px; padding-left:30px;padding-top:7px;
+    height:24px; color:#3072b3; font-size:13px;
+    font-weight:bold; word-spacing:1px;
 }
 
-.inlogin a.in {background:url(/public/img/icon/16x16/next_blue.png) no-repeat; padding-left:20px; text-decoration:none;}
+.inlogin {float:right; width:450px; height:220px;}
+
+.inlogin ul.in li{height:30px;}
+.inlogin ul.in a{ display:block;line-height:24px;padding-left:30px; font-size:12px; font-weight:bold;text-decoration:none;}
+
+.inlogin ul.in a.olgu {background:url(/public/img/icon/24x24/remote_desktop.png) no-repeat;}
+.inlogin ul.in a.personal {background:url(/public/img/icon/24x24/office_folders.png) no-repeat;}
+.inlogin ul.in a.support {background:url(/public/img/icon/24x24/support.png) no-repeat;}
+.inlogin ul.in a.logout {background:url(/public/img/icon/24x24/unlock.png) no-repeat;}
+
 .inlogin img {display:block;margin: 0 auto;}
 .inlogin span {display:block;text-align:center;}
 .inlogin table {}
 .inlogin table.inlogin-table strong {float:left; color:red;}
 
+.inlogin ul { float:left; width:150px;}
 
 /* ---------------------------------------------------------- */
 
