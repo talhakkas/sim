@@ -61,7 +61,11 @@ function denetle($verilen, $tarif) {
 }
 
 function yukle($hedef=NULL, $alan='file', $uzerine_yazma=false, $type='IMAGETYPE_JPEG', $fsz=550000) {
-        $yuklenen = F3::get("FILES.$alan.tmp_name");
+	return yukle2($hedef, "$alan.tmp_name", $uzerine_yazma, $type, $fsz);
+}
+
+function yukle2($hedef=NULL, $tmp_name='file.tmp_name', $uzerine_yazma=false, $type='IMAGETYPE_JPEG', $fsz=550000) {
+        $yuklenen = F3::get("FILES.$tmp_name");
 
 	// hedef ve yüklenen dosyanın boş olmasına izin veriyoruz
 	// herhangi biri boşsa mesele yok, çağırana dön

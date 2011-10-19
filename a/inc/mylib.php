@@ -53,6 +53,23 @@ function set_node()
 		else 
 			$table->media = "default.jpg";
 	}
+
+	$sz = count(F3::get('FILES.evalue.name'));
+
+	for($i=0; $i<$sz; $i++) {
+		$nm = F3::get("FILES.evalue.name[$i]");
+		$eid = F3::get("POST.eid[$i]");
+
+			if($nm != "") {
+				$fnm = "_e_". sprintf("%06d", $eid) . ".jpg";
+				$ffnm = F3::get('uploaddir') . $fnm;
+				if(yukle2($ffnm, "evalue.tmp_name[$i]", true))
+					; //FIXME
+				else 
+					; //FIXME
+			}
+	}
+
 	if(my_get($_POST, 'resim_sil') == 'evet')
 		$table->media = NULL;
 

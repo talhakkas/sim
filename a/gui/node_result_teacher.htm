@@ -18,7 +18,7 @@
 <tr>
 	<td></td>
 	<td class="field">
-		Her bir tahlil için verileri karşılarında ki kutuya girin.
+		Her bir tahlil için verileri karşılarında ki kutuya girin. Resimse Dosya seç yardımıyla seçip/yükleyin.
 	</td>
 </tr>
 
@@ -30,7 +30,15 @@
 		<input type="hidden" name="ename[]"  value="{{@eval['snm']}}">
 		<input type="hidden" name="stype[]"  value="{{@eval['stype']}}">
 		<!-- {{@eval['stype']}} --> 
-		<input type="text"   name="evalue[]" value="{{@eval['value']}}"> <br>
+		<!--input type="text"   name="evalue[]" value="{{@eval['value']}}"--> 
+		<input type="file" name="evalue[]" value="{[@SR}}/{{@uploaddir}}{{@eval['stype']}}" >
+          <F3:check if="{{@eval['value'] != 'null'}}">
+          <F3:true>
+          <a href="{{@SR}}/{{@uploaddir}}kucuk_{{@eval['value']}}" target="_blank"><img src="{{@SR}}/{{@uploaddir}}kucuk_{{@eval['value']}}" height="35"></a>
+          <input type="checkbox" name="resim_sil_evalue[]" value="evet" />Kaldır
+          </F3:true>
+          </F3:check>
+		<br>
 	</td>
 </tr>
 </F3:repeat>
