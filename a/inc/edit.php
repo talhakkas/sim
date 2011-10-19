@@ -47,7 +47,7 @@
 		$cid = F3::get('SESSION.cid');
 		$eid = 35; // FIXME
 
-		F3::set('SESSION.exams', get_exam_list($cid, $eid));
+		F3::set('SESSION.exams', get_exams_dict_v2($cid, $eid));
 	}
 
 	render('node', 'Düzenle');

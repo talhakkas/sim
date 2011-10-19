@@ -32,7 +32,7 @@ function set_node()
 	$cid = F3::get('SESSION.cid');
 	$id = F3::get('SESSION.id');
 
-	$_POST = zip($_POST);
+	$_POST = zip($cid, $_POST);
 
 	if(get_node_type($cid, $id) == 'result')
 		set_exam_dict($cid, $_POST['nodes'][0]['response']);
@@ -456,7 +456,7 @@ function unzip($datas)
 	return $datas;
 }
 
-function zip($datas, $dbg=false) 
+function zip($cid, $datas, $dbg=false) 
 {
 	if($dbg) print_pre($datas, 'datas');
 
@@ -487,7 +487,7 @@ function zip($datas, $dbg=false)
 		$dict[0]['ceza'] = $datas['ceza'][0];
 
 		$old = $dict[0]['response'];
-		$new = get_exams_dict($datas);
+		$new = get_exams_dict($cid, $datas);
 
 		$dict[0]['response'] = liste_esle($old, $new);
 
@@ -691,11 +691,17 @@ function get_exams_dict($cid, $arr)
 	$list = preg_split('/,/', $csv);
 
 	foreach($list as $i=>$eid) {
-		$info = get_exam_info($cid, $eid);
-		$dict = array_merge_recursive($dict, $info);
-		$dict = exam_merge_postprocess($dict);
+		$dict[$eid]  = get_exam_info($cid, $eid);
 	}
 
+	return $dict;
+}
+
+function get_exams_dict_v2($cid, $eid) 
+{
+	$node = get_node($cid, $eid);
+	$dict = $node['nodes'][0]['response'];
+	
 	return $dict;
 }
 
@@ -722,6 +728,8 @@ function get_exam_info($cid, $eid, $dbg=false)
 	$snm = $survs[0]['name'];
 	$fnm = "$dnm:$pnm:$snm";
 
+	$stype = $survs[0]['stype'];
+
 	if($dbg)	echo "<h2>$dnm=>$pnm=>$snm</h2>";
 
     $exam = DB::sql("select * from exam     WHERE cid='$cid' AND sid='$esid'");
@@ -732,54 +740,19 @@ function get_exam_info($cid, $eid, $dbg=false)
 	
 	if($dbg)	print_pre($exam, "DEBUG: exam");
 
-	$imgnm = isset($exam[0]['value']) ? $exam[0]['value'] : 'default.jpg';
+	$value = isset($exam[0]['value']) ? $exam[0]['value'] : 'default.jpg';
 
-	if($imgnm == 'null') $imgnm = 'default.jpg';
+	if($value == 'null') $value = 'default.jpg';
 
-	if($dbg)	echo "<img src=/a/upload/$imgnm>";
+	if($dbg)	echo "<img src=/a/upload/$value>";
 
-
-	$info[$did] = array('cid' => $cid, 'eid' => $eid, 'dnm' => $dnm,
-						$pid  => array('pnm' => $pnm,
-									   $sid  => array('snm' => $snm, 'fnm' => $fnm,
-									   				  'imgnm' => $imgnm)
-									  )
-					   );
+	$info = array('eid' => $eid, 'cid' => $cid, 
+				  'did' => $did, 'pid' => $pid, 'sid' => $sid,
+				  'dnm' => $dnm, 'pnm' => $pnm, 'snm' => $snm,
+				  'stype' => $stype, 	
+				  'value' => $value);
 
 	return $info;
-}
-
-function exam_merge_postprocess($dict)
-{
-	foreach($dict as $did=>$dval) {
-		$key = 'dnm'; $dict[$did] = emp_helper($dict[$did], $key);
-		$key = 'cid'; $dict[$did] = emp_helper($dict[$did], $key);
-		$key = 'eid'; $dict[$did] = emp_helper($dict[$did], $key);
-
-		foreach($dval as $pid=>$pval) {
-			if(is_numeric($pid)) {
-				$key = 'pnm'; $dict[$did][$pid] = emp_helper($dict[$did][$pid], $key);
-
-				foreach($pval as $sid=>$sval) {
-				  if(is_numeric($sid))
-					foreach($sval as $k=>$v) {
-						$key = $k; $dict[$did][$pid][$sid] = 
-							emp_helper($dict[$did][$pid][$sid], $key);
-					}
-				}
-			}
-		}
-	}
-
-	return $dict;
-}
-
-function emp_helper($dict, $key, $dbg=false)
-{
-	if(count($dict[$key]) > 1)
-		$dict[$key] = $dict[$key][0];
-	
-	return $dict;
 }
 
 function tamamla($id, $len){

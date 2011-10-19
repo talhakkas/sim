@@ -21,23 +21,19 @@
 		Her bir tahlil için verileri karşılarında ki kutuya girin.
 	</td>
 </tr>
-<F3:repeat group="{{@SESSION.exams}}" key="{{@id}}" value="{{@exam}}">
 
+<F3:repeat group="{{@SESSION.exams}}" key="{{@eid}}" value="{{@eval}}">
 <tr>
-	<td class="label">
-		{{@exam['name']}}
-	</td>
-
+	<td class="label">{{@eval['did']}}:{{@eval['pid']}}:{{@eval['sid']}}-{{@eval['snm']}}</td>
 	<td class="field">
-		<input type="hidden" name="eid[]"  value="{{@id}}">
-		<input type="hidden" name="ename[]"  value="{{@exam['name']}}">
-		<input type="hidden" name="stype[]"  value="{{@exam['stype']}}">
-		<!-- {{@exam['stype']}} --> 
-		<input type="text"   name="evalue[]" value="{{@exam['value']}}"> <br>
+		<input type="hidden" name="eid[]"  value="{{@eid}}">
+		<input type="hidden" name="ename[]"  value="{{@eval['snm']}}">
+		<input type="hidden" name="stype[]"  value="{{@eval['stype']}}">
+		<!-- {{@eval['stype']}} --> 
+		<input type="text"   name="evalue[]" value="{{@eval['value']}}"> <br>
 	</td>
 </tr>
 </F3:repeat>
-
 
 </td>
 </tr>
