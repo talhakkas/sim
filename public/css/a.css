@@ -233,22 +233,16 @@ a.forgot-pass{ margin-top:-5px; font-size:12px; font-weight:normal; color:#3072b
     font-weight:bold; word-spacing:1px;
 }
 
-.inlogin {float:right; width:450px; height:217px;}
-
-.inlogin ul.in li{height:30px;}
-.inlogin ul.in a{ display:block;line-height:24px;padding-left:30px; font-size:12px; font-weight:bold;text-decoration:none;}
-
-.inlogin ul.in a.olgu {background:url(/public/img/icon/24x24/remote_desktop.png) no-repeat;}
-.inlogin ul.in a.personal {background:url(/public/img/icon/24x24/office_folders.png) no-repeat;}
-.inlogin ul.in a.support {background:url(/public/img/icon/24x24/support.png) no-repeat;}
-.inlogin ul.in a.logout {background:url(/public/img/icon/24x24/unlock.png) no-repeat;}
-
-.inlogin img {display:block;margin: 0 auto;}
-.inlogin span {display:block;text-align:center;}
-.inlogin table {}
-.inlogin table.inlogin-table strong {float:left; color:red;}
-
-.inlogin ul { float:left; width:150px;}
+.inlogin { float:right; width:450px; height:217px; }
+.inlogin ul.in { float:left; width:150px; margin-top:10px; }
+.inlogin ul.in li { height:38px; }
+.inlogin ul.in a { padding:8px 0 8px 36px; font-size:12px; font-weight:bold; text-decoration:none; word-spacing:1px;}
+.inlogin ul.in a.olgu     {background:url(/public/img/icon/32x32/comments.png) no-repeat;}
+.inlogin ul.in a.personal {background:url(/public/img/icon/32x32/male_user_info.png) no-repeat;}
+.inlogin ul.in a.support  {background:url(/public/img/icon/32x32/support.png) no-repeat;}
+.inlogin ul.in a.logout   {background:url(/public/img/icon/32x32/unlock.png) no-repeat;}
+.inlogin img { display:block;margin: 0 auto; }
+.inlogin span { display:block; text-align:center; color:#3072b3; font-weight:bold; }
 
 /* ---------------------------------------------------------- */
 
