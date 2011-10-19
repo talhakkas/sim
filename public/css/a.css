@@ -233,7 +233,7 @@ a.forgot-pass{ margin-top:-5px; font-size:12px; font-weight:normal; color:#3072b
     font-weight:bold; word-spacing:1px;
 }
 
-.inlogin {float:right; width:450px; height:220px;}
+.inlogin {float:right; width:450px; height:217px;}
 
 .inlogin ul.in li{height:30px;}
 .inlogin ul.in a{ display:block;line-height:24px;padding-left:30px; font-size:12px; font-weight:bold;text-decoration:none;}
