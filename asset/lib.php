@@ -1,39 +1,32 @@
 <?php
 
-include 'access.php';
 include 'init.php';
 include 'upload.php';
 include 'dict.php';
 include 'csv.php';
 
-// look
-// https://github.com/emineker/sim/blob/master/.f3.ini.example
 
-#function render($template, $title='') {
-#	F3::set('page_title', $title);
-#	F3::set('SESSION.template', $template); // printly için
-#	F3::set('template', $template);
-#	if (F3::get('printly')) { // printly modu için ufak bir değişkencik
-#		echo Template::serve('printly.htm');
-#	} else {
-#		$layout = F3::get('LAYOUTS') . base() . '.layout.htm';
-#		echo file_exists($layout) ? Template::serve("../" . $layout) : Template::serve("../" . F3::get('LAYOUTS') . 'layout.htm');
-#	}
-#}
+function part() {
+	return preg_split(
+		'/\//', $_SERVER['SCRIPT_NAME']
+		);
+}
+function root() {
+	$split = part();
+	return (count($split) > 1) ? $split[1] : '';
+}
+function base() {
+	$split = part();
+	return (count($split) > 2) ? $split[count($split) - 2] : '';
+}
 
 function render($template, $title='', $layout='layout') {
 	F3::set('page_title', $title);
-	//F3::set('SESSION.template', $template); // printly için
 	F3::set('template', $template);
-	if (F3::get('printly')) { // printly modu için ufak bir değişkencik
-		echo Template::serve('printly.htm');
-	}
-	else {
-		if (F3::get('SR') == '/a')
-			echo Template::serve("layout/$layout.htm");
-		else
-			echo Template::serve("$layout.htm");
-	}
+	if (F3::get('SR') == '/a')
+		echo Template::serve("layout/$layout.htm");
+	else
+		echo Template::serve("$layout.htm");
 }
 
 function logout() {
@@ -53,10 +46,6 @@ F3::set('SR', '/' . strtok($_SERVER["SCRIPT_NAME"], '/'));
 
 // tüm terimlerin çevirisi
 function e($str){
-	//$_lang = $_SERVER["HTTP_ACCEPT_LANGUAGE"];
-	//if ( substr($_lang, 0, 2) == "tr")
-	//	return $str;
-	//return Google::translate($str, 'tr', 'en');
 
 	$dict = dict();
 	if (in_array($str, array_keys($dict)))
@@ -74,4 +63,5 @@ function in($item, $fields) {
 	}
 	return false;
 }
+
 ?>
