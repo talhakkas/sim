@@ -141,49 +141,4 @@ function yukle2($hedef=NULL, $tmp_name='file.tmp_name', $uzerine_yazma=false, $t
 	return false;
 }
 
-// ana pdf şsablonu
-function pdf($TABLE, $table) {
-	// TODO daha bitmedi bu!!! /düzenlenecek
-	require("/opt/tcpdf/tcpdf.php");
-
-	$pdf = new TCPDF('P', 'mm', 'A4', true, 'UTF-8', false);
-	$pdf->SetTitle('OMU UZEM 2010-2011 ÖN KAYIT FORMU');
-	$pdf->SetAuthor('Anonim');
-	$pdf->SetFont('dejavusans', '', 12);
-	$pdf->SetMargins(20, 60, 20);
-	$pdf->SetHeaderMargin(10);
-	$pdf->SetFooterMargin(10);
-//	$pdf->SetHeaderData('uzem-head.jpg', 170, '', '');
-
-	$pdf->AddPage();
-
-	$pdf->SetFont('dejavusans', 'B', 18);
-	$pdf->Cell(0, 5, "2010-2011 Ebelik Lisans Tamamlama", 0, 1, 'C');
-	$pdf->Cell(0, 5, "Ön Kayıt Başvurusu", 0, 1, 'C');
-	$pdf->Ln(5);
-
-	foreach ($F3::get('DB->result') as $index => $kisi) {
-		$pdf->SetFont('dejavusans', 'B', 14);
-		$pdf->Cell(0, 5, $kesim, 0, 1, 'L');
-
-		$pdf->SetFont('dejavusans', '', 10);
-		foreach ($kisi as $alan => $deger) {
-			$pdf->MultiCell(30, 1, $alan . ':', 0, 'L', 0, 0, '25', '', true);
-			$pdf->MultiCell(180, 1, $deger,       0, 'L', 0, 0, '',   '', true);
-			$pdf->Ln(5);
-		}
-
-		$pdf->Ln(5);
-	}
-/*
-	$pdf->Ln(15);
-
-	$pdf->Cell(0, 5, "Yukarıda vermiş olduğum bilgilerin doğruluğunu kabul ediyorum.", 0, 1,'T');
-	$pdf->Ln(5);
-	$pdf->MultiCell(50, 1, 'Tarih:', 0, 'L', 0, 1, '120', '', true);
-	$pdf->MultiCell(50, 1, 'Ad Soyad:', 0, 'L', 0, 1, '120', '', true);
-	$pdf->MultiCell(50, 1, 'İmza:', 0, 'L', 0, 1, '120', '', true);
-*/
-	$pdf->Output();
-}
 ?>

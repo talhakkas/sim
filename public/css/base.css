@@ -357,10 +357,15 @@ padding-left:5px;}
     box-shadow:0 5px 10px rgba(0, 0, 0, 0.2);
 }
 
-#leftcolumn ul {padding-left:0px;}
-#leftcolumn li {float:left;width:110px;color:#3b5998;list-style-type:none;font-size:12px;
-    font-weight:bold;text-align:center;margin-bottom:20px;}
-#leftcolumn li img {margin:0 27px; margin-bottom:-8px;}
+#leftcolumn ul { padding-left:0px; }
+#leftcolumn li { float:left; width:110px; color:#3b5998; list-style-type:none; font-size:12px; font-weight:bold; text-align:center;
+                 margin-bottom:20px; text-align:center; padding:0 auto; }
+#leftcolumn li a { display:block;padding-top:46px;margin-top:0px;}
+#leftcolumn li.edit a { background:url(/public/img/icon/48x48/edit.png) no-repeat top center;;}
+#leftcolumn li.css a { background:url(/public/img/icon/48x48/promotion.png) no-repeat top center;;}
+#leftcolumn li.dal a { background:url(/public/img/icon/48x48/comments.png) no-repeat top center;;}
+#leftcolumn li.anket a { background:url(/public/img/icon/48x48/chart_pie.png) no-repeat top center;;}
+
 
 .page {width: 780px;height: auto;font-size:12px;margin-left:140px;min-height:340px;}
 .page h2 a {float:right;}
