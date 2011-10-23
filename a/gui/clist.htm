@@ -1,6 +1,9 @@
 <h2>{{@page_title}}</h2>
 
-<table id="hor-minimalist-a" style="display:none">
+<table id="one-column-emphasis">
+
+  <colgroup><col class="oce-first" /></colgroup>
+
   <thead>
     <tr>
       <th scope="col">CASE TITLE</th>
@@ -8,12 +11,12 @@
       <th scope="col" class="action">ACTIONS</th>
     </tr>
   </thead>
-  <tbody>
 
+  <tbody>
     <F3:repeat group="{{@SESSION.cdata}}" key="{{@gnl}}" value="{{@blg}}" >
     <tr>
       <td>
-        <a class="answer vtip"
+        <a class="case vtip"
           title="adam zehirlenmiş işte onun olgusu daha ne bekliyodun"
           href="{{@SR}}/cstart/{{@blg['cid']}}">{{@blg['title']}}</a>
       </td>
@@ -28,38 +31,8 @@
     </tr>
     </F3:repeat>
   </tbody>
+
 </table>
 
-
-<table id="one-column-emphasis">
-  <colgroup><col class="oce-first" /></colgroup>
-  <thead>
-    <tr>
-      <th scope="col">CASE TITLE</th>
-      <th scope="col">CREATED</th>
-      <th scope="col" class="action">ACTIONS</th>
-    </tr>
-  </thead>
-  <tbody>
-    <F3:repeat group="{{@SESSION.cdata}}" key="{{@gnl}}" value="{{@blg}}" >
-    <tr>
-      <td>
-        <a class="yolgu vtip"
-          title="adam zehirlenmiş işte onun olgusu daha ne bekliyodun"
-          href="{{@SR}}/cstart/{{@blg['cid']}}">{{@blg['title']}}</a>
-      </td>
-      <td>
-        07-08-2011
-      </td>
-      <td>
-        <a href="{{@SR}}/cedit/{{@blg['cid']}}" id="button-edit"></a>
-        <a href="{{@SR}}/cdelete/{{@blg['cid']}}" id="button-delete"
-          onClick="return confirm('Silmek istediğinizden emin misiniz?');"></a>
-      </td>
-    </tr>
-    </F3:repeat>
-</tbody>
-</table>
-
-<a href="{{@SR}}/cadd/" class="button icon add right clist-button">Yeni case Ekle</a>
+<a href="{{@SR}}/cadd/" class="button icon add clist-button">Yeni case Ekle</a>
 

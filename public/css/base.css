@@ -339,13 +339,15 @@ input[type=text]:focus {outline: 0; border: 1px solid #35addf;}
 
 #button-preview,
 #button-edit,
-#button-delete{background:url(/public/img/icon/24x24/search.png) no-repeat center;width:24px;height:24px;border:none;cursor:pointer;float:left;margin-right:10px;}
-#button-edit{background:url(/public/img/icon/24x24/edit.png) no-repeat center;}
-#button-delete{background:url(/public/img/icon/24x24/delete.png) no-repeat center;margin-right:0px;}
+#button-delete { background:url(/public/img/icon/24x24/search.png) no-repeat center; width:24px; height:24px;
+                 border:none; cursor:pointer; float:left; margin-right:10px; }
+#button-edit { background:url(/public/img/icon/24x24/edit.png) no-repeat center; }
+#button-delete { background:url(/public/img/icon/24x24/delete.png) no-repeat center; margin-right:0px; }
 
-.question {width:100%;font-weight:bold;color:#3072b3;font-size:13px;margin-bottom:20px;padding-bottom:5px;border-bottom:1px solid #ddd;
-padding-left:5px;}
-.answer{width:100%;float:left;padding-left:20px;padding-top:1px;margin-bottom:10px;background:url(/public/img/icon/16x16/next_blue.png) no-repeat;}
+.question { width:100%; font-weight: bold;color: #3072b3; font-size:13px; margin-bottom:20px; padding-bottom:5px;
+            border-bottom:1px solid #ddd; padding-left:5px; }
+.answer { width:100%; float:left; padding-left:20px; padding-top:1px; margin-bottom:10px;
+          background:url(/public/img/icon/16x16/next_blue.png) no-repeat;}
 
 #leftcolumn {
     height:auto;
@@ -374,11 +376,8 @@ h2 a {float:right;}
 h2 img {float:left;margin-top:-2px;margin-right:2px;}
 
 
-/* clist */
-p#vtip { display: none; position: absolute; padding: 10px; font-size: 11px; letter-spacing:1px; background-color: white;
-    z-index: 9999; max-width:300px; border: 3px solid #eee; -moz-border-radius: 5px; -webkit-border-radius: 5px;}
+/* clist <-> vtip */
+p#vtip { display: none; position: absolute; padding: 10px; font-size: 11px; z-index: 9999;
+         max-width:400px; border: 3px solid #eee; background: #fff; color: #3072b3;}
 p#vtip #vtipArrow { position: absolute; top: -10px; left: 5px }
-p#vtip img { background:none; }
-
-
 

@@ -49,8 +49,8 @@
 #one-column-emphasis td {padding: 10px 15px;color: #669;border-top: 1px solid #e8edff;}
 .oce-first{border-right: 20px solid transparent;}
 
-#one-column-emphasis td a.yolgu {padding-left:20px;background:url(/public/img/icon/16x16/attachment2.png) no-repeat;}
-.clist-button {margin-top:20px;}
+#one-column-emphasis td a.case {padding:8px 0 0 30px; line-height:24px; background:url(/public/img/icon/24x24/clock.png) no-repeat;}
+.clist-button { float:right; margin-top:20px; }
 
 
 #one-column-emphasis tr:hover td {color: #339;background: #eff2ff;}
