@@ -7,6 +7,7 @@ tmp/*
 b
 foo
 soba
+admin
 _*
 
 !.f3.ini.example
