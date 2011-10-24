@@ -918,10 +918,10 @@ function get_immapr4hoca($cid, $nid=NULL)
 
 function get_immapr4ogrenci($arr)
 {
-	$dict = array('x' => $arr['x'],  'y' => $arr['y'],
-		      'x2'=> $arr['x2'], 'y2'=> $arr['y2'],
-		      'w' => $arr['w'],  'h' => $arr['h'],
-		      'yorum' => $arr['response']);
+	$dict = array('x' => my_get($arr, 'x'),  'y' => my_get($arr, 'y'),
+		      'x2'=> my_get($arr, 'x2'), 'y2'=> my_get($arr, 'y2'),
+		      'w' => my_get($arr, 'w'),  'h' => my_get($arr, 'h'),
+		      'yorum' => my_get($arr, 'response'));
 
 	return $dict;
 }
