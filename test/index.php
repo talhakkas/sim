@@ -41,6 +41,15 @@ function tetkik() {
     render('tetkik', 'Sonuçlar');
 }
 
+function immapr() {
+	F3::set('SESSION.secim', array('x' => $_POST['x'],  'y' => $_POST['y'],
+								   'x2'=> $_POST['x2'], 'y2'=> $_POST['y2'],
+								   'w' => $_POST['w'],  'h' => $_POST['h']));
+	F3::set('SESSION.yorum', $_POST['yorum']);
+
+	render('immapr', 'Immap:Result');
+}
+
 //F3::set('tetkikmerkezi', multi());
 
 F3::route('GET /buton', function() { render('buton', 'butonlar');});
@@ -65,6 +74,9 @@ F3::route('POST /ilac', 'ilac_sonuc.php');
 
 F3::route('GET /tetkik',  'tetkik');
 F3::route('POST /tetkik', 'tetkik');
+
+F3::route('POST /immapr', 'immapr');
+
 F3::run();
 
 ?>
