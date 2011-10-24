@@ -5,19 +5,12 @@
             gui/
             inc/
             index.php
-        student/
-            gui/
-            inc/
-            index.php
-        tutor/
-            gui/
-            inc/
-            index.php
+            upload/
         yolgu/
             gui/
             inc/
             index.php
-        admin/
+        test/
             gui/
             inc/
             index.php
@@ -27,13 +20,6 @@
             img/
             js/
             upload/
-        layouts/
-            a.layout.htm
-            student.layout.htm
-            tutor.layout.htm
-            yolgu.layout.htm
-            admin.layout.htm
-            layout.htm
         db/
         doc/
         lib/

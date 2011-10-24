@@ -4,12 +4,11 @@
 temp/*
 tmp/*
 
-course
+b
 foo
-ders
 soba
+admin
 _*
 
 !.f3.ini.example
 !/db/*sql
-!/jedit/*

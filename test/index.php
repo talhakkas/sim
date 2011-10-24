@@ -8,6 +8,16 @@ function home() {
         render('home', 'Ana Sayfa');
 }
 
+function student_home() {
+        $duyuru = DB::sql("select * from announcement");
+        rsort($duyuru); // son eklenen duyuru en üstte görünsün
+        F3::set('announcement', $duyuru);
+        F3::set('olgu', DB::sql("select * from event"));
+        if (! F3::get("SESSION.olgu")) // default olgu
+                F3::set("SESSION.olgu", 2); // default olgu
+        render('student-home', 'Eski Student Ana Sayfa');
+}
+
 function ekg() {
 	$isEkgResponse = empty($_POST) ? "no" : "yes";
 	$yorum = empty($_POST) ? "" : $_POST['yorum'];
@@ -21,7 +31,6 @@ function ekg() {
 function page() {
         $page = F3::get("PARAMS.page");
         render($page, 'Ana Sayfa');
-	//render(F3::get('PARAMS.page'));
 }
 
 
@@ -29,11 +38,11 @@ function tetkik() {
 	$select_all = F3::get('REQUEST');
 
 	$preselected = array();
-	foreach ($select_all as $key => $value){
-			if (stristr($key, 'response'))
-					foreach ($select_all[$key] as $k => $v)
-							$preselected[] = $v;
-	}
+        foreach ($select_all as $key => $value){
+                if (stristr($key, 'response'))
+                        foreach ($select_all[$key] as $k => $v)
+                                $preselected[] = $v;
+        }
 
 	print_r($preselected);
 	F3::set('tetkikmerkezi', multi($preselected));
@@ -65,6 +74,7 @@ F3::route('GET /test',
 );
 
 F3::route("GET /*"      , 'home');
+F3::route("GET /student-home"      , 'student_home');
 F3::route("GET /ekg*",    'ekg');
 	F3::route("POST /ekg*",    'ekg');
 
