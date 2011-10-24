@@ -27,6 +27,10 @@
 		F3::set('SESSION.hoca', get_immapr4hoca(F3::get('SESSION.cid')));
 	}
 
+	if($node['ntype'] == 'bmapr') {
+		F3::set('SESSION.map', $_POST['selected']);
+	}
+
 render('show', 'Olgu');
 
 

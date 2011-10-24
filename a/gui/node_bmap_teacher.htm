@@ -1,0 +1,58 @@
+
+<tr>
+  <td></td>
+  <td>
+    <input type="button" class="small button" value="Dal Ekle" 	onclick="addRow('custom')" />
+    <input type="button" class="small button" value="Dal Sil" onclick="deleteRow('custom')" />
+  </td>
+</tr>
+
+<F3:repeat group="{{@SESSION.data['nodes']}}" key="{{@gnl}}" value="{{@blg}}" counter="{{@ctr}}">
+<tr>
+  <td class="label"><input type="checkbox">Dal
+  </td>
+  <td class="field" id="dal{{@ctr}}field">
+    <textarea name="link_text[]">{{@blg['link_text']}}</textarea><br>
+
+    Ödül: <input type="text" name="odul[]" value="{{@blg['odul']}}" maxlength="3" size="3">
+    Ceza: <input type="text" name="ceza[]" value="{{@blg['ceza]}}"  maxlength="3" size="3">
+    <br>
+
+    <F3:check if="{{@blg['chkResponse'] == 'yes'}}" >
+    <F3:true>
+    <input type="checkbox" name="chkResponse[]" id="chkResponse{{@ctr}}" value="{{@ctr}}" checked="true" onclick="toggle(this, 'response{{@ctr}}')"> Kullanıcı girdisi istiyor musun? <br>
+		    <input type="text" name="response[]" id="response{{@ctr}}" value="{{@blg['response']}}" style="visibility:visible;">
+    </F3:true>
+    <F3:false>
+    <input type="checkbox" name="chkResponse[]" id="chkResponse{{@ctr}}" value="{{@ctr}}" onclick="toggle(this, 'response{{@ctr}}')"> Kullanıcı girdisi istiyor musun? <br>
+    <input type="text" name="response[]" id="response{{@ctr}}" value=""  style="visibility:hidden;">
+    </F3:false>
+    </F3:check>	
+  </td>
+</tr>
+<tr>
+  <td class="label" style="padding-top:15px;">
+    <img src="/public/img/icon/32x32/comments.png">
+  </td>
+  <td class="select">
+    &nbsp;&nbsp;&nbsp;<select name="node_link[]" id="select{{@ctr}}">
+      <F3:repeat group="{{@SESSION.all_nodes}}" value="{{@blg2}}" >
+      <F3:check if="{{@blg2[0] == @blg['node_link']}}">
+      <F3:true>
+      <option value="{{@blg2[0]}}" selected="selected">{{@blg2[0]}}:{{@blg2[1]}}</option>
+      </F3:true>
+      <F3:false>
+      <option value="{{@blg2[0]}}">{{@blg2[0]}}:{{@blg2[1]}}</option>
+      </F3:false>
+      </F3:check>
+      </F3:repeat>
+    </select>
+    <br /><br />
+    <input name="btnAddItem" type="button" id="btnAddItem" class="small button" value="Yeni Düğüm"
+    onclick="javascript:addNewListItem('select{{@ctr}}', {{@SESSION.cid}});" />
+  </td>
+</tr>
+
+<input type="hidden" name="nofbs" id="nofbs" value="{{@SESSION.nofbs}}" />
+</F3:repeat>
+
