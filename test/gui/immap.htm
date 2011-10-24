@@ -3,7 +3,7 @@
 <link rel="stylesheet" href="/public/css/jquery.Jcrop.css" type="text/css" />
 <script language="Javascript">
 	jQuery(document).ready(function(){
-		jQuery('#cropbox').Jcrop({
+		jQuery('#medya').Jcrop({
 			onChange: showCoords,
 			onSelect: showCoords
 		});
@@ -21,10 +21,10 @@
 
 <h2>image Map Çalışması</h2>
 
+Resimde hastalıklı bölgeyi seçiniz. <br>
+<img src="/public/img/rontgen.jpg" id="medya" width="400"/>
+
 <form action="immapr" method="post">
-	Resimde hastalıklı bölgeyi seçiniz. <br>
-	<img src="/public/img/rontgen.jpg" id="cropbox" width="400"/>
-		 
 	<div id="koordinat" style="display:none">
 		X1 <input type="text" size="4" id="x" name="x" />
 		Y1 <input type="text" size="4" id="y" name="y" />

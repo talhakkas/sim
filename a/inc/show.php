@@ -21,6 +21,12 @@
 		F3::set('SESSION.exams', get_exams_dict(F3::get('SESSION.cid'), $_POST));
 	}
 
+	if($node['ntype'] == 'immapr') {
+		F3::set('SESSION.ogrenci', get_immapr4ogrenci($_POST));
+		
+		F3::set('SESSION.hoca', get_immapr4hoca(F3::get('SESSION.cid')));
+	}
+
 render('show', 'Olgu');
 
 

@@ -1,0 +1,81 @@
+<script src="/public/js/jquery.min.js"></script>
+<script src="/public/js/jquery.Jcrop.js"></script>
+<link rel="stylesheet" href="/public/css/jquery.Jcrop.css" type="text/css" />
+<script language="Javascript">
+	jQuery(document).ready(function(){
+		jQuery('#medya_map').Jcrop({
+			onChange: showCoords,
+			onSelect: showCoords
+		});
+	});
+	function showCoords(c)
+	{
+		jQuery('#x').val(c.x);
+		jQuery('#y').val(c.y);
+		jQuery('#x2').val(c.x2);
+		jQuery('#y2').val(c.y2);
+		jQuery('#w').val(c.w);
+		jQuery('#h').val(c.h);
+	};
+</script>
+
+<tr>
+  <td class="label">Görünecek metin</td>
+  <td class="field" id="dal{{@ctr}}field">
+    <textarea name="link_text">{{@SESSION.data['nodes']['link_text']}}</textarea><br>
+
+    Ödül: <input type="text" name="odul" value="{{@SESSION.data['nodes']['odul']}}" maxlength="3" size="3">
+    Ceza: <input type="text" name="ceza" value="{{@SESSION.data['nodes']['ceza]}}"  maxlength="3" size="3">
+
+    <input type="checkbox" name="chkResponse" id="chkResponse1" checked="true" value="1"><br>
+  </td>
+</tr>
+
+<tr>
+	<td class="label">Görsel Tetkik Resmi</td>
+	<td class="field">
+  	    <img src="{{@SR}}/{{@uploaddir}}kucuk{{@SESSION.medya}}" id="medya_map">
+
+	    <div id="koordinat" style="display:none">
+		X1 <input type="text" size="4" id="x" name="x" />
+		Y1 <input type="text" size="4" id="y" name="y" />
+		X2 <input type="text" size="4" id="x2" name="x2" />
+		Y2 <input type="text" size="4" id="y2" name="y2" />
+		W <input type="text" size="4" id="w" name="w" />
+		H <input type="text" size="4" id="h" name="h" />
+	    </div>			
+	</td>
+</tr>
+
+<tr>
+	<td class="label">
+		Yorumunuzu giriniz.
+	</td>
+
+	<td class="field">
+    		<input type="text" name="response" id="response1" value="{{@SESSION.data['nodes']['map']['yorum']}}" style="visibility:visible;">
+	</td>
+</tr>
+
+<tr>
+  <td class="label" style="padding-top:15px;">
+    <img src="/public/img/icon/32x32/comments.png">
+  </td>
+  <td class="select">
+    &nbsp;&nbsp;&nbsp;<select name="node_link" id="select1">
+      <F3:repeat group="{{@SESSION.all_nodes}}" value="{{@blg2}}" >
+      <F3:check if="{{@blg2[0] == @SESSION.data.nodes['node_link']}}">
+      <F3:true>
+      <option value="{{@blg2[0]}}" selected="selected">{{@blg2[0]}}:{{@blg2[1]}}</option>
+      </F3:true>
+      <F3:false>
+      <option value="{{@blg2[0]}}">{{@blg2[0]}}:{{@blg2[1]}}</option>
+      </F3:false>
+      </F3:check>
+      </F3:repeat>
+    </select>
+    <br /><br />
+    <input name="btnAddItem" type="button" id="btnAddItem" class="small button" value="Yeni Düğüm"
+    onclick="javascript:addNewListItem('select1', {{@SESSION.cid}});" />
+  </td>
+</tr>

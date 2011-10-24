@@ -50,5 +50,9 @@
 		F3::set('SESSION.exams', get_exams_dict_v2($cid, $eid));
 	}
 
+	if(F3::get('SESSION.data[ntype]') == 'immapr') {
+		F3::set('SESSION.medya', get_immap_imgnm(F3::get('SESSION.cid')));
+	}
+
 	render('node', 'Düzenle');
 ?>

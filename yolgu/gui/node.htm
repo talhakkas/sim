@@ -27,7 +27,7 @@
           <input type="file" name="media" value="{{@SR}}/{{@uploaddir}}{{@SESSION.data['media']}}" >
           <F3:check if="{{@SESSION.data['media'] != ''}}">
           <F3:true>
-          <a href="{{@SR}}/{{@uploaddir}}kucuk{{@SESSION.data['media']}}" target="_blank"><img src="{{@SR}}/{{@uploaddir}}kucuk{{@SESSION.data['media']}}" height="35"></a>
+          <a href="{{@SR}}/{{@uploaddir}}kucuk{{@SESSION.data['media']}}" target="_blank"><img src="{{@SR}}/{{@uploaddir}}kucuk{{@SESSION.data['media']}}" height="35" id="medya"></a>
           <input type="checkbox" name="resim_sil" value="evet" />Kaldır
           </F3:true>
           </F3:check>
