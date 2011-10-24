@@ -143,6 +143,14 @@ function get_exam_id($cid)
 	return $tnode->id;
 }
 
+function get_nid4type($cid, $ntype)
+{
+	$tnode = new Axon("node");
+	$tnode->load("cid='$cid' AND ntype='$ntype'");
+	
+	return $tnode->id;
+}
+
 function get_drug_stamp($cid, $id=NULL)
 {
 	if($id  == NULL)	$id  = get_drug_id($cid);
@@ -527,6 +535,20 @@ function zip($cid, $datas, $dbg=false)
 		}
 		$datas['nodes'] = $dict;
 		$datas['options'] = serialize($dict);
+	} elseif($datas['ntype'] == 'immapr') {
+		$dict = array();
+		$dict['link_text'] = $datas['link_text'];
+		$dict['node_link'] = $datas['node_link'];
+		$dict['odul'] = $datas['odul'];
+		$dict['ceza'] = $datas['ceza'];
+
+		$dict['map'] = array('x' => $datas['x'],  'y' => $datas['y'],
+				       'x2'=> $datas['x2'], 'y2'=> $datas['y2'],
+				       'w' => $datas['w'],  'h' => $datas['h'],
+				       'yorum' => $datas['response']);
+
+		$datas['nodes'] = $dict;
+		$datas['options'] = serialize($dict);
 	} else {
 
 		$sz = sizeof($datas['link_text']);
@@ -872,4 +894,35 @@ function set_exam_dict($cid, $dict)
 	$tnode->save();
 }
 
+function get_immap_imgnm($cid, $nid=NULL)
+{
+	if($nid == NULL) $nid = get_nid4type($cid, 'immap');
+
+	$node = get_node($cid, $nid);
+
+	return $node['media'];
+}
+
+function get_immapr4hoca($cid, $nid=NULL) 
+{
+	if($nid == NULL) $nid = get_nid4type($cid, 'immapr');
+
+	$node = get_node($cid, $nid);
+
+	$dict = $node['nodes']['map'];
+	
+	$dict['imgnm'] = get_immap_imgnm($cid);
+
+	return $dict;
+}
+
+function get_immapr4ogrenci($arr)
+{
+	$dict = array('x' => $arr['x'],  'y' => $arr['y'],
+		      'x2'=> $arr['x2'], 'y2'=> $arr['y2'],
+		      'w' => $arr['w'],  'h' => $arr['h'],
+		      'yorum' => $arr['response']);
+
+	return $dict;
+}
 ?>

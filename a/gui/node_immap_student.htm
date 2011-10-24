@@ -1,3 +1,25 @@
+
+<script src="/public/js/jquery.min.js"></script>
+<script src="/public/js/jquery.Jcrop.js"></script>
+<link rel="stylesheet" href="/public/css/jquery.Jcrop.css" type="text/css" />
+<script language="Javascript">
+	jQuery(document).ready(function(){
+		jQuery('#medya').Jcrop({
+			onChange: showCoords,
+			onSelect: showCoords
+		});
+	});
+	function showCoords(c)
+	{
+		jQuery('#x').val(c.x);
+		jQuery('#y').val(c.y);
+		jQuery('#x2').val(c.x2);
+		jQuery('#y2').val(c.y2);
+		jQuery('#w').val(c.w);
+		jQuery('#h').val(c.h);
+	};
+</script>
+
 <p class="answer">{{@SESSION.data['nodes'][0]['link_text']}}</p>
 
 <div align="middle">
@@ -6,6 +28,15 @@
     <input type="hidden" name="cid" value="{{@SESSION.cid}}">
     <input type="hidden" name="nid" value="0">
     <input type="hidden" name="beklenen_yanit" value="{{@SESSION.data['beklenen_yanit']}}">
+
+    <div id="koordinat" style="display:none">
+    	X1 <input type="text" size="4" id="x" name="x" />
+    	Y1 <input type="text" size="4" id="y" name="y" />
+    	X2 <input type="text" size="4" id="x2" name="x2" />
+    	Y2 <input type="text" size="4" id="y2" name="y2" />
+    	W <input type="text" size="4" id="w" name="w" />
+    	H <input type="text" size="4" id="h" name="h" />
+    </div>
 
     <label class="label">
     	<textarea name="response"></textarea>
