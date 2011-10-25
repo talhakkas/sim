@@ -22,7 +22,7 @@
 
         sudo chown www-data:www-data -R <kullanıcı adı>
 
-	// www iznine yerelde 777 verin bize bir sıkıntı çıkarmaz
+	! www iznine yerelde 777 verin bize bir sıkıntı çıkarmaz
 	sudo chmod 777 www
 
 
@@ -30,11 +30,11 @@
 
 	cd /var/www
 
-	// ana root dizini için
+	! ana root dizini için
 	mkdir a/tmp
 	chmod 777 a/tmp
 
-	// daha sonra kaldıracağımız test servisi için
+	! daha sonra kaldıracağımız test servisi için
 	mkdir test/tmp
 	chmod 777 test/tmp
 
