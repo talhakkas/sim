@@ -1,4 +1,5 @@
 <?php
+
 // heryerde kullanilmayi dusundugumuz fonksiyonlari barindirdigimiz dosya
 function strtolower_turkish($string) {
         $lower = array(
@@ -129,7 +130,7 @@ function yukle2($hedef=NULL, $tmp_name='file.tmp_name', $uzerine_yazma=false, $t
 			else {
 			echo "FOOOOOOOOOO";
 			}
-	
+
 		}
 			return true;
 	}

@@ -14,7 +14,7 @@ function multi($preselected=array()){
 
     foreach ($discipline as $key => $val)
         $a .= '<li><a href="#frag-'.$key. '">'.$val['name'].'</a></li>';
-    
+
 	$a .= '</ul>';
 
     foreach ($discipline as $discipline_key => $discipline_val){

@@ -15,4 +15,3 @@ dbpass="db_pass"
 
 ; Resim
 uploaddir="upload/"
-default_image="default.png"
