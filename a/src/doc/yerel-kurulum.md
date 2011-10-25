@@ -29,10 +29,10 @@
 - özel temp dizinlerinin ayarlanması
 
 	cd /var/www
-	# ana root dizini için
+	// ana root dizini için
 	mkdir a/tmp
 	chmod 777 a/tmp
-	# daha sonra kaldıracağımız test servisi için
+	// daha sonra kaldıracağımız test servisi için
 	mkdir test/tmp
 	chmod 777 test/tmp
 
