@@ -1,1 +1,0 @@
-### alfabetik ilaç isimleri

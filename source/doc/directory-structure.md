@@ -1,0 +1,31 @@
+## Dizin Yapısı
+
+    /
+        a/
+            gui/
+            inc/
+            index.php
+            upload/
+        yolgu/
+            gui/
+            inc/
+            index.php
+        test/
+            gui/
+            inc/
+            index.php
+        public/
+            fonts/
+            css/
+            img/
+            js/
+            upload/
+        db/
+        doc/
+        lib/
+        temp/
+        asset/
+        github/
+        .f3.ini
+        .gitignore
+        README.md
