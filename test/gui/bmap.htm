@@ -32,10 +32,29 @@ function sec(bolge)
 	
 	hidden.value = dict.join(",");
 }
+
+function soyle()
+{
+	var hidden = document.getElementById('selected');
+	var dict = hidden.value.split(',');
+	var BOLGE = ['neck', 'chest', 'l_shoulder', 'r_shoulder', 'l_arm', 'r_arm', 'l_leg', 'r_leg', 'l_knee', 'r_knee', 'l_ankle', 'r_ankle', 'l_foot', 'r_foot'];
+
+	var str = "";
+	for(var i=0; i<dict.length; i++)
+		str = str + BOLGE[dict[i] - 1] + ";";
+	
+	alert(str);
+}	
 </script>
 
 
-<img class="map" src="/public/img/body_map.gif" usemap="#bmap">
+<h2>Vücut Haritası Üzerinde Seçim Yapmak</h2>
+
+Resim üzerinde tıklayarak seçin veya tıklayarak seçimi kaldırın.
+
+<hr>
+
+<img class="map" src="/public/img/body_map.jpg" usemap="#bmap">
 
 <map id="bmap" name="bmap">
 	<area shape="circle" alt="neck" 	  coords="180,65,6"  href="#" target="" title="neck"       onclick="sec('01');" >
@@ -60,4 +79,8 @@ function sec(bolge)
 
 <form method="get" action="#">
 	<input type="text" value="" name="selected" id="selected">
+
+	<br>
+	<input type="submit" value="Seçilenleri Söyle" onclick="soyle()">
 </form>
+
