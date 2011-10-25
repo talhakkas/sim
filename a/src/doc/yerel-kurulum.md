@@ -36,6 +36,14 @@
 	mkdir test/tmp
 	chmod 777 test/tmp
 
+
+- f3.ini dosyasının ayarlanması
+
+	cd /var/www
+	cp .f3.ini.example .f3.ini
+
+ve arkasından .f3.ini dosyasının içeriğini dolduralım
+
 http://localhost dediğimiz zaman sistemin çalışıyor olması gerekli
 
 
