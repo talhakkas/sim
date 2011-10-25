@@ -1,6 +1,6 @@
 ## servislerin yerel makinalara kurulması
 
-### sunucu kurulması
+### yerel makinaya sunucu kurulması
 
 19/x'i makinaya kurduktan sonra hemen x menüsünden php-sunucu-kur betiğini
 çalıştıralım mysql parolası malum
@@ -29,9 +29,11 @@
 - özel temp dizinlerinin ayarlanması
 
 	cd /var/www
+
 	// ana root dizini için
 	mkdir a/tmp
 	chmod 777 a/tmp
+
 	// daha sonra kaldıracağımız test servisi için
 	mkdir test/tmp
 	chmod 777 test/tmp
