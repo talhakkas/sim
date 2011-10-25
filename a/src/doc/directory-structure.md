@@ -4,11 +4,14 @@
         a/
             gui/
             inc/
-            index.php
+            src/
+                db/
+                doc/
+            lib/
+            ajax/
+            tmp/
+            asset/
             upload/
-        yolgu/
-            gui/
-            inc/
             index.php
         test/
             gui/
@@ -20,11 +23,6 @@
             img/
             js/
             upload/
-        db/
-        doc/
-        lib/
-        temp/
-        asset/
         github/
         .f3.ini
         .gitignore

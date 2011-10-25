@@ -4,20 +4,6 @@ require_once  '../a/lib/base.php';
 require_once  '../a/asset/lib.php';
 require_once  'inc/tetkik.php';
 
-function home() {
-        render('home', 'Ana Sayfa');
-}
-
-function student_home() {
-        $duyuru = DB::sql("select * from announcement");
-        rsort($duyuru); // son eklenen duyuru en üstte görünsün
-        F3::set('announcement', $duyuru);
-        F3::set('olgu', DB::sql("select * from event"));
-        if (! F3::get("SESSION.olgu")) // default olgu
-                F3::set("SESSION.olgu", 2); // default olgu
-        render('student-home', 'Eski Student Ana Sayfa');
-}
-
 function ekg() {
 	$isEkgResponse = empty($_POST) ? "no" : "yes";
 	$yorum = empty($_POST) ? "" : $_POST['yorum'];
@@ -27,12 +13,6 @@ function ekg() {
 
 	render('ekg', 'Ekg Ekranı');
 }
-
-function page() {
-        $page = F3::get("PARAMS.page");
-        render($page, 'Ana Sayfa');
-}
-
 
 function tetkik() {
 	$select_all = F3::get('REQUEST');
@@ -47,45 +27,46 @@ function tetkik() {
 	print_r($preselected);
 	F3::set('tetkikmerkezi', multi($preselected));
 
-    render('tetkik', 'Sonuçlar');
+        render('tetkik', 'Sonuçlar');
 }
 
 function immapr() {
-	F3::set('SESSION.secim', array('x' => $_POST['x'],  'y' => $_POST['y'],
-								   'x2'=> $_POST['x2'], 'y2'=> $_POST['y2'],
-								   'w' => $_POST['w'],  'h' => $_POST['h']));
+	F3::set('SESSION.secim', array( 'x' => $_POST['x'],  'y' => $_POST['y'],
+		                        'x2'=> $_POST['x2'], 'y2'=> $_POST['y2'],
+					'w' => $_POST['w'],  'h' => $_POST['h']));
 	F3::set('SESSION.yorum', $_POST['yorum']);
-
 	render('immapr', 'Immap:Result');
 }
 
-//F3::set('tetkikmerkezi', multi());
-
-F3::route('GET /buton', function() { render('buton', 'butonlar');});
-F3::route('GET /f', function() {render('f', 'video player');});
-F3::route('GET /ilac', function() {render('ilac', 'ilaç ekranı');});
-F3::route('POST /ilac', 'ilac_sonuc.php');
-
-F3::route('GET /test',
-        function() {
-                F3::set('tetkikmerkezi', multi());
-                render('test', 'yeni olgu ekranı');
+function ilac_sonuc() {
+        if(empty($_POST)) {
+                echo "Herhangi bir ilaç seçimi yapılmamış";
+                return;
         }
-);
 
-F3::route("GET /*"      , 'home');
-F3::route("GET /student-home"      , 'student_home');
-F3::route("GET /ekg*",    'ekg');
-	F3::route("POST /ekg*",    'ekg');
+        $tdrug = new Axon("drugs");
+        $drug = preg_split('/,/', $_POST['drugs']);
+        $ilac_data = array();
 
-F3::route("GET /@page", 'page');
+        foreach($drug as $i=>$id) {
+                $datas = $tdrug->afind("id='$id'");
+                $name  = $datas[0]['name'];
+                $content  = $datas[0]['content'];
+                $ilac_data[$id] = array($name, $content);
+        }
 
-F3::route('POST /ilac', 'ilac_sonuc.php');
+        F3::set('SESSION.ilac', $ilac_data);
+        render('ilac_secilen', 'Seçilen İlaçlar');
+}
 
-F3::route('GET /tetkik',  'tetkik');
+
+F3::route("GET /*",      function () { render('home', 'Ana Sayfa'); } );
+F3::route("GET /@page",  function () { render(F3::get("PARAMS.page"), 'Örnek Sayfa'); } );
+F3::route("POST /@page", function () { render(F3::get("PARAMS.page"), 'Örnek Sayfa'); } );
+
+// özel postlar
 F3::route('POST /tetkik', 'tetkik');
-
-F3::route('POST /immapr', 'immapr');
+F3::route('POST /ilac', 'ilac_sonuc');
 
 F3::run();
 
