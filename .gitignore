@@ -4,6 +4,9 @@
 temp/*
 tmp/*
 
+a/temp/*
+test/tmp/*
+
 b
 foo
 soba

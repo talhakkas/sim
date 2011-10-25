@@ -69,7 +69,7 @@ ul.photos.xlarge img { width: 210px; height: 210px; }
 img.awesome.image { display: inline; position: relative; margin: 0 0 5px; padding: 4px; border: 1px solid #ccc; border-color: rgba(0,0,0,.25); -moz-border-radius: 5px; -moz-box-shadow: 0 1px 3px rgba(0,0,0,.15); -webkit-border-radius: 5px; -webkit-box-shadow: 0 1px 3px rgba(0,0,0,.15); -webkit-transition: all 0.15s ease-out; }
 
 
-div#wrapper { border-top: 5px solid #b8d30b; clear: left; }
+div#wrapper { border-top: 4px solid #3072b3; clear: left; }
 div#container, div.container { position: relative; width: 940px; margin: 0 auto; padding: 0; }
 
 div#header { position: relative; height: 54px; margin: 0 auto 36px; }
