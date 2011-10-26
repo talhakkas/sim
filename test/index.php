@@ -1,7 +1,7 @@
 <?php
 
 require_once  '../a/lib/base.php';
-require_once  '../a/asset/lib.php';
+require_once  '../a/app/lib.php';
 require_once  'inc/tetkik.php';
 
 function ekg() {

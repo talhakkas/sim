@@ -10,7 +10,7 @@
             lib/
             ajax/
             tmp/
-            asset/
+            app/
             upload/
             index.php
         test/
@@ -22,7 +22,6 @@
             css/
             img/
             js/
-            upload/
         github/
         .f3.ini
         .gitignore

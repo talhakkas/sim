@@ -1,7 +1,7 @@
 <?php
 
 require_once './lib/base.php';
-require_once './asset/lib.php';
+require_once './app/lib.php';
 require_once './inc/mylib.php';
 require_once './inc/tetkik.php';
 
