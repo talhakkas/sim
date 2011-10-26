@@ -2,16 +2,9 @@
 
 @import url(buttons.css);
 
-@import url(facebox.css);
-
 @import url(tables.css);
 
-@import url(doz.css);
+@import url(ekg.css);
 
-@import url(olgu.css);
-
-@import url(bulgu.css);
-
-@import url(tokeninput.css);
-
+@import url(bundle.css);
 

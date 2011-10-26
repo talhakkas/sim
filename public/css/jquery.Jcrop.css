@@ -4,7 +4,7 @@
 {
 	font-size: 0;
 	position: absolute;
-	background: gray url('Jcrop.gif') top left repeat;
+	background: gray url('../img/Jcrop.gif') top left repeat;
 	/*çizgiler*/
 }
 .jcrop-vline { height: 100%; width: 1px !important; }
@@ -23,14 +23,5 @@
 .jcrop-tracker { width: 100%; height: 100%; }
 
 .custom .jcrop-vline,
-.custom .jcrop-hline
-{
-	background: black;
-}
-.custom .jcrop-handle
-{
-	border-color: black;
-	background-color: black;
-	-moz-border-radius: 3px;
-	-webkit-border-radius: 3px;
-}
+.custom .jcrop-hline { background: black; }
+.custom .jcrop-handle { border-color: black; background-color: black; -moz-border-radius: 3px; -webkit-border-radius: 3px; }

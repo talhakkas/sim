@@ -2,8 +2,6 @@
 
 <html xmlns = "http://www.w3.org/1999/xhtml" xml:lang = "TR" lang = "tr">
   <head>
-    <meta http-equiv = "Pragma" content = "no-cache" />
-    <meta http-equiv = "Expires" content = "-1" />
     <meta http-equiv = "Content-Type" content = "text/html; charset=utf-8" />
     <link rel="shortcut icon" href="/public/img/favicon.ico" />
 
@@ -32,19 +30,16 @@
     <F3:true>
     <div id="wrapper">
       <div id="container">
-        <ul class="tabs" id="mainNav">
-          <li class="home"><a href="{{@SR}}" >Anasayfa</a></li>
-          <li class="logout"><a href="{{@SR}}/logout" title="">Çıkış</a></li>
+        <p id="header-notice">
+          Ondokuz Mayıs Üniversitesi Medikal Simülasyon Eğitim Merkezi
+        </p>
+        <ul class="tabs">
+          <li class="home"><a href="{{@SR}}">Anasayfa</a></li>
+          <li class="logout"><a href="{{@SR}}/logout">Çıkış</a></li>
         </ul>
       </div>
     </div>
     </F3:true>
-    </F3:check>
-
-    <F3:check if="{{@template != 'login'}}">
-    <div id="notice">
-      <p class="uni">Ondokuz Mayıs Üniversitesi Medikal Simülasyon Eğitim Merkezi</p>
-    </div>
     </F3:check>
 
     <div id="content">
@@ -64,19 +59,11 @@
       <F3:include href="{{@template}}.htm"/>
     </div>
 
-    <F3:check if="{{@template != 'login'}}">
     <div id="footer">
-      <div id="container">
-        <p class="footer-uni">
-        &copy; 2011 Ondokuz Mayıs Üniversitesi Medikal Simülasyon Eğitim Merkezi
-        </p>
-        <ul>
-          <li><a href="{{@SR}}">Anasayfa</a></li>
-          <li class="logout"><a href="{{@SR}}/logout">Çıkış</a></li>
-        </ul>
-      </div>
+      <p class="copyright">
+      &copy; 2011 OMÜ Medical Simülasyon Eğitim Merkezi. Tüm Hakları Saklıdır.
+      </p>
     </div>
-    </F3:check>
 
   </body>
 </html>

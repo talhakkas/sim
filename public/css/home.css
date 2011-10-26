@@ -12,6 +12,19 @@
  * Drk Orange:	#d45500 	Yellow:		#ffb515
  * Med Yellow:	#fc9200 	Drk Yellow:	#d17200
  * ----------------------------------------------------
+ * #content h2.magenta {color:#a9014b;}
+ * #content h2.agenta {color:#a9014b;}
+ * #content h2.green {color:#b8d30b}
+ * #content h2.magenta {color:#a9014b}
+ * #content h2.orange {color:#ff6908}
+ * #content h2.yellow {color:#fc9200}
+ *
+ * .home {color:#3072b3}
+ * .light-home {color:#007d9a}
+ * .green {color:#95a105}
+ * .magenta {color:#a9014b}
+ * .orange {color:#d45500}
+ * .yellow{color:#d17200;}
  */
 
 html, body { margin: 0; padding: 0; }
