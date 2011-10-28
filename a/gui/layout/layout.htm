@@ -4,34 +4,34 @@
   <head>
     <meta http-equiv = "Content-Type" content = "text/html; charset=utf-8" />
     <link rel="shortcut icon" href="/public/img/favicon.ico" />
-
     <link rel="stylesheet" type="text/css" href="/public/css/style.css" />
 
-    <!-- neredeyse tüm uygulamalar için -->
+    <!-- neredeyse tüm uygulamalar -->
     <script type="text/javascript" src="/public/js/jquery.js"></script>
 
     <!-- facebox -->
     <script type="text/javascript" src="/public/js/facebox.js"></script>
     <script type="text/javascript">
       jQuery(document).ready(function($) {
-        $('a[rel*=facebox]').facebox({
-          loadingImage : '/public/img/loading.gif',
-          closeImage   : '/public/img/closelabel.png'
-        });
+        $('a[rel*=facebox]').facebox({ loadingImage:'/public/img/loading.gif', closeImage:'/public/img/closelabel.png'});
       })
     </script>
 
     <!-- accordion & tetkik ve tüm ui'ler için -->
     <script src="/public/js/jquery-ui.min.js"></script>
-    <script>
-      $(document).ready(function() {
-        $("#accordion").accordion({active: false});
-        vtip(); // vtip title alanı için
-      });
-    </script>
-
+    <!-- multiselect tahlil penceresi -->
+    <script type="text/javascript" src="/public/js/jquery.multiselect.js"></script>
     <!-- tooltip » vtip -->
     <script type="text/javascript" src="/public/js/vtip.js"></script>
+
+    <script type="text/javascript">
+      $(function(){
+        $("#accordion").accordion({active: false});
+        $("#multi-tabs").tabs();
+        $(".multi-select").multiselect().multiselectfilter();
+        vtip(); // vtip title alanı
+      });
+    </script>
 
     <title>{{@page_title}}</title>
   </head>

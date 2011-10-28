@@ -1,21 +1,21 @@
 
 <form name="frm" action="{{@SR}}/show/{{@SESSION.cid}}/{{@SESSION.data['nodes'][0]['node_link']}}/0" method="post">
 
-<F3:check if="{{@SESSION.error != 'NULL'}}">
- <F3:true>
-	<font color="red">{{@SESSION.error}}</font>
- </F3:true>
- <F3:false>
-	<table border="1">
-	<F3:repeat group="{{@SESSION.exams}}" key="{{@eid}}" value="{{@eval}}">
-		<tr>
-			<td>{{@eval['did]}}:{{@eval['pid']}}:{{@eval['sid']}}-{{@eval['snm']}}</td>
-			<td><a href="/a/upload/{{@eval['value']}}" target="_blank"><img src="/a/upload/{{@eval['value']}}" width="50"></a></td>
-		</tr>
-	</F3:repeat>
-	</table>
- </F3:false>
-</F3:check>
+  <F3:check if="{{@SESSION.error != 'NULL'}}">
+  <F3:true>
+  <font color="red">{{@SESSION.error}}</font>
+  </F3:true>
+  <F3:false>
+  <table border="1">
+    <F3:repeat group="{{@SESSION.exams}}" key="{{@eid}}" value="{{@eval}}">
+    <tr>
+      <td>{{@eval['did]}}:{{@eval['pid']}}:{{@eval['sid']}}-{{@eval['snm']}}</td>
+      <td><a href="/a/upload/{{@eval['value']}}" rel="facebox"><img src="/a/upload/{{@eval['value']}}" width="50"></a></td>
+    </tr>
+    </F3:repeat>
+  </table>
+  </F3:false>
+  </F3:check>
   <input type="submit" class="button blue right" value="{{@SESSION.data['nodes'][0]['link_text']}}"/>
 </form>
 
