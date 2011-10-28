@@ -1,4 +1,5 @@
 <!-- Ogrencinin ilac secim islemi -->
+<script type="text/javascript" src="/public/js/jquery.js"></script>
 <script type="text/javascript" src="/public/js/jquery.tokeninput.js"></script>
 
 <p class="answer">{{@SESSION.data['nodes'][0]['link_text']}}</p>
@@ -17,7 +18,7 @@
 
           <script type="text/javascript">
             $(document).ready(function() {
-                $("#response").tokenInput("/public/ajax/get_drug.php");
+                $("#response").tokenInput("/a/ajax/get_drug.php");
                 });
           </script>
         </div>

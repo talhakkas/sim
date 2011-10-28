@@ -1,5 +1,5 @@
 <!-- Hocanın düzenleme modundayken ilaç seçimi için gerekli -->
-<script type="text/javascript" src="/public/js/jquery.min.js"></script>
+<script type="text/javascript" src="/public/js/jquery.js"></script>
 <script type="text/javascript" src="/public/js/jquery.tokeninput.js"></script>
 
 
@@ -26,7 +26,7 @@
 
     <script type="text/javascript">
       $(document).ready(function() {
-          $("#drugs").tokenInput("/public/ajax/get_drug.php", {
+          $("#drugs").tokenInput("/a/ajax/get_drug.php", {
                 prePopulate: [
 		<F3:repeat group="{{@SESSION.ilac}}" key="{{@id}}" value="{{@name}}"> 
                     {id: {{@id}}, name: "{{@name}}"},
