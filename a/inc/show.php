@@ -28,7 +28,16 @@
 	}
 
 	if($node['ntype'] == 'bmapr') {
-		F3::set('SESSION.map', $_POST['selected']);
+		$BOLGE = array('NUL', 'neck', 'chest', 'l_shoulder', 'r_shoulder', 'l_arm', 'r_arm', 'l_hand', 'r_hand',
+				'l_leg', 'r_leg', 'l_knee', 'r_knee', 'l_ankle', 'r_ankle', 'l_foot', 'r_foot');
+		$tmp = $_POST['selected'];
+		$sec = preg_split('/,/', $tmp);
+
+		$dict = array();
+		foreach($sec as $i=>$b)
+			$dict[$i] = $BOLGE[$b];
+
+		F3::set('SESSION.smap', $dict);
 	}
 
 render('show', 'Olgu');

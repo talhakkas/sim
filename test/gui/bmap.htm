@@ -65,13 +65,7 @@ function soyle()
 }	
 </script>
 
-
-<h2>Vücut Haritası Üzerinde Seçim Yapmak</h2>
-
-Resim üzerinde tıklayarak seçin veya tıklayarak seçimi kaldırın.
-
-<hr>
-<div>
+<div align="middle">
 <img class="map" src="/public/img/body_map.jpg" usemap="#bmap">
 
 <map id="bmap" name="bmap">
@@ -95,12 +89,19 @@ Resim üzerinde tıklayarak seçin veya tıklayarak seçimi kaldırın.
 	<!-- Created by Online Image Map Editor (http://www.maschek.hu/imagemap/index) -->
 </map>
 
-<form method="get" action="#">
-	<input type="text" name="selected" id="selected">
+<form method="post" action="{{@SR}}/show/{{@SESSION.cid}}/{{@SESSION.data['nodes'][0]['node_link']}}/0">
+	
+	<div class="tokeninput">
+		<p class="answer left" align="left">Tetkik yapmak istediğiniz vücut haritası üzerinde bölgeyi ya tıklayarak ekleyip/kaldırın 
+			veya sağdaki girdi alanına girerek yapınız.</p>
+		<label class="label">
+			<input type="text" name="selected" id="selected">
+		</label>
+	</div>
 	<input type="hidden" name="hselected" id="hselected">
 
 	<br>
-	<input type="submit" value="Seçilenleri Söyle" onclick="soyle()">
+	<input type="submit" value="Seçilenleri Söyle">
 
     <script type="text/javascript">
       $(document).ready(function() {
