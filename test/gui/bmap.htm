@@ -1,4 +1,5 @@
-<script type="text/javascript" src="/public/js/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="/public/js/jquery.tokeninput.js"></script> 
+<!--script type="text/javascript" src="/public/js/jquery-1.4.2.min.js"></script-->
 <script type="text/javascript" src="/public/js/jquery.maphilight.min.js"></script>
 <script>$(function() {
 				$('.map').maphilight({fade: false});
@@ -83,4 +84,20 @@ Resim üzerinde tıklayarak seçin veya tıklayarak seçimi kaldırın.
 	<br>
 	<input type="submit" value="Seçilenleri Söyle" onclick="soyle()">
 </form>
+
+<div class="tokeninput">
+  <form action="ilac" method="post">
+    <p class="answer left">ilaç seçiminizi buradan yapabilirsiniz</p>
+    <label class="label">
+      <input type="text" id="drugs" name="drugs" />
+    </label>
+    <input type="submit" class="button" value="Kaydet" />
+
+    <script type="text/javascript">
+      $(document).ready(function() {
+          $("#drugs").tokenInput("/public/ajax/get_drug.php");
+          });
+    </script>
+  </form>
+</div>
 
