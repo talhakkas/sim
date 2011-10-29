@@ -114,10 +114,11 @@ div.page-header h2 span { display: block; }
 div.page-header h1 small,
 div.page-header h2 small { font-size: 75%; font-weight: normal; }
 
+div.page-header.home-page    { background: url(/public/img/a/simulation.jpg) no-repeat right top; }
 div.page-header.people-page  { background: url(/public/img/a/people_network.gif) no-repeat right top; }
-div.page-header.contact-page { background: url(/public/img/a/phone-us.jpg) no-repeat right top; }
-div.page-header.home-page    { background:url(/public/img/a/simulation.jpg) no-repeat right top; }
 div.page-header.work-page    { background: url(/public/img/a/medical-computer.png) no-repeat right top; }
+div.page-header.about-page   { background: url(/public/img/a/medical.jpeg) no-repeat right top; background-size:270px;}
+div.page-header.contact-page { background: url(/public/img/a/phone-us.jpg) no-repeat right top; }
 
 
 .column-row, .row { margin: 0 0 18px -20px; }
