@@ -33,12 +33,12 @@ table { border-collapse: collapse; border-spacing: 0; }
 ol, ul { list-style: none; }
 
 body {
-	background: #fff; font-size: 13px; line-height: 18px; color: #555;
     	font-family: Corbel, Arial, Helvetica, Helvetica Neue, Verdana, sans-serif;-webkit-font-smoothing: antialiased;
+	background: #fff; font-size: 13px; line-height: 18px; color: #555;
 }
 
-a { color: #2daebf; color:#3072b3; text-decoration: underline; outline: 0; line-height: inherit; }
-a:hover { color: #007d9a; }
+a { color:#3072b3; text-decoration: underline; outline: 0; line-height: inherit; }
+a:hover { color:#3072b3; }
 
 h1 a, h2 a, h3 a { color: #333; text-decoration: none; font-weight: bold; }
 h4 a, h5 a { text-decoration: none; line-height: inherit; font-weight: bold; }
@@ -88,19 +88,15 @@ div#container, div.container { position: relative; width: 940px; margin: 0 auto;
 div#header { position: relative; height: 54px; margin: 0 auto 36px; }
 div#header img { display: block; float: left; margin: 25px 0 0; }
 div#header h3 { float: left; font-size: 22px; line-height: 1; margin: 0; position: absolute; top: 21px; left: 0; letter-spacing:-1px;}
-div#header h3 a, div#header h3 a:visited { font-weight: bold; }
-div#header h3 a:hover { color: #777; }
-div#header a { text-decoration:none; }
+div#header h3 a, div#header h3 a:hover, div#header h3 a:visited { color: #333; font-weight: bold; text-decoration:none; }
 
 ul.tabs { float: right; margin: 0; }
 ul.tabs li { display: block; float: left; line-height: 1; }
-ul.tabs li a { display: block; font-weight: bold; width: 90px; margin: 9px 0 0 -1px; padding: 18px 5px 11px 15px; border-left: 1px solid #eee; text-decoration: none; color: #333; cursor: pointer; }
+ul.tabs li a { display: block; font-weight: bold; width: 90px; margin: 9px 0 0 -1px; padding: 18px 5px 11px 15px; border-left: 1px solid #eee; text-decoration: none; color: #333; cursor: pointer; font-size: 16px; line-height: 1; font-weight: bold; }
 ul.tabs li.home a{ border-left: none; }
 ul.tabs li.home a:hover { padding-left:14px; }
-ul.tabs li a:hover, ul.tabs li.current a { background: #b8d30b; color: #fff; border: 0; margin: 0; padding-top: 27px; text-shadow: 0 -1px 1px rgba(0,0,0,.25); -webkit-border-bottom-left-radius: 3px; -webkit-border-bottom-right-radius: 3px; -moz-border-radius: 0 0 3px 3px; position: relative; z-index: 2; }
-ul.tabs li span { display: block; font-size: 16px; line-height: 1; font-weight: bold; }
+ul.tabs li a:hover, ul.tabs li.current a { background: #3072b3; color: #fff; border: 0; margin: 0; padding-top: 27px; text-shadow: 0 -1px 1px rgba(0,0,0,.25); -webkit-border-bottom-left-radius: 3px; -webkit-border-bottom-right-radius: 3px; -moz-border-radius: 0 0 3px 3px; position: relative; z-index: 2; }
 
-ul.tabs li.home a:hover { background: #2daebf; }
 ul.tabs li.home a:hover { background: #3072b3; }
 ul.tabs li.magenta a:hover { background: #a9014b; }
 ul.tabs li.green a:hover { background: #b8d30b; }
@@ -117,6 +113,11 @@ div.page-header h1 span,
 div.page-header h2 span { display: block; }
 div.page-header h1 small,
 div.page-header h2 small { font-size: 75%; font-weight: normal; }
+
+div.page-header.people-page  { background: url(/public/img/a/people_network.gif) no-repeat right top; }
+div.page-header.contact-page { background: url(/public/img/a/phone-us.jpg) no-repeat right top; }
+div.page-header.home-page    { background:url(/public/img/a/simulation.jpg) no-repeat right top; }
+div.page-header.work-page    { background: url(/public/img/a/medical-computer.png) no-repeat right top; }
 
 
 .column-row, .row { margin: 0 0 18px -20px; }
@@ -182,6 +183,31 @@ min-height:24px; background:url(/public/img/icon/24x24/help.png) no-repeat 0px;}
 #ourWork p {margin-top:0px; margin-bottom:20px; font-size:14px; word-spacing:1px;}
 #ourWork a,
 #ourWork a:hover {color:#3072b3;}
+
+/* ---------------------------------------------------------- */
+
+
+/* -------------------- contact page ------------------------ */
+
+div.vcard { background: #fff url(/public/img/a/vcard.gif) no-repeat;
+  height: 145px; margin: 0 0 36px; padding: 36px 30px 18px; position: relative; }
+div.vcard address { color: #777; text-align:center}
+div.vcard address strong { font-size: 18px; line-height: 1.5; font-weight: 300; color: #333; }
+
+/* ---------------------------------------------------------- */
+
+
+
+/* --------------------- people page ------------------------ */
+
+h4 { display: inline; line-height: 24px; margin-bottom: 4px; font-weight: normal; }
+h4 a { color: #A9014B; }
+
+div#fearlessLeaders img { float: left; margin: 0 15px 15px 0; }
+div.fearless-entry { float: left; margin-top: 15px; }
+div.fearless-entry h4 { margin-bottom: 15px; }
+div#fearlessLeaders p.large { font-size: 16px; line-height: 22px; }
+.six-and-one-half { width: 360px; }
 
 /* ---------------------------------------------------------- */
 
