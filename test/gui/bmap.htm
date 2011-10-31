@@ -1,9 +1,17 @@
+<<<<<<< HEAD
 <script type="text/javascript" src="/public/js/jquery.tokeninput.js"></script> 
 <!--script type="text/javascript" src="/public/js/jquery-1.4.2.min.js"></script-->
+=======
+<!--script type="text/javascript" src="/public/js/jquery-1.4.2.min.js"></script-->
+<script type="text/javascript" src="/public/js/jquery.tokeninput.js"></script> 
+>>>>>>> 6a989d92546856a773ec5086d87558ef283f840a
 <script type="text/javascript" src="/public/js/jquery.maphilight.min.js"></script>
-<script>$(function() {
+
+<script type="text/javascript">
+	$(function() {
 				$('.map').maphilight({fade: false});
-				});</script>
+				});
+</script>
 
 <script language="JavaScript" type="text/javascript">
 // Array Remove - By John Resig (MIT Licensed)
@@ -15,21 +23,35 @@ Array.prototype.remove = function(from, to) {
 
 function sec(bolge)
 {
-	var hidden = document.getElementById('selected');
+	var BOLGE = ['NULL', 'neck', 'chest', 'l_shoulder', 'r_shoulder', 'l_arm', 'r_arm', 'l_leg', 'r_leg', 'l_knee', 'r_knee', 'l_ankle', 'r_ankle', 'l_foot', 'r_foot'];
+	var hidden = document.getElementById('hselected');
 	var dict = hidden.value.split(',');
 	var anahtar = false;
 
 	bolge = bolge.toString();
-	if(hidden.value == "") {hidden.value = bolge; return;}
+	if(hidden.value == "") {
+		hidden.value = bolge; 
+
+		var id = parseInt(bolge);
+		$("#selected").tokenInput("add", {id: id, name: BOLGE[id]});
+		return;
+	}
 	
 	for(var i=0; i<dict.length; i++)
 		if(dict[i] == bolge) {
 			dict.remove(i);
+
+			var id = parseInt(bolge);
+			$("#selected").tokenInput("remove", {name: BOLGE[id]});
 			anahtar = true;
 		}
 	
-	if(anahtar == false)
+	if(anahtar == false) {
 		dict.push(bolge);
+
+		var id = parseInt(bolge);
+		$("#selected").tokenInput("add", {id: id, name: BOLGE[id]});
+	}
 	
 	hidden.value = dict.join(",");
 }
@@ -48,13 +70,7 @@ function soyle()
 }	
 </script>
 
-
-<h2>Vücut Haritası Üzerinde Seçim Yapmak</h2>
-
-Resim üzerinde tıklayarak seçin veya tıklayarak seçimi kaldırın.
-
-<hr>
-
+<div align="middle">
 <img class="map" src="/public/img/body_map.jpg" usemap="#bmap">
 
 <map id="bmap" name="bmap">
@@ -78,13 +94,44 @@ Resim üzerinde tıklayarak seçin veya tıklayarak seçimi kaldırın.
 	<!-- Created by Online Image Map Editor (http://www.maschek.hu/imagemap/index) -->
 </map>
 
-<form method="get" action="#">
-	<input type="text" value="" name="selected" id="selected">
+<form method="post" action="{{@SR}}/show/{{@SESSION.cid}}/{{@SESSION.data['nodes'][0]['node_link']}}/0">
+	
+	<div class="tokeninput">
+		<p class="answer left" align="left">Tetkik yapmak istediğiniz vücut haritası üzerinde bölgeyi ya tıklayarak ekleyip/kaldırın 
+			veya sağdaki girdi alanına girerek yapınız.</p>
+		<label class="label">
+			<input type="text" name="selected" id="selected">
+		</label>
+	</div>
+	<input type="hidden" name="hselected" id="hselected">
 
 	<br>
-	<input type="submit" value="Seçilenleri Söyle" onclick="soyle()">
-</form>
+	<input type="submit" value="Seçilenleri Söyle">
 
+    <script type="text/javascript">
+      $(document).ready(function() {
+          $("#selected").tokenInput([
+				{id:1,  name: "neck"},
+				{id:2,  name: "chest"},
+				{id:3,  name: "l_shoulder"},
+				{id:4,  name: "r_shoulder"},
+				{id:5,  name: "l_arm"},
+				{id:6,  name: "r_arm"},
+				{id:7,  name: "l_leg"},
+				{id:8,  name: "r_leg"},
+				{id:9,  name: "l_knee"},
+				{id:10, name: "r_knee"},
+				{id:11, name: "l_ankle"},
+				{id:12, name: "r_ankle"},
+				{id:13, name: "l_foot"},
+				{id:14, name: "r_foot"},
+				{id:15, name: "null"},
+				{id:16, name: "null"},
+			]);
+          });
+    </script>
+
+<<<<<<< HEAD
 <div class="tokeninput">
   <form action="ilac" method="post">
     <p class="answer left">ilaç seçiminizi buradan yapabilirsiniz</p>
@@ -101,3 +148,7 @@ Resim üzerinde tıklayarak seçin veya tıklayarak seçimi kaldırın.
   </form>
 </div>
 
+=======
+</form>
+</div>
+>>>>>>> 6a989d92546856a773ec5086d87558ef283f840a

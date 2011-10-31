@@ -1,3 +1,7 @@
-Harita üzerinde işaretlenen noktalar: {{@SESSION.map}}
+<ul>
+<F3:repeat group="{{@SESSION.smap}}" key="{{@gnl}}" value="{{@blg}}">
+	<li>{{@blg}} 
+</F3:repeat>
+</ul>
 
 <a class="answer" href="{{@SR}}/show/{{@SESSION.cid}}/{{@SESSION.data['nodes'][0]['node_link']}}/0">{{@SESSION.data['nodes'][0]['link_text']}}</a>

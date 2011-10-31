@@ -1,8 +1,12 @@
-<script type="text/javascript" src="/public/js/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="/public/js/jquery.tokeninput.js"></script> 
 <script type="text/javascript" src="/public/js/jquery.maphilight.min.js"></script>
-<script>$(function() {
+<link rel="stylesheet" href="http://loopj.com/jquery-tokeninput/styles/token-input-facebook.css" type="text/css" />
+
+<script type="text/javascript">
+	$(function() {
 				$('.map').maphilight({fade: false});
-				});</script>
+				});
+</script>
 
 <script language="JavaScript" type="text/javascript">
 // Array Remove - By John Resig (MIT Licensed)
@@ -14,21 +18,36 @@ Array.prototype.remove = function(from, to) {
 
 function sec(bolge)
 {
-	var hidden = document.getElementById('selected');
+	var BOLGE = ['NUL', 'neck', 'chest', 'l_shoulder', 'r_shoulder', 'l_arm', 'r_arm', 'l_hand', 'r_hand',
+				'l_leg', 'r_leg', 'l_knee', 'r_knee', 'l_ankle', 'r_ankle', 'l_foot', 'r_foot'];
+	var hidden = document.getElementById('hselected');
 	var dict = hidden.value.split(',');
 	var anahtar = false;
 
 	bolge = bolge.toString();
-	if(hidden.value == "") {hidden.value = bolge; return;}
+	if(hidden.value == "") {
+		hidden.value = bolge; 
+
+		var id = parseInt(bolge);
+		$("#selected").tokenInput("add", {id: id, name: BOLGE[id]});
+		return;
+	}
 	
 	for(var i=0; i<dict.length; i++)
 		if(dict[i] == bolge) {
 			dict.remove(i);
+
+			var id = parseInt(bolge);
+			$("#selected").tokenInput("remove", {name: BOLGE[id]});
 			anahtar = true;
 		}
 	
-	if(anahtar == false)
+	if(anahtar == false) {
 		dict.push(bolge);
+
+		var id = parseInt(bolge);
+		$("#selected").tokenInput("add", {id: id, name: BOLGE[id]});
+	}
 	
 	hidden.value = dict.join(",");
 }
@@ -37,28 +56,29 @@ function soyle()
 {
 	var hidden = document.getElementById('selected');
 	var dict = hidden.value.split(',');
-	var BOLGE = ['neck', 'chest', 'l_shoulder', 'r_shoulder', 'l_arm', 'r_arm', 'l_leg', 'r_leg', 'l_knee', 'r_knee', 'l_ankle', 'r_ankle', 'l_foot', 'r_foot'];
+	var BOLGE = ['NUL', 'neck', 'chest', 'l_shoulder', 'r_shoulder', 'l_arm', 'r_arm', 'l_hand', 'r_hand',
+				'l_leg', 'r_leg', 'l_knee', 'r_knee', 'l_ankle', 'r_ankle', 'l_foot', 'r_foot'];
 
 	var str = "";
 	for(var i=0; i<dict.length; i++)
-		str = str + BOLGE[dict[i] - 1] + ";";
+		str = str + BOLGE[dict[i]] + ";";
 	
 	alert(str);
 }	
 </script>
 
-<img class="map" src="/public/img/body_map.jpg" usemap="#bmap">
+<div align="middle">
 
 <map id="bmap" name="bmap">
-	<area shape="circle" alt="neck" 	  coords="180,65,6"  href="#" target="" title="neck"       onclick="sec('01');" >
-	<area shape="circle" alt="chest" 	  coords="156,126,5" href="#" target="" title="chest"      onclick="sec('02');" > 
-	<area shape="circle" alt="l_shoulder" coords="185,85,6"  href="#" target="" title="l_shoulder" onclick="sec('03');" >
-	<area shape="circle" alt="r_shoulder" coords="152,85,7"  href="#" target="" title="r_shoulder" onclick="sec('04');" >
-	<area shape="circle" alt="l_arm" 	  coords="184,118,8" href="#" target="" title="l_arm"      onclick="sec('05');" >
-	<area shape="circle" alt="r_arm" 	  coords="136,103,5" href="#" target="" title="r_arm"      onclick="sec('06');" >
-	<area shape="circle" alt="l_hand"  	  coords="167,176,4" href="#" target="" title="l_hand"     onclick="sec('07');" >
-	<area shape="circle" alt="r_hand" 	  coords="117,93,3"  href="#" target="" title="r_hand"     onclick="sec('08');" >
-	<area shape="circle" alt="l_leg" 	  coords="170,202,4" href="#" target="" title="l_leg"      onclick="sec('09');" >
+	<area shape="circle" alt="neck" 	  coords="180,65,6"  href="#" target="" title="neck"       onclick="sec('1');" >
+	<area shape="circle" alt="chest" 	  coords="156,126,5" href="#" target="" title="chest"      onclick="sec('2');" > 
+	<area shape="circle" alt="l_shoulder" coords="185,85,6"  href="#" target="" title="l_shoulder" onclick="sec('3');" >
+	<area shape="circle" alt="r_shoulder" coords="152,85,7"  href="#" target="" title="r_shoulder" onclick="sec('4');" >
+	<area shape="circle" alt="l_arm" 	  coords="184,118,8" href="#" target="" title="l_arm"      onclick="sec('5');" >
+	<area shape="circle" alt="r_arm" 	  coords="136,103,5" href="#" target="" title="r_arm"      onclick="sec('6');" >
+	<area shape="circle" alt="l_hand"  	  coords="167,176,4" href="#" target="" title="l_hand"     onclick="sec('7');" >
+	<area shape="circle" alt="r_hand" 	  coords="117,93,3"  href="#" target="" title="r_hand"     onclick="sec('8');" >
+	<area shape="circle" alt="l_leg" 	  coords="170,202,4" href="#" target="" title="l_leg"      onclick="sec('9');" >
 	<area shape="circle" alt="r_leg" 	  coords="148,201,4" href="#" target="" title="r_leg"      onclick="sec('10');" >
 	<area shape="circle" alt="l_knee" 	  coords="165,227,6" href="#" target="" title="l_knee"     onclick="sec('11');" >
 	<area shape="circle" alt="r_knee" 	  coords="150,232,5" href="#" target="" title="r_knee"     onclick="sec('12');" >
@@ -71,9 +91,46 @@ function soyle()
 </map>
 
 <form method="post" action="{{@SR}}/show/{{@SESSION.cid}}/{{@SESSION.data['nodes'][0]['node_link']}}/0">
-	<input type="text" value="" name="selected" id="selected">
+	
+	<div class="tokeninput">
+		<img src="/public/img/body_map.jpg" usemap="#bmap" align="left">
+
+		<p class="answer left" align="left">Tetkik yapmak istediğiniz vücut haritası üzerinde bölgeyi ya tıklayarak ekleyip/kaldırın 
+			veya sağdaki girdi alanına girerek yapınız.</p>
+		<label class="label">
+			<input type="text" name="selected" id="selected">
+		</label>
+	</div>
+	<input type="hidden" name="hselected" id="hselected">
 
 	<br>
-	<input type="submit" value="Seçilenleri Söyle">
-</form>
+	<input type="submit" value="Seçilenleri Söyle" class="button">
 
+    <script type="text/javascript">
+      $(document).ready(function() {
+          $("#selected").tokenInput([
+				{id:1,  name: "neck"},
+				{id:2,  name: "chest"},
+				{id:3,  name: "l_shoulder"},
+				{id:4,  name: "r_shoulder"},
+				{id:5,  name: "l_arm"},
+				{id:6,  name: "r_arm"},
+				{id:7,  name: "l_hand"},
+				{id:8,  name: "r_hand"},
+				{id:9,  name: "l_leg"},
+				{id:10,  name: "r_leg"},
+				{id:11,  name: "l_knee"},
+				{id:12, name: "r_knee"},
+				{id:13, name: "l_ankle"},
+				{id:14, name: "r_ankle"},
+				{id:15, name: "l_foot"},
+				{id:16, name: "r_foot"},
+			], {
+				preventDuplicates: true,
+				theme: "facebook"
+			});
+          });
+    </script>
+
+</form>
+</div>
