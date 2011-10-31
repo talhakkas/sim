@@ -4,24 +4,36 @@
   <head>
     <meta http-equiv = "Content-Type" content = "text/html; charset=utf-8" />
     <link rel="shortcut icon" href="/public/img/favicon.ico" />
-
     <link rel="stylesheet" type="text/css" href="/public/css/style.css" />
 
-    <!-- doz alımı -->
-    <script src="/public/js/yolgu/jquery.tools.min.js"></script>
-	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script> 
+    <!-- neredeyse tüm uygulamalar -->
+    <script type="text/javascript" src="/public/js/jquery.js"></script>
 
-    <!-- accordion -->
-    <script src="/public/js/yolgu/jquery-ui.min.js"></script>
-    <script>
-      $(document).ready(function() {
-        $("#accordion").accordion({active: false});
-        vtip();
-      });
+    <!-- facebox -->
+    <script type="text/javascript" src="/public/js/facebox.js"></script>
+    <script type="text/javascript">
+      jQuery(document).ready(function($) {
+        $('a[rel*=facebox]').facebox();
+      })
     </script>
 
+    <!-- doz alımı -->
+    <script type="text/javascript" src="/public/js/jquery.tools.min.js"></script>
+    <!-- accordion & tetkik ve tüm ui'ler için -->
+    <script type="text/javascript" src="/public/js/jquery-ui.min.js"></script>
+    <!-- multiselect tahlil penceresi -->
+    <script type="text/javascript" src="/public/js/jquery.multiselect.js"></script>
     <!-- tooltip » vtip -->
     <script type="text/javascript" src="/public/js/vtip.js"></script>
+
+    <script type="text/javascript">
+      $(function(){
+        $("#accordion").accordion({active: false});
+        $("#multi-tabs").tabs();
+        $(".multi-select").multiselect().multiselectfilter();
+        vtip(); // vtip title alanı
+      });
+    </script>
 
     <title>{{@page_title}}</title>
   </head>
@@ -35,8 +47,9 @@
           Ondokuz Mayıs Üniversitesi Medikal Simülasyon Eğitim Merkezi
         </p>
         <ul class="tabs">
-          <li class="home"><a href="{{@SR}}">Anasayfa</a></li>
-          <li class="logout"><a href="{{@SR}}/logout">Çıkış</a></li>
+          <li><a href="{{@SR}}">Anasayfa</a></li>
+          <li><a href="{{@SR}}/clist">Olguları Görüntüle</a></li>
+          <li><a href="{{@SR}}/logout">Çıkış</a></li>
         </ul>
       </div>
     </div>

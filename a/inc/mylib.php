@@ -88,7 +88,7 @@ function get_drug($did)
 {
 	$tdrug = new Axon('drugs');
 	$tdrug->load("id='$did'");
-	
+
 	$drug = array();
 	$drug['id'] = $tdrug->id;
 	$drug['name'] = $tdrug->name;

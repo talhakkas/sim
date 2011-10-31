@@ -22,8 +22,6 @@
 /* remove label borders in IE6 because IE6 does not support transparency */
 * html .ui-multiselect-checkboxes label { border:none }
 
-body { font:12px Helvetica, arial, sans-serif }
-h1, h2, p { margin:10px 0 }
 .hidden { visibility:hidden }
 
 
@@ -114,7 +112,7 @@ h1, h2, p { margin:10px 0 }
  .ui-state-hover a, .ui-state-hover a:hover { color: #1d5987; text-decoration: none; }
 .ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active {
 	border: 1px solid #79b7e7; background: #f5f8f9; font-weight: bold; color:#ff6908;}
-.ui-state-active a, .ui-state-active a:link, .ui-state-active a:visited {color:#ff6908;text-decoration: none; }
+.ui-state-active a, .ui-state-active a:link, .ui-state-active a:visited {text-decoration: none; }
 .ui-widget :active { outline: none; }
 
 /* Interaction Cues
@@ -348,7 +346,7 @@ h1, h2, p { margin:10px 0 }
 .ui-accordion .ui-accordion-li-fix { display: inline; }
 .ui-accordion .ui-accordion-header-active { border-bottom: 0 !important; }
 .ui-accordion .ui-accordion-header a { display: block; font-size: 1em; padding: .5em .5em .5em .7em; }
-.ui-accordion-icons .ui-accordion-header a { padding-left: 2.2em; }
+.ui-accordion-icons .ui-accordion-header a { padding-left: 28px; }
 .ui-accordion .ui-accordion-header .ui-icon { position: absolute; left: .5em; top: 50%; margin-top: -8px; }
 .ui-accordion .ui-accordion-content { padding: 1em 2.2em; border-top: 0; margin-top: -2px; position: relative; top: 1px; margin-bottom: 2px; overflow: auto; display: none; zoom: 1; }
 .ui-accordion .ui-accordion-content-active { display: block; }
@@ -391,7 +389,7 @@ h1, h2, p { margin:10px 0 }
 .ui-tabs .ui-tabs-nav li a { float: left; padding: 4px 54px; text-decoration: none; }
 .ui-tabs .ui-tabs-nav li.ui-tabs-selected { margin-bottom: 0; padding-bottom: 1px; }
 .ui-tabs .ui-tabs-nav li.ui-tabs-selected a, .ui-tabs .ui-tabs-nav li.ui-state-disabled a, .ui-tabs .ui-tabs-nav li.ui-state-processing a { cursor: text; }
-.ui-tabs .ui-tabs-nav li a, .ui-tabs.ui-tabs-collapsible .ui-tabs-nav li.ui-tabs-selected a { cursor: pointer; } /* first selector in group seems obsolete, but required to overcome bug in Opera applying cursor: text overall if defined elsewhere... */
+.ui-tabs .ui-tabs-nav li a, .ui-tabs.ui-tabs-collapsible .ui-tabs-nav li.ui-tabs-selected a { cursor: pointer; }
 .ui-tabs .ui-tabs-panel { display: block; border-width: 0; padding: 15px 10px 15px; background: none; min-height:200px;height:auto; }
 .ui-tabs .ui-tabs-hide { display: none !important; }
 

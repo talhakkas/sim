@@ -6,25 +6,38 @@
     <input type="hidden" name="nid" value="0">
     <input type="hidden" name="beklenen_yanit" value="{{@SESSION.data['beklenen_yanit']}}">
 
-    <F3:repeat group="{{@SESSION.data['nodes'][0]['response']}}" key="{{@gnl}}" value="{{@blg}}" counter="{{@ctr}}">
-    <div class="doz line">
-      <span style="float:left;"><a href="{{@SR}}/drug/{{@gnl}}" target="_blank">{{@blg['name']}}</a> Dozu:</span>
-      <input type="hidden" name="did[]" value="{{@gnl}}">
-      <input type="range" name="doz[]" min="{{@blg['dmn']}}" max="{{@blg['dmx']}}" value=""/>mg
+    <table id="hor-minimalist-b" class="doz">
+      <thead>
+        <tr>
+          <th scope="col">İlaç Adı</th>
+          <th scope="col">Doz (mg)</th>
+          <th scope="col">İlaç Alımı (Hangi Yolla)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <F3:repeat group="{{@SESSION.data['nodes'][0]['response']}}" key="{{@gnl}}" value="{{@blg}}" counter="{{@ctr}}">
+        <tr>
+          <td>
+            <a href="/a/drug/{{@gnl}}" rel="facebox">{{@blg['name']}}</a>
+          </td>
+          <td>
+            <input type="range" name="doz[]" min="{{@blg['dmn']}}" max="{{@blg['dmx']}}" value=""/>
+          </td>
+          <td>
+            <select name="ayol[]">
+              <option value="1">Damar</option>
+              <option value="2">Kas</option>
+              <option value="3">Foo</option>
+            </select>
+          </td>
+        </tr>
+        </F3:repeat>
+      </tbody>
+    </table>
 
-      <div class="select">
-        Hangi yolla:
-        <select name="ayol[]">
-          <option value="1">Damar</option>
-          <option value="2">Kas</option>
-          <option value="3">Foo</option>
-        </select>
-      </div>
-    </div>
-    </F3:repeat>
-
-    <script>$(":range").rangeinput();</script>
-
-    <input type="submit" class="button" value="{{@SESSION.data['nodes'][0]['link_text']}}">
+    <input type="submit" class="button doz-button" value="{{@SESSION.data['nodes'][0]['link_text']}}">
   </form>
 </div>
+
+<script>$(":range").rangeinput();</script>
+
