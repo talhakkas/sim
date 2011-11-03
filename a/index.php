@@ -8,18 +8,18 @@ require_once './inc/tetkik.php';
 function test2()
 {
 	F3::set('SESSION.cid', 1);
-	F3::set('SESSION.id',  21);
+	F3::set('SESSION.id',  35);
 
 	$node = get_node();
 
-	print_pre($node, "node:immap");
+	print_pre($node, "node:exam");
 
 	F3::set('SESSION.cid', 1);
-	F3::set('SESSION.id',  23);
+	F3::set('SESSION.id',  36);
 
 	$node = get_node();
 
-	print_pre($node, "<hr>node:immapr");
+	print_pre($node, "<hr>node:result");
 }
 
 function test3($dbg=true)
