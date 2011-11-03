@@ -7,19 +7,12 @@ require_once './inc/tetkik.php';
 
 function test2()
 {
-	F3::set('SESSION.cid', 1);
-	F3::set('SESSION.id',  35);
+	F3::set('SESSION.cid', 3);
+	F3::set('SESSION.id',  1);
 
 	$node = get_node();
 
-	print_pre($node, "node:exam");
-
-	F3::set('SESSION.cid', 1);
-	F3::set('SESSION.id',  36);
-
-	$node = get_node();
-
-	print_pre($node, "<hr>node:result");
+	print_pre($node);
 }
 
 function test3($dbg=true)

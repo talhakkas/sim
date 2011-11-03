@@ -19,9 +19,6 @@ function get_node($cid=NULL, $id=NULL)
 	$table = new Axon("node");
 	$datas = $table->afind("id='$id' AND cid='$cid'");
 
-	if($datas[0]['title'] == "yeni")
-		F3::reroute("/edit/$cid/$id");
-
 	$node = unzip($datas[0]);
 
 	return $node;
@@ -433,17 +430,8 @@ function nodeList($cid) {
 
 	$sz = count($list);
 	if($sz == 0) { // $cid icin ilk kayit ise bir tane baslangic dugumu olustur
-		$table = new Axon("node");
-		$table->nid = NULL;
-		$table->cid = $cid;
-		$table->id  = 1;
-		$table->title = "yeni"; $table->media = "";
-		$table->content= "";$table->question = "";
-		$table->options = "";$table->type = "dal";
-		$table->parent = 1; $table->isOnset = 1;
-		$table->isWrong = 0;
-		$table->save();
-
+		node_init($cid);
+		
 		$table = new Axon("node");
 		$list = $table->afind("id > 0 AND cid='$cid'", "id asc");
 	}
@@ -618,6 +606,29 @@ function ilkle() {
 	F3::set('SESSION.data', $datas);
 }
 
+function node_init($cid=NULL)
+{
+		if($cid == NULL) $cid = F3::get('SESSION.cid');
+
+		$table = new Axon("node");
+		$table->nid = NULL;
+		$table->cid = $cid;
+		$table->id  = maxID("id", "node") + 1;
+		$table->title = "new"; $table->media = "";
+		$table->content= "";$table->question = "";
+		
+		$dict = array( array("link_text"=> "dt1", "node_link"=>1,
+							 "response" => "",    "chkResponse"=> "no",
+							 "odul"=>"", "ceza"=>"") );
+
+		$table->options = serialize($dict);
+		
+		$table->ntype = "dal";
+		$table->parent = 1; $table->isOnset = 1;
+		$table->isWrong = 0;
+		$table->save();
+}
+
 function maxID($idnm, $tablenm) {
 	DB::sql("select max($idnm) from $tablenm where $idnm");
         $res = F3::get("DB->result");
@@ -660,7 +671,7 @@ function get_puan($cid, $id, $opt) {
 	return $puan;
 }
 
-function print_pre($code, $msj) 
+function print_pre($code, $msj="array") 
 {
 	echo "$msj = ";
 	echo "<pre>";

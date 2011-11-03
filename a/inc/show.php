@@ -6,12 +6,20 @@
 	$node = get_node();
 	F3::set('SESSION.data', $node);
 
-	takip_listesine_ekle();
+	if($node['title'] == 'new') {
+		$cid = F3::get('SESSION.cid');
+		$id  = F3::get('SESSION.id');
+
+		F3::reroute("/edit/$cid/$id");
+		return 1;
+	}
 
 	if($node['ntype'] == 'report') {
 		F3::reroute('/report');
 		return 1;
 	}
+
+	takip_listesine_ekle();
 
 	if($node['ntype'] == 'dose')
 		show_node_dose();
