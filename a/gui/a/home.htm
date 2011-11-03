@@ -1,8 +1,5 @@
-
 <style>
-  div#wrapper {border-color:#2daebf;border-color:#3072b3;}
   ul.tabs li.home {
-    background:#2daebf;
     background:#3072b3;
     text-shadow:0 -1px 1px rgba(0,0,0,.25);
     -webkit-border-bottom-left-radius:3px;
@@ -10,20 +7,16 @@
     -moz-border-radius:0 0 3px 3px;
     position:relative;
   }
-  ul.tabs li.home a {color:#fff;}
-  ul.tabs li.home {color:#333; text-shadow:none;}
-
-  div.page-header{background:url(/public/img/a/simulation.jpg) no-repeat 98% top;}
+  ul.tabs li.home a { color:#fff; }
 </style>
 
 
-<div class="page-header">
+<div class="page-header home-page">
   <h1>Ondokuz Mayıs Üniversitesi</h1>
   <h2>Web Tabanlı Medikal Simülasyon<br> Eğitim Merkezine Hoş Geldiniz...</h2>
 </div>
 
 <div id="ourWork">
-  <link type="text/css" href="/public/css/login-a.css" rel="stylesheet" />
   <link type="text/css" href="/public/css/buttons.css" rel="stylesheet" />
 
   <div class="home-content">
@@ -46,10 +39,10 @@
   <F3:true>
   <div class="inlogin">
     <ul class="in" >
-      <li><a class="olgu" href="clist">Olguları Görüntüle</a></li>
+      <li><a class="olgu" href="{{@SR}}/clist">Olguları Görüntüle</a></li>
       <li><a class="personal" href="#">Hesap Bilgileri</a></li>
       <li><a class="support" href="#">Destek</a></li>
-      <li><a class="logout" href="logout">Çıkış</a></li>
+      <li><a class="logout" href="{{@SR}}logout">Çıkış</a></li>
       <li></li>
     </ul>
 

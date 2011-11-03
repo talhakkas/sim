@@ -1,4 +1,5 @@
 <!-- Ogrencinin ilac secim islemi -->
+<script type="text/javascript" src="/public/js/jquery.js"></script>
 <script type="text/javascript" src="/public/js/jquery.tokeninput.js"></script>
 
 <p class="answer">{{@SESSION.data['nodes'][0]['link_text']}}</p>
@@ -6,22 +7,22 @@
 <div align="middle">
   <form name="frm" action="{{@SR}}/show/{{@SESSION.cid}}/{{@SESSION.data['nodes'][0]['node_link']}}/0" method="post">
     <input type="hidden" name="onceki_id" value="{{@SESSION.id}}">
-	<input type="hidden" name="nid" value="0">
-	<input type="hidden" name="beklenen_yanit" value="{{@SESSION.data['beklenen_yanit']}}">
+    <input type="hidden" name="nid" value="0">
+    <input type="hidden" name="beklenen_yanit" value="{{@SESSION.data['beklenen_yanit']}}">
 
-        <div class="tokeninput">
-          <p class="answer left">ilaç seçiminizi buradan yapabilirsiniz</p>
-          <label class="label">
-            <input type="text" id="response" name="response" />
-          </label>
+    <div class="tokeninput">
+      <p class="answer left">ilaç seçiminizi buradan yapabilirsiniz</p>
+      <label class="label">
+        <input type="text" id="response" name="response" />
+      </label>
 
-          <script type="text/javascript">
-            $(document).ready(function() {
-                $("#response").tokenInput("/public/ajax/get_drug.php");
-                });
-          </script>
-        </div>
-
-        <input type="submit" class="button" value="Gönder">
-      </form>
+      <script type="text/javascript">
+        $(document).ready(function() {
+          $("#response").tokenInput("/a/ajax/get_drug.php");
+        });
+      </script>
     </div>
+
+    <input type="submit" class="button" value="Gönder">
+  </form>
+</div>

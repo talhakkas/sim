@@ -90,6 +90,14 @@ function page() {
 	F3::call('home');
 }
 
+function show_drug() {
+	$did = F3::get('PARAMS.did');
+	$drug = get_drug($did);
+	echo $drug['content'];
+}
+
+
+
 F3::set('uploaddir', 'upload/');
 
 F3::route("GET /"      , 'home');
@@ -131,7 +139,7 @@ F3::route("GET /test", "test");
 	F3::route("POST /test", "test");
 
 // ilac durumu
-F3::route("GET /drug/@did", "show_drug.php");
+F3::route("GET /drug/@did", "show_drug");
 
 F3::route("GET /exam/@cid/@eid", "show_exam.php");
 
