@@ -1,7 +1,12 @@
 <?php
 	params2session();
 
-	F3::set('SESSION.data', get_node());
+	$node = get_node();
+	if($node['title'] == 'new') {
+		node_init();
+	}
+
+	F3::set('SESSION.data', $node);
 
 	F3::set('SESSION.nofbs', count(F3::get('SESSION.data[nodes]')));
 

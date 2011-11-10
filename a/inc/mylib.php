@@ -446,6 +446,8 @@ function nodeList($cid) {
 		$table->isWrong = 0;
 		$table->save();
 
+		node_init($cid);
+		
 		$table = new Axon("node");
 		$list = $table->afind("id > 0 AND cid='$cid'", "id asc");
 	}
@@ -618,6 +620,29 @@ function ilkle() {
 	$datas['cid'] = F3::get('SESSION.cid');
 
 	F3::set('SESSION.data', $datas);
+}
+
+function node_init($cid=NULL)
+{
+		if($cid == NULL) $cid = F3::get('SESSION.cid');
+
+		$table = new Axon("node");
+		$table->nid = NULL;
+		$table->cid = $cid;
+		$table->id  = maxID("id", "node") + 1;
+		$table->title = "new"; $table->media = "";
+		$table->content= "";$table->question = "";
+		
+		$dict = array( array("link_text"=> "dt1", "node_link"=>1,
+							 "response" => "",    "chkResponse"=> "no",
+							 "odul"=>"", "ceza"=>"") );
+
+		$table->options = serialize($dict);
+		
+		$table->ntype = "dal";
+		$table->parent = 1; $table->isOnset = 1;
+		$table->isWrong = 0;
+		$table->save();
 }
 
 function maxID($idnm, $tablenm) {
