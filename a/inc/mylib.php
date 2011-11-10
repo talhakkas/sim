@@ -19,9 +19,6 @@ function get_node($cid=NULL, $id=NULL)
 	$table = new Axon("node");
 	$datas = $table->afind("id='$id' AND cid='$cid'");
 
-	if($datas[0]['title'] == "yeni")
-		F3::reroute("/edit/$cid/$id");
-
 	$node = unzip($datas[0]);
 
 	return $node;
@@ -437,10 +434,15 @@ function nodeList($cid) {
 		$table->nid = NULL;
 		$table->cid = $cid;
 		$table->id  = 1;
-		$table->title = "yeni"; $table->media = "";
-		$table->content= "";$table->question = "";
-		$table->options = "";$table->type = "dal";
-		$table->parent = 1; $table->isOnset = 1;
+		$table->title = "new"; $table->media    = "";
+		$table->content= "";   $table->question = "";
+		
+		$dict = array(0=>array('link_text'=>'null', 'response'=>'null'));
+			      
+		$table->options = serialize($dict); 
+
+		$table->type     = "dal";
+		$table->parent = 1;    $table->isOnset  = 1;
 		$table->isWrong = 0;
 		$table->save();
 
@@ -579,7 +581,7 @@ function zip($cid, $datas, $dbg=false)
 					$dict[$i]['response'] = '';
 			}
 		}
-		
+	
 		$dict[0]['stamp'] = microtime();
 		if($dbg) print_pre($dict, 'dict');
 
@@ -660,7 +662,7 @@ function get_puan($cid, $id, $opt) {
 	return $puan;
 }
 
-function print_pre($code, $msj) 
+function print_pre($code, $msj="array") 
 {
 	echo "$msj = ";
 	echo "<pre>";

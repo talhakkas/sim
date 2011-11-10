@@ -6,6 +6,9 @@
 	$node = get_node();
 	F3::set('SESSION.data', $node);
 
+	if($node['title'] == "new")
+		F3::reroute("/edit/" . F3::get('SESSION.cid') . "/" . F3::get('SESSION.id'));
+
 	takip_listesine_ekle();
 
 	if($node['ntype'] == 'report') {

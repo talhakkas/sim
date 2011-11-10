@@ -2,7 +2,7 @@
 	$cid = F3::get('PARAMS.cid');
 	$id = F3::get('PARAMS.id');
 
-	if(strcmp($id, "yeni") == 0) {
+	if(strcmp($id, "new") == 0) {
 		DB::sql("select max(id) from node where id AND cid='$cid'");
 		$res = F3::get("DB->result");
 		$id = $res[0]['max(id)'] + 1;
