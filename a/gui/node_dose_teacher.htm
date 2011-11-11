@@ -1,19 +1,25 @@
-<F3:repeat group="{{@SESSION.data['opts'][0]['response']}}" key="{{@gnl}}" value="{{@blg}}" counter="{{@ctr}}">
+<F3:repeat group="{{@SESSION.drugs}}" key="{{@did}}" value="{{@blg}}" counter="{{@ctr}}">
 <tr>
   <td class="label"> </td>
   <td class="field" id="dal{{@ctr}}field">
     <div class="doz line">
-      <span style="float:left;"><a href="{{@SR}}/drug/{{@gnl}}" target="_blank">{{@blg['name']}}</a> Dozu:</span>
-      <input type="hidden" name="did[]" value="{{@gnl}}">
-      <input type="range" name="dval[]" min="{{@blg['dmn']}}" max="{{@blg['dmx']}}" value="{{@blg['dval']}}"/>mg
+      <span style="float:left;"><a href="{{@SR}}/drug/{{@did}}" target="_blank">{{@blg['name']}}</a> Dozu:</span>
+      <input type="hidden" name="did[]"  value="{{@did}}" />
+      <input type="range"  name="dval[]" value="{{@blg['dval']}}" min="{{@blg['dmn']}}" max="{{@blg['dmx']}}" />mg
 
       <div class="select">
         Hangi yolla:
         <select name="dayol[]">
-          <option value="1">Damar</option>
-          <option value="2">Kas</option>
-          <option value="3">Foo</option>
-        </select>
+		<F3:repeat group="{{@SESSION.AYOL}}" key="{{@ayol_key}}" value="{{@ayol}}">
+			<F3:check if="{{@ayol_key == @blg['dayol']}}">
+			 <F3:true>
+          		<option value="{{@ayol_key}}" selected="selected">{{@ayol}}</option>
+			 </F3:true>
+			 <F3:false>
+			 	<option value="{{@ayol_key}}">{{@ayol}}</option>
+			</F3:false>
+		   </F3:check>
+		</F3:repeat>
       </div>
     </div>
 
@@ -25,12 +31,10 @@
 <tr>
 	<td>Görünecek metin</td>
 	<td class="field">
-    	    <textarea name="link_text[]">{{@SESSION.data['opts'][0]['link_text']}}</textarea><br>
+    	    <textarea name="link_text">{{@SESSION.data['opts']['link_text']}}</textarea><br>
 
-	    Ödül: <input type="text" name="odul[]" value="{{@SESSION.data['opts'][0]['odul']}}" maxlength="3" size="3"> <br>
-	    Ceza: <input type="text" name="ceza[]" value="{{@SESSION.data['opts'][0]['ceza']}}"  maxlength="3" size="3"><br>
-
-    	    <input type="checkbox" name="chkResponse[]" id="chkResponse1" checked="true" value="1"><br>
+	    Ödül: <input type="text" name="odul" value="{{@SESSION.data['opts']['odul']}}"  maxlength="3" size="3"> <br>
+	    Ceza: <input type="text" name="ceza" value="{{@SESSION.data['opts']['ceza']}}"  maxlength="3" size="3"> <br>
 	</td>
 </tr>
 <tr>
@@ -38,9 +42,9 @@
     <img src="/public/img/icon/32x32/comments.png">
   </td>
   <td class="select">
-    &nbsp;&nbsp;&nbsp;<select name="node_link[]" id="select0">
+    &nbsp;&nbsp;&nbsp;<select name="node_link" id="select0">
       <F3:repeat group="{{@SESSION.all_nodes}}" value="{{@blg2}}" >
-      <F3:check if="{{@blg2[0] == @SESSION.data['opts'][0]['node_link']}}">
+      <F3:check if="{{@blg2[0] == @SESSION.data['opts']['node_link']}}">
       <F3:true>
       <option value="{{@blg2[0]}}" selected="selected">{{@blg2[0]}}:{{@blg2[1]}}</option>
       </F3:true>
@@ -56,7 +60,3 @@
   </td>
 </tr>
 
-<input type="hidden" name="nofbs" id="nofbs" value="{{@SESSION.nofbs}}" />
-
-<input type="hidden" name="stamp" value="{{@SESSION.data['opts'][0]['stamp']}}" />
-<input type="hidden" name="dnid"  value="{{@SESSION.data['opts'][0]['dnid']}}" />

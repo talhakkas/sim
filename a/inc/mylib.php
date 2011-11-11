@@ -207,31 +207,21 @@ function get_dnid()
 {
 	$node = get_node();
 
-	$dnid = my_get($node['opts'][0], 'dnid');
+	$dnid = my_get($node, 'parent');
 
 	if($dnid == "") $dnid = get_drug_id($node['cid']);
 
 	return $dnid;
 }
 
-function get_selected_drug_list()
+function get_selected_drugs()
 {
 	$dnid = get_dnid();
 
 	$cid = F3::get('SESSION.cid');
 	$node = get_node($cid, $dnid);
 
-	$t = $node['opts'][0]['response'];
-	$t = preg_split('/,/', $t);
-
-	$dlist = array();
-	foreach($t as $i=>$did) {
-		$drug = get_drug($did);
-		unset($drug['content']);
-		$dlist[$did] = $drug;
-	}
-
-	return $dlist;
+	return $node['opts']['drugs'];
 }
 
 function set_dose_drug_list($cid, $id, $dslist) 

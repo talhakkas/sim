@@ -17,30 +17,13 @@
 		F3::set('SESSION.ilac', get_preselected_drugs());
 
 	if(F3::get('SESSION.data[ntype]') == 'dose') {
-		if(check_stamp(F3::get('SESSION.cid')) != 0) {
-			/* yeni ilac listesini al, stamp i ayarla
-			 * edit tarafinda doz bilgilerini alma icin gerekli default degerleri hazirla
-			 * 
-			 * dose:options:dict 'inde keyi did secersek daha iyi olacak 
-			 */
-			$dslist = F3::get("SESSION.data['opts'][0]['response']");
-			$drlist = get_selected_drug_list();
+		print_pre($node, "node");
 
-			$dslist = liste_esle($dslist, $drlist);
+		$drugs = get_selected_drugs();
+		F3::set('SESSION.drugs', $drugs);
+		print_pre($drugs);
 
-			// if(true) print_pre($drlist, "drlist");
-			// if(true) print_pre($dslist, "dslist");
-			// if(true) print_pre(F3::get("SESSION.data['opts'][0]"), "opts");
-
-			set_dose_drug_list(F3::get('SESSION.cid'), F3::get('SESSION.id'), $dslist);
-			set_dose_stamp(F3::get("SESSION.cid"));
-
-			F3::set("SESSION.data['opts'][0]['response']", $dslist);
-			// print_pre(F3::get('SESSION.data[opts]'), 'opts'); return;
-		}
-		else {
-			; // FIXME
-		}
+		F3::set('SESSION.AYOL', array("Damar", "Kas"));
 	}
 
 	if(F3::get('SESSION.data[ntype]') == 'exam') {

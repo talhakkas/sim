@@ -12,7 +12,14 @@ function test2()
 
 	$node = get_node();
 
-	print_pre($node);
+	print_pre($node, "drug");
+
+	F3::set('SESSION.cid', 1);
+	F3::set('SESSION.id',  26);
+
+	$node = get_node();
+
+	print_pre($node, "dose");
 }
 
 function test3($dbg=true)
@@ -36,24 +43,15 @@ function test3($dbg=true)
 function test4()
 {
 	$tnode = new Axon('node');
-	$tnode->load("cid='1' AND id='17'");
+	$tnode->load("cid='1' AND id='26'");
+
+	$tnode->parent = 17;
 
 	$dict = unserialize($tnode->options);
 
 	$dict = array("link_text" => "Aşağıda ki kutuda seçim yapın",
-				  "node_link" => 26,
-				  "drugs"  => array(
-				  					116 => array("name" => "Alphagan",
-												 "dmn"  => 0,
-												 "dmx"  => 100,
-												 "dval" => 70,
-												 "dayol"=> 1),
-				  					431 => array("name" => "Devaljin",
-												 "dmn"  => 20,
-												 "dmx"  => 150,
-												 "dval" => 50,
-												 "dayol"=> 2)
-				  				   ),
+				  "node_link" => 18,
+				  "response"  => "drug:opts:drugs a bakin",
 				  "odul" => 5,
 				  "ceza" => 1
 				 );
