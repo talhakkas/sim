@@ -298,7 +298,7 @@ function takip_listesine_ekle() {
 	$ntype = get_node_type($cid, $id);
 
 	if($ntype == 'drug') {
-		$t = my_get($_POST, 'response');
+		$t = my_get($_POST, 'drugs');
 		$dlist = preg_split('/,/', $t);
 
 		foreach($dlist as $i=>$did) {
