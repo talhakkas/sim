@@ -49,7 +49,7 @@ function test4()
 
 	$dict = unserialize($tnode->options);
 
-	$dict = array("link_text" => "Aşağıda ki kutuda seçim yapın",
+	$dict = array("link_text" => "Devametmek için tıklayınız",
 				  "node_link" => 18,
 				  "response"  => "drug:opts:drugs a bakin",
 				  "odul" => 5,
@@ -65,6 +65,7 @@ function test4()
 
 function test()
 {
+	test4();
 	test2();
 }
 

@@ -516,23 +516,31 @@ function zip($cid, $datas, $dbg=true)
 		$datas['opts'] = $dict;
 		$datas['options'] = serialize($dict);
 	} elseif($datas['ntype'] == 'dose') {
-		$dict[0]['link_text'] = $datas['link_text'][0];
-		$dict[0]['node_link'] = $datas['node_link'][0];
-		$dict[0]['odul'] = $datas['odul'][0];
-		$dict[0]['ceza'] = $datas['ceza'][0];
-
-		$sz = sizeof($datas['did']);
-		for($i=0; $i < $sz; $i++) {
-			$did  = $datas['did'][$i];
-			$dval = $datas['dval'][$i];
-			$dayol = $datas['dayol'][$i];
-
-			$dict[0]['response'][$did] = array('id'=>$did, 'name'=>'', 'dmn'=>'', 
-							   'dmx'=>'',  'dval'=>$dval, 'dayol'=>$dayol);
-		}
+		$dict = array("link_text" => $datas['link_text'],
+					  "node_link" => $datas['node_link'],
+					  "response"  => "drug:opts:drugs a bakin",
+					  "odul"      => $datas['odul'],
+					  "ceza"      => $datas['ceza']
+					 );
 
 		$datas['opts'] = $dict;
 		$datas['options'] = serialize($dict);
+
+		// dose:parent uzerinden drug:opts:drugs i guncelle
+		$dnid = $datas['parent'];
+		$tdrug = new Axon('node');
+		$tdrug->load("id='$dnid'");
+		$opts = unserialize($tdrug->options);
+
+		foreach($opts['drugs'] as $did=>$drug) {
+			$ind = array_search($did, $datas['did']);
+
+			$opts['drugs'][$did]['dval']  = $datas['dval'][$ind];
+			$opts['drugs'][$did]['dayol'] = $datas['dayol'][$ind];
+		}
+
+		$tdrug->options = serialize($opts);
+		$tdrug->save();		
 	} elseif($datas['ntype'] == 'exam') {
 		$dict[0]['link_text'] = $datas['link_text'][0];
 		$dict[0]['node_link'] = $datas['node_link'][0];
