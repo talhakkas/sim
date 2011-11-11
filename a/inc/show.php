@@ -19,10 +19,15 @@
 		return 1;
 	}
 
-	takip_listesine_ekle();
+	// takip_listesine_ekle();
 
-	if($node['ntype'] == 'dose')
-		show_node_dose();
+	if($node['ntype'] == 'dose') {
+		$drugs = get_selected_drugs();
+		F3::set('SESSION.drugs', $drugs);
+
+		F3::set('SESSION.AYOL', array("Damar", "Kas"));
+	}
+
 	if($node['ntype'] == 'exam')
 		F3::set('tetkikmerkezi', multi());
 	if($node['ntype'] == 'result') {
@@ -50,18 +55,3 @@
 
 render('show', 'Olgu');
 
-
-/* Yerel Islevler */
-function show_node_dose() 
-{
-	$drugs = F3::get('SESSION.data.nodes[0][response]');
-
-	foreach($drugs as $did=>$d) {
-		$drug = get_drug($did);
-
-		$drugs[$did]['name'] = $drug['name'];
-	}
-
-	F3::set('SESSION.data.nodes[0][response]', $drugs);
-}
-?>

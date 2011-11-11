@@ -1,43 +1,37 @@
-<p class="answer">{{@SESSION.data['opts'][0]['link_text']}}</p>
-
 <div align="middle">
-  <form name="frm" action="{{@SR}}/show/{{@SESSION.cid}}/{{@SESSION.data['opts'][0]['node_link']}}/0" method="post">
-    <input type="hidden" name="onceki_id" value="{{@SESSION.id}}">
-    <input type="hidden" name="nid" value="0">
-    <input type="hidden" name="beklenen_yanit" value="{{@SESSION.data['beklenen_yanit']}}">
-
+  <form name="frm" action="{{@SR}}/show/{{@SESSION.cid}}/{{@SESSION.data['opts']['node_link']}}/0" method="post">
     <table id="hor-minimalist-b" class="doz">
       <thead>
         <tr>
           <th scope="col">İlaç Adı</th>
           <th scope="col">Doz (mg)</th>
-          <th scope="col">İlaç Alımı (Hangi Yolla)</th>
+          <th scope="col">İlaç Alım Yolu</th>
         </tr>
       </thead>
       <tbody>
-        <F3:repeat group="{{@SESSION.data['opts'][0]['response']}}" key="{{@gnl}}" value="{{@blg}}" counter="{{@ctr}}">
+        <F3:repeat group="{{@SESSION.drugs}}" key="{{@did}}" value="{{@drug}}" counter="{{@ctr}}">
         <tr>
           <td>
-            <a href="/a/drug/{{@gnl}}" rel="facebox">{{@blg['name']}}</a>
+            <a href="/a/drug/{{@did}}" rel="facebox">{{@drug['name']}}</a>
           </td>
           <td>
-            <input type="range" name="doz[]" min="{{@blg['dmn']}}" max="{{@blg['dmx']}}" value=""/>
+            <input type="range" name="doz[]" min="{{@drug['dmn']}}" max="{{@drug['dmx']}}" value=""/>
           </td>
           <td>
             <select name="ayol[]">
-              <option value="1">Damar</option>
-              <option value="2">Kas</option>
-              <option value="3">Foo</option>
-            </select>
+			 <F3:repeat group="{{@SESSION.AYOL}}" key="{{@ayol_key}}" value="{{@ayol}}">
+				 	<option value="{{@ayol_key}}">{{@ayol}}</option>
+			 </F3:repeat>
+			</select>
           </td>
         </tr>
         </F3:repeat>
       </tbody>
     </table>
 
-    <input type="submit" class="button doz-button" value="{{@SESSION.data['opts'][0]['link_text']}}">
+    <input type="submit" class="button doz-button" value="{{@SESSION.data['opts']['link_text']}}">
   </form>
+<script>$(":range").rangeinput();</script>
 </div>
 
-<script>$(":range").rangeinput();</script>
 

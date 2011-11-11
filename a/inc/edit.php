@@ -1,4 +1,6 @@
 <?php
+	$dbg = false;
+
 	params2session();
 
 	$node = get_node();
@@ -17,11 +19,11 @@
 		F3::set('SESSION.ilac', get_preselected_drugs());
 
 	if(F3::get('SESSION.data[ntype]') == 'dose') {
-		print_pre($node, "node");
+		if($dbg)	print_pre($node, "node");
 
 		$drugs = get_selected_drugs();
 		F3::set('SESSION.drugs', $drugs);
-		print_pre($drugs);
+		if($dbg)	print_pre($drugs);
 
 		F3::set('SESSION.AYOL', array("Damar", "Kas"));
 	}
