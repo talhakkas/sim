@@ -542,15 +542,13 @@ function zip($cid, $datas, $dbg=true)
 		$tdrug->options = serialize($opts);
 		$tdrug->save();		
 	} elseif($datas['ntype'] == 'exam') {
-		$dict[0]['link_text'] = $datas['link_text'][0];
-		$dict[0]['node_link'] = $datas['node_link'][0];
-		$dict[0]['odul'] = $datas['odul'][0];
-		$dict[0]['ceza'] = $datas['ceza'][0];
+		$dict = array("link_text" => $datas['link_text'],
+					  "node_link" => $datas['node_link'],
+					  "odul"      => $datas['odul'],
+					  "ceza"      => $datas['ceza']
+					 );
 
-		$old = $dict[0]['response'];
-		$new = get_exams_dict($cid, $datas);
-
-		$dict[0]['response'] = liste_senkronla($old, $new);
+		$dict['exams'] = liste_senkronla($node['opts']['exams'], get_exams_dict($cid, $datas));
 
 		$datas['opts'] = $dict;
 		$datas['options'] = serialize($dict);

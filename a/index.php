@@ -8,53 +8,30 @@ require_once './inc/tetkik.php';
 function test2()
 {
 	F3::set('SESSION.cid', 1);
-	F3::set('SESSION.id',  17);
+	F3::set('SESSION.id',  35);
 
 	$node = get_node();
 
-	print_pre($node, "drug");
+	print_pre($node, "exam");
 
 	F3::set('SESSION.cid', 1);
-	F3::set('SESSION.id',  26);
+	F3::set('SESSION.id',  36);
 
 	$node = get_node();
 
-	print_pre($node, "dose");
+	print_pre($node, "result");
 }
 
-function test3($dbg=true)
-{
-	$cid = 1;
-
-	$tnode = new Axon('node');
-	$tnode->load("cid='$cid' AND id='26'");
-
-	$dict = unserialize($tnode->options);
-	print_pre($dict, "GIRDI:dict");
-
-	unset($dict['save_stamp']);
-
-	print_pre($dict, "sonuc:dict");
-
-	$tnode->options = serialize($dict);
-	$tnode->save();
-
-}
 function test4()
 {
 	$tnode = new Axon('node');
-	$tnode->load("cid='1' AND id='26'");
-
-	$tnode->parent = 17;
+	$tnode->load("cid='1' AND id='35'");
 
 	$dict = unserialize($tnode->options);
 
-	$dict = array("link_text" => "Devametmek için tıklayınız",
-				  "node_link" => 18,
-				  "response"  => "drug:opts:drugs a bakin",
-				  "odul" => 5,
-				  "ceza" => 1
-				 );
+	$dict = $dict[0];
+	$dict['exams'] = $dict['response'];
+	unset($dict['response']);
 
 	print_pre($dict, "dict");
 
@@ -65,7 +42,6 @@ function test4()
 
 function test()
 {
-	test4();
 	test2();
 }
 

@@ -10,8 +10,6 @@
 
 	F3::set('SESSION.data', $node);
 
-	F3::set('SESSION.nofbs', count(F3::get('SESSION.data[opts]')));
-
 	$all_nodes = nodeList(F3::get('SESSION.cid'));
 	F3::set('SESSION.all_nodes', $all_nodes);
 
@@ -29,7 +27,7 @@
 	}
 
 	if(F3::get('SESSION.data[ntype]') == 'exam') {
-		$dict = F3::get('SESSION.data[opts][0][response]');
+		$dict = F3::get('SESSION.data[opts][exams]');
 		F3::set('tetkikmerkezi', multi($dict));
 	}
 
@@ -43,6 +41,8 @@
 	if(F3::get('SESSION.data[ntype]') == 'immapr') {
 		F3::set('SESSION.medya', get_immap_imgnm(F3::get('SESSION.cid')));
 	}
+
+	F3::set('SESSION.nofbs', count(F3::get('SESSION.data[opts]')));
 
 	render('node', 'Düzenle');
 ?>
