@@ -792,8 +792,8 @@ function get_exams($arr) // !SIL
 
 function get_exams_dict($cid, $arr) 
 {
+	// FIXME:node:exam de varsa o resmi, yoksa default resmi goster
 	$dict = array();
-
 
 	$csv = get_exams_csv($arr);
 	$list = preg_split('/,/', $csv);
@@ -804,7 +804,7 @@ function get_exams_dict($cid, $arr)
 	}
 
 	foreach($list as $i=>$eid) {
-		$dict[$eid]  = get_exam_info($cid, $eid);
+		$dict[$eid] = get_exam_info($cid, $eid);
 	}
 
 	return $dict;
