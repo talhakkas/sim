@@ -1,18 +1,14 @@
-
 <tr>
   <td class="label">Görünecek metin</td>
   <td class="field" id="dal{{@ctr}}field">
-    <textarea name="link_text[]">{{@SESSION.data['opts'][0]['link_text']}}</textarea><br>
+    <textarea name="link_text">{{@SESSION.data['opts']['link_text']}}</textarea><br>
 
-    <input type="hidden" name="odul[]" value="{{@SESSION.data['opts'][0]['odul']}}" maxlength="3" size="3">
-    <input type="hidden" name="ceza[]" value="{{@SESSION.data['opts'][0]['ceza]}}"  maxlength="3" size="3">
-
-    <input type="checkbox" name="chkResponse[]" id="chkResponse1" checked="true" value="1"><br>
+    <input type="hidden" name="odul" value="{{@SESSION.data['opts']['odul']}}" maxlength="3" size="3">
+    <input type="hidden" name="ceza" value="{{@SESSION.data['opts']['ceza]}}"  maxlength="3" size="3">
   </td>
 </tr>
 <tr>
 	<td></td>
-
 <td>
 
 <tr>
@@ -34,7 +30,7 @@
 		<input type="file" name="evalue[]" value="{[@SR}}/{{@uploaddir}}{{@eval['stype']}}" >
           <F3:check if="{{@eval['value'] != 'null'}}">
           <F3:true>
-          <a href="{{@SR}}/{{@uploaddir}}kucuk_{{@eval['value']}}" target="_blank"><img src="{{@SR}}/{{@uploaddir}}kucuk_{{@eval['value']}}" height="35"></a>
+          <a href="{{@SR}}/{{@uploaddir}}kucuk{{@eval['value']}}" rel="facebox"><img src="{{@SR}}/{{@uploaddir}}kucuk{{@eval['value']}}" height="35"></a>
           <input type="checkbox" name="resim_sil_evalue[]" value="evet" />Kaldır
           </F3:true>
           </F3:check>
@@ -51,9 +47,9 @@
     <img src="/public/img/icon/32x32/comments.png">
   </td>
   <td class="select">
-    &nbsp;&nbsp;&nbsp;<select name="node_link[]" id="select1">
+    &nbsp;&nbsp;&nbsp;<select name="node_link" id="select1">
       <F3:repeat group="{{@SESSION.all_nodes}}" value="{{@blg2}}" >
-      <F3:check if="{{@blg2[0] == @SESSION.data.opts[0]['node_link']}}">
+      <F3:check if="{{@blg2[0] == @SESSION.data['opts']['node_link']}}">
       <F3:true>
       <option value="{{@blg2[0]}}" selected="selected">{{@blg2[0]}}:{{@blg2[1]}}</option>
       </F3:true>

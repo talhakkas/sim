@@ -46,9 +46,7 @@ function test4()
 
 	$dict = unserialize($tnode->options);
 
-	$dict = $dict[0];
-	$dict['exams'] = $dict['response'];
-	unset($dict['response']);
+	unset($dict[0]);
 
 	print_pre($dict, "dict");
 

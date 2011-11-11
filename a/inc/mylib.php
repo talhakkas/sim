@@ -31,8 +31,9 @@ function set_node()
 
 	$_POST = zip($cid, $_POST);
 
-	if(get_node_type($cid, $id) == 'result')
-		set_exam_dict($cid, $_POST['opts'][0]['response']);
+	/*if(get_node_type($cid, $id) == 'result')
+		set_exam_dict($cid, $_POST['opts']['response']);
+	*/
 
 	$table = new Axon("node");
 	$table->load("id='$id' AND cid='$cid'");
@@ -49,22 +50,6 @@ function set_node()
 			$table->media = $fnm;
 		else 
 			$table->media = "default.jpg";
-	}
-
-	$sz = count(F3::get('FILES.evalue.name'));
-
-	for($i=0; $i<$sz; $i++) {
-		$nm = F3::get("FILES.evalue.name[$i]");
-		$eid = F3::get("POST.eid[$i]");
-
-			if($nm != "") {
-				$fnm = "_e_". sprintf("%06d", $eid) . ".jpg";
-				$ffnm = F3::get('uploaddir') . $fnm;
-				if(yukle2($ffnm, "evalue.tmp_name[$i]", true))
-					; //FIXME
-				else 
-					; //FIXME
-			}
 	}
 
 	if(my_get($_POST, 'resim_sil') == 'evet')
@@ -553,22 +538,49 @@ function zip($cid, $datas, $dbg=true)
 		$datas['opts'] = $dict;
 		$datas['options'] = serialize($dict);
 	} elseif($datas['ntype'] == 'result') {
-		$sz = sizeof($datas['eid']);
-		
-		$dict = array();
-		$dict[0]['link_text'] = $datas['link_text'][0];
-		$dict[0]['node_link'] = $datas['node_link'][0];
-		$dict[0]['odul'] = $datas['odul'][0];
-		$dict[0]['ceza'] = $datas['ceza'][0];
+		$dict = array("link_text" => $datas['link_text'],
+					  "node_link" => $datas['node_link'],
+					  "response"  => "exam:opts:exams e bakin",
+					  "odul"      => $datas['odul'],
+					  "ceza"      => $datas['ceza']
+					 );
 
-		for($i=0; $i < $sz; $i++) {
-			$eid = $datas['eid'][$i];
-
-			$dict[0]['response'][$eid] = array('eid'=>$eid, 
-							   'value'=>$datas['evalue'][$i]);
-		}
 		$datas['opts'] = $dict;
 		$datas['options'] = serialize($dict);
+		
+		// once resimleri upload et!
+		$emedia = array();
+
+		$sz = count(F3::get('FILES.evalue.name'));
+	
+		for($i=0; $i<$sz; $i++) {
+			$nm = F3::get("FILES.evalue.name[$i]");
+			$eid = F3::get("POST.eid[$i]");
+	
+				if($nm != "") {
+					$fnm = "_e_". sprintf("%06d", $eid) . ".jpg";
+					$ffnm = F3::get('uploaddir') . $fnm;
+					if(yukle2($ffnm, "evalue.tmp_name[$i]", true))
+						$emedia[$eid] = $fnm;
+					else 
+						$emedia[$eid] = "default.jpg";
+				}
+		}
+		// result:parent uzerinden exam:opts:exams i guncelle
+		$enid = $datas['parent'];
+		$texam = new Axon('node');
+		$texam->load("id='$enid'");
+		$opts = unserialize($texam->options);
+
+		foreach($opts['exams'] as $eid=>$exam) {
+			$ind = array_search($eid, $datas['eid']);
+
+			if(isset($emedia[$eid]))
+				$opts['exams'][$eid]['value'] = $emedia[$eid];
+		}
+
+		$texam->options = serialize($opts);
+		$texam->save();
 	} elseif($datas['ntype'] == 'immapr') {
 		$dict = array();
 		$dict['link_text'] = $datas['link_text'];
@@ -801,7 +813,8 @@ function get_exams_dict($cid, $arr)
 function get_exams_dict_v2($cid, $eid) 
 {
 	$node = get_node($cid, $eid);
-	$dict = $node['opts'][0]['response'];
+
+	$dict = $node['opts']['exams'];
 	
 	return $dict;
 }

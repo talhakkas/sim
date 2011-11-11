@@ -33,7 +33,7 @@
 
 	if(F3::get('SESSION.data[ntype]') == 'result') {
 		$cid = F3::get('SESSION.cid');
-		$eid = 35; // FIXME
+		$eid = $node['parent'];
 
 		F3::set('SESSION.exams', get_exams_dict_v2($cid, $eid));
 	}
