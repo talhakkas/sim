@@ -8,7 +8,7 @@
 
 	F3::set('SESSION.data', $node);
 
-	F3::set('SESSION.nofbs', count(F3::get('SESSION.data[nodes]')));
+	F3::set('SESSION.nofbs', count(F3::get('SESSION.data[opts]')));
 
 	$all_nodes = nodeList(F3::get('SESSION.cid'));
 	F3::set('SESSION.all_nodes', $all_nodes);
@@ -23,20 +23,20 @@
 			 * 
 			 * dose:options:dict 'inde keyi did secersek daha iyi olacak 
 			 */
-			$dslist = F3::get("SESSION.data['nodes'][0]['response']");
+			$dslist = F3::get("SESSION.data['opts'][0]['response']");
 			$drlist = get_selected_drug_list();
 
 			$dslist = liste_esle($dslist, $drlist);
 
 			// if(true) print_pre($drlist, "drlist");
 			// if(true) print_pre($dslist, "dslist");
-			// if(true) print_pre(F3::get("SESSION.data['nodes'][0]"), "nodes");
+			// if(true) print_pre(F3::get("SESSION.data['opts'][0]"), "opts");
 
 			set_dose_drug_list(F3::get('SESSION.cid'), F3::get('SESSION.id'), $dslist);
 			set_dose_stamp(F3::get("SESSION.cid"));
 
-			F3::set("SESSION.data['nodes'][0]['response']", $dslist);
-			// print_pre(F3::get('SESSION.data[nodes]'), 'nodes'); return;
+			F3::set("SESSION.data['opts'][0]['response']", $dslist);
+			// print_pre(F3::get('SESSION.data[opts]'), 'opts'); return;
 		}
 		else {
 			; // FIXME
@@ -44,7 +44,7 @@
 	}
 
 	if(F3::get('SESSION.data[ntype]') == 'exam') {
-		$dict = F3::get('SESSION.data[nodes][0][response]');
+		$dict = F3::get('SESSION.data[opts][0][response]');
 		F3::set('tetkikmerkezi', multi($dict));
 	}
 

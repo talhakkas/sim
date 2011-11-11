@@ -32,7 +32,7 @@ function set_node()
 	$_POST = zip($cid, $_POST);
 
 	if(get_node_type($cid, $id) == 'result')
-		set_exam_dict($cid, $_POST['nodes'][0]['response']);
+		set_exam_dict($cid, $_POST['opts'][0]['response']);
 
 	$table = new Axon("node");
 	$table->load("id='$id' AND cid='$cid'");
@@ -100,13 +100,13 @@ function get_drug($did)
 
 function get_preselected_drugs()
 {
-	$drugs = F3::get('SESSION.data[nodes][0][response]');
-	$drug = preg_split('/,/', $drugs);
+	$dict = F3::get('SESSION.data[opts][drugs]');
+	$drugs = array_keys($dict);
 
 	$tdrug = new Axon("drugs");
 
 	$ilac_data = array();
-	foreach($drug as $i=>$id) {
+	foreach($drugs as $i=>$id) {
 		$datas = $tdrug->afind("id='$id'");
 		$name  = $datas[0]['name'];
 
@@ -207,7 +207,7 @@ function get_dnid()
 {
 	$node = get_node();
 
-	$dnid = my_get($node['nodes'][0], 'dnid');
+	$dnid = my_get($node['opts'][0], 'dnid');
 
 	if($dnid == "") $dnid = get_drug_id($node['cid']);
 
@@ -221,7 +221,7 @@ function get_selected_drug_list()
 	$cid = F3::get('SESSION.cid');
 	$node = get_node($cid, $dnid);
 
-	$t = $node['nodes'][0]['response'];
+	$t = $node['opts'][0]['response'];
 	$t = preg_split('/,/', $t);
 
 	$dlist = array();
@@ -257,7 +257,7 @@ function get_exam_list($cid, $nid, $dbg=false)
 	if($dbg)	echo "cid=$cid, nid=$nid <br>";
 
 	$node = get_node($cid, $nid);
-	$dict = $node['nodes'][0]['response'];
+	$dict = $node['opts'][0]['response'];
 
 	if($dbg)	print_pre($dict, "dict");
 
@@ -480,18 +480,52 @@ function unzip($datas)
 	 * uretmistim. Simdi dictionary turunde tutulacak ve serialize/unserialize
 	 * ile serileştirilecek.
 	 */
-	$datas['nodes'] = unserialize($datas['options']);
+	$datas['opts'] = unserialize($datas['options']);
 
 	return $datas;
 }
 
-function zip($cid, $datas, $dbg=false) 
+function zip($cid, $datas, $dbg=true) 
 {
 	if($dbg) print_pre($datas, 'datas');
+	
+	$id = $datas['id'];
+	$node = get_node($cid, $id);
+
+	if($dbg) print_pre($node);
 
 	$dict = array();
 
-	if($datas['ntype'] == 'dose') {
+	if($datas['ntype'] == 'drug') {
+		$dict = array("link_text" => $datas['link_text'],
+					  "node_link" => $datas['node_link'],
+					  "odul"      => $datas['odul'],
+					  "ceza"      => $datas['ceza']
+					 );
+		
+		$ndict = array();
+		$tdrug = new Axon('drugs');
+
+		$csv = $datas['drugs'];
+		$drugs = preg_split('/,/', $csv);
+		foreach($drugs as $i=>$did) {
+			$tmp = $tdrug->afind("id='$did'");
+
+			$ndict[$did] = array("name" => $tmp[0]['name'],
+								 "dmn"  => $tmp[0]['dmn'],
+								 "dmx"  => $tmp[0]['dmx'],
+								 "dval" => $tmp[0]['dval'],
+								 "dayol"=> $tmp[0]['dayol']
+								);
+		}
+
+		// ndict olup, odict (node['opts']['drugs'])'te olmayanları odict e
+		// ekle ndict'te olmayıp, odict'te olanları odict'ten sil
+		$dict['drugs'] = liste_senkronla($node['opts']['drugs'], $ndict);
+
+		$datas['opts'] = $dict;
+		$datas['options'] = serialize($dict);
+	} elseif($datas['ntype'] == 'dose') {
 		$dict[0]['link_text'] = $datas['link_text'][0];
 		$dict[0]['node_link'] = $datas['node_link'][0];
 		$dict[0]['odul'] = $datas['odul'][0];
@@ -507,7 +541,7 @@ function zip($cid, $datas, $dbg=false)
 							   'dmx'=>'',  'dval'=>$dval, 'dayol'=>$dayol);
 		}
 
-		$datas['nodes'] = $dict;
+		$datas['opts'] = $dict;
 		$datas['options'] = serialize($dict);
 	} elseif($datas['ntype'] == 'exam') {
 		$dict[0]['link_text'] = $datas['link_text'][0];
@@ -518,9 +552,9 @@ function zip($cid, $datas, $dbg=false)
 		$old = $dict[0]['response'];
 		$new = get_exams_dict($cid, $datas);
 
-		$dict[0]['response'] = liste_esle($old, $new);
+		$dict[0]['response'] = liste_senkronla($old, $new);
 
-		$datas['nodes'] = $dict;
+		$datas['opts'] = $dict;
 		$datas['options'] = serialize($dict);
 	} elseif($datas['ntype'] == 'result') {
 		$sz = sizeof($datas['eid']);
@@ -537,7 +571,7 @@ function zip($cid, $datas, $dbg=false)
 			$dict[0]['response'][$eid] = array('eid'=>$eid, 
 							   'value'=>$datas['evalue'][$i]);
 		}
-		$datas['nodes'] = $dict;
+		$datas['opts'] = $dict;
 		$datas['options'] = serialize($dict);
 	} elseif($datas['ntype'] == 'immapr') {
 		$dict = array();
@@ -551,7 +585,7 @@ function zip($cid, $datas, $dbg=false)
 				       'w' => $datas['w'],  'h' => $datas['h'],
 				       'yorum' => $datas['response']);
 
-		$datas['nodes'] = $dict;
+		$datas['opts'] = $dict;
 		$datas['options'] = serialize($dict);
 	} else {
 
@@ -608,7 +642,7 @@ function ilkle() {
 			F3::set('SESSION.nofbs', 0);
 			break;
 		case "dal":
-			$datas['nodes'] = array(
+			$datas['opts'] = array(
 				0=>array('link_text'=>'', 'node_link'=>1, 'odul'=>'', 'ceza'=>'')
 			);
 			F3::set('SESSION.nofbs', 1);
@@ -679,8 +713,8 @@ function get_puan($cid, $id, $opt) {
 
 	$datas = unzip($datas[0]);
 
-	$odul = empty($datas['nodes'][$opt]['odul']) ? 0 : intval($datas['nodes'][$opt]['odul']);
-	$ceza = empty($datas['nodes'][$opt]['ceza']) ? 0 : intval($datas['nodes'][$opt]['ceza']);
+	$odul = empty($datas['opts'][$opt]['odul']) ? 0 : intval($datas['opts'][$opt]['odul']);
+	$ceza = empty($datas['opts'][$opt]['ceza']) ? 0 : intval($datas['opts'][$opt]['ceza']);
 
 	$puan = $odul - $ceza;
 
@@ -771,7 +805,7 @@ function get_exams_dict($cid, $arr)
 function get_exams_dict_v2($cid, $eid) 
 {
 	$node = get_node($cid, $eid);
-	$dict = $node['nodes'][0]['response'];
+	$dict = $node['opts'][0]['response'];
 	
 	return $dict;
 }
@@ -882,7 +916,7 @@ function get_dps_id($str, $idnm)
 	return $dict[$idnm];
 }
 
-function liste_esle($old, $new)
+function liste_senkronla($old, $new)
 {
 	/* $old listesinde, $new'de olanlar korunur veya $new'den eklenir ve
 	 * $new'de olmayanlar ise silinir.
@@ -936,7 +970,7 @@ function get_immapr4hoca($cid, $nid=NULL)
 
 	$node = get_node($cid, $nid);
 
-	$dict = $node['nodes']['map'];
+	$dict = $node['opts']['map'];
 	
 	$dict['imgnm'] = get_immap_imgnm($cid);
 

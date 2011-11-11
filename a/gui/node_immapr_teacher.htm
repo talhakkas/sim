@@ -22,10 +22,10 @@
 <tr>
   <td class="label">Görünecek metin</td>
   <td class="field" id="dal{{@ctr}}field">
-    <textarea name="link_text">{{@SESSION.data['nodes']['link_text']}}</textarea><br>
+    <textarea name="link_text">{{@SESSION.data['opts']['link_text']}}</textarea><br>
 
-    Ödül: <input type="text" name="odul" value="{{@SESSION.data['nodes']['odul']}}" maxlength="3" size="3">
-    Ceza: <input type="text" name="ceza" value="{{@SESSION.data['nodes']['ceza]}}"  maxlength="3" size="3">
+    Ödül: <input type="text" name="odul" value="{{@SESSION.data['opts']['odul']}}" maxlength="3" size="3">
+    Ceza: <input type="text" name="ceza" value="{{@SESSION.data['opts']['ceza]}}"  maxlength="3" size="3">
 
     <input type="checkbox" name="chkResponse" id="chkResponse1" checked="true" value="1"><br>
   </td>
@@ -53,7 +53,7 @@
 	</td>
 
 	<td class="field">
-    		<input type="text" name="response" id="response1" value="{{@SESSION.data['nodes']['map']['yorum']}}" style="visibility:visible;">
+    		<input type="text" name="response" id="response1" value="{{@SESSION.data['opts']['map']['yorum']}}" style="visibility:visible;">
 	</td>
 </tr>
 
@@ -64,7 +64,7 @@
   <td class="select">
     &nbsp;&nbsp;&nbsp;<select name="node_link" id="select1">
       <F3:repeat group="{{@SESSION.all_nodes}}" value="{{@blg2}}" >
-      <F3:check if="{{@blg2[0] == @SESSION.data.nodes['node_link']}}">
+      <F3:check if="{{@blg2[0] == @SESSION.data.opts['node_link']}}">
       <F3:true>
       <option value="{{@blg2[0]}}" selected="selected">{{@blg2[0]}}:{{@blg2[1]}}</option>
       </F3:true>

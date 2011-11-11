@@ -7,8 +7,8 @@ require_once './inc/tetkik.php';
 
 function test2()
 {
-	F3::set('SESSION.cid', 3);
-	F3::set('SESSION.id',  1);
+	F3::set('SESSION.cid', 1);
+	F3::set('SESSION.id',  17);
 
 	$node = get_node();
 
@@ -36,12 +36,27 @@ function test3($dbg=true)
 function test4()
 {
 	$tnode = new Axon('node');
-	$tnode->load("cid='1' AND id='35'");
+	$tnode->load("cid='1' AND id='17'");
 
 	$dict = unserialize($tnode->options);
 
-	$dict[0]['response'] = array('010104'=>array('id'=>010104, 'value'=>'foo'),
-				     '010106'=>array('id'=>010106, 'value'=>'bar'));
+	$dict = array("link_text" => "Aşağıda ki kutuda seçim yapın",
+				  "node_link" => 26,
+				  "drugs"  => array(
+				  					116 => array("name" => "Alphagan",
+												 "dmn"  => 0,
+												 "dmx"  => 100,
+												 "dval" => 70,
+												 "dayol"=> 1),
+				  					431 => array("name" => "Devaljin",
+												 "dmn"  => 20,
+												 "dmx"  => 150,
+												 "dval" => 50,
+												 "dayol"=> 2)
+				  				   ),
+				  "odul" => 5,
+				  "ceza" => 1
+				 );
 
 	print_pre($dict, "dict");
 
