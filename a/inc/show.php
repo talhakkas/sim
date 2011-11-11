@@ -5,7 +5,7 @@
 
 	$node = get_node();
 	F3::set('SESSION.data', $node);
-
+print_pre($node); return;
 	if($node['title'] == 'new') {
 		$cid = F3::get('SESSION.cid');
 		$id  = F3::get('SESSION.id');
