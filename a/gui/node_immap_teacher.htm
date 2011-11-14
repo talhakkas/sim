@@ -11,25 +11,4 @@
   </td>
 </tr>
 
-<tr>
-  <td class="label" style="padding-top:15px;">
-    <img src="/public/img/icon/32x32/comments.png">
-  </td>
-  <td class="select">
-    &nbsp;&nbsp;&nbsp;<select name="node_link[]" id="select1">
-      <F3:repeat group="{{@SESSION.all_nodes}}" value="{{@blg2}}" >
-      <F3:check if="{{@blg2[0] == @SESSION.data.opts[0]['node_link']}}">
-      <F3:true>
-      <option value="{{@blg2[0]}}" selected="selected">{{@blg2[0]}}:{{@blg2[1]}}</option>
-      </F3:true>
-      <F3:false>
-      <option value="{{@blg2[0]}}">{{@blg2[0]}}:{{@blg2[1]}}</option>
-      </F3:false>
-      </F3:check>
-      </F3:repeat>
-    </select>
-    <br /><br />
-    <input name="btnAddItem" type="button" id="btnAddItem" class="small button" value="Yeni Düğüm"
-    onclick="javascript:addNewListItem('select1', {{@SESSION.cid}});" />
-  </td>
-</tr>
+<F3:include href="node_next.htm" />
