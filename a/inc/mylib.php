@@ -133,6 +133,14 @@ function get_nid4type($cid, $ntype)
 	return $tnode->id;
 }
 
+function get_enid4result($cid, $id)
+{
+	$tnode = new Axon("node");
+	$tnode->load("cid='$cid' AND id='$id'");
+
+	return $tnode->parent;
+}
+
 function get_drug_stamp($cid, $id=NULL)
 {
 	if($id  == NULL)	$id  = get_drug_id($cid);
@@ -790,6 +798,47 @@ function get_exams($arr) // !SIL
 	return $dict;
 }
 
+function get_st_sel_exams($dbg=false)
+{
+	/* ogrencinin sectigi tahlilleri goster 
+	 * - secilen tahlil hoca tarafindan da secildiyse onu
+	 *    + node:exam'den sorgulanacak
+	 * - degilse ontanimli veriyi yukle
+	 *    + sql:sim:survey tablosundan sorgulanacak 
+	 *
+	 * $_POST üzerinden secimler soylenecek.
+	 */
+	$cid = F3::get('SESSION.cid');
+	$id  = F3::get('SESSION.id');		// result node id
+	$enid = get_enid4result($cid, $id); // exam   node id
+
+	$csv = get_exams_csv($_POST);
+
+	if($csv == "") {
+		F3::set('SESSION.error', 'Herhangi bir tahlil seçilmemiş');
+		return;
+	}
+	
+	$ss_exams = preg_split('/,/', $csv);
+	if($dbg)	print_pre($ss_exams, "ogr: sectigi tahliller");
+	
+	$ts_exams = get_tea_sel_exams($cid, $enid);
+	if($dbg)	print_pre($ts_exams, "hoca: sectigi tahliller");
+
+	$results = array();
+
+	foreach($ss_exams as $i=>$eid) {
+		if(array_key_exists($eid, $ts_exams))
+			$results[$eid] = $ts_exams[$eid];
+		else {
+			$results[$eid] = get_exam_info($cid, $eid);
+		}
+	}
+	if($dbg) 	print_pre($results, "results");
+
+	return $results;
+}
+
 function get_exams_dict($cid, $arr) 
 {
 	// FIXME:node:exam de varsa o resmi, yoksa default resmi goster
@@ -810,9 +859,9 @@ function get_exams_dict($cid, $arr)
 	return $dict;
 }
 
-function get_exams_dict_v2($cid, $eid) 
+function get_tea_sel_exams($cid, $enid) 
 {
-	$node = get_node($cid, $eid);
+	$node = get_node($cid, $enid);
 
 	$dict = $node['opts']['exams'];
 	

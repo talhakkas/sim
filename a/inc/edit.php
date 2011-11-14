@@ -33,9 +33,10 @@
 
 	if(F3::get('SESSION.data[ntype]') == 'result') {
 		$cid = F3::get('SESSION.cid');
-		$eid = $node['parent'];
+		$id  = F3::get('SESSION.id');
+		$enid = get_enid4result($cid, $id);
 
-		F3::set('SESSION.exams', get_exams_dict_v2($cid, $eid));
+		F3::set('SESSION.exams', get_tea_sel_exams($cid, $enid));
 	}
 
 	if(F3::get('SESSION.data[ntype]') == 'immapr') {
