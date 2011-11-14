@@ -8,18 +8,18 @@ require_once './inc/tetkik.php';
 function test2()
 {
 	F3::set('SESSION.cid', 1);
-	F3::set('SESSION.id',  17);
+	F3::set('SESSION.id',  21);
 
 	$node = get_node();
 
-	print_pre($node, "drug");
+	print_pre($node, "exam");
 
 	F3::set('SESSION.cid', 1);
-	F3::set('SESSION.id',  26);
+	F3::set('SESSION.id',  21);
 
 	$node = get_node();
 
-	print_pre($node, "dose");
+	print_pre($node, "result");
 }
 
 function test3()
@@ -59,6 +59,11 @@ function test()
 	test2();
 	echo "<hr>";
 	test3();
+}
+
+function test_gui()
+{
+	render('test', 'GUI Test');
 }
 
 function clist() {
@@ -136,6 +141,8 @@ F3::route("GET /cdelete/@cid", "cdelete.php");
 
 F3::route("GET /test", "test");
 	F3::route("POST /test", "test");
+
+F3::route("GET /test_gui", "test_gui");
 
 // ilac durumu
 F3::route("GET /drug/@did", "show_drug");

@@ -755,6 +755,96 @@ function ilkle() {
 	F3::set('SESSION.data', $datas);
 }
 
+function create_new_node($cid, $ntype, $parent=null, $id=null)
+{
+	$id = ($id == null) ? (maxID("id", "node") + 1) : $id;
+
+	/* "ntype" turunde yeni bir dugum olustur */
+	$table = new Axon("node");
+	$table->nid = NULL;
+	$table->cid = $cid;
+	$table->id  = $id;
+	$table->title = "new"; 
+	$table->ntype = $ntype;
+	
+	$table->media = "";		$table->content= "";	$table->question = "";
+	$table->parent = $parent; 	$table->isOnset = null;	$table->isWrong = null;
+	
+	switch($stype) {
+		case "dal":
+			$dict = array(0 => array("link_text"  => "Sonraki aşama", 
+						 "node_link"  => $id,
+					 	 "response"   => "",
+						 "chkResponse"=> "no",
+						 "odul"       => "", 
+						 "ceza"       => "") );
+			break;
+		case "drug": 
+			$dict = array("link_text"  => "Doz Seçimine Geçiniz", 
+			 	      "node_link"  => create_new_node($cid, "dose", $id, $id+1),
+			 	      "odul"       => "", 
+			 	      "ceza"       => "",
+				      "drugs"      => array());
+			break;
+		case "dose": 
+			$dict = array("link_text"  => "Sonraki aşama", 
+			 	      "node_link"  => $id, 
+			 	      "odul"       => "", 
+			 	      "ceza"       => "",
+				      "response"   => "drug:opts:drugs a bakin");
+			break;
+		case "exam":
+			$dict = array("link_text"  => "Tahlil Girmeye Geçiniz", 
+			 	      "node_link"  => create_new_node($cid, "result", $id, $id+1),
+			 	      "odul"       => "", 
+			 	      "ceza"       => "",
+				      "exams"      => array());
+			break;
+		case "result":
+			$dict = array("link_text"  => "Sonraki aşama", 
+			 	      "node_link"  => $id, 
+			 	      "odul"       => "", 
+			 	      "ceza"       => "",
+				      "response"   => "exam:opts:exams e bakin");
+			break;
+		case "bmap":
+			$dict = array("link_text"  => "Vücut Bölgesi Verilerini Girmeye Geçiniz", 
+			 	      "node_link"  => create_new_node($cid, "bmapr", $id, $id+1),
+			 	      "odul"       => "", 
+			 	      "ceza"       => "",
+				      "bmap"      => array());
+			break;
+		case "bmapr":
+			$dict = array("link_text"  => "Sonraki aşama", 
+			 	      "node_link"  => $id, 
+			 	      "odul"       => "", 
+			 	      "ceza"       => "",
+				      "response"   => "bmap:opts:bmap e bakin");
+			break;
+		case "immap":
+			$dict = array("link_text"  => "Resim Üzeri Bölge Seçimi ve Durum Raporlama Geçiniz", 
+			 	      "node_link"  => create_new_node($cid, "immapr", $id, $id+1),
+			 	      "odul"       => "", 
+			 	      "ceza"       => "",
+				      "immap"      => array()); // FIXME: ilgili düğümü düzelt
+			break;
+		case "immapr":
+			$dict = array("link_text"  => "Sonraki aşama", 
+			 	      "node_link"  => $id, 
+			 	      "odul"       => "", 
+			 	      "ceza"       => "",
+				      "response"   => "immap:opts:immap e bakin");
+			break;
+	}
+
+	$table->options = serialize($dict);
+	$table->save();
+	
+	// TODO: parent'in (olusturulmussa) node_link ini ayarla
+
+	return $table->id;
+}
+
 function node_init($cid=NULL)
 {
 		if($cid == NULL) $cid = F3::get('SESSION.cid');
