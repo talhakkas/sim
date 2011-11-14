@@ -25,28 +25,27 @@ function test2()
 function test3()
 {
 	F3::set('SESSION.cid', 1);
-	F3::set('SESSION.id',  35);
+	F3::set('SESSION.id',  37);
 
 	$node = get_node();
 
-	print_pre($node, "exam");
+	print_pre($node, "bmap");
 
 	F3::set('SESSION.cid', 1);
-	F3::set('SESSION.id',  36);
+	F3::set('SESSION.id',  38);
 
 	$node = get_node();
 
-	print_pre($node, "result");
+	print_pre($node, "bmapr");
 }
 
 function test4()
 {
 	$tnode = new Axon('node');
-	$tnode->load("cid='1' AND id='35'");
+	$tnode->load("cid='1' AND id='38'");
 
+	$tnode->parent = 37;
 	$dict = unserialize($tnode->options);
-
-	unset($dict[0]);
 
 	print_pre($dict, "dict");
 

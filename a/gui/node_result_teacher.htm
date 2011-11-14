@@ -27,11 +27,11 @@
 		<input type="hidden" name="stype[]"  value="{{@eval['stype']}}">
 		<!-- {{@eval['stype']}} --> 
 		<!--input type="text"   name="evalue[]" value="{{@eval['value']}}"--> 
-		<input type="file" name="evalue[]" value="{[@SR}}/{{@uploaddir}}{{@eval['stype']}}" >
+		<input type="file" name="evalue[]" value="{{@SR}}/{{@uploaddir}}{{@eval['value']}}" >
           <F3:check if="{{@eval['value'] != 'null'}}">
           <F3:true>
           <a href="{{@SR}}/{{@uploaddir}}kucuk{{@eval['value']}}" rel="facebox"><img src="{{@SR}}/{{@uploaddir}}kucuk{{@eval['value']}}" height="35"></a>
-          <input type="checkbox" name="resim_sil_evalue[]" value="evet" />Kaldır
+          <!--input type="checkbox" name="resim_sil_evalue[]" value="evet" />Kaldır -->
           </F3:true>
           </F3:check>
 		<br>

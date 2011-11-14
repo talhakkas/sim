@@ -1,4 +1,6 @@
 <?php
+	$dbg = false;
+
 	F3::set('SESSION.error', 'NULL');
 
 	params2session();
@@ -34,23 +36,31 @@
 		F3::set('SESSION.results', get_st_sel_exams());
 	}
 
+	if($node['ntype'] == 'bmap') {
+		$dict = map2dict($node['opts']['map']);
+		
+		if($dbg)	print_pre($dict);
+
+		F3::set('SESSION.map', $dict);
+		F3::set('SESSION.img', $node['opts']['img']);
+	}
+
+	if($node['ntype'] == 'bmapr') {
+		$cid = F3::get('SESSION.cid');
+		$bnid = $node['parent'];
+		
+		$sbind = preg_split('/,/', $_POST['selected']);
+
+		$dict = get_stu_sel_bmap($cid, $bnid, $sbind);
+		if($dbg)	print_pre($dict);
+
+		F3::set('SESSION.smap', $dict);
+	}
+
 	if($node['ntype'] == 'immapr') {
 		F3::set('SESSION.ogrenci', get_immapr4ogrenci($_POST));
 		
 		F3::set('SESSION.hoca', get_immapr4hoca(F3::get('SESSION.cid')));
-	}
-
-	if($node['ntype'] == 'bmapr') {
-		$BOLGE = array('NUL', 'neck', 'chest', 'l_shoulder', 'r_shoulder', 'l_arm', 'r_arm', 'l_hand', 'r_hand',
-				'l_leg', 'r_leg', 'l_knee', 'r_knee', 'l_ankle', 'r_ankle', 'l_foot', 'r_foot');
-		$tmp = $_POST['selected'];
-		$sec = preg_split('/,/', $tmp);
-
-		$dict = array();
-		foreach($sec as $i=>$b)
-			$dict[$i] = $BOLGE[$b];
-
-		F3::set('SESSION.smap', $dict);
 	}
 
 render('show', 'Olgu');

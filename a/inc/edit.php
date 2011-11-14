@@ -10,6 +10,8 @@
 
 	F3::set('SESSION.data', $node);
 
+	if($dbg)	print_pre($node);
+
 	$all_nodes = nodeList(F3::get('SESSION.cid'));
 	F3::set('SESSION.all_nodes', $all_nodes);
 

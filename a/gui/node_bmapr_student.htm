@@ -1,7 +1,7 @@
 <ul>
 <F3:repeat group="{{@SESSION.smap}}" key="{{@gnl}}" value="{{@blg}}">
-	<li>{{@blg}} 
+	<li>{{@blg['name']}}: {{@blg['value']}} 
 </F3:repeat>
 </ul>
 
-<a class="answer" href="{{@SR}}/show/{{@SESSION.cid}}/{{@SESSION.data['opts'][0]['node_link']}}/0">{{@SESSION.data['opts'][0]['link_text']}}</a>
+<a class="answer" href="{{@SR}}/show/{{@SESSION.cid}}/{{@SESSION.data['opts']['node_link']}}/0">{{@SESSION.data['opts']['link_text']}}</a>

@@ -66,6 +66,14 @@ function get_node_type($cid, $id)
 	return $tnode->ntype;
 }
 
+function get_node_id($cid, $id)
+{
+	$tnode = new Axon("node");
+	$tnode->load("cid='$cid' AND id='$id'");
+
+	return $tnode->nid;
+}
+
 function get_drug($did)
 {
 	$tdrug = new Axon('drugs');
@@ -198,6 +206,7 @@ function check_stamp($cid, $did=NULL, $dsid=NULL, $dbg=false)
 
 function get_dnid()
 {
+	/* see also: get_enid4result() */
 	$node = get_node();
 
 	$dnid = my_get($node, 'parent');
@@ -589,6 +598,36 @@ function zip($cid, $datas, $dbg=true)
 
 		$texam->options = serialize($opts);
 		$texam->save();
+	} elseif($datas['ntype'] == 'bmap') {
+		$dict = array("link_text" => $datas['link_text'],
+					  "node_link" => $datas['node_link'],
+					  "odul"      => $datas['odul'],
+					  "ceza"      => $datas['ceza']
+					 );
+		$nid = get_node_id(F3::get('SESSION.cid'), F3::get('SESSION.id'));
+		$fnm = sprintf("%06d.jpg", $nid);
+
+		if(F3::get("FILES.bmap_img.name") != "") {
+			$ffnm = F3::get('uploaddir') . $fnm; 
+			if(yukle2($ffnm, "bmap_img.tmp_name", true))
+				$img_nm = $fnm;
+			else
+				$img_nm = "body_map.jpg";
+		}
+		else 	//node:bmap:opts:bmap:img dekini kullan!
+			$img_nm = $fnm;
+
+		$dict['img'] = $img_nm;
+		$dict['map'] = htmlspecialchars(trim($datas['bmap_map']));
+
+		$dict['bmap'] = array();
+		$tmp = map2dict($dict['map']);
+		foreach($tmp as $i=>$m) {
+			$dict['bmap'][$i] = array("name"  => $m['name'],
+									  "value" => "null");
+		}
+	 	$datas['opts'] = $dict;
+		$datas['options'] = serialize($dict); 
 	} elseif($datas['ntype'] == 'immapr') {
 		$dict = array();
 		$dict['link_text'] = $datas['link_text'];
@@ -868,6 +907,24 @@ function get_tea_sel_exams($cid, $enid)
 	return $dict;
 }
 
+function get_stu_sel_bmap($cid, $bnid, $sbind)
+{
+	/* secilen bolgelerin (sbind: indis) degerlerini dondurur. 
+	 * - bolgeleri cek
+	 * - sbind olanlari filtrele 
+	 */
+	$node = get_node($cid, $bnid);
+
+	$dict = $node['opts']['bmap'];
+
+	$rdict = array();
+	foreach($sbind as $i=>$si) {
+		$rdict[$si] = $dict[$si];
+	}
+
+	return $rdict;
+}
+
 function get_exam_info($cid, $eid, $dbg=false)
 {
 	$dict = get_dps_id_helper($eid);
@@ -1042,6 +1099,27 @@ function get_immapr4ogrenci($arr)
 		      'w' => my_get($arr, 'w'),  'h' => my_get($arr, 'h'),
 		      'yorum' => my_get($arr, 'response'));
 
+	return $dict;
+}
+
+function map2dict($map, $dbg=false) 
+{
+	/* http://www.maschek.hu/imagemap/imgmap adresinde olusturulan kodu ('map')
+	 * alan ve $dict[id] = {name, coords,...} sozlugunu olusturur */
+	$html = str_get_html(htmlspecialchars_decode($map));
+
+	$dict = array();
+
+	foreach($html->find('area') as $i => $element) {
+		$dict[$i] = array("name" 	=> $element->alt,
+						  "coords" 	=> $element->coords,
+						  "shape" 	=> $element->shape,
+						  "href" 	=> ($element->href == "") ? "#":$element->href ,
+						  "target"	=> $element->target);
+	}
+
+	if($dbg)	print_pre($dict);
+	
 	return $dict;
 }
 ?>

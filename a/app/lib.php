@@ -2,6 +2,7 @@
 
 include 'init.php';
 include 'upload.php';
+include 'simple_html_dom.php';
 
 function render($template, $title='', $layout='layout') {
 	F3::set('page_title', $title);
