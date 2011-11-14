@@ -1,4 +1,4 @@
-function addNewNode(slid, cid, resp)
+function addNewNode(slid, cid, resp, id)
 {
 	var htmlSelect=document.getElementById(slid);
 
@@ -13,8 +13,8 @@ function addNewNode(slid, cid, resp)
 	// yenisini ekle
 	var selectBoxOption = document.createElement("option");
 	
-	selectBoxOption.value = "new-" + resp;
-	selectBoxOption.text  = "new-" + resp;
+	selectBoxOption.value = "new-" + resp + "-" + id;
+	selectBoxOption.text  = "new-" + resp + "-" + id;
 	selectBoxOption.selected = true;
 	htmlSelect.add(selectBoxOption, null);
 }

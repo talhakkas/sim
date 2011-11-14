@@ -1,20 +1,24 @@
 <?php
 	$dbg = false;
-
 	F3::set('SESSION.error', 'NULL');
 
 	params2session();
 
-	$node = get_node();
-	F3::set('SESSION.data', $node);
+	if(preg_match("/new-/", F3::get('SESSION.id'))) {
+		$tmp = preg_split("/-/", F3::get('SESSION.id'));
+		$stype = $tmp[1];
+		$parent = $tmp[2];
 
-	if($node['title'] == 'new') {
+		/* yeni bir dugum olustur/ilkle ve duzenlemeye yonlendir */
+		$id = create_new_node($cid, $stype, $parent);
 		$cid = F3::get('SESSION.cid');
-		$id  = F3::get('SESSION.id');
 
 		F3::reroute("/edit/$cid/$id");
 		return 1;
 	}
+
+	$node = get_node();
+	F3::set('SESSION.data', $node);
 
 	if($node['ntype'] == 'report') {
 		F3::reroute('/report');
