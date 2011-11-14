@@ -84,7 +84,8 @@ function addRow(tableName) {
 
 	btn.setAttribute('type', 'button');
 	btn.setAttribute('value', 'Yeni Düğüm');
-	btn.setAttribute('onclick', "javascript:addNewListItem('select" + nons + "', " + cid + ");");
+	//btn.setAttribute('onclick', "javascript:addNewListItem('select" + nons + "', " + cid + ");");
+	btn.setAttribute('onclick', "Boxy.ask('Düğüm türü hangisi olsun?', {'dal':'Normal', 'drug':'İlaç Seçim', 'exam':'Tahlil', 'bmap':'Vücut Haritası', 'immap':'Resim Haritası'}, function(r) { addNewNode('select" + nons + "', " + cid + ", r); }, {title:'Yeni Düğüm Ekleme'});");
 	cell22.appendChild(btn); 
 }
 

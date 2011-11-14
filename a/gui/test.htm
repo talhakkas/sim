@@ -1,0 +1,11 @@
+<script type="text/javascript" src="http://onehackoranother.com/projects/jquery/boxy/javascripts/jquery.boxy.js"></script> 
+<link rel="stylesheet" href="http://onehackoranother.com/projects/jquery/boxy/stylesheets/boxy.css" type="text/css" />
+
+<a href='#' onclick='Boxy.ask("Hani tür olsun?", {"dal":"Normal", "drug":"İlaç Seçim", "exam":"Tahlil", 
+					    "bmap":"Vücut Haritası", "immap":"Resim Haritası"}, 
+				function(r) { 
+					document.getElementById("secim").setAttribute("value", r);
+				}, 
+				{title:"Dal Türü Seçimi"});'>Dal türünü seçin</a> 
+
+<input type="text" name="secim" id="secim" value="">

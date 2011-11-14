@@ -61,6 +61,11 @@ function test()
 	test3();
 }
 
+function test_gui()
+{
+	render('test', 'GUI Test');
+}
+
 function clist() {
 	if (F3::get("SESSION.kop"))
 		return F3::call('clist.php');
@@ -136,6 +141,8 @@ F3::route("GET /cdelete/@cid", "cdelete.php");
 
 F3::route("GET /test", "test");
 	F3::route("POST /test", "test");
+
+F3::route("GET /test_gui", "test_gui");
 
 // ilac durumu
 F3::route("GET /drug/@did", "show_drug");
