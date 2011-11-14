@@ -893,7 +893,7 @@ function get_st_sel_exams($dbg=false)
 	 */
 	$cid = F3::get('SESSION.cid');
 	$id  = F3::get('SESSION.id');		// result node id
-	$enid = get_enid4result($cid, $id); // exam   node id
+	$enid = get_node_parent($cid, $id); // exam   node id
 
 	$csv = get_exams_csv($_POST);
 
