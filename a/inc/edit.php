@@ -36,16 +36,24 @@
 	if(F3::get('SESSION.data[ntype]') == 'result') {
 		$cid = F3::get('SESSION.cid');
 		$id  = F3::get('SESSION.id');
-		$enid = get_enid4result($cid, $id);
+		$enid = get_node_parent($cid, $id);
 
 		F3::set('SESSION.exams', get_tea_sel_exams($cid, $enid));
+	}
+
+	if(F3::get('SESSION.data[ntype]') == 'bmapr') {
+		$cid = F3::get('SESSION.cid');
+		$id  = F3::get('SESSION.id');
+		$bnid = get_node_parent($cid, $id);
+
+		F3::set('SESSION.bmap', get_tea_sel_bmap($cid, $bnid));
 	}
 
 	if(F3::get('SESSION.data[ntype]') == 'immapr') {
 		F3::set('SESSION.medya', get_immap_imgnm(F3::get('SESSION.cid')));
 	}
 
-	F3::set('SESSION.nofbs', count(F3::get('SESSION.data[opts]')));
+	//F3::set('SESSION.nofbs', count(F3::get('SESSION.data[opts]')));
 
 	render('node', 'Düzenle');
 ?>

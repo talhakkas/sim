@@ -1,7 +1,16 @@
-<ul>
-<F3:repeat group="{{@SESSION.smap}}" key="{{@gnl}}" value="{{@blg}}">
-	<li>{{@blg['name']}}: {{@blg['value']}} 
-</F3:repeat>
-</ul>
-
+  <F3:check if="{{@SESSION.error != 'NULL'}}">
+  <F3:true>
+  <font color="red">{{@SESSION.error}}</font>
+  </F3:true>
+  <F3:false>
+  	<table border="1">
+		<F3:repeat group="{{@SESSION.smap}}" key="{{@gnl}}" value="{{@blg}}">
+			<tr>
+				<td class="label">{{@blg['name']}}</td>
+				<td class="field"><a href="/a/upload/{{@blg['value']}}" rel="facebox"><img src="/a/upload/{{@blg['value']}}" width="50"></a></td>
+			</tr>
+		</F3:repeat>
+	</table>
+ </F3:false>
+ </F3:check>
 <a class="answer" href="{{@SR}}/show/{{@SESSION.cid}}/{{@SESSION.data['opts']['node_link']}}/0">{{@SESSION.data['opts']['link_text']}}</a>

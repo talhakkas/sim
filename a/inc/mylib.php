@@ -141,7 +141,7 @@ function get_nid4type($cid, $ntype)
 	return $tnode->id;
 }
 
-function get_enid4result($cid, $id)
+function get_node_parent($cid, $id)
 {
 	$tnode = new Axon("node");
 	$tnode->load("cid='$cid' AND id='$id'");
@@ -586,7 +586,7 @@ function zip($cid, $datas, $dbg=true)
 		// result:parent uzerinden exam:opts:exams i guncelle
 		$enid = $datas['parent'];
 		$texam = new Axon('node');
-		$texam->load("id='$enid'");
+		$texam->load("cid='$cid' AND id='$enid'");
 		$opts = unserialize($texam->options);
 
 		foreach($opts['exams'] as $eid=>$exam) {
@@ -628,6 +628,50 @@ function zip($cid, $datas, $dbg=true)
 		}
 	 	$datas['opts'] = $dict;
 		$datas['options'] = serialize($dict); 
+	} elseif($datas['ntype'] == 'bmapr') {
+		$dict = array("link_text" => $datas['link_text'],
+					  "node_link" => $datas['node_link'],
+					  "response"  => "bmap:opts:bmap e bakin",
+					  "odul"      => $datas['odul'],
+					  "ceza"      => $datas['ceza']
+					 );
+
+		$datas['opts'] = $dict;
+		$datas['options'] = serialize($dict);
+		
+		// once resimleri upload et!
+		$bmedia = array();
+
+		$sz = count(F3::get('FILES.bvalue.name'));
+	
+		for($i=0; $i<$sz; $i++) {
+			$nm = F3::get("FILES.bvalue.name[$i]");
+			$bid = F3::get("POST.bid[$i]");
+	
+				if($nm != "") {
+					$fnm = "_b_". sprintf("%06d", $bid) . ".jpg";
+					$ffnm = F3::get('uploaddir') . $fnm;
+					if(yukle2($ffnm, "bvalue.tmp_name[$i]", true))
+						$bmedia[$bid] = $fnm;
+					else 
+						$bmedia[$bid] = "default.jpg";
+				}
+		}
+		// bmapr:parent uzerinden bmap:opts:bmap i guncelle
+		$bnid = $datas['parent'];
+		$tbmap = new Axon('node');
+		$tbmap->load("cid='$cid' AND id='$bnid'");
+		$opts = unserialize($tbmap->options);
+
+		foreach($opts['bmap'] as $bid=>$val) {
+			$ind = array_search($bid, $datas['bid']);
+
+			if(isset($bmedia[$bid]))
+				$opts['bmap'][$bid]['value'] = $bmedia[$bid];
+		}
+
+		$tbmap->options = serialize($opts);
+		$tbmap->save();
 	} elseif($datas['ntype'] == 'immapr') {
 		$dict = array();
 		$dict['link_text'] = $datas['link_text'];
@@ -903,6 +947,15 @@ function get_tea_sel_exams($cid, $enid)
 	$node = get_node($cid, $enid);
 
 	$dict = $node['opts']['exams'];
+	
+	return $dict;
+}
+
+function get_tea_sel_bmap($cid, $bnid) 
+{
+	$node = get_node($cid, $bnid);
+
+	$dict = $node['opts']['bmap'];
 	
 	return $dict;
 }
