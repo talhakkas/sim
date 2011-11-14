@@ -7,7 +7,16 @@
 		<F3:repeat group="{{@SESSION.smap}}" key="{{@gnl}}" value="{{@blg}}">
 			<tr>
 				<td class="label">{{@blg['name']}}</td>
-				<td class="field"><a href="/{{@SR}}/{{@uploaddir}}/{{@blg['value']}}" rel="facebox"><img src="/{{@SR}}/{{@uploaddir}}/{{@blg['value']}}" width="50"></a></td>
+				<td class="field">
+					<F3:check if="{{@blg['value'] == 'null'}}">
+					 <F3:true>
+					 	<font color="red">Herhangi bir girdi yok!</font>
+					 </F3:true>
+					 <F3:false>
+					  	<a href="{{@SR}}/{{@uploaddir}}{{@blg['value']}}" rel="facebox"><img src="{{@SR}}/{{@uploaddir}}{{@blg['value']}}" width="50"></a>
+					 </F3:false>
+					</F3:check>
+				</td>
 			</tr>
 		</F3:repeat>
 	</table>
