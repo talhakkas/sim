@@ -56,6 +56,9 @@ function test4()
 
 function test()
 {
+	F3::set('FOO', "XXX");
+	$str = F3::call('../ajax/create_node.php');
+return;
 	test2();
 	echo "<hr>";
 	test3();
