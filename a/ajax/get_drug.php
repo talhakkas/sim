@@ -1,5 +1,5 @@
 <?php
-require_once  '../../a/app/depo.php';
+require_once  '../../a/inc/depo.php';
 
 function myserialize($arr) {
 	$str = '[';

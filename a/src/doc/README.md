@@ -1,1 +1,0 @@
-## Sistem Çalışmalarını Belgeleme
