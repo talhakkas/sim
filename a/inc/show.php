@@ -28,46 +28,38 @@
 
 	takip_listesine_ekle();
 
-	if($node['ntype'] == 'dose') {
-		$cid = F3::get('SESSION.cid');
-		$id  = F3::get('SESSION.id');
-
-		$drugs = get_tea_sel_drugs($cid, get_node_parent($cid, $id));
-		F3::set('SESSION.drugs', $drugs);
-
-		F3::set('SESSION.AYOL', array("Damar", "Kas"));
-	}
-
-	if($node['ntype'] == 'exam')
-		F3::set('tetkikmerkezi', multi());
-	if($node['ntype'] == 'result') {
-		F3::set('SESSION.results', get_st_sel_exams());
-	}
-
-	if($node['ntype'] == 'bmap') {
-		$dict = map2dict($node['opts']['map']);
-		
-		if($dbg)	print_pre($dict);
-
-		F3::set('SESSION.map', $dict);
-		F3::set('SESSION.img', $node['opts']['img']);
-	}
-
-	if($node['ntype'] == 'bmapr') {
-		if(!isset($_POST['selected']))
-			F3::set('SESSION.error', 'Herhangi bir bölge seçilmemiş');
-		else {
-			$dict = get_stu_sel_bmap($_POST);
+	switch($node['ntype']) {
+		case 'dose':
+			F3::set('SESSION.drugs', get_tea_sel_drugs($_POST['cid'], $_POST['id']));
+			F3::set('SESSION.AYOL', array("Damar", "Kas"));
+			break;
+		case 'exam':
+			F3::set('tetkikmerkezi', multi());
+			break;
+		case 'result':
+			F3::set('SESSION.results', get_stu_sel_exams($_POST));
+			break;
+		case 'bmap':
+			$dict = map2dict($node['opts']['map']);
 			if($dbg)	print_pre($dict);
 
-			F3::set('SESSION.smap', $dict);
-		}
-	}
+			F3::set('SESSION.map', $dict);
+			F3::set('SESSION.img', $node['opts']['img']);
+			break;
+		case 'bmapr':
+			if(!isset($_POST['selected']))
+				F3::set('SESSION.error', 'Herhangi bir bölge seçilmemiş');
+			else {
+				$dict = get_stu_sel_bmap($_POST);
+				if($dbg)	print_pre($dict);
 
-	if($node['ntype'] == 'immapr') {
-		F3::set('SESSION.ogrenci', get_stu_sel_immap($_POST));
-		
-		F3::set('SESSION.hoca', get_tea_sel_immap(F3::get('SESSION.cid')));
+				F3::set('SESSION.smap', $dict);
+			}
+			break;
+		case 'immapr':
+			F3::set('SESSION.ogrenci', get_stu_sel_immap($_POST));
+			F3::set('SESSION.hoca',    get_tea_sel_immap($_POST['cid'], $_POST['id']));
+			break;
 	}
 
 render('show', 'Olgu');

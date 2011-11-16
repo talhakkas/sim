@@ -956,47 +956,6 @@ function get_exams($arr) // !SIL
 	return $dict;
 }
 
-function get_st_sel_exams($dbg=false)
-{
-	/* ogrencinin sectigi tahlilleri goster 
-	 * - secilen tahlil hoca tarafindan da secildiyse onu
-	 *    + node:exam'den sorgulanacak
-	 * - degilse ontanimli veriyi yukle
-	 *    + sql:sim:survey tablosundan sorgulanacak 
-	 *
-	 * $_POST üzerinden secimler soylenecek.
-	 */
-	$cid = F3::get('SESSION.cid');
-	$id  = F3::get('SESSION.id');		// result node id
-	$enid = get_node_parent($cid, $id); // exam   node id
-
-	$csv = get_exams_csv($_POST);
-
-	if($csv == "") {
-		F3::set('SESSION.error', 'Herhangi bir tahlil seçilmemiş');
-		return;
-	}
-	
-	$ss_exams = preg_split('/,/', $csv);
-	if($dbg)	print_pre($ss_exams, "ogr: sectigi tahliller");
-	
-	$ts_exams = get_tea_sel_exams($cid, $enid);
-	if($dbg)	print_pre($ts_exams, "hoca: sectigi tahliller");
-
-	$results = array();
-
-	foreach($ss_exams as $i=>$eid) {
-		if(array_key_exists($eid, $ts_exams))
-			$results[$eid] = $ts_exams[$eid];
-		else {
-			$results[$eid] = get_exam_info($cid, $eid);
-		}
-	}
-	if($dbg) 	print_pre($results, "results");
-
-	return $results;
-}
-
 function get_tea_sel_exams($cid, $enid) 
 {
 	$node = get_node($cid, $enid);
@@ -1069,24 +1028,40 @@ function get_stu_sel_dose($arr)
 
 function get_stu_sel_exams($arr)
 {
-	// FIXME:node:exam de varsa o resmi, yoksa default resmi goster
+	/* ogrencinin sectigi tahlilleri goster 
+	 * - secilen tahlil hoca tarafindan da secildiyse onu
+	 *    + node:exam'den sorgulanacak
+	 * - degilse ontanimli veriyi yukle
+	 *    + sql:sim:survey tablosundan sorgulanacak 
+	 */
 	$cid = $arr['cid'];
+	$id  = $arr['id'];
 
-	$dict = array();
-
-	$csv = get_exams_csv($arr);
-	$list = preg_split('/,/', $csv);
+	$csv = get_exams_csv($_POST);
 
 	if($csv == "") {
 		F3::set('SESSION.error', 'Herhangi bir tahlil seçilmemiş');
-		return $arr;
+		return;
 	}
+	
+	$ss_exams = preg_split('/,/', $csv);
+	if($dbg)	print_pre($ss_exams, "ogr: sectigi tahliller");
+	
+	$ts_exams = get_tea_sel_exams($cid, $id);
+	if($dbg)	print_pre($ts_exams, "hoca: sectigi tahliller");
 
-	foreach($list as $i=>$eid) {
-		$dict[$eid] = get_exam_info($cid, $eid);
+	$results = array();
+
+	foreach($ss_exams as $i=>$eid) {
+		if(array_key_exists($eid, $ts_exams))
+			$results[$eid] = $ts_exams[$eid];
+		else {
+			$results[$eid] = get_exam_info($cid, $eid);
+		}
 	}
+	if($dbg) 	print_pre($results, "results");
 
-	return $dict;
+	return $results;
 }
 
 
