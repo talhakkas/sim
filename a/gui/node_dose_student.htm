@@ -1,5 +1,6 @@
 <div align="middle">
   <form name="frm" action="{{@SR}}/show/{{@SESSION.cid}}/{{@SESSION.data['opts']['node_link']}}/0" method="post">
+    	<input type="hidden" name="ntype" value="{{@SESSION.data['ntype']}}">
     <table id="hor-minimalist-b" class="doz">
       <thead>
         <tr>
@@ -13,6 +14,7 @@
         <tr>
           <td>
             <a href="/a/drug/{{@did}}" rel="facebox">{{@drug['name']}}</a>
+	    <input type="hidden" name="did[]" value="{{@did}}">
           </td>
           <td>
             <input type="range" name="doz[]" min="{{@drug['dmn']}}" max="{{@drug['dmx']}}" value=""/>

@@ -216,12 +216,12 @@ function get_dnid()
 	return $dnid;
 }
 
-function get_selected_drugs()
+function get_tea_sel_drugs($cid=null, $id=null)
 {
-	$dnid = get_dnid();
+	$cid = ($cid == null) ? F3::get('SESSION.cid') : $cid;
+	$id  = ($id  == null) ? F3::get('SESSION.id')  : $id;
 
-	$cid = F3::get('SESSION.cid');
-	$node = get_node($cid, $dnid);
+	$node = get_node($cid, $id);
 
 	return $node['opts']['drugs'];
 }
@@ -282,8 +282,10 @@ function takip_listesine_ekle() {
 
 	$ttet = new Axon("tet");
 	$ttet->load("id=$mid");
+
 	$cid = $ttet->cid;
 	$id  = $ttet->nid;
+	$opt = F3::get('SESSION.opt');
 
 	$ntype = get_node_type($cid, $id);
 
@@ -307,11 +309,10 @@ function takip_listesine_ekle() {
 	}
 	
 	$ttet->soylenen = serialize($dict);
-	//$ttet->beklenen = serialize(get_tet_beklenen_yanit($cid, $id);
+	//$ttet->beklenen = serialize(get_tet_beklenen_yanit($cid, $id, $opt));
 
 	$ttet->zaman = microtime(true) - F3::get('SESSION.stime');
 
-	$opt = F3::get('SESSION.opt');
 	$ttet->oid = $opt;
 
 	$ttet->puan = get_puan($cid, $id, $opt);
@@ -671,12 +672,11 @@ function zip($cid, $datas, $dbg=true)
 		$datas['opts'] = $dict;
 		$datas['options'] = serialize($dict);
 	} else {
-
 		$sz = sizeof($datas['link_text']);
 		
 		$chkR = array_pad(array(), $sz, 'no');
-		$sz_chk = sizeof($datas['chkResponse']);
-		if($sz_chk > 0) {
+		if(isset($datas['chkResponse'])) {
+			$sz_chk = sizeof($datas['chkResponse']);
 			$arr = $datas['chkResponse'];
 
 			for($i=0; $i < $sz_chk; $i++) {
@@ -1038,10 +1038,39 @@ function get_tea_sel_exams($cid, $enid)
 
 function get_tea_sel_bmap($cid, $bnid) 
 {
+	/* deger yuklenmemis (null) olanlari filtrele */
 	$node = get_node($cid, $bnid);
 
 	$dict = $node['opts']['bmap'];
 	
+	foreach($dict as $i=>$d) {
+		if($d['value'] == 'null')
+			unset($dict[$i]);
+	}
+	
+	return $dict;
+}
+
+function get_tea_sel_dal($cid, $id, $opt)
+{
+	/* hocanin secilen dal icin bekledigi yanit */
+	$node = get_node($cid, $id);
+	$t = $node['opts'][$opt];
+
+	$dict = $t['chkResponse'] == 'yes' ? $t['response'] : "Boş";
+
+	return $dict;
+}
+
+function get_stu_sel_dose($arr)
+{
+	/* did - doz - ayol */
+	$dict = array();
+
+	foreach($arr['did'] as $i=>$did) {
+		$dict[$did] = array("doz"=>$arr['doz'][$i], "ayol"=>$arr['ayol'][$i]);
+	}
+
 	return $dict;
 }
 
@@ -1260,6 +1289,91 @@ function map2dict($map, $dbg=false)
 
 	if($dbg)	print_pre($dict);
 	
+	return $dict;
+}
+
+function get_tet_beklenen_yanit($cid, $id, $opt=null, $dbg=true)
+{
+	/* cid,id,opt yardimiyla dugum turu de dikkate alinarak hocanin
+	 * girdigi/beklenen degeri sozluk yardimiyla dondur.
+	 */
+	$dict = array();
+
+	if($dbg) {
+		$node = get_node($cid, $id);
+		print_pre($node, 'NODE');
+	}
+	
+	$ntype = get_node_type($cid, $id);
+	$dict['ntype'] = $ntype;
+
+	switch($ntype) {
+		case 'dal':
+			$dict['dal']   = get_tea_sel_dal($cid, $id, $opt);
+			break;
+		case 'drug':
+			$dict['drugs'] = get_tea_sel_drugs($cid, $id);
+			break;
+		case 'dose':
+			$dict['drugs'] = get_tea_sel_drugs($cid, get_node_parent($cid, $id));
+			break;
+		case 'exam':
+			$dict['exams'] = get_tea_sel_exams($cid, $id);
+			break;
+		case 'result':
+			$dict['exams'] = get_tea_sel_exams($cid, get_node_parent($cid, $id));
+			break;
+		case 'bmap':
+			$dict['bmap']  = get_tea_sel_bmap($cid, $id);
+			break;
+		case 'bmapr':
+			$dict['bmap']  = get_tea_sel_bmap($cid, get_node_parent($cid, $id));
+			break;
+		case 'immap':
+			break;
+		case 'immapr':
+			break;
+	}
+
+	return $dict;
+}
+
+function get_tet_soylenen_yanit($arr, $dbg=true)
+{
+	/* arr(=POST) ile ogrencinin verdigi yanit dict olarak dondurulur
+	 */
+	$ntype = $arr['ntype'];
+
+	$dict = array();
+
+	switch($ntype) {
+		case 'dal':
+			$dict['dal']   = $arr['response'];
+			break;
+		case 'drug':
+			$dict['drugs'] = $arr['drugs'];
+			break;
+		case 'dose':
+			$dict['drugs'] = get_stu_sel_dose($arr);
+			break;
+		case 'exam':
+			$dict['exams'] = get_tea_sel_exams($cid, $id);
+			break;
+		case 'result':
+			$dict['exams'] = get_tea_sel_exams($cid, get_node_parent($cid, $id));
+			break;
+		case 'bmap':
+			$dict['bmap']  = get_tea_sel_bmap($cid, $id);
+			break;
+		case 'bmapr':
+			$dict['bmap']  = get_tea_sel_bmap($cid, get_node_parent($cid, $id));
+			break;
+		case 'immap':
+			break;
+		case 'immapr':
+			break;
+	}
+
 	return $dict;
 }
 ?>

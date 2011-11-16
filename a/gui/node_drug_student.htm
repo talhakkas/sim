@@ -4,6 +4,7 @@
 
 <div align="middle">
   <form name="frm" action="{{@SR}}/show/{{@SESSION.cid}}/{{@SESSION.data['opts']['node_link']}}/0" method="post">
+  	<input type="hidden" name="ntype" value="{{@SESSION.data['ntype']}}">
     <div class="tokeninput">
       <p class="answer left">İlaç seçiminizi buradan yapabilirsiniz</p>
       <label class="label">

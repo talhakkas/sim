@@ -20,6 +20,10 @@
 	$node = get_node();
 	F3::set('SESSION.data', $node);
 
+print_pre($_POST, 'POST');
+print_pre(get_tet_soylenen_yanit($_POST), 'soylenen');
+return;
+
 	if($node['ntype'] == 'report') {
 		F3::reroute('/report');
 		return 1;
@@ -28,7 +32,10 @@
 	takip_listesine_ekle();
 
 	if($node['ntype'] == 'dose') {
-		$drugs = get_selected_drugs();
+		$cid = F3::get('SESSION.cid');
+		$id  = F3::get('SESSION.id');
+
+		$drugs = get_tea_sel_drugs($cid, get_node_parent($cid, $id));
 		F3::set('SESSION.drugs', $drugs);
 
 		F3::set('SESSION.AYOL', array("Damar", "Kas"));

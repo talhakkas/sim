@@ -5,6 +5,11 @@ require_once './app/lib.php';
 require_once './inc/mylib.php';
 require_once './inc/tetkik.php';
 
+$nodes = array( 1=>"dal",  17=>"drug",   26=>"dose",
+	       35=>"exam", 36=>"result",
+	       37=>"bmap", 38=>"bmapr",
+	       21=>"immap",23=>"immapr");
+
 function test2()
 {
 	print_pre(get_node(1, 17), "drug");

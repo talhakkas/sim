@@ -14,7 +14,7 @@ function ini_config($file)
 		$part = preg_split('/[\. | \=]/', $row);
 	
 		if(count($part) < 2) {	
-			error_log("Format: ozellik=deger olmaliydi. $row");
+			// error_log("Format: ozellik=deger olmaliydi. $row");
 			continue;
 		}
 

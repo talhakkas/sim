@@ -2,7 +2,8 @@
 
 <div align="middle">
   <form name="frm" action="{{@SR}}/show/{{@SESSION.cid}}/{{@SESSION.data['opts']['node_link']}}/0" method="post">
-    <input type="hidden" name="cid" value="{{@SESSION.cid}}">
+  	<input type="hidden" name="ntype" value="{{@SESSION.data['ntype']}}">
+    	<input type="hidden" name="cid" value="{{@SESSION.cid}}">
 
     <div id="multi-tabs">
       {{@tetkikmerkezi}}

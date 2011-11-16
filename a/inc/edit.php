@@ -21,7 +21,10 @@
 	if(F3::get('SESSION.data[ntype]') == 'dose') {
 		if($dbg)	print_pre($node, "node");
 
-		$drugs = get_selected_drugs();
+		$cid = F3::get('SESSION.cid');
+		$id  = F3::get('SESSION.id');
+
+		$drugs = get_tea_sel_drugs($cid, get_node_parent($cid, $id));
 		F3::set('SESSION.drugs', $drugs);
 		if($dbg)	print_pre($drugs);
 
