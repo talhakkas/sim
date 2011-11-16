@@ -4,13 +4,10 @@ include 'init.php';
 include 'upload.php';
 include 'simple_html_dom.php';
 
-function render($template, $title='', $layout='layout') {
+function render($template, $title='') {
 	F3::set('page_title', $title);
 	F3::set('template', $template);
-	if (F3::get('SR') == '/a')
-		echo Template::serve("layout/$layout.htm");
-	else
-		echo Template::serve("$layout.htm");
+	echo Template::serve("layout/layout.htm");
 }
 
 function logout() {
