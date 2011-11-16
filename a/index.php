@@ -59,20 +59,20 @@ function show_drug() {
 }
 
 
-
-F3::set('uploaddir', 'upload/');
-
+// HOME PAGES
 F3::route("GET /", 		'Home->home');
 F3::route("GET /people", 	'Home->people');
 F3::route("GET /work", 		'Home->work');
 F3::route("GET /about", 	'Home->about');
 F3::route("GET /contact", 	'Home->contact');
-F3::route("POST /login",   	'login.php');
 
-F3::route("GET /@page", 'Home->home');
+// ACCOUNT
+F3::route("POST /login",      	'Account->auth');   // login action
+F3::route('GET  /logout',     	'Account->logout'); // logout action
+// F3::route('GET  /forgot',    'Account->forgot'); // forget password // henüz hazır değil
+F3::route("GET  /@page", 	'Account->page_reload'); 	// Geçici Sistem Açıldığında Silinecek
 
 
-F3::route("GET /logout*",  'logout');
 
 F3::route("GET /show/@cid/@id/@opt", 'show.php');
 	F3::route("POST /show/@cid/@id/@opt", 'show.php');
