@@ -840,7 +840,14 @@ function create_new_node($cid, $ntype, $parent=null, $id=null)
 	$table->options = serialize($dict);
 	$table->save();
 	
-	// TODO: parent'in (olusturulmussa) node_link ini ayarla
+	/* TODO: parent'in (olusturulmussa) node_link ini ayarla
+	 * "new-type-nid-opt" <- bu iyi degil!
+	 */
+	if($parent != null && $id != $parent) {
+		$tpar = new Axon("node");
+		$tpar->load("cid='$cid' AND id='$parent'");
+		
+	}
 
 	return $table->id;
 }
