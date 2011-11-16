@@ -1,6 +1,10 @@
 <?php
-echo F3::get('FOO');
-return;
+	require_once  '../lib/base.php';
+	require_once  '../app/depo.php';
+	require_once  '../inc/mylib.php';
+
+	F3::set('DB', new DB("mysql:host=localhost;port=3306;dbname=$db_name", $db_user, $db_pass));
+
 	// params to session
 	$cid 	= $_GET['cid'];
 	$ntype 	= $_GET['ntype'];

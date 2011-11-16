@@ -1,5 +1,7 @@
-function addNewNode(slid, cid, resp, id)
+function addNewNode(slid, cid, ntype, pid, id)
 {
+	id = typeof(id) != 'undefined' ? id : null;
+
 	if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
 	  xmlhttp = new XMLHttpRequest();
 	} else {// code for IE6, IE5
@@ -14,13 +16,16 @@ function addNewNode(slid, cid, resp, id)
 		var selectBoxOption = document.createElement("option");
 		
 		selectBoxOption.value = parseInt(xmlhttp.responseText);
-		selectBoxOption.text  = "new-" + resp + "-" + id;
+		selectBoxOption.text  = "new-" + ntype + "-" + pid;
 		selectBoxOption.selected = true;
 		htmlSelect.add(selectBoxOption, null);
 	  }
 	}
 
-	xmlhttp.open("GET","/a/ajax/create_node.php?cid="+cid+"&",true);
+	if(id)
+		xmlhttp.open("GET","/a/ajax/create_node.php?cid="+cid+"&ntype="+ntype+"&parent="+pid+"&id="+id,true);
+	else
+		xmlhttp.open("GET","/a/ajax/create_node.php?cid="+cid+"&ntype="+ntype+"&parent="+pid,true);
 	xmlhttp.send();
 
 	return true;
@@ -51,7 +56,7 @@ function addNewListItem(slid, cid){
 	return true;
 }
 
-function addNewNode_old(slid, cid, resp, id)
+function addNewNode_old(slid, cid, ntype, pid)
 {
 	var htmlSelect=document.getElementById(slid);
 
@@ -66,8 +71,8 @@ function addNewNode_old(slid, cid, resp, id)
 	// yenisini ekle
 	var selectBoxOption = document.createElement("option");
 	
-	selectBoxOption.value = "new-" + resp + "-" + id;
-	selectBoxOption.text  = "new-" + resp + "-" + id;
+	selectBoxOption.value = "new-" + ntype + "-" + pid;
+	selectBoxOption.text  = "new-" + ntype + "-" + pid;
 	selectBoxOption.selected = true;
 	htmlSelect.add(selectBoxOption, null);
 }

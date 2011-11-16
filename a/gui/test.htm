@@ -9,3 +9,14 @@
 				{title:"Dal Türü Seçimi"});'>Dal türünü seçin</a> 
 
 <input type="text" name="secim" id="secim" value="">
+
+<hr>
+<script type="text/javascript" src="/public/js/myselect.js"></script>
+<select name="node_link" id="select1">
+</select>
+
+<input name="btnAddItem" type="button" id="btnAddItem" class="small button" value="Yeni Düğüm"
+onclick='Boxy.ask("Düğüm türü hangisi olsun?", {"dal":"Normal", "drug":"İlaç Seçim", 
+	  "exam":"Tahlil", "bmap":"Vücut Haritası", "immap":"Resim Haritası"}, 
+	  function(r) { addNewNode("select1", {{@SESSION.cid}}, r, {{@SESSION.id}}); }, 
+	  {title:"Yeni Düğüm Ekleme"});' />

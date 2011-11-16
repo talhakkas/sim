@@ -7,36 +7,13 @@ require_once './inc/tetkik.php';
 
 function test2()
 {
-	F3::set('SESSION.cid', 1);
-	F3::set('SESSION.id',  21);
+	print_pre(get_node(1, 37), "bmap");
+	print_pre(get_node(1, 38), "bmapr");
 
-	$node = get_node();
+	echo "<hr>";
 
-	print_pre($node, "exam");
-
-	F3::set('SESSION.cid', 1);
-	F3::set('SESSION.id',  21);
-
-	$node = get_node();
-
-	print_pre($node, "result");
-}
-
-function test3()
-{
-	F3::set('SESSION.cid', 1);
-	F3::set('SESSION.id',  37);
-
-	$node = get_node();
-
-	print_pre($node, "bmap");
-
-	F3::set('SESSION.cid', 1);
-	F3::set('SESSION.id',  38);
-
-	$node = get_node();
-
-	print_pre($node, "bmapr");
+	print_pre(get_node(2, 55), "bmap");
+	print_pre(get_node(2, 56), "bmapr");
 }
 
 function test4()
@@ -56,12 +33,7 @@ function test4()
 
 function test()
 {
-	F3::set('FOO', "XXX");
-	$str = F3::call('../ajax/create_node.php');
-return;
 	test2();
-	echo "<hr>";
-	test3();
 }
 
 function test_gui()

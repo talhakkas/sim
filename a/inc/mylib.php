@@ -422,26 +422,10 @@ function nodeList($cid) {
 
 	$sz = count($list);
 	if($sz == 0) { // $cid icin ilk kayit ise bir tane baslangic dugumu olustur
-		$table = new Axon("node");
-		$table->nid = NULL;
-		$table->cid = $cid;
-		$table->id  = 1;
-		$table->title = "new"; $table->media    = "";
-		$table->content= "";   $table->question = "";
-		
-		$dict = array(0=>array('link_text'=>'null', 'response'=>'null'));
-			      
-		$table->options = serialize($dict); 
-
-		$table->type     = "dal";
-		$table->parent = 1;    $table->isOnset  = 1;
-		$table->isWrong = 0;
-		$table->save();
-
-		node_init($cid);
+		create_new_node($cid, "dal", null, 1);
 		
 		$table = new Axon("node");
-		$list = $table->afind("id > 0 AND cid='$cid'", "id asc");
+		$list = $table->afind("id AND cid='$cid'", "id asc");
 	}
 
 	$nodes = array();
@@ -770,7 +754,7 @@ function create_new_node($cid, $ntype, $parent=null, $id=null)
 	$table->media = "";		$table->content= "";	$table->question = "";
 	$table->parent = $parent; 	$table->isOnset = null;	$table->isWrong = null;
 	
-	switch($stype) {
+	switch($ntype) {
 		case "dal":
 			$dict = array(0 => array("link_text"  => "Sonraki aşama", 
 						 "node_link"  => $id,
@@ -812,6 +796,8 @@ function create_new_node($cid, $ntype, $parent=null, $id=null)
 			 	      "node_link"  => create_new_node($cid, "bmapr", $id, $id+1),
 			 	      "odul"       => "", 
 			 	      "ceza"       => "",
+					  "img"		  => "",
+					  "map"		  => "",	
 				      "bmap"      => array());
 			break;
 		case "bmapr":
@@ -1256,9 +1242,11 @@ function map2dict($map, $dbg=false)
 {
 	/* http://www.maschek.hu/imagemap/imgmap adresinde olusturulan kodu ('map')
 	 * alan ve $dict[id] = {name, coords,...} sozlugunu olusturur */
-	$html = str_get_html(htmlspecialchars_decode($map));
-
 	$dict = array();
+
+	if($map == "")	return $dict;
+
+	$html = str_get_html(htmlspecialchars_decode($map));
 
 	foreach($html->find('area') as $i => $element) {
 		$dict[$i] = array("name" 	=> $element->alt,
