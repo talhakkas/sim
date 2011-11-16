@@ -77,6 +77,7 @@
 #rounded-corner thead th {min-width:90px;}
 #rounded-corner th {padding: 8px;font-weight: normal;font-size: 13px;color: #039;background: #b9c9fe;}
 #rounded-corner td {padding: 8px;background: #e8edff;border-top: 1px solid #fff;color: #669;}
+.sag {text-align:right}
 #rounded-corner tfoot td.rounded-foot-left {background: #e8edff left bottom no-repeat;}
 #rounded-corner tfoot td.rounded-foot-right {background: #e8edff right bottom no-repeat;}
 #rounded-corner tbody tr:hover td {background: #d0dafd;}

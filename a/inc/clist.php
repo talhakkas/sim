@@ -12,5 +12,5 @@
 
 	F3::set('SESSION.cdata', $data);
 
-	render('clist', 'Case Lists');
+	render('clist', 'Olgu Listesi');
 ?>

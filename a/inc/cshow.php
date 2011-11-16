@@ -14,5 +14,5 @@
 
 	F3::set('SESSION.cdata', $cdata);
     
-	render('cshow', 'Case Details');
+	render('cshow', 'Olgu Ayrıntıları');
 ?>

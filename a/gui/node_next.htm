@@ -18,7 +18,7 @@
     <br /><br />
     <input name="btnAddItem" type="button" id="btnAddItem" class="small button" value="Yeni Düğüm"
     	onclick='Boxy.ask("Düğüm türü hangisi olsun?", {"dal":"Normal", "drug":"İlaç Seçim", 
-			  "exam":"Tahlil", "bmap":"Vücut Haritası", "immap":"Resim Haritası"}, 
+			  "exam":"Tahlil", "bmap":"Vücut Haritası", "immap":"Resim Haritası", "report":"Rapor"}, 
 			  function(r) { addNewNode("select1", {{@SESSION.cid}}, r, {{@SESSION.id}}); }, 
   			  {title:"Yeni Düğüm Ekleme"});' />
   </td>

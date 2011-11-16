@@ -285,8 +285,6 @@ function takip_listesine_ekle() {
 	$cid = $ttet->cid;
 	$id  = $ttet->nid;
 
-	//$dict['beklenen_yanit'] = my_get($_POST, 'beklenen_yanit');
-
 	$ntype = get_node_type($cid, $id);
 
 	if($ntype == 'drug') {
@@ -309,6 +307,8 @@ function takip_listesine_ekle() {
 	}
 	
 	$ttet->soylenen = serialize($dict);
+	//$ttet->beklenen = serialize(get_tet_beklenen_yanit($cid, $id);
+
 	$ttet->zaman = microtime(true) - F3::get('SESSION.stime');
 
 	$opt = F3::get('SESSION.opt');
@@ -754,6 +754,8 @@ function create_new_node($cid, $ntype, $parent=null, $id=null)
 	$table->media = "";		$table->content= "";	$table->question = "";
 	$table->parent = $parent; 	$table->isOnset = null;	$table->isWrong = null;
 	
+	$dict = array();
+
 	switch($ntype) {
 		case "dal":
 			$dict = array(0 => array("link_text"  => "Sonraki aşama", 

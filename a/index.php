@@ -7,8 +7,8 @@ require_once './inc/tetkik.php';
 
 function test2()
 {
-	print_pre(get_node(1, 37), "bmap");
-	print_pre(get_node(1, 38), "bmapr");
+	print_pre(get_node(1, 17), "drug");
+	print_pre(get_node(1, 26), "dose");
 
 	echo "<hr>";
 

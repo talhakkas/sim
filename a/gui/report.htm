@@ -4,18 +4,18 @@
   <thead>
     <tr>
       <tr>
-        <th scope="col">Zaman (sn)</th>
+        <th scope="col" class="sag">Zaman (sn)</th>
         <th scope="col">Başlık</th>
         <th scope="col">Beklenen</th>
         <th scope="col">Söylenen</th>
-        <th scope="col">HPuan/oca</th>
+        <th scope="col">Puan/Hoca</th>
       </tr>
     </tr>
   </thead>
   <tbody>
     <F3:repeat group="{{@SESSION.tdata}}" key="{{@gnl}}" value="{{@blg}}" counter="{{@ctr}}">
     <tr>
-      <td>{{round(@blg['zaman'], 2)}}</td>
+      <td class="sag">{{sprintf("%.02f", @blg['zaman'])}}</td>
       <td>{{@blg['title']}}</td>
       <td>{{@blg['beklenen']}}</td>
       <td>{{@blg['soylenen']}}</td>

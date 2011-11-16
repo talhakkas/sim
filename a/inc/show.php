@@ -25,7 +25,7 @@
 		return 1;
 	}
 
-	// takip_listesine_ekle();
+	takip_listesine_ekle();
 
 	if($node['ntype'] == 'dose') {
 		$drugs = get_selected_drugs();
