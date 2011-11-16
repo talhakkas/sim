@@ -3,6 +3,8 @@
 	F3::set('SESSION.error', 'NULL');
 
 	params2session();
+	
+	$cid = F3::get('SESSION.cid');
 
 	if(preg_match("/new-/", F3::get('SESSION.id'))) {
 		$tmp = preg_split("/-/", F3::get('SESSION.id'));
@@ -11,7 +13,6 @@
 
 		/* yeni bir dugum olustur/ilkle ve duzenlemeye yonlendir */
 		$id = create_new_node($cid, $stype, $parent);
-		$cid = F3::get('SESSION.cid');
 
 		F3::reroute("/edit/$cid/$id");
 		return 1;
@@ -23,7 +24,6 @@
 print_pre($_POST, 'POST');
 print_pre(get_tet_soylenen_yanit($_POST), 'soylenen');
 return;
-
 	if($node['ntype'] == 'report') {
 		F3::reroute('/report');
 		return 1;
@@ -57,14 +57,10 @@ return;
 	}
 
 	if($node['ntype'] == 'bmapr') {
-		$cid = F3::get('SESSION.cid');
-		$bnid = $node['parent'];
-		
 		if(!isset($_POST['selected']))
 			F3::set('SESSION.error', 'Herhangi bir bölge seçilmemiş');
 		else {
-			$sbind = preg_split('/,/', my_get($_POST, 'selected'));
-			$dict = get_stu_sel_bmap($cid, $bnid, $sbind);
+			$dict = get_stu_sel_bmap($_POST);
 			if($dbg)	print_pre($dict);
 
 			F3::set('SESSION.smap', $dict);
@@ -72,9 +68,9 @@ return;
 	}
 
 	if($node['ntype'] == 'immapr') {
-		F3::set('SESSION.ogrenci', get_immapr4ogrenci($_POST));
+		F3::set('SESSION.ogrenci', get_stu_sel_immap($_POST));
 		
-		F3::set('SESSION.hoca', get_immapr4hoca(F3::get('SESSION.cid')));
+		F3::set('SESSION.hoca', get_tea_sel_immap(F3::get('SESSION.cid')));
 	}
 
 render('show', 'Olgu');

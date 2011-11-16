@@ -216,16 +216,6 @@ function get_dnid()
 	return $dnid;
 }
 
-function get_tea_sel_drugs($cid=null, $id=null)
-{
-	$cid = ($cid == null) ? F3::get('SESSION.cid') : $cid;
-	$id  = ($id  == null) ? F3::get('SESSION.id')  : $id;
-
-	$node = get_node($cid, $id);
-
-	return $node['opts']['drugs'];
-}
-
 function set_dose_drug_list($cid, $id, $dslist) 
 {
 	$dnid = get_drug_id($cid);
@@ -535,7 +525,7 @@ function zip($cid, $datas, $dbg=true)
 					  "ceza"      => $datas['ceza']
 					 );
 
-		$dict['exams'] = liste_senkronla($node['opts']['exams'], get_exams_dict($cid, $datas));
+		$dict['exams'] = liste_senkronla($node['opts']['exams'], get_stu_sel_exams($datas));
 
 		$datas['opts'] = $dict;
 		$datas['options'] = serialize($dict);
@@ -1007,26 +997,6 @@ function get_st_sel_exams($dbg=false)
 	return $results;
 }
 
-function get_exams_dict($cid, $arr) 
-{
-	// FIXME:node:exam de varsa o resmi, yoksa default resmi goster
-	$dict = array();
-
-	$csv = get_exams_csv($arr);
-	$list = preg_split('/,/', $csv);
-
-	if($csv == "") {
-		F3::set('SESSION.error', 'Herhangi bir tahlil seçilmemiş');
-		return $arr;
-	}
-
-	foreach($list as $i=>$eid) {
-		$dict[$eid] = get_exam_info($cid, $eid);
-	}
-
-	return $dict;
-}
-
 function get_tea_sel_exams($cid, $enid) 
 {
 	$node = get_node($cid, $enid);
@@ -1062,6 +1032,29 @@ function get_tea_sel_dal($cid, $id, $opt)
 	return $dict;
 }
 
+function get_tea_sel_drugs($cid=null, $id=null)
+{
+	$cid = ($cid == null) ? F3::get('SESSION.cid') : $cid;
+	$id  = ($id  == null) ? F3::get('SESSION.id')  : $id;
+
+	$node = get_node($cid, $id);
+
+	return $node['opts']['drugs'];
+}
+
+function get_tea_sel_immap($cid, $nid=NULL) 
+{
+	if($nid == NULL) $nid = get_nid4type($cid, 'immapr');
+
+	$node = get_node($cid, $nid);
+
+	$dict = $node['opts']['map'];
+	
+	$dict['imgnm'] = get_immap_imgnm($cid);
+
+	return $dict;
+}
+
 function get_stu_sel_dose($arr)
 {
 	/* did - doz - ayol */
@@ -1074,13 +1067,40 @@ function get_stu_sel_dose($arr)
 	return $dict;
 }
 
-function get_stu_sel_bmap($cid, $bnid, $sbind)
+function get_stu_sel_exams($arr)
+{
+	// FIXME:node:exam de varsa o resmi, yoksa default resmi goster
+	$cid = $arr['cid'];
+
+	$dict = array();
+
+	$csv = get_exams_csv($arr);
+	$list = preg_split('/,/', $csv);
+
+	if($csv == "") {
+		F3::set('SESSION.error', 'Herhangi bir tahlil seçilmemiş');
+		return $arr;
+	}
+
+	foreach($list as $i=>$eid) {
+		$dict[$eid] = get_exam_info($cid, $eid);
+	}
+
+	return $dict;
+}
+
+
+function get_stu_sel_bmap($arr)
 {
 	/* secilen bolgelerin (sbind: indis) degerlerini dondurur. 
 	 * - bolgeleri cek
 	 * - sbind olanlari filtrele 
-	 */
-	$node = get_node($cid, $bnid);
+	 */	
+	$cid = $arr['cid'];
+	$id  = $arr['id'];
+	$sbind = preg_split('/,/', my_get($arr, 'selected'));
+
+	$node = get_node($cid, $id);
 
 	$dict = $node['opts']['bmap'];
 
@@ -1090,6 +1110,16 @@ function get_stu_sel_bmap($cid, $bnid, $sbind)
 	}
 
 	return $rdict;
+}
+
+function get_stu_sel_immap($arr)
+{
+	$dict = array('x' => my_get($arr, 'x'),  'y' => my_get($arr, 'y'),
+		      'x2'=> my_get($arr, 'x2'), 'y2'=> my_get($arr, 'y2'),
+		      'w' => my_get($arr, 'w'),  'h' => my_get($arr, 'h'),
+		      'yorum' => my_get($arr, 'response'));
+
+	return $dict;
 }
 
 function get_exam_info($cid, $eid, $dbg=false)
@@ -1246,28 +1276,6 @@ function get_immap_imgnm($cid, $nid=NULL)
 	return $node['media'];
 }
 
-function get_immapr4hoca($cid, $nid=NULL) 
-{
-	if($nid == NULL) $nid = get_nid4type($cid, 'immapr');
-
-	$node = get_node($cid, $nid);
-
-	$dict = $node['opts']['map'];
-	
-	$dict['imgnm'] = get_immap_imgnm($cid);
-
-	return $dict;
-}
-
-function get_immapr4ogrenci($arr)
-{
-	$dict = array('x' => my_get($arr, 'x'),  'y' => my_get($arr, 'y'),
-		      'x2'=> my_get($arr, 'x2'), 'y2'=> my_get($arr, 'y2'),
-		      'w' => my_get($arr, 'w'),  'h' => my_get($arr, 'h'),
-		      'yorum' => my_get($arr, 'response'));
-
-	return $dict;
-}
 
 function map2dict($map, $dbg=false) 
 {
@@ -1357,20 +1365,22 @@ function get_tet_soylenen_yanit($arr, $dbg=true)
 			$dict['drugs'] = get_stu_sel_dose($arr);
 			break;
 		case 'exam':
-			$dict['exams'] = "FIXME";
+			$dict['exams'] = get_stu_sel_exams($arr);
 			break;
 		case 'result':
-			$dict['exams'] = "FIXME";
+			$dict['exams'] = "node:exams e bakiniz.";
 			break;
 		case 'bmap':
-			$dict['bmap']  = "FIXME";
+			$dict['bmap']  = get_stu_sel_bmap($arr);
 			break;
 		case 'bmapr':
-			$dict['bmap']  = "FIXME";
+			$dict['bmap']  = "node:bmap e bakiniz.";
 			break;
 		case 'immap':
+			$dict['immap']  = get_stu_sel_immap($arr);
 			break;
 		case 'immapr':
+			$dict['immap']  = "node:immap e bakiniz.";
 			break;
 	}
 
