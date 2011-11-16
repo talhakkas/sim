@@ -1357,16 +1357,16 @@ function get_tet_soylenen_yanit($arr, $dbg=true)
 			$dict['drugs'] = get_stu_sel_dose($arr);
 			break;
 		case 'exam':
-			$dict['exams'] = get_tea_sel_exams($cid, $id);
+			$dict['exams'] = "FIXME";
 			break;
 		case 'result':
-			$dict['exams'] = get_tea_sel_exams($cid, get_node_parent($cid, $id));
+			$dict['exams'] = "FIXME";
 			break;
 		case 'bmap':
-			$dict['bmap']  = get_tea_sel_bmap($cid, $id);
+			$dict['bmap']  = "FIXME";
 			break;
 		case 'bmapr':
-			$dict['bmap']  = get_tea_sel_bmap($cid, get_node_parent($cid, $id));
+			$dict['bmap']  = "FIXME";
 			break;
 		case 'immap':
 			break;
