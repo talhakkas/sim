@@ -21,9 +21,6 @@
 	$node = get_node();
 	F3::set('SESSION.data', $node);
 
-print_pre($_POST, 'POST');
-print_pre(get_tet_soylenen_yanit($_POST), 'soylenen');
-return;
 	if($node['ntype'] == 'report') {
 		F3::reroute('/report');
 		return 1;

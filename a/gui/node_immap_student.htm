@@ -24,9 +24,9 @@
 
 <div align="middle">
   <form name="frm" action="{{@SR}}/show/{{@SESSION.cid}}/{{@SESSION.data['opts'][0]['node_link']}}/0" method="post">
-  	<input type="hidden" name="ntype" value="{{@SESSION.data['ntype']}}">
-    	<input type="hidden" name="cid" value="{{@SESSION.cid}}">
-    	<input type="hidden" name="ntype" value="{{@SESSION.data['ntype']}}">
+    	<input type="hidden" name="cid" 	value="{{@SESSION.data['cid']}}">
+    	<input type="hidden" name="id" 		value="{{@SESSION.data['id']}}">
+    	<input type="hidden" name="ntype" 	value="{{@SESSION.data['ntype']}}">
 
     <div id="koordinat" style="display:none">
     	X1 <input type="text" size="4" id="x" name="x" />
