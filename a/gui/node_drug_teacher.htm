@@ -26,7 +26,7 @@
       $(document).ready(function() {
           $("#drugs").tokenInput("/a/ajax/get_drug.php", {
                 prePopulate: [
-		<F3:repeat group="{{@SESSION.ilac}}" key="{{@id}}" value="{{@name}}"> 
+		<F3:repeat group="{{@SESSION.drugs}}" key="{{@id}}" value="{{@name}}"> 
                     {id: {{@id}}, name: "{{@name}}"},
 		</F3:repeat>
                 ]

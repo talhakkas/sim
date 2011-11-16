@@ -1,5 +1,5 @@
 <?php
-	$dbg = false;
+	$dbg = true;
 	F3::set('SESSION.error', 'NULL');
 
 	params2session();
@@ -47,15 +47,10 @@
 			F3::set('SESSION.img', $node['opts']['img']);
 			break;
 		case 'bmapr':
-			if(!isset($_POST['selected']))
-				F3::set('SESSION.error', 'Herhangi bir bölge seçilmemiş');
-			else {
-				$dict = get_stu_sel_bmap($_POST);
-				if($dbg)	print_pre($dict);
+			$dict = get_stu_sel_bmap($_POST);
+			if($dbg)	print_pre($dict);
 
-				F3::set('SESSION.smap', $dict);
-			}
-			break;
+			F3::set('SESSION.bmap', $dict);
 		case 'immapr':
 			F3::set('SESSION.ogrenci', get_stu_sel_immap($_POST));
 			F3::set('SESSION.hoca',    get_tea_sel_immap($_POST['cid'], $_POST['id']));

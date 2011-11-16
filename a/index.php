@@ -5,7 +5,8 @@ require_once './inc/lib.php';
 require_once './inc/mylib.php';
 require_once './inc/tetkik.php';
 
-$nodes = array( 1=>"dal",  17=>"drug",   26=>"dose",
+$nodes = array( 1=>"dal",  
+		   17=>"drug", 26=>"dose",
 	       35=>"exam", 36=>"result",
 	       37=>"bmap", 38=>"bmapr",
 	       21=>"immap",23=>"immapr");
@@ -17,8 +18,8 @@ function test2()
 
 	echo "<hr>";
 
-	print_pre(get_node(2, 55), "bmap");
-	print_pre(get_node(2, 56), "bmapr");
+	print_pre(get_node(1, 37), "bmap");
+	print_pre(get_node(1, 38), "bmapr");
 }
 
 function test4()
@@ -38,6 +39,7 @@ function test4()
 
 function test()
 {
+	print_pre(get_tet(2), "tet");
 	test2();
 }
 

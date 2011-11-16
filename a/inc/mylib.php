@@ -58,6 +58,19 @@ function set_node()
 	$table->save();
 }
 
+function get_tet($id)
+{
+	$ttet = new Axon('tet');
+	$datas = $ttet->afind("id='$id'");
+
+	$node = $datas[0];
+	
+	$node['bek'] = unserialize($node['beklenen']);
+	$node['soy'] = unserialize($node['soylenen']);
+
+	return $node;
+}
+
 function get_node_type($cid, $id)
 {
 	$tnode = new Axon("node");
@@ -251,7 +264,7 @@ function takip_listesine_ekle() {
 	$ttet = new Axon("tet");
 	$ttet->id = NULL;
 	$ttet->skey = intval(F3::get('SESSION.skey'));
-	$ttet->sid = intval(F3::get('SESSION.student'));
+	$ttet->sid  = intval(F3::get('SESSION.student'));
 	$ttet->cid = F3::get('SESSION.cid');
 	$ttet->nid = F3::get('SESSION.id');
 	$ttet->oid = "";
@@ -262,44 +275,23 @@ function takip_listesine_ekle() {
 	$ttet->save();
 
 	// b) '$_POST' tan gelen veriyle onceki dugumun "beklenen" ve "soylenen" kisimlarini guncelle
+	if(empty($_POST))	return;
+
+	$skey = intval(F3::get('SESSION.skey'));
+	$sid  = intval(F3::get('SESSION.student'));
+
+	$cid = $_POST['cid'];
+	$id  = $_POST['id'];
+	$opt = my_get($_POST, 'opt', 0);
+
 	$dict = array();
-	// bir onceki dugum id sini bul
-	$mid = maxID_v2("id", "tet", "skey=$ttet->skey AND sid=$ttet->sid");
-	$mid--;
-
-	if($mid == 0)	// ilk dugum!
-		return;
-
 	$ttet = new Axon("tet");
-	$ttet->load("id=$mid");
-
-	$cid = $ttet->cid;
-	$id  = $ttet->nid;
-	$opt = F3::get('SESSION.opt');
+	$ttet->load("skey='$skey' AND sid='$sid' AND cid='$cid' AND nid='$id'");
 
 	$ntype = get_node_type($cid, $id);
-
-	if($ntype == 'drug') {
-		$t = my_get($_POST, 'drugs');
-		$dlist = preg_split('/,/', $t);
-
-		foreach($dlist as $i=>$did) {
-			$dict['response'][$i] = $did;
-		}
-	} elseif($ntype == 'dose') {
-		foreach(my_get($_POST, 'doz') as $i=>$d) {
-			$dict['response'][$i]['did']  = $_POST['did'][$i];
-			$dict['response'][$i]['doz']  = $_POST['doz'][$i];
-			$dict['response'][$i]['ayol'] = $_POST['ayol'][$i];
-		}
-	} elseif($ntype == 'exam') {
-		$dict['response'] = get_exams_csv($_POST);
-	} else {
-		$dict['response'] = my_get($_POST, 'response');
-	}
 	
-	$ttet->soylenen = serialize($dict);
-	//$ttet->beklenen = serialize(get_tet_beklenen_yanit($cid, $id, $opt));
+	$ttet->soylenen = serialize(get_tet_soylenen_yanit($_POST));
+	$ttet->beklenen = serialize(get_tet_beklenen_yanit($cid, $id, $opt));
 
 	$ttet->zaman = microtime(true) - F3::get('SESSION.stime');
 
@@ -307,21 +299,6 @@ function takip_listesine_ekle() {
 
 	$ttet->puan = get_puan($cid, $id, $opt);
 	$ttet->save();
-	return;
-
-	$kullanici_yaniti  = empty($_POST['response']) ? "" : "resp::".$_POST['response'].",,";
-	$kullanici_yaniti .= empty($_POST['doz'])  ? "" : "doz::". myserialize($_POST['doz']) . ",,";
-	$kullanici_yaniti .= empty($_POST['ayol']) ? "" : "ayol::".myserialize($_POST['ayol']);
-
-	$ttet->beklenen = ""; //$beklenen_yanit;
-	$ttet->soylenen = $kullanici_yaniti;
-	$ttet->zaman = microtime(true) - F3::get('SESSION.stime');
-
-	$opt = F3::get('SESSION.opt');
-	$ttet->puan = get_puan($cid, $id, $opt);
-	$ttet->save();
-
-	return;
 }
 
 function response2str_bek($response, $ntype)
@@ -903,14 +880,15 @@ function print_pre($code, $msj="array")
 	echo "</pre>";
 }
 
-function my_get($arr, $key) 
+function my_get($arr, $key, $val="") 
 {
-	return array_key_exists($key, $arr) ? $arr[$key] : "";
+	return array_key_exists($key, $arr) ? $arr[$key] : $val;
 }
 
-function my_get2($arr, $key, $i) 
+function my_get2($arr, $key, $i, $val="") 
 {
-	return array_key_exists($key, $arr) ? (array_key_exists($i, $arr[$key]) ? $arr[$key][$i] : "") : "";
+	return array_key_exists($key, $arr) ? 
+			(array_key_exists($i, $arr[$key]) ? $arr[$key][$i] : $val) : $val;
 }
 
 function unset_arr($arr, $keys)
@@ -965,17 +943,20 @@ function get_tea_sel_exams($cid, $enid)
 	return $dict;
 }
 
-function get_tea_sel_bmap($cid, $bnid) 
+function get_tea_sel_bmap($cid, $bnid, $isFullList=false) 
 {
-	/* deger yuklenmemis (null) olanlari filtrele */
+	/* isFullList:true  tum listeyi getir 
+	 * isFullList:false deger yuklenmemis (null) olanlari filtrele 
+	 */
 	$node = get_node($cid, $bnid);
 
 	$dict = $node['opts']['bmap'];
 	
-	foreach($dict as $i=>$d) {
-		if($d['value'] == 'null')
-			unset($dict[$i]);
-	}
+	if(!$isFullList)
+		foreach($dict as $i=>$d) {
+			if($d['value'] == 'null')
+				unset($dict[$i]);
+		}
 	
 	return $dict;
 }
@@ -983,10 +964,12 @@ function get_tea_sel_bmap($cid, $bnid)
 function get_tea_sel_dal($cid, $id, $opt)
 {
 	/* hocanin secilen dal icin bekledigi yanit */
+	$opt = $opt - 1;
+
 	$node = get_node($cid, $id);
 	$t = $node['opts'][$opt];
 
-	$dict = $t['chkResponse'] == 'yes' ? $t['response'] : "Boş";
+	$dict = $t['chkResponse'] == 'yes' ? $t['response'] : "null";
 
 	return $dict;
 }
@@ -1070,10 +1053,19 @@ function get_stu_sel_bmap($arr)
 	/* secilen bolgelerin (sbind: indis) degerlerini dondurur. 
 	 * - bolgeleri cek
 	 * - sbind olanlari filtrele 
-	 */	
+	 */
+	$dict = array();
+		
 	$cid = $arr['cid'];
 	$id  = $arr['id'];
-	$sbind = preg_split('/,/', my_get($arr, 'selected'));
+
+	$sel = my_get($arr, 'selected', '');
+	if($sel == '') {
+		F3::set('SESSION.error', 'Herhangi bir bölge seçilmemiş');
+		return $dict;
+	}
+
+	$sbind = preg_split('/,/', $sel);
 
 	$node = get_node($cid, $id);
 
@@ -1275,17 +1267,14 @@ function map2dict($map, $dbg=false)
 	return $dict;
 }
 
-function get_tet_beklenen_yanit($cid, $id, $opt=null, $dbg=true)
+function get_tet_beklenen_yanit($cid, $id, $opt=1, $dbg=false)
 {
 	/* cid,id,opt yardimiyla dugum turu de dikkate alinarak hocanin
 	 * girdigi/beklenen degeri sozluk yardimiyla dondur.
 	 */
 	$dict = array();
 
-	if($dbg) {
-		$node = get_node($cid, $id);
-		print_pre($node, 'NODE');
-	}
+	if($dbg)	print_pre(get_node($cid, $id, 'NODE'));
 	
 	$ntype = get_node_type($cid, $id);
 	$dict['ntype'] = $ntype;
@@ -1321,17 +1310,19 @@ function get_tet_beklenen_yanit($cid, $id, $opt=null, $dbg=true)
 	return $dict;
 }
 
-function get_tet_soylenen_yanit($arr, $dbg=true)
+function get_tet_soylenen_yanit($arr, $dbg=false)
 {
 	/* arr(=POST) ile ogrencinin verdigi yanit dict olarak dondurulur
 	 */
+	if($dbg)	print_pre($arr, 'POST');
+
 	$ntype = $arr['ntype'];
 
 	$dict = array();
 
 	switch($ntype) {
 		case 'dal':
-			$dict['dal']   = $arr['response'];
+			$dict['dal']   = my_get($arr, 'response', '');
 			break;
 		case 'drug':
 			$dict['drugs'] = $arr['drugs'];
