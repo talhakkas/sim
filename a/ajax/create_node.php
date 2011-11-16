@@ -1,6 +1,6 @@
 <?php
 	require_once  '../lib/base.php';
-	require_once  '../inc/depo.php';
+	require_once  '../depo.php';
 	require_once  '../inc/mylib.php';
 
 	F3::set('DB', new DB("mysql:host=localhost;port=3306;dbname=$db_name", $db_user, $db_pass));
