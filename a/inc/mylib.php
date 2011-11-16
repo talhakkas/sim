@@ -65,8 +65,11 @@ function get_tet($id)
 
 	$node = $datas[0];
 	
-	$node['bek'] = unserialize($node['beklenen']);
-	$node['soy'] = unserialize($node['soylenen']);
+	$node['_beklenen'] = $node['beklenen'];
+	$node['_soylenen'] = $node['soylenen'];
+
+	$node['beklenen'] = unserialize($node['_beklenen']);
+	$node['soylenen'] = unserialize($node['_soylenen']);
 
 	return $node;
 }
@@ -290,8 +293,8 @@ function takip_listesine_ekle() {
 
 	$ntype = get_node_type($cid, $id);
 	
-	$ttet->soylenen = serialize(get_tet_soylenen_yanit($_POST));
 	$ttet->beklenen = serialize(get_tet_beklenen_yanit($cid, $id, $opt));
+	$ttet->soylenen = serialize(get_tet_soylenen_yanit($_POST));
 
 	$ttet->zaman = microtime(true) - F3::get('SESSION.stime');
 
@@ -303,59 +306,46 @@ function takip_listesine_ekle() {
 
 function response2str_bek($response, $ntype)
 {
-	$str = '';
 	switch($ntype) {
-		case 'drug':
-			$response = preg_split('/,/', $response);
-
-			foreach($response as $j=>$did) {
-				$t = get_drug($did);
-				$str .= strval($j+1) . ": <a href=/a/drug/$did>$t[name]</a><br>";
+		case 'dal':
+			$str = $response == 'null' ? '' : $response;
+			break;
+		case 'bmap':
+			$str = '<ul>';
+			foreach($response as $i=>$val) {
+				$str .= "<li><a href=" . F3::get('SR') . "/" . F3::get('uploaddir') . "$val[value] rel=\"facebox\"><img src=" . F3::get('SR') . "/" . F3::get('uploaddir') . "$val[value] width=25>$val[name]</a>";
 			}
+			$str .= "</ul>";
+			break;
+		case 'exam':
+			$str = '<ul>';
+			foreach($response as $i=>$val) {
+				$str .= "<li><a href=" . F3::get('SR') . "/" . F3::get('uploaddir') . "$val[value] rel=\"facebox\"><img src=" . F3::get('SR') . "/" . F3::get('uploaddir') . "$val[value] width=25 align=center> $val[dnm]:$val[pnm]:$val[snm]</a>";
+			}
+			$str .= "</ul>";
+			break;
+		case 'drug':
+			$str = '<ul>';
+			foreach($response as $did=>$val) {
+				$str .= "<li><img src=/public/img/ilac.png width=25 align=center><a href=" . F3::get('SR') . "/drug/$did rel=\"facebox\">$val[name]</a>";
+			}
+			$str .= "</ul>";
 			break;
 		case 'dose':
-			foreach($response as $j=>$d) {
-				$did = $d['id'];
-
-				$ayol = array(1=>"Damar", 2=>"Kas", 3=>"Foo");
-	
-				$t = get_drug($did);
-				$str .= strval($j+1) . ": <a href=/a/drug/$did>$t[name]</a>-$d[dval] ($d[dmn]-$d[dmx])" .$ayol[$d['dayol']]. "<br>";
+			$str = '<ul>';
+			foreach($response as $did=>$val) {
+				$str .= "<li><img src=/public/img/ilac.png width=25 align=center><a href=" . F3::get('SR') . "/drug/$did rel=\"facebox\">$val[name] $val[dval] ($val[dmn]-$val[dmx]) $val[dayol]</a>";
 			}
+			$str .= "</ul>";
 			break;
-		default:
-			$str = $response;
+		case 'immap':
+			$str = '';
+			return;
 	}
 
 	return $str;
 }
 
-function response2str_soy($response, $ntype)
-{
-	$str = '';
-	switch($ntype) {
-		case 'drug':
-			foreach($response as $j=>$did) {
-				$t = get_drug($did);
-				$str .= strval($j+1) . ": <a href=/a/drug/$did>$t[name]</a><br>";
-			}
-			break;
-		case 'dose':
-			foreach($response as $j=>$d) {
-				$did = $d['did'];
-
-				$ayol = array(1=>"Damar", 2=>"Kas", 3=>"Foo");
-	
-				$t = get_drug($did);
-				$str .= strval($j+1) . ": <a href=/a/drug/$did>$t[name]</a>-$d[doz] - ". $ayol[$d['ayol']] ." <br>";
-			}
-			break;
-		default:
-			$str = $response;
-	}
-
-	return $str;
-}
 function takip_listesi2dizi() {
 	$id  = F3::get('SESSION.id');
 	$cid = F3::get('SESSION.cid');
@@ -997,19 +987,40 @@ function get_tea_sel_immap($cid, $nid=NULL)
 	return $dict;
 }
 
+function get_stu_sel_drug($arr)
+{
+	$dict = array();
+
+	$csv = preg_split('/,/', $arr['drugs']);
+
+	foreach($csv as $i=>$did) {
+		$drug = get_drug($did);
+
+		$dict[$did] = array("name"=>$drug['name']);
+	}
+
+	return $dict;
+}
+
 function get_stu_sel_dose($arr)
 {
 	/* did - doz - ayol */
 	$dict = array();
 
 	foreach($arr['did'] as $i=>$did) {
-		$dict[$did] = array("doz"=>$arr['doz'][$i], "ayol"=>$arr['ayol'][$i]);
+		$drug = get_drug($did);
+
+		$dict[$did] = array("name"=> $drug['name'], 
+							"dmn" => $drug['dmn'],
+							"dmx" => $drug['dmx'],
+							"dval" => $arr['doz'][$i], 
+							"dayol"=> $arr['ayol'][$i]);
 	}
 
 	return $dict;
 }
 
-function get_stu_sel_exams($arr)
+function get_stu_sel_exams($arr, $dbg=false)
 {
 	/* ogrencinin sectigi tahlilleri goster 
 	 * - secilen tahlil hoca tarafindan da secildiyse onu
@@ -1281,25 +1292,25 @@ function get_tet_beklenen_yanit($cid, $id, $opt=1, $dbg=false)
 
 	switch($ntype) {
 		case 'dal':
-			$dict['dal']   = get_tea_sel_dal($cid, $id, $opt);
+			$dict['response']   = get_tea_sel_dal($cid, $id, $opt);
 			break;
 		case 'drug':
-			$dict['drugs'] = get_tea_sel_drugs($cid, $id);
+			$dict['response'] = get_tea_sel_drugs($cid, $id);
 			break;
 		case 'dose':
-			$dict['drugs'] = get_tea_sel_drugs($cid, get_node_parent($cid, $id));
+			$dict['response'] = get_tea_sel_drugs($cid, get_node_parent($cid, $id));
 			break;
 		case 'exam':
-			$dict['exams'] = get_tea_sel_exams($cid, $id);
+			$dict['response'] = get_tea_sel_exams($cid, $id);
 			break;
 		case 'result':
-			$dict['exams'] = get_tea_sel_exams($cid, get_node_parent($cid, $id));
+			$dict['response'] = get_tea_sel_exams($cid, get_node_parent($cid, $id));
 			break;
 		case 'bmap':
-			$dict['bmap']  = get_tea_sel_bmap($cid, $id);
+			$dict['response']  = get_tea_sel_bmap($cid, $id);
 			break;
 		case 'bmapr':
-			$dict['bmap']  = get_tea_sel_bmap($cid, get_node_parent($cid, $id));
+			$dict['response']  = get_tea_sel_bmap($cid, get_node_parent($cid, $id));
 			break;
 		case 'immap':
 			break;
@@ -1322,31 +1333,31 @@ function get_tet_soylenen_yanit($arr, $dbg=false)
 
 	switch($ntype) {
 		case 'dal':
-			$dict['dal']   = my_get($arr, 'response', '');
+			$dict['response']   = my_get($arr, 'response', '');
 			break;
 		case 'drug':
-			$dict['drugs'] = $arr['drugs'];
+			$dict['response'] = get_stu_sel_drug($arr);
 			break;
 		case 'dose':
-			$dict['drugs'] = get_stu_sel_dose($arr);
+			$dict['response'] = get_stu_sel_dose($arr);
 			break;
 		case 'exam':
-			$dict['exams'] = get_stu_sel_exams($arr);
+			$dict['response'] = get_stu_sel_exams($arr);
 			break;
 		case 'result':
-			$dict['exams'] = "node:exams e bakiniz.";
+			$dict['response'] = "node:exams e bakiniz.";
 			break;
 		case 'bmap':
-			$dict['bmap']  = get_stu_sel_bmap($arr);
+			$dict['response']  = get_stu_sel_bmap($arr);
 			break;
 		case 'bmapr':
-			$dict['bmap']  = "node:bmap e bakiniz.";
+			$dict['response']  = "node:bmap e bakiniz.";
 			break;
 		case 'immap':
-			$dict['immap']  = get_stu_sel_immap($arr);
+			$dict['response']  = get_stu_sel_immap($arr);
 			break;
 		case 'immapr':
-			$dict['immap']  = "node:immap e bakiniz.";
+			$dict['response']  = "node:immap e bakiniz.";
 			break;
 	}
 

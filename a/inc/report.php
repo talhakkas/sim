@@ -1,4 +1,6 @@
 <?php
+	$dbg = !true;
+
 	$skey = intval(F3::get('SESSION.skey'));
 	$cid  = intval(F3::get('SESSION.cid'));
 	$sid  = intval(F3::get('SESSION.student'));
@@ -8,29 +10,30 @@
 
 	$tpuan = 100;
 	foreach($datas as $i=>$t) {
-		if($t['zaman'] == 0) {unset($datas[$i]); continue; }
+		$tet = get_tet($datas[$i]['id']);
+		if($dbg)	print_pre($tet, 'tet');
 
-		$nid = $t['nid'];
+		if($tet['zaman'] == 0) {unset($datas[$i]); continue;}
 
-		$tnode = new Axon('node');
-		$tnode->load("id=$nid");
-		
-		$options = unserialize($tnode->options);
+		$nid = $tet['nid'];
 
-		$oid = $datas[$i]['oid'] - 1;	if($oid < 0) $oid = 0;
-		$response = $options[$oid]['response'];
-		$datas[$i]['beklenen'] = response2str_bek($response, $tnode->ntype);
+		$node = get_node($cid, $nid);
+		//if($dbg)	print_pre($node, 'node');
 
-		$t2 = unserialize($datas[$i]['soylenen']);
-		$response = $t2['response'];
-		$datas[$i]['soylenen'] = response2str_soy($response, $tnode->ntype);
+		$ntype = $tet['beklenen']['ntype'];
 
-		$datas[$i]['title'] = $tnode->title;
+		if(in_array($ntype, array('result', 'bmapr', 'immapr'))) {unset($datas[$i]); continue;}
+
+		$datas[$i]['beklenen'] = response2str_bek($tet['beklenen']['response'], $ntype);
+		$datas[$i]['soylenen'] = response2str_bek($tet['soylenen']['response'], $ntype);
+		if($dbg)	echo "<h3>Beklenen:</h3> " . $datas[$i]['beklenen'];
+		if($dbg)	echo "<h3>Soylenen: </h3>" . $datas[$i]['soylenen'];
+
+		$datas[$i]['title'] = $node['title'];
 
 		$tpuan += $datas[$i]['puan'];
 		$datas[$i]['puan'] = $tpuan;
 	}
-
 	F3::set('SESSION.tdata', $datas);
 	F3::set('SESSION.tpuan', $tpuan);
 

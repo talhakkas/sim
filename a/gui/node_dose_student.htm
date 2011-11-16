@@ -16,7 +16,7 @@
         <F3:repeat group="{{@SESSION.drugs}}" key="{{@did}}" value="{{@drug}}" counter="{{@ctr}}">
         <tr>
           <td>
-            <a href="/a/drug/{{@did}}" rel="facebox">{{@drug['name']}}</a>
+            <a href="/a/drug/{{@did}}" rel="facebox"><img src=/public/img/ilac.png width=25 align=center>{{@drug['name']}}</a>
 	    <input type="hidden" name="did[]" value="{{@did}}">
           </td>
           <td>
@@ -34,7 +34,7 @@
       </tbody>
     </table>
 
-    <input type="submit" class="button doz-button" value="{{@SESSION.data['opts']['link_text']}}">
+    <input type="submit" class="button blue right" value="{{@SESSION.data['opts']['link_text']}}">
   </form>
 <script>$(":range").rangeinput();</script>
 </div>

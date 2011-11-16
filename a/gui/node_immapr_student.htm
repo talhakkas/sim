@@ -28,6 +28,6 @@ Yorumu:
   		<input type="hidden" name="id" 		value="{{@SESSION.data['id']}}">
   		<input type="hidden" name="ntype" 	value="{{@SESSION.data['ntype']}}">
 
-  <input type="submit" class="button blue right" value="Gönder"/>
+  <input type="submit" class="button blue right" value="{{@SESSION.data['opts']['link_text']}}"/>
   </form>
 </div>

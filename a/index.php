@@ -25,11 +25,12 @@ function test2()
 function test4()
 {
 	$tnode = new Axon('node');
-	$tnode->load("cid='1' AND id='38'");
+	$tnode->load("cid='1' AND id='23'");
 
-	$tnode->parent = 37;
 	$dict = unserialize($tnode->options);
 
+	$dict['node_link'] = 19;
+	$dict['link_text'] = "Başka tetkik için tıklayınız";
 	print_pre($dict, "dict");
 
 	$tnode->options = serialize($dict);
@@ -39,7 +40,7 @@ function test4()
 
 function test()
 {
-	print_pre(get_tet(2), "tet");
+	print_pre(get_tet(12), "tet");
 	test2();
 }
 

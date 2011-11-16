@@ -1,5 +1,5 @@
 <?php
-	$dbg = true;
+	$dbg = !true;
 	F3::set('SESSION.error', 'NULL');
 
 	params2session();
@@ -51,9 +51,11 @@
 			if($dbg)	print_pre($dict);
 
 			F3::set('SESSION.bmap', $dict);
+			break;
 		case 'immapr':
 			F3::set('SESSION.ogrenci', get_stu_sel_immap($_POST));
-			F3::set('SESSION.hoca',    get_tea_sel_immap($_POST['cid'], $_POST['id']));
+			//F3::set('SESSION.hoca',    get_tea_sel_immap($_POST['cid'], $_POST['id']));
+			F3::set('SESSION.hoca',    get_tea_sel_immap(F3::get('SESSION.cid'), F3::get('SESSION.id')));
 			break;
 	}
 
