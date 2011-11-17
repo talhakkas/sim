@@ -55,28 +55,6 @@ function clist() {
 	render('a/home', 'Hoşgeldiniz', 'a');
 }
 
-function home() {
-	render('a/home', 'Hoşgeldiniz', 'a');
-}
-
-function page() {
-	$pages = array('people', 'work', 'about', 'contact', 'playground');
-
-	$title = array(
-	       	'people' => 'Ekibimiz',
-		'work' => 'Çalışmalarımız',
-		'about' => 'Hakkımızda',
-		'contact' => 'İletişim',
-		'playground' => 'test'
-	);
-
-	$page = F3::get('PARAMS.page');
-	if (in_array($page, $pages))
-		return render("a/$page", $title[$page], 'a');
-
-	F3::call('home');
-}
-
 function show_drug() {
 	$did = F3::get('PARAMS.did');
 	$drug = get_drug($did);
@@ -84,16 +62,20 @@ function show_drug() {
 }
 
 
+// HOME PAGES
+F3::route("GET /", 		'Home->home');
+F3::route("GET /people", 	'Home->people');
+F3::route("GET /work", 		'Home->work');
+F3::route("GET /about", 	'Home->about');
+F3::route("GET /contact", 	'Home->contact');
 
-F3::set('uploaddir', 'upload/');
+// ACCOUNT
+F3::route("POST /login",      	'Account->auth');   // login action
+F3::route('GET  /logout',     	'Account->logout'); // logout action
+// F3::route('GET  /forgot',    'Account->forgot'); // forget password // henüz hazır değil
+F3::route("GET  /@page", 	'Account->page_reload'); 	// Geçici Sistem Açıldığında Silinecek
 
-F3::route("GET /"      , 'home');
-F3::route("POST /login",   'login.php');
 
-F3::route("GET /@page", 'page');
-
-
-F3::route("GET /logout*",  'logout');
 
 F3::route("GET /show/@cid/@id/@opt", 'show.php');
 	F3::route("POST /show/@cid/@id/@opt", 'show.php');
@@ -115,7 +97,7 @@ F3::route("GET /cshow/@cid", 'cshow.php');
 F3::route("GET /cedit/@cid", "cedit.php");
 	F3::route("POST /cedit/@cid", "cupdate.php");
 
-F3::route("GET /clist", "clist");
+F3::route("GET /clist*", "clist");
 F3::route("GET /cadd", "cadd.php");
 	F3::route("POST /cadd", "csave.php");
 
