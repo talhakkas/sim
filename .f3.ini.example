@@ -2,6 +2,7 @@
 
 ; F3 magic'leri
 extlink="window.open(this.href); return false;"
+AUTOLOAD="app/"
 RELEASE="FALSE"
 IMPORTS="inc/"
 FONTS="../public/fonts/"
