@@ -117,7 +117,8 @@ div.page-header h2 small { font-size: 75%; font-weight: normal; }
 div.page-header.home-page    { background: url(/public/img/a/simulation.jpg) no-repeat right top; }
 div.page-header.people-page  { background: url(/public/img/a/people-network.gif) no-repeat right top; }
 div.page-header.work-page    { background: url(/public/img/a/medical-computer-work.png) no-repeat right top; }
-div.page-header.about-page   { background: url(/public/img/a/medical-computer-about.jpeg) no-repeat right top; background-size:270px;}
+/*div.page-header.about-page   { background: url(/public/img/a/medical-computer-about.jpeg) no-repeat right top; background-size:270px;}*/
+div.page-header.about-page   { background: url(/public/img/a/simulation.jpg) no-repeat right top; background-size:330px;}
 div.page-header.contact-page { background: url(/public/img/a/phone-us.jpg) no-repeat right top; }
 
 
