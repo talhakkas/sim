@@ -196,6 +196,12 @@ label.label input[type=password]:focus { outline: 0; border: 1px solid #35addf; 
 /* ------------------ Footer -------------------- */
 #footer { width: 960px; margin: 0 auto; border-top: 1px solid #ddd; padding: 10px 0 18px; clear: both; position: relative;}
 #footer p.copyright { margin: 0; background:#fff; width:390px;}
+
+#footer ul { float: right; height: 27px; margin: -2px -12px 0 0; }
+#footer ul li { display: inline;}
+#footer ul li a,
+#site-info ul li a:visited { float: left; width: auto; margin: 0; padding: 2px 12px 2px; color: #777; text-decoration:none;}
+
 /* ---------------------------------------------- */
 
 
