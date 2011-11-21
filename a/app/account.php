@@ -61,13 +61,13 @@ class Account extends F3instance {
 			// prolasını mailine gönderelim
 			mail("$email", "sim parolanız", $email->password, "From:noreply");
 
-			F3::set('success', 'Parolanız E-Mail Adresinize Gönderildi');
+			F3::set('error', 'Parolanız E-Mail Adresinize Gönderildi');
 		}
 		else
-			F3::set('warning', 'Bu E-Mail Adresine Ait Bir Kullanıcı Hesabı Yoktur');
+			F3::set('error', 'Bu E-Mail Adresine Ait Bir Kullanıcı Hesabı Yoktur');
 
 		// tekrar anasayfaya dönelim
-		$this->login();
+		F3::call('Home->home');
 	}
 
 	function page_reload() {
