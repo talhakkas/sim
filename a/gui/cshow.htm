@@ -1,29 +1,21 @@
 <div class="page">
-  <h2>{{@page_title}}
+  <h2>Olgu::Ayrıntıları
     <a href="{{@SR}}/show/{{@SESSION.cid}}/{{@SESSION.cdata['bdugumu']}}/0"><img
       src="/public/img/icon/24x24/clock.png">Olguya Başla</a>
     <a href="{{@SR}}/cedit/{{@SESSION.cid}}">
-      <img src="/public/img/icon/24x24/edit.png">Case Düzenle&nbsp;&nbsp;</a> 
+      <img src="/public/img/icon/24x24/edit.png">Olguyu Düzenle&nbsp;&nbsp;</a> 
   </h2>
 
   <table class="custom" id="custom" name="custom">
     <tr>
-      <td class="label">
-	Case Title:
-      </td>
-      <td class="field">
-	{{@SESSION.cdata['title']}}
-      </td>
+      <td class="label">Olgu Başlığı:</td>
+      <td class="field">{{@SESSION.cdata['title']}}</td>
     </tr>
     <tr>
-      <td class="label">
-	Tanımlama:
-      </td>
-      <td class="field">
-	{{@SESSION.cdata['description']}}
-      </td>
+      <td class="label">Tanımlama:</td>
+      <td class="field">{{@SESSION.cdata['description']}}</td>
     </tr>
-    <tr>
+    <!--tr>
       <td class="label">
 	Playable By:
       </td>
@@ -62,7 +54,7 @@
       <td class="field">
 	{{@SESSION.cdata["other"]}}
       </td>
-    </tr>
+    </tr-->
     <tr>
       <td class="label">
 	Başlangıç Düğümü:
