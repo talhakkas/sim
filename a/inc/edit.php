@@ -15,6 +15,11 @@
 	F3::set('SESSION.all_nodes', $all_nodes);
 
 	switch(F3::get('SESSION.data[ntype]')) {
+		case 'dal':
+			$nofbs = count($node['opts']);
+			F3::set('SESSION.nofbs', $nofbs);
+			if($dbg)	echo "nofbs=$nofbs <br>";
+			break;
 		case 'drug':
 			$drugs = get_preselected_drugs();
 			F3::set('SESSION.drugs', $drugs);

@@ -35,7 +35,7 @@
     <img src="/public/img/icon/32x32/comments.png">
   </td>
   <td class="select">
-    &nbsp;&nbsp;&nbsp;<select name="node_link[]" id="select{{@ctr}}">
+    <select name="node_link[]" id="select{{@ctr}}">
       <F3:repeat group="{{@SESSION.all_nodes}}" value="{{@blg2}}" >
       <F3:check if="{{@blg2[0] == @blg['node_link']}}">
       <F3:true>
@@ -47,9 +47,8 @@
       </F3:check>
       </F3:repeat>
     </select>
-    <br /><br />
-
-    <input name="btnAddItem" type="button" id="btnAddItem" class="small button" value="Yeni Düğüm"
+	
+    <input name="btnAddItem" type="button" id="btnAddItem" class="button small" value="Yeni Düğüm"
     	onclick='Boxy.ask("Düğüm türü hangisi olsun?", {"dal":"Normal", "drug":"İlaç Seçim", 
 			  "exam":"Tahlil", "bmap":"Vücut Haritası", "immap":"Resim Haritası", "report":"Rapor"}, 
 			  function(r) { addNewNode("select{{@ctr}}", {{@SESSION.cid}}, r, {{@SESSION.id}}); }, 

@@ -67,7 +67,7 @@ function addRow(tableName) {
 	var cell21 = row2.insertCell(0);
 	var im = document.createElement('img');
 	cell21.setAttribute('class', 'label');
-	im.setAttribute('src', '/public/img/sol-ok.png');
+	im.setAttribute('src', '/public/img/icon/32x32/comments.png');
 	im.setAttribute('width', '25');
 	cell21.appendChild(im);
 
@@ -85,6 +85,7 @@ function addRow(tableName) {
 
 	btn.setAttribute('type', 'button');
 	btn.setAttribute('value', 'Yeni Düğüm');
+	btn.setAttribute('class', 'small button');
 	//btn.setAttribute('onclick', "javascript:addNewListItem('select" + nons + "', " + cid + ");");
 	btn.setAttribute('onclick', "Boxy.ask('Düğüm türü hangisi olsun?', {'dal':'Normal', 'drug':'İlaç Seçim', 'exam':'Tahlil', 'bmap':'Vücut Haritası', 'immap':'Resim Haritası', 'report':'Rapor'}, function(r) { addNewNode('select" + nons + "', " + cid + ", r, " + id + "); }, {title:'Yeni Düğüm Ekleme'});");
 	cell22.appendChild(btn); 
