@@ -1,3 +1,13 @@
+<!-- facebox -->
+<script type="text/javascript" src="/public/js/jquery.js"></script>
+<script type="text/javascript" src="/public/js/facebox.js"></script>
+<script type="text/javascript">
+  jQuery(document).ready(function($) {
+    $('a[rel*=facebox]').facebox();
+  })
+</script>
+
+
 <style>
   ul.tabs li.home {
     background:#3072b3;
@@ -75,7 +85,7 @@
       <tr>
         <td></td>
         <td>
-          <a href="#" class="forgot-pass">Parolamı Unuttum</a>
+          <a rel="facebox" href="#forgot" class="forgot-pass">Parolamı Unuttum</a>
           <input type="submit" class="button blue big right" value="Giriş Yap" />
         </td>
       </tr>
@@ -103,5 +113,27 @@
     </p>
   </div>
 
+</div>
+
+
+
+<div id="forgot" style="display:none";>
+  <form action="{{@SR}}/sorgu" method="post" enctype="multipart/form-data">
+    <table class="form" style="width:400px;">
+      <tr>
+        <td>
+          <select name="category_id" class="required" style="width:380px">
+            <F3:repeat group="{{@categories}}" key="{{@key}}" value="{{@val}}" >
+            <option value="{{@val.category_id}}">{{@val.name}}</option>
+            </F3:repeat>
+          </select>
+        </td>
+      </tr>
+    </table>
+    <button type="submit" class="button" style="width:370px;">
+      Bu Kategorideki Ürünleri Listele
+    </button>
+    <br />
+  </form>
 </div>
 

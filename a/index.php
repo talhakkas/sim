@@ -72,7 +72,7 @@ F3::route("GET /contact", 	'Home->contact');
 // ACCOUNT
 F3::route("POST /login",      	'Account->auth');   // login action
 F3::route('GET  /logout',     	'Account->logout'); // logout action
-// F3::route('GET  /forgot',    'Account->forgot'); // forget password // henüz hazır değil
+F3::route('POST /forgot',    	'Account->forgot'); // forget password
 F3::route("GET  /@page", 	'Account->page_reload'); 	// Geçici Sistem Açıldığında Silinecek
 
 
