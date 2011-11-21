@@ -49,7 +49,6 @@ function addRow(tableName) {
 	chkResponse.setAttribute('name', 'chkResponse[]');
 	chkResponse.setAttribute('id',   'chkResponse' + nons);
 	chkResponse.setAttribute('value', nons);
-	chkResponse.setAttribute('checked', 'true');
 	chkResponse.setAttribute('onclick', "toggle(this, 'response" + nons + "')");
 	cell12.appendChild(chkResponse);
 	cell12.appendChild(document.createTextNode('Kullanıcı girdisi istiyor musun?'));
