@@ -8,7 +8,7 @@
     <tr>
       <th scope="col">OLGU BAŞLIĞI</th>
       <th scope="col">OLUŞTURMA</th>
-      <th scope="col" class="action">EYLEM</th>
+      <th scope="col" class="action"></th>
     </tr>
   </thead>
 
@@ -24,8 +24,8 @@
         07-08-2011
       </td>
       <td>
-        <a href="{{@SR}}/cedit/{{@blg['cid']}}" id="button-edit"></a>
-        <a href="{{@SR}}/cdelete/{{@blg['cid']}}" id="button-delete"
+        <a href="{{@SR}}/cedit/{{@blg['cid']}}" id="button-edit" class="vtip" title="Düzenle"></a>
+        <a href="{{@SR}}/cdelete/{{@blg['cid']}}" id="button-delete" class="vtip" title="Sil"
           onClick="return confirm('Silmek istediğinizden emin misiniz?');"></a>
       </td>
     </tr>
