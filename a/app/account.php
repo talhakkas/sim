@@ -2,13 +2,6 @@
 
 class Account extends F3instance {
 
-	// Display our home page
-	function login() {
-		if (F3::get('SESSION.admin'))
-			return F3::call('Home->home');
-		F3::call('Home->login');
-	}
-
 	// User authentication
 	function auth() {
 
@@ -17,21 +10,20 @@ class Account extends F3instance {
 		$username = F3::get('REQUEST.username' );
 		$password = F3::get('REQUEST.password' );
 
-		$student = new Axon('people');
-		$student->load("tc='$username'");
+		$user = new Axon('people');
+		$user->load("tc='$username'");
 
-		if ($username && $password && !$student->dry() && ($student->password == $password)) {
-			F3::set('SESSION.student', $username);
-			F3::set('SESSION.stdno',   $student->no);
+		if ($username && $password && !$user->dry() && ($user->password == $password)) {
+			F3::set('SESSION.user', $username);
 			F3::set('SESSION.special', 1);
-			F3::set('SESSION.isstudent', TRUE);
-			F3::set('SESSION.kop', TRUE);
-			//return F3::reroute('/clist');
+			F3::set('SESSION.admin', TRUE);
+			F3::set('SESSION.user_menu', TRUE);
 			return F3::reroute('/');
 		}
+
 		F3::set('error', "Yanlış kullanıcı adı veya parola");
 
-		F3::call('Account->login');
+		F3::call('Home->home');
 	}
 
 	// End the session
@@ -42,9 +34,8 @@ class Account extends F3instance {
 	}
 
 	// Validate username, password
-	// bunu js ile kontrol ediyoruz
+	// bunu js ile kontrol edebiliriz
 	function _checkinput() {
-
 		foreach (array('username', 'password') as $alan) {
 			F3::input($alan,
 				function($value) use($alan) {
@@ -63,13 +54,12 @@ class Account extends F3instance {
 	function forgot() {
 		$email = F3::get('REQUEST.email');
 
-		$user = new Axon('user');
+		$user = new Axon('people');
 		$user->load("email='$email'");
 
 		if (!$user->dry()) {
-			/*
-			 * sen unuttun da parolanı biz nası gönderecez?
-			 */
+			// prolasını mailine gönderelim
+			mail("$email", "sim parolanız", $email->password, "From:noreply");
 
 			F3::set('success', 'Parolanız E-Mail Adresinize Gönderildi');
 		}
@@ -89,6 +79,6 @@ class Account extends F3instance {
 	}
 
 	function afterroute() {
-		echo Template::serve('layout.htm');
+		echo Template::serve('a/a.htm');
 	}
 }

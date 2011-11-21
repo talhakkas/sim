@@ -1,14 +1,4 @@
-<!-- facebox -->
-<script type="text/javascript" src="/public/js/jquery.js"></script>
-<script type="text/javascript" src="/public/js/facebox.js"></script>
-<script type="text/javascript">
-  jQuery(document).ready(function($) {
-    $('a[rel*=facebox]').facebox();
-  })
-</script>
-
-
-<style>
+<style type="text/css" media="all">
   ul.tabs li.home {
     background:#3072b3;
     text-shadow:0 -1px 1px rgba(0,0,0,.25);
@@ -19,7 +9,6 @@
   }
   ul.tabs li.home a { color:#fff; }
 </style>
-
 
 <div class="page-header home-page">
   <h1>Ondokuz Mayıs Üniversitesi</h1>
@@ -44,7 +33,7 @@
     <img src="/public/img/toshiba-medical-tablet-pc.jpg"/>
   </div>
 
-  <F3:check if="{{@SESSION.kop}}">
+  <F3:check if="{{@SESSION.user_menu}}">
 
   <F3:true>
   <div class="inlogin">
@@ -57,7 +46,7 @@
     </ul>
 
     <img src="/public/img/icon/128x128/surgeon.png"/>
-    <span>{{@SESSION.student}}</span>
+    <span>{{@SESSION.user}}</span>
 
   </div>
   </F3:true>
@@ -116,23 +105,17 @@
 </div>
 
 
-
-<div id="forgot" style="display:none";>
-  <form action="{{@SR}}/sorgu" method="post" enctype="multipart/form-data">
-    <table class="form" style="width:400px;">
+<div id="forgot" style="display:none">
+  <form action="{{@SR}}/forgot" method="post" enctype="multipart/form-data">
+    <table class="form" style="width:300px;">
       <tr>
         <td>
-          <select name="category_id" class="required" style="width:380px">
-            <F3:repeat group="{{@categories}}" key="{{@key}}" value="{{@val}}" >
-            <option value="{{@val.category_id}}">{{@val.name}}</option>
-            </F3:repeat>
-          </select>
+          <input type="text" name="email" id="" value="" />
         </td>
       </tr>
     </table>
-    <button type="submit" class="button" style="width:370px;">
-      Bu Kategorideki Ürünleri Listele
-    </button>
+    <input type="submit" class="button" value="Parolamı E-Mail Adresime Gönder"
+    style="width:287px; margin-left:10px;"/>
     <br />
   </form>
 </div>

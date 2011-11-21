@@ -7,7 +7,7 @@ include 'simple_html_dom.php';
 function render($template, $title='') {
 	F3::set('page_title', $title);
 	F3::set('template', $template);
-	echo Template::serve("layout/layout.htm");
+	echo Template::serve("layout.htm");
 }
 
 function logout() {

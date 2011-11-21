@@ -8,7 +8,7 @@ class Home extends F3instance {
 	}
 
 	function home() {
-		$this->_page('home', 'Kullanıcılar Listeleniyor');
+		$this->_page('home', 'Ana Sayfa');
 	}
 
 	function people() {
@@ -31,6 +31,6 @@ class Home extends F3instance {
 		//if (! F3::get('SESSION.admin'))  return F3::reroute('/');
 	}
 	function afterroute() {
-		echo Template::serve('layout/a.htm');
+		echo Template::serve('a/a.htm');
 	}
 }
