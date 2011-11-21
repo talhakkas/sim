@@ -357,21 +357,3 @@
 .button-container .button-group { vertical-align: top; }
 
 
-.button-submit {
-    height:23px;
-    color:#2F7CA2;
-    text-align:center;
-    padding-top:6px;
-    background:url(../img/btn.png) no-repeat top;
-    font-weight:bold;
-    width:96px;
-    font-size:13px;
-    display:block;
-    cursor:pointer;
-    border:none;
-    height:auto;
-    padding-bottom:7px;
-}
-.button-submit:hover {box-shadow:0 3px 7px rgba(0, 0, 0, 0.2);}
-
-

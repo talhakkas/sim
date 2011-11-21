@@ -69,6 +69,9 @@ F3::route('GET  /logout',     	'Account->logout'); // logout action
 F3::route('POST /forgot',    	'Account->forgot'); // forget password
 F3::route("GET  /@page", 	'Account->page_reload'); 	// Geçici Sistem Açıldığında Silinecek
 
+// PAGE
+F3::route('GET  /personal',    	'Page->personal'); // Kişisel sayfa
+F3::route('GET  /help',    	'Page->help'); // Yardım sayfası
 
 
 F3::route("GET /show/@cid/@id/@opt", 'show.php');

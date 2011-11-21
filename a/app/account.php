@@ -70,10 +70,6 @@ class Account extends F3instance {
 		F3::call('Home->home');
 	}
 
-	function page_reload() {
-		$this->_page(F3::get('PARAMS.page'), 'Örnek Sayfa');
-	}
-
 	function beforeroute() {
 		//require_once 'cfg/db.php';
 	}

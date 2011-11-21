@@ -8,6 +8,7 @@ body {
     background:#f0f0f0;
     background:url(/public/img/bg_dotted.png);
     background:url(/public/img/home-bkg.gif);
+    background:url(/public/img/body.png);
 }
 
 #content {
@@ -68,7 +69,7 @@ div#wrapper { clear:left; border-top:4px solid #3072b3;}
 div#wrapper div#container {position:relative;width:960px;padding:0;font-size:11px;position:relative;height:25px;margin:0 auto 16px}
 
 div#wrapper p#header-notice {float:left; display: block; padding: 7px 0 10px; margin: 10px 0 -20px 20px;
-    font-size: 17px; line-height: 15px; font-weight: bold; letter-spacing: -1px; color: #222; background:#fff; }
+    font-size: 17px; line-height: 15px; font-weight: bold; letter-spacing: -1px; color: #222; }
 
 ul.tabs { float:right; margin:0; }
 ul.tabs li { display:block; float:left;}
