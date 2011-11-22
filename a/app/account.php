@@ -64,7 +64,7 @@ class Account extends F3instance {
 			F3::set('error', 'Parolanız E-Mail Adresinize Gönderildi');
 		}
 		else
-			F3::set('error', 'Bu E-Mail Adresine Ait Bir Kullanıcı Hesabı Yoktur');
+			F3::set('error', 'Bu E-Mail Adresine Sahip Bir Hesap Yoktur');
 
 		// tekrar anasayfaya dönelim
 		F3::call('Home->home');
