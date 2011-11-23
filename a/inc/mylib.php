@@ -1369,8 +1369,10 @@ function get_tet_beklenen_yanit($cid, $id, $opt=1, $dbg=false)
 			$dict['response']  = get_tea_sel_bmap($cid, get_node_parent($cid, $id));
 			break;
 		case 'immap':
+			$dict['response']  = get_tea_sel_immap($cid, $id);
 			break;
 		case 'immapr':
+			$dict['response']  = get_tea_sel_immap($cid, get_node_parent($cid, $id));
 			break;
 	}
 

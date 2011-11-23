@@ -46,8 +46,7 @@ function test4()
 
 function test()
 {
-	echo "Puan: " . get_puan(11, true); return;
-	print_pre(get_tet(2), "tet");
+	echo "Puan: " . get_puan(2, true); 
 	test2();
 }
 
