@@ -39,8 +39,6 @@
   </head>
 
   <body>
-    <F3:check if="{{@SESSION.special==1}}">
-    <F3:true>
     <div id="wrapper">
       <div id="container">
         <p id="header-notice">
@@ -53,8 +51,6 @@
         </ul>
       </div>
     </div>
-    </F3:true>
-    </F3:check>
 
     <div id="content">
       <F3:check if="{{ preg_match('/\/edit/', @PARAMS.0) | preg_match('/\/create/', @PARAMS.0) }}">

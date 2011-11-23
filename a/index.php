@@ -5,11 +5,17 @@ require_once './inc/lib.php';
 require_once './inc/mylib.php';
 require_once './inc/tetkik.php';
 
-$nodes = array( 1=>"dal",  
-		   17=>"drug", 26=>"dose",
-	       35=>"exam", 36=>"result",
-	       37=>"bmap", 38=>"bmapr",
-	       21=>"immap",23=>"immapr");
+function S() {
+	foreach (func_get_args() as $val)
+		if (F3::get("SESSION.$val"))
+			return 1;
+}
+
+$nodes = array( 1=>"dal",
+		17=>"drug", 26=>"dose",
+	       	35=>"exam", 36=>"result",
+	       	37=>"bmap", 38=>"bmapr",
+	       	21=>"immap",23=>"immapr");
 
 function test2()
 {
@@ -57,7 +63,7 @@ function show_drug() {
 
 
 // HOME PAGES
-F3::route("GET /", 		'Home->home');
+F3::route("GET /*", 		'Home->home');
 F3::route("GET /people", 	'Home->people');
 F3::route("GET /work", 		'Home->work');
 F3::route("GET /about", 	'Home->about');
@@ -67,7 +73,6 @@ F3::route("GET /contact", 	'Home->contact');
 F3::route("POST /login",      	'Account->auth');   // login action
 F3::route('GET  /logout',     	'Account->logout'); // logout action
 F3::route('POST /forgot',    	'Account->forgot'); // forget password
-F3::route("GET  /@page", 	'Account->page_reload'); 	// Geçici Sistem Açıldığında Silinecek
 
 // PAGE
 F3::route('GET  /personal',    	'Page->personal'); // Kişisel sayfa
