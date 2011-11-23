@@ -10,7 +10,7 @@ class Account extends F3instance {
 		$username = F3::get('REQUEST.username' );
 		$password = F3::get('REQUEST.password' );
 
-		$user = new Axon('people');
+		$user = new Axon('users');
 		$user->load("tc='$username'");
 
 		if ($username && $password && !$user->dry() && ($user->password == $password)) {
@@ -20,7 +20,7 @@ class Account extends F3instance {
 			// db'yi aktif ettiğimiz zaman switch içine girecek
 			F3::set('SESSION.isAdmin', TRUE);
 
-			switch ($user->type) {
+			switch ($user->state) {
 			case 1:
 				F3::set('SESSION.isAdmin', TRUE);
 				break;
