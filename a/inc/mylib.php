@@ -853,28 +853,52 @@ function get_puan($tid, $dbg=false)
 
 	$cid = $tet['cid'];
 	$nid = $tet['nid'];
-	$oid = $tet['oid'];
+	$oid = $tet['oid'] - 1;		if($oid < 0) $oid = 0;
 	$ntype = $tet['beklenen']['ntype'];
 
 	$node = get_node($cid, $nid);
-	print_pre($node, 'node');
+	if($dbg)	print_pre($node, 'node');
 
 	$puan = 0;
 	switch($ntype) {
 		case 'dal':
+			$dict = $node['opts'][$oid];
+			if($dbg)	print_pre($dict, 'ilgili secenek');
+
+			if($dict['chkResponse'] == 'no')
+				$puan = $dict['odul'] - $dict['ceza'];
+			else {
+				$puan = ($tet['beklenen']['response'] == $tet['soylenen']['response']) ? $dict['odul'] : -$dict['ceza'];
+			}
 			break;
 		case 'drug':
-			// hocanin ve ogrencinin sectigi ilaclar ayni mi?
+		case 'exam':
+		case 'bmap':
+		case 'immap':
 			$b_dids = array_keys($tet['beklenen']['response']);	sort($b_dids);
 			$s_dids = array_keys($tet['soylenen']['response']);	sort($s_dids);
 
 			$fark   = array_diff($b_dids, $s_dids);
 			if($dbg)	print_pre($fark, 'fark');
 
-			$dogru_mu = empty($fark);
-			if($dbg)	echo "Dogru mu: $dogru_mu";
+			$puan = empty($fark) ? $node['opts']['odul'] : -$node['opts']['ceza'];
+			break;
+		case 'dose':
+			$b_ds = $tet['beklenen']['response'];	sort($b_ds);
+			$s_ds = $tet['soylenen']['response'];	sort($s_ds);
 
-			$puan = $dogru_mu ? $node['opts']['odul'] : $node['opts']['ceza'];
+			$dogru_mu = true;
+			foreach($b_ds as $did=>$d) {
+				$fark   = array_diff_assoc($b_ds[$did], $s_ds[$did]);
+				if($dbg)	print_pre($fark, 'fark');
+				
+				$dogru_mu = empty($fark);
+				if($dbg)	echo "Dogru mu: $dogru_mu";
+
+				if(!$dogru_mu) break;
+			}
+
+			$puan = $dogru_mu ? $node['opts']['odul'] : -$node['opts']['ceza'];
 			break;
 	}
 	
