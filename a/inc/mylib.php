@@ -300,7 +300,7 @@ function takip_listesine_ekle() {
 
 	$ttet->oid = $opt;
 
-	$ttet->puan = get_puan($cid, $id, $opt);
+	$ttet->puan = get_puan($ttet->id);
 	$ttet->save();
 }
 
@@ -327,14 +327,14 @@ function response2str_bek($response, $ntype)
 		case 'drug':
 			$str = '<ul>';
 			foreach($response as $did=>$val) {
-				$str .= "<li><img src=/public/img/ilac.png width=25 align=center><a href=" . F3::get('SR') . "/drug/$did rel=\"facebox\">$val[name]</a>";
+				$str .= "<li><img src=/public/img/drug.png width=25 align=center><a href=" . F3::get('SR') . "/drug/$did rel=\"facebox\">$val[name]</a>";
 			}
 			$str .= "</ul>";
 			break;
 		case 'dose':
 			$str = '<ul>';
 			foreach($response as $did=>$val) {
-				$str .= "<li><img src=/public/img/ilac.png width=25 align=center><a href=" . F3::get('SR') . "/drug/$did rel=\"facebox\">$val[name] $val[dval] ($val[dmn]-$val[dmx]) $val[dayol]</a>";
+				$str .= "<li><img src=/public/img/drug.png width=25 align=center><a href=" . F3::get('SR') . "/drug/$did rel=\"facebox\">$val[name] $val[dval] ($val[dmn]-$val[dmx]) $val[dayol]</a>";
 			}
 			$str .= "</ul>";
 			break;
@@ -846,7 +846,39 @@ function myserialize($arr) {
 	return $str;
 }
 
-function get_puan($cid, $id, $opt) {
+function get_puan($tid, $dbg=false)
+{
+	$tet = get_tet($tid);
+	if($dbg)	print_pre($tet, 'tet');
+
+	$cid = $tet['cid'];
+	$nid = $tet['nid'];
+	$oid = $tet['oid'];
+	$ntype = $tet['beklenen']['ntype'];
+
+	$node = get_node($cid, $nid);
+	print_pre($node, 'node');
+
+	$puan = 0;
+	switch($ntype) {
+		case 'dal':
+			break;
+		case 'drug':
+			// hocanin ve ogrencinin sectigi ilaclar ayni mi?
+			$b_dids = array_keys($tet['beklenen']['response']);	sort($b_dids);
+			$s_dids = array_keys($tet['soylenen']['response']);	sort($s_dids);
+
+			$fark   = array_diff($b_dids, $s_dids);
+			if($dbg)	print_pre($fark, 'fark');
+
+			$dogru_mu = empty($fark);
+			if($dbg)	echo "Dogru mu: $dogru_mu";
+
+			$puan = $dogru_mu ? $node['opts']['odul'] : $node['opts']['ceza'];
+			break;
+	}
+	
+	return $puan;
 	$opt--;
 
 	$tnode = new Axon('node');

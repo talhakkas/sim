@@ -12,7 +12,7 @@ function S() {
 }
 
 $nodes = array( 1=>"dal",
-		17=>"drug", 26=>"dose",
+			17=>"drug", 26=>"dose",
 	       	35=>"exam", 36=>"result",
 	       	37=>"bmap", 38=>"bmapr",
 	       	21=>"immap",23=>"immapr");
@@ -46,7 +46,8 @@ function test4()
 
 function test()
 {
-	print_pre(get_tet(12), "tet");
+	echo "Puan: " . get_puan(2, true); return;
+	print_pre(get_tet(2), "tet");
 	test2();
 }
 
