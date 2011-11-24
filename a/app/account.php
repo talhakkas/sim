@@ -68,7 +68,7 @@ class Account extends F3instance {
 	function forgot() {
 		$email = F3::get('REQUEST.email');
 
-		$user = new Axon('people');
+		$user = new Axon('users');
 		$user->load("email='$email'");
 
 		if (!$user->dry()) {
