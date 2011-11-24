@@ -10,14 +10,28 @@ class Account extends F3instance {
 		$username = F3::get('REQUEST.username' );
 		$password = F3::get('REQUEST.password' );
 
-		$user = new Axon('people');
+		$user = new Axon('users');
 		$user->load("tc='$username'");
 
 		if ($username && $password && !$user->dry() && ($user->password == $password)) {
 			F3::set('SESSION.user', $username);
-			F3::set('SESSION.special', 1);
-			F3::set('SESSION.admin', TRUE);
-			F3::set('SESSION.user_menu', TRUE);
+			F3::set('SESSION.isLogin', TRUE);
+
+			// db'yi aktif ettiğimiz zaman switch içine girecek
+			F3::set('SESSION.isAdmin', TRUE);
+
+			switch ($user->state) {
+			case 1:
+				F3::set('SESSION.isAdmin', TRUE);
+				break;
+			case 2:
+				F3::set('SESSION.isAuthor', TRUE);
+				break;
+			case 3:
+				F3::set('SESSION.isStudent', TRUE);
+				break;
+			}
+
 			return F3::reroute('/');
 		}
 
@@ -54,12 +68,17 @@ class Account extends F3instance {
 	function forgot() {
 		$email = F3::get('REQUEST.email');
 
-		$user = new Axon('people');
+		$user = new Axon('users');
 		$user->load("email='$email'");
 
 		if (!$user->dry()) {
+			$to = (string)$user->email;
+			$from = "noreply@sim.omu.edu.tr";
+			$subject = "sim parolası";
+			$message = "parolanız: " . $email->password;
+
 			// prolasını mailine gönderelim
-			mail("$email", "sim parolanız", $email->password, "From:noreply");
+			mail($to, $subject, $message, $from);
 
 			F3::set('error', 'Parolanız E-Mail Adresinize Gönderildi');
 		}

@@ -300,7 +300,7 @@ function takip_listesine_ekle() {
 
 	$ttet->oid = $opt;
 
-	$ttet->puan = get_puan($cid, $id, $opt);
+	$ttet->puan = get_puan($ttet->id);
 	$ttet->save();
 }
 
@@ -327,14 +327,14 @@ function response2str_bek($response, $ntype)
 		case 'drug':
 			$str = '<ul>';
 			foreach($response as $did=>$val) {
-				$str .= "<li><img src=/public/img/ilac.png width=25 align=center><a href=" . F3::get('SR') . "/drug/$did rel=\"facebox\">$val[name]</a>";
+				$str .= "<li><img src=/public/img/drug.png width=25 align=center><a href=" . F3::get('SR') . "/drug/$did rel=\"facebox\">$val[name]</a>";
 			}
 			$str .= "</ul>";
 			break;
 		case 'dose':
 			$str = '<ul>';
 			foreach($response as $did=>$val) {
-				$str .= "<li><img src=/public/img/ilac.png width=25 align=center><a href=" . F3::get('SR') . "/drug/$did rel=\"facebox\">$val[name] $val[dval] ($val[dmn]-$val[dmx]) $val[dayol]</a>";
+				$str .= "<li><img src=/public/img/drug.png width=25 align=center><a href=" . F3::get('SR') . "/drug/$did rel=\"facebox\">$val[name] $val[dval] ($val[dmn]-$val[dmx]) $val[dayol]</a>";
 			}
 			$str .= "</ul>";
 			break;
@@ -846,7 +846,63 @@ function myserialize($arr) {
 	return $str;
 }
 
-function get_puan($cid, $id, $opt) {
+function get_puan($tid, $dbg=false)
+{
+	$tet = get_tet($tid);
+	if($dbg)	print_pre($tet, 'tet');
+
+	$cid = $tet['cid'];
+	$nid = $tet['nid'];
+	$oid = $tet['oid'] - 1;		if($oid < 0) $oid = 0;
+	$ntype = $tet['beklenen']['ntype'];
+
+	$node = get_node($cid, $nid);
+	if($dbg)	print_pre($node, 'node');
+
+	$puan = 0;
+	switch($ntype) {
+		case 'dal':
+			$dict = $node['opts'][$oid];
+			if($dbg)	print_pre($dict, 'ilgili secenek');
+
+			if($dict['chkResponse'] == 'no')
+				$puan = $dict['odul'] - $dict['ceza'];
+			else {
+				$puan = ($tet['beklenen']['response'] == $tet['soylenen']['response']) ? $dict['odul'] : -$dict['ceza'];
+			}
+			break;
+		case 'drug':
+		case 'exam':
+		case 'bmap':
+		case 'immap':
+			$b_dids = array_keys($tet['beklenen']['response']);	sort($b_dids);
+			$s_dids = array_keys($tet['soylenen']['response']);	sort($s_dids);
+
+			$fark   = array_diff($b_dids, $s_dids);
+			if($dbg)	print_pre($fark, 'fark');
+
+			$puan = empty($fark) ? $node['opts']['odul'] : -$node['opts']['ceza'];
+			break;
+		case 'dose':
+			$b_ds = $tet['beklenen']['response'];	sort($b_ds);
+			$s_ds = $tet['soylenen']['response'];	sort($s_ds);
+
+			$dogru_mu = true;
+			foreach($b_ds as $did=>$d) {
+				$fark   = array_diff_assoc($b_ds[$did], $s_ds[$did]);
+				if($dbg)	print_pre($fark, 'fark');
+				
+				$dogru_mu = empty($fark);
+				if($dbg)	echo "Dogru mu: $dogru_mu";
+
+				if(!$dogru_mu) break;
+			}
+
+			$puan = $dogru_mu ? $node['opts']['odul'] : -$node['opts']['ceza'];
+			break;
+	}
+	
+	return $puan;
 	$opt--;
 
 	$tnode = new Axon('node');
@@ -1313,8 +1369,10 @@ function get_tet_beklenen_yanit($cid, $id, $opt=1, $dbg=false)
 			$dict['response']  = get_tea_sel_bmap($cid, get_node_parent($cid, $id));
 			break;
 		case 'immap':
+			$dict['response']  = get_tea_sel_immap($cid, $id);
 			break;
 		case 'immapr':
+			$dict['response']  = get_tea_sel_immap($cid, get_node_parent($cid, $id));
 			break;
 	}
 
