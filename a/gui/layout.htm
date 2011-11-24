@@ -67,7 +67,7 @@
 
         <F3:check if="{{ preg_match('/\/edit/', @PARAMS.0) | preg_match('/\/create/', @PARAMS.0) }}">
         <F3:true>
-        <div id="leftcolumn">
+        <div id="rightcolumn">
           <ul>
             <li class="edit"><a href="{{@SR}}/create/oyku/{{@SESSION.cid}}/{{@SESSION.id}}">ÖYKÜ</a></li>
             <li class="css"><a href="{{@SR}}/create/css/{{@SESSION.cid}}/{{@SESSION.id}}">ÇSS</a></li>
@@ -77,6 +77,20 @@
         </div>
         </F3:true>
         </F3:check>
+
+        <F3:check if="{{ @template == 'page/personal' }}">
+        <F3:true>
+        <div id="rightcolumn">
+          <ul>
+            <li class="foo"><a href="#">olgu raporları</a></li>
+            <li class="bar"><a href="#">foo</a></li>
+            <li class="baz"><a href="#">bar</a></li>
+            <li class="bat"><a href="#">sınavlar</a></li>
+          </ul>
+        </div>
+        </F3:true>
+        </F3:check>
+
       </div>
 
       <F3:include href="{{@template}}.htm"/>

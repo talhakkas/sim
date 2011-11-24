@@ -1,59 +1,63 @@
 <style type="text/css" media="all">
   #content-background {
-    background:#fff url(/public/img/icon/128x128/male_user_info.png) no-repeat center 0px;
+    background:#fff url(/public/img/icon/128x128/edit_business_user.png) no-repeat center 0px;
     background-size:100px;
   }
 </style>
 
-<h2>{{@page_title}}</h2>
+<div class="page">
 
-<F3:check if="{{@success}}">{{@success}}</F3:check>
-<F3:check if="{{@warning}}">{{@warning}}</F3:check>
+  <h2>{{@page_title}}</h2>
 
-<form action="personal" method="post" enctype="multipart/form-data">
+  <F3:check if="{{@success}}">{{@success}}</F3:check>
+  <F3:check if="{{@warning}}">{{@warning}}</F3:check>
 
-  <table class="custom" id="custom" name="custom">
-    <tr>
-      <td class="label">TC Kimlik Numaranız</td>
-      <td class="field">
-        <input type="text" name="tc" value="{{@user.tc}}" class="required number" />
-      </td>
-    </tr>
-    <tr>
-      <td class="label">Adınız</td>
-      <td class="field">
-        <input type="text" name="name" value="{{@user.name}}" class="required" />
-      </td>
-    </tr>
-    <tr>
-      <td class="label">Soyadınız</td>
-      <td class="field">
-        <input type="text" name="surname" value="{{@user.surname}}" class="required" />
-      </td>
-    </tr>
-    <tr>
-      <td class="label">Parolanız</td>
-      <td class="field">
-        <input type="password" name="password" value="{{@user.password}}" class="required" />
-      </td>
-    </tr>
-    <tr>
-      <td class="label">Parolanız (Tekrar)</td>
-      <td class="field">
-        <input type="password" name="password2" value="{{@user.password}}" class="required" />
-      </td>
-    </tr>
-    <tr>
-      <td class="label">E-Mail Adresiniz</td>
-      <td class="field">
-        <input type="text" name="email" value="{{@user.email}}" class="required email" />
-      </td>
-    </tr>
-    <tr>
-      <td></td>
-      <td>
-        <input type="submit" class="button" value="Bilgilerimi Kaydet" />
-      </td>
-    </tr>
-  </table>
-</form>
+  <form action="personal" method="post" enctype="multipart/form-data">
+
+    <table class="custom" id="custom" name="custom">
+      <tr>
+        <td class="label">TC Kimlik Numaranız</td>
+        <td class="field">
+          <input type="text" name="tc" value="{{@user.tc}}" class="required number" />
+        </td>
+      </tr>
+      <tr>
+        <td class="label">Adınız</td>
+        <td class="field">
+          <input type="text" name="name" value="{{@user.name}}" class="required" />
+        </td>
+      </tr>
+      <tr>
+        <td class="label">Soyadınız</td>
+        <td class="field">
+          <input type="text" name="surname" value="{{@user.surname}}" class="required" />
+        </td>
+      </tr>
+      <tr>
+        <td class="label">Parolanız</td>
+        <td class="field">
+          <input type="password" name="password" value="{{@user.password}}" class="required" />
+        </td>
+      </tr>
+      <tr>
+        <td class="label">Parolanız (Tekrar)</td>
+        <td class="field">
+          <input type="password" name="password2" value="{{@user.password}}" class="required" />
+        </td>
+      </tr>
+      <tr>
+        <td class="label">E-Mail Adresiniz</td>
+        <td class="field">
+          <input type="text" name="email" value="{{@user.email}}" class="required email" />
+        </td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>
+          <input type="submit" class="button" value="Bilgilerimi Kaydet" />
+        </td>
+      </tr>
+    </table>
+  </form>
+
+</div>
