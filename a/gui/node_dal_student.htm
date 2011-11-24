@@ -5,11 +5,11 @@
 
 <div align="middle">
   <form name="frm{{@ctr}}" action="{{@SR}}/show/{{@SESSION.cid}}/{{@blg[node_link]}}/{{@ctr}}" method="post">
-    	<input type="hidden" name="cid" 	value="{{@SESSION.data['cid']}}">
-    	<input type="hidden" name="id" 		value="{{@SESSION.data['id']}}">
-    	<input type="hidden" name="ntype" 	value="{{@SESSION.data['ntype']}}">
-    	<input type="hidden" name="opt" 	value="{{@ctr}}">
-  	
+    <input type="hidden" name="cid" 	value="{{@SESSION.data['cid']}}">
+    <input type="hidden" name="id" 		value="{{@SESSION.data['id']}}">
+    <input type="hidden" name="ntype" 	value="{{@SESSION.data['ntype']}}">
+    <input type="hidden" name="opt" 	value="{{@ctr}}">
+
     <label class="label">
       <textarea name="response"></textarea>
     </label>
@@ -19,12 +19,12 @@
 </F3:true>
 <F3:false>
 <form name="frm{{@ctr}}" action="{{@SR}}/show/{{@SESSION.cid}}/{{@blg[node_link]}}/{{@ctr}}" method="post">
-    	<input type="hidden" name="cid" 	value="{{@SESSION.data['cid']}}">
-    	<input type="hidden" name="id" 		value="{{@SESSION.data['id']}}">
-    	<input type="hidden" name="ntype" 	value="{{@SESSION.data['ntype']}}">
-    	<input type="hidden" name="opt" 	value="{{@ctr}}">
-  	
-	<a class="answer" href="#" onclick="document.forms['frm{{@ctr}}'].submit(); return false;">{{@blg['link_text']}}</a>
+  <input type="hidden" name="cid" 	value="{{@SESSION.data['cid']}}">
+  <input type="hidden" name="id" 		value="{{@SESSION.data['id']}}">
+  <input type="hidden" name="ntype" 	value="{{@SESSION.data['ntype']}}">
+  <input type="hidden" name="opt" 	value="{{@ctr}}">
+
+  <a class="answer" href="#" onclick="document.forms['frm{{@ctr}}'].submit(); return false;">{{@blg['link_text']}}</a>
 </form>
 </F3:false>
 </F3:check>

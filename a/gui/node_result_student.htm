@@ -1,8 +1,8 @@
 
 <form name="frm" action="{{@SR}}/show/{{@SESSION.cid}}/{{@SESSION.data['opts']['node_link']}}/0" method="post">
-	<input type="hidden" name="cid" 	value="{{@SESSION.data['cid']}}">
-	<input type="hidden" name="id" 		value="{{@SESSION.data['id']}}">
-	<input type="hidden" name="ntype" 	value="{{@SESSION.data['ntype']}}">
+  <input type="hidden" name="cid" 	value="{{@SESSION.data['cid']}}">
+  <input type="hidden" name="id" 		value="{{@SESSION.data['id']}}">
+  <input type="hidden" name="ntype" 	value="{{@SESSION.data['ntype']}}">
 
   <F3:check if="{{@SESSION.error != 'NULL'}}">
   <F3:true>

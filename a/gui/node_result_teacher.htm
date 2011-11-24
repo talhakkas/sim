@@ -8,38 +8,38 @@
   </td>
 </tr>
 <tr>
-	<td></td>
-<td>
+  <td></td>
+  <td>
 
-<tr>
-	<td></td>
-	<td class="field">
-		Her bir tahlil için verileri karşılarında ki kutuya girin. Resimse Dosya seç yardımıyla seçip/yükleyin.
-	</td>
-</tr>
+    <tr>
+      <td></td>
+      <td class="field">
+	Her bir tahlil için verileri karşılarında ki kutuya girin. Resimse Dosya seç yardımıyla seçip/yükleyin.
+      </td>
+    </tr>
 
-<F3:repeat group="{{@SESSION.exams}}" key="{{@eid}}" value="{{@eval}}">
-<tr>
-	<td class="label">{{@eval['did']}}:{{@eval['pid']}}:{{@eval['sid']}}-{{@eval['snm']}}</td>
-	<td class="field">
-		<input type="hidden" name="eid[]"  value="{{@eid}}">
-		<input type="hidden" name="ename[]"  value="{{@eval['snm']}}">
-		<input type="hidden" name="stype[]"  value="{{@eval['stype']}}">
-		<!-- {{@eval['stype']}} --> 
-		<!--input type="text"   name="evalue[]" value="{{@eval['value']}}"--> 
-		<input type="file" name="evalue[]" value="{{@SR}}/{{@uploaddir}}{{@eval['value']}}" >
-          <F3:check if="{{@eval['value'] != 'null'}}">
-          <F3:true>
-          <a href="{{@SR}}/{{@uploaddir}}kucuk{{@eval['value']}}" rel="facebox"><img src="{{@SR}}/{{@uploaddir}}kucuk{{@eval['value']}}" height="35"></a>
-          <!--input type="checkbox" name="resim_sil_evalue[]" value="evet" />Kaldır -->
-          </F3:true>
-          </F3:check>
-		<br>
-	</td>
-</tr>
-</F3:repeat>
+    <F3:repeat group="{{@SESSION.exams}}" key="{{@eid}}" value="{{@eval}}">
+    <tr>
+      <td class="label">{{@eval['did']}}:{{@eval['pid']}}:{{@eval['sid']}}-{{@eval['snm']}}</td>
+      <td class="field">
+	<input type="hidden" name="eid[]"  value="{{@eid}}">
+	<input type="hidden" name="ename[]"  value="{{@eval['snm']}}">
+	<input type="hidden" name="stype[]"  value="{{@eval['stype']}}">
+	<!-- {{@eval['stype']}} --> 
+	<!--input type="text"   name="evalue[]" value="{{@eval['value']}}"--> 
+	<input type="file" name="evalue[]" value="{{@SR}}/{{@uploaddir}}{{@eval['value']}}" >
+	<F3:check if="{{@eval['value'] != 'null'}}">
+	<F3:true>
+	<a href="{{@SR}}/{{@uploaddir}}kucuk{{@eval['value']}}" rel="facebox"><img src="{{@SR}}/{{@uploaddir}}kucuk{{@eval['value']}}" height="35"></a>
+	<!--input type="checkbox" name="resim_sil_evalue[]" value="evet" />Kaldır -->
+	</F3:true>
+	</F3:check>
+	<br>
+      </td>
+    </tr>
+    </F3:repeat>
 
-</td>
+  </td>
 </tr>
 
 <F3:include href="node_next.htm" />

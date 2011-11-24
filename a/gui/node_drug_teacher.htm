@@ -15,26 +15,26 @@
 <tr>
   <td></td>
 
-<td>
-<div class="tokeninput">
-    <p class="answer left">ilaç seçiminizi buradan yapabilirsiniz</p>
-    <label class="label">
-      <input type="text" id="drugs" name="drugs" />
-    </label>
+  <td>
+    <div class="tokeninput">
+      <p class="answer left">ilaç seçiminizi buradan yapabilirsiniz</p>
+      <label class="label">
+        <input type="text" id="drugs" name="drugs" />
+      </label>
 
-    <script type="text/javascript">
-      $(document).ready(function() {
+      <script type="text/javascript">
+        $(document).ready(function() {
           $("#drugs").tokenInput("/a/ajax/get_drug.php", {
-                prePopulate: [
-		<F3:repeat group="{{@SESSION.drugs}}" key="{{@id}}" value="{{@name}}"> 
-                    {id: {{@id}}, name: "{{@name}}"},
-		</F3:repeat>
-                ]
-            });
+            prePopulate: [
+              <F3:repeat group="{{@SESSION.drugs}}" key="{{@id}}" value="{{@name}}">
+                {id: {{@id}}, name: "{{@name}}"},
+              </F3:repeat>
+            ]
           });
-    </script>
-</div>
-</td>
+        });
+      </script>
+    </div>
+  </td>
 </tr>
 
 <F3:include href="node_next.htm" />

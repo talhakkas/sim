@@ -2,33 +2,32 @@
 <script src="/public/js/jquery.Jcrop.js"></script>
 <link rel="stylesheet" href="/public/css/jquery.Jcrop.css" type="text/css" />
 <script language="Javascript">
-	jQuery(document).ready(function(){
-		jQuery('#medya_map').Jcrop({
-			onChange:  showCoords,
-			onSelect:  showCoords,
-			setSelect: [{{@SESSION.immap['x']}}, {{@SESSION.immap['y']}}, {{@SESSION.immap['x2']}}, {{@SESSION.immap['y2']}}],
-		});
-	});
-	function showCoords(c)
-	{
-		jQuery('#x').val(c.x);
-		jQuery('#y').val(c.y);
-		jQuery('#x2').val(c.x2);
-		jQuery('#y2').val(c.y2);
-		jQuery('#w').val(c.w);
-		jQuery('#h').val(c.h);
+  jQuery(document).ready(function(){
+    jQuery('#medya_map').Jcrop({
+      onChange:  showCoords,
+      onSelect:  showCoords,
+      setSelect: [{{@SESSION.immap['x']}}, {{@SESSION.immap['y']}}, {{@SESSION.immap['x2']}}, {{@SESSION.immap['y2']}}],
+    });
+  });
+  function showCoords(c){
+    jQuery('#x').val(c.x);
+    jQuery('#y').val(c.y);
+    jQuery('#x2').val(c.x2);
+    jQuery('#y2').val(c.y2);
+    jQuery('#w').val(c.w);
+    jQuery('#h').val(c.h);
 
-		var rx = 100 / c.w;
-		var ry = 100 / c.h;
+    var rx = 100 / c.w;
+    var ry = 100 / c.h;
 
-		$('#preview').css({
-			/* FIXME: resmin genislik ve yuksekligi: 300x374 */
-			width: Math.round(rx * 300) + 'px',
-			height: Math.round(ry * 374) + 'px',
-			marginLeft: '-' + Math.round(rx * c.x) + 'px',
-			marginTop: '-' + Math.round(ry * c.y) + 'px'
-		});
-	};
+    $('#preview').css({
+      /* FIXME: resmin genislik ve yuksekligi: 300x374 */
+      width: Math.round(rx * 300) + 'px',
+      height: Math.round(ry * 374) + 'px',
+      marginLeft: '-' + Math.round(rx * c.x) + 'px',
+      marginTop: '-' + Math.round(ry * c.y) + 'px'
+    });
+  };
 </script>
 
 <tr>
@@ -42,35 +41,35 @@
 </tr>
 
 <tr>
-	<td class="label">Görsel Tetkik Resmi</td>
-	<td class="field">
-  	    <img src="{{@SR}}/{{@uploaddir}}kucuk{{@SESSION.immap['imgnm']}}" id="medya_map">
+  <td class="label">Görsel Tetkik Resmi</td>
+  <td class="field">
+    <img src="{{@SR}}/{{@uploaddir}}kucuk{{@SESSION.immap['imgnm']}}" id="medya_map">
 
-	    <h3>Önizleme</h3>
-	    <div style="width:100px;height:100px;overflow:hidden;margin-left:5px;"> 
-	    	<img src="{{@SR}}/{{@uploaddir}}kucuk{{@SESSION.immap['imgnm']}}" id="preview" /> 
-	    </div> 
+    <h3>Önizleme</h3>
+    <div style="width:100px;height:100px;overflow:hidden;margin-left:5px;"> 
+      <img src="{{@SR}}/{{@uploaddir}}kucuk{{@SESSION.immap['imgnm']}}" id="preview" /> 
+    </div> 
 
 
-	    <div id="koordinat" style="display:none">
-		X1 <input type="text" size="4" id="x"  name="x"  value="{{@SESSION.immap['x']}}"  />
-		Y1 <input type="text" size="4" id="y"  name="y"  value="{{@SESSION.immap['y']}}"  />
-		X2 <input type="text" size="4" id="x2" name="x2" value="{{@SESSION.immap['x2']}}" />
-		Y2 <input type="text" size="4" id="y2" name="y2" value="{{@SESSION.immap['y2']}}" />
-		W  <input type="text" size="4" id="w"  name="w"  value="{{@SESSION.immap['w']}}"  />
-		H  <input type="text" size="4" id="h"  name="h"  value="{{@SESSION.immap['h']}}"  />
-	    </div>			
-	</td>
+    <div id="koordinat" style="display:none">
+      X1 <input type="text" size="4" id="x"  name="x"  value="{{@SESSION.immap['x']}}"  />
+      Y1 <input type="text" size="4" id="y"  name="y"  value="{{@SESSION.immap['y']}}"  />
+      X2 <input type="text" size="4" id="x2" name="x2" value="{{@SESSION.immap['x2']}}" />
+      Y2 <input type="text" size="4" id="y2" name="y2" value="{{@SESSION.immap['y2']}}" />
+      W  <input type="text" size="4" id="w"  name="w"  value="{{@SESSION.immap['w']}}"  />
+      H  <input type="text" size="4" id="h"  name="h"  value="{{@SESSION.immap['h']}}"  />
+    </div>			
+  </td>
 </tr>
 
 <tr>
-	<td class="label">
-		Yorumunuzu giriniz.
-	</td>
+  <td class="label">
+    Yorumunuzu giriniz.
+  </td>
 
-	<td class="field">
-    		<input type="text" name="response" id="response1" value="{{@SESSION.immap['yorum']}}" style="visibility:visible;">
-	</td>
+  <td class="field">
+    <input type="text" name="response" id="response1" value="{{@SESSION.immap['yorum']}}" style="visibility:visible;">
+  </td>
 </tr>
 
 <F3:include href="node_next.htm" />
