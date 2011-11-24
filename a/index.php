@@ -75,7 +75,8 @@ F3::route('GET  /logout',     	'Account->logout'); // logout action
 F3::route('POST /forgot',    	'Account->forgot'); // forget password
 
 // PAGE
-F3::route('GET  /personal',    	'Page->personal'); // Kişisel sayfa
+F3::route('GET  /personal',    	'Page->personal'); // Kişisel bilgiler
+F3::route('POST /personal',    	'Page->update'); // Kişisel bilgileri güncelle
 F3::route('GET  /help',    	'Page->help'); // Yardım sayfası
 
 
