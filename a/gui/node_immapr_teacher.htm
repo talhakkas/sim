@@ -4,8 +4,9 @@
 <script language="Javascript">
 	jQuery(document).ready(function(){
 		jQuery('#medya_map').Jcrop({
-			onChange: showCoords,
-			onSelect: showCoords
+			onChange:  showCoords,
+			onSelect:  showCoords,
+			setSelect: [{{@SESSION.immap['x']}}, {{@SESSION.immap['y']}}, {{@SESSION.immap['x2']}}, {{@SESSION.immap['y2']}}],
 		});
 	});
 	function showCoords(c)
@@ -16,6 +17,17 @@
 		jQuery('#y2').val(c.y2);
 		jQuery('#w').val(c.w);
 		jQuery('#h').val(c.h);
+
+		var rx = 100 / c.w;
+		var ry = 100 / c.h;
+
+		$('#preview').css({
+			/* FIXME: resmin genislik ve yuksekligi: 300x374 */
+			width: Math.round(rx * 300) + 'px',
+			height: Math.round(ry * 374) + 'px',
+			marginLeft: '-' + Math.round(rx * c.x) + 'px',
+			marginTop: '-' + Math.round(ry * c.y) + 'px'
+		});
 	};
 </script>
 
@@ -26,23 +38,27 @@
 
     Ödül: <input type="text" name="odul" value="{{@SESSION.data['opts']['odul']}}" maxlength="3" size="3">
     Ceza: <input type="text" name="ceza" value="{{@SESSION.data['opts']['ceza]}}"  maxlength="3" size="3">
-
-    <input type="checkbox" name="chkResponse" id="chkResponse1" checked="true" value="1"><br>
   </td>
 </tr>
 
 <tr>
 	<td class="label">Görsel Tetkik Resmi</td>
 	<td class="field">
-  	    <img src="{{@SR}}/{{@uploaddir}}kucuk{{@SESSION.medya}}" id="medya_map">
+  	    <img src="{{@SR}}/{{@uploaddir}}kucuk{{@SESSION.immap['imgnm']}}" id="medya_map">
+
+	    <h3>Önizleme</h3>
+	    <div style="width:100px;height:100px;overflow:hidden;margin-left:5px;"> 
+	    	<img src="{{@SR}}/{{@uploaddir}}kucuk{{@SESSION.immap['imgnm']}}" id="preview" /> 
+	    </div> 
+
 
 	    <div id="koordinat" style="display:none">
-		X1 <input type="text" size="4" id="x" name="x" />
-		Y1 <input type="text" size="4" id="y" name="y" />
-		X2 <input type="text" size="4" id="x2" name="x2" />
-		Y2 <input type="text" size="4" id="y2" name="y2" />
-		W <input type="text" size="4" id="w" name="w" />
-		H <input type="text" size="4" id="h" name="h" />
+		X1 <input type="text" size="4" id="x"  name="x"  value="{{@SESSION.immap['x']}}"  />
+		Y1 <input type="text" size="4" id="y"  name="y"  value="{{@SESSION.immap['y']}}"  />
+		X2 <input type="text" size="4" id="x2" name="x2" value="{{@SESSION.immap['x2']}}" />
+		Y2 <input type="text" size="4" id="y2" name="y2" value="{{@SESSION.immap['y2']}}" />
+		W  <input type="text" size="4" id="w"  name="w"  value="{{@SESSION.immap['w']}}"  />
+		H  <input type="text" size="4" id="h"  name="h"  value="{{@SESSION.immap['h']}}"  />
 	    </div>			
 	</td>
 </tr>
@@ -53,7 +69,7 @@
 	</td>
 
 	<td class="field">
-    		<input type="text" name="response" id="response1" value="{{@SESSION.data['opts']['map']['yorum']}}" style="visibility:visible;">
+    		<input type="text" name="response" id="response1" value="{{@SESSION.immap['yorum']}}" style="visibility:visible;">
 	</td>
 </tr>
 

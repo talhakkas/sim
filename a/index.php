@@ -19,13 +19,13 @@ $nodes = array( 1=>"dal",
 
 function test2()
 {
-	print_pre(get_node(1, 17), "drug");
-	print_pre(get_node(1, 26), "dose");
+	print_pre(get_node(1, 37), "bmap");
+	print_pre(get_node(1, 38), "bmapr");
 
 	echo "<hr>";
 
-	print_pre(get_node(1, 37), "bmap");
-	print_pre(get_node(1, 38), "bmapr");
+	print_pre(get_node(1, 21), "immap");
+	print_pre(get_node(1, 23), "immapr");
 }
 
 function test4()
@@ -33,10 +33,9 @@ function test4()
 	$tnode = new Axon('node');
 	$tnode->load("cid='1' AND id='23'");
 
+	$tnode->parent = 21;
 	$dict = unserialize($tnode->options);
 
-	$dict['node_link'] = 19;
-	$dict['link_text'] = "Başka tetkik için tıklayınız";
 	print_pre($dict, "dict");
 
 	$tnode->options = serialize($dict);
@@ -46,7 +45,8 @@ function test4()
 
 function test()
 {
-	echo "Puan: " . get_puan(2, true); 
+test4();
+	//echo "Puan: " . get_puan(2, true); 
 	test2();
 }
 
