@@ -72,12 +72,13 @@ class Account extends F3instance {
 		$user->load("email='$email'");
 
 		if (!$user->dry()) {
+			$to = $user->email;
 			$from = "noreply@sim.omu.edu.tr";
 			$subject = "sim parolası";
 			$message = "parolanız: " . $email->password;
 
 			// prolasını mailine gönderelim
-			mail($user->email, $subject, $message, $from);
+			mail($to, $subject, $message, $from);
 
 			F3::set('error', 'Parolanız E-Mail Adresinize Gönderildi');
 		}
