@@ -53,18 +53,21 @@
     </div>
 
     <div id="content">
-      <F3:check if="{{ preg_match('/\/edit/', @PARAMS.0) | preg_match('/\/create/', @PARAMS.0) }}">
-      <F3:true>
-      <div id="leftcolumn">
-        <ul>
-          <li class="edit"><a href="{{@SR}}/create/oyku/{{@SESSION.cid}}/{{@SESSION.id}}">ÖYKÜ</a></li>
-          <li class="css"><a href="{{@SR}}/create/css/{{@SESSION.cid}}/{{@SESSION.id}}">ÇSS</a></li>
-          <li class="dal"><a href="{{@SR}}/create/dal/{{@SESSION.cid}}/{{@SESSION.id}}">DALLANMA</a></li>
-          <li class="anket"><a href="{{@SR}}/create/anket/{{@SESSION.cid}}/{{@SESSION.id}}">ANKET</a></li>
-        </ul>
+      <div id="content-background">
+
+        <F3:check if="{{ preg_match('/\/edit/', @PARAMS.0) | preg_match('/\/create/', @PARAMS.0) }}">
+        <F3:true>
+        <div id="leftcolumn">
+          <ul>
+            <li class="edit"><a href="{{@SR}}/create/oyku/{{@SESSION.cid}}/{{@SESSION.id}}">ÖYKÜ</a></li>
+            <li class="css"><a href="{{@SR}}/create/css/{{@SESSION.cid}}/{{@SESSION.id}}">ÇSS</a></li>
+            <li class="dal"><a href="{{@SR}}/create/dal/{{@SESSION.cid}}/{{@SESSION.id}}">DALLANMA</a></li>
+            <li class="anket"><a href="{{@SR}}/create/anket/{{@SESSION.cid}}/{{@SESSION.id}}">ANKET</a></li>
+          </ul>
+        </div>
+        </F3:true>
+        </F3:check>
       </div>
-      </F3:true>
-      </F3:check>
 
       <F3:include href="{{@template}}.htm"/>
     </div>

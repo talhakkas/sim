@@ -8,9 +8,9 @@ class Page extends F3instance {
 	}
 
 	function personal() {
-		//$username = F3::get('SESSION.user');
-		//$user = DB::sql("select * from people where username='$username'");
-		//F3::set('bilmemne', $user);
+		//$username = F3::get('SESSION.username');
+		//$user = DB::sql("select * from users where username='$username'");
+		//F3::set('user', $user[0]);
 
 		$this->_page('personal', 'Kişisel Bilgileriniz');
 	}
@@ -24,7 +24,7 @@ class Page extends F3instance {
 	}
 
 	function beforeroute() {
-		if (! F3::get('SESSION.admin'))
+		if (! F3::get('SESSION.isLogin'))
 			return F3::reroute('/');
 	}
 
