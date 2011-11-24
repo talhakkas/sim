@@ -40,6 +40,7 @@ class Page extends F3instance {
 	}
 
 	function help() {
+		// burada yardım için neler gerekebilir?
 		$this->_page('help', 'Yardım Sayfası');
 	}
 
