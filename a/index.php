@@ -40,8 +40,7 @@ function test4()
 
 function test()
 {
-	print_pre(get_tet(12), "tet");
-	test2();
+	print_pre(F3::get('SESSION'), 'SESSION');
 }
 
 function test_gui()
