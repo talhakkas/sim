@@ -897,7 +897,6 @@ function get_puan($tid, $dbg=false)
 		case 'drug':
 		case 'exam':
 		case 'bmap':
-		case 'immap':
 			$b_dids = array_keys($tet['beklenen']['response']);	sort($b_dids);
 			$s_dids = array_keys($tet['soylenen']['response']);	sort($s_dids);
 
@@ -906,6 +905,7 @@ function get_puan($tid, $dbg=false)
 
 			$puan = empty($fark) ? $node['opts']['odul'] : -$node['opts']['ceza'];
 			break;
+		case 'immap':
 		case 'dose':
 			$b_ds = $tet['beklenen']['response'];	sort($b_ds);
 			$s_ds = $tet['soylenen']['response'];	sort($s_ds);
@@ -1171,7 +1171,8 @@ function get_stu_sel_immap($arr)
 	$dict = array('x' => my_get($arr, 'x'),  'y' => my_get($arr, 'y'),
 		      'x2'=> my_get($arr, 'x2'), 'y2'=> my_get($arr, 'y2'),
 		      'w' => my_get($arr, 'w'),  'h' => my_get($arr, 'h'),
-		      'yorum' => my_get($arr, 'response'));
+		      'yorum' => my_get($arr, 'response'),
+			  'imgnm' => my_get($arr, 'imgnm'));
 
 	return $dict;
 }

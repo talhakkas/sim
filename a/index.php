@@ -45,9 +45,9 @@ function test4()
 
 function test()
 {
-	test4();
-	//echo "Puan: " . get_puan(2, true); 
-	test2();
+	//print_pre(get_tet(2), 'immap');
+	echo "Puan: " . get_puan(2, true); 
+	//test2();
 }
 
 function test_gui()
