@@ -42,13 +42,12 @@
       <li><a class="support" href="{{@SR}}/help">Destek</a></li>
       <li><a class="logout" href="{{@SR}}/logout">Çıkış</a></li>
 
-      <F3:check if="{{!@SESSION.lang || @lang == 'tr_TR'}}">
-      <F3:true>
+      <F3:check if="{{ (@SESSION.lang == 'tr_TR') || (!@SESSION.lang && @lang == 'tr_TR') }}">
       <li><a class="lang" href="{{@SR}}/localize/en_US">İngilizce</a></li>
-      </F3:true>
-      <F3:false>
+      </F3:check>
+
+      <F3:check if="{{ (@SESSION.lang == 'en_US') || (!@SESSION.lang && @lang == 'en_US') }}">
       <li><a class="lang" href="{{@SR}}/localize/tr_TR">Türkçe</a></li>
-      </F3:false>
       </F3:check>
 
     </ul>
@@ -99,7 +98,7 @@
 	  Düğümlerinizi dallara ayırarak, öğrencilerin öğrenme sürecine katkı sağlayabilirsiniz.
       </li>
       <li>
-      Tahlil seçme, sonuç görüntüleme, fiziksel muayene, film değerlendirme, ilaç belirleme 
+      Tahlil seçme, sonuç görüntüleme, fiziksel muayene, film değerlendirme, ilaç belirleme
 	  ve dozajını ayarlama imkanınız olacak.
       </li>
       <li>
