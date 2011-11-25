@@ -4,6 +4,7 @@ require_once  '../a/lib/base.php';
 require_once  '../a/inc/lib.php';
 require_once  'inc/tetkik.php';
 
+
 function ekg() {
 	$isEkgResponse = empty($_POST) ? "no" : "yes";
 	$yorum = empty($_POST) ? "" : $_POST['yorum'];

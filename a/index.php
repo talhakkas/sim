@@ -5,6 +5,8 @@ require_once './inc/lib.php';
 require_once './inc/mylib.php';
 require_once './inc/tetkik.php';
 
+//Gtext->foo();
+
 function isallows() {
 	foreach (func_get_args() as $val)
 		if (F3::get("SESSION.is$val"))
