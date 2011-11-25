@@ -5,9 +5,9 @@ require_once './inc/lib.php';
 require_once './inc/mylib.php';
 require_once './inc/tetkik.php';
 
-function S() {
+function isallows() {
 	foreach (func_get_args() as $val)
-		if (F3::get("SESSION.$val"))
+		if (F3::get("SESSION.is$val"))
 			return 1;
 }
 
