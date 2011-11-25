@@ -278,10 +278,11 @@ a.forgot-pass{ margin-top:-5px; font-size:12px; font-weight:normal; color:#3072b
 .inlogin ul.in { float:left; width:150px; margin-top:10px; }
 .inlogin ul.in li { height:38px; }
 .inlogin ul.in a { padding:8px 0 8px 36px; font-size:12px; font-weight:bold; text-decoration:none; word-spacing:1px;}
-.inlogin ul.in a.olgu     {background:url(/public/img/icon/32x32/comments.png) no-repeat;}
-.inlogin ul.in a.personal {background:url(/public/img/icon/32x32/male_user_info.png) no-repeat;}
-.inlogin ul.in a.support  {background:url(/public/img/icon/32x32/support.png) no-repeat;}
-.inlogin ul.in a.logout   {background:url(/public/img/icon/32x32/unlock.png) no-repeat;}
+.inlogin ul.in a.olgu     { background:url(/public/img/icon/32x32/comments.png) no-repeat;}
+.inlogin ul.in a.personal { background:url(/public/img/icon/32x32/male_user_info.png) no-repeat;}
+.inlogin ul.in a.support  { background:url(/public/img/icon/32x32/support.png) no-repeat;}
+.inlogin ul.in a.logout   { background:url(/public/img/icon/32x32/unlock.png) no-repeat;}
+.inlogin ul.in a.lang     { background:url(/public/img/icon/32x32/green_flag.png) no-repeat;}
 .inlogin img { display:block;margin: 0 auto; }
 .inlogin span { display:block; text-align:center; color:#3072b3; font-weight:bold; }
 

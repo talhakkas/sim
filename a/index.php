@@ -1,17 +1,10 @@
 <?php
 
+require_once './gettext/gettext.inc';
 require_once './lib/base.php';
 require_once './inc/lib.php';
 require_once './inc/mylib.php';
 require_once './inc/tetkik.php';
-
-//Gtext->foo();
-
-function isallows() {
-	foreach (func_get_args() as $val)
-		if (F3::get("SESSION.is$val"))
-			return 1;
-}
 
 $nodes = array( 1=>"dal",
 			17=>"drug", 26=>"dose",
@@ -70,6 +63,9 @@ F3::route("GET /people", 	'Home->people');
 F3::route("GET /work", 		'Home->work');
 F3::route("GET /about", 	'Home->about');
 F3::route("GET /contact", 	'Home->contact');
+
+F3::route("GET /localize/@lang",'localize');
+
 
 // ACCOUNT
 F3::route("POST /login",      	'Account->auth');   // login action

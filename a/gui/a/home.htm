@@ -34,7 +34,6 @@
   </div>
 
   <F3:check if="{{@SESSION.isLogin}}">
-
   <F3:true>
   <div class="inlogin">
     <ul class="in" >
@@ -42,12 +41,20 @@
       <li><a class="personal" href="{{@SR}}/personal">Hesap Bilgileri</a></li>
       <li><a class="support" href="{{@SR}}/help">Destek</a></li>
       <li><a class="logout" href="{{@SR}}/logout">Çıkış</a></li>
-      <li></li>
+
+      <F3:check if="{{!@SESSION.lang || @lang == 'tr_TR'}}">
+      <F3:true>
+      <li><a class="lang" href="{{@SR}}/localize/en_US">İngilizce</a></li>
+      </F3:true>
+      <F3:false>
+      <li><a class="lang" href="{{@SR}}/localize/tr_TR">Türkçe</a></li>
+      </F3:false>
+      </F3:check>
+
     </ul>
 
     <img src="/public/img/icon/128x128/surgeon.png"/>
     <span>{{@SESSION.user}}</span>
-
   </div>
   </F3:true>
 

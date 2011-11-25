@@ -14,5 +14,9 @@ dbname="db_name"
 dbuser="db_user"
 dbpass="db_pass"
 
+; default language
+lang="tr_TR"
+
 ; Resim
 uploaddir="upload/"
+
