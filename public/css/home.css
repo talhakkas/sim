@@ -247,9 +247,6 @@ table.login input[type=password]{
     border-radius: 0px;
 }
 
-table.login input[type=text]:focus,
-table.login input[type=password]:focus { outline: 0; border: 1px solid #35addf; }
-
 table.login td.label label {font-weight:bold; letter-spacing:0.7px;}
 table.login td.label {
     text-align: right;
@@ -303,8 +300,8 @@ input[type=text] {
     border-radius: 1px;
 }
 
-input[type=password],
-input[type=text]:focus { outline: 0;}
+input[type=password]:focus,
+input[type=text]:focus {outline: 0;}
 
 select { font-size:13px; border:1px solid #bdc7d8; padding:2px 3px; background:#fff; height:30px; }
 table.form { width: 100%; border-collapse: collapse; margin-bottom: 20px; }

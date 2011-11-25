@@ -38,8 +38,8 @@ if (!defined('LC_MESSAGES')) {
   define('LC_MESSAGES',	5);
 }
 
-require('gettext/streams.php');
-require('gettext/gettext.php');
+require('streams.php');
+require('gettext.php');
 
 
 // Variables
@@ -121,7 +121,8 @@ function _get_reader($domain=null, $category=5, $enable_cache=true) {
         $locale = _setlocale(LC_MESSAGES, 0);
         $bound_path = isset($text_domains[$domain]->path) ?
           $text_domains[$domain]->path : './';
-        $subpath = $LC_CATEGORIES[$category] ."/$domain.mo";
+        //$subpath = $LC_CATEGORIES[$category] ."/$domain.mo";
+        $subpath = "/$domain.mo";
 
         $locale_names = get_list_of_locales($locale);
         $input = null;

@@ -15,6 +15,23 @@ F3::set('DB', new DB('mysql:host=localhost;port=3306;dbname=' . F3::get('dbname'
 F3::set('SR', '/' . strtok($_SERVER["SCRIPT_NAME"], '/'));
 
 
+/*
+ * tarayıcıdan gelen ses mutlaka kulak ver
+ */
+
+$HTTP_LANGUAGE = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 5);
+$HTTP_LANGUAGES = array('en-US', 'tr-tr');
+$HTTP_LANGS = array('en-US' => 'en_US', 'tr-tr' => 'tr_TR');
+
+// ilk defa sayfaya ulaşıldığını bu durumu tetiklememiz gerektiğini unutma
+if (!F3::get('SESSION.lang') && in_array($HTTP_LANGUAGE, $HTTP_LANGUAGES))
+	F3::set('SESSION.lang', $HTTP_LANGS[$HTTP_LANGUAGE]);
+
+
+/*
+ * şimdi dil durumuna bakarak sayfayı baştan kodla
+ */
+
 $locale = F3::get('SESSION.lang')? F3::get('SESSION.lang') : F3::get('lang');
 
 T_setlocale(LC_MESSAGES, $locale);

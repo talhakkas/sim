@@ -14,9 +14,36 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 
-#: bilmemne.php:19
-msgid "Medical Simulation Training Center"
+msgid "OMU"
+msgstr "OMÜ"
+
+msgid "Ondokuz Mayıs University"
+msgstr "Ondokuz Mayıs Üniversitesi"
+
+msgid "Medical Simulation Education Center"
 msgstr "Medikal Simülasyon Eğitim Merkezi"
+
+msgid "Welcome to the Web-Based<br> Medical Simulation Education Center"
+msgstr "Web Tabanlı Medikal Simülasyon<br> Eğitim Merkezine Hoş Geldiniz"
+
+# footer
+msgid "All Rights Reserved"
+msgstr "Tüm Hakları Saklıdır"
+
+msgid "Home"
+msgstr "Ana Sayfa"
+
+msgid "Our Team"
+msgstr "Ekibimiz"
+
+msgid "Works"
+msgstr "Çalışmalar"
+
+msgid "About"
+msgstr "Hakkında"
+
+msgid "Contact"
+msgstr "İletişim"
 
 msgid "Edit"
 msgstr "Düzenle"
