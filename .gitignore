@@ -14,5 +14,6 @@ admin
 store
 _*
 
+!*.mo
 !.f3.ini.example
 !/db/*sql
