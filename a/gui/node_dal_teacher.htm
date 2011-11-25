@@ -21,7 +21,7 @@
     <F3:check if="{{@blg['chkResponse'] == 'yes'}}" >
     <F3:true>
     <input type="checkbox" name="chkResponse[]" id="chkResponse{{@ctr}}" value="{{@ctr}}" checked="true" onclick="toggle(this, 'response{{@ctr}}')"> Kullanıcı girdisi istiyor musun? <br>
-		    <input type="text" name="response[]" id="response{{@ctr}}" value="{{@blg['response']}}" style="visibility:visible;">
+    <input type="text" name="response[]" id="response{{@ctr}}" value="{{@blg['response']}}" style="visibility:visible;">
     </F3:true>
     <F3:false>
     <input type="checkbox" name="chkResponse[]" id="chkResponse{{@ctr}}" value="{{@ctr}}" onclick="toggle(this, 'response{{@ctr}}')"> Kullanıcı girdisi istiyor musun? <br>
@@ -47,12 +47,12 @@
       </F3:check>
       </F3:repeat>
     </select>
-	
+
     <input name="btnAddItem" type="button" id="btnAddItem" class="button small" value="Yeni Düğüm"
-    	onclick='Boxy.ask("Düğüm türü hangisi olsun?", {"dal":"Normal", "drug":"İlaç Seçim", 
-			  "exam":"Tahlil", "bmap":"Vücut Haritası", "immap":"Resim Haritası", "report":"Rapor"}, 
-			  function(r) { addNewNode("select{{@ctr}}", {{@SESSION.cid}}, r, {{@SESSION.id}}); }, 
-  			  {title:"Yeni Düğüm Ekleme"});' />
+    onclick='Boxy.ask("Düğüm türü hangisi olsun?", {"dal":"Normal", "drug":"İlaç Seçim", 
+    "exam":"Tahlil", "bmap":"Vücut Haritası", "immap":"Resim Haritası", "report":"Rapor"}, 
+    function(r) { addNewNode("select{{@ctr}}", {{@SESSION.cid}}, r, {{@SESSION.id}}); }, 
+    {title:"Yeni Düğüm Ekleme"});' />
   </td>
 </tr>
 

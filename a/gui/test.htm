@@ -1,12 +1,11 @@
 <script type="text/javascript" src="http://onehackoranother.com/projects/jquery/boxy/javascripts/jquery.boxy.js"></script> 
 <link rel="stylesheet" href="http://onehackoranother.com/projects/jquery/boxy/stylesheets/boxy.css" type="text/css" />
 
-<a href='#' onclick='Boxy.ask("Hani tür olsun?", {"dal":"Normal", "drug":"İlaç Seçim", "exam":"Tahlil", 
-					    "bmap":"Vücut Haritası", "immap":"Resim Haritası"}, 
-				function(r) { 
-					document.getElementById("secim").setAttribute("value", r);
-				}, 
-				{title:"Dal Türü Seçimi"});'>Dal türünü seçin</a> 
+<a href='#' onclick='Boxy.ask("Hani tür olsun?",
+  {"dal":"Normal", "drug":"İlaç Seçim", "exam":"Tahlil","bmap":"Vücut Haritası", "immap":"Resim Haritası"},
+  function(r) { document.getElementById("secim").setAttribute("value", r);},
+  {title:"Dal Türü Seçimi"});'>Dal türünü seçin
+</a>
 
 <input type="text" name="secim" id="secim" value="">
 
@@ -16,7 +15,7 @@
 </select>
 
 <input name="btnAddItem" type="button" id="btnAddItem" class="small button" value="Yeni Düğüm"
-onclick='Boxy.ask("Düğüm türü hangisi olsun?", {"dal":"Normal", "drug":"İlaç Seçim", 
-	  "exam":"Tahlil", "bmap":"Vücut Haritası", "immap":"Resim Haritası"}, 
-	  function(r) { addNewNode("select1", {{@SESSION.cid}}, r, {{@SESSION.id}}); }, 
-	  {title:"Yeni Düğüm Ekleme"});' />
+  onclick='Boxy.ask("Düğüm türü hangisi olsun?", {"dal":"Normal", "drug":"İlaç Seçim", 
+  "exam":"Tahlil", "bmap":"Vücut Haritası", "immap":"Resim Haritası"}, 
+  function(r) { addNewNode("select1", {{@SESSION.cid}}, r, {{@SESSION.id}}); }, 
+  {title:"Yeni Düğüm Ekleme"});' />

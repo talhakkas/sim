@@ -17,21 +17,54 @@ body {
     min-height:550px;
     padding: 20px;
     margin: 30px auto 30px;;
-    background:#fff url(/public/img/a/simulation.jpg) no-repeat right 0px;
-    background-size:170px ;
-    position:relative;
+    background:#fff;
     -webkit-box-shadow:0 0 18px rgba(0,0,0,0.3);
     -moz-box-shadow:0 0 18px rgba(0,0,0,0.3);
     box-shadow:0 0 18px rgba(0,0,0,0.3);
 }
 
-#content h2 {color: #3072b3; border-bottom:1px solid #ddd; padding:0 5px 8px 5px;margin:5px 0 25px; width:770px;}
-#content .page h2 { width:630px;}
+#content-background {
+    background: url(/public/img/a/simulation.jpg) no-repeat top;
+    background-size:170px ;
+    margin-top: -10px;
+    margin-right: -20px;
+    position:relative;
+    width:170px;
+    min-height:90px;
+    float:right;
+}
+
+#content h2 {color: #3072b3; border-bottom:1px solid #ddd; padding:0 15px 8px 5px; margin:5px 0 25px; width:auto; font-weight:lighter;}
+
+.page { width: 780px; min-height:400px; }
+
+#content h2 a { padding-left:27px; }
+#content h2 a.edit      { background:url('/public/img/icon/24x24/edit.png') no-repeat left; }
+#content h2 a.continue  { background:url('/public/img/icon/16x16/continue.png') no-repeat left; padding-left:20px;}
+#content h2 a.start-case{ background:url('/public/img/icon/16x16/clock.png') no-repeat left; }
+
+
+#rightcolumn { height:auto; width:110px; float:right; padding:5px; margin-top:100px; margin-right:30px;
+    -webkit-box-shadow:0 2px 2px rgba(0,0,0,0.2); -moz-box-shadow:0 2px 2px rgba(0,0,0,0.2); box-shadow:0 5px 10px rgba(0, 0, 0, 0.2);}
+#rightcolumn ul { padding-left:0px; }
+#rightcolumn li { float:left; width:110px; color:#3b5998; list-style-type:none; font-size:12px; font-weight:bold; text-align:center;
+                 margin-bottom:20px; text-align:center; padding:0 auto; }
+#rightcolumn li a { display:block; padding-top:46px; margin-top:0px; }
+#rightcolumn li.edit a  { background:url(/public/img/icon/48x48/edit.png) no-repeat top center;;}
+#rightcolumn li.anket a { background:url(/public/img/icon/48x48/chart_pie.png) no-repeat top center;;}
+#rightcolumn li.css a   { background:url(/public/img/icon/48x48/promotion.png) no-repeat top center;;}
+#rightcolumn li.dal a   { background:url(/public/img/icon/48x48/comments.png) no-repeat top center;;}
+
+#rightcolumn li.foo a   { background:url(/public/img/icon/48x48/clock.png) no-repeat top center;;}
+#rightcolumn li.bar a   { background:url(/public/img/icon/48x48/office_folders.png) no-repeat top center;;}
+#rightcolumn li.baz a   { background:url(/public/img/icon/48x48/chart.png) no-repeat top center;;}
+#rightcolumn li.bat a   { background:url(/public/img/icon/48x48/note_book.png) no-repeat top center;;}
+
 
 a {color: #3072b3; cursor: pointer; -moz-outline-style: none; text-decoration:none}
 .error {font-size:13px; color:#872020; margin:10px auto -30px; line-height:20px; width:780px;}
 
-select{font:13px Arial,Helvetica,sans-serif;border:1px solid #bdc7d8;padding:3px;background:#fff;width:158px;height:27px;color:#585858;}
+select{font:13px Arial,Helvetica,sans-serif;border:1px solid #bdc7d8;padding:3px;background:#fff;height:27px;color:#585858;}
 
 tr, td, th {text-align:left;}
 
@@ -51,11 +84,7 @@ input[type=text]{
 input[type=text]:focus {outline: 0; border: 1px solid #35addf;}
 
 h2 a {float:right;}
-h2 img {float:left;margin-top:-2px;margin-right:2px;}
-
-.page {width: 780px;height: auto;font-size:12px;margin-left:140px;min-height:340px;}
-.page h2 a {float:right;}
-.page h2 img {float:left;margin-top:-2px;margin-right:2px;}
+h2 img {float:left; margin-top:-2px; margin-right:2px;}
 
 .module {background: none repeat scroll 0 0 #EEEEEE; border-radius:5px 5px 5px 5px; margin:0 0 10px; padding:4px;}
 
@@ -125,7 +154,7 @@ table.custom select {
 }
 
 table.custom input[type=text]:focus,
-table.custom input[type=password]:focus { outline: 0; border: 1px solid #35addf; }
+table.custom input[type=password]:focus { outline: 0; }
 
 table.custom td.label {
     text-align: right;
@@ -189,7 +218,7 @@ label.label select {
 }
 
 label.label input[type=text]:focus,
-label.label input[type=password]:focus { outline: 0; border: 1px solid #35addf; }
+label.label input[type=password]:focus { outline: 0; }
 
 /* -------------------------------------------------------------------- */
 
@@ -217,18 +246,6 @@ label.label input[type=password]:focus { outline: 0; border: 1px solid #35addf; 
             border-bottom:1px solid #ddd; padding-left:5px; }
 .answer { width:100%; float:left; padding-left:20px; padding-top:1px; margin-bottom:10px;
           background:url(/public/img/icon/16x16/next_blue.png) no-repeat;}
-
-#leftcolumn { height:auto; width:110px; float:left; padding:5px;
-    -webkit-box-shadow:0 2px 2px rgba(0,0,0,0.2); -moz-box-shadow:0 2px 2px rgba(0,0,0,0.2); box-shadow:0 5px 10px rgba(0, 0, 0, 0.2);}
-#leftcolumn ul { padding-left:0px; }
-#leftcolumn li { float:left; width:110px; color:#3b5998; list-style-type:none; font-size:12px; font-weight:bold; text-align:center;
-                 margin-bottom:20px; text-align:center; padding:0 auto; }
-#leftcolumn li a { display:block;padding-top:46px;margin-top:0px;}
-#leftcolumn li.edit a { background:url(/public/img/icon/48x48/edit.png) no-repeat top center;;}
-#leftcolumn li.css a { background:url(/public/img/icon/48x48/promotion.png) no-repeat top center;;}
-#leftcolumn li.dal a { background:url(/public/img/icon/48x48/comments.png) no-repeat top center;;}
-#leftcolumn li.anket a { background:url(/public/img/icon/48x48/chart_pie.png) no-repeat top center;;}
-
 
 /* clist <-> vtip */
 p#vtip { display: none; position: absolute; padding: 10px; font-size: 11px; z-index: 9999;

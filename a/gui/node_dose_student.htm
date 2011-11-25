@@ -1,8 +1,8 @@
 <div align="middle">
   <form name="frm" action="{{@SR}}/show/{{@SESSION.cid}}/{{@SESSION.data['opts']['node_link']}}/0" method="post">
-    	<input type="hidden" name="cid" 	value="{{@SESSION.data['cid']}}">
-    	<input type="hidden" name="id" 		value="{{@SESSION.data['id']}}">
-    	<input type="hidden" name="ntype" 	value="{{@SESSION.data['ntype']}}">
+    <input type="hidden" name="cid" 	value="{{@SESSION.data['cid']}}">
+    <input type="hidden" name="id" 		value="{{@SESSION.data['id']}}">
+    <input type="hidden" name="ntype" 	value="{{@SESSION.data['ntype']}}">
 
     <table id="hor-minimalist-b" class="doz">
       <thead>
@@ -17,17 +17,17 @@
         <tr>
           <td>
             <a href="/a/drug/{{@did}}" rel="facebox"><img src=/public/img/drug.png width=25 align=center>{{@drug['name']}}</a>
-	    <input type="hidden" name="did[]" value="{{@did}}">
+            <input type="hidden" name="did[]" value="{{@did}}">
           </td>
           <td>
             <input type="range" name="doz[]" min="{{@drug['dmn']}}" max="{{@drug['dmx']}}" value=""/>
           </td>
           <td>
             <select name="ayol[]">
-			 <F3:repeat group="{{@SESSION.AYOL}}" key="{{@ayol_key}}" value="{{@ayol}}">
-				 	<option value="{{@ayol_key}}">{{@ayol}}</option>
-			 </F3:repeat>
-			</select>
+              <F3:repeat group="{{@SESSION.AYOL}}" key="{{@ayol_key}}" value="{{@ayol}}">
+              <option value="{{@ayol_key}}">{{@ayol}}</option>
+              </F3:repeat>
+            </select>
           </td>
         </tr>
         </F3:repeat>
@@ -36,7 +36,7 @@
 
     <input type="submit" class="button blue right" value="{{@SESSION.data['opts']['link_text']}}">
   </form>
-<script>$(":range").rangeinput();</script>
+  <script>$(":range").rangeinput();</script>
 </div>
 
 

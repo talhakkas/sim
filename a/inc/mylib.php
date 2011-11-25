@@ -339,8 +339,9 @@ function response2str_bek($response, $ntype)
 			$str .= "</ul>";
 			break;
 		case 'immap':
-			$str = '';
-			return;
+			$str = "[x,y,w,h] = [$response[x], $response[y], $response[w], $response[h]]; <br><b>Yorum:</b> $response[yorum]";
+			break;
+		
 	}
 
 	return $str;
@@ -572,11 +573,11 @@ function zip($cid, $datas, $dbg=true)
 		$datas['options'] = serialize($dict); 
 	} elseif($datas['ntype'] == 'bmapr') {
 		$dict = array("link_text" => $datas['link_text'],
-					  "node_link" => $datas['node_link'],
-					  "response"  => "bmap:opts:bmap e bakin",
-					  "odul"      => $datas['odul'],
-					  "ceza"      => $datas['ceza']
-					 );
+			      "node_link" => $datas['node_link'],
+			      "response"  => "bmap:opts:bmap e bakin",
+			      "odul"      => $datas['odul'],
+			      "ceza"      => $datas['ceza']
+			 );
 
 		$datas['opts'] = $dict;
 		$datas['options'] = serialize($dict);
@@ -620,23 +621,36 @@ function zip($cid, $datas, $dbg=true)
 		$dict['node_link'] = $datas['node_link'];
 		$dict['odul'] = $datas['odul'];
 		$dict['ceza'] = $datas['ceza'];
+		
+		$dict['immap'] = unserialize(htmlspecialchars_decode($datas['immap']));;
 
 		$datas['opts'] = $dict;
 		$datas['options'] = serialize($dict);
 	} elseif($datas['ntype'] == 'immapr') {
-		$dict = array();
-		$dict['link_text'] = $datas['link_text'];
-		$dict['node_link'] = $datas['node_link'];
-		$dict['odul'] = $datas['odul'];
-		$dict['ceza'] = $datas['ceza'];
-
-		$dict['map'] = array('x' => $datas['x'],  'y' => $datas['y'],
-				       'x2'=> $datas['x2'], 'y2'=> $datas['y2'],
-				       'w' => $datas['w'],  'h' => $datas['h'],
-				       'yorum' => $datas['response']);
+		$dict = array("link_text" => $datas['link_text'],
+			      "node_link" => $datas['node_link'],
+			      "response"  => "bmap:opts:bmap e bakin",
+			      "odul"      => $datas['odul'],
+			      "ceza"      => $datas['ceza']
+			 );
 
 		$datas['opts'] = $dict;
 		$datas['options'] = serialize($dict);
+
+		// immapr:parent uzerinden immap:opts:immap i guncelle
+		$inid = $datas['parent'];
+		$timap = new Axon('node');
+		$timap->load("cid='$cid' AND id='$inid'");
+		$opts = unserialize($timap->options);
+
+		$opts['immap'] = array('x' => $datas['x'],  'y' => $datas['y'],
+				       'x2'=> $datas['x2'], 'y2'=> $datas['y2'],
+				       'w' => $datas['w'],  'h' => $datas['h'],
+				       'yorum' => $datas['response']
+				      );
+
+		$timap->options = serialize($opts);
+		$timap->save();
 	} else {
 		$sz = sizeof($datas['link_text']);
 		
@@ -1039,15 +1053,12 @@ function get_tea_sel_drugs($cid=null, $id=null)
 	return $node['opts']['drugs'];
 }
 
-function get_tea_sel_immap($cid, $nid=NULL) 
+function get_tea_sel_immap($cid, $nid) 
 {
 	$node = get_node($cid, $nid);
-	$next_nid = $node['opts']['node_link'];
 
-	$node = get_node($cid, $next_nid);
-	$dict = $node['opts']['map'];
-	
-	$dict['imgnm'] = get_immap_imgnm($cid);
+	$dict = $node['opts']['immap'];
+	$dict['imgnm'] = $node['media'];
 
 	return $dict;
 }
@@ -1310,10 +1321,8 @@ function set_exam_dict($cid, $dict)
 	$tnode->save();
 }
 
-function get_immap_imgnm($cid, $nid=NULL)
+function get_immap_imgnm($cid, $nid)
 {
-	if($nid == NULL) $nid = get_nid4type($cid, 'immap');
-
 	$node = get_node($cid, $nid);
 
 	return $node['media'];

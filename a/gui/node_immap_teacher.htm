@@ -1,12 +1,12 @@
 <tr>
   <td class="label">Görünecek metin</td>
   <td class="field" id="dal{{@ctr}}field">
-    <textarea name="link_text[]">{{@SESSION.data['opts']['link_text']}}</textarea><br>
+    <textarea name="link_text">{{@SESSION.data['opts']['link_text']}}</textarea><br>
 
     Ödül: <input type="text" name="odul" value="{{@SESSION.data['opts']['odul']}}" maxlength="3" size="3">
-    Ceza: <input type="text" name="ceza" value="{{@SESSION.data['opts']['ceza]}}"  maxlength="3" size="3">
+    Ceza: <input type="text" name="ceza" value="{{@SESSION.data['opts']['ceza']}}"  maxlength="3" size="3">
 
-    <input type="hidden" name="response" id="response1" value="{{@SESSION.data['opts']['response']}}" style="visibility:visible;">
+    <input type="hidden" name="immap" value="{{htmlspecialchars(serialize(@SESSION.data['opts']['immap']))}}">
   </td>
 </tr>
 

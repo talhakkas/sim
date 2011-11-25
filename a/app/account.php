@@ -68,12 +68,17 @@ class Account extends F3instance {
 	function forgot() {
 		$email = F3::get('REQUEST.email');
 
-		$user = new Axon('people');
+		$user = new Axon('users');
 		$user->load("email='$email'");
 
 		if (!$user->dry()) {
+			$to = $user->email;
+			$from = "From:noreply@sim.omu.edu.tr";
+			$subject = "sim parolası";
+			$message = "parolanız: " . $user->password;
+
 			// prolasını mailine gönderelim
-			mail("$email", "sim parolanız", $email->password, "From:noreply");
+			mail($to, $subject, $message, $from);
 
 			F3::set('error', 'Parolanız E-Mail Adresinize Gönderildi');
 		}

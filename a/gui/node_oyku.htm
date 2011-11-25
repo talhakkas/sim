@@ -1,28 +1,28 @@
 <tr>
-	<td class="label">
-		Link metni:
-	</td>
-	<td class="field">
-		<textarea name="link_text">{{@SESSION.data['link_text']}} </textarea>
-	</td>
+  <td class="label">
+    Link metni:
+  </td>
+  <td class="field">
+    <textarea name="link_text">{{@SESSION.data['link_text']}} </textarea>
+  </td>
 </tr>
 <tr>
-	<td class="label">
-		Sonraki düğüm:
-	</td>
-	<td class="select">
-		<select name="next_node" id="select1">
-		<F3:repeat group="{{@SESSION.all_nodes}}" value="{{@blg}}" >	
-			<F3:check if="{{@blg[0] == @SESSION.data['next_node']}}">
-				<F3:true>
-					<option value="{{@blg[0]}}" selected="selected">{{@blg[0]}}:{{@blg[1]}}</option>
-				</F3:true>
-				<F3:false>
-					<option value="{{@blg[0]}}">{{@blg[0]}}:{{@blg[1]}}</option>
-				</F3:false>
-			</F3:check>
-		</F3:repeat>
-		</select>
-		 <input name="btnAddItem" type="button" id="btnAddItem" value="Yeni Düğüm" onclick="javascript:addNewListItem('select1', {{@SESSION.cid}});" />
-	</td>
+  <td class="label">
+    Sonraki düğüm:
+  </td>
+  <td class="select">
+    <select name="next_node" id="select1">
+      <F3:repeat group="{{@SESSION.all_nodes}}" value="{{@blg}}" >	
+      <F3:check if="{{@blg[0] == @SESSION.data['next_node']}}">
+      <F3:true>
+      <option value="{{@blg[0]}}" selected="selected">{{@blg[0]}}:{{@blg[1]}}</option>
+      </F3:true>
+      <F3:false>
+      <option value="{{@blg[0]}}">{{@blg[0]}}:{{@blg[1]}}</option>
+      </F3:false>
+      </F3:check>
+      </F3:repeat>
+    </select>
+    <input name="btnAddItem" type="button" id="btnAddItem" value="Yeni Düğüm" onclick="javascript:addNewListItem('select1', {{@SESSION.cid}});" />
+  </td>
 </tr>

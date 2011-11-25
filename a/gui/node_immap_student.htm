@@ -1,24 +1,38 @@
-
 <script src="/public/js/jquery.min.js"></script>
 <script src="/public/js/jquery.Jcrop.js"></script>
 <link rel="stylesheet" href="/public/css/jquery.Jcrop.css" type="text/css" />
 <script language="Javascript">
-	jQuery(document).ready(function(){
-		jQuery('#medya').Jcrop({
-			onChange: showCoords,
-			onSelect: showCoords
-		});
-	});
-	function showCoords(c)
-	{
-		jQuery('#x').val(c.x);
-		jQuery('#y').val(c.y);
-		jQuery('#x2').val(c.x2);
-		jQuery('#y2').val(c.y2);
-		jQuery('#w').val(c.w);
-		jQuery('#h').val(c.h);
-	};
+  jQuery(document).ready(function(){
+    jQuery('#medya').Jcrop({
+      onChange: showCoords,
+      onSelect: showCoords,
+    });
+  });
+  function showCoords(c) {
+    jQuery('#x').val(c.x);
+    jQuery('#y').val(c.y);
+    jQuery('#x2').val(c.x2);
+    jQuery('#y2').val(c.y2);
+    jQuery('#w').val(c.w);
+    jQuery('#h').val(c.h);
+
+    var rx = 100 / c.w;
+    var ry = 100 / c.h;
+
+    $('#preview').css({
+      /* FIXME: resmin genislik ve yuksekligi: 300x374 */
+      width: Math.round(rx * 300) + 'px',
+      height: Math.round(ry * 374) + 'px',
+      marginLeft: '-' + Math.round(rx * c.x) + 'px',
+      marginTop: '-' + Math.round(ry * c.y) + 'px'
+    });
+  };
 </script>
+
+<h3>Önizleme</h3>
+<div style="width:100px;height:100px;overflow:hidden;margin-left:5px;">
+  <img src="{{@SR}}/{{@uploaddir}}kucuk{{@SESSION.data['media']}}" id="preview" />
+</div>
 
 <p class="answer">{{@SESSION.data['opts']['link_text']}}</p>
 
@@ -29,18 +43,18 @@
     	<input type="hidden" name="ntype" 	value="{{@SESSION.data['ntype']}}">
 
     <div id="koordinat" style="display:none">
-    	X1 <input type="text" size="4" id="x" name="x" />
-    	Y1 <input type="text" size="4" id="y" name="y" />
-    	X2 <input type="text" size="4" id="x2" name="x2" />
-    	Y2 <input type="text" size="4" id="y2" name="y2" />
-    	W <input type="text" size="4" id="w" name="w" />
-    	H <input type="text" size="4" id="h" name="h" />
+      X1 <input type="text" size="4" id="x" name="x" />
+      Y1 <input type="text" size="4" id="y" name="y" />
+      X2 <input type="text" size="4" id="x2" name="x2" />
+      Y2 <input type="text" size="4" id="y2" name="y2" />
+      W <input type="text" size="4" id="w" name="w" />
+      H <input type="text" size="4" id="h" name="h" />
     </div>
 
     <label class="label">
-    	<textarea name="response"></textarea>
+      <textarea name="response"></textarea>
     </label>
 
-  <input type="submit" class="button blue right" value="Sonuçları Karşılaştır"/>
+    <input type="submit" class="button blue right" value="{{@SESSION.data['opts']['link_text']}}"/>
   </form>
 </div>

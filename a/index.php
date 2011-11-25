@@ -19,8 +19,8 @@ $nodes = array( 1=>"dal",
 
 function test2()
 {
-	print_pre(get_node(1, 17), "drug");
-	print_pre(get_node(1, 26), "dose");
+	print_pre(get_node(1, 37), "bmap");
+	print_pre(get_node(1, 38), "bmapr");
 
 	echo "<hr>";
 
@@ -32,15 +32,21 @@ function test4()
 {
 	$tnode = new Axon('node');
 	$tnode->load("cid='1' AND id='23'");
+
 	$tnode->parent = 21;
+	$dict = unserialize($tnode->options);
+
+	print_pre($dict, "dict");
+
+	$tnode->options = serialize($dict);
 	$tnode->save();
 
 }
 
 function test()
 {
-		test4();
-	echo "Puan: " . get_puan(2, true); 
+	test4();
+	//echo "Puan: " . get_puan(2, true); 
 	test2();
 }
 
@@ -69,7 +75,8 @@ F3::route('GET  /logout',     	'Account->logout'); // logout action
 F3::route('POST /forgot',    	'Account->forgot'); // forget password
 
 // PAGE
-F3::route('GET  /personal',    	'Page->personal'); // Kişisel sayfa
+F3::route('GET  /personal',    	'Page->personal'); // Kişisel bilgiler
+F3::route('POST /personal',    	'Page->update'); // Kişisel bilgileri güncelle
 F3::route('GET  /help',    	'Page->help'); // Yardım sayfası
 
 

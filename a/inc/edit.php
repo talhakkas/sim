@@ -46,8 +46,11 @@
 			$bmap = get_tea_sel_bmap($cid, get_node_parent($cid, $id), true);
 			F3::set('SESSION.bmap', $bmap);
 			if($dbg)	print_pre($bmap, 'bmap');
+			break;
 		case 'immapr':
-			F3::set('SESSION.medya', get_immap_imgnm($cid));
+			$immap = get_tea_sel_immap($cid, get_node_parent($cid, $id));
+			F3::set('SESSION.immap', $immap);
+			if($dbg)	print_pre($immap, 'immap');
 			break;
 	}
 

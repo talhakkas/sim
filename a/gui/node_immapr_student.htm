@@ -3,31 +3,31 @@
 <img src="{{@SR}}/{{@uploaddir}}kucuk{{@SESSION.hoca['imgnm']}}" id="medya2">
 
 <br>
-HOCA nin seçimi (x,y,x2,y2,w,h): {{@SESSION.hoca['x']}}, {{@SESSION.hoca['y']}}, {{@SESSION.hoca['x2']}}, 
-	{{@SESSION.hoca['y2']}}, {{@SESSION.hoca['w']}}, {{@SESSION.hoca['h']}}
+HOCA nin seçimi (x,y,x2,y2,w,h): {{@SESSION.hoca['x']}}, {{@SESSION.hoca['y']}}, {{@SESSION.hoca['x2']}},
+{{@SESSION.hoca['y2']}}, {{@SESSION.hoca['w']}}, {{@SESSION.hoca['h']}}
 
 <br>
-Yorumu: 
+Yorumu:
 <pre>
 {{@SESSION.hoca['yorum']}}
 </pre>
 <hr>
 
-ÖĞRENCİ nin seçimi (x,y,x2,y2,w,h): {{@SESSION.ogrenci['x']}}, {{@SESSION.ogrenci['y']}}, {{@SESSION.ogrenci['x2']}}, 
-	{{@SESSION.ogrenci['y2']}}, {{@SESSION.ogrenci['w']}}, {{@SESSION.ogrenci['h']}}
+ÖĞRENCİ nin seçimi (x,y,x2,y2,w,h): {{@SESSION.ogrenci['x']}}, {{@SESSION.ogrenci['y']}}, {{@SESSION.ogrenci['x2']}},
+{{@SESSION.ogrenci['y2']}}, {{@SESSION.ogrenci['w']}}, {{@SESSION.ogrenci['h']}}
 
 <br>
-Yorumu: 
+Yorumu:
 <pre>
 {{@SESSION.ogrenci['yorum']}}
 </pre>
 
 <div align="middle">
   <form name="frm" action="{{@SR}}/show/{{@SESSION.cid}}/{{@SESSION.data['opts']['node_link']}}/0" method="post">
-  		<input type="hidden" name="cid" 	value="{{@SESSION.data['cid']}}">
-  		<input type="hidden" name="id" 		value="{{@SESSION.data['id']}}">
-  		<input type="hidden" name="ntype" 	value="{{@SESSION.data['ntype']}}">
+    <input type="hidden" name="cid" 	value="{{@SESSION.data['cid']}}">
+    <input type="hidden" name="id" 		value="{{@SESSION.data['id']}}">
+    <input type="hidden" name="ntype" 	value="{{@SESSION.data['ntype']}}">
 
-  <input type="submit" class="button blue right" value="{{@SESSION.data['opts']['link_text']}}"/>
+    <input type="submit" class="button blue right" value="{{@SESSION.data['opts']['link_text']}}"/>
   </form>
 </div>

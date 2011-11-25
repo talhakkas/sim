@@ -1,8 +1,6 @@
 <h2>{{@SESSION.data['title']}}
-
   <F3:check if="{{ S('isAdmin', 'isAuthor') }}">
-  <a href="{{@SR}}/edit/{{@SESSION.cid}}/{{@SESSION.id}}">
-    <img src="/public/img/icon/24x24/edit.png">Düzenle</a>
+  <a class="edit" href="{{@SR}}/edit/{{@SESSION.cid}}/{{@SESSION.id}}">Düzenle</a>
   </F3:check>
 </h2>
 
