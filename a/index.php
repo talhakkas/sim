@@ -5,9 +5,9 @@ require_once './inc/lib.php';
 require_once './inc/mylib.php';
 require_once './inc/tetkik.php';
 
-function S() {
+function isallows() {
 	foreach (func_get_args() as $val)
-		if (F3::get("SESSION.$val"))
+		if (F3::get("SESSION.is$val"))
 			return 1;
 }
 
@@ -45,9 +45,9 @@ function test4()
 
 function test()
 {
-	test4();
-	//echo "Puan: " . get_puan(2, true); 
-	test2();
+	//print_pre(get_tet(2), 'immap');
+	echo "Puan: " . get_puan(2, true); 
+	//test2();
 }
 
 function test_gui()
