@@ -24,28 +24,22 @@ function test2()
 
 	echo "<hr>";
 
-	print_pre(get_node(1, 37), "bmap");
-	print_pre(get_node(1, 38), "bmapr");
+	print_pre(get_node(1, 21), "immap");
+	print_pre(get_node(1, 23), "immapr");
 }
 
 function test4()
 {
 	$tnode = new Axon('node');
 	$tnode->load("cid='1' AND id='23'");
-
-	$dict = unserialize($tnode->options);
-
-	$dict['node_link'] = 19;
-	$dict['link_text'] = "Başka tetkik için tıklayınız";
-	print_pre($dict, "dict");
-
-	$tnode->options = serialize($dict);
+	$tnode->parent = 21;
 	$tnode->save();
 
 }
 
 function test()
 {
+		test4();
 	echo "Puan: " . get_puan(2, true); 
 	test2();
 }

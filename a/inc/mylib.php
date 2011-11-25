@@ -614,6 +614,15 @@ function zip($cid, $datas, $dbg=true)
 
 		$tbmap->options = serialize($opts);
 		$tbmap->save();
+	} elseif($datas['ntype'] == 'immap') {
+		$dict = array();
+		$dict['link_text'] = $datas['link_text'];
+		$dict['node_link'] = $datas['node_link'];
+		$dict['odul'] = $datas['odul'];
+		$dict['ceza'] = $datas['ceza'];
+
+		$datas['opts'] = $dict;
+		$datas['options'] = serialize($dict);
 	} elseif($datas['ntype'] == 'immapr') {
 		$dict = array();
 		$dict['link_text'] = $datas['link_text'];
@@ -1032,10 +1041,10 @@ function get_tea_sel_drugs($cid=null, $id=null)
 
 function get_tea_sel_immap($cid, $nid=NULL) 
 {
-	if($nid == NULL) $nid = get_nid4type($cid, 'immapr');
-
 	$node = get_node($cid, $nid);
+	$next_nid = $node['opts']['node_link'];
 
+	$node = get_node($cid, $next_nid);
 	$dict = $node['opts']['map'];
 	
 	$dict['imgnm'] = get_immap_imgnm($cid);

@@ -20,10 +20,10 @@
 	};
 </script>
 
-<p class="answer">{{@SESSION.data['opts'][0]['link_text']}}</p>
+<p class="answer">{{@SESSION.data['opts']['link_text']}}</p>
 
 <div align="middle">
-  <form name="frm" action="{{@SR}}/show/{{@SESSION.cid}}/{{@SESSION.data['opts'][0]['node_link']}}/0" method="post">
+  <form name="frm" action="{{@SR}}/show/{{@SESSION.cid}}/{{@SESSION.data['opts']['node_link']}}/0" method="post">
     	<input type="hidden" name="cid" 	value="{{@SESSION.data['cid']}}">
     	<input type="hidden" name="id" 		value="{{@SESSION.data['id']}}">
     	<input type="hidden" name="ntype" 	value="{{@SESSION.data['ntype']}}">
