@@ -94,6 +94,6 @@ class Account extends F3instance {
 	}
 
 	function afterroute() {
-		echo Template::serve('a/a.htm');
+		echo Template::serve('a/layout.htm');
 	}
 }
