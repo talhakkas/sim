@@ -40,7 +40,7 @@
 	if($node['ntype'] == 'exam')
 		F3::set('tetkikmerkezi', multi());
 	if($node['ntype'] == 'result') {
-		F3::set('SESSION.results', get_st_sel_exams());
+		F3::set('SESSION.results', get_stu_sel_exams());
 	}
 
 	if($node['ntype'] == 'bmap') {
