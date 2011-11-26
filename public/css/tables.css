@@ -44,7 +44,7 @@
 
 /* ------------------------ clist ------------------------ */
 #one-column-emphasis {font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
-	font-size: 12px;width:100%;text-align: left;border-collapse: collapse; margin-top:-30px;}
+	font-size: 12px;width:100%;text-align: left;border-collapse: collapse; }
 #one-column-emphasis th { font-size:11px; font-weight:normal; padding:12px 15px; color:#222; }
 #one-column-emphasis td img {width:50px;}
 #one-column-emphasis td {padding: 10px 15px;color: #669;border-top: 1px solid #e8edff;}

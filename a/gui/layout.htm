@@ -56,7 +56,7 @@
         </p>
         <ul class="tabs">
           <li><a href="{{@SR}}">Anasayfa</a></li>
-          <li><a href="{{@SR}}/clist">Olguları Görüntüle</a></li>
+          <li><a href="{{@SR}}/clist">Olgular</a></li>
           <li><a href="{{@SR}}/personal">Hesabım</a></li>
           <li><a href="{{@SR}}/logout">Çıkış</a></li>
         </ul>
@@ -79,14 +79,15 @@
         </F3:true>
         </F3:check>
 
-        <F3:check if="{{ @template == 'page/personal' }}">
+        <F3:check if="{{ substr(@template, 0, 8) == 'personal'}}">
         <F3:true>
         <div id="rightcolumn">
           <ul>
-            <li class="foo"><a href="#">olgu raporları</a></li>
+            <li class="per"><a href="{{@SR}}/personal/edit">Kişisel Bilgilerim</a></li>
+            <li class="case"><a href="#">Olgu Sonuçları</a></li>
+            <li class="exam"><a href="#">Sınavlar</a></li>
             <li class="bar"><a href="#">foo</a></li>
             <li class="baz"><a href="#">bar</a></li>
-            <li class="bat"><a href="#">sınavlar</a></li>
           </ul>
         </div>
         </F3:true>

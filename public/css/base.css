@@ -14,7 +14,7 @@ body {
 #content {
     width: 920px;
     height:auto;
-    min-height:550px;
+    min-height:600px;
     padding: 20px;
     margin: 30px auto 30px;;
     background:#fff;
@@ -55,14 +55,15 @@ body {
 #rightcolumn li.css a   { background:url(/public/img/icon/48x48/promotion.png) no-repeat top center;;}
 #rightcolumn li.dal a   { background:url(/public/img/icon/48x48/comments.png) no-repeat top center;;}
 
-#rightcolumn li.foo a   { background:url(/public/img/icon/48x48/clock.png) no-repeat top center;;}
+#rightcolumn li.per a   { background:url(/public/img/icon/48x48/edit_business_user.png) no-repeat top center;;}
+#rightcolumn li.case a  { background:url(/public/img/icon/48x48/clock.png) no-repeat top center;;}
+#rightcolumn li.exam a  { background:url(/public/img/icon/48x48/book.png) no-repeat top center;;}
 #rightcolumn li.bar a   { background:url(/public/img/icon/48x48/office_folders.png) no-repeat top center;;}
 #rightcolumn li.baz a   { background:url(/public/img/icon/48x48/chart.png) no-repeat top center;;}
-#rightcolumn li.bat a   { background:url(/public/img/icon/48x48/note_book.png) no-repeat top center;;}
 
 
 a {color: #3072b3; cursor: pointer; -moz-outline-style: none; text-decoration:none}
-.error {font-size:13px; color:#872020; margin:10px auto -30px; line-height:20px; width:780px;}
+.error, .success, .warning { color:#872020; margin: 0 20px;}
 
 select{font:13px Arial,Helvetica,sans-serif;border:1px solid #bdc7d8;padding:3px;background:#fff;height:27px;color:#585858;}
 

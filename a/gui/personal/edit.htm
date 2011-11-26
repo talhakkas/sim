@@ -1,6 +1,6 @@
 <style type="text/css" media="all">
   #content-background {
-    background:#fff url(/public/img/icon/128x128/edit_business_user.png) no-repeat center 0px;
+    background:#fff url(/public/img/icon/128x128/business_user.png) no-repeat center 0px;
     background-size:100px;
   }
 </style>
@@ -9,10 +9,10 @@
 
   <h2>{{@page_title}}</h2>
 
-  <F3:check if="{{@success}}">{{@success}}</F3:check>
-  <F3:check if="{{@warning}}">{{@warning}}</F3:check>
+  <F3:check if="{{@success}}"><p class="success">{{@success}}</p></F3:check>
+  <F3:check if="{{@warning}}"><p class="error">{{@warning}}</p></F3:check>
 
-  <form action="personal" method="post" enctype="multipart/form-data">
+  <form action="{{@SR}}/personal/edit" method="post" enctype="multipart/form-data">
 
     <table class="custom" id="custom" name="custom">
       <tr>
