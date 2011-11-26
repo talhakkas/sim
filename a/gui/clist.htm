@@ -6,9 +6,12 @@
 
   <thead>
     <tr>
-      <th scope="col">OLGU BAŞLIĞI</th>
-      <th scope="col">OLUŞTURMA</th>
+      <th scope="col" class="img" >RESİM</th>
+      <th scope="col" >OLGU BAŞLIĞI</th>
+      <th scope="col" >AÇIKLAMA</th>
+      <F3:check if="{{isallowed('Admin', 'Author')}}">
       <th scope="col" class="action"></th>
+      </F3:check>
     </tr>
   </thead>
 
@@ -16,12 +19,14 @@
     <F3:repeat group="{{@SESSION.cdata}}" key="{{@gnl}}" value="{{@blg}}" >
     <tr>
       <td>
-        <a class="case vtip"
-          title="{{@blg['title']}}"
+        <a rel="facebox" href="{{@uploaddir, @blg['image']}}" > <img src="{{@uploaddir, @blg['image']}}" /></a>
+      </td>
+      <td>
+        <a class="case vtip" title="{{@blg['title']}}"
           href="{{@SR}}/cstart/{{@blg['cid']}}">{{@blg['title']}}</a>
       </td>
       <td>
-        07-08-2011
+        {{@blg['description']}}
       </td>
 
       <F3:check if="{{isallowed('Admin', 'Author')}}">

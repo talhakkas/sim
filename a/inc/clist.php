@@ -12,6 +12,9 @@ for($i=0; $i < $sz; $i++) {
 	$data[$i]['cid']   = $datas[$i]->cid;
 	$data[$i]['title'] = $datas[$i]->title;
 	$data[$i]['description'] = $datas[$i]->description;
+
+	// örnek bir resim gönder sonra değişecek
+	$data[$i]['image'] = "kucuk_n00016.jpg";
 }
 
 F3::set('SESSION.cdata', $data);
