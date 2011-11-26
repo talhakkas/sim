@@ -74,8 +74,8 @@ F3::route('POST /forgot',    	'Account->forgot'); // forget password
 
 // PERSONAL
 F3::route('GET  /personal',    	  'Personal->personal');
-F3::route('GET  /personal/edit',  'Personal->edit'); // Kişisel bilgiler
-F3::route('POST /personal/edit',  'Personal->update'); // Kişisel bilgileri güncelle
+F3::route('GET  /personal/pedit',  'Personal->edit'); // Kişisel bilgiler
+F3::route('POST /personal/pedit',  'Personal->update'); // Kişisel bilgileri güncelle
 
 // PAGE
 F3::route('GET  /help',    	'Page->help'); // Yardım sayfası

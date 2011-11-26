@@ -43,15 +43,6 @@ class Personal extends F3instance {
 		$this->edit();
 	}
 
-	function help() {
-		// burada yardım için neler gerekebilir?
-		$this->_page('help', 'Yardım Sayfası');
-	}
-
-	function page_reload() {
-		$this->_page(F3::get('PARAMS.page'), 'Örnek Sayfa');
-	}
-
 	function beforeroute() {
 		if (! F3::get('SESSION.isLogin'))
 			return F3::reroute('/');
