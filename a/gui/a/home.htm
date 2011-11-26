@@ -36,7 +36,7 @@
   <F3:check if="{{@SESSION.isLogin}}">
   <F3:true>
   <div class="inlogin">
-    <ul class="in" >
+    <ul class="lin" >
       <li><a class="olgu" href="{{@SR}}/clist">Olgular</a></li>
       <li><a class="personal" href="{{@SR}}/personal">Hesabım</a></li>
       <li><a class="support" href="{{@SR}}/help">Destek</a></li>
@@ -49,8 +49,25 @@
       <F3:check if="{{ (@SESSION.lang == 'en_US') || (!@SESSION.lang && @lang == 'en_US') }}">
       <li><a class="lang" href="{{@SR}}/localize/tr_TR">Türkçe</a></li>
       </F3:check>
-
     </ul>
+
+    <ul class="rin" >
+      <li><a class="olgu" href="{{@SR}}/clist">Olgular</a></li>
+      <li><a class="personal" href="{{@SR}}/personal">Hesabım</a></li>
+      <li><a class="support" href="{{@SR}}/help">Destek</a></li>
+      <li><a class="logout" href="{{@SR}}/logout">Çıkış</a></li>
+
+      <F3:check if="{{ (@SESSION.lang == 'tr_TR') || (!@SESSION.lang && @lang == 'tr_TR') }}">
+      <li><a class="lang" href="{{@SR}}/localize/en_US">İngilizce</a></li>
+      </F3:check>
+
+      <F3:check if="{{ (@SESSION.lang == 'en_US') || (!@SESSION.lang && @lang == 'en_US') }}">
+      <li><a class="lang" href="{{@SR}}/localize/tr_TR">Türkçe</a></li>
+      </F3:check>
+    </ul>
+
+
+
 
     <img src="/public/img/icon/128x128/surgeon.png"/>
     <span>{{@SESSION.user}}</span>
@@ -58,7 +75,7 @@
   </F3:true>
 
   <F3:false>
-  <form action="login" method="post" class="login">
+  <form action="{{@SR}}/login" method="post" class="login">
     <h4>
       Kullanıcı Girişi
       <F3:check if="{{@error}}"><span class="login-error">{{@error}}</span></F3:check>
@@ -114,6 +131,8 @@
 
 </div>
 
+<style type="text/css" media="all">
+</style>
 
 <div id="forgot" style="display:none">
   <form action="{{@SR}}/forgot" method="post" enctype="multipart/form-data">
