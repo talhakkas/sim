@@ -53,7 +53,7 @@ function _e($text) {
 	return T_($text);
 }
 
-function isallows() {
+function isallowed() {
 	foreach (func_get_args() as $val)
 		if (F3::get("SESSION.is$val"))
 			return 1;
