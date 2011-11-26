@@ -1,6 +1,6 @@
 <?php
 
-if (!F3::get("SESSION.isAdmin"))
+if (!F3::get("SESSION.isLogin"))
 	return F3::reroute('/');
 
 $table = new Axon("ncase");

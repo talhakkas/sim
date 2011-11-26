@@ -28,7 +28,7 @@ class Home extends F3instance {
 	}
 
 	function beforeroute() {
-		//if (! F3::get('SESSION.isAdmin'))  return F3::reroute('/');
+		//if (! F3::get('SESSION.isLogin'))  return F3::reroute('/');
 	}
 
 	function afterroute() {
