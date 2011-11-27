@@ -6,8 +6,6 @@ body {
     padding:auto;
     color:#555;
     background:#f0f0f0;
-    background:url(/public/img/bg_dotted.png);
-    background:url(/public/img/home-bkg.gif);
     background:url(/public/img/body.png);
 }
 
@@ -87,7 +85,7 @@ input[type=text]:focus {outline: 0; border: 1px solid #35addf;}
 h2 a {float:right;}
 h2 img {float:left; margin-top:-2px; margin-right:2px;}
 
-.module {background: none repeat scroll 0 0 #EEEEEE; border-radius:5px 5px 5px 5px; margin:0 0 10px; padding:4px;}
+.module {background: none repeat scroll 0 0 #EEEEEE; border-radius:0px 0px 0px 0px; margin:0 0 10px; padding:4px;}
 
 .left {float:left;}
 .right {float:right;}
