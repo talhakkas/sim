@@ -275,16 +275,14 @@ a.forgot-pass{ margin-top:-5px; font-size:12px; font-weight:normal; color:#3072b
 .inlogin ul.lin { float:left; width:150px; margin-top:10px; }
 .inlogin ul.lin li { height:38px; }
 .inlogin ul.lin a { padding:8px 0 8px 36px; font-size:12px; font-weight:bold; text-decoration:none; word-spacing:1px;}
-.inlogin ul.lin a.olgu     { background:url(/public/img/icon/32x32/comments.png) no-repeat;}
-.inlogin ul.lin a.personal { background:url(/public/img/icon/32x32/male_user_info.png) no-repeat;}
-.inlogin ul.lin a.support  { background:url(/public/img/icon/32x32/support.png) no-repeat;}
-.inlogin ul.lin a.logout   { background:url(/public/img/icon/32x32/unlock.png) no-repeat;}
-.inlogin ul.lin a.lang     { background:url(/public/img/icon/32x32/green_flag.png) no-repeat;}
+.inlogin ul.lin a.olgu     { background:url(/public/img/icon/32x32/clock.png) no-repeat;}
+.inlogin ul.lin a.exam     { background:url(/public/img/icon/32x32/book.png) no-repeat;}
+.inlogin ul.lin a.cal      { background:url(/public/img/icon/32x32/chalk_board.png) no-repeat;}
+.inlogin ul.lin a.com      { background:url(/public/img/icon/32x32/computer.png) no-repeat;}
 
 .inlogin ul.rin { float:right; width:150px; margin-top:10px; }
-.inlogin ul.rin li { height:38px; text-align:right;}
+.inlogin ul.rin li { height:38px; text-align:right; }
 .inlogin ul.rin a { padding:8px 36px 8px 0; font-size:12px; font-weight:bold; text-decoration:none; word-spacing:1px; }
-.inlogin ul.rin a.olgu     { background:url(/public/img/icon/32x32/comments.png) no-repeat right; }
 .inlogin ul.rin a.personal { background:url(/public/img/icon/32x32/male_user_info.png) no-repeat right;}
 .inlogin ul.rin a.support  { background:url(/public/img/icon/32x32/support.png) no-repeat right;}
 .inlogin ul.rin a.logout   { background:url(/public/img/icon/32x32/unlock.png) no-repeat right;}

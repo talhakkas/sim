@@ -37,25 +37,15 @@
   <F3:true>
   <div class="inlogin">
     <ul class="lin" >
+      <li><a class="cal" href="#">Sınav Takvimi</a></li>
+      <li><a class="exam" href="#">Sınavlar</a></li>
       <li><a class="olgu" href="{{@SR}}/clist">Olgular</a></li>
-      <li><a class="personal" href="{{@SR}}/personal">Hesabım</a></li>
-      <li><a class="support" href="{{@SR}}/help">Destek</a></li>
-      <li><a class="logout" href="{{@SR}}/logout">Çıkış</a></li>
-
-      <F3:check if="{{ (@SESSION.lang == 'tr_TR') || (!@SESSION.lang && @lang == 'tr_TR') }}">
-      <li><a class="lang" href="{{@SR}}/localize/en_US">İngilizce</a></li>
-      </F3:check>
-
-      <F3:check if="{{ (@SESSION.lang == 'en_US') || (!@SESSION.lang && @lang == 'en_US') }}">
-      <li><a class="lang" href="{{@SR}}/localize/tr_TR">Türkçe</a></li>
-      </F3:check>
+      <li><a class="com" href="#">Diğer</a></li>
     </ul>
 
     <ul class="rin" >
-      <li><a class="olgu" href="{{@SR}}/clist">Olgular</a></li>
       <li><a class="personal" href="{{@SR}}/personal">Hesabım</a></li>
       <li><a class="support" href="{{@SR}}/help">Destek</a></li>
-      <li><a class="logout" href="{{@SR}}/logout">Çıkış</a></li>
 
       <F3:check if="{{ (@SESSION.lang == 'tr_TR') || (!@SESSION.lang && @lang == 'tr_TR') }}">
       <li><a class="lang" href="{{@SR}}/localize/en_US">İngilizce</a></li>
@@ -64,6 +54,7 @@
       <F3:check if="{{ (@SESSION.lang == 'en_US') || (!@SESSION.lang && @lang == 'en_US') }}">
       <li><a class="lang" href="{{@SR}}/localize/tr_TR">Türkçe</a></li>
       </F3:check>
+      <li><a class="logout" href="{{@SR}}/logout">Çıkış</a></li>
     </ul>
 
 

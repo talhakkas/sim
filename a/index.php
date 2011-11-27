@@ -6,6 +6,7 @@ require_once './inc/lib.php';
 require_once './inc/mylib.php';
 require_once './inc/tetkik.php';
 
+
 $nodes = array( 1=>"dal",
 			17=>"drug", 26=>"dose",
 	       	35=>"exam", 36=>"result",

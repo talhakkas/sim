@@ -44,7 +44,7 @@ body {
 #content h2 a.start-case{ background:url('/public/img/icon/16x16/clock.png') no-repeat left; }
 
 
-#rightcolumn { height:auto; width:110px; float:right; padding:5px; margin-top:100px; margin-right:30px;
+#rightcolumn { height:auto; width:110px; float:right; padding:5px; margin-top:100px; margin-right:24px;
     -webkit-box-shadow:0 2px 2px rgba(0,0,0,0.2); -moz-box-shadow:0 2px 2px rgba(0,0,0,0.2); box-shadow:0 5px 10px rgba(0, 0, 0, 0.2);}
 #rightcolumn ul { padding-left:0px; }
 #rightcolumn li { float:left; width:110px; color:#3b5998; list-style-type:none; font-size:12px; font-weight:bold; text-align:center;

@@ -1,8 +1,23 @@
 <?php
 
+require_once  '../a/gettext/gettext.inc';
 require_once  '../a/lib/base.php';
 require_once  '../a/inc/lib.php';
 require_once  'inc/tetkik.php';
+require_once './mark/markdown.php';
+
+
+// markdown
+function mark() {
+        $foo = file('mark/foo.md');
+
+        $array = array('lastname', 'email', 'phone');
+        $data = implode("\n", $foo);
+        $text = Markdown($data);
+        F3::set('markdown', $text);
+        render('markdown', 'Markdown denemeler');
+}
+F3::route('GET /markdown', 'mark');
 
 
 function ekg() {

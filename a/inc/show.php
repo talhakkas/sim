@@ -45,7 +45,7 @@
 
 	if($node['ntype'] == 'bmap') {
 		$dict = map2dict($node['opts']['map']);
-		
+
 		if($dbg)	print_pre($dict);
 
 		F3::set('SESSION.map', $dict);
@@ -55,7 +55,7 @@
 	if($node['ntype'] == 'bmapr') {
 		$cid = F3::get('SESSION.cid');
 		$pid = $node['parent'];
-		
+
 		if(!isset($_POST['selected']))
 			F3::set('SESSION.error', 'Herhangi bir bölge seçilmemiş');
 		else {
