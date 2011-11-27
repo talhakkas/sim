@@ -283,7 +283,7 @@ a.forgot-pass{ margin-top:-5px; font-size:12px; font-weight:normal; color:#3072b
 .inlogin ul.rin { float:right; width:150px; margin-top:10px; }
 .inlogin ul.rin li { height:38px; text-align:right; }
 .inlogin ul.rin a { padding:8px 36px 8px 0; font-size:12px; font-weight:bold; text-decoration:none; word-spacing:1px; }
-.inlogin ul.rin a.personal { background:url(/public/img/icon/32x32/male_user_info.png) no-repeat right;}
+.inlogin ul.rin a.personal { background:url(/public/img/icon/32x32/business_user.png) no-repeat right;}
 .inlogin ul.rin a.support  { background:url(/public/img/icon/32x32/support.png) no-repeat right;}
 .inlogin ul.rin a.logout   { background:url(/public/img/icon/32x32/unlock.png) no-repeat right;}
 .inlogin ul.rin a.lang     { background:url(/public/img/icon/32x32/green_flag.png) no-repeat right;}
