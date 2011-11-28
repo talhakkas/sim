@@ -83,13 +83,11 @@ msgstr "Forgot your password"
 msgid "Parolamı E-Mail Adresime Gönder"
 msgstr "Send password to my e-mail address"
 
-
-
 msgid "Yanlış kullanıcı adı veya parola"
 msgstr "Incorrect user name or password"
 
-#msgid ""
-#msgstr ""
+msgid "Bu E-Mail Adresine Sahip Bir Hesap Yoktur"
+msgstr "None of this e-mail address with a account"
 
 msgid "Sınav Takvimi"
 msgstr "Exam Calendar"

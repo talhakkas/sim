@@ -42,23 +42,13 @@
       <li><a class="cal" href="#">{{ _e('Sınav Takvimi') }}</a></li>
       <li><a class="exam" href="#">{{ _e('Sınavlar') }}</a></li>
       <li><a class="olgu" href="{{@SR}}/clist">{{ _e('Olgular') }}</a></li>
-      <li><a class="com" href="#">{{ _e('Diğer') }}</a></li>
     </ul>
 
     <ul class="rin" >
       <li><a class="personal" href="{{@SR}}/personal">{{ _e('Hesabım') }}</a></li>
       <li><a class="support" href="{{@SR}}/help">{{ _e('Destek') }}</a></li>
-
-      <F3:check if="{{ (@SESSION.lang == 'tr_TR') || (!@SESSION.lang && @lang == 'tr_TR') }}">
-      <li><a class="lang" href="{{@SR}}/localize/en_US">{{ _e('İngilizce') }}</a></li>
-      </F3:check>
-
-      <F3:check if="{{ (@SESSION.lang == 'en_US') || (!@SESSION.lang && @lang == 'en_US') }}">
-      <li><a class="lang" href="{{@SR}}/localize/tr_TR">{{ _e('Türkçe') }}</a></li>
-      </F3:check>
       <li><a class="logout" href="{{@SR}}/logout">{{ _e('Çıkış') }}</a></li>
     </ul>
-
 
     <img src="/public/img/icon/128x128/surgeon.png"/>
     <span>{{@SESSION.user}}</span>
