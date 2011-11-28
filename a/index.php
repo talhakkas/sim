@@ -41,6 +41,9 @@ function test4()
 
 function test()
 {
+	print_pre($_SERVER, 'SERVER');
+	echo getenv('HTTP_CLIENT_IP');
+	echo getenv('HTTP_X_FORWARDED_FOR');
 	print_pre(F3::get('SESSION'), 'SESSION'); return;
 	print_pre(get_tet(1), 'TET: 1');
 	print_pre(get_tet(2), 'TET: 2');
