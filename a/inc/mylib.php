@@ -262,7 +262,7 @@ function get_exam_list($cid, $nid, $dbg=false)
 	return $dict;
 }
 
-function takip_listesine_ekle() {
+function takip_listesine_ekle($dbg=true) {
 	// a) su anki dugum icin 'tet' girdisi olustur. "beklenen" ve "soylenen" bos, simdilik
 	$ttet = new Axon("tet");
 	$ttet->id = NULL;
@@ -279,28 +279,30 @@ function takip_listesine_ekle() {
 
 	// b) '$_POST' tan gelen veriyle onceki dugumun "beklenen" ve "soylenen" kisimlarini guncelle
 	if(empty($_POST))	return;
+	if($dbg) print_pre($_POST, 'POST');
 
 	$skey = intval(F3::get('SESSION.skey'));
 	$sid  = intval(F3::get('SESSION.student'));
 
 	$cid = $_POST['cid'];
-	$id  = $_POST['id'];
-	$opt = my_get($_POST, 'opt', 0);
+	$nid  = $_POST['id'];
+	$oid = my_get($_POST, 'opt', 0);
+	if($dbg)	echo "cid=$cid, nid=$nid, oid=$oid <br>";
 
 	$dict = array();
 	$ttet = new Axon("tet");
-	$ttet->load("skey='$skey' AND sid='$sid' AND cid='$cid' AND nid='$id'");
+	$ttet->load("skey='$skey' AND sid='$sid' AND cid='$cid' AND nid='$nid'");
 
-	$ntype = get_node_type($cid, $id);
+	$ntype = get_node_type($cid, $nid);
 	
-	$ttet->beklenen = serialize(get_tet_beklenen_yanit($cid, $id, $opt));
+	$ttet->beklenen = serialize(get_tet_beklenen_yanit($cid, $nid, $oid));
 	$ttet->soylenen = serialize(get_tet_soylenen_yanit($_POST));
 
 	$ttet->zaman = microtime(true) - F3::get('SESSION.stime');
 
-	$ttet->oid = $opt;
+	$ttet->oid = $oid;
 
-	$ttet->puan = get_puan($ttet->id);
+	$ttet->puan = compute_mark($ttet->id, $oid);
 	$ttet->save();
 }
 
@@ -681,7 +683,6 @@ function zip($cid, $datas, $dbg=true)
 			}
 		}
 	
-		$dict[0]['stamp'] = microtime();
 		if($dbg) print_pre($dict, 'dict');
 
 		$datas['options'] = serialize($dict);
@@ -869,30 +870,38 @@ function myserialize($arr) {
 	return $str;
 }
 
-function get_puan($tid, $dbg=false)
+function compute_mark($tid, $oid, $dbg=true)
 {
+	/* $_POST ile gelen 'oid'e ve diger durumlara binaen puan (mark) hesapla */
 	$tet = get_tet($tid);
 	if($dbg)	print_pre($tet, 'tet');
 
 	$cid = $tet['cid'];
 	$nid = $tet['nid'];
-	$oid = $tet['oid'] - 1;		if($oid < 0) $oid = 0;
-	$ntype = $tet['beklenen']['ntype'];
+
+	$oid = $oid - 1; 	if($oid < 0) $oid = 0;
+	if($dbg)	echo "cid=$cid, nid=$nid, oid=$oid <br>";
 
 	$node = get_node($cid, $nid);
 	if($dbg)	print_pre($node, 'node');
+
+	$ntype = get_node_type($cid, $nid);
 
 	$puan = 0;
 	switch($ntype) {
 		case 'dal':
 			$dict = $node['opts'][$oid];
+			$odul = empty($dict['odul']) ? 0 : $dict['odul'];
+			$ceza = empty($dict['ceza']) ? 0 : $dict['ceza'];
 			if($dbg)	print_pre($dict, 'ilgili secenek');
 
-			if($dict['chkResponse'] == 'no')
-				$puan = $dict['odul'] - $dict['ceza'];
-			else {
-				$puan = ($tet['beklenen']['response'] == $tet['soylenen']['response']) ? $dict['odul'] : -$dict['ceza'];
+			if($dict['chkResponse'] == 'no') {
+				$puan = $odul - $ceza;
+			} else {
+				$puan = ($tet['beklenen']['response'] == $tet['soylenen']['response']) ? $odul : -$ceza;
 			}
+
+			if($dbg) echo "odul = $odul, ceza = $ceza, puan = $puan<hr>";
 			break;
 		case 'drug':
 		case 'exam':

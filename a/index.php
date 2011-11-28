@@ -15,7 +15,7 @@ $nodes = array( 1=>"dal",
 
 function test2()
 {
-	print_pre(get_node(1, 37), "bmap");
+	print_pre(get_node(1, 3), "dal");
 	print_pre(get_node(1, 38), "bmapr");
 
 	echo "<hr>";
@@ -27,11 +27,11 @@ function test2()
 function test4()
 {
 	$tnode = new Axon('node');
-	$tnode->load("cid='1' AND id='23'");
+	$tnode->load("cid='1' AND id='3'");
 
-	$tnode->parent = 21;
 	$dict = unserialize($tnode->options);
 
+	unset($dict[0]['stamp']);
 	print_pre($dict, "dict");
 
 	$tnode->options = serialize($dict);
@@ -41,8 +41,7 @@ function test4()
 
 function test()
 {
-	// print_pre(get_tet(2), 'immap');
-	// echo "Puan: " . get_puan(2, true); 
+	print_pre(get_tet(1), 'TET'); return;
 	test2();
 }
 
