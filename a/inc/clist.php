@@ -19,6 +19,6 @@ for($i=0; $i < $sz; $i++) {
 
 F3::set('SESSION.cdata', $data);
 
-render('clist', 'Olgu Listesi');
+render('clist', _('Olgu Listesi'));
 
 ?>

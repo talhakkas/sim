@@ -19,12 +19,12 @@
   <link type="text/css" href="/public/css/buttons.css" rel="stylesheet" />
 
   <div class="home-content">
-    <strong>{{ _e('Sim Nedir?') }}</strong>
+    <strong>Lsim Nedir?</strong>
     <p>
-    {{ _e('Sim; bir online sanal hasta oyuncusu, medikal eğitim için hazırlanmış bir yönetim uygulaması.') }}
+    Lsim (Lightening Simulator), web tabanlı sanal hasta tasarımı ve oyunu üzerinden eğitimin yapıldığı bir araçtır.
     </p>
 
-    <strong>{{ _e('Sanal Hasta Nedir?') }}</strong>
+    <!--strong>Sanal Hasta Nedir?</strong>
     <p>
     {{ _e('Özellikle Tıp fakültesi öğrencileri için hazırlanmış ilginç bir uygulama şekli.') }}
     {{ _e('Her türlü hastalık yapay olarak üretilebiliyor.') }}
@@ -32,7 +32,7 @@
     {{ _e('Özellikle kadavra bulunmasının mümkün olmadığı zamanlarda aranan bir uygulamadır.') }}
     </p>
 
-    <img src="/public/img/a/toshiba-medical-tablet-pc.jpg"/>
+    <img src="/public/img/a/toshiba-medical-tablet-pc.jpg"/-->
   </div>
 
   <F3:check if="{{@SESSION.isLogin}}">
@@ -82,7 +82,11 @@
           <input type="submit" class="button blue big right" value="{{ _e('Giriş Yap') }}" />
         </td>
       </tr>
-  	  <tr> <td colspan="2">Demo (öğrenci hesabı): kullanıcı adı (50000000001) ve parola (bal19)</td></tr>
+  	  <tr> 
+	    <td class="label">Demo</td>
+	   	<td class="field"><b>Öğrenci</b>: 50000000001 - bal19<br>
+		    <b>Hoca</b>: 30000000001 - bal19</td>
+	  </tr>
     </table>
   </form>
   </F3:false>
@@ -110,7 +114,7 @@
     </p>
   </div>
 
-</div>
+</div-->
 
 <style type="text/css" media="all">
 </style>
