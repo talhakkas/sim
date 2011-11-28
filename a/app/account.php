@@ -41,6 +41,8 @@ class Account extends F3instance {
 	function logout() {
 		F3::clear('SESSION');
 		F3::clear('REQUEST');
+		unset($_POST);
+		unset($_GET);
 		F3::reroute('/');
 	}
 
