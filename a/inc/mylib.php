@@ -1478,4 +1478,31 @@ function get_tet_soylenen_yanit($arr, $dbg=false)
 
 	return $dict;
 }
+
+function get_session_state($cid, $sid, $dbg=true)
+{
+	/* - $sid, daha onceden bu $cid e girmis mi?
+	 * - hangi dugumde kalmis?
+	 */
+	$ttet = new Axon("tet");
+	$datas = $ttet->afind("cid='$cid' AND sid='$sid'");
+	if($dbg)	print_pre($datas, 'datas');
+
+	$sz = count($datas);
+
+	if(empty($datas))
+		$dict = array('isStarted' => false);
+	else
+		$dict = array('isStarted' => true,
+					  'cid' => $datas[$sz - 1]['cid'],
+					  'nid' => $datas[$sz - 1]['nid'],
+					  'skey' => $datas[$sz - 1]['skey']
+					  );
+
+
+	if($dbg)	print_pre($dict, 'dict');
+
+	return $dict;
+
+}
 ?>

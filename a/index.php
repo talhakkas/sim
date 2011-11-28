@@ -41,6 +41,8 @@ function test4()
 
 function test()
 {
+	print_pre(get_session_state(1, '50000000001', true), 'sess'); return;
+
 	print_pre(F3::get('SESSION'), 'SESSION'); 
 	print_pre(get_tet(1), 'TET: 1');
 	print_pre(get_tet(2), 'TET: 2');
