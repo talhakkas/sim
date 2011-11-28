@@ -1137,23 +1137,22 @@ function get_stu_sel_exams($arr, $dbg=false)
 
 function get_stu_sel_bmap($arr)
 {
-	/* secilen bolgelerin (sbind: indis) degerlerini dondurur. 
-	 * - bolgeleri cek
-	 * - sbind olanlari filtrele 
+	/* secilen bolgelerin degerlerini dondurur. 
+	 * a- $arr['selected'] => sbind
+	 * b- get_node(cid, id) -> node
+	 * c- node['opts']['bmap']
 	 */
-	$dict = array();
-		
-	$cid = $arr['cid'];
-	$id  = $arr['id'];
-
+	
+	// a-sbind
 	$sel = my_get($arr, 'selected', '');
 	if($sel == '') {
 		F3::set('SESSION.error', 'Herhangi bir bölge seçilmemiş');
-		return $dict;
+		return ;
 	}
-
 	$sbind = preg_split('/,/', $sel);
 
+	$cid = $arr['cid'];
+	$id  = $arr['id'];
 	$node = get_node($cid, $id);
 
 	$dict = $node['opts']['bmap'];

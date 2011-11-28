@@ -56,15 +56,10 @@
 		$cid = F3::get('SESSION.cid');
 		$pid = $node['parent'];
 
-		if(!isset($_POST['selected']))
-			F3::set('SESSION.error', 'Herhangi bir bölge seçilmemiş');
-		else {
-			$sbind = preg_split('/,/', my_get($_POST, 'selected'));
-			$dict = get_stu_sel_bmap($cid, $pid, $sbind);
-			if($dbg)	print_pre($dict);
+		$dict = get_stu_sel_bmap($_POST);
+		if($dbg)	print_pre($dict);
 
-			F3::set('SESSION.smap', $dict);
-		}
+		F3::set('SESSION.bmap', $dict);
 	}
 
 	if($node['ntype'] == 'immapr') {
