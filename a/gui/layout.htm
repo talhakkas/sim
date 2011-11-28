@@ -64,7 +64,10 @@
     </div>
 
     <div id="content">
-      <div id="content-background">
+      <div id="sidebar">
+        <div id="sidebar-background"></div>
+
+        <span>{{@SESSION.user}}</span>
 
         <F3:check if="{{ preg_match('/\/edit/', @PARAMS.0) | preg_match('/\/create/', @PARAMS.0) }}">
         <F3:true>
@@ -81,12 +84,6 @@
 
         <F3:check if="{{ substr(@template, 0, 8) == 'personal'}}">
         <F3:true>
-
-        <style type="text/css" media="all">
-          #content-background {
-            background:#fff url(/public/img/icon/128x128/business_user.png) no-repeat center 0px; background-size:100px;
-          }
-        </style>
 
         <div id="rightcolumn">
           <ul>

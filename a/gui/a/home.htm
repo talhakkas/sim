@@ -24,7 +24,7 @@
     Lsim (Lightening Simulator), web tabanlı sanal hasta tasarımı ve oyunu üzerinden eğitimin yapıldığı bir araçtır.
     </p>
 
-    <!--strong>Sanal Hasta Nedir?</strong>
+    <strong>Sanal Hasta Nedir?</strong>
     <p>
     {{ _e('Özellikle Tıp fakültesi öğrencileri için hazırlanmış ilginç bir uygulama şekli.') }}
     {{ _e('Her türlü hastalık yapay olarak üretilebiliyor.') }}
@@ -32,7 +32,7 @@
     {{ _e('Özellikle kadavra bulunmasının mümkün olmadığı zamanlarda aranan bir uygulamadır.') }}
     </p>
 
-    <img src="/public/img/a/toshiba-medical-tablet-pc.jpg"/-->
+    <img src="/public/img/a/toshiba-medical-tablet-pc.jpg" />
   </div>
 
   <F3:check if="{{@SESSION.isLogin}}">
@@ -42,23 +42,13 @@
       <li><a class="cal" href="#">{{ _e('Sınav Takvimi') }}</a></li>
       <li><a class="exam" href="#">{{ _e('Sınavlar') }}</a></li>
       <li><a class="olgu" href="{{@SR}}/clist">{{ _e('Olgular') }}</a></li>
-      <li><a class="com" href="#">{{ _e('Diğer') }}</a></li>
     </ul>
 
     <ul class="rin" >
       <li><a class="personal" href="{{@SR}}/personal">{{ _e('Hesabım') }}</a></li>
-      <li><a class="support" href="{{@SR}}/help">{{ _e('Destek') }}</a></li>
-
-      <F3:check if="{{ (@SESSION.lang == 'tr_TR') || (!@SESSION.lang && @lang == 'tr_TR') }}">
-      <li><a class="lang" href="{{@SR}}/localize/en_US">{{ _e('İngilizce') }}</a></li>
-      </F3:check>
-
-      <F3:check if="{{ (@SESSION.lang == 'en_US') || (!@SESSION.lang && @lang == 'en_US') }}">
-      <li><a class="lang" href="{{@SR}}/localize/tr_TR">{{ _e('Türkçe') }}</a></li>
-      </F3:check>
+      <li><a class="support" href="#{{@SR}}/help">{{ _e('Destek') }}</a></li>
       <li><a class="logout" href="{{@SR}}/logout">{{ _e('Çıkış') }}</a></li>
     </ul>
-
 
     <img src="/public/img/icon/128x128/surgeon.png"/>
     <span>{{@SESSION.user}}</span>
@@ -92,11 +82,13 @@
           <input type="submit" class="button blue big right" value="{{ _e('Giriş Yap') }}" />
         </td>
       </tr>
-  	  <tr> 
-	    <td class="label">Demo</td>
-	   	<td class="field"><b>Öğrenci</b>: 50000000001 - bal19<br>
-		    <b>Hoca</b>: 30000000001 - bal19</td>
-	  </tr>
+      <tr>
+        <td class="label">Demo</td>
+        <td class="field">
+          <b>Öğrenci</b>: 50000000001 - bal19<br>
+          <b>Hoca</b>: &nbsp;&nbsp;&nbsp;&nbsp;30000000001 - bal19
+        </td>
+      </tr>
     </table>
   </form>
   </F3:false>
@@ -108,23 +100,22 @@
 
     <ul>
       <li>
-	{{ _e('Düğümlerinizi dallara ayırarak, öğrencilerin öğrenme sürecine katkı sağlayabilirsiniz.') }}
+      {{ _e('Düğümlerinizi dallara ayırarak, öğrencilerin öğrenme sürecine katkı sağlayabilirsiniz.') }}
       </li>
       <li>
-        {{ _e('Tahlil seçme, sonuç görüntüleme, fiziksel muayene, film değerlendirme, ilaç belirleme ve dozajını ayarlama imkanınız olacak.') }}
+      {{ _e('Tahlil seçme, sonuç görüntüleme, fiziksel muayene, film değerlendirme, ilaç belirleme ve dozajını ayarlama imkanınız olacak.') }}
       </li>
       <li>
-	{{ _e('Her bir düğümün maliyetlendirilmesi yapıldı: ödül-ceza puanı ve maliyet.') }}
+      {{ _e('Her bir düğümün maliyetlendirilmesi yapıldı: ödül-ceza puanı ve maliyet.') }}
       </li>
       <li>
-        {{ _e('Daha fazla bilgi için <a href="/a/about">hakkında</a> sayfasını ziyaret ediniz.') }}
+      {{ _e('Daha fazla bilgi için <a href="/a/about">hakkında</a> sayfasını ziyaret ediniz.') }}
       </li>
-    </ul>
     </ul>
     </p>
   </div>
 
-</div-->
+</div>
 
 <style type="text/css" media="all">
 </style>
