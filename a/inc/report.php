@@ -37,5 +37,9 @@
 	F3::set('SESSION.tdata', $datas);
 	F3::set('SESSION.tpuan', $tpuan);
 
+	$tncase = new Axon("ncase");
+	$tncase->load("id='$cid'");
+	F3::set('SESSION.case_title', $tncase->title);
+
 	render('report', 'Rapor');
 ?>
