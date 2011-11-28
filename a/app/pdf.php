@@ -49,21 +49,16 @@ class Pdf extends F3instance {
 
 		$pdf->SetFont('freeserif', '', 8);
 		$pdf->MultiCell(30, 1, "Olgu Adı:", 0, 'L', 0, 0, '35', '', true);
-		$pdf->MultiCell(80, 1, "Bilinmiyor",       0, 'L', 0, 0, '',   '', true);
+		$pdf->MultiCell(80, 1, F3::get('SESSION.case_title'),       0, 'L', 0, 0, '',   '', true);
 		$pdf->Ln(5);
 
-		/*
-		foreach ($bilgi as $key => $value) {
-			$val = $userinfo[$key];
-			$pdf->MultiCell(30, 1, "$value:", 0, 'L', 0, 0, '35', '', true);
-			$pdf->MultiCell(80, 1, $val,       0, 'L', 0, 0, '',   '', true);
+		$pdf->SetFont('freeserif', '', 8);
+		foreach ($tdata as $id => $dict) {
+			$pdf->MultiCell(30, 1, $dict['title'], 0, 'L', 0, 0, '35', '', true);
+			$pdf->MultiCell(80, 1, $dict['puan'], 0, 'L', 0, 0, '',   '', true);
 			$pdf->Ln(5);
 		}
-		 */
-		//$pdf->Ln(10);
-
-		//$pdf->Ln(15);
-		//$pdf->Cell(0, 5, "", 0, 1,'T');
+		$pdf->Ln(5);
 
 		$pdf->Output( $userinfo['id'], 'D');
 	}
