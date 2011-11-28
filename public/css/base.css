@@ -21,32 +21,23 @@ body {
     box-shadow:0 0 18px rgba(0,0,0,0.3);
 }
 
-#content-background {
-    background: url(/public/img/a/simulation.jpg) no-repeat top;
-    background-size:170px ;
-    margin-top: -10px;
-    margin-right: -20px;
-    position:relative;
-    width:170px;
-    min-height:90px;
-    float:right;
-}
-
 #content h2 {color: #3072b3; border-bottom:1px solid #ddd; padding:0 15px 8px 5px; margin:5px 0 25px; width:auto; font-weight:lighter;}
-
-.page { width: 780px; min-height:400px; }
-
 #content h2 a { padding-left:27px; }
-#content h2 a.edit      { background:url('/public/img/icon/24x24/edit.png') no-repeat left; }
-#content h2 a.continue  { background:url('/public/img/icon/16x16/continue.png') no-repeat left; padding-left:20px;}
-#content h2 a.start-case{ background:url('/public/img/icon/16x16/clock.png') no-repeat left; }
+#content h2 a.edit      { background:url('../img/icon/24x24/edit.png') no-repeat left; }
+#content h2 a.continue  { background:url('../img/icon/16x16/continue.png') no-repeat left; padding-left:20px;}
+#content h2 a.start-case{ background:url('../img/icon/16x16/clock.png') no-repeat left; }
 
+#content .page { width: 800px; min-height:400px; }
 
-#rightcolumn { height:auto; width:110px; float:right; padding:5px; margin-top:100px; margin-right:24px;
+#sidebar { margin-top: -20px; width:90px; min-height:90px; float:right; font-size:12px; }
+#sidebar-background { background: #fff url(../img/icon/128x128/business_user.png) no-repeat top; background-size:80px; height:80px; }
+#sidebar span { float:left; width:90px; font-weight:bold; text-align:center; }
+
+#rightcolumn { height:auto; width:90px; float:right; padding:5px; margin-right:-5px;
     -webkit-box-shadow:0 2px 2px rgba(0,0,0,0.2); -moz-box-shadow:0 2px 2px rgba(0,0,0,0.2); box-shadow:0 5px 10px rgba(0, 0, 0, 0.2);}
 #rightcolumn ul { padding-left:0px; }
-#rightcolumn li { float:left; width:110px; color:#3b5998; list-style-type:none; font-size:12px; font-weight:bold; text-align:center;
-                 margin-bottom:20px; text-align:center; padding:0 auto; }
+#rightcolumn li { float:left; width:90px; color:#3b5998; list-style-type:none; font-size:11px; font-weight:bold; text-align:center;
+                 margin-bottom:15px; text-align:center; padding:0 auto; }
 #rightcolumn li a { display:block; padding-top:46px; margin-top:0px; }
 #rightcolumn li.edit a  { background:url(/public/img/icon/48x48/edit.png) no-repeat top center;;}
 #rightcolumn li.anket a { background:url(/public/img/icon/48x48/chart_pie.png) no-repeat top center;;}
