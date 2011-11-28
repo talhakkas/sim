@@ -3,7 +3,7 @@
 
 	$skey = intval(F3::get('SESSION.skey'));
 	$cid  = intval(F3::get('SESSION.cid'));
-	$sid  = intval(F3::get('SESSION.student'));
+	$sid  = F3::get('SESSION.user');
 
 	$ttet = new Axon('tet');
 	$datas = $ttet->afind("skey='$skey' AND cid='$cid' AND sid='$sid'");

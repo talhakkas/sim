@@ -267,7 +267,7 @@ function takip_listesine_ekle($dbg=false) {
 	$ttet = new Axon("tet");
 	$ttet->id = NULL;
 	$ttet->skey = intval(F3::get('SESSION.skey'));
-	$ttet->sid  = intval(F3::get('SESSION.student'));
+	$ttet->sid  = F3::get('SESSION.user');
 	$ttet->cid = F3::get('SESSION.cid');
 	$ttet->nid = F3::get('SESSION.id');
 	$ttet->oid = "";
@@ -282,12 +282,12 @@ function takip_listesine_ekle($dbg=false) {
 	if($dbg) print_pre($_POST, 'POST');
 
 	$skey = intval(F3::get('SESSION.skey'));
-	$sid  = intval(F3::get('SESSION.student'));
+	$sid  = F3::get('SESSION.user');
 
 	$cid = $_POST['cid'];
 	$nid  = $_POST['id'];
 	$oid = my_get($_POST, 'opt', 0);
-	if($dbg)	echo "cid=$cid, nid=$nid, oid=$oid <br>";
+	if($dbg)	echo "skey=$skey, sid=$sid, cid=$cid, nid=$nid, oid=$oid <br>";
 
 	$dict = array();
 	$ttet = new Axon("tet");
