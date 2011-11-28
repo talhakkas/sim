@@ -26,11 +26,10 @@
 
     <!--strong>Sanal Hasta Nedir?</strong>
     <p>
-    Özellikle Tıp fakültesi öğrencileri için hazırlanmış ilginç bir uygulama şekli.
-    Her türlü hastalık yapay olarak üretilebiliyor.
-    Bu şekilde öğrenciler ve asistanlar sanki gerçek bir hasta
-    ile uğraşıyormuş gibi o maketin üzerinde uygulama yapabiliyorlar.
-    Özellikle kadavra bulunmasının mümkün olmadığı zamanlarda aranan bir uygulamadır.
+    {{ _e('Özellikle Tıp fakültesi öğrencileri için hazırlanmış ilginç bir uygulama şekli.') }}
+    {{ _e('Her türlü hastalık yapay olarak üretilebiliyor.') }}
+    {{ _e('Bu şekilde öğrenciler ve asistanlar sanki gerçek bir hasta ile uğraşıyormuş gibi o maketin üzerinde uygulama yapabiliyorlar.') }}
+    {{ _e('Özellikle kadavra bulunmasının mümkün olmadığı zamanlarda aranan bir uygulamadır.') }}
     </p>
 
     <img src="/public/img/a/toshiba-medical-tablet-pc.jpg"/-->
@@ -40,27 +39,25 @@
   <F3:true>
   <div class="inlogin">
     <ul class="lin" >
-      <li><a class="cal" href="#">Sınav Takvimi</a></li>
-      <li><a class="exam" href="#">Sınavlar</a></li>
-      <li><a class="olgu" href="{{@SR}}/clist">Olgular</a></li>
-      <li><a class="com" href="#">Diğer</a></li>
+      <li><a class="cal" href="#">{{ _e('Sınav Takvimi') }}</a></li>
+      <li><a class="exam" href="#">{{ _e('Sınavlar') }}</a></li>
+      <li><a class="olgu" href="{{@SR}}/clist">{{ _e('Olgular') }}</a></li>
+      <li><a class="com" href="#">{{ _e('Diğer') }}</a></li>
     </ul>
 
     <ul class="rin" >
-      <li><a class="personal" href="{{@SR}}/personal">Hesabım</a></li>
-      <li><a class="support" href="{{@SR}}/help">Destek</a></li>
+      <li><a class="personal" href="{{@SR}}/personal">{{ _e('Hesabım') }}</a></li>
+      <li><a class="support" href="{{@SR}}/help">{{ _e('Destek') }}</a></li>
 
       <F3:check if="{{ (@SESSION.lang == 'tr_TR') || (!@SESSION.lang && @lang == 'tr_TR') }}">
-      <li><a class="lang" href="{{@SR}}/localize/en_US">İngilizce</a></li>
+      <li><a class="lang" href="{{@SR}}/localize/en_US">{{ _e('İngilizce') }}</a></li>
       </F3:check>
 
       <F3:check if="{{ (@SESSION.lang == 'en_US') || (!@SESSION.lang && @lang == 'en_US') }}">
-      <li><a class="lang" href="{{@SR}}/localize/tr_TR">Türkçe</a></li>
+      <li><a class="lang" href="{{@SR}}/localize/tr_TR">{{ _e('Türkçe') }}</a></li>
       </F3:check>
-      <li><a class="logout" href="{{@SR}}/logout">Çıkış</a></li>
+      <li><a class="logout" href="{{@SR}}/logout">{{ _e('Çıkış') }}</a></li>
     </ul>
-
-
 
 
     <img src="/public/img/icon/128x128/surgeon.png"/>
@@ -71,28 +68,28 @@
   <F3:false>
   <form action="{{@SR}}/" method="post" class="login">
     <h4>
-      Kullanıcı Girişi
-      <F3:check if="{{@error}}"><span class="login-error">{{@error}}</span></F3:check>
+      {{ _e('Kullanıcı Girişi') }}
+      <F3:check if="{{@error}}"><span class="login-error">{{ _e(@error) }}</span></F3:check>
     </h4>
 
     <table class="login">
       <tr>
         <td class="label">
-          <label>Kullanıcı Adı </label>
+          <label>{{ _e('Kullanıcı Adı') }} </label>
         </td>
         <td class="field">
           <input name="username" size="30" type="text" /></td>
       </tr>
       <tr>
-        <td class="label"><label>Parola</label></td>
+        <td class="label"><label>{{ _e('Parola') }}</label></td>
         <td class="field"><input name="password" size="30" type="password"/>
         </td>
       </tr>
       <tr>
         <td></td>
         <td>
-          <a rel="facebox" href="#forgot" class="forgot-pass">Parolamı Unuttum</a>
-          <input type="submit" class="button blue big right" value="Giriş Yap" />
+          <a rel="facebox" href="#forgot" class="forgot-pass">{{ _e('Parolamı Unuttum') }}</a>
+          <input type="submit" class="button blue big right" value="{{ _e('Giriş Yap') }}" />
         </td>
       </tr>
   	  <tr> 
@@ -105,23 +102,22 @@
   </F3:false>
   </F3:check>
 
-  <!--div class="home-content right">
-    <strong>Sim'i kimler kullanmalıdır?</strong>
-    <p>Medikal eğitimleri için Sim kullanabilirsiniz:
+  <div class="home-content right">
+    <strong>{{ _e("Sim'i Kimler Kullanmalıdır?") }}</strong>
+    <p>{{ _e('Medikal eğitimleri için Sim kullanabilirsiniz:') }}
 
     <ul>
       <li>
-	  Düğümlerinizi dallara ayırarak, öğrencilerin öğrenme sürecine katkı sağlayabilirsiniz.
+	{{ _e('Düğümlerinizi dallara ayırarak, öğrencilerin öğrenme sürecine katkı sağlayabilirsiniz.') }}
       </li>
       <li>
-      Tahlil seçme, sonuç görüntüleme, fiziksel muayene, film değerlendirme, ilaç belirleme
-	  ve dozajını ayarlama imkanınız olacak.
+        {{ _e('Tahlil seçme, sonuç görüntüleme, fiziksel muayene, film değerlendirme, ilaç belirleme ve dozajını ayarlama imkanınız olacak.') }}
       </li>
       <li>
-	  Her bir düğümün maliyetlendirilmesi yapıldı: ödül-ceza puanı ve maliyet.
+	{{ _e('Her bir düğümün maliyetlendirilmesi yapıldı: ödül-ceza puanı ve maliyet.') }}
       </li>
       <li>
-        Daha fazla bilgi için <a href="#">hakkında</a> sayfasını ziyaret ediniz.
+        {{ _e('Daha fazla bilgi için <a href="/a/about">hakkında</a> sayfasını ziyaret ediniz.') }}
       </li>
     </ul>
     </ul>
@@ -142,8 +138,8 @@
         </td>
       </tr>
     </table>
-    <input type="submit" class="button" value="Parolamı E-Mail Adresime Gönder"
-    style="width:287px; margin-left:10px;"/>
+    <input type="submit" class="button" style="width:287px; margin-left:10px;"
+    value="{{ _e('Parolamı E-Mail Adresime Gönder') }}" />
     <br />
   </form>
 </div>
