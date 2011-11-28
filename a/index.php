@@ -6,9 +6,8 @@ require_once './inc/lib.php';
 require_once './inc/mylib.php';
 require_once './inc/tetkik.php';
 
-
 $nodes = array( 1=>"dal",
-			17=>"drug", 26=>"dose",
+		17=>"drug", 26=>"dose",
 	       	35=>"exam", 36=>"result",
 	       	37=>"bmap", 38=>"bmapr",
 	       	21=>"immap",23=>"immapr");
@@ -42,8 +41,12 @@ function test4()
 function test()
 {
 	print_pre(get_session_state(1, '50000000001', true), 'sess'); return;
-
 	print_pre(F3::get('SESSION'), 'SESSION'); 
+	echo "merhaba dunya"; return;
+	print_pre($_SERVER, 'SERVER');
+	echo getenv('HTTP_CLIENT_IP');
+	echo getenv('HTTP_X_FORWARDED_FOR');
+	print_pre(F3::get('SESSION'), 'SESSION'); return;
 	print_pre(get_tet(1), 'TET: 1');
 	print_pre(get_tet(2), 'TET: 2');
 	print_pre(get_tet(3), 'TET: 3'); return;
@@ -70,6 +73,9 @@ F3::route("GET /about", 	'Home->about');
 F3::route("GET /contact", 	'Home->contact');
 
 F3::route("GET /localize/@lang",'localize');
+
+// PDF
+F3::route("GET /pdf/report", 	'Pdf->student_report');
 
 
 // ACCOUNT

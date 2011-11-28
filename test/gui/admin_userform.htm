@@ -1,0 +1,47 @@
+<h2>User Oluşturma/Güncelleme</h2>
+<form name="login" action="{{@SR}}/admin_usersave" method="POST" id="login" 
+  enctype="multipart/form-data">
+  <input type="hidden" name="user_id" value="{{@user.id}}"/>
+  <table class="custom">
+    <tr>
+      <td class="label"> İd: </td>
+      <td class="field">
+        <input type="text" name="name" value="{{@user.id}}"/>
+      </td>
+    </tr>
+    <tr>
+      <td class="label"> Ad: </td>
+      <td class="field">
+        <input type="text" name="name" value="{{@user.name}}"/>
+      </td>
+    </tr>
+    <tr>
+      <td class="label"> Soyad: </td>
+      <td class="field">
+        <input type="text" name="surname" value="{{@user.surname}}"/>
+      </td>
+    </tr>
+    <tr>
+      <td class="label"> Şifre: </td>
+      <td class="field">
+        <input type="text" name="password" value="{{@user.password}}"/>
+      </td>
+    </tr>
+    <tr>
+      <td class="label"> Email: </td>
+      <td class="field">
+        <input type="text" name="email" value="{{@user.email}}"/>
+      </td>
+    </tr>
+    <tr>
+      <td class="label"> Kullanıcı tipi: </td>
+      <td class="field">
+        <input type="text" name="utype" value="{{@user.utype}}"/>
+      </td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><input type="submit" class="button-submit" value="Kaydet"/></td>
+    </tr>
+  </table>
+</form>

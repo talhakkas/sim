@@ -24,7 +24,7 @@
     Lsim (Lightening Simulator), web tabanlı sanal hasta tasarımı ve oyunu üzerinden eğitimin yapıldığı bir araçtır.
     </p>
 
-    <strong>Sanal Hasta Nedir?</strong>
+    <strong>{{ _e('Sanal Hasta Nedir?') }}</strong>
     <p>
     {{ _e('Özellikle Tıp fakültesi öğrencileri için hazırlanmış ilginç bir uygulama şekli.') }}
     {{ _e('Her türlü hastalık yapay olarak üretilebiliyor.') }}
@@ -51,7 +51,7 @@
     </ul>
 
     <img src="/public/img/icon/128x128/surgeon.png"/>
-    <span>{{@SESSION.user}}</span>
+    <span>{{@SESSION.userinfo.fullname}}</span>
   </div>
   </F3:true>
 
@@ -114,11 +114,7 @@
     </ul>
     </p>
   </div>
-
 </div>
-
-<style type="text/css" media="all">
-</style>
 
 <div id="forgot" style="display:none">
   <form action="{{@SR}}/forgot" method="post" enctype="multipart/form-data">

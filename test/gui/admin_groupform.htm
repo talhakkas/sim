@@ -1,0 +1,23 @@
+<h2>Grup Oluşturma/Güncelleme</h2>
+<form name="login" action="{{@SR}}/admin_groupsave" method="POST" id="login" 
+  enctype="multipart/form-data">
+  <input type="hidden" name="group_id" value="{{@group.id}}"/>
+  <table class="custom">
+    <tr>
+      <td class="label"> Grup Adı(Sınıf): </td>
+      <td class="field">
+        <input type="text" name="name" value="{{@group.name}}"/>
+      </td>
+    </tr>
+    <tr>
+      <td class="label"> Grup Fotoğraf: </td>
+      <td class="field">
+        <input type="file" name="photo" value="{{@group.photo}}"/>
+      </td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><input type="submit" class="button-submit" value="Kaydet"/></td>
+    </tr>
+  </table>
+</form>

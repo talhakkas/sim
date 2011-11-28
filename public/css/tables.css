@@ -50,10 +50,10 @@
 #one-column-emphasis td {padding: 10px 15px;color: #669;border-top: 1px solid #e8edff;}
 .oce-first{border-right: 20px solid transparent;}
 
-#one-column-emphasis th {height:20px; }
-#one-column-emphasis th.img { background:url(/public/img/icon/48x48/image.png) no-repeat center; padding-left:0px; width:50px; }
-#one-column-emphasis th.case { background:url(/public/img/icon/48x48/clock.png) no-repeat left;}
-#one-column-emphasis th.desc { background:url(/public/img/icon/48x48/book.png) no-repeat left;}
+#one-column-emphasis th { height:10px; }
+#one-column-emphasis th.img { background:url(/public/img/icon/32x32/image.png) no-repeat center; width:50px; }
+#one-column-emphasis th.case { background:url(/public/img/icon/32x32/clock.png) no-repeat left; }
+#one-column-emphasis th.desc { background:url(/public/img/icon/32x32/comment.png) no-repeat left;}
 #one-column-emphasis th.action { width:60px; }
 .clist-button { float:right; margin-top:20px; }
 /*#one-column-emphasis td a.case {padding:8px 0 0 30px; line-height:24px; background:url(/public/img/icon/24x24/clock.png) no-repeat;}*/
@@ -83,7 +83,7 @@
 #rounded-corner thead th {min-width:90px;}
 #rounded-corner th {padding: 8px;font-weight: normal;font-size: 13px;color: #039;background: #b9c9fe;}
 #rounded-corner td {padding: 8px;background: #e8edff;border-top: 1px solid #fff;color: #669;}
-.sag {text-align:right}
+#rounded-corner th.rig {text-align:right}
 #rounded-corner tfoot td.rounded-foot-left {background: #e8edff left bottom no-repeat;}
 #rounded-corner tfoot td.rounded-foot-right {background: #e8edff right bottom no-repeat;}
 #rounded-corner tbody tr:hover td {background: #d0dafd;}

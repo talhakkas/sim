@@ -1,0 +1,25 @@
+<h2>İnceleme Sonuçları</h2>
+<table class="custom">
+  <tr>
+    <td class="label"> Grub adı: </td>
+    <td class="field"> {{@group.name}} </td>
+  </tr>
+  <tr>
+    <td class="label"> Fotoğraf: </td>
+    <td class="field">
+      <img src="/public/upload/{{@group.photo}}" width="128" height="128"/>
+    </td>
+  </tr>
+  <tr>
+    <td></td>
+    <td>
+      <a href="{{@SR}}/admin_groupedit/{{@group.id}}">
+        <input type="submit" class="button-submit" value="Düzenle" />
+      </a>
+      <a href="{{@SR}}/admin_groupdelete/{{@group.id}}">
+        <input type="submit" class="button-submit" value="Sil"
+        onClick="return confirm('Silmek istediğinizden emin misiniz?');"/>
+      </a>
+    </td>
+  </tr>
+</table>

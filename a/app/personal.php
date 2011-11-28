@@ -13,7 +13,7 @@ class Personal extends F3instance {
 
 	function edit() {
 		$username = F3::get('SESSION.user');
-		$user = DB::sql("select * from users where tc='$username'");
+		$user = DB::sql("select * from users where id='$username'");
 		F3::set('user', $user[0]);
 
 		$this->_page('edit', 'Kişisel Bilgileriniz');
@@ -24,14 +24,14 @@ class Personal extends F3instance {
 		$username = F3::get('SESSION.user');
 
 		$user = new Axon("users");
-		$user->load("tc='$username'");
+		$user->load("id='$username'");
 
 		if (F3::get('REQUEST.password') != F3::get('REQUEST.password2')) {
 			F3::set('warning', 'Kullanıcı Parolası Eşlenemiyor');
 			return $this->personal();
 		}
 
-		$user->tc = F3::get('REQUEST.tc');
+		$user->id = F3::get('REQUEST.id');
 		$user->name = F3::get('REQUEST.name');
 		$user->surname = F3::get('REQUEST.surname');
 		$user->email = F3::get('REQUEST.email');
@@ -39,6 +39,9 @@ class Personal extends F3instance {
 		$user->save();
 
 		F3::set('success', 'Kullanıcı Bilgileri Güncellendi');
+
+		// kullanıcı bilgilerinin güncel halini set edelim
+		Account::set_user_info($username);
 
 		$this->edit();
 	}

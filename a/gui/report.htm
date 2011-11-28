@@ -1,7 +1,7 @@
 <script type="text/javascript" src="/public/js/jquery.boxy.js"></script>
 <link rel="stylesheet" href="/public/css/boxy.css" type="text/css" />
 
-<h2>{{@page_title}}</h2>
+<h2>{{@page_title}} <a class="pdf" href="{{@SR}}/pdf/report" style="font-size:12px;" >Raporu İndir (pdf)</a></h2>
 
 Merhaba <b>{{@SESSION.user}}</b>,
 
@@ -9,7 +9,7 @@ Merhaba <b>{{@SESSION.user}}</b>,
   <thead>
     <tr>
       <tr>
-        <th scope="col" class="sag">Zaman (sn)</th>
+        <th scope="col" class="rig">Zaman (sn)</th>
         <th scope="col">Başlık</th>
         <th scope="col">Beklenen</th>
         <th scope="col">Söylenen</th>
