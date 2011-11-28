@@ -66,8 +66,22 @@
 		$cid = F3::get('SESSION.cid');
 		$pid = $node['parent'];
 
-		F3::set('SESSION.ogrenci', get_stu_sel_immap($_POST));
-		F3::set('SESSION.hoca',    get_tea_sel_immap($cid, $pid));
+
+		$rect_stu = get_stu_sel_immap($_POST);
+		$rect_tea = get_tea_sel_immap($cid, $pid);
+
+		$iminfo = getimagesize( getcwd() . "/upload/" . $rect_tea['imgnm'] );
+		F3::set("SESSION.imwidth",  $iminfo[0]);
+		F3::set("SESSION.imheight", $iminfo[1]);
+
+		F3::set("SESSION.imname",  $rect_tea['imgnm']);
+
+		F3::set('SESSION.ogrenci', array("left" => $rect_stu['x'], "right"  => ($iminfo[0] - ($rect_stu['x'] + $rect_stu['w'])),
+						  				 "top"  => $rect_stu['y'], "bottom" => ($iminfo[1] - ($rect_stu['y'] + $rect_stu['h'])),
+										 "yorum"=> $rect_stu['yorum']) );
+		F3::set('SESSION.hoca',    array("left" => $rect_tea['x'], "right"  => ($iminfo[0] - ($rect_tea['x'] + $rect_tea['w'])),
+						  				 "top"  => $rect_tea['y'], "bottom" => ($iminfo[1] - ($rect_tea['y'] + $rect_tea['h'])),
+										 "yorum"=> $rect_tea['yorum']) );
 	}
 
 render('show', 'Olgu');

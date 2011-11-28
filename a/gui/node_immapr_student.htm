@@ -1,26 +1,47 @@
+<style type="text/css">
+	div.imageSub { position: relative; }
+	div.imageSub img { z-index: 1; }
+
+	div.imageSub div {
+		position: absolute;
+		overflow: hidden;
+
+		-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+		filter: alpha(opacity=50);
+		opacity: 0.5;
+
+		text-align: center;
+		color: white;
+	}
+
+	div.imageSub div.hoca {
+		z-index: 3;
+		left: 	{{@SESSION.hoca['left']}}px;
+		right: 	{{@SESSION.hoca['right']}}px;
+		top: 	{{@SESSION.hoca['top']}}px;
+		bottom: {{@SESSION.hoca['bottom']}}px;
+
+		background-color: #00ff00;
+	}
+	div.imageSub div.ogrenci {
+		z-index: 2;
+		left: 	{{@SESSION.ogrenci['left']}}px;
+		right: 	{{@SESSION.ogrenci['right']}}px;
+		top: 	{{@SESSION.ogrenci['top']}}px;
+		bottom: {{@SESSION.ogrenci['bottom']}}px;
+
+		background-color: #ff0000;
+	}
+</style>
+
 <p class="answer">{{@SESSION.data['opts'][0]['link_text']}}</p>
 
-<img src="{{@SR}}/{{@uploaddir}}kucuk{{@SESSION.hoca['imgnm']}}" id="medya2">
+<div class="imageSub" style="width: {{@SESSION.imwidth}}px;"> <!-- Put Your Image Width -->
+	<img src="{{@SR}}/{{@uploaddir}}{{@SESSION.imname}}">
 
-<br>
-HOCA nin seçimi (x,y,x2,y2,w,h): {{@SESSION.hoca['x']}}, {{@SESSION.hoca['y']}}, {{@SESSION.hoca['x2']}},
-{{@SESSION.hoca['y2']}}, {{@SESSION.hoca['w']}}, {{@SESSION.hoca['h']}}
-
-<br>
-Yorumu:
-<pre>
-{{@SESSION.hoca['yorum']}}
-</pre>
-<hr>
-
-ÖĞRENCİ nin seçimi (x,y,x2,y2,w,h): {{@SESSION.ogrenci['x']}}, {{@SESSION.ogrenci['y']}}, {{@SESSION.ogrenci['x2']}},
-{{@SESSION.ogrenci['y2']}}, {{@SESSION.ogrenci['w']}}, {{@SESSION.ogrenci['h']}}
-
-<br>
-Yorumu:
-<pre>
-{{@SESSION.ogrenci['yorum']}}
-</pre>
+	<div class="hoca"><b>HOCA:</b> {{@SESSION.hoca['yorum']}}</div>
+	<div class="ogrenci"><br><br><b>ÖĞRENCİ:</b> {{@SESSION.ogrenci['yorum']}}</div>
+</div>
 
 <div align="middle">
   <form name="frm" action="{{@SR}}/show/{{@SESSION.cid}}/{{@SESSION.data['opts']['node_link']}}/0" method="post">
