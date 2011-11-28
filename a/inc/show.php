@@ -20,12 +20,12 @@
 	$node = get_node();
 	F3::set('SESSION.data', $node);
 
+	takip_listesine_ekle();
+
 	if($node['ntype'] == 'report') {
 		F3::reroute('/report');
 		return 1;
 	}
-
-	takip_listesine_ekle();
 
 	if($node['ntype'] == 'dose') {
 		$cid = F3::get('SESSION.cid');
@@ -40,7 +40,7 @@
 	if($node['ntype'] == 'exam')
 		F3::set('tetkikmerkezi', multi());
 	if($node['ntype'] == 'result') {
-		F3::set('SESSION.results', get_stu_sel_exams());
+		F3::set('SESSION.results', get_stu_sel_exams($_POST));
 	}
 
 	if($node['ntype'] == 'bmap') {

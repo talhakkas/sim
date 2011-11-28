@@ -301,16 +301,20 @@ function takip_listesine_ekle($dbg=true) {
 	$ttet->zaman = microtime(true) - F3::get('SESSION.stime');
 
 	$ttet->oid = $oid;
+	$ttet->save();
 
-	$ttet->puan = compute_mark($ttet->id, $oid);
+	$ttet->load("skey='$skey' AND sid='$sid' AND cid='$cid' AND nid='$nid'");
+	$ttet->puan = compute_mark($ttet->id, $dbg);
 	$ttet->save();
 }
 
 function response2str_bek($response, $ntype)
 {
+	if($response == 'null' or $response == NULL) $response = array();
+
 	switch($ntype) {
 		case 'dal':
-			$str = $response == 'null' ? '' : $response;
+			$str = empty($response) ? '' : $response;
 			break;
 		case 'bmap':
 			$str = '<ul>';
@@ -870,16 +874,14 @@ function myserialize($arr) {
 	return $str;
 }
 
-function compute_mark($tid, $oid, $dbg=true)
+function compute_mark($tid, $dbg=true)
 {
-	/* $_POST ile gelen 'oid'e ve diger durumlara binaen puan (mark) hesapla */
 	$tet = get_tet($tid);
 	if($dbg)	print_pre($tet, 'tet');
 
 	$cid = $tet['cid'];
 	$nid = $tet['nid'];
-
-	$oid = $oid - 1; 	if($oid < 0) $oid = 0;
+	$oid = $tet['oid'] - 1; 	if($oid < 0) $oid = 0;
 	if($dbg)	echo "cid=$cid, nid=$nid, oid=$oid <br>";
 
 	$node = get_node($cid, $nid);
@@ -898,7 +900,7 @@ function compute_mark($tid, $oid, $dbg=true)
 			if($dict['chkResponse'] == 'no') {
 				$puan = $odul - $ceza;
 			} else {
-				$puan = ($tet['beklenen']['response'] == $tet['soylenen']['response']) ? $odul : -$ceza;
+				$puan = isSimilar($tet['beklenen']['response'], $tet['soylenen']['response']) ? $odul : -$ceza;
 			}
 
 			if($dbg) echo "odul = $odul, ceza = $ceza, puan = $puan<hr>";
@@ -906,6 +908,11 @@ function compute_mark($tid, $oid, $dbg=true)
 		case 'drug':
 		case 'exam':
 		case 'bmap':
+			if(count($tet['beklenen']['response']) != count($tet['soylenen']['response'])) {
+				$puan =  -$node['opts']['ceza'];
+				break;
+			}
+
 			$b_dids = array_keys($tet['beklenen']['response']);	sort($b_dids);
 			$s_dids = array_keys($tet['soylenen']['response']);	sort($s_dids);
 
@@ -914,7 +921,6 @@ function compute_mark($tid, $oid, $dbg=true)
 
 			$puan = empty($fark) ? $node['opts']['odul'] : -$node['opts']['ceza'];
 			break;
-		case 'immap':
 		case 'dose':
 			$b_ds = $tet['beklenen']['response'];	sort($b_ds);
 			$s_ds = $tet['soylenen']['response'];	sort($s_ds);
@@ -932,22 +938,46 @@ function compute_mark($tid, $oid, $dbg=true)
 
 			$puan = $dogru_mu ? $node['opts']['odul'] : -$node['opts']['ceza'];
 			break;
+		case 'immap':
+			$beklenen = $tet['beklenen']['response'];	if($dbg)	print_pre($beklenen, 'beklenen');
+			$soylenen = $tet['soylenen']['response'];	if($dbg)	print_pre($soylenen, 'soylenen');
+
+			if(isOverlaped($beklenen, $soylenen) and abs(area($beklenen) - area($soylenen)) < 0.5*area($beklenen) and
+			   isSimilar($beklenen['yorum'], $soylenen['yorum']) )
+				$puan = $node['opts']['odul'];
+			else
+				$puan = -$node['opts']['ceza'];
+
+			break;
 	}
 	
 	return $puan;
-	$opt--;
+}
 
-	$tnode = new Axon('node');
-	$datas = $tnode->afind("cid='$cid' AND id='$id'");
+function valueInRange($value, $min, $max)
+{ return ($value >= $min) && ($value <= $max); }
 
-	$datas = unzip($datas[0]);
+function isOverlaped($A, $B)
+{
+	// A ve B ortusuyorsa "true"
+	$xOverlap = valueInRange($A['x'], $B['x'], $B['x'] + $B['w']) ||
+		valueInRange($B['x'], $A['x'], $A['x'] + $A['w']);
 
-	$odul = empty($datas['opts'][$opt]['odul']) ? 0 : intval($datas['opts'][$opt]['odul']);
-	$ceza = empty($datas['opts'][$opt]['ceza']) ? 0 : intval($datas['opts'][$opt]['ceza']);
+	$yOverlap = valueInRange($A['y'], $B['y'], $B['y'] + $B['h']) ||
+		valueInRange($B['y'], $A['y'], $A['y'] + $A['h']);
 
-	$puan = $odul - $ceza;
+	return $xOverlap && $yOverlap;
+}
 
-	return $puan;
+function area($rect) 
+{
+	return $rect['w'] * $rect['h'];
+}
+
+function isSimilar($str1, $str2)
+{
+	// FIXME
+	return $str1 == $str2;
 }
 
 function print_pre($code, $msj="array") 

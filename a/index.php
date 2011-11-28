@@ -41,7 +41,10 @@ function test4()
 
 function test()
 {
-	print_pre(get_tet(1), 'TET'); return;
+print_pre(get_node(1, 25), "dal"); return;
+	print_pre(get_tet(1), 'TET: 1');
+	print_pre(get_tet(2), 'TET: 2');
+	print_pre(get_tet(3), 'TET: 3'); return;
 	test2();
 }
 
