@@ -65,11 +65,11 @@
 
       <div id="ribbon">
 	<F3:check if="{{ (@SESSION.lang == 'tr_TR') || (!@SESSION.lang && @lang == 'tr_TR') }}">
-	<a class="lang" href="{{@SR}}/localize/en_US">{{ _e('İngilizce') }}</a>
+	<a class="lang" href="{{@SR}}/localize/en_US">English</a>
 	</F3:check>
 
 	<F3:check if="{{ (@SESSION.lang == 'en_US') || (!@SESSION.lang && @lang == 'en_US') }}">
-	<a class="lang" href="{{@SR}}/localize/tr_TR">{{ _e('Türkçe') }}</a>
+	<a class="lang" href="{{@SR}}/localize/tr_TR">Türkçe</a>
 	</F3:check>
       </div>
 
