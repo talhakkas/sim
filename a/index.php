@@ -71,7 +71,7 @@ F3::route("GET /localize/@lang",'localize');
 
 
 // ACCOUNT
-F3::route("POST /login",      	'Account->auth');   // login action
+F3::route("POST /",      	'Account->auth');   // login action
 F3::route('GET  /logout',     	'Account->logout'); // logout action
 F3::route('POST /forgot',    	'Account->forgot'); // forget password
 
