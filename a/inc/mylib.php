@@ -262,7 +262,8 @@ function get_exam_list($cid, $nid, $dbg=false)
 	return $dict;
 }
 
-function takip_listesine_ekle($dbg=false) {
+function takip_listesine_ekle($dbg=false) 
+{
 	// a) su anki dugum icin 'tet' girdisi olustur. "beklenen" ve "soylenen" bos, simdilik
 	$ttet = new Axon("tet");
 	$ttet->id = NULL;
