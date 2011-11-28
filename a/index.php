@@ -107,6 +107,7 @@ F3::route("GET /report", "report.php");
 
 // case routings
 F3::route("GET /cstart/@cid", 'cstart.php');
+	F3::route("POST /cstart/@cid", 'cstart.php');
 
 F3::route("GET /cshow/@cid", 'cshow.php');
 F3::route("GET /cedit/@cid", "cedit.php");
