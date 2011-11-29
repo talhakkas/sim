@@ -16,22 +16,22 @@
   </thead>
 
   <tbody>
-    <F3:repeat group="{{@SESSION.cdata}}" key="{{@gnl}}" value="{{@blg}}" >
+    <F3:repeat group="{{@SESSION.cdata}}" key="{{@key}}" value="{{@case}}" >
     <tr>
       <td>
-        <a rel="facebox" href="{{@uploaddir, @blg['image']}}" ><img src="{{@uploaddir, @blg['image']}}" /></a>
+        <a rel="facebox" href="{{@uploaddir, @case['image']}}" ><img src="{{@uploaddir, @case['image']}}" /></a>
       </td>
       <td>
-        <a class="vtip" title="{{@blg['title']}}" href="{{@SR}}/cstart/{{@blg['cid']}}">{{@blg['title']}}</a>
+        <a class="vtip" title="{{@case['title']}}" href="{{@SR}}/cstart/{{@case['id']}}">{{@case['title']}}</a>
       </td>
       <td>
-        {{@blg['description']}}
+        {{@case['description']}}
       </td>
 
       <F3:check if="{{isallowed('Admin', 'Author')}}">
       <td>
-        <a href="{{@SR}}/cedit/{{@blg['cid']}}" id="button-edit" title="Düzenle"></a>
-        <a href="{{@SR}}/cdelete/{{@blg['cid']}}" id="button-delete" title="Sil"
+        <a href="{{@SR}}/cedit/{{@case['id']}}" id="button-edit" title="Düzenle"></a>
+        <a href="{{@SR}}/cdelete/{{@case['id']}}" id="button-delete" title="Sil"
           onClick="return confirm('Silmek istediğinizden emin misiniz?');"></a>
       </td>
       </F3:check>

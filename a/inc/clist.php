@@ -4,12 +4,12 @@ if (!F3::get("SESSION.isLogin"))
 	return F3::reroute('/');
 
 $table = new Axon("ncase");
-$datas = $table->find("cid", "cid asc");
+$datas = $table->find("id", "id asc");
 $sz = count($datas);
 
 $data = array();
 for($i=0; $i < $sz; $i++) {
-	$data[$i]['cid']   = $datas[$i]->cid;
+	$data[$i]['id']   = $datas[$i]->id;
 	$data[$i]['title'] = $datas[$i]->title;
 	$data[$i]['description'] = $datas[$i]->description;
 
@@ -19,6 +19,6 @@ for($i=0; $i < $sz; $i++) {
 
 F3::set('SESSION.cdata', $data);
 
-render('clist', _('Olgu Listesi'));
+render('clist', 'Olgu Listesi');
 
 ?>
