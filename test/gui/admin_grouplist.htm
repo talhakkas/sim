@@ -24,21 +24,19 @@
     <tbody>
       <F3:repeat group="{{@group_list}}" key="{{@key}}" value="{{@val}}" >
       <tr>
-        <td>
-          {{@val.name}}
-        </td>
+        <td>{{@val.name}}</td>
         <td>
           <img src="{{@SR}}/public/upload/{{@val.photo}}" width="26" 
           height="26"/>
         </td>
         <td class="label" style="float:left;width:92px">
-          <a href="show/{{@val.id}}" target="_black">
+          <a href="admin_groupshow/{{@val.id}}" target="_black">
             <input type="submit" id="button-preview" title="İncele" value="">
           </a>
-          <a href="edit/{{@val.id}}" target="_blank">
+          <a href="admin_groupedit/{{@val.id}}" target="_blank">
             <input type="submit" id="button-edit" title="Düzenle" value="">
           </a>
-          <a href="erase/{{@val.id}}" target="_blank">
+          <a href="admin_groupdelete/{{@val.id}}">
             <input type="submit" id="button-delete" title="Sil" value=""
               onClick="return confirm('Silmek istediğinizden emin misiniz?');"/>
             </a>

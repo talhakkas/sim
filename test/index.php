@@ -73,6 +73,82 @@ function admin_grouplist() {
         F3::set('group_list', DB::sql("select * from groups"));
         render('admin_grouplist', 'Grup düzenle');
 }
+// END -- admin#group
+// --- admin#group
+function admin_userform() {
+        render('admin_userform', 'Grup oluşturma');
+}
+function admin_usersave() {
+        $id = F3::get('REQUEST.user_id');
+        if (!$id) { // ekleme
+                $id = F3::get('REQUEST.id');
+
+                $user = new Axon("users");
+                $user->load("id='$id'");
+
+                if (!$user->dry()) {
+                        F3::set('warning', "Bu Grup İsmine Sahip Bir Grup Zaten Var");
+                        return; // TODO
+                }
+                else {
+                        $user->name = F3::get('REQUEST.name');
+                        $user->surname = F3::get('REQUEST.surname');
+                        $user->password = F3::get('REQUEST.password');
+                        $user->email = F3::get('REQUEST.email');
+                        $user->utype = F3::get('REQUEST.utype');
+                        $user->save();
+
+                        $user = new Axon("users");// id için tekrardan çekelim
+                        $user->load("name='" . F3::get('REQUEST.name') . "'");
+                        return F3::reroute('/admin_usershow/' . $user->id);
+                }
+        } else {
+                $user = new Axon("users");
+                $user->load("id='$id'");
+                $user->name = F3::get('REQUEST.name');
+                $user->surname = F3::get('REQUEST.surname');
+                $user->password = F3::get('REQUEST.password');
+                $user->email = F3::get('REQUEST.email');
+                $user->utype = F3::get('REQUEST.utype');
+                $user->save();
+                $user->save();
+                return F3::reroute('/admin_usershow/' . $user->id);
+        }
+}
+function admin_usershow() {
+	$user = new Axon("users");
+        $datas = $user->afind("id='" . F3::get('PARAMS.id') . "'");
+        F3::set('user', $datas[0]);
+        render('admin_usershow', 'Grup göster');
+}
+function admin_useredit() {
+	$user = new Axon("users");
+        $datas = $user->afind("id='" . F3::get('PARAMS.id') . "'");
+        F3::set('user', $datas[0]);
+        render('admin_userform', 'Grup düzenle');
+}
+function admin_userdelete() {
+        $id = F3::get('PARAMS.id');
+
+        $user = new Axon('users');
+        $user->load("id='$id'");
+        $user->erase();
+
+        return F3::reroute('/admin_userlist'); 
+}
+function admin_userupdate() {
+        $user = new Axon("users");
+        $user->load("id='" . F3::get('PARAMS.id') . "'");
+        $user->name = F3::get('REQUEST.name');
+        $user->photo = "default.jpg"; // TODO
+        $user->save();
+        return F3::reroute('/admin_usershow/' . $user->id);
+}
+function admin_userlist() {
+        F3::set('user_list', DB::sql("select * from users"));
+        render('admin_userlist', 'Grup düzenle');
+}
+// END -- admin#user
 
 // markdown
 function mark() {
@@ -153,13 +229,21 @@ F3::route('POST /tetkik', 'tetkik');
 F3::route('POST /ilac', 'ilac_sonuc');
 
 //admin post
+//admin#group
 F3::route('POST /admin_groupsave',       'admin_groupsave');
 F3::route('GET  /admin_groupshow/@id',   'admin_groupshow');
 F3::route('GET  /admin_groupedit/@id',   'admin_groupedit');
 F3::route('GET  /admin_groupdelete/@id', 'admin_groupdelete');
 F3::route('GET  /admin_grouplist',       'admin_grouplist');
-
 F3::route('POST /admin_groupupdate',   'admin_groupsave');
+//admin#user
+F3::route('POST /admin_usersave',       'admin_usersave');
+F3::route('GET  /admin_usershow/@id',   'admin_usershow');
+F3::route('GET  /admin_useredit/@id',   'admin_useredit');
+F3::route('GET  /admin_userdelete/@id', 'admin_userdelete');
+F3::route('GET  /admin_userlist',       'admin_userlist');
+
+F3::route('POST /admin_userupdate',   'admin_usersave');
 
 F3::run();
 
