@@ -26,7 +26,7 @@ class Pdf extends F3instance {
 		$tdata = F3::get('SESSION.tdata');
 
 		$bilgi = array(
-			'tc'		=> 'TC Kimlik No',
+			'id'		=> 'TC Kimlik No',
 			'name'		=> 'Ad',
 			'surname'	=> 'Soyad',
 		);
@@ -65,7 +65,7 @@ class Pdf extends F3instance {
 		//$pdf->Ln(15);
 		//$pdf->Cell(0, 5, "", 0, 1,'T');
 
-		$pdf->Output( $userinfo['tc'], 'D');
+		$pdf->Output( $userinfo['id'], 'D');
 	}
 
 	function beforeroute() {

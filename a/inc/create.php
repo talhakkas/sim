@@ -23,6 +23,6 @@
 	F3::set('SESSION.all_nodes', $all_nodes);
 
 	ilkle();
-	
+
         render('node', 'Oluştur');
 ?>

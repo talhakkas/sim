@@ -9,7 +9,7 @@ $sz = count($datas);
 
 $data = array();
 for($i=0; $i < $sz; $i++) {
-	$data[$i]['id']   = $datas[$i]->id;
+	$data[$i]['cid']   = $datas[$i]->id;
 	$data[$i]['title'] = $datas[$i]->title;
 	$data[$i]['description'] = $datas[$i]->description;
 

@@ -22,7 +22,7 @@
         <a rel="facebox" href="{{@uploaddir, @case['image']}}" ><img src="{{@uploaddir, @case['image']}}" /></a>
       </td>
       <td>
-        <a class="vtip" title="{{@case['title']}}" href="{{@SR}}/cstart/{{@case['id']}}">{{@case['title']}}</a>
+        <a class="vtip" title="{{@case['title']}}" href="{{@SR}}/cstart/{{@case['cid']}}">{{@case['title']}}</a>
       </td>
       <td>
         {{@case['description']}}
@@ -30,8 +30,8 @@
 
       <F3:check if="{{isallowed('Admin', 'Author')}}">
       <td>
-        <a href="{{@SR}}/cedit/{{@case['id']}}" id="button-edit" title="Düzenle"></a>
-        <a href="{{@SR}}/cdelete/{{@case['id']}}" id="button-delete" title="Sil"
+        <a href="{{@SR}}/cedit/{{@case['cid']}}" id="button-edit" title="Düzenle"></a>
+        <a href="{{@SR}}/cdelete/{{@case['cid']}}" id="button-delete" title="Sil"
           onClick="return confirm('Silmek istediğinizden emin misiniz?');"></a>
       </td>
       </F3:check>

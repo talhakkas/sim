@@ -294,7 +294,7 @@ function takip_listesine_ekle($dbg=false) {
 	$ttet->load("skey='$skey' AND sid='$sid' AND cid='$cid' AND nid='$nid'");
 
 	$ntype = get_node_type($cid, $nid);
-	
+
 	$ttet->beklenen = serialize(get_tet_beklenen_yanit($cid, $nid, $oid));
 	$ttet->soylenen = serialize(get_tet_soylenen_yanit($_POST));
 
@@ -1059,13 +1059,13 @@ function get_tea_sel_bmap($cid, $bnid, $isFullList=false)
 	$node = get_node($cid, $bnid);
 
 	$dict = $node['opts']['bmap'];
-	
+
 	if(!$isFullList)
-		foreach($dict as $i=>$d) {
+		foreach($dict as $i => $d) {
 			if($d['value'] == 'null')
 				unset($dict[$i]);
 		}
-	
+
 	return $dict;
 }
 
@@ -1092,7 +1092,7 @@ function get_tea_sel_drugs($cid=null, $id=null)
 	return $node['opts']['drugs'];
 }
 
-function get_tea_sel_immap($cid, $nid) 
+function get_tea_sel_immap($cid, $nid)
 {
 	$node = get_node($cid, $nid);
 
@@ -1125,11 +1125,13 @@ function get_stu_sel_dose($arr)
 	foreach($arr['did'] as $i=>$did) {
 		$drug = get_drug($did);
 
-		$dict[$did] = array("name"=> $drug['name'], 
-							"dmn" => $drug['dmn'],
-							"dmx" => $drug['dmx'],
-							"dval" => $arr['doz'][$i], 
-							"dayol"=> $arr['ayol'][$i]);
+		$dict[$did] = array(
+			"name"=> $drug['name'],
+			"dmn" => $drug['dmn'],
+			"dmx" => $drug['dmx'],
+			"dval" => $arr['doz'][$i],
+			"dayol"=> $arr['ayol'][$i]
+		);
 	}
 
 	return $dict;
@@ -1137,11 +1139,11 @@ function get_stu_sel_dose($arr)
 
 function get_stu_sel_exams($arr, $dbg=false)
 {
-	/* ogrencinin sectigi tahlilleri goster 
+	/* ogrencinin sectigi tahlilleri goster
 	 * - secilen tahlil hoca tarafindan da secildiyse onu
 	 *    + node:exam'den sorgulanacak
 	 * - degilse ontanimli veriyi yukle
-	 *    + sql:sim:survey tablosundan sorgulanacak 
+	 *    + sql:sim:survey tablosundan sorgulanacak
 	 */
 	$cid = $arr['cid'];
 	$id  = $arr['id'];
@@ -1152,10 +1154,10 @@ function get_stu_sel_exams($arr, $dbg=false)
 		F3::set('SESSION.error', 'Herhangi bir tahlil seçilmemiş');
 		return;
 	}
-	
+
 	$ss_exams = preg_split('/,/', $csv);
 	if($dbg)	print_pre($ss_exams, "ogr: sectigi tahliller");
-	
+
 	$ts_exams = get_tea_sel_exams($cid, $id);
 	if($dbg)	print_pre($ts_exams, "hoca: sectigi tahliller");
 
@@ -1176,12 +1178,12 @@ function get_stu_sel_exams($arr, $dbg=false)
 
 function get_stu_sel_bmap($arr)
 {
-	/* secilen bolgelerin degerlerini dondurur. 
+	/* secilen bolgelerin degerlerini dondurur.
 	 * a- $arr['selected'] => sbind
 	 * b- get_node(cid, id) -> node
 	 * c- node['opts']['bmap']
 	 */
-	
+
 	// a-sbind
 	$sel = my_get($arr, 'selected', '');
 	if($sel == '') {
@@ -1225,9 +1227,9 @@ function get_exam_info($cid, $eid, $dbg=false)
 	if($dbg)	echo "DEBUG: eid=$eid,  did=$did,  pid=$pid,  sid=$sid <br>";
 	if($dbg)	echo "DEBUG: eid=$eid, edid=$edid,epid=$epid,esid=$esid<br>";
 
-    $discs = DB::sql("select * from discipline WHERE id='$edid'");
-    $parnt = DB::sql("select * from parent     WHERE id='$epid'");
-    $survs = DB::sql("select * from survey     WHERE id='$esid'");
+    	$discs = DB::sql("select * from discipline WHERE id='$edid'");
+	$parnt = DB::sql("select * from parent     WHERE id='$epid'");
+    	$survs = DB::sql("select * from survey     WHERE id='$esid'");
 
 	if($dbg)	print_pre($discs, "DEBUG: discs");
 	if($dbg)	print_pre($parnt, "DEBUG: parnt");
@@ -1247,7 +1249,7 @@ function get_exam_info($cid, $eid, $dbg=false)
 	if(count($exam) == 0) { // ontanimli degeri kullan.
 		$exam = $survs;
 	}
-	
+
 	if($dbg)	print_pre($exam, "DEBUG: exam");
 
 	$value = isset($exam[0]['value']) ? $exam[0]['value'] : 'default.jpg';
@@ -1256,10 +1258,10 @@ function get_exam_info($cid, $eid, $dbg=false)
 
 	if($dbg)	echo "<img src=/a/upload/$value>";
 
-	$info = array('eid' => $eid, 'cid' => $cid, 
+	$info = array('eid' => $eid, 'cid' => $cid,
 				  'did' => $did, 'pid' => $pid, 'sid' => $sid,
 				  'dnm' => $dnm, 'pnm' => $pnm, 'snm' => $snm,
-				  'stype' => $stype, 	
+				  'stype' => $stype,
 				  'value' => $value);
 
 	return $info;
@@ -1272,14 +1274,14 @@ function tamamla($id, $len){
 function get_dps_id_helper($str)
 {
 	/* dps (discipline, parent, survey) id degerlerini "dict" olarak döndürür.
-	 * $str boyutu 2-4-6 (veya 1-3-5 dir tamamlanir) olabilir. 
+	 * $str boyutu 2-4-6 (veya 1-3-5 dir tamamlanir) olabilir.
 	 * len($str)==2 ise sadece $dict['did'] vardır.
      * len($str)==6 ise $dict['did'], $dict['pid'] ve $dict['sid'] vardır.
 	 */
 	$str = strval($str);
-													
+
 	$dict = array();
-	
+
 	$sz = strlen($str);
 
 	if($sz < 1) 		{echo "ERROR: bos string geldi.";	return -1;}
@@ -1317,7 +1319,7 @@ function get_dps_id($str, $idnm)
 	 */
 
 	$dict = get_dps_id_helper($str);
-	
+
 	return $dict[$idnm];
 }
 
@@ -1330,11 +1332,11 @@ function liste_senkronla($old, $new)
 	foreach($new as $id=>$val)
 		if(!array_key_exists($id, $old))
 			$old[$id] = $val;
-	
+
 	foreach($old as $id=>$val)
 		if(!array_key_exists($id, $new))
 			unset($old[$id]);
-	
+
 	return $old;
 }
 
@@ -1368,7 +1370,7 @@ function get_immap_imgnm($cid, $nid)
 }
 
 
-function map2dict($map, $dbg=false) 
+function map2dict($map, $dbg=false)
 {
 	/* http://www.maschek.hu/imagemap/imgmap adresinde olusturulan kodu ('map')
 	 * alan ve $dict[id] = {name, coords,...} sozlugunu olusturur */
@@ -1387,7 +1389,7 @@ function map2dict($map, $dbg=false)
 	}
 
 	if($dbg)	print_pre($dict);
-	
+
 	return $dict;
 }
 
@@ -1399,7 +1401,7 @@ function get_tet_beklenen_yanit($cid, $id, $opt=1, $dbg=false)
 	$dict = array();
 
 	if($dbg)	print_pre(get_node($cid, $id, 'NODE'));
-	
+
 	$ntype = get_node_type($cid, $id);
 	$dict['ntype'] = $ntype;
 
