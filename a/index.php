@@ -6,6 +6,8 @@ require_once './inc/lib.php';
 require_once './inc/mylib.php';
 require_once './inc/tetkik.php';
 
+F3::route("GET /pdf", 		'pdf.php');
+
 
 $nodes = array( 1=>"dal",
 			17=>"drug", 26=>"dose",
