@@ -40,6 +40,7 @@ function test4()
 
 function test()
 {
+	echo "merhaba dunya"; return;
 	print_pre($_SERVER, 'SERVER');
 	echo getenv('HTTP_CLIENT_IP');
 	echo getenv('HTTP_X_FORWARDED_FOR');
