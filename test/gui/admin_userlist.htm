@@ -1,0 +1,53 @@
+<script type="text/javascript" src="/public/js/jquery.dataTables.js">
+</script>
+
+<script type="text/javascript" charset="utf-8">
+  $(document).ready(function() {
+      oTable = $('#example').dataTable({
+	"bJQueryUI": true,
+	"sPaginationType": "full_numbers"
+      });
+  } );
+</script>
+
+<h2>Kullanıcılar İnceleniyor</h2>
+
+<div class="dt_example module">
+  <table cellpadding="0" cellspacing="0" border="0" class="display" id="example">
+    <thead>
+      <tr>
+        <th>İd</th>
+        <th>Ad</th>
+        <th>Soyad</th>
+        <th>Şifre</th>
+        <th>Email</th>
+        <th>Kullanıcı tipi</th>
+        <th>İşlemeler</th>
+      </tr>
+    </thead>
+    <tbody>
+      <F3:repeat group="{{@user_list}}" key="{{@key}}" value="{{@val}}" >
+      <tr>
+        <td>{{@val.id}}</td>
+        <td>{{@val.name}}</td>
+        <td>{{@val.surname}}</td>
+        <td>{{@val.password}}</td>
+        <td>{{@val.email}}</td>
+        <td>{{@val.utype}}</td>
+        <td class="label" style="float:left;width:92px">
+          <a href="admin_usershow/{{@val.id}}" target="_black">
+            <input type="submit" id="button-preview" title="İncele" value="">
+          </a>
+          <a href="admin_useredit/{{@val.id}}" target="_blank">
+            <input type="submit" id="button-edit" title="Düzenle" value="">
+          </a>
+          <a href="admin_userdelete/{{@val.id}}">
+            <input type="submit" id="button-delete" title="Sil" value=""
+              onClick="return confirm('Silmek istediğinizden emin misiniz?');"/>
+            </a>
+        </td>
+      </tr>
+      </F3:repeat>
+    </tbody>
+  </table>
+</div>

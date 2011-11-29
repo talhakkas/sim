@@ -1,0 +1,39 @@
+<h2>İnceleme Sonuçları</h2>
+<table class="custom">
+  <tr>
+    <td class="label"> İd: </td>
+    <td class="field">{{@user.id}}</td>
+  </tr>
+  <tr>
+    <td class="label"> Ad: </td>
+    <td class="field">{{@user.name}}</td>
+  </tr>
+  <tr>
+    <td class="label"> Soyad: </td>
+    <td class="field">{{@user.surname}}</td>
+  </tr>
+  <tr>
+    <td class="label"> Şifre: </td>
+    <td class="field">{{@user.password}}</td>
+  </tr>
+  <tr>
+    <td class="label"> Email: </td>
+    <td class="field">{{@user.email}}</td>
+  </tr>
+  <tr>
+    <td class="label"> Kullanıcı tipi: </td>
+    <td class="field">{{@user.utype}}</td>
+  </tr>
+  <tr>
+    <td></td>
+    <td>
+      <a href="{{@SR}}/admin_useredit/{{@user.id}}">
+        <input type="submit" class="button-submit" value="Düzenle" />
+      </a>
+      <a href="{{@SR}}/admin_userdelete/{{@user.id}}">
+        <input type="submit" class="button-submit" value="Sil"
+        onClick="return confirm('Silmek istediğinizden emin misiniz?');"/>
+      </a>
+    </td>
+  </tr>
+</table>
