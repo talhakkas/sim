@@ -235,15 +235,14 @@ F3::route('GET  /admin_groupshow/@id',   'admin_groupshow');
 F3::route('GET  /admin_groupedit/@id',   'admin_groupedit');
 F3::route('GET  /admin_groupdelete/@id', 'admin_groupdelete');
 F3::route('GET  /admin_grouplist',       'admin_grouplist');
-F3::route('POST /admin_groupupdate',   'admin_groupsave');
+F3::route('POST /admin_groupupdate',     'admin_groupsave');
 //admin#user
-F3::route('POST /admin_usersave',       'admin_usersave');
-F3::route('GET  /admin_usershow/@id',   'admin_usershow');
-F3::route('GET  /admin_useredit/@id',   'admin_useredit');
-F3::route('GET  /admin_userdelete/@id', 'admin_userdelete');
-F3::route('GET  /admin_userlist',       'admin_userlist');
-
-F3::route('POST /admin_userupdate',   'admin_usersave');
+F3::route('POST /admin_usersave',        'admin_usersave');
+F3::route('GET  /admin_usershow/@id',    'admin_usershow');
+F3::route('GET  /admin_useredit/@id',    'admin_useredit');
+F3::route('GET  /admin_userdelete/@id',  'admin_userdelete');
+F3::route('GET  /admin_userlist',        'admin_userlist');
+F3::route('POST /admin_userupdate',      'admin_usersave');
 
 F3::run();
 
