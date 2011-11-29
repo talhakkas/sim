@@ -3,7 +3,7 @@
 	F3::set('SESSION.cid', $cid);
 
 	$table = new Axon("ncase");
-	$datas = $table->afind("cid='$cid'");
+	$datas = $table->afind("id='$cid'");
 
 	F3::set('SESSION.cdata', $datas[0]);
 	$all_nodes = nodeList($cid);

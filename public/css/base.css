@@ -30,7 +30,7 @@ body {
 
 #content .page { width: 800px; min-height:400px; }
 
-#sidebar { margin-top: -20px; width:90px; min-height:90px; float:right; font-size:11px; }
+#sidebar { margin-top: -20px; width:90px; min-height:120px; float:right; font-size:11px; }
 #sidebar-background { background: #fff url(../img/icon/128x128/business_user.png) no-repeat top; background-size:80px; height:80px; }
 #sidebar span { float:left; width:90px; text-align:center; }
 
