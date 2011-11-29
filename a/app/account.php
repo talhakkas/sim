@@ -11,7 +11,7 @@ class Account extends F3instance {
 		$password = F3::get('REQUEST.password' );
 
 		$user = new Axon('users');
-		$user->load("tc='$username'");
+		$user->load("id='$username'");
 
 		if ($username && $password && !$user->dry() && ($user->password == $password)) {
 			F3::set('SESSION.user', $username);
@@ -20,7 +20,7 @@ class Account extends F3instance {
 			// kullanıcı bilgilerinin güncel halini set edelim
 			$this->set_user_info($username);
 
-			switch ($user->state) {
+			switch ($user->utype) {
 			case 1:
 				F3::set('SESSION.isAdmin', TRUE);
 				break;
@@ -41,7 +41,7 @@ class Account extends F3instance {
 	}
 
 	static function set_user_info($username) {
-			$info = DB::sql("select * from users where tc='$username'");
+			$info = DB::sql("select * from users where id='$username'");
 			$info[0]['fullname'] = $info[0]['name'] . ' ' . $info[0]['surname'];
 			F3::set('SESSION.userinfo', $info[0]);
 	}
