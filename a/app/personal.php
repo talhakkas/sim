@@ -40,6 +40,9 @@ class Personal extends F3instance {
 
 		F3::set('success', 'Kullanıcı Bilgileri Güncellendi');
 
+		// kullanıcı bilgilerinin güncel halini set edelim
+		Account::set_user_info($username);
+
 		$this->edit();
 	}
 

@@ -4,7 +4,7 @@ function field_update($dbg=true)
 {
 	$tnode = new Axon('node');
 	$tnode->load("cid='1' AND id='26'");
-	
+
 	$dict = unserialize($tnode->options);
 
 	$i = 1;
@@ -40,7 +40,7 @@ function add_new_field($dbg=true)
 
 }
 
-function convert()  
+function convert()
 {
 	$tnode = new Axon('node');
 	$tnode->load("cid='1'");
@@ -54,7 +54,7 @@ function convert()
 
 function db_opts_convert($opts, $type="drug", $dbg=true) {
 	$dict = array();
-	
+
 	if($dbg) 	print_pre($opts, "options");
 
 	// once dallari ayir
@@ -89,13 +89,13 @@ function db_opts_convert($opts, $type="drug", $dbg=true) {
 				$response[$i]['dmn']  = my_get($tds, 1);
 				$response[$i]['dmx']  = my_get($tds, 2);
 				$response[$i]['dval'] = my_get($tds, 3);
-			}			
+			}
 		}
 
 		$node_link = my_get($td, 1);
 		$odul      = my_get($td, 2);
 		$ceza      = my_get($td, 3);
-		
+
 		$dict[$i]['link_text'] = $link_text;
 		$dict[$i]['node_link'] = $node_link;
 		$dict[$i]['response']  = $response;

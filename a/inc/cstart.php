@@ -9,7 +9,7 @@
 	$id = $cdata['bdugumu'];
 	F3::set('SESSION.id', $id);
 
-	// v2- takip 
+	mt_srand(microtime() * F3::get('SESSION.user'));
 	F3::set('SESSION.skey', mt_rand());
 	F3::set('SESSION.stime', microtime(true));
 
