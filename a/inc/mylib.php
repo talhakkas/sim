@@ -262,12 +262,12 @@ function get_exam_list($cid, $nid, $dbg=false)
 	return $dict;
 }
 
-function takip_listesine_ekle($dbg=true) {
+function takip_listesine_ekle($dbg=false) {
 	// a) su anki dugum icin 'tet' girdisi olustur. "beklenen" ve "soylenen" bos, simdilik
 	$ttet = new Axon("tet");
 	$ttet->id = NULL;
-	$ttet->skey = intval(F3::get('SESSION.skey'));
-	$ttet->sid  = intval(F3::get('SESSION.student'));
+	$ttet->skey = F3::get('SESSION.skey');
+	$ttet->sid  = F3::get('SESSION.user');
 	$ttet->cid = F3::get('SESSION.cid');
 	$ttet->nid = F3::get('SESSION.id');
 	$ttet->oid = "";
@@ -281,8 +281,8 @@ function takip_listesine_ekle($dbg=true) {
 	if(empty($_POST))	return;
 	if($dbg) print_pre($_POST, 'POST');
 
-	$skey = intval(F3::get('SESSION.skey'));
-	$sid  = intval(F3::get('SESSION.student'));
+	$skey = F3::get('SESSION.skey');
+	$sid  = F3::get('SESSION.student');
 
 	$cid = $_POST['cid'];
 	$nid  = $_POST['id'];
