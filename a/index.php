@@ -6,11 +6,8 @@ require_once './inc/lib.php';
 require_once './inc/mylib.php';
 require_once './inc/tetkik.php';
 
-F3::route("GET /pdf", 		'pdf.php');
-
-
 $nodes = array( 1=>"dal",
-			17=>"drug", 26=>"dose",
+		17=>"drug", 26=>"dose",
 	       	35=>"exam", 36=>"result",
 	       	37=>"bmap", 38=>"bmapr",
 	       	21=>"immap",23=>"immapr");
@@ -73,6 +70,9 @@ F3::route("GET /about", 	'Home->about');
 F3::route("GET /contact", 	'Home->contact');
 
 F3::route("GET /localize/@lang",'localize');
+
+// PDF
+F3::route("GET /pdf/report", 	'Pdf->student_report');
 
 
 // ACCOUNT
