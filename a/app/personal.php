@@ -40,6 +40,12 @@ class Personal extends F3instance {
 
 		F3::set('success', 'Kullanıcı Bilgileri Güncellendi');
 
+		// kullanıcının oturumdaki bilgilerini güncelleyelim
+		//F3::set('SESSION.user', $username);
+		//$info = DB::sql("select * from users where tc='$username'");
+		//$info[0]['fullname'] = $info[0]['name'] . ' ' . $info[0]['surname'];
+		//F3::set('SESSION.userinfo', $info[0]);
+
 		$this->edit();
 	}
 

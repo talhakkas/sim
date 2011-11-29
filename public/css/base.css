@@ -6,7 +6,7 @@ body {
     padding:auto;
     color:#555;
     background:#f0f0f0;
-    background:url(/public/img/body.png);
+    background:url(../img/body.png);
 }
 
 #content {
@@ -29,26 +29,25 @@ body {
 
 #content .page { width: 800px; min-height:400px; }
 
-#sidebar { margin-top: -20px; width:90px; min-height:90px; float:right; font-size:12px; }
+#sidebar { margin-top: -20px; width:90px; min-height:90px; float:right; font-size:11px; }
 #sidebar-background { background: #fff url(../img/icon/128x128/business_user.png) no-repeat top; background-size:80px; height:80px; }
-#sidebar span { float:left; width:90px; font-weight:bold; text-align:center; }
+#sidebar span { float:left; width:90px; text-align:center; }
 
-#rightcolumn { height:auto; width:90px; float:right; padding:5px; margin-right:-5px;
+#sidebar #column { height:auto; width:90px; float:right; padding:5px; margin-right:-5px;
     -webkit-box-shadow:0 2px 2px rgba(0,0,0,0.2); -moz-box-shadow:0 2px 2px rgba(0,0,0,0.2); box-shadow:0 5px 10px rgba(0, 0, 0, 0.2);}
-#rightcolumn ul { padding-left:0px; }
-#rightcolumn li { float:left; width:90px; color:#3b5998; list-style-type:none; font-size:11px; font-weight:bold; text-align:center;
-                 margin-bottom:15px; text-align:center; padding:0 auto; }
-#rightcolumn li a { display:block; padding-top:46px; margin-top:0px; }
-#rightcolumn li.edit a  { background:url(/public/img/icon/48x48/edit.png) no-repeat top center;;}
-#rightcolumn li.anket a { background:url(/public/img/icon/48x48/chart_pie.png) no-repeat top center;;}
-#rightcolumn li.css a   { background:url(/public/img/icon/48x48/promotion.png) no-repeat top center;;}
-#rightcolumn li.dal a   { background:url(/public/img/icon/48x48/comments.png) no-repeat top center;;}
+#sidebar #column ul { padding-left:0px; }
+#sidebar #column li { list-style-type:none; margin-bottom:15px; text-align:center; padding:0 auto; }
+#sidebar #column li a { display:block; padding-top:46px; margin-top:0px; }
+#sidebar #column li.edit a  { background:url(../img/icon/48x48/edit.png) no-repeat top center;;}
+#sidebar #column li.anket a { background:url(../img/icon/48x48/chart_pie.png) no-repeat top center;;}
+#sidebar #column li.css a   { background:url(../img/icon/48x48/promotion.png) no-repeat top center;;}
+#sidebar #column li.dal a   { background:url(../img/icon/48x48/comments.png) no-repeat top center;;}
 
-#rightcolumn li.per a   { background:url(/public/img/icon/48x48/edit_business_user.png) no-repeat top center;;}
-#rightcolumn li.case a  { background:url(/public/img/icon/48x48/clock.png) no-repeat top center;;}
-#rightcolumn li.exam a  { background:url(/public/img/icon/48x48/book.png) no-repeat top center;;}
-#rightcolumn li.bar a   { background:url(/public/img/icon/48x48/office_folders.png) no-repeat top center;;}
-#rightcolumn li.baz a   { background:url(/public/img/icon/48x48/chart.png) no-repeat top center;;}
+#sidebar #column li.per a   { background:url(../img/icon/48x48/edit_business_user.png) no-repeat top center;;}
+#sidebar #column li.case a  { background:url(../img/icon/48x48/clock.png) no-repeat top center;;}
+#sidebar #column li.exam a  { background:url(../img/icon/48x48/book.png) no-repeat top center;;}
+#sidebar #column li.bar a   { background:url(../img/icon/48x48/office_folders.png) no-repeat top center;;}
+#sidebar #column li.baz a   { background:url(../img/icon/48x48/chart.png) no-repeat top center;;}
 
 
 a {color: #3072b3; cursor: pointer; -moz-outline-style: none; text-decoration:none}

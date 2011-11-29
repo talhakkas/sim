@@ -15,6 +15,10 @@ class Account extends F3instance {
 
 		if ($username && $password && !$user->dry() && ($user->password == $password)) {
 			F3::set('SESSION.user', $username);
+			$info = DB::sql("select * from users where tc='$username'");
+			$info[0]['fullname'] = $info[0]['name'] . ' ' . $info[0]['surname'];
+			F3::set('SESSION.userinfo', $info[0]);
+
 			F3::set('SESSION.isLogin', TRUE);
 
 			switch ($user->state) {
