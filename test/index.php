@@ -6,6 +6,73 @@ require_once  '../a/inc/lib.php';
 require_once  'inc/tetkik.php';
 require_once './mark/markdown.php';
 
+// --- admin#group
+function admin_groupform() {
+        render('admin_groupform', 'Grup oluşturma');
+}
+function admin_groupsave() {
+        $id = F3::get('REQUEST.group_id');
+        if (!$id) { // ekleme
+                $name = F3::get('REQUEST.name');
+
+                $group = new Axon("groups");
+                $group->load("name='$name'");
+
+                if (!$group->dry()) {
+                        F3::set('warning', "Bu Grup İsmine Sahip Bir Grup Zaten Var");
+                        return; // TODO
+                }
+                else {
+                        $group->name = F3::get('REQUEST.name'); // primary_key olmalı
+                        $group->photo = "default.jpg"; // TODO
+                        $group->save();
+
+                        $group = new Axon("groups");// id için tekrardan çekelim
+                        $group->load("name='" . F3::get('REQUEST.name') . "'");
+                        return F3::reroute('/admin_groupshow/' . $group->id);
+                }
+        } else {
+                $group = new Axon("groups");
+                $group->load("id='$id'");
+                $group->name = F3::get('REQUEST.name'); // primary_key olmalı
+                $group->photo = "default.jpg"; // TODO
+                $group->save();
+                return F3::reroute('/admin_groupshow/' . $group->id);
+        }
+}
+function admin_groupshow() {
+	$group = new Axon("groups");
+        $datas = $group->afind("id='" . F3::get('PARAMS.id') . "'");
+        F3::set('group', $datas[0]);
+        render('admin_groupshow', 'Grup göster');
+}
+function admin_groupedit() {
+	$group = new Axon("groups");
+        $datas = $group->afind("id='" . F3::get('PARAMS.id') . "'");
+        F3::set('group', $datas[0]);
+        render('admin_groupform', 'Grup düzenle');
+}
+function admin_groupdelete() {
+        $id = F3::get('PARAMS.id');
+
+        $group = new Axon('groups');
+        $group->load("id='$id'");
+        $group->erase();
+
+        return F3::reroute('/admin_grouplist'); 
+}
+function admin_groupupdate() {
+        $group = new Axon("groups");
+        $group->load("id='" . F3::get('PARAMS.id') . "'");
+        $group->name = F3::get('REQUEST.name');
+        $group->photo = "default.jpg"; // TODO
+        $group->save();
+        return F3::reroute('/admin_groupshow/' . $group->id);
+}
+function admin_grouplist() {
+        F3::set('group_list', DB::sql("select * from groups"));
+        render('admin_grouplist', 'Grup düzenle');
+}
 
 // markdown
 function mark() {
@@ -77,13 +144,22 @@ function ilac_sonuc() {
 }
 
 
-F3::route("GET /*",      function () { render('home', 'Ana Sayfa'); } );
+F3::route("GET /",      function () { render('home', 'Ana Sayfa'); } );
 F3::route("GET /@page",  function () { render(F3::get("PARAMS.page"), 'Örnek Sayfa'); } );
 F3::route("POST /@page", function () { render(F3::get("PARAMS.page"), 'Örnek Sayfa'); } );
 
 // özel postlar
 F3::route('POST /tetkik', 'tetkik');
 F3::route('POST /ilac', 'ilac_sonuc');
+
+//admin post
+F3::route('POST /admin_groupsave',       'admin_groupsave');
+F3::route('GET  /admin_groupshow/@id',   'admin_groupshow');
+F3::route('GET  /admin_groupedit/@id',   'admin_groupedit');
+F3::route('GET  /admin_groupdelete/@id', 'admin_groupdelete');
+F3::route('GET  /admin_grouplist',       'admin_grouplist');
+
+F3::route('POST /admin_groupupdate',   'admin_groupsave');
 
 F3::run();
 
