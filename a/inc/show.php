@@ -70,7 +70,7 @@
 		$rect_stu = get_stu_sel_immap($_POST);
 		$rect_tea = get_tea_sel_immap($cid, $pid);
 
-		$iminfo = getimagesize( getcwd() . "/upload/" . $rect_tea['imgnm'] );
+		$iminfo = getimagesize( getcwd() . "/upload/kucuk" . $rect_tea['imgnm'] );
 		F3::set("SESSION.imwidth",  $iminfo[0]);
 		F3::set("SESSION.imheight", $iminfo[1]);
 
