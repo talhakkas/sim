@@ -156,7 +156,7 @@ function admin_memberform() {
         $group_id = array();
         foreach ($member_gid as $gid)
                 $group_id = array_merge($group_id, $gid);
-        $groups = DB::sql("select * from groups where not id=" . implode(' or id=', $group_id));
+        $groups = DB::sql("select * from groups where not id in(" . implode(',', $group_id) .")");
         F3::set('unassignment_groups', $groups);
 
         $users = DB::sql("select * from users where utype = '5'");
