@@ -26,18 +26,22 @@
 <F3:repeat group="{{@SESSION.cdata}}" key="{{@key}}" value="{{@case}}" >
 <ul class="polaroids">
   <li>
-  <a href="{{@SR}}/cstart/{{@case['cid']}}" title="{{@case['title']}}">
-    <img src="{{@uploaddir, @case['image']}}" alt="{{@case['title']}}" />
-  </a>
-  </li>
-</ul>
-
-{{@case['description']}}
 <F3:check if="{{isallowed('Admin', 'Author')}}">
 <a href="{{@SR}}/cedit/{{@case['cid']}}" id="button-edit" title="Düzenle"></a>
 <a href="{{@SR}}/cdelete/{{@case['cid']}}" id="button-delete" title="Sil"
   onClick="return confirm('Silmek istediğinizden emin misiniz?');"></a>
 </F3:check>
+
+  
+  <a href="{{@SR}}/cstart/{{@case['cid']}}" title="{{@case['description']}}">
+
+    <span>{{@case['title']}}</span>
+    <img src="{{@uploaddir, @case['image']}}" alt="" />
+  </a>
+  </li>
+</ul>
+
+
 </F3:repeat>
 
 
