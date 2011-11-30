@@ -1,47 +1,49 @@
 <h2>{{@page_title}}</h2>
 
-<table id="one-column-emphasis">
 
-  <colgroup><col class="oce-first" /></colgroup>
 
-  <thead>
-    <tr>
-      <th scope="col" class="img"  ></th>
-      <th scope="col" class="case" ></th>
-      <th scope="col" class="desc" ></th>
-      <F3:check if="{{ isallowed('Admin', 'Author') }}">
-      <th scope="col" class="action"></th>
-      </F3:check>
-    </tr>
-  </thead>
 
-  <tbody>
-    <F3:repeat group="{{@SESSION.cdata}}" key="{{@key}}" value="{{@case}}" >
-    <tr>
-      <td>
-        <a rel="facebox" href="{{@uploaddir, @case['image']}}" ><img src="{{@uploaddir, @case['image']}}" /></a>
-      </td>
-      <td>
-        <a class="vtip" title="{{@case['title']}}" href="{{@SR}}/cstart/{{@case['cid']}}">{{@case['title']}}</a>
-      </td>
-      <td>
-        {{@case['description']}}
-      </td>
+<style type="text/css">
+  ul.polaroids { width: 970px; margin: 0 0 18px -30px; }
+  ul.polaroids li { list-style-type:none; /* display: inline;*/ float:left; width:270px;}
+  ul.polaroids a { background: #fff; display: inline; float: left; margin: 0 0 27px 30px; width: auto; padding: 10px 10px 15px; text-align: center; font-family: "Marker Felt", sans-serif; text-decoration: none; color: #333; font-size: 18px; -webkit-box-shadow: 0 3px 6px rgba(0,0,0,.25); -moz-box-shadow: 0 3px 6px rgba(0,0,0,.25); -webkit-transform: rotate(-2deg); -webkit-transition: -webkit-transform .15s linear; -moz-transform: rotate(-2deg); }
+  ul.polaroids img { display: block; width: 220px; margin-bottom: 12px; }
+  ul.polaroids a:after { content: attr(title); }
 
-      <F3:check if="{{isallowed('Admin', 'Author')}}">
-      <td>
-        <a href="{{@SR}}/cedit/{{@case['cid']}}" id="button-edit" title="Düzenle"></a>
-        <a href="{{@SR}}/cdelete/{{@case['cid']}}" id="button-delete" title="Sil"
-          onClick="return confirm('Silmek istediğinizden emin misiniz?');"></a>
-      </td>
-      </F3:check>
-    </tr>
-    </F3:repeat>
-  </tbody>
+  ul.polaroids li:nth-child(even) a { -webkit-transform: rotate(2deg);  -moz-transform: rotate(2deg); }
+  ul.polaroids li:nth-child(3n) a { -webkit-transform: none; position: relative; top: -5px;  -moz-transform: none; }
+  ul.polaroids li:nth-child(5n) a { -webkit-transform: rotate(5deg); position: relative; right: 5px;  -moz-transform: rotate(5deg); }
+  ul.polaroids li:nth-child(8n) a { position: relative; right: 5px; top: 8px; }
+  ul.polaroids li:nth-child(11n) a { position: relative; left: -5px; top: 3px; }
 
-</table>
+  ul.polaroids li.messy a { margin-top: -375px; margin-left: 160px; -webkit-transform: rotate(-5deg); -moz-transform: rotate(-5deg); }
+
+  ul.polaroids li a:hover { -webkit-transform: scale(1.25); -moz-transform: scale(1.25); -webkit-box-shadow: 0 3px 6px rgba(0,0,0,.5); -moz-box-shadow: 0 3px 6px rgba(0,0,0,.5); position: relative; z-index: 5; }
+
+  code { background: rgba(0,0,0,.5); padding: 2px 3px; color: #fff; text-shadow: 0 1px 1px rgba(0,0,0,.75); -webkit-border-radius: 3px; -moz-border-radius: 3px; }
+</style>
+
+<F3:repeat group="{{@SESSION.cdata}}" key="{{@key}}" value="{{@case}}" >
+<ul class="polaroids">
+  <li>
+  <a href="{{@SR}}/cstart/{{@case['cid']}}" title="{{@case['title']}}">
+    <img src="{{@uploaddir, @case['image']}}" alt="{{@case['title']}}" />
+  </a>
+  </li>
+</ul>
+
+{{@case['description']}}
+<F3:check if="{{isallowed('Admin', 'Author')}}">
+<a href="{{@SR}}/cedit/{{@case['cid']}}" id="button-edit" title="Düzenle"></a>
+<a href="{{@SR}}/cdelete/{{@case['cid']}}" id="button-delete" title="Sil"
+  onClick="return confirm('Silmek istediğinizden emin misiniz?');"></a>
+</F3:check>
+</F3:repeat>
+
 
 <F3:check if="{{isallowed('Admin', 'Author')}}">
 <a href="{{@SR}}/cadd/" class="button icon add clist-button">Yeni case Ekle</a>
 </F3:check>
+
+
 

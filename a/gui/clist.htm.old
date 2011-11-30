@@ -1,0 +1,47 @@
+<h2>{{@page_title}}</h2>
+
+<table id="one-column-emphasis">
+
+  <colgroup><col class="oce-first" /></colgroup>
+
+  <thead>
+    <tr>
+      <th scope="col" class="img"  ></th>
+      <th scope="col" class="case" ></th>
+      <th scope="col" class="desc" ></th>
+      <F3:check if="{{ isallowed('Admin', 'Author') }}">
+      <th scope="col" class="action"></th>
+      </F3:check>
+    </tr>
+  </thead>
+
+  <tbody>
+    <F3:repeat group="{{@SESSION.cdata}}" key="{{@key}}" value="{{@case}}" >
+    <tr>
+      <td>
+        <a rel="facebox" href="{{@uploaddir, @case['image']}}" ><img src="{{@uploaddir, @case['image']}}" /></a>
+      </td>
+      <td>
+        <a class="vtip" title="{{@case['title']}}" href="{{@SR}}/cstart/{{@case['cid']}}">{{@case['title']}}</a>
+      </td>
+      <td>
+        {{@case['description']}}
+      </td>
+
+      <F3:check if="{{isallowed('Admin', 'Author')}}">
+      <td>
+        <a href="{{@SR}}/cedit/{{@case['cid']}}" id="button-edit" title="Düzenle"></a>
+        <a href="{{@SR}}/cdelete/{{@case['cid']}}" id="button-delete" title="Sil"
+          onClick="return confirm('Silmek istediğinizden emin misiniz?');"></a>
+      </td>
+      </F3:check>
+    </tr>
+    </F3:repeat>
+  </tbody>
+
+</table>
+
+<F3:check if="{{isallowed('Admin', 'Author')}}">
+<a href="{{@SR}}/cadd/" class="button icon add clist-button">Yeni case Ekle</a>
+</F3:check>
+
