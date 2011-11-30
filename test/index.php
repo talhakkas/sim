@@ -149,7 +149,20 @@ function admin_userlist() {
         render('admin_userlist', 'Grup düzenle');
 }
 // END -- admin#user
+// -- admin#member
+function admin_memberform() {
+        $member_gid = DB::sql("select distinct gid from member");
 
+        $group_id = array();
+        foreach ($member_gid as $gid)
+                $group_id = array_merge($group_id, $gid);
+        $groups = DB::sql("select * from groups where not id=" . implode(' or id=', $group_id));
+        F3::set('unassignment_groups', $groups);
+
+        $users = DB::sql("select * from users where utype = '5'");
+        F3::set('users', $users);
+        render('admin_memberform', 'Üye oluşturma');
+}
 // markdown
 function mark() {
         $foo = file('mark/foo.md');
@@ -244,6 +257,7 @@ F3::route('GET  /admin_userdelete/@id',  'admin_userdelete');
 F3::route('GET  /admin_userlist',        'admin_userlist');
 F3::route('POST /admin_userupdate',      'admin_usersave');
 
+F3::route('GET  /admin_memberform',    'admin_memberform');
 F3::run();
 
 ?>

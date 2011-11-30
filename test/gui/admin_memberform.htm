@@ -1,0 +1,66 @@
+<!-- multiselect -->
+<!-- kaynak : http://loudev.com/ -->
+<!-- <% if @unassignment_lecturers or @unassignment_courses %> -->
+<link href="/public/css/multi-select.css" rel="stylesheet" type="text/css" />
+<script src="/public/js/jquery.js" type="text/javascript"></script>
+<script src="/public/js/jquery.multi-select.js" type="text/javascript"></script>
+<script src="/public/js/app.js" type="text/javascript"></script>
+<!--<% end %> -->
+<!-- end multiselect -->
+
+<!-- jlistbox -->
+<!-- kaynak : http://www.senamion.com/blog/jlistbox_demo.html -->
+<link rel="stylesheet" href="/public/css/jquery.jListbox.css" type="text/css" 
+media="screen" />
+<script type="text/javascript" src="/public/js/jquery.js" ></script>
+<script type="text/javascript" src="/public/js/jquery.bgiframe.js" ></script>
+<script type="text/javascript" src="/public/js/jquery.jListbox.js" ></script>
+<script type="text/javascript">
+        $().ready(function() {
+                $("#lecturer_id, #test").jListbox();
+                $("#showcode2").click(function() { $("#code2").toggle(); });
+        });
+</script>
+<!-- end jlistbox -->
+
+</head>
+<h2>Gruba Öğrenci Atama</h2>
+<form name="login" action="{{@SR}}/admin_assignmentnew" method="POST" 
+  id="real-form" 
+  enctype="multipart/form-data">
+<table class="login">
+  <tr>
+    <td class="label">Grup seçiniz</td>
+    <td>
+      <select id="lecturer_id" name="lecturer_id">
+        <F3:repeat group="{{@unassignment_groups}}" key="{{@key}}" 
+        value="{{@group}}" >
+          <option rel="<img width='56' height='56' src='{{@group.photo}}'/>" 
+          value="{{@group.id}}">
+            {{@group.name}}
+          </option>
+        </F3:repeat>
+      </select>
+    </td>
+  </tr>
+  <tr>
+    <td class="label">Öğrenci seçiniz</td>
+    <td>
+      <select id="callback" name="course_ids[]"
+        class="multiselect, callbacks" multiple="true">
+        <F3:repeat group="{{@users}}" key="{{@key}}" value="{{@user}}" >
+          <option rel="<img width='56' height='56' src='{{@user.photo}}'/>" 
+          value="{{@user.id}}">
+            {{@user.name}}
+          </option>
+        </F3:repeat>
+      </select>
+    </td>
+  </tr>
+  <tr>
+    <td></td>
+    <td>
+      <input id="submit_button" type='submit' value='Kaydet' />
+    </td>
+  </tr>
+</table>
