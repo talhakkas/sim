@@ -25,6 +25,7 @@ body {
 #content h2 a { padding-left:27px; }
 #content h2 a.pdf       { background:url('../img/icon/16x16/pdf2.png') no-repeat left; padding-left:20px; }
 #content h2 a.edit      { background:url('../img/icon/24x24/edit.png') no-repeat left; }
+#content h2 a.case      { background:url('../img/icon/24x24/clock.png') no-repeat left; }
 #content h2 a.continue  { background:url('../img/icon/16x16/continue.png') no-repeat left; padding-left:20px;}
 #content h2 a.start-case{ background:url('../img/icon/16x16/clock.png') no-repeat left; }
 
