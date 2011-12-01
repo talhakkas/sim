@@ -28,11 +28,11 @@ body {
 #content h2 a.case      { background:url('../img/icon/24x24/clock.png') no-repeat left; }
 #content h2 a.continue  { background:url('../img/icon/16x16/continue.png') no-repeat left; padding-left:20px;}
 #content h2 a.start-case{ background:url('../img/icon/16x16/clock.png') no-repeat left; }
-
 #content .page { width: 800px; min-height:400px; }
 
+/*#sidebar-background { background: #fff url(../img/icon/128x128/business_user.png) no-repeat top; background-size:80px; height:80px; margin-top:20px;}*/
 #sidebar { margin-top: -20px; width:90px; min-height:120px; float:right; font-size:11px; background:#fff;}
-#sidebar-background { background: #fff url(../img/icon/128x128/business_user.png) no-repeat top; background-size:80px; height:80px; margin-top:20px;}
+#sidebar-background {text-align:center;}
 #sidebar span { float:left; width:90px; text-align:center; }
 #sidebar span.mod { margin-top:5px; font-weight:bold}
 
