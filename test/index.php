@@ -1,9 +1,8 @@
 <?php
 
-require_once  '../a/gettext/gettext.inc';
+require_once  '../a/api/gettext/gettext.inc';
 require_once  '../a/lib/base.php';
 require_once  '../a/inc/lib.php';
-require_once  'inc/tetkik.php';
 require_once './mark/markdown.php';
 
 // --- admin#group
