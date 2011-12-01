@@ -10,12 +10,11 @@
   <li>
   <F3:check if="{{isallowed('Admin', 'Author')}}">
   <a href="{{@SR}}/cedit/{{@case['cid']}}" id="button-edit"></a>
-  <a href="{{@SR}}/cdelete/{{@case['cid']}}" id="button-delete"
-    onClick="return confirm('Silmek istediğinizden emin misiniz?');"></a>
+  <a href="{{@SR}}/cdelete/{{@case['cid']}}" id="button-delete" onClick="return confirm('Silmek istediğinizden emin misiniz?');"></a>
   </F3:check>
   <a href="{{@SR}}/cstart/{{@case['cid']}}" title="{{@case['description']}}">
     <span>{{@case['title']}}</span>
-    <img src="{{@uploaddir, @case['image']}}" alt="" />
+    <img src="{{@SR}}/{{@uploaddir}}{{@case['image']}}" alt="" />
   </a>
   </li>
 </ul>

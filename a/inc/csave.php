@@ -1,5 +1,5 @@
 <?php
-	$cid = F3::get('POST.cid');
+	$cid = F3::get('POST.id');
 
 	$table = new Axon("ncase");
 	//FIXME: $table->copyFrom('REQUEST');

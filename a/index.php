@@ -55,6 +55,7 @@ F3::route("GET /cedit/@cid", "cedit.php");
 	F3::route("POST /cedit/@cid", "cupdate.php");
 
 F3::route("GET /clist*", "clist.php");
+	F3::route("POST /clist*", "clist.php");
 F3::route("GET /cadd", "cadd.php");
 	F3::route("POST /cadd", "csave.php");
 

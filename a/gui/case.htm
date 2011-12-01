@@ -1,4 +1,4 @@
-<h2>Olgu::Ekle
+<h2>Olgu::Düzenle/Ekle
   <a class="continue" href="{{@SR}}/cshow/{{@SESSION.cid}}">Devam</a>
 </h2>
 
@@ -17,7 +17,7 @@
 	<textarea name="description">{{@SESSION.cdata['description']}}</textarea>
       </td>
     </tr>
-    <input type="hidden" name="cid" value="{{@SESSION.cid}}">
+    <input type="hidden" name="id" value="{{@SESSION.cid}}">
     <input type="hidden" name="type_playable_by" value="{{@SESSION.cdata['type_playable_by']}}">
     <input type="hidden" name="type_navigation_panel" value="{{@SESSION.cdata['type_navigation_panel']}}">
     <input type="hidden" name="patient_info" value="{{@SESSION.cdata['patient_info']}}">
@@ -82,6 +82,6 @@
     </td>
   </tr>
 </table>
-<input type="submit" class="button blue right" name="default" value="Ekle"/>
-<!--input type="submit" name="delete"  value="Sil"/-->
+ <a href="{{@SR}}/cdelete/{{@SESSION.cid}}" id="button-delete" onClick="return confirm('Silmek istediğinizden emin misiniz?');"></a> Sil
+<input type="submit" class="button blue right" name="default" value="Düzenle/Ekle"/>
 </form>

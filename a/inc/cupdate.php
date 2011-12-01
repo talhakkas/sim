@@ -5,7 +5,7 @@
 		F3::reroute("/cdelete/$cid");
 	
 	$table = new Axon("ncase");
-	$table->load("cid='$cid'");
+	$table->load("id='$cid'");
 	//FIXME: $table->copyFrom('REQUEST');
 	foreach($_POST as $gnl => $blg)
 		if($gnl != "media")

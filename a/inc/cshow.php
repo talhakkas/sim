@@ -8,7 +8,7 @@
 
 	$id = $cdata['bdugumu'];
 	$table2 = new Axon("node");
-	$datas2 = $table2->afind("id='$id' AND id='$cid'");
+	$datas2 = $table2->afind("cid='$cid' AND id='$id'");
 
 	$cdata['node_title'] = $datas2[0]['title'];
 

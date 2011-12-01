@@ -6,8 +6,9 @@
 	$datas = $table->afind("id='$cid'");
 
 	F3::set('SESSION.cdata', $datas[0]);
+
 	$all_nodes = nodeList($cid);
 	F3::set('SESSION.all_nodes', $all_nodes);
 
-        render('case', 'Düzenle');
+    render('case', 'Düzenle');
 ?>
