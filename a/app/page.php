@@ -8,11 +8,15 @@ class Page extends F3instance {
 	}
 
 	function help() {
-		$file = file('https://raw.github.com/wiki/19/sim/olgu.md');
 
-		$text = implode("\n", $file);
+		$text  = '';
+		$text .= "# Dal\n"   . implode("\n", file('../sim.wiki/Dal.md'));
+		$text .= "# Düğüm\n" . implode("\n", file('../sim.wiki/Dugum.md'));
+		$text .= "# Ortak\n" . implode("\n", file('../sim.wiki/Ortak.md'));
+		$text .= "# Olgu\n"  . implode("\n", file('../sim.wiki/Olgu.md'));
+
 		$text = Markdown($text);
-		$text = str_replace('img/', 'https://raw.github.com/wiki/19/sim/img/', $text);
+		$text = str_replace('img/', '../sim.wiki/img/', $text);
 
 		F3::set('helped', $text);
 
