@@ -8,6 +8,14 @@ class Page extends F3instance {
 	}
 
 	function help() {
+		$file = file('https://raw.github.com/wiki/19/sim/olgu.md');
+
+		$text = implode("\n", $file);
+		$text = Markdown($text);
+		$text = str_replace('img/', 'https://raw.github.com/wiki/19/sim/img/', $text);
+
+		F3::set('helped', $text);
+
 		// burada yardım için neler gerekebilir?
 		$this->_page('help', 'Yardım Sayfası');
 	}
