@@ -1,8 +1,13 @@
 <?php
 
-include 'init.php';
-include 'upload.php';
-include 'simple_html_dom.php';
+require_once 'init.php';
+require_once 'upload.php';
+require_once 'simple_html_dom.php';
+
+require_once 'mylib.php';
+require_once 'tetkik.php';
+require_once 'test.php';
+
 
 function render($template, $title='') {
 	F3::set('page_title', $title);

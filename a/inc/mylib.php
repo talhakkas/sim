@@ -1507,4 +1507,13 @@ function get_session_state($cid, $sid, $dbg=true)
 	return $dict;
 
 }
+
+function show_drug() {
+	$did = F3::get('PARAMS.did');
+	$drug = get_drug($did);
+	echo $drug['content'];
+}
+
+
+
 ?>
