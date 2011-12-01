@@ -26,24 +26,21 @@
     <!-- tooltip » vtip -->
     <script type="text/javascript" src="/public/js/vtip.js"></script>
 
+    <!-- form validate -->
+    <script type="text/javascript" src="/public/js/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="/public/js/messages_tr.js"></script>
+
     <script type="text/javascript">
       $(function(){
         $("#accordion").accordion({active: false});
         $("#multi-tabs").tabs();
         $(".multi-select").multiselect().multiselectfilter();
-        vtip(); // vtip title alanı
-      });
-    </script>
-
-    <script type="text/javascript" src="/public/js/jquery.validate.min.js"></script>
-    <script type="text/javascript" src="/public/js/messages_tr.js"></script>
-
-    <script type="text/javascript">
-      $(document).ready(function(){
+        // vtip title alanı
+        vtip();
+        // form validate
         $("form").validate();
       });
     </script>
-
 
     <title>{{@page_title}}</title>
   </head>
@@ -52,19 +49,25 @@
     <div id="wrapper">
       <div id="container">
         <p id="header-notice">
-          Ondokuz Mayıs Üniversitesi Medikal Simülasyon Eğitim Merkezi
+        {{ _e('Ondokuz Mayıs Üniversitesi', 'Medikal Simülasyon Eğitim Merkezi') }}
         </p>
         <ul class="tabs">
-          <li><a href="{{@SR}}">Anasayfa</a></li>
-          <li><a href="{{@SR}}/clist">Olgular</a></li>
-          <li><a href="{{@SR}}/personal">Hesabım</a></li>
-          <li><a href="{{@SR}}/logout">Çıkış</a></li>
+          <li><a href="{{@SR}}">{{ _e('Ana Sayfa') }}</a></li>
+          <li><a href="{{@SR}}/clist">{{ _e('Olgular') }}</a></li>
+          <li><a href="{{@SR}}/personal">{{ _e('Hesabım') }}</a></li>
+          <li><a href="{{@SR}}/logout">{{ _e('Çıkış') }}</a></li>
         </ul>
       </div>
     </div>
 
     <div id="content">
       <div id="sidebar">
+        <span class="mod">Mod:
+          <F3:check if="{{isallowed('Admin')}}">{{ _e('Yönetici') }}</F3:check>
+          <F3:check if="{{isallowed('Author')}}">{{ _e('Hoca') }}</F3:check>
+          <F3:check if="{{isallowed('Student')}}">{{ _e('Öğrenci') }}</F3:check>
+        </span>
+
         <div id="sidebar-background"></div>
 
         <span>{{@SESSION.userinfo.fullname}}</span>
@@ -104,13 +107,15 @@
 
     <div id="footer">
       <ul>
-        <li><a href="{{@SR}}" >Ana Sayfa</a></li>
-        <li><a href="{{@SR}}/clist" >Olguları Görüntüle</a></li>
-        <li><a href="{{@SR}}/logout" >Çıkış</a></li>
+        <li><a href="{{@SR}}">{{ _e('Ana Sayfa') }}</a></li>
+        <li><a href="{{@SR}}/clist">{{ _e('Olgular') }}</a></li>
+        <li><a href="{{@SR}}/personal">{{ _e('Hesabım') }}</a></li>
+        <li><a href="{{@SR}}/logout">{{ _e('Çıkış') }}</a></li>
       </ul>
 
       <p class="copyright">
-      &copy; 2011 OMÜ Medical Simülasyon Eğitim Merkezi. Tüm Hakları Saklıdır.
+      &copy; 2011
+      {{ _e('OMÜ', 'Medikal Simülasyon Eğitim Merkezi')}}.  {{_e('Tüm Hakları Saklıdır') }}.
       </p>
     </div>
 

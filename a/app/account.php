@@ -5,6 +5,8 @@ class Account extends F3instance {
 	// User authentication
 	function auth() {
 
+		F3::set('SESSION.allow', array(1 => 'Yönetici', 3 => 'Hoca', 5 => 'Öğrenci'));
+
 		$this->_checkinput();
 
 		$username = F3::get('REQUEST.username' );

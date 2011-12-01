@@ -55,7 +55,14 @@ function localize() {
 }
 
 function _e($text) {
-	return T_($text);
+	$argv = func_get_args();
+
+	$new = array();
+
+	foreach ($argv as $val)
+		$new[] = T_($val);
+
+	return implode(' ', $new);
 }
 
 function isallowed() {

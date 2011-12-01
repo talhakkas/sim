@@ -95,6 +95,9 @@ msgstr "Exam Calendar"
 msgid "Sınavlar"
 msgstr "Exams"
 
+msgid "Olgu"
+msgstr "Case"
+
 msgid "Olgular"
 msgstr "Cases"
 
@@ -136,9 +139,28 @@ msgstr "About"
 msgid "İletişim"
 msgstr "Contact"
 
+msgid "Olgu Listesi"
+msgstr "Cases List"
+
+msgid "Yeni Olgu Ekle"
+msgstr "Add New Case"
+
 msgid "Düzenle"
 msgstr "Edit"
 
 msgid "Kaydet"
 msgstr "Save"
+
+msgid "Yönetici"
+msgstr "Admin"
+
+msgid "Hoca"
+msgstr "Author"
+
+msgid "Öğrenci"
+msgstr "Student"
+
+
+#msgid ""
+#msgstr ""
 

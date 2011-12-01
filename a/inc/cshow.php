@@ -3,12 +3,12 @@
 	F3::set('SESSION.cid', $cid);
 
 	$table = new Axon("ncase");
-	$datas = $table->afind("cid='$cid'");
+	$datas = $table->afind("id='$cid'");
 	$cdata = $datas[0];
 
 	$id = $cdata['bdugumu'];
 	$table2 = new Axon("node");
-	$datas2 = $table2->afind("id='$id' AND cid='$cid'");
+	$datas2 = $table2->afind("id='$id' AND id='$cid'");
 
 	$cdata['node_title'] = $datas2[0]['title'];
 
