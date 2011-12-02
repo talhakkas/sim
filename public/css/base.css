@@ -16,9 +16,9 @@ body {
     padding: 20px;
     margin: 30px auto 30px;;
     background:#fff;
-    -webkit-box-shadow:0 0 18px rgba(0,0,0,0.3);
-    -moz-box-shadow:0 0 18px rgba(0,0,0,0.3);
-    box-shadow:0 0 18px rgba(0,0,0,0.3);
+    -webkit-box-shadow:0 0 18px rgba(0,0,0,0.4);
+    -moz-box-shadow:0 0 18px rgba(0,0,0,0.4);
+    box-shadow:0 0 18px rgba(0,0,0,0.4);
 }
 
 #content h2 {color: #3072b3; border-bottom:1px solid #ddd; padding:0 15px 8px 5px; margin:5px 0 25px; width:auto; font-weight:lighter;}
