@@ -1,0 +1,171 @@
+<script type="text/javascript" src="/public/js/jquery.chrony.min.js"></script>
+
+
+<div id="default-demo" class="session-first">With default options:</div>
+
+<div id="time"></div>
+
+<div class="source" style="float: left; margin-bottom: 15px;">
+  $('#time').chrony({ hour: 1, minute: 2, second: 3 });<br/><br/>
+
+  &lt;div id="time"&gt;&lt;/div&gt;
+</div>
+
+<div id="callback-demo" class="session">With callback option:</div>
+
+<div id="callback"></div>
+
+<div class="source" style="float: left; margin-bottom: 15px;">
+  $('#callback').chrony({<br/>
+  &nbsp;&nbsp;second: 15,<br/>
+  &nbsp;&nbsp;finish: function() {<br/>
+  &nbsp;&nbsp;&nbsp;&nbsp;this.html('Finished!');<br/>
+  &nbsp;&nbsp;}<br/>
+  });<br/><br/>
+
+  &lt;div id="callback"&gt;&lt;/div&gt;
+</div>
+
+<div id="blink-demo" class="session">With blink option:</div>
+
+<div id="blink"></div>
+
+<div class="source" style="float: left; margin-bottom: 15px;">
+  $('#blink').chrony({ minute: 10, blink: true });<br/><br/>
+
+  &lt;div id="blink"&gt;&lt;/div&gt;
+</div>
+
+<div id="text-demo" class="session">With text format:</div>
+
+<div id="text"></div>
+
+<div class="source" style="float: left; margin-bottom: 15px;">
+  $('#text').chrony({ text: '1:20:30' });<br/><br/>
+
+  &lt;div id="text"&gt;&lt;/div&gt;
+</div>
+
+<div id="alert-demo" class="session">With custom alert:</div>
+
+<div id="alert"></div>
+
+<div class="source" style="float: left; margin-bottom: 15px;">
+  $('#alert').chrony({ seconds: 3670, alert: { color: '#DDD', hour: 1, minute: 1, second: 1 } });<br/><br/>
+
+  &lt;div id="alert"&gt;&lt;/div&gt;
+</div>
+
+<span class="comment" style="float: left; margin-bottom: 10px;">
+  - When you not especify the attribute hour, minute or second the default value is zero (0) for each one;<br/> 
+  - When you not especify the attribute color, the default value is red '#F00'.<br/>
+</span>
+
+<div id="seconds-demo" class="session">With auto adjusted seconds:</div>
+
+<div id="seconds"></div>
+
+<div class="source" style="float: left; margin-bottom: 15px;">
+  $('#seconds').chrony({ seconds: 70 });<br/><br/>
+
+  &lt;div id="seconds"&gt;&lt;/div&gt;
+</div>
+
+<div id="minutes-demo" class="session">With auto adjusted minutes:</div>
+
+<div id="minutes"></div>
+
+<div class="source" style="float: left; margin-bottom: 15px;">
+  $('#minutes').chrony({ minutes: 70 });<br/><br/>
+
+  &lt;div id="minutes"&gt;&lt;/div&gt;
+</div>
+
+<div id="hours-demo" class="session">With auto adjusted hours:</div>
+
+<div id="hours"></div>
+
+<div class="source" style="float: left; margin-bottom: 15px;">
+  $('#hours').chrony({ hours: 70 });<br/><br/>
+
+  &lt;div id="hours"&gt;&lt;/div&gt;
+</div>
+
+<span class="comment" style="float: left; margin-bottom: 10px;">
+  - The max time will be setted to 23:59:59.<br/>
+</span>
+
+<div id="decrement-demo" class="session">With custom decrement:</div>
+
+<div id="decrement"></div>
+
+<div class="source" style="float: left; margin-bottom: 15px;">
+  $('#decrement').chrony({ decrement: 2 });<br/><br/>
+
+  &lt;div id="decrement"&gt;&lt;/div&gt;
+</div>
+
+<div class="session">Default options:</div>
+
+<div class="source">
+  blink:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;false
+  <div class="comment">Enables the colon blink.</div>
+  alert:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{ second: 10 }
+  <div class="comment">Attributes color, hour, minute and second to configure the alert.</div>
+  blinkTime:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;130
+  <div class="comment">Time spent to blink the colon.</div>
+  finish:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;undefined
+  <div class="comment">Callback function to be executed when the time ends.</div>
+  decrement:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1
+  <div class="comment">Number of seconds used to decrement the time.</div>
+  hour:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0
+  <div class="comment">Number of hours initial.</div>
+  hours:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;undefined
+  <div class="comment">Number of hours initial auto adjusted to max if needed.</div>
+  minute:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0
+  <div class="comment">Number of minutes initial.</div>
+  minutes:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;undefined
+  <div class="comment">Number of minutes initial auto adjusted to hour if needed.</div>
+  second:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0
+  <div class="comment">Number of seconds initial.</div>
+  seconds:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;undefined
+  <div class="comment">Number of seconds initial auto adjusted to minute if needed.</div>
+  text:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;undefined
+  <div class="comment">Time written out in full using the following mask: HH:mm:ss.</div>
+</div>
+
+
+<script type="text/javascript">
+  $(function() {
+
+      $('#time').chrony({ hour: 0, minute: 1, second: 3,
+	finish: function() {
+	  this.html('Finished!');
+	}
+      });
+
+      $('#callback').chrony({
+	second: 15,
+	finish: function() {
+	  this.html('Finished!');
+	}
+      });
+
+      $('#blink').chrony({ minute: 10, blink: true });
+
+      $('#alert').chrony({ seconds: 3670, alert: { color: '#DDD', hour: 1, minute: 1, second: 1 } });
+
+      $('#seconds').chrony({ seconds: 70 });
+
+      $('#text').chrony({ text: '1:20:30' });
+
+      $('#minutes').chrony({ minutes: 70 });
+
+      $('#hours').chrony({ hours: 70 });
+
+      $('#decrement').chrony({ minutes: 42, decrement: 2 });
+
+  });
+</script>
+
+

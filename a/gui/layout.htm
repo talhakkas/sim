@@ -30,6 +30,8 @@
     <script type="text/javascript" src="/public/js/jquery.validate.min.js"></script>
     <script type="text/javascript" src="/public/js/messages_tr.js"></script>
 
+    <!-- chrony time -->
+    <script type="text/javascript" src="/public/js/jquery.chrony.min.js"></script>
     <script type="text/javascript">
       $(function(){
         $("#accordion").accordion({active: false});
@@ -39,6 +41,13 @@
         vtip();
         // form validate
         $("form").validate();
+
+        // chrony time
+        $('#time').chrony({
+          hour: 0, minute: 0, second: 10,
+          finish: function() { this.html('Süreniz Doldu!'); }
+        });
+
       });
     </script>
 

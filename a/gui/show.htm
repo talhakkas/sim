@@ -1,4 +1,6 @@
-<h2>{{@SESSION.data['title']}}
+<h2>
+  <div id="time"></div>
+  {{@SESSION.data['title']}}
   <F3:check if="{{ isallowed('Admin', 'Author') }}">
   <a class="edit" href="{{@SR}}/edit/{{@SESSION.cid}}/{{@SESSION.id}}">Düzenle</a>
   </F3:check>
