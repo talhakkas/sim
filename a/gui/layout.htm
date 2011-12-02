@@ -45,6 +45,25 @@
     <title>{{@page_title}}</title>
   </head>
 
+  <style type="text/css" media="all">
+    <F3:check if="{{@case_success}}">
+    #content {
+      -webkit-box-shadow:0 0 25px rgba(102, 0, 0, 1);
+      -moz-box-shadow:0 0 25px rgba(102, 0, 0, 1);
+      box-shadow:0 0 25px rgba(102, 0, 0, 1);
+    }
+    </F3:check>
+
+    <F3:check if="{{!@case_warning}}">
+    #content {
+      -webkit-box-shadow:0 0 25px rgba(0, 100, 0, 1);
+      -moz-box-shadow:0 0 25px rgba(0, 100, 0, 1);
+      box-shadow:0 0 25px rgba(0, 100, 0, 1);
+    }
+    </F3:check>
+  </style>
+
+
   <body>
     <div id="wrapper">
       <div id="container">
