@@ -19,9 +19,9 @@ class Pdf extends F3instance {
 		$pdf->Cell(0, 5, "Olgu Raporu", 0, 1, 'C');
 		$pdf->Ln(15);
 
-	//	$image = "../public/img/icon/128x128/surgeon.png";
-	//	$pdf->Image($image, 20, 40, 30, 30, 'PNG', '', '', true, 150, '', false, false, 1, false, false, false);
-
+		$image = "../public/img/icon/128x128/surgeon.png";
+		$pdf->Image($image, 160, 45, 28, 28, 'PNG', '', '', true, 150, '', false, false, 0, false, false, false);
+		// yol, x, y ,w, h
 
 		// oturum bilgilerini al
 		$userinfo = F3::get("SESSION.userinfo");
