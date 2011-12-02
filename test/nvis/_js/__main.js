@@ -122,13 +122,15 @@
 				else
 					$.notifyBar({html:"The graph is empty<br/>Try adding some nodes first",cls:"error"});
 			break;
-			case "json matrix":
+			case "edges":
 				if(g.nodes.length>0){
-					var r = "<input type=\"hidden\" name = \"matrix-form\" id=\"matrix-form\"  value=\"";
+					var r = "<input type=\"hidden\" name = \"edges\" id=\"edges\"  value=\"";
 					var matrix = g.getMatrix("weighted");
 					for(var i=0;i<g.nodes.length;i++){
 						for(var j=0;j<g.nodes.length;j++){
-							if(matrix[i][j])
+							if(typeof matrix[i][j] != "boolean")
+								r+=matrix[i][j].toString();
+							else if(matrix[i][j] == true)
 								r+="1";
 							else
 								r+='0';
@@ -145,31 +147,20 @@
 					
 					alert(r);
 					
-					$("#matrix-div").html(r);
+					$("#edges").html(r);
 				}
 				else
 					$.notifyBar({html:"The graph is empty<br/>Try adding some nodes first",cls:"error"});
 			break;
-			case "json list":
+			case "nodes":
 				if(g.nodes.length>0){
 					if(g.edges.length>0){
-						var r = "<input type=\"hidden\" name = \"list-form\" id=\"list-form\"  value=\"";
-						for(var i=0;i<g.edges.length;i++){
-							r+= g.edges[i].node+':';
-							for(var j=0;j<g.edges[i].targets.length;j++){
-								var txt = "";
-								
-								if(g.edges[i].targets[j][1])
-									txt+=g.edges[i].targets[j][0] + ' ('+g.edges[i].targets[j][1]+')';
-								else
-									txt+=g.edges[i].targets[j];
-									
-								r+= txt 
-								if ( (j + 1) != g.edges[i].targets.length){	
-									r+=',';
-								}
-							}
-							if ( (i + 1) != g.edges.length){	
+						var r = "<input type=\"hidden\" name = \"nodes\" id=\"nodes\"  value=\"";
+
+						for(var i=0; i < g.nodes.length; i++) {
+							r += g.nodes[i];
+							
+							if ( (i + 1) != g.nodes.length){	
 								r+=';';
 							}
 						}
@@ -177,7 +168,7 @@
 					
 						alert(r);
 
-						$("#matrix-div").html(r);
+						$("#nodes").html(r);
 					}
 					else
 						$.notifyBar({html:"The graph doesn't contain any edges<br/>Try adding some by double-clicking a node",cls:"error"});
