@@ -6,8 +6,8 @@
 	top:2.5em;
 	-moz-transform:rotate(-45deg);
 	-webkit-transform:rotate(-45deg);
-	-moz-box-shadow:0 0 6px #3072b3;
-	-webkit-box-shadow:0 0 6px #3072b3;
+	-moz-box-shadow:0 0 2px #3072b3;
+	-webkit-box-shadow:0 0 2px #3072b3;
 }
 
 #ribbon a{
@@ -19,6 +19,6 @@
 	padding:.5em 3.5em;
 	text-align:center;
 	text-decoration:none;
-	/*text-shadow:0 0 .5em #444;*/
+	text-shadow:0 0 .5em #444;
 	width:60px;
 }
