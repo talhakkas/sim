@@ -95,6 +95,7 @@
 				else
 					$.notifyBar({html:"The graph is empty<br/>Try adding some nodes first",cls:"error"});
 			break;
+			
 			case "adjacency list":
 				if(g.nodes.length>0){
 					if(g.edges.length>0){
@@ -104,9 +105,9 @@
 							for(var j=0;j<g.edges[i].targets.length;j++){
 								var txt = "";
 								if(g.edges[i].targets[j][1])
-									txt=g.edges[i].targets[j][0] + ' ('+g.edges[i].targets[j][1]+')';
+									txt+=g.edges[i].targets[j][0] + ' ('+g.edges[i].targets[j][1]+')';
 								else
-									txt=g.edges[i].targets[j];
+									txt+=g.edges[i].targets[j];
 								r+='<li>'+txt+'</li>';
 							}
 							r+='</ul></li>';
@@ -121,6 +122,70 @@
 				else
 					$.notifyBar({html:"The graph is empty<br/>Try adding some nodes first",cls:"error"});
 			break;
+			case "json matrix":
+				if(g.nodes.length>0){
+					var r = "<input type=\"hidden\" name = \"matrix-form\" id=\"matrix-form\"  value=\"";
+					var matrix = g.getMatrix("weighted");
+					for(var i=0;i<g.nodes.length;i++){
+						for(var j=0;j<g.nodes.length;j++){
+							if(matrix[i][j])
+								r+="1";
+							else
+								r+='0';
+								
+							if ( (j + 1) != g.nodes.length){	
+								r+=',';
+							}
+						}
+						if ( (i + 1) != g.nodes.length){	
+							r+=';';
+						}
+					}
+					r+='\">';
+					
+					alert(r);
+					
+					$("#matrix-div").html(r);
+				}
+				else
+					$.notifyBar({html:"The graph is empty<br/>Try adding some nodes first",cls:"error"});
+			break;
+			case "json list":
+				if(g.nodes.length>0){
+					if(g.edges.length>0){
+						var r = "<input type=\"hidden\" name = \"list-form\" id=\"list-form\"  value=\"";
+						for(var i=0;i<g.edges.length;i++){
+							r+= g.edges[i].node+':';
+							for(var j=0;j<g.edges[i].targets.length;j++){
+								var txt = "";
+								
+								if(g.edges[i].targets[j][1])
+									txt+=g.edges[i].targets[j][0] + ' ('+g.edges[i].targets[j][1]+')';
+								else
+									txt+=g.edges[i].targets[j];
+									
+								r+= txt 
+								if ( (j + 1) != g.edges[i].targets.length){	
+									r+=',';
+								}
+							}
+							if ( (i + 1) != g.edges.length){	
+								r+=';';
+							}
+						}
+						r+='\">';
+					
+						alert(r);
+
+						$("#matrix-div").html(r);
+					}
+					else
+						$.notifyBar({html:"The graph doesn't contain any edges<br/>Try adding some by double-clicking a node",cls:"error"});
+				}
+				else
+					$.notifyBar({html:"The graph is empty<br/>Try adding some nodes first",cls:"error"});
+			break;
+			
 			case "reset app":
 				if(g.nodes.length>0)
 					jConfirm("All unsaved changes will be lost.<br/>Really reset?", "About to reset your graph", function(r){
