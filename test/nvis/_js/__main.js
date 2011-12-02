@@ -177,7 +177,7 @@
 					
 						alert(r);
 
-						$("#matrix-div").html(r);
+						$("#lists-div").html(r);
 					}
 					else
 						$.notifyBar({html:"The graph doesn't contain any edges<br/>Try adding some by double-clicking a node",cls:"error"});
