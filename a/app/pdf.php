@@ -106,14 +106,16 @@ class Pdf extends F3instance {
 
 		// basit öğrenci bilgisi
 		$pdf->SetFont('freeserif', 'B',10);
-		$pdf->setCellPaddings(14, 1, 3, 1);
-		$pdf->Cell(140, 7, "Öğrenci Bilgileri", 1, 1, 'L');
+		$pdf->setCellPaddings(4, 1, 3, 1);
+		$pdf->SetFillColor(0,160,255);
+		$pdf->MultiCell(140, 1, "Öğrenci Bilgileri:", 0, 'L', 1, 0, '', '', true);
+		$pdf->Ln();
 		$pdf->SetFont('freeserif', '', 8);
-		$pdf->SetFillColor(222,222,239);
+		$pdf->SetFillColor(245, 253, 245);
 		$pdf->setCellPaddings(9, 1, 3, 1);
 		foreach ($bilgi as $key => $value) {
-			$pdf->MultiCell(65, 1, "$value:", 1, 'L', 1, 0, '30', '', true);
-			$pdf->MultiCell(65, 1, $userinfo[$key], 1, 'L', 0, 0, '', '', true);
+			$pdf->MultiCell(65, 1, "$value:", 0, 'L', 1, 0, '30', '', true);
+			$pdf->MultiCell(65, 1, $userinfo[$key], 0, 'L', 1, 0, '', '', true);
 			$pdf->Ln();
 		}
 		$pdf->Ln(15);
@@ -123,15 +125,16 @@ class Pdf extends F3instance {
 		$pdf->SetFont('freeserif', '', 9);
 		$pdf->setCellPaddings(5, 2, 3, 2);
 
-		$pdf->MultiCell(87.5, 1, "Olgu Adı:", 1, 'L', 1, 0, '', '', true);
-		$pdf->MultiCell(87.5, 1, F3::get('SESSION.case_title'), 1, 'L', 1, 0, '',   '', true);
-		$pdf->Ln();
 		$pdf->SetFillColor(0,160,255);
-		$pdf->MultiCell(55, 1, "Başlık:", 1, 'L', 1, 0, '30', '', true);
-		$pdf->MultiCell(50, 1, "Zaman:", 1, 'L', 1, 0, '', '', true);
+		$pdf->MultiCell(87.5, 0, "Olgu Adı:", 0, 'L', 1, 0, '', '', true);
+		$pdf->MultiCell(87.5, 0, F3::get('SESSION.case_title'), 0, 'L', 1, 0, '',   '', true);
+		$pdf->Ln();
+		$pdf->SetFillColor(222,222,239);
+		$pdf->MultiCell(55, 1, "Başlık:", 0, 'L', 1, 0, '30', '', true);
+		$pdf->MultiCell(50, 1, "Zaman:", 0, 'L', 1, 0, '', '', true);
 	//	$pdf->MultiCell(40, 1, "Beklenen:", 1, 'L', 1, 0, '', '', true);
 	//	$pdf->MultiCell(45, 1, "Soylenen:", 1, 'L', 1, 0, '', '', true);
-		$pdf->MultiCell(50, 1, "Puan:", 1, 'L', 1, 0, '', '', true);
+		$pdf->MultiCell(50, 1, "Puan:", 0, 'L', 1, 0, '', '', true);
 		$pdf->Ln();
 
 
@@ -144,11 +147,11 @@ class Pdf extends F3instance {
 			if($i == 0){
 				$pdf->SetFillColor(245, 253, 245);
 			}
-			$pdf->MultiCell(55, 1, $dict['title'], 1, 'L', 1, 0, '30', '', true);
-			$pdf->MultiCell(50, 1, $dict['zaman'], 1, 'L', 1, 0, '', '', true);
-		//	$pdf->MultiCell(40, 1, 'beklenen', 1, 'L', 1, 0, '', '', true);
-		//	$pdf->MultiCell(45, 1, $dict['soylenen'], 1, 'L', 1, 0, '',   '', true);
-			$pdf->MultiCell(50, 1, $dict['puan'], 1, 'L', 1, 0, '',   '', true);
+			$pdf->MultiCell(55, 1, $dict['title'], 0, 'L', 1, 0, '30', '', true);
+			$pdf->MultiCell(50, 1, $dict['zaman'], 0, 'L', 1, 0, '', '', true);
+		//	$pdf->MultiCell(40, 1, 'beklenen', 0, 'L', 1, 0, '', '', true);
+		//	$pdf->MultiCell(45, 1, $dict['soylenen'], 0, 'L', 1, 0, '',   '', true);
+			$pdf->MultiCell(50, 1, $dict['puan'], 0, 'L', 1, 0, '',   '', true);
 			$pdf->Ln();
 			$i = !$i;
 		}
