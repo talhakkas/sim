@@ -1,6 +1,6 @@
 ## Ondokuz Mayıs Üniversitesi Web Tabanlı Simülasyon Eğitimi Merkezi
 
-<img src=https://github.com/19/sim/raw/master/public/img/a/toshiba-medical-tablet-pc.jpg align="right">
+<img src=https://github.com/19/sim/raw/master/public/img/a/toshiba-medical-tablet-pc.jpg width=400 align="right">
 
 19 SIM Sayfasına Hoşgeldiniz.
 
