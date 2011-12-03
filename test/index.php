@@ -150,15 +150,16 @@ function admin_userlist() {
 // END -- admin#user
 // -- admin#member
 function admin_memberform() {
-        $member_gid = DB::sql("select distinct gid from member");
+        $member_gids = DB::sql("select distinct gid from member");
 
-        $group_id = array();
-        foreach ($member_gid as $gid)
-                $group_id = array_merge($group_id, $gid);
-        $groups = DB::sql("select * from groups where not id in(" . implode(',', $group_id) .")");
+        $group_ids = array();
+        foreach ($member_gids as $member_gid)
+                array_push($group_ids, $member_gid['gid']);
+
+        $groups = DB::sql("select * from groups where not id in(" . implode(',', $group_ids) .")");
         F3::set('unassignment_groups', $groups);
 
-        $users = DB::sql("select * from users where utype = '5'");
+        $users = DB::sql("select * from users where utype = '5'"); // type=5 for student
         F3::set('users', $users);
         render('admin_memberform', 'Üye oluşturma');
 }

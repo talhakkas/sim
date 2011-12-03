@@ -13,7 +13,7 @@
 jQuery.fn.jListbox = function(o) {
 
 	o = jQuery.extend({
-		selectText: "Dersi atanacak, öğretim görevlisi yok",
+		selectText: "Öğrenci atanacak, grup(Sınıf) yok",
 		viewText: true
 	}, o);
 
