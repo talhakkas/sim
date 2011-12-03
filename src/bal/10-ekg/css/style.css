@@ -1,0 +1,36 @@
+@charset "utf-8";
+/* CSS Document */
+body{
+background-color:#C3D9FF;
+}
+.head{
+background-color:#E8EEF7;
+position:absolute;
+top:20px;
+left:220px;
+width:800px;
+}
+table {
+background-color:#fff;}
+
+td.sol{
+border-style:solid;
+border:thin;
+border-color:#333333;
+width:150px;
+height:300px;
+}
+td.sag{
+border-style:solid;
+border:thin;
+border-color:#333333;
+width:150px;
+height:300px;
+}
+td.orta{
+border-style:solid;
+border:thin;
+border-color:#333333;
+width:500px;
+height:300px;
+}
