@@ -1,16 +1,11 @@
 .*
 *.flv
 
-temp/*
-tmp/*
-
-a/temp/*
+a/tmp/*
 test/tmp/*
 
 sim.wiki
 
-b
-foo
 soba
 admin
 store
