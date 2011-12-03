@@ -1,7 +1,8 @@
 ## Ondokuz Mayıs Üniversitesi Web Tabanlı Simülasyon Eğitimi Merkezi
 
-19 SIM Sayfasına hoş geldiniz.
+<img src=https://github.com/19/sim/raw/master/public/img/a/toshiba-medical-tablet-pc.jpg align="right">
 
+19 SIM Sayfasına Hoşgeldiniz.
 
 - [Projenin Tanıtımı](https://github.com/19/sim/wiki/brief)
 - [Kullanıcı Klavuzu](https://github.com/19/sim/wiki/guide)
@@ -18,5 +19,4 @@
 Sistem için Fat Free [Fat Free Framework](http://fatfree.sourceforge.net/) Versiyon 2.0.5'ı
 kullanıyoruz. (Türkçe kaynağına ulaşabilmek için Türk bayrağına tıklamanız yeterli)
 
-<img src=https://github.com/19/sim/raw/master/public/img/a/toshiba-medical-tablet-pc.jpg align="right">
 
