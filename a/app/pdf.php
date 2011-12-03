@@ -2,6 +2,77 @@
 
 class Pdf extends F3instance {
 
+	function list_report() {
+		// create new PDF document
+		$pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
+
+		// set document information
+		$pdf->SetCreator('sim');
+		$pdf->SetAuthor('sim');
+		$pdf->SetTitle('Web Tabanlı Medikal Simülasyon Eğitim Merkezi');
+		$pdf->SetSubject('Report');
+
+		// set default header data
+		// çok saçma lan bu header image neden bu yolla atanmış ki 
+		// sunucuda da çalışmaz bu
+		$header_image = "../../../var/www/public/img/omu-logo.jpg";
+		//$pdf->SetHeaderData(PDF_HEADER_LOGO, PDF_HEADER_LOGO_WIDTH, PDF_HEADER_TITLE.' 037', PDF_HEADER_STRING);
+		$pdf->SetFont('freeserif','');
+		$pdf->SetHeaderData($header_image, 25, "Ondokuz Mayıs Üniversitesi", "Web Tabanlı Medikal Simülasyon Eğitim Merkezi");
+
+		// set header and footer fonts
+		$pdf->setHeaderFont(Array(PDF_FONT_NAME_MAIN, '', PDF_FONT_SIZE_MAIN));
+		$pdf->setFooterFont(Array(PDF_FONT_NAME_DATA, '', PDF_FONT_SIZE_DATA));
+
+		// set default monospaced font
+		$pdf->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
+
+		//set margins
+		$pdf->SetMargins(PDF_MARGIN_LEFT, PDF_MARGIN_TOP, PDF_MARGIN_RIGHT);
+		$pdf->SetHeaderMargin(PDF_MARGIN_HEADER);
+		$pdf->SetFooterMargin(PDF_MARGIN_FOOTER);
+
+		//set auto page breaks
+		$pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
+
+		//set image scale factor
+		$pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
+
+
+		// set font
+		$pdf->SetFont('freeserif', '', 11);
+
+		// add a page
+		$pdf->AddPage();
+
+		$html = '<h1>Example of Spot Colors</h1><br /><br />As long as no open standard for spot colours exists, TCPDF users will have to buy a colour book by one of the colour manufacturers and insert the values and names of spot colours directly into <b><em>spotcolors.php</em></b> file, or define them using the <b><em>AddSpotColor()</em></b> method.<br /><br />Common industry standard spot colors are:<br /><span color="#008800">ANPA-COLOR, DIC, FOCOLTONE, GCMI, HKS, PANTONE, TOYO, TRUMATCH</span>.';
+
+		//$html = implode("\n", file('http://sim.omu.edu.tr/a'));
+		// Print text using writeHTMLCell()
+		$pdf->writeHTMLCell(0, 0, '', '', $html, 0, 1, 0, true, 'J', true);
+
+
+		$pdf->SetFont('helvetica', '', 10);
+
+		$pdf->SetTextSpotColor('My TCPDF Black', 100);
+		$pdf->SetDrawSpotColor('My TCPDF Black', 100);
+
+		$starty = 100;
+
+		// print some spot colors
+
+		$starty += 24;
+		$pdf->SetFillSpotColor('My TCPDF Blue', 100);
+		$pdf->Rect(30, $starty, 40, 20, 'DF');
+		$pdf->Text(73, $starty + 8, 'My TCPDF Blue');
+
+
+		//Close and output PDF document
+		$pdf->Output('case_student_list', 'D');
+	}
+
+
+
 	function student_report() {
 
 		$pdf = new TCPDF('P', 'mm', 'A4', true, 'UTF-8', false);

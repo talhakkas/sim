@@ -17,6 +17,7 @@ F3::route("GET /localize/@lang",'localize');
 
 // PDF
 F3::route("GET /pdf/report", 	'Pdf->student_report');
+F3::route("GET /pdf/report2", 	'Pdf->list_report');
 
 
 // ACCOUNT
