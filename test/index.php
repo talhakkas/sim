@@ -156,13 +156,34 @@ function admin_memberform() {
         foreach ($member_gids as $member_gid)
                 array_push($group_ids, $member_gid['gid']);
 
-        $groups = DB::sql("select * from groups where not id in(" . implode(',', $group_ids) .")");
+        if ($group_ids)
+                $groups = DB::sql("select * from groups where not id in(" . implode(',', $group_ids) .")");
+        else
+                $groups = DB::sql("select * from groups");
         F3::set('unassignment_groups', $groups);
 
         $users = DB::sql("select * from users where utype = '5'"); // type=5 for student
         F3::set('users', $users);
         render('admin_memberform', 'Üye oluşturma');
 }
+function admin_membersave() {
+        if (!F3::get('REQUEST.group_id')) {
+                F3::set('warning', "Hiç grup(s¿n¿f) kalmam¿¿!");
+                render('admin_memberform', 'Üye olu¿turma');
+        }
+        if (!F3::get('REQUEST.user_ids')) {
+                F3::set('warning', "Atanacak hic ö¿renci kalmam¿¿!");
+                render('admin_memberform', 'Üye olu¿turma');
+        }
+        foreach (F3::get('REQUEST.user_ids') as $user_id) {
+                $member = new Axon('member');
+                $member->uid = $user_id;
+                $member->gid = F3::get('REQUEST.group_id');
+                $member->save();
+        }
+        render('admin_membershow', 'Üye göster');
+}
+
 // markdown
 function mark() {
         $foo = file('mark/foo.md');
@@ -243,6 +264,7 @@ F3::route('POST /ilac', 'ilac_sonuc');
 
 //admin post
 //admin#group
+F3::route('GET  /admin_groupform',       'admin_groupform');
 F3::route('POST /admin_groupsave',       'admin_groupsave');
 F3::route('GET  /admin_groupshow/@id',   'admin_groupshow');
 F3::route('GET  /admin_groupedit/@id',   'admin_groupedit');
@@ -250,6 +272,7 @@ F3::route('GET  /admin_groupdelete/@id', 'admin_groupdelete');
 F3::route('GET  /admin_grouplist',       'admin_grouplist');
 F3::route('POST /admin_groupupdate',     'admin_groupsave');
 //admin#user
+F3::route('GET  /admin_userform',        'admin_userform');
 F3::route('POST /admin_usersave',        'admin_usersave');
 F3::route('GET  /admin_usershow/@id',    'admin_usershow');
 F3::route('GET  /admin_useredit/@id',    'admin_useredit');
@@ -257,7 +280,8 @@ F3::route('GET  /admin_userdelete/@id',  'admin_userdelete');
 F3::route('GET  /admin_userlist',        'admin_userlist');
 F3::route('POST /admin_userupdate',      'admin_usersave');
 
-F3::route('GET  /admin_memberform',    'admin_memberform');
+F3::route('GET   /admin_memberform',      'admin_memberform');
+F3::route('POST  /admin_membersave',      'admin_membersave');
 F3::run();
 
 ?>

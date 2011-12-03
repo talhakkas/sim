@@ -10,9 +10,9 @@ TEMP="tmp/"
 GUI="gui/"
 
 ; Veritabanı
-dbname="db_name"
-dbuser="db_user"
-dbpass="db_pass"
+dbname="sim"
+dbuser="sim"
+dbpass="12345"
 
 ; default language
 lang="tr_TR"
