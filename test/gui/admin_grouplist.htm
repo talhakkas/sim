@@ -18,25 +18,31 @@
       <tr>
         <th>Grup adı</th>
         <th>Grup Fotoğraf</th>
+        <th>Grup Üyeleri</th>
         <th>İşlemeler</th>
       </tr>
     </thead>
     <tbody>
-      <F3:repeat group="{{@group_list}}" key="{{@key}}" value="{{@val}}" >
+      <F3:repeat group="{{@group_list}}" key="{{@key}}" value="{{@group}}" >
       <tr>
-        <td>{{@val.name}}</td>
+        <td>{{@group.name}}</td>
         <td>
-          <img src="{{@SR}}/public/upload/{{@val.photo}}" width="26" 
+          <img src="{{@SR}}/public/upload/{{@group.photo}}" width="26" 
           height="26"/>
         </td>
+        <td>
+          <a href="{{@SR}}/admin_membershow/{{@group.id}}" target="_blank">
+            <input type="submit" id="button-user" title="Gruplar" value="">
+          </a>
+        </td>
         <td class="label" style="float:left;width:92px">
-          <a href="admin_groupshow/{{@val.id}}" target="_black">
+          <a href="admin_groupshow/{{@group.id}}" target="_blank">
             <input type="submit" id="button-preview" title="İncele" value="">
           </a>
-          <a href="admin_groupedit/{{@val.id}}" target="_blank">
+          <a href="admin_groupedit/{{@group.id}}" target="_blank">
             <input type="submit" id="button-edit" title="Düzenle" value="">
           </a>
-          <a href="admin_groupdelete/{{@val.id}}">
+          <a href="admin_groupdelete/{{@group.id}}">
             <input type="submit" id="button-delete" title="Sil" value=""
               onClick="return confirm('Silmek istediğinizden emin misiniz?');"/>
             </a>
