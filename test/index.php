@@ -167,13 +167,14 @@ function admin_memberform() {
         render('admin_memberform', 'Üye oluşturma');
 }
 function admin_membersave() {
+		
         if (!F3::get('REQUEST.group_id')) {
-                F3::set('warning', "Hiç grup(s¿n¿f) kalmam¿¿!");
-                render('admin_memberform', 'Üye olu¿turma');
+                F3::set('warning', "Hiç grup(sınıf) kalmamdı!");
+                render('admin_memberform', 'Üye oluşturma');
         }
         if (!F3::get('REQUEST.user_ids')) {
-                F3::set('warning', "Atanacak hic ö¿renci kalmam¿¿!");
-                render('admin_memberform', 'Üye olu¿turma');
+                F3::set('warning', "Atanacak hic öğrenci kalmamdı!");
+                render('admin_memberform', 'Üye oluşturma');
         }
         foreach (F3::get('REQUEST.user_ids') as $user_id) {
                 $member = new Axon('member');
@@ -181,6 +182,22 @@ function admin_membersave() {
                 $member->gid = F3::get('REQUEST.group_id');
                 $member->save();
         }
+        return F3::reroute('/admin_membershow/' . F3::get('REQUEST.group_id'));
+}
+function admin_membershow() {
+		$user = new Axon("member");
+        $datas = $user->afind("gid='" . F3::get('PARAMS.gid') . "'");
+		
+		$group = DB::sql("select * from groups where id='" . F3::get('PARAMS.gid') . "'");
+		F3::set('group', $group[0]);
+
+        $user = array();
+        foreach ($datas as $data) {
+			$b = DB::sql("select * from users where id ='" . $data['uid'] ."'");
+			array_push($user, $b[0]);
+		}
+
+        F3::set('users', $user);
         render('admin_membershow', 'Üye göster');
 }
 
@@ -280,8 +297,9 @@ F3::route('GET  /admin_userdelete/@id',  'admin_userdelete');
 F3::route('GET  /admin_userlist',        'admin_userlist');
 F3::route('POST /admin_userupdate',      'admin_usersave');
 
-F3::route('GET   /admin_memberform',      'admin_memberform');
-F3::route('POST  /admin_membersave',      'admin_membersave');
+F3::route('GET  /admin_memberform',      'admin_memberform');
+F3::route('POST /admin_membersave',      'admin_membersave');
+F3::route('GET  /admin_membershow/@gid', 'admin_membershow');
 F3::run();
 
 ?>

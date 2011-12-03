@@ -1,0 +1,42 @@
+<h2>Sınıf İncelemesi</h2>
+<table class="custom">
+  <tr>
+    <td class="label">Fotoğraf</td>
+    <td class="field"><img src="{{@group.photo}}" /><!-- TODO --></td>
+  </tr>
+  <tr>
+    <td class="label">Ad</td>
+    <td class="field">{{@group.name}} </td>
+  </tr>
+  <tr>
+    <td class="label">Öğrenciler</td>
+    <td></td>
+  </tr>
+  <F3:repeat group="{{@users}}" key="{{@key}}" value="{{@user}}" >
+	<tr>
+      <td></td>
+      <td class="field">
+		 <table>
+			<tr>
+			  <td>{{@key}} - </td>
+			  <td>{{@user.id}}</td>
+			  <td>{{@user.name}}</td>
+			  <td>{{@user.surname}}</td>
+			</tr>
+		  </table>
+		</td>
+    </tr>
+  </F3:repeat> 
+  <tr>
+    <td></td>
+    <td>
+      <form  action='{{@SR}}/admin_memberedit' method='post' enctype="multipart/form-data">
+        <input id="submit_button" type='submit' value='Düzenle'/>
+      </form>
+      <form  action='{{@SR}}/admin_memberdel' method='post' enctype="multipart/form-data">
+		<input id="submit_button" type='submit' value='Sil' onClick="return('Silmek istediğinizden emin misiniz ?');" />
+      </form>
+    </td>
+  </tr>
+</table>
+
