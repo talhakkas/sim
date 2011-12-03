@@ -10,9 +10,9 @@ class Page extends F3instance {
 	function help() {
 
 		$text  = '';
-		$text .= "# Dal\n"   . implode("\n", file('../sim.wiki/Dal.md'));
-		$text .= "# Düğüm\n" . implode("\n", file('../sim.wiki/Dugum.md'));
-		$text .= "# Olgu\n"  . implode("\n", file('../sim.wiki/Olgu.md'));
+		$text .= "# Dal\n"   . implode("\n", file('../sim.wiki/dal.md'));
+		$text .= "# Düğüm\n" . implode("\n", file('../sim.wiki/dugum.md'));
+		$text .= "# Olgu\n"  . implode("\n", file('../sim.wiki/olgu.md'));
 
 		$text = Markdown($text);
 		$text = str_replace('img/', '../sim.wiki/img/', $text);
