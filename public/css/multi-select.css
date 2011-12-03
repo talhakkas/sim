@@ -1,5 +1,5 @@
 .ms-container{
-  background: transparent url('../images/arrow.png') no-repeat 260px 190px;
+  background: transparent url('../img/arrow.png') no-repeat 260px 190px;
 }
 
 .ms-container:after{
@@ -52,5 +52,5 @@
 }
 
 .ms-container .ms-selection li:hover{
-  background: #eee url('../images/delete.png') no-repeat 3px 3px;
+  background: #eee url('../img/delete.png') no-repeat 3px 3px;
 }
