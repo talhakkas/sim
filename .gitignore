@@ -20,4 +20,4 @@ _*
 
 !*.mo
 !.f3.ini.example
-!/db/*sql
+!src/db/*sql
