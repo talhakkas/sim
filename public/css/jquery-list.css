@@ -1,0 +1,30 @@
+/* number style */
+#number {
+	margin: 10px 0 40px;
+		padding: 0;
+}
+#number li {
+	padding: 3px 0 6px 55px;
+		margin: 0 0 20px;
+			list-style: none;
+}
+#number h3 {
+	font: bold 170%/110% Arial, Helvetica, sans-serif;
+		margin: 3px 0 5px;
+			color: #666;
+}
+#number .item1 {
+	background: url(/public/img/number1.png) no-repeat;
+}
+#number .item2 {
+	background: url(/public/img/number2.png) no-repeat;
+}
+#number .item3 {
+	background: url(/public/img/number3.png) no-repeat;
+}
+#number .item4 {
+	background: url(/public/img/number4.png) no-repeat;
+}
+#number .item5 {
+	background: url(/public/img/number5.png) no-repeat;
+}

@@ -3,6 +3,7 @@
 
 a/tmp/*
 test/tmp/*
+tmp/*
 
 sim.wiki
 

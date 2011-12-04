@@ -47,4 +47,20 @@ function multi($preselected=array()){
     return $a;
 }
 
+function tetkik() {
+	$select_all = F3::get('REQUEST');
+
+	$preselected = array();
+        foreach ($select_all as $key => $value){
+                if (stristr($key, 'response'))
+                        foreach ($select_all[$key] as $k => $v)
+                                $preselected[] = $v;
+        }
+
+	print_r($preselected);
+	F3::set('tetkikmerkezi', multi($preselected));
+
+        render('tetkik', 'Sonuçlar');
+}
+
 ?>
