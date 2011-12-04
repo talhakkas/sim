@@ -29,8 +29,8 @@ msgstr "Welcome to the Web-Based<br>Medical Simulation Education Center"
 msgid "Sim Nedir?"
 msgstr "What is Sim?"
 
-msgid "Sim; bir online sanal hasta oyuncusu, medikal eğitim için hazırlanmış bir yönetim uygulaması."
-msgstr "Sim is a management application that prepared for medical education and is a online virtual patient gamer."
+msgid "Lsim (Lightening Simulator), web tabanlı sanal hasta tasarımı ve oyunu üzerinden eğitimin yapıldığı bir araçtır."
+msgstr "Lsim (Lightening Simulator), is a tool that education through web-based virtual patient designing and game."
 
 msgid "Sanal Hasta Nedir?"
 msgstr "What is Virtual Patient?"
