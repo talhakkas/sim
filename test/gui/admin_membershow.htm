@@ -12,31 +12,40 @@
     <td class="label">Öğrenciler</td>
     <td></td>
   </tr>
-  <F3:repeat group="{{@users}}" key="{{@key}}" value="{{@user}}" >
-	<tr>
+  <F3:check if="{{@select_users}}">
+  <F3:true>
+  <F3:repeat group="{{@select_users}}" key="{{@key}}" value="{{@user}}" >
+    <tr>
       <td></td>
       <td class="field">
-		 <table>
-			<tr>
-			  <td>{{@key}} - </td>
-			  <td>{{@user.id}}</td>
-			  <td>{{@user.name}}</td>
-			  <td>{{@user.surname}}</td>
-			</tr>
-		  </table>
-		</td>
+        <table>
+          <tr>
+            <td>{{@key}} - </td>
+            <td>{{@user.id}}</td>
+            <td>{{@user.name}}</td>
+            <td>{{@user.surname}}</td>
+          </tr>
+        </table>
+      </td>
     </tr>
-  </F3:repeat> 
+  </F3:repeat>
   <tr>
     <td></td>
     <td>
-      <form  action='{{@SR}}/admin_memberedit' method='post' enctype="multipart/form-data">
+      <form  action='{{@SR}}/admin_memberedit/{{@group.id}}' method='post' 
+        enctype="multipart/form-data">
         <input id="submit_button" type='submit' value='Düzenle'/>
       </form>
-      <form  action='{{@SR}}/admin_memberdel' method='post' enctype="multipart/form-data">
-		<input id="submit_button" type='submit' value='Sil' onClick="return('Silmek istediğinizden emin misiniz ?');" />
+      <form  action='{{@SR}}/admin_memberdelete/{{@group.id}}' method='post' 
+        enctype="multipart/form-data">
+        <input id="submit_button" type='submit' value='Sil' 
+        onClick="return('Silmek istediğinizden emin misiniz ?');" />
       </form>
     </td>
   </tr>
+  </F3:true>
+  <F3:false>
+  <tr><td></td><td>Henüz bu sınıf(Grupta) öğrenci bulunmamaktadır.</td></tr>
+  </F3:false>
+  </F3:check>
 </table>
-

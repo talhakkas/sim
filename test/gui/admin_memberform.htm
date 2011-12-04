@@ -12,19 +12,24 @@
   <script type="text/javascript" src="/public/js/jquery.jListbox.js" ></script>
   <script type="text/javascript">
           $().ready(function() {
-                  $("#group_id, #test").jListbox();
-                  
+                  $("#select_group_id, #test").jListbox();
           });
 </script>
 <!-- end jlistbox -->
 </head>
 <h2> Gruba Öğrenci Atama</h2>
 <form  action='{{@SR}}/admin_membersave' method='post' enctype="multipart/form-data">
+  <input type="hidden" name="group_id" value="{{@group.id}}"/>
   <table class="login">
     <tr>
       <td class="label">Hoca seçiniz</td>
       <td>
-          <select id="group_id" name="group_id">
+        <select id="select_group_id" name="select_group_id">
+          <F3:check if="{{@select_group}}">
+            <option rel="<img width='56' height='56' src='{{@select_group.photo}}'/>" value="{{@select_group.id}}">
+              {{@select_group.name}}
+            </option>
+          </F3:check>
           <F3:repeat group="{{@unassignment_groups}}" key="{{@key}}" value="{{@group}}" >
             <option rel="<img width='56' height='56' src='{{@group.photo}}'/>" value="{{@group.id}}">
               {{@group.name}}
@@ -37,7 +42,12 @@
       <td class="label">Dersleri seçiniz</td>
       <td>
         <select id="callback" name="user_ids[]" class='multiselect, callbacks' multiple='multiple'>
-          <F3:repeat group="{{@users}}" key="{{@key}}" value="{{@user}}" >
+          <F3:repeat group="{{@select_users}}" key="{{@key}}" value="{{@user}}">
+            <option value="{{@user.id}}" selected>
+              {{@user.name}}
+            </option>
+            </F3:repeat>
+        <F3:repeat group="{{@unselect_users}}" key="{{@key}}" value="{{@user}}">
             <option value="{{@user.id}}">
               {{@user.name}}
             </option>
