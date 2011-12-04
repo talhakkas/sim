@@ -27,6 +27,10 @@ class Home extends F3instance {
 		$this->_page('contact', 'İletişim');
 	}
 
+	function page() {
+		$this->_page('404', 'Sayfa Bulunamadı');
+	}
+
 	function beforeroute() {
 		//if (! F3::get('SESSION.isLogin'))  return F3::reroute('/');
 	}

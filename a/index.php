@@ -6,12 +6,14 @@ require_once './lib/base.php';
 require_once './inc/lib.php';
 
 
+
 // HOME PAGES
-F3::route("GET /*", 		'Home->home');
+F3::route("GET /", 		'Home->home');
 F3::route("GET /people", 	'Home->people');
 F3::route("GET /work", 		'Home->work');
 F3::route("GET /about", 	'Home->about');
 F3::route("GET /contact", 	'Home->contact');
+F3::route("GET /@page", 	'Home->page');
 
 F3::route("GET /localize/@lang",'localize');
 

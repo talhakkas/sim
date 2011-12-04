@@ -13,7 +13,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
-
+# home pages
 msgid "OMÜ"
 msgstr "OMU"
 
@@ -23,8 +23,8 @@ msgstr "Ondokuz Mayıs University"
 msgid "Medikal Simülasyon Eğitim Merkezi"
 msgstr "Medical Simulation Education Center"
 
-msgid "Web Tabanlı Medikal Simülasyon<br> Eğitim Merkezine Hoş Geldiniz"
-msgstr "Welcome to the Web-Based<br> Medical Simulation Education Center"
+msgid "Web Tabanlı Medikal Simülasyon<br>Eğitim Merkezine Hoş Geldiniz"
+msgstr "Welcome to the Web-Based<br>Medical Simulation Education Center"
 
 msgid "Sim Nedir?"
 msgstr "What is Sim?"
@@ -89,6 +89,24 @@ msgstr "Incorrect user name or password"
 msgid "Bu E-Mail Adresine Sahip Bir Hesap Yoktur"
 msgstr "None of this e-mail address with a account"
 
+msgid "Ana Sayfa"
+msgstr "Home"
+
+msgid "Ekibimiz"
+msgstr "Our Team"
+
+msgid "Çalışmalar"
+msgstr "Works"
+
+msgid "Hakkında"
+msgstr "About"
+
+msgid "İletişim"
+msgstr "Contact"
+
+# end home pages
+
+
 msgid "Sınav Takvimi"
 msgstr "Exam Calendar"
 
@@ -124,21 +142,9 @@ msgstr "Logout"
 msgid "Tüm Hakları Saklıdır"
 msgstr "All Rights Reserved"
 
-msgid "Ana Sayfa"
-msgstr "Home"
+# end footer
 
-msgid "Ekibimiz"
-msgstr "Our Team"
-
-msgid "Çalışmalar"
-msgstr "Works"
-
-msgid "Hakkında"
-msgstr "About"
-
-msgid "İletişim"
-msgstr "Contact"
-
+# case action
 msgid "Olgu Listesi"
 msgstr "Cases List"
 
@@ -160,6 +166,39 @@ msgstr "Author"
 msgid "Öğrenci"
 msgstr "Student"
 
+# end case action
+
+
+# 404 pages
+msgid "Sayfa Bulunamadı"
+msgstr "Page Not Found"
+
+msgid "Neden Buradasınız?"
+msgstr "Why are you here?"
+
+msgid "İstediğiniz sayfa bulunamadığı için özür dileriz."
+msgstr "Apologies, but the page you requested could not be found."
+
+msgid "Burada olmanızın sebebi şunlardan biri olabilir:"
+msgstr "Perhaps you are here because:"
+
+msgid "Aradığınız sayfa taşınmış"
+msgstr "The page has moved"
+
+msgid "Aradığınız sayfa artık yok"
+msgstr "The page no longer exists"
+
+msgid "Birşeyler ararken yolunuzu kaybettiniz"
+msgstr "You were looking for your puppy and got lost"
+
+# end 404 pages
+
+
+#msgid ""
+#msgstr ""
+
+#msgid ""
+#msgstr ""
 
 #msgid ""
 #msgstr ""

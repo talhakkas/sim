@@ -88,10 +88,16 @@ class Pdf extends F3instance {
 		$pdf->Cell(0, 5, "Ondokuz Mayıs Üniversitesi", 0, 1, 'C');
 		$pdf->Cell(0, 5, "Web Tabanlı Medikal Simülasyon Eğitim Merkezi", 0, 1, 'C');
 		$pdf->Cell(0, 5, "Olgu Raporu", 0, 1, 'C');
-		$pdf->Ln(15);
+		$pdf->Ln(20);
 
-		$image = "../public/img/icon/128x128/surgeon.png";
-		$pdf->Image($image, 160, 45, 28, 28, 'PNG', '', '', true, 150, '', false, false, 0, false, false, false);
+		$omu_image = "../public/img/omu-logo.jpg";
+		$stu_image = "../public/img/icon/128x128/surgeon.png";
+		$pdf->Image($omu_image, 20, 10, 28, 28, 'JPG', '', '', true, 150, '', false, false, 0, false, false, false);
+		$pdf->Image($stu_image, 160, 10, 28, 28, 'PNG', '', '', true, 150, '', false, false, 0, false, false, false);
+
+
+
+		$pdf->Image($stu_image, 160, 45, 28, 28, 'PNG', '', '', true, 150, '', false, false, 0, false, false, false);
 		// yol, x, y ,w, h
 
 		// oturum bilgilerini al

@@ -120,6 +120,7 @@ div.page-header.work-page    { background: url(/public/img/a/medical-computer-wo
 /*div.page-header.about-page   { background: url(/public/img/a/medical-computer-about.jpeg) no-repeat right top; background-size:270px;}*/
 div.page-header.about-page   { background: url(/public/img/a/simulation.jpg) no-repeat right top; background-size:330px;}
 div.page-header.contact-page { background: url(/public/img/a/phone-us.jpg) no-repeat right top; }
+div.page-header.page404      { background: url(/public/img/a/404.png) no-repeat right top;  background-size:350px;}
 
 
 .column-row, .row { margin: 0 0 18px -20px; }
