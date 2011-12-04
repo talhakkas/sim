@@ -117,9 +117,8 @@ div.page-header h2 small { font-size: 75%; font-weight: normal; }
 div.page-header.home-page    { background: url(/public/img/a/simulation.jpg) no-repeat right top; }
 div.page-header.people-page  { background: url(/public/img/a/people-network.gif) no-repeat right top; }
 div.page-header.work-page    { background: url(/public/img/a/medical-computer-work.png) no-repeat right top; }
-/*div.page-header.about-page   { background: url(/public/img/a/medical-computer-about.jpeg) no-repeat right top; background-size:270px;}*/
 div.page-header.about-page   { background: url(/public/img/a/simulation.jpg) no-repeat right top; background-size:330px;}
-div.page-header.contact-page { background: url(/public/img/a/phone-us.jpg) no-repeat right top; }
+div.page-header.contact-page { background: url(/public/img/a/phone-us.jpg) no-repeat right top; background-size:190px;}
 div.page-header.page404      { background: url(/public/img/a/404.png) no-repeat right top;  background-size:350px;}
 
 
@@ -279,6 +278,7 @@ a.forgot-pass{ margin-top:-5px; font-size:12px; font-weight:normal; color:#3072b
 .inlogin ul.lin a.olgu     { background:url(/public/img/icon/32x32/clock.png) no-repeat;}
 .inlogin ul.lin a.exam     { background:url(/public/img/icon/32x32/book.png) no-repeat;}
 .inlogin ul.lin a.cal      { background:url(/public/img/icon/32x32/chalk_board.png) no-repeat;}
+.inlogin ul.lin a.news     { background:url(/public/img/icon/32x32/news.png) no-repeat;}
 
 .inlogin ul.rin { float:right; width:150px; margin-top:10px; }
 .inlogin ul.rin li { height:38px; text-align:right; }
@@ -286,6 +286,8 @@ a.forgot-pass{ margin-top:-5px; font-size:12px; font-weight:normal; color:#3072b
 .inlogin ul.rin a.personal { background:url(/public/img/icon/32x32/business_user.png) no-repeat right;}
 .inlogin ul.rin a.support  { background:url(/public/img/icon/32x32/support.png) no-repeat right;}
 .inlogin ul.rin a.logout   { background:url(/public/img/icon/32x32/unlock.png) no-repeat right;}
+.inlogin ul.rin a.news     { background:url(/public/img/icon/32x32/news.png) no-repeat right;}
+.inlogin ul.rin a.megaphone{ background:url(/public/img/icon/32x32/megaphone.png) no-repeat right;}
 
 .inlogin img { display:block; margin: 0 auto; }
 .inlogin span { display:block; text-align:center; color:#3072b3; font-weight:bold; }

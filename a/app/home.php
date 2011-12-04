@@ -36,6 +36,7 @@ class Home extends F3instance {
 	}
 
 	function afterroute() {
+		// dil blgisi için nerden geldiğimizi set edelim
 		F3::set('SESSION.localize', F3::get('PARAMS.0'));
 		echo Template::serve('a/layout.htm');
 	}

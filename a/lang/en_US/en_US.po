@@ -128,11 +128,11 @@ msgstr "My Account"
 msgid "Destek"
 msgstr "Support"
 
-msgid "İngilizce"
-msgstr "English"
+msgid "Duyurular"
+msgstr "Announcements"
 
-msgid "Türkçe"
-msgstr "Turkish"
+msgid "Yenilikler"
+msgstr "What's new"
 
 msgid "Çıkış"
 msgstr "Logout"
