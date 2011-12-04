@@ -125,7 +125,7 @@ msgstr "Other"
 msgid "Hesabım"
 msgstr "My Account"
 
-msgid "Destek"
+msgid "Yardım"
 msgstr "Support"
 
 msgid "Duyurular"

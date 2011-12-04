@@ -23,8 +23,20 @@ class Page extends F3instance {
 		$this->_page('help', 'Yardım Sayfası');
 	}
 
-	function page_reload() {
-		$this->_page(F3::get('PARAMS.page'), 'Örnek Sayfa');
+	function news() {
+		$this->_page('news', 'Yenilikler');
+	}
+
+	function announ() {
+		$this->_page('announ', 'Duyurular');
+	}
+
+	function examc() {
+		$this->_page('examc', 'Sınav Takvimi');
+	}
+
+	function exams() {
+		$this->_page('exams', 'Sınavlar');
 	}
 
 	function beforeroute() {

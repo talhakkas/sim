@@ -27,7 +27,7 @@ class Home extends F3instance {
 		$this->_page('contact', 'İletişim');
 	}
 
-	function page() {
+	function page404() {
 		$this->_page('404', 'Sayfa Bulunamadı');
 	}
 

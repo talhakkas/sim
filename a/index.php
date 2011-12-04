@@ -13,7 +13,7 @@ F3::route("GET /people", 	'Home->people');
 F3::route("GET /work", 		'Home->work');
 F3::route("GET /about", 	'Home->about');
 F3::route("GET /contact", 	'Home->contact');
-F3::route("GET /@page", 	'Home->page');
+F3::route("GET /@page", 	'Home->page404');
 
 F3::route("GET /localize/@lang",'localize');
 
@@ -34,6 +34,10 @@ F3::route('POST /personal/pedit',  'Personal->update'); // Kişisel bilgileri g�
 
 // PAGE
 F3::route('GET  /help',    	'Page->help'); // Yardım sayfası
+F3::route('GET  /announ',    	'Page->announ'); // Duruyular Sayfası
+F3::route('GET  /exams',    	'Page->exams'); // Sınavlar sayfası
+F3::route('GET  /examc',    	'Page->examc'); // Sınav Takvimi
+F3::route('GET  /news',    	'Page->news'); // Yenilikler
 
 
 F3::route("GET /show/@cid/@id/@opt", 'show.php');

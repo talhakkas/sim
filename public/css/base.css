@@ -21,7 +21,7 @@ body {
     box-shadow:0 0 18px rgba(0,0,0,0.4);
 }
 
-#content h2 {color: #3072b3; border-bottom:1px solid #ddd; padding:0 15px 8px 5px; margin:5px 0 25px; width:auto; font-weight:lighter;}
+#content h2 {color: #3072b3; border-bottom:1px solid #ddd; padding:0 15px 8px 5px; margin:25px 0 25px; width:auto; font-weight:lighter;}
 #content h2 a { padding-left:27px; }
 #content h2 a.pdf       { background:url('../img/icon/16x16/pdf2.png') no-repeat left; padding-left:20px; }
 #content h2 a.edit      { background:url('../img/icon/24x24/edit.png') no-repeat left; }
@@ -30,34 +30,32 @@ body {
 #content h2 a.start-case{ background:url('../img/icon/16x16/clock.png') no-repeat left; }
 #content .page { width: 800px; min-height:400px; }
 
-/*#sidebar-background { background: #fff url(../img/icon/128x128/business_user.png) no-repeat top; background-size:80px; height:80px; margin-top:20px;}*/
-#sidebar { margin-top: -20px; width:90px; min-height:120px; float:right; font-size:11px; background:#fff;}
-#sidebar-background {text-align:center;}
+#sidebar { margin-top: -20px; width:90px; min-height:100px; float:right; font-size:11px; background:#fff;}
+#sidebar-image { background: #fff url(../img/icon/64x64/surgeon.png) no-repeat center; height:64px; margin-top:20px;}
 #sidebar span { float:left; width:90px; text-align:center; }
 #sidebar span.mod { margin-top:5px; font-weight:bold}
 
-#sidebar #column { height:auto; width:90px; float:right; padding:5px; margin-right:-5px;
+#sidebar ul { height:auto; width:90px; float:right; padding:5px; margin-right:-5px;
     -webkit-box-shadow:0 2px 2px rgba(0,0,0,0.2); -moz-box-shadow:0 2px 2px rgba(0,0,0,0.2); box-shadow:0 5px 10px rgba(0, 0, 0, 0.2);}
-#sidebar #column ul { padding-left:0px; }
-#sidebar #column li { list-style-type:none; margin-bottom:15px; text-align:center; padding:0 auto; }
-#sidebar #column li a { display:block; padding-top:46px; margin-top:0px; }
-#sidebar #column li.edit a  { background:url(../img/icon/48x48/edit.png) no-repeat top center;;}
-#sidebar #column li.anket a { background:url(../img/icon/48x48/chart_pie.png) no-repeat top center;;}
-#sidebar #column li.css a   { background:url(../img/icon/48x48/promotion.png) no-repeat top center;;}
-#sidebar #column li.dal a   { background:url(../img/icon/48x48/comments.png) no-repeat top center;;}
+#sidebar li { list-style-type:none; margin-bottom:15px; text-align:center; padding:0 auto; }
+#sidebar li a { display:block; padding-top:46px; margin-top:0px; }
+#sidebar li.edit a  { background:url(../img/icon/48x48/edit.png) no-repeat top center;;}
+#sidebar li.anket a { background:url(../img/icon/48x48/chart_pie.png) no-repeat top center;;}
+#sidebar li.css a   { background:url(../img/icon/48x48/promotion.png) no-repeat top center;;}
+#sidebar li.dal a   { background:url(../img/icon/48x48/comments.png) no-repeat top center;;}
 
-#sidebar #column li.per a   { background:url(../img/icon/48x48/edit_business_user.png) no-repeat top center;;}
-#sidebar #column li.case a  { background:url(../img/icon/48x48/clock.png) no-repeat top center;;}
-#sidebar #column li.exam a  { background:url(../img/icon/48x48/book.png) no-repeat top center;;}
-#sidebar #column li.bar a   { background:url(../img/icon/48x48/office_folders.png) no-repeat top center;;}
-#sidebar #column li.baz a   { background:url(../img/icon/48x48/chart.png) no-repeat top center;;}
+#sidebar li.per a   { background:url(../img/icon/48x48/edit_business_user.png) no-repeat top center;;}
+#sidebar li.case a  { background:url(../img/icon/48x48/clock.png) no-repeat top center;;}
+#sidebar li.exam a  { background:url(../img/icon/48x48/book.png) no-repeat top center;;}
+#sidebar li.bar a   { background:url(../img/icon/48x48/office_folders.png) no-repeat top center;;}
+#sidebar li.baz a   { background:url(../img/icon/48x48/chart.png) no-repeat top center;;}
 
 
 a {color: #3072b3; cursor: pointer; -moz-outline-style: none; text-decoration:none}
 .error, .success, .warning { color:#872020; margin: 0 20px;}
 
-select{font:13px Arial,Helvetica,sans-serif;border:1px solid #bdc7d8;padding:3px;background:#fff;height:27px;color:#585858;}
-
+select { font:13px Arial,Helvetica,sans-serif;border:1px solid #bdc7d8;padding:3px;background:#fff;height:27px;color:#585858; }
+table { font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif; }
 tr, td, th {text-align:left;}
 
 textarea,

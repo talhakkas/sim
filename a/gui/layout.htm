@@ -54,8 +54,8 @@
     <title>{{@page_title}}</title>
   </head>
 
+  <!-- doğru ve yanlış adımlar için -->
   <style type="text/css" media="all">
-
     <F3:check if="{{@case_success}}">
     #content {
       -webkit-box-shadow:0 0 20px rgba(0, 100, 0, 1);
@@ -75,8 +75,8 @@
     #content h2, #content h2 a { color:#600; }
     div#wrapper {border-color: #600;}
     </F3:check>
-
   </style>
+
 
   <body>
     <div id="wrapper">
@@ -101,29 +101,23 @@
           <F3:check if="{{isallowed('Student')}}">{{ _e('Öğrenci') }}</F3:check>
         </span>
 
-        <div id="sidebar-background">
-          <img src="/public/img/icon/64x64/surgeon.png" />
-        </div>
+        <div id="sidebar-image"></div>
 
         <span>{{@SESSION.userinfo.fullname}}</span>
 
         <F3:check if="{{ preg_match('/\/edit/', @PARAMS.0) | preg_match('/\/create/', @PARAMS.0) }}">
         <F3:true>
-        <div id="column">
           <ul>
             <li class="edit"><a href="{{@SR}}/create/oyku/{{@SESSION.cid}}/{{@SESSION.id}}">ÖYKÜ</a></li>
             <li class="css"><a href="{{@SR}}/create/css/{{@SESSION.cid}}/{{@SESSION.id}}">ÇSS</a></li>
             <li class="dal"><a href="{{@SR}}/create/dal/{{@SESSION.cid}}/{{@SESSION.id}}">DALLANMA</a></li>
             <li class="anket"><a href="{{@SR}}/create/anket/{{@SESSION.cid}}/{{@SESSION.id}}">ANKET</a></li>
           </ul>
-        </div>
         </F3:true>
         </F3:check>
 
         <F3:check if="{{ substr(@template, 0, 8) == 'personal'}}">
         <F3:true>
-
-        <div id="column">
           <ul>
             <li class="per" ><a href="{{@SR}}/personal/pedit">Kişisel Bilgilerim</a></li>
             <li class="case"><a href="{{@SR}}/report">Olgu Sonuçları</a></li>
@@ -131,12 +125,11 @@
             <li class="bar" ><a href="#">foo</a></li>
             <li class="baz" ><a href="#">bar</a></li>
           </ul>
-        </div>
         </F3:true>
         </F3:check>
-
       </div>
 
+      <!-- sayfayı içe aktaralım -->
       <F3:include href="{{@template}}.htm"/>
     </div>
 
