@@ -45,13 +45,16 @@ T_bind_textdomain_codeset($locale, 'UTF-8');
 T_textdomain($locale);
 
 function localize() {
+	// sayfanın nereden geldiğini bulalım
+	$localize = F3::get('SESSION.localize');
+
 	$lang = F3::get("PARAMS.lang");
 	$locales = array('en_US', 'tr_TR');
 
 	if (in_array($lang, $locales))
 		F3::set('SESSION.lang', $lang);
 
-	F3::reroute('/');
+	F3::reroute($localize);
 }
 
 function _e($text) {

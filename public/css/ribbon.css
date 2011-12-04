@@ -4,17 +4,19 @@
 	position:absolute;
 	left:-3em;
 	top:2.5em;
+	/*height:30px;*/
 	-moz-transform:rotate(-45deg);
 	-webkit-transform:rotate(-45deg);
-	-moz-box-shadow:0 0 2px #3072b3;
-	-webkit-box-shadow:0 0 2px #3072b3;
+	/*-moz-box-shadow:0 0 2px #3072b3;*/
+	/*-webkit-box-shadow:0 0 2px #3072b3;*/
 }
 
-#ribbon a{
-	border: 1px solid #3072b3;
+#ribbon a {
+	/*border: 1px solid #3072b3;*/
 	color:#fff;
 	display:block;
 	font:bold 100.25%'Helvetiva Neue',Helvetica,Arial,sans-serif;
+	font-size: 14px;
 	margin:.05em 0 .075em 0;
 	padding:.5em 3.5em;
 	text-align:center;
