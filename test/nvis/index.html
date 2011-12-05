@@ -29,18 +29,31 @@
 	</div>
 	
 	<!-- the canvas div must be emptied before plotting anything -->
-	<div style="height: 508px; width: 1328px;" id="canvas"><svg height="503" width="1266" version="1.1" xmlns="http://www.w3.org/2000/svg"><desc>Created with Raphaël</desc><defs></defs><ellipse fill-opacity="0.6" id="new" stroke-width="2" style="stroke-width: 2; fill-opacity: 0.6; cursor: pointer;" stroke="#bfac00" fill="#bfac00" ry="20" rx="30" cy="109" cx="493"></ellipse><text fill-opacity="0.6" fill="#000000" stroke="none" font="10px &quot;Arial&quot;" style="text-anchor: middle; font: 10px &quot;Arial&quot;; fill-opacity: 0.6; cursor: move;" text-anchor="middle" y="142.5" x="493"><tspan>new</tspan></text><ellipse fill-opacity="0.6" id="okay" stroke-width="2" style="stroke-width: 2; fill-opacity: 0.6; cursor: pointer;" stroke="#bf5600" fill="#bf5600" ry="20" rx="30" cy="147" cx="726"></ellipse><text fill-opacity="0.6" fill="#000000" stroke="none" font="10px &quot;Arial&quot;" style="text-anchor: middle; font: 10px &quot;Arial&quot;; fill-opacity: 0.6; cursor: move;" text-anchor="middle" y="180.5" x="726"><tspan>okay</tspan></text></svg></div>
+	<div style="height: 508px; width: 1328px;" id="canvas">
+		<svg height="503" width="1266" version="1.1" xmlns="http://www.w3.org/2000/svg">
+			<desc>Created with Raphaël</desc>
+			<defs></defs>
+			<ellipse fill-opacity="0.6" id="new" stroke-width="2" style="stroke-width: 2; fill-opacity: 0.6; cursor: pointer;" 
+					stroke="#bfac00" fill="#bfac00" ry="20" rx="30" cy="109" cx="493"></ellipse>
+			<text fill-opacity="0.6" fill="#000000" stroke="none" font="10px &quot;Arial&quot;" 
+					style="text-anchor: middle; font: 10px &quot;Arial&quot;; fill-opacity: 0.6; cursor: move;" 
+					text-anchor="middle" y="142.5" x="493"><tspan>new</tspan></text>
+			<ellipse fill-opacity="0.6" id="okay" stroke-width="2" style="stroke-width: 2; fill-opacity: 0.6; cursor: pointer;" 
+				stroke="#bf5600" fill="#bf5600" ry="20" rx="30" cy="147" cx="726"></ellipse>
+			<text fill-opacity="0.6" fill="#000000" stroke="none" font="10px &quot;Arial&quot;" 
+				style="text-anchor: middle; font: 10px &quot;Arial&quot;; fill-opacity: 0.6; cursor: move;" 
+				text-anchor="middle" y="180.5" x="726"><tspan>okay</tspan></text>
+		</svg>
+	</div>
 	
 	<!-- right click menu for each node -->
 	<div class="vmenu"> 
 		<div class="first_li nohover"><span style="font-weight:800"></span></div>
 		<div class="sep_li"></div>
-		<div class="first_li" id="createEdge"><span>Create edge</span></div> 
-		<div class="first_li" id="removeEdge"><span>Remove edge</span></div>
+		<div class="first_li" id="createEdge"><a href="#" class="button icon loop">Bağ Oluştur</a></div> 
+		<div class="first_li" id="removeEdge"><a href="#" class="button icon trash">Bağ Sil</a></div>
 		<div class="sep_li"></div>
-		<div class="first_li" id="findShortestPath"><span>Shortest path</span></div>
-		<div class="sep_li"></div>
-		<div class="first_li" id="removeNode"><span>Remove node</span></div> 
+		<div class="first_li" id="removeNode"><a href="#" class="button icon remove">Düğüm sil</a></div> 
 	</div>
 	
 	<!-- declare overlay div to show matrix -->
