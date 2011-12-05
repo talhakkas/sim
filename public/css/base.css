@@ -6,6 +6,7 @@ body {
     padding:auto;
     color:#555;
     background:#f0f0f0;
+    background:#EFEFEF;
     background:url(../img/body.png);
 }
 
@@ -16,6 +17,8 @@ body {
     padding: 20px;
     margin: 30px auto 30px;;
     background:#fff;
+    border: 1px solid #ddd;
+
     -webkit-box-shadow:0 0 18px rgba(0,0,0,0.4);
     -moz-box-shadow:0 0 18px rgba(0,0,0,0.4);
     box-shadow:0 0 18px rgba(0,0,0,0.4);
@@ -215,7 +218,7 @@ label.label input[type=password]:focus { outline: 0; }
 
 /* ------------------ Footer -------------------- */
 #footer { width: 960px; margin: 0 auto; border-top: 1px solid #ddd; padding: 10px 0 18px; clear: both; position: relative;}
-#footer p.copyright { margin: 0; background:#fff; width:440px;}
+#footer p.copyright { margin: 0; width:440px;}
 
 #footer ul { float: right; height: 27px; margin: -2px -12px 0 0; }
 #footer ul li { display: inline;}
