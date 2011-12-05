@@ -32,9 +32,9 @@
 
 	
 	// switch for the button click events
-	$("#form > button").click(function(){		
+	$("#form > a.button").click(function(){		
 		switch($(this).html()){
-			case "add":
+			case "Ekle":
 				if($("#form > input:eq(1)").val()!=""&&$("#form > input:eq(1)").val()!="Node"){
 					if(!addNode($("#form > input:eq(1)").val()))
 						$.notifyBar({html:"Node already exists, it wasn't added",cls:"error"});
@@ -122,7 +122,7 @@
 				else
 					$.notifyBar({html:"The graph is empty<br/>Try adding some nodes first",cls:"error"});
 			break;
-			case "edges":
+			case "Bağlar":
 				if(g.nodes.length>0){
 					var r = "<input type=\"hidden\" name = \"edges\" id=\"edges\"  value=\"";
 					var matrix = g.getMatrix("weighted");
@@ -152,7 +152,7 @@
 				else
 					$.notifyBar({html:"The graph is empty<br/>Try adding some nodes first",cls:"error"});
 			break;
-			case "nodes":
+			case "Düğümler":
 				if(g.nodes.length>0){
 					if(g.edges.length>0){
 						var r = "<input type=\"hidden\" name = \"nodes\" id=\"nodes\"  value=\"";
@@ -177,7 +177,7 @@
 					$.notifyBar({html:"The graph is empty<br/>Try adding some nodes first",cls:"error"});
 			break;
 			
-			case "reset app":
+			case "Uygulamayı yeniden başlat":
 				if(g.nodes.length>0)
 					jConfirm("All unsaved changes will be lost.<br/>Really reset?", "About to reset your graph", function(r){
 						if(r){
@@ -191,13 +191,13 @@
 				else
 					$.notifyBar({html:"There's nothing to reset"});
 			break;
-			case "redraw":
+			case "Yeniden çiz":
 				if(g.nodes.length>0)
 					plot();
 				else
 					$.notifyBar({html:"There's nothing to draw or redraw<br/>Try adding some nodes first"});
 			break;
-			case "new":
+			case "Yeni":
 				if(g.nodes.length>0){
 					jConfirm("Any unsaved changes will be lost<br/>Do you want to continue?","Create new graph",function(r){
 						if(r){
@@ -208,7 +208,7 @@
 					});
 				}
 			break;
-			case "save":
+			case "Sakla":
 				if(g.nodes.length>0){
 					var name = $("#form > input:eq(0)").val();
 					if(name!=""&&name!="Untitled graph"){
@@ -239,7 +239,7 @@
 				else
 					$.notifyBar({html:"The graph is empty<br/>Try adding some nodes first",cls:"error"});
 			break;
-			case "delete this graph":
+			case "Bu grafı sil":
 				if(graphs.length>0){
 					if(graphs.filter(function(a){ return(a==g.name) }).length>0){
 						jConfirm("Are you sure you want to delete this graph?<br/>There's no going back","Confirm deletion",function(r){
@@ -264,7 +264,7 @@
 				else
 					$.notifyBar({html:"There's nothing to delete<br/>Try saving a graph first"});
 			break;
-			case "delete all graphs":
+			case "Tüm grafları sil":
 				if(graphs.length>0)
 					jConfirm("Do you REALLY want to delete all graphs stored on this computer?<br/>There's no turn back","Confirm complete deletion",function(r){
 						if(r){
@@ -282,7 +282,7 @@
 				else
 					$.notifyBar({html:"There's nothing to delete<br/>Try saving a graph first"});
 			break;
-			case "load":	
+			case "Yükle":	
 				var check = function(){
 					if($("#form > select > option").size()>1)
 						for(var i=1;i<$("#form  > select > option").size();i++)
