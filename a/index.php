@@ -30,7 +30,11 @@ F3::route('GET  /personal/pedit',  'Personal->edit'); // Kişisel bilgiler
 F3::route('POST /personal/pedit',  'Personal->update'); // Kişisel bilgileri güncelle
 
 // PAGE
-F3::route('GET  /help',    	'Page->help'); // Yardım sayfası
+F3::route('GET  /help',    	'Page->help'); // Yardım
+F3::route('GET  /news',    	'Page->news'); // Yenilikler
+F3::route('GET  /announ',    	'Page->announ'); // Duyurular
+F3::route('GET  /examc',    	'Page->examc'); // Sınav Takvimi
+F3::route('GET  /exams',    	'Page->exams'); // Sınavlar
 
 
 F3::route("GET /show/@cid/@id/@opt", 'show.php');
