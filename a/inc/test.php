@@ -1,10 +1,5 @@
 <?php
 
-$nodes = array( 1=>"dal",
-		17=>"drug", 26=>"dose",
-	       	35=>"exam", 36=>"result",
-	       	37=>"bmap", 38=>"bmapr",
-	       	21=>"immap",23=>"immapr");
 
 function test2()
 {
@@ -34,11 +29,14 @@ function test4()
 
 function test()
 {
-	print_pre(F3::get('SESSION'), 'SESSION'); 
-	print_pre(get_tet(1), 'TET: 1');
-	print_pre(get_tet(2), 'TET: 2');
-	print_pre(get_tet(3), 'TET: 3'); return;
-	test2();
+	$nodes = array( 1=>"dal",
+		17=>"drug", 26=>"dose",
+	       	35=>"exam", 36=>"result",
+	       	37=>"bmap", 38=>"bmapr",
+	       	21=>"immap",23=>"immapr");
+
+	foreach($nodes as $id=>$name)
+		print_pre(get_node(1, $id), "<hr>$name");
 }
 
 function test_gui()

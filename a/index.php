@@ -5,7 +5,6 @@ require_once './api/markdown/markdown.php';
 require_once './lib/base.php';
 require_once './inc/lib.php';
 
-
 // HOME PAGES
 F3::route("GET /*", 		'Home->home');
 F3::route("GET /people", 	'Home->people');
@@ -17,7 +16,6 @@ F3::route("GET /localize/@lang",'localize');
 
 // PDF
 F3::route("GET /pdf/report", 	'Pdf->student_report');
-
 
 // ACCOUNT
 F3::route("POST /",      	'Account->auth');   // login action
@@ -31,7 +29,6 @@ F3::route('POST /personal/pedit',  'Personal->update'); // Kişisel bilgileri g�
 
 // PAGE
 F3::route('GET  /help',    	'Page->help'); // Yardım sayfası
-
 
 F3::route("GET /show/@cid/@id/@opt", 'show.php');
 	F3::route("POST /show/@cid/@id/@opt", 'show.php');
