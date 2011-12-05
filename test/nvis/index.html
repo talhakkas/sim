@@ -9,6 +9,8 @@
 		<link rel="stylesheet" type="text/css" href="/public/css/style.css" />
 	</head>
 	<body>
+	<input type="hidden" name="cid" id="cid" value="3">
+
 		<div style="display: none;" id="__notifyBar" class="jquery-notify-bar">Silinecek bir şey yok<br>Try saving a graph first</div>
 
 	<!-- the loading overlay -->
@@ -54,11 +56,13 @@
 	<!-- right click menu for each node -->
 	<div class="vmenu"> 
 		<div class="first_li nohover"><span style="font-weight:800"></span></div>
-		<div class="sep_li"></div>
-		<div class="first_li" id="createEdge"><a href="#" class="button icon loop"  >Bağ Oluştur</a></div> 
-		<div class="first_li" id="removeEdge"><a href="#" class="button icon trash" >Bağ Sil&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></div>
-		<div class="sep_li"></div>
-		<div class="first_li" id="removeNode"><a href="#" class="button icon remove">Düğüm Sil&nbsp;&nbsp;</a></div> 
+		<div class="sep_li">Bağ</div>
+		<div id="createEdge"><a href="#" class="button icon loop"  >Oluştur</a></div> 
+		<div id="removeEdge"><a href="#" class="button icon trash" >Sil</a></div>
+
+		<div class="sep_li">Düğüm</div>
+		<div id="editNode"><a href="/a/edit/3/1/" class="button icon edit" target="_blank">Düzenle</a></div>
+		<div id="removeNode"><a href="#" class="button icon remove">Sil</a></div> 
 	</div>
 	
 	<!-- secret thing hmmm... not so secret, try pressing CTRL + SHIFT + S  (chrome only) -->

@@ -248,12 +248,30 @@
 		
 	};
 
-	
+	var getCID = function(){
+		return document.getElementById('cid').value;
+	};
+
+	var getNtitle = function(node){
+		tmp = node.split(':');
+		return tmp[0];
+	};
+	var getNtype = function(node){
+		tmp = node.split(':');
+		return tmp[1];
+	};
+	var getNID = function(node){
+		// FIXME
+		return 1;
+	};
+
 	// addNode
 	var addNode = function(node){
 		if(g.addNode(node)){
 			plot();
-			// AJAX: create_node.php
+			$.get('/a/ajax/add_node.php?cid=' + getCID() + '&ntype=' + getNtype(node) + '&title=' + getNtitle(node), function (data) {
+				$.notifyBar({html:data});
+			});
 			return true;
 		}
 		else
@@ -264,7 +282,9 @@
 	var removeNode = function(node){
 		g.removeNode(node);
 		plot();
-		// AJAX: remove_node.php
+		$.get('/a/ajax/remove_node.php?cid=' + getCID() + '&id=' + getNID(node), function (data) {
+			$.notifyBar({html:data});
+		});
 	};
 	
 	// addEdge
