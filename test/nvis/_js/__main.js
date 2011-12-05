@@ -41,7 +41,79 @@
 					$("#form > input:eq(1)").val("").focus();
 				}
 			break;
-			case "weighted matrix":
+			case "Bağlar":
+				if(g.nodes.length>0){
+					var r = "<input type=\"hidden\" name = \"edges\" id=\"edges\"  value=\"";
+					var matrix = g.getMatrix("weighted");
+					for(var i=0;i<g.nodes.length;i++){
+						for(var j=0;j<g.nodes.length;j++){
+							if(typeof matrix[i][j] != "boolean")
+								r+=matrix[i][j].toString();
+							else if(matrix[i][j] == true)
+								r+="1";
+							else
+								r+='0';
+								
+							if ( (j + 1) != g.nodes.length){	
+								r+=',';
+							}
+						}
+						if ( (i + 1) != g.nodes.length){	
+							r+=';';
+						}
+					}
+					r+='\">';
+					
+					alert(r);
+					
+					$("#edges").html(r);
+				}
+				else
+					$.notifyBar({html:"The graph is empty<br/>Try adding some nodes first",cls:"error"});
+			break;
+			case "Düğümler":
+				if(g.nodes.length>0){
+					var r = "<input type=\"hidden\" name = \"nodes\" id=\"nodes\"  value=\"";
+
+					for(var i=0; i < g.nodes.length; i++) {
+						r += g.nodes[i];
+						
+						if ( (i + 1) != g.nodes.length){	
+							r+=';';
+						}
+					}
+					r+='\">';
+			
+					alert(r);
+
+					$("#nodes").html(r);
+				}
+				else
+					$.notifyBar({html:"The graph is empty<br/>Try adding some nodes first",cls:"error"});
+			break;
+			
+			case "Uygulamayı yeniden başlat":
+				if(g.nodes.length>0)
+					jConfirm("All unsaved changes will be lost.<br/>Really reset?", "About to reset your graph", function(r){
+						if(r){
+							$("#canvas").fadeOut().delay(300).fadeIn();
+							window.setTimeout(function(){
+								$("#canvas").html(description);
+							}, 300);
+							g = new DirectedGraph();
+						}
+					});
+				else
+					$.notifyBar({html:"There's nothing to reset"});
+			break;
+			case "Yeniden çiz":
+				if(g.nodes.length>0)
+					plot();
+				else
+					$.notifyBar({html:"There's nothing to draw or redraw<br/>Try adding some nodes first"});
+			break;
+
+			/*case "weighted matrix":
 				if(g.nodes.length>0){
 					var r = '<h2>Weighted Matrix</h2><table><tr><th> </th>';
 					var matrix = g.getMatrix("weighted");
@@ -121,81 +193,6 @@
 				}
 				else
 					$.notifyBar({html:"The graph is empty<br/>Try adding some nodes first",cls:"error"});
-			break;
-			case "Bağlar":
-				if(g.nodes.length>0){
-					var r = "<input type=\"hidden\" name = \"edges\" id=\"edges\"  value=\"";
-					var matrix = g.getMatrix("weighted");
-					for(var i=0;i<g.nodes.length;i++){
-						for(var j=0;j<g.nodes.length;j++){
-							if(typeof matrix[i][j] != "boolean")
-								r+=matrix[i][j].toString();
-							else if(matrix[i][j] == true)
-								r+="1";
-							else
-								r+='0';
-								
-							if ( (j + 1) != g.nodes.length){	
-								r+=',';
-							}
-						}
-						if ( (i + 1) != g.nodes.length){	
-							r+=';';
-						}
-					}
-					r+='\">';
-					
-					alert(r);
-					
-					$("#edges").html(r);
-				}
-				else
-					$.notifyBar({html:"The graph is empty<br/>Try adding some nodes first",cls:"error"});
-			break;
-			case "Düğümler":
-				if(g.nodes.length>0){
-					if(g.edges.length>0){
-						var r = "<input type=\"hidden\" name = \"nodes\" id=\"nodes\"  value=\"";
-
-						for(var i=0; i < g.nodes.length; i++) {
-							r += g.nodes[i];
-							
-							if ( (i + 1) != g.nodes.length){	
-								r+=';';
-							}
-						}
-						r+='\">';
-					
-						alert(r);
-
-						$("#nodes").html(r);
-					}
-					else
-						$.notifyBar({html:"The graph doesn't contain any edges<br/>Try adding some by double-clicking a node",cls:"error"});
-				}
-				else
-					$.notifyBar({html:"The graph is empty<br/>Try adding some nodes first",cls:"error"});
-			break;
-			
-			case "Uygulamayı yeniden başlat":
-				if(g.nodes.length>0)
-					jConfirm("All unsaved changes will be lost.<br/>Really reset?", "About to reset your graph", function(r){
-						if(r){
-							$("#canvas").fadeOut().delay(300).fadeIn();
-							window.setTimeout(function(){
-								$("#canvas").html(description);
-							}, 300);
-							g = new DirectedGraph();
-						}
-					});
-				else
-					$.notifyBar({html:"There's nothing to reset"});
-			break;
-			case "Yeniden çiz":
-				if(g.nodes.length>0)
-					plot();
-				else
-					$.notifyBar({html:"There's nothing to draw or redraw<br/>Try adding some nodes first"});
 			break;
 			case "Yeni":
 				if(g.nodes.length>0){
@@ -327,6 +324,7 @@
 				else
 					$.notifyBar({html:"There's nothing to calculate it's depth<br/>Try adding some nodes first"});
 			break;
+			*/
 		}
 	});
 			
