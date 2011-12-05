@@ -264,17 +264,22 @@
 	var removeNode = function(node){
 		g.removeNode(node);
 		plot();
+		// AJAX: remove_node.php
 	};
 	
 	// addEdge
 	var addEdge = function(from,to,value){
-		if(g.addEdge(from,to,value))
+		if(g.addEdge(from,to,value)) {
 			plot();
+			// AJAX: add_edge.php
+		}
 	};
 	
 	var removeEdge = function(from,to){
-		if(g.removeEdge(from,to))
+		if(g.removeEdge(from,to)) {
 			plot();
+			// AJAX: remove_edge.php
+		}
 	};
 	
 	// onResize function and variable
