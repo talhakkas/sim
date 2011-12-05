@@ -35,12 +35,13 @@
 	$("#form > a.button").click(function(){		
 		switch($(this).html()){
 			case "Ekle":
-				if($("#form > input:eq(1)").val()!=""&&$("#form > input:eq(1)").val()!="Node"){
-					if(!addNode($("#form > input:eq(1)").val()))
-						$.notifyBar({html:"Node already exists, it wasn't added",cls:"error"});
-					$("#form > input:eq(1)").val("").focus();
-				}
-			break;
+				jPrompt("Düğüm adı","düğüm","Düğüm", function(r){
+					if(r!="" && r!="düğüm") {
+						if(!addNode(r))
+							$.notifyBar({html:"Düğüm zaten var, ekleyemedim.",cls:"error"});
+					}
+				});
+				break;
 			case "Bağlar":
 				if(g.nodes.length>0){
 					var r = "<input type=\"hidden\" name = \"edges\" id=\"edges\"  value=\"";
@@ -112,227 +113,9 @@
 				else
 					$.notifyBar({html:"There's nothing to draw or redraw<br/>Try adding some nodes first"});
 			break;
-
-			/*case "weighted matrix":
-				if(g.nodes.length>0){
-					var r = '<h2>Weighted Matrix</h2><table><tr><th> </th>';
-					var matrix = g.getMatrix("weighted");
-					for(var i=0;i<g.nodes.length;i++)
-						r+='<th>'+g.nodes[i]+'</th>';
-					r+='</tr>';
-					for(var i=0;i<g.nodes.length;i++){
-						r+='<tr><td class="table_first">'+g.nodes[i]+'</td>'
-						for(var j=0;j<g.nodes.length;j++){
-							r+='<td>';
-							if(typeof matrix[i][j] != "boolean")
-								r+='<span style="color:red">'+matrix[i][j].toString()+'</span>';
-							else if(matrix[i][j] == true)
-								r+='1';
-							else
-								r+='0';
-							r+='</td>';
-						}
-						r+='</tr>'
-					}
-					r+='</table><p>Weights shown in <span style="color:red">red</span><br/>Unweighted edge displays as 1<br/>Non existent edge displays as 0</p>';
-					$("#matrix-overlay").html(r);
-					$("#matrix-overlay-div").fadeIn();
-				}
-				else
-					$.notifyBar({html:"The graph is empty<br/>Try adding some nodes first", cls:"error"});
-			break;
-			case "adjacency matrix":
-				if(g.nodes.length>0){
-					var r = '<h2>Adjacency Matrix</h2><table><tr><th> </th>';
-					var matrix = g.getMatrix("weighted");
-					for(var i=0;i<g.nodes.length;i++)
-						r+='<th>'+g.nodes[i]+'</th>';
-					r+='</tr>';
-					for(var i=0;i<g.nodes.length;i++){
-						r+='<tr><td class="table_first">'+g.nodes[i]+'</td>'
-						for(var j=0;j<g.nodes.length;j++){
-							r+='<td>';
-							if(matrix[i][j])
-								r+='<span style="color:red">1</span>';
-							else
-								r+='0';
-							r+='</td>';
-						}
-						r+='</tr>'
-					}
-					r+='</table>';
-					$("#matrix-overlay").html(r);
-					$("#matrix-overlay-div").fadeIn();
-				}
-				else
-					$.notifyBar({html:"The graph is empty<br/>Try adding some nodes first",cls:"error"});
-			break;
-			
-			case "adjacency list":
-				if(g.nodes.length>0){
-					if(g.edges.length>0){
-						var r = "<h2>Adjacency List</h2><ul>";
-						for(var i=0;i<g.edges.length;i++){
-							r+='<li>'+g.edges[i].node+'<ul>';
-							for(var j=0;j<g.edges[i].targets.length;j++){
-								var txt = "";
-								if(g.edges[i].targets[j][1])
-									txt+=g.edges[i].targets[j][0] + ' ('+g.edges[i].targets[j][1]+')';
-								else
-									txt+=g.edges[i].targets[j];
-								r+='<li>'+txt+'</li>';
-							}
-							r+='</ul></li>';
-						}
-						r+='</ul>';
-						$("#matrix-overlay").html(r);
-						$("#matrix-overlay-div").fadeIn();
-					}
-					else
-						$.notifyBar({html:"The graph doesn't contain any edges<br/>Try adding some by double-clicking a node",cls:"error"});
-				}
-				else
-					$.notifyBar({html:"The graph is empty<br/>Try adding some nodes first",cls:"error"});
-			break;
-			case "Yeni":
-				if(g.nodes.length>0){
-					jConfirm("Any unsaved changes will be lost<br/>Do you want to continue?","Create new graph",function(r){
-						if(r){
-							g = new DirectedGraph();
-							$("#canvas").empty();
-							$("#form > input:eq(0)").val("Untitled graph").css({"color":"#999"});
-						}
-					});
-				}
-			break;
-			case "Sakla":
-				if(g.nodes.length>0){
-					var name = $("#form > input:eq(0)").val();
-					if(name!=""&&name!="Untitled graph"){
-						if(!getCookie(name)){
-							g.setName(name);
-							graphs.push(name);
-							setCookie("graphsCookie",JSON.stringify(graphs),3650);
-							setCookie(name,JSON.stringify(g),3650);
-							$("#form > select").empty().html('<option style="color:ccc">load a graph</option>');
-							for(var i=0;i<graphs.length;i++)
-								$("#form > select").append('<option>'+graphs[i]+'</option>');
-							$.notifyBar({html:name+" was saved successfully",cls:"success"});							
-						}
-						else
-							jConfirm("Another graph exists with that name in this computer.<br/>Do you want to replace it with this one?","Replace graph",function(r){
-								if(r){
-									setCookie(name,JSON.stringify(g),3650);
-									$("#form > select").empty().html('<option style="color:ccc">load a graph</option>');
-									for(var i=0;i<graphs.length;i++)
-										$("#form > select").append('<option>'+graphs[i]+'</option>');
-									$.notifyBar({html:name+" was saved successfully",cls:"success"});
-								}
-							});
-					}
-					else
-						$.notifyBar({html:"The graph must be named first",cls:"error"});
-				}
-				else
-					$.notifyBar({html:"The graph is empty<br/>Try adding some nodes first",cls:"error"});
-			break;
-			case "Bu grafı sil":
-				if(graphs.length>0){
-					if(graphs.filter(function(a){ return(a==g.name) }).length>0){
-						jConfirm("Are you sure you want to delete this graph?<br/>There's no going back","Confirm deletion",function(r){
-							if(r){
-								var arr = new Array();
-								graphs.forEach(function(x){ if(x!=g.name) arr.push(x) });
-								graphs = arr;
-								setCookie("graphsCookie",JSON.stringify(graphs),3650);
-								deleteCookie(g.name);
-								$("#form > select").empty().html('<option style="color:ccc">load a graph</option>');
-								for(var i=0;i<graphs.length;i++)
-									$("#form > select").append('<option>'+graphs[i]+'</option>');
-								$.notifyBar({html:g.name+" was deleted successfully",cls:"success"});
-								g = new DirectedGraph();
-								$("#canvas").empty();						
-							}
-						})
-					}
-					else
-						$.notifyBar({html:"There's nothing to delete<br/>Try saving the graph"})
-				}
-				else
-					$.notifyBar({html:"There's nothing to delete<br/>Try saving a graph first"});
-			break;
-			case "Tüm grafları sil":
-				if(graphs.length>0)
-					jConfirm("Do you REALLY want to delete all graphs stored on this computer?<br/>There's no turn back","Confirm complete deletion",function(r){
-						if(r){
-							deleteAllCookies();
-							graphs = new Array();
-							$("#form > select").html('<option>load a graph</option>');
-							$("#canvas").fadeOut().delay(300).fadeIn();
-							window.setTimeout(function(){
-								$("#canvas").html(description);
-							}, 300);
-							g = new DirectedGraph();
-							$.notifyBar({html:"All graphs were deleted successfully.",cls:"success"});						
-						}
-					});
-				else
-					$.notifyBar({html:"There's nothing to delete<br/>Try saving a graph first"});
-			break;
-			case "Yükle":	
-				var check = function(){
-					if($("#form > select > option").size()>1)
-						for(var i=1;i<$("#form  > select > option").size();i++)
-							if($("#form > select > option:eq("+i+")").attr("selected"))
-								return $("#form > select > option:eq("+i+")").html();
-					return false;
-				}
-				if(check()){
-					if(g.nodes.length>0)
-						jConfirm("Any unsaved changes will be lost<br/>Do you want to continue?","Confirm graph load",function(r){
-							if(r)
-								g = new DirectedGraph({raw:JSON.parse(getCookie(check()))});
-								$("#canvas").fadeOut().delay(300).fadeIn();
-								window.setTimeout(function(){
-									plot();
-								}, 300);
-						})
-					else{
-						g = new DirectedGraph({raw:JSON.parse(getCookie(check()))});
-						$("#canvas").fadeOut().delay(300).fadeIn();
-						window.setTimeout(function(){
-							plot();
-						}, 300);
-					}
-				}
-				else
-					$.notifyBar({html:"Nothing to load<br/>Select a graph from the drop-down menu first"})
-			break;
-			case "depth":
-				if(g.nodes.length>0){
-					var depth = g.depth("depth,path-Array");
-					if(depth){
-						$("#matrix-overlay").html('<h2>Root node: <span style="color:blue">'+g.nodes[0]+'</span></h2><h2>Depth: <span style="color:blue">'+depth.depth.toString()+'</span></h2><h2>Path:</h2></div><div><div style="float:left;margin:4px;padding:5px;text-align:center;border:solid 1px gray;border-radius:7px;color:blue;font-weight:800">'+g.nodes[0]+'</div>');
-						for(var i=0;i<depth.path.length;i++)
-							$("#matrix-overlay").append('<span style="float:left;margin:2px;padding:5px;font-size:18px">⇢</span><div style="float:left;margin:4px;padding:5px;text-align:center;border:solid 1px gray;border-radius:7px;color:blue;font-weight:800">'+depth.path[i]+'</div>')
-						$("#matrix-overlay").append("<div class='clear'></div></div>")
-						$("#matrix-overlay-div").fadeIn();
-					}
-					else
-						$.notifyBar({html:"The graph is not valid<br/>Each node must have at least one connection",cls:"error"});
-				}
-				else
-					$.notifyBar({html:"There's nothing to calculate it's depth<br/>Try adding some nodes first"});
-			break;
-			*/
 		}
 	});
 			
-	// bind the close button for the matrix overlay
-	$("#matrix-overlay-close").bind("click",function(){
-		$("#matrix-overlay-div").fadeOut();
-	});
-
 	// to trigger the addNode function when pressing enter if input is focused
 	$("#form > input:eq(1)").keyup(function(e){
 		if(e.which == 13)
@@ -374,7 +157,7 @@
 			if(edgeFlag.fromMenu){
 				if(edgeFlag.from!=$(this).attr("id")){
 					edgeFlag.to=$(this).attr("id");
-					jPrompt("Enter weight<br/>Leave blank for unweighted edge","","Weight", function(r){
+					jPrompt("Link metnini giriniz<br/>Boş bırakırsanız öntanımlı değer atanır","link metni","Link Metni", function(r){
 						if(r=="")
 							r="k-e-y--12344992334"
 						if(r){
@@ -409,29 +192,13 @@
 				edgeFlag.to=null;
 				edgeFlag.fromDelete=null;
 			}
-			else if(edgeFlag.fromShortestPath){
-				edgeFlag.to = $(this).attr("id");
-				var path = g.shortestPath(edgeFlag.from,edgeFlag.to);
-				if(path){
-					$("#matrix-overlay").html('<h2>Shortest path from '+edgeFlag.from+' to '+edgeFlag.to+'</h2><h2>Cost: <span style="color:blue">'+path.cost.toString()+'</span></h2><h2>Path:</h2></div><div><div style="float:left;margin:4px;padding:5px;text-align:center;border:solid 1px gray;border-radius:7px;color:blue;font-weight:800">'+edgeFlag.from+'</div>');
-					for(var i=0;i<path.path.length;i++)
-						$("#matrix-overlay").append('<span style="float:left;margin:2px;padding:5px;font-size:18px">⇢</span><div style="float:left;margin:4px;padding:5px;text-align:center;border:solid 1px gray;border-radius:7px;color:blue;font-weight:800">'+path.path[i]+'</div>');
-					$("#matrix-overlay-div").fadeIn();
-				}
-				else{
-					$.notifyBar({html:"There's no way to get there from " + edgeFlag.from,cls:"error"});
-				}
-				edgeFlag.from=null;
-				edgeFlag.to=null;
-				edgeFlag.fromShortestPath=null;
-			}
 		});
 		
 		// bind ellipse for doubleclick (to perform the addEdge function)
 		$("#canvas > svg > ellipse").bind("dblclick",function(){
 			edgeFlag.from = $(this).attr("id");
 			edgeFlag.fromMenu = true;
-			$.notifyBar({html:"now click on target node"});				
+			$.notifyBar({html:"Şimdi hedef düğüme tıkla"});				
 		});
 		
 		$('#canvas > svg > ellipse').bind('contextmenu',function(){
@@ -455,14 +222,14 @@
 		$("#createEdge").bind("click",function(){
 			edgeFlag.from=$(".vmenu > div:eq(0) > span").html();
 			edgeFlag.fromMenu = true;
-			$.notifyBar({html:"now click on the target node"});
+			$.notifyBar({html:"Şimdi hedef düğüme tıkla"});
 			$(".vmenu").fadeOut(50);
 		});
 		
 		$("#removeNode").bind("click",function(){
 			var thisNode = $(".vmenu > div:eq(0) > span").html();
 			if(g.hasEdgeFrom(thisNode)||g.hasEdgeTo(thisNode)){
-				jConfirm("Removing this node will also remove all it's connected edges<br/>Do you want to continue?","Confirm node deletion", function(r){
+				jConfirm("Bu düğüm silinirken aynı zamanda tüm bağları da silinecek<br/>Devam etmek istediğinizden emin misiniz?","Düğüm silmeyi onayla", function(r){
 					if(r)
 						removeNode(thisNode);
 				});
@@ -476,24 +243,12 @@
 			if(g.hasEdgeFrom($(".vmenu > div:eq(0) > span").html())){
 				edgeFlag.fromDelete = true;
 				edgeFlag.from=$(".vmenu > div:eq(0) > span").html();
-				$.notifyBar({html:"now click on the target node"});
+				$.notifyBar({html:"Şimdi hedef düğüme tıkla"});
 			}
 			else
-				$.notifyBar({html:"This node has no edges departing from it",cls:"error"});
+				$.notifyBar({html:"Bu düğüm herhangi bir düğümle bağlı değil",cls:"error"});
 			$(".vmenu").fadeOut(50);
 		});
-		
-		$("#findShortestPath").bind("click",function(){
-			if(g.hasEdgeFrom($(".vmenu > div:eq(0) > span").html())){
-				edgeFlag.fromShortestPath = true;
-				edgeFlag.from=$(".vmenu > div:eq(0) > span").html();
-				$.notifyBar({html:"now click on the target node"});
-			}
-			else
-				$.notifyBar({html:"This node has no edges departing from it<br/>It doesn't point anywhere"});
-			$(".vmenu").fadeOut(50);
-		});
-		
 		
 		$("#canvas > svg > ellipse").css({"cursor":"pointer"});
 		
