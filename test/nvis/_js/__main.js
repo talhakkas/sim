@@ -33,11 +33,16 @@
 	
 	// switch for the button click events
 	$("#form > a.button").click(function(){		
-		switch($(this).html()){
-			case "Ekle":
+		key = $(this).html();
+		switch(key){
+			case "Dal":
+			case "İlaç":
+			case "Tahlil":
+			case "Harita":
+			case "Rapor":
 				jPrompt("Düğüm adı","düğüm","Düğüm", function(r){
 					if(r!="" && r!="düğüm") {
-						if(!addNode(r))
+						if(!addNode(r + ":" + key))
 							$.notifyBar({html:"Düğüm zaten var, ekleyemedim.",cls:"error"});
 					}
 				});
@@ -116,17 +121,6 @@
 		}
 	});
 			
-	// to trigger the addNode function when pressing enter if input is focused
-	$("#form > input:eq(1)").keyup(function(e){
-		if(e.which == 13)
-			if($("#form > input:eq(1)").val()!=""&&$("#form > input:eq(1)").val()!="Node"){
-				if(!addNode($("#form > input:eq(1)").val()))
-					$.notifyBar({html:"Node already exists. It wasn't added.",cls:"error"});
-				$(this).val("").focus();
-			}
-	});
-	
-	
 	/* Canvas and plotting functions */	
 
 	// main plot function
@@ -259,6 +253,7 @@
 	var addNode = function(node){
 		if(g.addNode(node)){
 			plot();
+			// AJAX: create_node.php
 			return true;
 		}
 		else
