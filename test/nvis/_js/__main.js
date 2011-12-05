@@ -271,6 +271,7 @@
 			plot();
 			$.get('/a/ajax/add_node.php?cid=' + getCID() + '&ntype=' + getNtype(node) + '&title=' + getNtitle(node), function (data) {
 				$.notifyBar({html:data});
+				// FIXME: nodes[title][id] = data;
 			});
 			return true;
 		}
