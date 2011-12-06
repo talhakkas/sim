@@ -1188,22 +1188,41 @@ function refresh() {
 
 function get_node_options($cid, $id)
 {
-	$ntype = get_node_type($cid, $id);
+	/* connector tablosu uzerinden $opts sozlugunu uretir.
+	 */
 	$nid = get_node_id($cid, $id);
 
-	$topts = new Axon('connector');
-
-	DB::sql("SELECT connector.link_text, node.id AS next_node, connector.odul, connector.ceza, connector.response FROM connector, node WHERE connector.inp='$nid' AND node.nid=connector.out");
+	DB::sql("SELECT connector.link_text, node.id AS next_node, connector.odul, connector.ceza, connector.response " . 
+		    "FROM connector, node WHERE connector.inp='$nid' AND node.nid=connector.oup");
 
 	$opts = F3::get('DB->result');
-
-	switch($ntype) {
-		case 'dal':
-			break;
-	}
 	
 	return $opts;
 }
 
+function set_node_options($cid, $id, $opts)
+{
+	/* $opts sozlugunden connector tablosunu gunceller.
+	 */
+	$inp = get_node_id($cid, $id);
+
+	$tcon = new Axon('connector');
+
+	foreach($opts as $i=>$v) {
+		$oup = get_node_id($cid, $v['next_node']);
+
+		$tcon->load("inp='$inp' AND oup='$oup'");
+
+		$tcon->inp = $inp;
+		$tcon->oup = $oup;
+		$tcon->link_text = $v['link_text'];
+		$tcon->odul = $v['odul'];
+		$tcon->ceza = $v['ceza'];
+		$tcon->response = $v['response'];
+		$tcon->save();
+	}
+
+	return;
+}
 
 ?>

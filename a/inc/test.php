@@ -29,7 +29,15 @@ function test2()
 
 function test()
 {
-	print_pre(get_node_options(1,1));
+	//print_pre(get_node_options(1,1));
+	$dict = array(0 => Array(
+				'link_text' => 'D',
+			 	'next_node' => 4,
+			 	'odul' => 5,
+			 	'ceza' => 3,
+			 	'response' => '', 
+				));
+	set_node_options(1,1,$dict);
 }
 
 function test_gui()
