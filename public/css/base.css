@@ -87,7 +87,7 @@ h2 img {float:left; margin-top:-2px; margin-right:2px;}
 
 
 /* ------------- wrapper - header ------------------------- */
-div#wrapper { clear:left; border-top:4px solid #3072b3;}
+div#wrapper { clear:left; border-top:4px solid #3072b3; }
 div#wrapper div#container {position:relative;width:960px;padding:0;font-size:11px;position:relative;height:25px;margin:0 auto 16px}
 
 div#wrapper p#header-notice {float:left; display: block; padding: 7px 0 10px; margin: 10px 0 -20px 20px;
@@ -231,11 +231,13 @@ label.label input[type=password]:focus { outline: 0; }
 #button-user,
 #button-preview,
 #button-edit,
+#button-reload,
 #button-delete { background:url(/public/img/icon/24x24/search.png) no-repeat center; width:24px; height:24px;
                  border:none; cursor:pointer; float:left; margin-right:10px; }
-#button-edit { background:url(/public/img/icon/24x24/edit.png) no-repeat center; }
-#button-user { background:url(/public/img/icon/24x24/female_male_users.png) no-repeat center; }
+#button-edit   { background:url(/public/img/icon/24x24/edit.png) no-repeat center; }
+#button-user   { background:url(/public/img/icon/24x24/female_male_users.png) no-repeat center; }
 #button-delete { background:url(/public/img/icon/24x24/delete.png) no-repeat center; margin-right:0px; }
+#button-reload { background:url(/public/img/icon/24x24/light_bulb.png) no-repeat center; margin-right:0px; }
 
 .question { width:100%; font-weight: bold;color: #3072b3; font-size:13px; margin-bottom:20px; padding-bottom:5px; border-bottom:1px solid #ddd; padding-left:5px; }
 .answer { width:100%; float:left; padding-left:20px; padding-top:1px; margin-bottom:10px;
