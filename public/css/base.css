@@ -8,7 +8,13 @@ body {
     background:#f0f0f0;
     background:#EFEFEF;
     background:url(../img/body.png);
-}
+/*
+    background:url(../img/yt.png);
+    background:#333;
+    background:#808080;
+    background:#454547;
+*/
+    }
 
 #content {
     width: 920px;
@@ -19,8 +25,6 @@ body {
     background:#fff;
     border: 1px solid #ddd;
 
-    -webkit-box-shadow:0 0 18px rgba(0,0,0,0.4);
-    -moz-box-shadow:0 0 18px rgba(0,0,0,0.4);
     box-shadow:0 0 18px rgba(0,0,0,0.4);
 }
 
@@ -87,7 +91,11 @@ h2 img {float:left; margin-top:-2px; margin-right:2px;}
 
 
 /* ------------- wrapper - header ------------------------- */
-div#wrapper { clear:left; border-top:4px solid #3072b3; }
+div#wrapper { clear:left; border-top:4px solid #3072b3;
+ /*
+    height:70px; background:url(../img/yt.png);
+*/
+}
 div#wrapper div#container {position:relative;width:960px;padding:0;font-size:11px;position:relative;height:25px;margin:0 auto 16px}
 
 div#wrapper p#header-notice {float:left; display: block; padding: 7px 0 10px; margin: 10px 0 -20px 20px;
