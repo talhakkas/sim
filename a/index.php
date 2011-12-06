@@ -73,7 +73,7 @@ F3::route("GET /drug/@did", "show_drug");
 
 F3::route("GET /exam/@cid/@eid", "show_exam.php");
 
-F3::route("GET /reload/@id", "reload");
+F3::route("GET /refresh/@id", "refresh");
 
 
 F3::run();
