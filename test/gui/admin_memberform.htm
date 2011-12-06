@@ -1,9 +1,28 @@
-<!-- multiselect -->
-<!-- kaynak : http://loudev.com/ -->
-<link href="/public/css/multi-select.css" rel="stylesheet" type="text/css" />
-<script src="/public/js/jquery.multi-select.js" type="text/javascript"></script>
-<script src="/public/js/app.js" type="text/javascript"></script>
-<!-- end multiselect -->
+<!-- multi-select -->
+<style>.multiselect{ width: 460px; height: 450px;}</style>
+
+<link type="text/css" rel="stylesheet" href="/public/css/jquery-ui-1.7.1.custom.css" />
+<link type="text/css" href="/public/css/ui.multiselect.css" rel="stylesheet" />
+<script type="text/javascript" src="/public/js/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="/public/js/jquery-ui-1.8.custom.min.js"></script>
+<script type="text/javascript" src="/public/js/jquery.localisation.js"></script>
+<script type="text/javascript" src="/public/js/jquery.tmpl.1.1.1.js"></script>
+<script type="text/javascript" src="/public/js/ui.multiselect.js"></script>
+
+<script type="text/javascript">
+	$(function(){
+		// local
+		$("#student").multiselect();
+
+		// only if the function is available...
+		if ($.fn.themeswitcher) {
+			$('#switcher')
+				.before('<h4>Use the themeroller to dynamically change look and feel</h4>')
+				.themeswitcher();
+		}
+	});
+</script>
+<!-- end multi-select -->
 
 <!-- jlistbox -->
 <!-- kaynak : http://www.senamion.com/blog/jlistbox_demo.html -->
@@ -16,50 +35,33 @@
           });
 </script>
 <!-- end jlistbox -->
-</head>
-<h2> Gruba Öğrenci Atama</h2>
-<form  action='{{@SR}}/admin_membersave' method='post' enctype="multipart/form-data">
+
+<h2> Gruba(Sınıfa) Öğrenci Atama</h2>
+<form action="{{@SR}}/admin_membersave" target="submitFrame" style="border: none;" method="post">
   <input type="hidden" name="group_id" value="{{@group.id}}"/>
-  <table class="login">
-    <tr>
-      <td class="label">Hoca seçiniz</td>
-      <td>
-        <select id="select_group_id" name="select_group_id">
-          <F3:check if="{{@select_group}}">
-            <option rel="<img width='56' height='56' src='{{@select_group.photo}}'/>" value="{{@select_group.id}}">
-              {{@select_group.name}}
-            </option>
-          </F3:check>
-          <F3:repeat group="{{@unassignment_groups}}" key="{{@key}}" value="{{@group}}" >
-            <option rel="<img width='56' height='56' src='{{@group.photo}}'/>" value="{{@group.id}}">
-              {{@group.name}}
-            </option>
-          </F3:repeat>
-          </select>
-      </td>
-    </tr>
-    <tr>
-      <td class="label">Dersleri seçiniz</td>
-      <td>
-        <select id="callback" name="user_ids[]" class='multiselect, callbacks' multiple='multiple'>
-          <F3:repeat group="{{@select_users}}" key="{{@key}}" value="{{@user}}">
-            <option value="{{@user.id}}" selected>
-              {{@user.name}}
-            </option>
-            </F3:repeat>
-        <F3:repeat group="{{@unselect_users}}" key="{{@key}}" value="{{@user}}">
-            <option value="{{@user.id}}">
-              {{@user.name}}
-            </option>
-          </F3:repeat> 
-         </select>
-      </td>
-    </tr>
-    <tr>
-      <td></td>
-      <td>
-        <input id="submit_button" type='submit' value='Kaydet' />
-      </td>
-    </tr>
-  </table>
+
+	<select id="select_group_id" name="select_group_id">
+		<F3:check if="{{@select_group}}">
+		<!--<option rel="<img width='56' height='56' src='{{@select_group.photo}}'/>" value="{{@select_group.id}}">-->
+		<option rel="<img width='56' height='56' src='https://si0.twimg.com/sticky/default_profile_images/default_profile_2_normal.png'/>" value="{{@select_group.id}}">
+			{{@select_group.name}}
+		</option>
+		</F3:check>
+		<F3:repeat group="{{@unassignment_groups}}" key="{{@key}}" value="{{@group}}" >
+		<!--<option rel="<img width='56' height='56' src='{{@group.photo}}'/>" value="{{@group.id}}">-->
+		<option rel="<img width='56' height='56' src='https://si0.twimg.com/sticky/default_profile_images/default_profile_2_normal.png'/>" value="{{@group.id}}">
+			{{@group.name}}
+		</option>
+		</F3:repeat>
+	</select>
+			
+	<br/>
+			
+	<select id="student" class="multiselect" multiple="multiple" name="user_ids[]">
+		<F3:repeat group="{{@unselect_users}}" key="{{@key}}" value="{{@user}}" >
+		<option value="{{@user.id}}">{{@user.id}}-{{@user.name}}</option>
+		</F3:repeat>
+	</select>
+
+	<input type="submit" class="button" value="Sınıf Seçimini kaydet" />
 </form>

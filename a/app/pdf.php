@@ -84,7 +84,7 @@ class Pdf extends F3instance {
 		$pdf->setPrintHeader(false);
 		$pdf->AddPage();
 
-		$pdf->SetFont('freeserif', 'B', 12);
+		$pdf->SetFont('freeserif', 'B', 14);
 		$pdf->Cell(0, 5, "Ondokuz Mayıs Üniversitesi", 0, 1, 'C');
 		$pdf->Cell(0, 5, "Web Tabanlı Medikal Simülasyon Eğitim Merkezi", 0, 1, 'C');
 		$pdf->Cell(0, 5, "Olgu Raporu", 0, 1, 'C');
@@ -92,12 +92,10 @@ class Pdf extends F3instance {
 
 		$omu_image = "../public/img/omu-logo.jpg";
 		$stu_image = "../public/img/icon/128x128/surgeon.png";
-		$pdf->Image($omu_image, 20, 10, 28, 28, 'JPG', '', '', true, 150, '', false, false, 0, false, false, false);
-		$pdf->Image($stu_image, 160, 10, 28, 28, 'PNG', '', '', true, 150, '', false, false, 0, false, false, false);
+		$pdf->Image($omu_image, 15, 15, 28, 21, 'JPG', '', '', true, 150, '', false, false, 0, false, false, false);
+		$pdf->Image($stu_image, 173, 15, 23, 23, 'PNG', '', '', true, 150, '', false, false, 0, false, false, false);
 
-
-
-		$pdf->Image($stu_image, 160, 45, 28, 28, 'PNG', '', '', true, 150, '', false, false, 0, false, false, false);
+		$pdf->Image($stu_image, 160, 55, 28, 28, 'PNG', '', '', true, 150, '', false, false, 0, false, false, false);
 		// yol, x, y ,w, h
 
 		// oturum bilgilerini al
@@ -154,7 +152,7 @@ class Pdf extends F3instance {
 				$pdf->SetFillColor(245, 253, 245);
 			}
 			$pdf->MultiCell(55, 1, $dict['title'], 0, 'L', 1, 0, '30', '', true);
-			$pdf->MultiCell(50, 1, $dict['zaman'], 0, 'L', 1, 0, '', '', true);
+			$pdf->MultiCell(50, 1, sprintf('%.2F',$dict['zaman']), 0, 'L', 1, 0, '', '', true);
 		//	$pdf->MultiCell(40, 1, 'beklenen', 0, 'L', 1, 0, '', '', true);
 		//	$pdf->MultiCell(45, 1, $dict['soylenen'], 0, 'L', 1, 0, '',   '', true);
 			$pdf->MultiCell(50, 1, $dict['puan'], 0, 'L', 1, 0, '',   '', true);
