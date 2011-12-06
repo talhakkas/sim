@@ -7,12 +7,6 @@
 	if (!empty($_REQUEST['delete']))
 		F3::reroute("/delete/$cid/$id");
 
-	if($id == "yeni") {
-		DB::sql("select max(id) from node where id AND cid='$cid'");
-		$res = F3::get("DB->result");
-		$id = $res[0]['max(id)'] + 1;
-	}
-
 	$_POST = zip($_POST);
 
 	DB::sql("select max(nid) from node where nid");

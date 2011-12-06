@@ -14,6 +14,9 @@ F3::route("GET /view/@page",  function () { render(F3::get("PARAMS.page"), F3::g
 F3::route('POST /tetkik', 'tetkik');
 F3::route('POST /ilac', 'ilac_sonuc');
 
+F3::route('GET /form-request', 'form-request.php');
+	F3::route('POST /form-request', 'form-request.php');
+
 //admin post
 //admin#group
 F3::route('GET  /admin_groupform',        'admin_groupform');

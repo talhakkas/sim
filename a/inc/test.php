@@ -1,17 +1,5 @@
 <?php
 
-
-function test2()
-{
-	print_pre(get_node(1, 3), "dal");
-	print_pre(get_node(1, 38), "bmapr");
-
-	echo "<hr>";
-
-	print_pre(get_node(1, 21), "immap");
-	print_pre(get_node(1, 23), "immapr");
-}
-
 function test4()
 {
 	$tnode = new Axon('node');
@@ -27,7 +15,7 @@ function test4()
 
 }
 
-function test()
+function test2()
 {
 	$nodes = array( 1=>"dal",
 		17=>"drug", 26=>"dose",
@@ -37,6 +25,11 @@ function test()
 
 	foreach($nodes as $id=>$name)
 		print_pre(get_node(1, $id), "<hr>$name");
+}
+
+function test()
+{
+	print_pre(get_node_options(1,1));
 }
 
 function test_gui()
