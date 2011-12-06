@@ -1514,7 +1514,7 @@ function show_drug() {
 	echo $drug['content'];
 }
 
-function reload() {
+function refresh() {
 	$id = F3::get('PARAMS.id');
 	DB::sql("delete from tet where cid='$id'");
 	F3::reroute('/clist');
