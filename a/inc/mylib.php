@@ -12,8 +12,6 @@ function params2session() {
 	}
 }
 
-
-
 function get_tet($id)
 {
 	$ttet = new Axon('tet');
@@ -1192,7 +1190,7 @@ function get_node_options($cid, $id)
 	 */
 	$nid = get_node_id($cid, $id);
 
-	DB::sql("SELECT connector.link_text, node.id AS next_node, connector.odul, connector.ceza, connector.response " . 
+	DB::sql("SELECT connector.link_text, node.id AS node_link, connector.odul, connector.ceza, connector.response " . 
 		    "FROM connector, node WHERE connector.inp='$nid' AND node.nid=connector.oup");
 
 	$opts = F3::get('DB->result');
@@ -1203,26 +1201,62 @@ function get_node_options($cid, $id)
 function set_node_options($cid, $id, $opts)
 {
 	/* $opts sozlugunden connector tablosunu gunceller.
+	 * - yoksa ekler, varsa gunceller.
 	 */
 	$inp = get_node_id($cid, $id);
 
 	$tcon = new Axon('connector');
+	
+	if(get_node_type($cid, $id) == 'dal')
+		foreach($opts as $i=>$v) {
+			$oup = get_node_id($cid, $v['node_link']);
 
-	foreach($opts as $i=>$v) {
-		$oup = get_node_id($cid, $v['next_node']);
+			$tcon->load("inp='$inp' AND oup='$oup'");
+
+			$tcon->inp = $inp;
+			$tcon->oup = $oup;
+			$tcon->link_text = $v['link_text'];
+			$tcon->odul 	 = $v['odul'];
+			$tcon->ceza 	 = $v['ceza'];
+			$tcon->response  = $v['response'];
+			$tcon->save();
+		}
+	else {
+		$oup = get_node_id($cid, $opts['node_link']);
 
 		$tcon->load("inp='$inp' AND oup='$oup'");
 
 		$tcon->inp = $inp;
 		$tcon->oup = $oup;
-		$tcon->link_text = $v['link_text'];
-		$tcon->odul = $v['odul'];
-		$tcon->ceza = $v['ceza'];
-		$tcon->response = $v['response'];
+		$tcon->link_text = $opts['link_text'];
+		$tcon->odul 	 = $opts['odul'];
+		$tcon->ceza 	 = $opts['ceza'];
+		$tcon->response  = $opts['response'];
 		$tcon->save();
 	}
+}
 
-	return;
+function migration_node2connector($dbg=true)
+{
+	/* db:node tablosu `options` u `db:connector` e donustur.
+	 */
+	$cid = 1;
+
+	DB::sql("SELECT id FROM node WHERE cid='$cid'");
+	$ids = F3::get('DB->result');
+	if($dbg)	print_pre($ids);
+
+	foreach($ids as $t) {
+		$id = $t['id'];
+
+		$node = get_node($cid, $id);
+		if($dbg)	print_pre($node, 'NODE');
+	
+		$opts = $node['opts'];
+		if(count($opts) < 1) continue;
+		
+		set_node_options($cid, $id, $opts);
+	}
 }
 
 ?>
