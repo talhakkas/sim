@@ -753,7 +753,7 @@ function get_tea_sel_drugs($cid=null, $id=null)
 
 	$node = get_node($cid, $id);
 
-	return $node['opts']['drugs'];
+	return $node['opts']['response'];
 }
 
 function get_tea_sel_immap($cid, $nid)
