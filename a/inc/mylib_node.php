@@ -14,8 +14,8 @@ function get_node($cid=NULL, $id=NULL)
 	$node = $datas[0];
 
 	// FIXME: `connector` e gore tekrar tasarla
-	// $node['opts'] = get_node_options($cid, $id);
-	$node['opts'] = unserialize($node['options']);
+	$node['opts'] = get_node_options($cid, $id);
+	// $node['opts'] = unserialize($node['options']);
 
 	return $node;
 }

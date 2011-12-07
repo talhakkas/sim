@@ -32,11 +32,11 @@
 			F3::set('SESSION.results', get_stu_sel_exams($_POST));
 			break;
 		case 'bmap':
-			$dict = map2dict($node['opts']['map']);
+			$dict = map2dict($node['opts']['response']['map']);
 			if($dbg)	print_pre($dict);
 
 			F3::set('SESSION.map', $dict);
-			F3::set('SESSION.img', $node['opts']['img']);
+			F3::set('SESSION.img', $node['opts']['response']['img']);
 			break;
 		case 'bmapr':
 			$cid = F3::get('SESSION.cid');

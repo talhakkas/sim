@@ -2,8 +2,8 @@
 
 function test()
 {
-	migration_node2connector();
-	print_pre(get_node(1, 28));
+	// migration_node2connector();
+	print_pre(get_node(1, 37));
 	// test2();
 }
 
@@ -25,9 +25,9 @@ function test4()
 function test2()
 {
 	$nodes = array( 1=>"dal",
-		17=>"drug", 26=>"dose",
-       	35=>"exam", 36=>"result",
        	37=>"bmap", 38=>"bmapr",
+       	35=>"exam", 36=>"result",
+		17=>"drug", 26=>"dose",
        	21=>"immap",23=>"immapr");
 
 	foreach($nodes as $id=>$name)

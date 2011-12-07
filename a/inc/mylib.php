@@ -845,7 +845,7 @@ function get_stu_sel_bmap($arr)
 	/* secilen bolgelerin degerlerini dondurur.
 	 * a- $arr['selected'] => sbind
 	 * b- get_node(cid, id) -> node
-	 * c- node['opts']['bmap']
+	 * c- node['opts']['response']
 	 */
 
 	// a-sbind
@@ -856,11 +856,13 @@ function get_stu_sel_bmap($arr)
 	}
 	$sbind = preg_split('/,/', $sel);
 
+	// b-
 	$cid = $arr['cid'];
 	$id  = $arr['id'];
 	$node = get_node($cid, $id);
 
-	$dict = $node['opts']['bmap'];
+	// c-
+	$dict = $node['opts']['response'];
 
 	$rdict = array();
 	foreach($sbind as $i=>$si) {
@@ -1194,7 +1196,12 @@ function get_node_options($cid, $id)
 		    "FROM connector, node WHERE connector.inp='$nid' AND node.nid=connector.oup");
 
 	$opts = F3::get('DB->result');
+
+	if(get_node_type($cid, $id) != 'dal')
+		$opts = $opts[0];
 	
+	$opts['response'] = unserialize($opts['response']);
+
 	return $opts;
 }
 
@@ -1218,7 +1225,7 @@ function set_node_options($cid, $id, $opts)
 			$tcon->link_text = $v['link_text'];
 			$tcon->odul 	 = $v['odul'];
 			$tcon->ceza 	 = $v['ceza'];
-			$tcon->response  = $v['response'];
+			$tcon->response  = serialize($v['response']);
 			$tcon->save();
 		}
 	else {
@@ -1231,7 +1238,7 @@ function set_node_options($cid, $id, $opts)
 		$tcon->link_text = $opts['link_text'];
 		$tcon->odul 	 = $opts['odul'];
 		$tcon->ceza 	 = $opts['ceza'];
-		$tcon->response  = $opts['response'];
+		$tcon->response  = serialize($opts['response']);
 		$tcon->save();
 	}
 }
