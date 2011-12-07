@@ -1196,7 +1196,7 @@ function get_node_options($cid, $id)
 	$nid = get_node_id($cid, $id);
 
 	DB::sql("SELECT connector.link_text, node.id AS node_link, connector.odul, connector.ceza, connector.response " . 
-		    "FROM connector, node WHERE connector.inp='$nid' AND node.nid=connector.oup");
+		    "FROM connector, node WHERE connector.inp='$nid' AND node.nid=connector.oup ORDER BY connector.oup");
 
 	$opts = F3::get('DB->result');
 
@@ -1211,12 +1211,16 @@ function get_node_options($cid, $id)
 	return $opts;
 }
 
-function set_node_options($cid, $id, $opts)
+function set_node_options($cid, $id, $opts, $sync=true)
 {
 	/* $opts sozlugunden connector tablosunu gunceller.
-	 * - yoksa ekler, varsa gunceller.
+	 * - yoksa ekler, varsa degerini gunceller.
+	 * - `sync` istenirse `connector` de daha onceden olusturulmus
+	 *   olan baglar silinir ve $opts ta gelenlerle olusturulur.
 	 */
 	$inp = get_node_id($cid, $id);
+
+	if($sync)	DB::sql("DELETE FROM connector WHERE inp='$inp'");
 
 	$tcon = new Axon('connector');
 	

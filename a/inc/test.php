@@ -3,7 +3,7 @@
 function test()
 {
 	// migration_node2connector();
-	print_pre(get_node(1, 37));
+	print_pre(get_node(1, 1));
 	// test2();
 }
 

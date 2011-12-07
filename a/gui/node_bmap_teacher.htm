@@ -1,4 +1,3 @@
-
 <tr>
   <td class="label">Görünecek metin</td>
   <td class="field" id="dal{{@ctr}}field">
@@ -11,13 +10,13 @@
 <tr>
 	<td class="label">Body Map - Resmini Seçiniz</td>
 	<td class="field">
-		<input type="file" name="bmap_img" value="{{@SR}}/{{@uploaddir}}{{@SESSION.data['opts']['img']}}" >
-          <F3:check if="{{@SESSION.data['opts']['img'] != 'null'}}">
+		<input type="file" name="bmap_img" value="{{@SR}}/{{@uploaddir}}{{@SESSION.data['opts']['response']['img']}}" >
+        <F3:check if="{{@SESSION.data['opts']['response']['img'] != 'null'}}">
           <F3:true>
-          <a href="{{@SR}}/{{@uploaddir}}kucuk{{@SESSION.data['opts']['img']}}" rel="facebox"><img src="{{@SR}}/{{@uploaddir}}kucuk{{@SESSION.data['opts']['img']}}" height="35"></a>
+          <a href="{{@SR}}/{{@uploaddir}}kucuk{{@SESSION.data['opts']['response']['img']}}" rel="facebox"><img src="{{@SR}}/{{@uploaddir}}kucuk{{@SESSION.data['opts']['response']['img']}}" height="35"></a>
           <!--input type="checkbox" name="resim_sil_bmap" value="evet" />Kaldır -->
           </F3:true>
-          </F3:check>
+        </F3:check>
 	</td>
 </tr>
 <tr>
@@ -26,7 +25,7 @@
 		<a href="http://www.maschek.hu/imagemap/imgmap" target="_blank">Image Map Editor</a>u kullanarak mapi üretin ve buradaki alana yapıştırınız.<br>
 	
 		<textarea name="bmap_map" rows="20" cols="25">
-			{{@SESSION.data['opts']['map']}}
+			{{@SESSION.data['opts']['response']['map']}}
 		</textarea>
 	</td>
 </tr>

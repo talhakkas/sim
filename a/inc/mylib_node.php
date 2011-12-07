@@ -28,8 +28,10 @@ function set_node($cid=NULL, $id=NULL, $data=NULL)
 
 	$data = zip($data);
 
+ 	set_node_options($cid, $id, unserialize($data['options']), true);
+
 	$table = new Axon("node");
-	$table->load("id='$id' AND cid='$cid'");
+	$table->load("cid='$cid' AND id='$id'");
 
 	foreach($data as $gnl => $blg)
 		if($gnl != "media")
@@ -90,7 +92,7 @@ function zip($data, $dbg=true)
 	
 			// ndict olup, odict (node['opts']['drugs'])'te olmayanları odict e
 			// ekle ndict'te olmayıp, odict'te olanları odict'ten sil
-			$dict['drugs'] = liste_senkronla($node['opts']['drugs'], $ndict);
+			$dict['response'] = liste_senkronla($node['opts']['response'], $ndict);
 	
 			$data['opts'] = $dict;
 			$data['options'] = serialize($dict);
@@ -112,11 +114,11 @@ function zip($data, $dbg=true)
 			$tdrug->load("id='$dnid'");
 			$opts = unserialize($tdrug->options);
 	
-			foreach($opts['drugs'] as $did=>$drug) {
+			foreach($opts['response'] as $did=>$drug) {
 				$ind = array_search($did, $data['did']);
 	
-				$opts['drugs'][$did]['dval']  = $data['dval'][$ind];
-				$opts['drugs'][$did]['dayol'] = $data['dayol'][$ind];
+				$opts['response'][$did]['dval']  = $data['dval'][$ind];
+				$opts['response'][$did]['dayol'] = $data['dayol'][$ind];
 			}
 	
 			$tdrug->options = serialize($opts);
@@ -129,7 +131,7 @@ function zip($data, $dbg=true)
 						  "ceza"      => $data['ceza']
 						 );
 	
-			$dict['exams'] = liste_senkronla($node['opts']['exams'], get_stu_sel_exams($data));
+			$dict['response'] = liste_senkronla($node['opts']['response'], get_stu_sel_exams($data));
 	
 			$data['opts'] = $dict;
 			$data['options'] = serialize($dict);
@@ -169,11 +171,11 @@ function zip($data, $dbg=true)
 			$texam->load("cid='$cid' AND id='$enid'");
 			$opts = unserialize($texam->options);
 	
-			foreach($opts['exams'] as $eid=>$exam) {
+			foreach($opts['response'] as $eid=>$exam) {
 				$ind = array_search($eid, $data['eid']);
 	
 				if(isset($emedia[$eid]))
-					$opts['exams'][$eid]['value'] = $emedia[$eid];
+					$opts['response'][$eid]['value'] = $emedia[$eid];
 			}
 	
 			$texam->options = serialize($opts);
@@ -198,15 +200,17 @@ function zip($data, $dbg=true)
 			else 	//node:bmap:opts:bmap:img dekini kullan!
 				$img_nm = $fnm;
 	
-			$dict['img'] = $img_nm;
-			$dict['map'] = htmlspecialchars(trim($data['bmap_map']));
 	
-			$dict['bmap'] = array();
-			$tmp = map2dict($dict['map']);
+			$dict['response'] = array();
+			$dict['response']['img'] = $img_nm;
+			$dict['response']['map'] = htmlspecialchars(trim($data['bmap_map']));
+
+			$tmp = map2dict($dict['response']['map']);
 			foreach($tmp as $i=>$m) {
-				$dict['bmap'][$i] = array("name"  => $m['name'],
+				$dict['response'][$i] = array("name"  => $m['name'],
 										  "value" => "null");
 			}
+
 		 	$data['opts'] = $dict;
 			$data['options'] = serialize($dict); 
 			break;
@@ -245,11 +249,11 @@ function zip($data, $dbg=true)
 			$tbmap->load("cid='$cid' AND id='$bnid'");
 			$opts = unserialize($tbmap->options);
 	
-			foreach($opts['bmap'] as $bid=>$val) {
+			foreach($opts['response'] as $bid=>$val) {
 				$ind = array_search($bid, $data['bid']);
 	
 				if(isset($bmedia[$bid]))
-					$opts['bmap'][$bid]['value'] = $bmedia[$bid];
+					$opts['response'][$bid]['value'] = $bmedia[$bid];
 			}
 	
 			$tbmap->options = serialize($opts);
@@ -262,7 +266,7 @@ function zip($data, $dbg=true)
 			$dict['odul'] = $data['odul'];
 			$dict['ceza'] = $data['ceza'];
 			
-			$dict['immap'] = unserialize(htmlspecialchars_decode($data['immap']));;
+			$dict['response'] = unserialize(htmlspecialchars_decode($data['immap']));;
 	
 			$data['opts'] = $dict;
 			$data['options'] = serialize($dict);
@@ -284,7 +288,7 @@ function zip($data, $dbg=true)
 			$timap->load("cid='$cid' AND id='$inid'");
 			$opts = unserialize($timap->options);
 	
-			$opts['immap'] = array('x' => $data['x'],  'y' => $data['y'],
+			$opts['response'] = array('x' => $data['x'],  'y' => $data['y'],
 					       'x2'=> $data['x2'], 'y2'=> $data['y2'],
 					       'w' => $data['w'],  'h' => $data['h'],
 					       'yorum' => $data['response']
@@ -295,39 +299,22 @@ function zip($data, $dbg=true)
 			break;
 		case 'dal':
 			$sz = sizeof($data['link_text']);
-			
-			$chkR = array_pad(array(), $sz, 'no');
-			if(isset($data['chkResponse'])) {
-				$sz_chk = sizeof($data['chkResponse']);
-				$arr = $data['chkResponse'];
-	
-				for($i=0; $i < $sz_chk; $i++) {
-					$j = $arr[$i] - 1;
-					$chkR[$j] = 'yes';
-				}
-			}
-			$data['chkResponse'] = $chkR;
 	
 			for($i=0; $i < $sz; $i++) {
 				$dict[$i] = array(
 								'link_text' => my_get2($data, 'link_text', $i),
 								'node_link' => my_get2($data, 'node_link', $i),
 								'response'  => my_get2($data, 'response',  $i),
-								'chkResponse'=>my_get2($data, 'chkResponse',$i),
 								'odul'      => my_get2($data, 'odul',      $i),
 								'ceza'      => my_get2($data, 'ceza',      $i)
 								 );	
-	
-				if($dict[$i]['chkResponse'] == 'no') {
-						$dict[$i]['response'] = '';
-				}
 			}
 		
 			if($dbg) print_pre($dict, 'dict');
 	
 			$data['options'] = serialize($dict);
 	
-			$data = unset_arr($data, array('link_text', 'node_link', 'response', 'chkResponse',
+			$data = unset_arr($data, array('link_text', 'node_link', 'response',
 			  								 'odul', 'ceza'));
 			break;
 	}										
