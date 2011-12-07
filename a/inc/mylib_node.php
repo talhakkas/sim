@@ -244,10 +244,8 @@ function zip($data, $dbg=true)
 					}
 			}
 			// bmapr:parent uzerinden bmap:opts:bmap i guncelle
-			$bnid = $data['parent'];
-			$tbmap = new Axon('node');
-			$tbmap->load("cid='$cid' AND id='$bnid'");
-			$opts = unserialize($tbmap->options);
+			$pid = $data['parent'];
+			$opts = get_node_options($cid, $pid);
 	
 			foreach($opts['response'] as $bid=>$val) {
 				$ind = array_search($bid, $data['bid']);
@@ -256,8 +254,7 @@ function zip($data, $dbg=true)
 					$opts['response'][$bid]['value'] = $bmedia[$bid];
 			}
 	
-			$tbmap->options = serialize($opts);
-			$tbmap->save();
+			set_node_options($cid, $pid, $opts, true);
 			break;
 		case 'immap':
 			$dict = array();
