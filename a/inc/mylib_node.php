@@ -67,62 +67,25 @@ function zip($data, $dbg=true)
 	$dict = array();
 
 	switch($ntype) {
-		case 'drug':
-			$dict = array("link_text" => $data['link_text'],
-						  "node_link" => $data['node_link'],
-						  "odul"      => $data['odul'],
-						  "ceza"      => $data['ceza']
-						 );
-			
-			$ndict = array();
-			$tdrug = new Axon('drugs');
+		case 'dal':
+			$sz = sizeof($data['link_text']);
 	
-			$csv = $data['drugs'];
-			$drugs = preg_split('/,/', $csv);
-			foreach($drugs as $i=>$did) {
-				$tmp = $tdrug->afind("id='$did'");
-	
-				$ndict[$did] = array("name" => $tmp[0]['name'],
-									 "dmn"  => $tmp[0]['dmn'],
-									 "dmx"  => $tmp[0]['dmx'],
-									 "dval" => $tmp[0]['dval'],
-									 "dayol"=> $tmp[0]['dayol']
-									);
+			for($i=0; $i < $sz; $i++) {
+				$dict[$i] = array(
+								'link_text' => my_get2($data, 'link_text', $i),
+								'node_link' => my_get2($data, 'node_link', $i),
+								'response'  => my_get2($data, 'response',  $i),
+								'odul'      => my_get2($data, 'odul',      $i),
+								'ceza'      => my_get2($data, 'ceza',      $i)
+								 );	
 			}
+		
+			if($dbg) print_pre($dict, 'dict');
 	
-			// ndict olup, odict (node['opts']['drugs'])'te olmayanları odict e
-			// ekle ndict'te olmayıp, odict'te olanları odict'ten sil
-			$dict['response'] = liste_senkronla($node['opts']['response'], $ndict);
-	
-			$data['opts'] = $dict;
-			$data['options'] = serialize($dict);
-			break;
-		case 'dose':
-			$dict = array("link_text" => $data['link_text'],
-						  "node_link" => $data['node_link'],
-						  "response"  => "drug:opts:drugs a bakin",
-						  "odul"      => $data['odul'],
-						  "ceza"      => $data['ceza']
-						 );
-	
-			$data['opts'] = $dict;
 			$data['options'] = serialize($dict);
 	
-			// dose:parent uzerinden drug:opts:drugs i guncelle
-			$dnid = $data['parent'];
-			$tdrug = new Axon('node');
-			$tdrug->load("id='$dnid'");
-			$opts = unserialize($tdrug->options);
-	
-			foreach($opts['response'] as $did=>$drug) {
-				$ind = array_search($did, $data['did']);
-	
-				$opts['response'][$did]['dval']  = $data['dval'][$ind];
-				$opts['response'][$did]['dayol'] = $data['dayol'][$ind];
-			}
-	
-			$tdrug->options = serialize($opts);
-			$tdrug->save();		
+			$data = unset_arr($data, array('link_text', 'node_link', 'response',
+			  								 'odul', 'ceza'));
 			break;
 		case 'exam':
 			$dict = array("link_text" => $data['link_text'],
@@ -166,11 +129,9 @@ function zip($data, $dbg=true)
 					}
 			}
 			// result:parent uzerinden exam:opts:exams i guncelle
-			$enid = $data['parent'];
-			$texam = new Axon('node');
-			$texam->load("cid='$cid' AND id='$enid'");
-			$opts = unserialize($texam->options);
-	
+			$pid = $data['parent'];
+			$opts = get_node_options($cid, $pid);
+
 			foreach($opts['response'] as $eid=>$exam) {
 				$ind = array_search($eid, $data['eid']);
 	
@@ -178,8 +139,7 @@ function zip($data, $dbg=true)
 					$opts['response'][$eid]['value'] = $emedia[$eid];
 			}
 	
-			$texam->options = serialize($opts);
-			$texam->save();
+			set_node_options($cid, $pid, $opts, true);
 			break;
 		case 'bmap':
 			$dict = array("link_text" => $data['link_text'],
@@ -256,6 +216,60 @@ function zip($data, $dbg=true)
 	
 			set_node_options($cid, $pid, $opts, true);
 			break;
+		case 'drug':
+			$dict = array("link_text" => $data['link_text'],
+						  "node_link" => $data['node_link'],
+						  "odul"      => $data['odul'],
+						  "ceza"      => $data['ceza']
+						 );
+			
+			$ndict = array();
+			$tdrug = new Axon('drugs');
+	
+			$csv = $data['drugs'];
+			$drugs = preg_split('/,/', $csv);
+			foreach($drugs as $i=>$did) {
+				$tmp = $tdrug->afind("id='$did'");
+	
+				$ndict[$did] = array("name" => $tmp[0]['name'],
+									 "dmn"  => $tmp[0]['dmn'],
+									 "dmx"  => $tmp[0]['dmx'],
+									 "dval" => $tmp[0]['dval'],
+									 "dayol"=> $tmp[0]['dayol']
+									);
+			}
+	
+			// ndict olup, odict (node['opts']['drugs'])'te olmayanları odict e
+			// ekle ndict'te olmayıp, odict'te olanları odict'ten sil
+			$dict['response'] = liste_senkronla($node['opts']['response'], $ndict);
+	
+			$data['opts'] = $dict;
+			$data['options'] = serialize($dict);
+			break;
+		case 'dose':
+			$dict = array("link_text" => $data['link_text'],
+						  "node_link" => $data['node_link'],
+						  "response"  => "drug:opts:drugs a bakin",
+						  "odul"      => $data['odul'],
+						  "ceza"      => $data['ceza']
+						 );
+	
+			$data['opts'] = $dict;
+			$data['options'] = serialize($dict);
+	
+			// dose:parent uzerinden drug:opts:drugs i guncelle
+			$pid = $data['parent'];
+			$opts = get_node_options($cid, $pid);
+	
+			foreach($opts['response'] as $did=>$drug) {
+				$ind = array_search($did, $data['did']);
+	
+				$opts['response'][$did]['dval']  = $data['dval'][$ind];
+				$opts['response'][$did]['dayol'] = $data['dayol'][$ind];
+			}
+
+			set_node_options($cid, $pid, $opts, true);
+			break;
 		case 'immap':
 			$dict = array();
 			$dict['link_text'] = $data['link_text'];
@@ -280,39 +294,15 @@ function zip($data, $dbg=true)
 			$data['options'] = serialize($dict);
 	
 			// immapr:parent uzerinden immap:opts:immap i guncelle
-			$inid = $data['parent'];
-			$timap = new Axon('node');
-			$timap->load("cid='$cid' AND id='$inid'");
-			$opts = unserialize($timap->options);
-	
+			$pid = $data['parent'];
+			$opts = get_node_options($cid, $pid);
+
 			$opts['response'] = array('x' => $data['x'],  'y' => $data['y'],
 					       'x2'=> $data['x2'], 'y2'=> $data['y2'],
 					       'w' => $data['w'],  'h' => $data['h'],
 					       'yorum' => $data['response']
 					      );
-	
-			$timap->options = serialize($opts);
-			$timap->save();
-			break;
-		case 'dal':
-			$sz = sizeof($data['link_text']);
-	
-			for($i=0; $i < $sz; $i++) {
-				$dict[$i] = array(
-								'link_text' => my_get2($data, 'link_text', $i),
-								'node_link' => my_get2($data, 'node_link', $i),
-								'response'  => my_get2($data, 'response',  $i),
-								'odul'      => my_get2($data, 'odul',      $i),
-								'ceza'      => my_get2($data, 'ceza',      $i)
-								 );	
-			}
-		
-			if($dbg) print_pre($dict, 'dict');
-	
-			$data['options'] = serialize($dict);
-	
-			$data = unset_arr($data, array('link_text', 'node_link', 'response',
-			  								 'odul', 'ceza'));
+			set_node_options($cid, $pid, $opts, true);
 			break;
 	}										
 
