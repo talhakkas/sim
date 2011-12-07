@@ -760,7 +760,7 @@ function get_tea_sel_immap($cid, $nid)
 {
 	$node = get_node($cid, $nid);
 
-	$dict = $node['opts']['immap'];
+	$dict = $node['opts']['response'];
 	$dict['imgnm'] = $node['media'];
 
 	return $dict;
