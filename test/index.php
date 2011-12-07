@@ -4,6 +4,7 @@ require_once  '../a/api/gettext/gettext.inc';
 require_once  '../a/lib/base.php';
 require_once  '../a/inc/lib.php';
 require_once  'inc/admin.php';
+require_once  'inc/author.php';
 
 F3::route("GET /",      function () { render('home', 'Ana Sayfa'); } );
 F3::route("GET /@page",  function () { render(F3::get("PARAMS.page"), 'Örnek Sayfa'); } );
@@ -41,6 +42,9 @@ F3::route('GET  /admin_membershow/@gid',  'admin_membershow');
 F3::route('POST /admin_memberedit/@gid',  'admin_memberedit');
 F3::route('POST /admin_memberdelete/@gid','admin_memberdelete');
 F3::route('POST /admin_memberupdate',     'admin_membersave'); //TODO
+//author#case
+F3::route('GET  /author_caseform',        'author_caseform');
+F3::route('POST /author_caseform',        'author_caseform');
 F3::run();
 
 ?>
