@@ -723,6 +723,9 @@ function get_tea_sel_bmap($cid, $bnid, $isFullList=false)
 	$node = get_node($cid, $bnid);
 
 	$dict = $node['opts']['response'];
+	
+	unset($dict['map']);
+	unset($dict['img']);
 
 	if(!$isFullList)
 		foreach($dict as $i => $d) {
