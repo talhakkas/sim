@@ -561,7 +561,7 @@ function compute_mark($tid, $dbg=true)
 			$ceza = empty($dict['ceza']) ? 0 : $dict['ceza'];
 			if($dbg)	print_pre($dict, 'ilgili secenek');
 
-			if($dict['chkResponse'] == 'no') {
+			if($dict['response'] == 'null') {
 				$puan = $odul - $ceza;
 			} else {
 				$puan = isSimilar($tet['beklenen']['response'], $tet['soylenen']['response']) ? $odul : -$ceza;
@@ -722,7 +722,7 @@ function get_tea_sel_bmap($cid, $bnid, $isFullList=false)
 	 */
 	$node = get_node($cid, $bnid);
 
-	$dict = $node['opts']['bmap'];
+	$dict = $node['opts']['response'];
 
 	if(!$isFullList)
 		foreach($dict as $i => $d) {
@@ -741,7 +741,7 @@ function get_tea_sel_dal($cid, $id, $opt)
 	$node = get_node($cid, $id);
 	$t = $node['opts'][$opt];
 
-	$dict = $t['chkResponse'] == 'yes' ? $t['response'] : "null";
+	$dict = $t['response'] == '' ? "null" : $t['response'];
 
 	return $dict;
 }

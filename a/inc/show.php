@@ -8,7 +8,7 @@
 	F3::set('SESSION.data', $node);
 	if($dbg)	print_pre($node, 'NODE');
 
-	//takip_listesine_ekle();
+	takip_listesine_ekle();
 
 	if($node['ntype'] == 'report') {
 		F3::reroute('/report');
