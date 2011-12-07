@@ -812,6 +812,11 @@ function get_stu_sel_exams($arr, $dbg=false)
 	 * - degilse ontanimli veriyi yukle
 	 *    + sql:sim:survey tablosundan sorgulanacak
 	 */
+	if(empty($arr)) {
+		F3::set('SESSION.error', 'Tahlil sayfası üzerinden buraya gelmeliydiniz');
+		return ;
+	}
+
 	$cid = $arr['cid'];
 	$id  = $arr['id'];
 
