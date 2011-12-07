@@ -1197,10 +1197,13 @@ function get_node_options($cid, $id)
 
 	$opts = F3::get('DB->result');
 
-	if(get_node_type($cid, $id) != 'dal')
+	if(get_node_type($cid, $id) == 'dal')
+		foreach($opts as $i=>$v)
+			$opts[$i]['response'] = unserialize($opts[$i]['response']);
+	else {
 		$opts = $opts[0];
-	
-	$opts['response'] = unserialize($opts['response']);
+		$opts['response'] = unserialize($opts['response']);
+	}
 
 	return $opts;
 }
