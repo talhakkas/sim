@@ -71,7 +71,7 @@ function get_drug($did)
 
 function get_preselected_drugs()
 {
-	$dict = F3::get('SESSION.data[opts][drugs]');
+	$dict = F3::get('SESSION.data[opts][response]');
 	$drugs = array_keys($dict);
 
 	$tdrug = new Axon("drugs");
