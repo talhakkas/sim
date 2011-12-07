@@ -710,7 +710,7 @@ function get_tea_sel_exams($cid, $enid)
 {
 	$node = get_node($cid, $enid);
 
-	$dict = $node['opts']['exams'];
+	$dict = $node['opts']['response'];
 	
 	return $dict;
 }

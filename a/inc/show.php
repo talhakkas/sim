@@ -16,21 +16,6 @@
 	}
 
 	switch($node['ntype']) {
-	    case 'dose':
-	        $cid = F3::get('SESSION.cid');
-		    $id  = F3::get('SESSION.id');
-
-		    $drugs = get_tea_sel_drugs($cid, get_node_parent($cid, $id));
-		    F3::set('SESSION.drugs', $drugs);
-
-		    F3::set('SESSION.AYOL', array("Damar", "Kas"));
-            break;
-		case 'exam':
-			F3::set('tetkikmerkezi', multi());
-			break;
-		case 'result':
-			F3::set('SESSION.results', get_stu_sel_exams($_POST));
-			break;
 		case 'bmap':
 			$dict = map2dict($node['opts']['response']['map']);
 			if($dbg)	print_pre($dict);
@@ -47,6 +32,21 @@
 	
 			F3::set('SESSION.bmap', $dict);
 			break;
+		case 'exam':
+			F3::set('tetkikmerkezi', multi());
+			break;
+		case 'result':
+			F3::set('SESSION.results', get_stu_sel_exams($_POST));
+			break;
+	    case 'dose':
+	        $cid = F3::get('SESSION.cid');
+		    $id  = F3::get('SESSION.id');
+
+		    $drugs = get_tea_sel_drugs($cid, get_node_parent($cid, $id));
+		    F3::set('SESSION.drugs', $drugs);
+
+		    F3::set('SESSION.AYOL', array("Damar", "Kas"));
+            break;
 		case 'immapr':
 			$cid = F3::get('SESSION.cid');
 			$pid = $node['parent'];
