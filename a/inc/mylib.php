@@ -12,8 +12,6 @@ function params2session() {
 	}
 }
 
-
-
 function get_tet($id)
 {
 	$ttet = new Axon('tet');
@@ -1221,8 +1219,6 @@ function set_node_options($cid, $id, $opts)
 		$tcon->response = $v['response'];
 		$tcon->save();
 	}
-
-	return;
 }
 
 ?>

@@ -13,7 +13,8 @@ function get_node($cid=NULL, $id=NULL)
 	$datas = $table->afind("id='$id' AND cid='$cid'");
 	$node = $datas[0];
 
-	// FIXME: `connector` e gore tekrar tasarla
+	// migration: `connector` e gore tekrar tasarla
+	// $node['opts'] = node_options($cid, $id);
 	$node['opts'] = unserialize($node['options']);
 
 	return $node;

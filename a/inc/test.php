@@ -15,29 +15,19 @@ function test4()
 
 }
 
-function test2()
+function test()
 {
+	print_pre(get_node_options(1, 1), 'options');
+
+	return;
 	$nodes = array( 1=>"dal",
-		17=>"drug", 26=>"dose",
+			17=>"drug", 26=>"dose",
 	       	35=>"exam", 36=>"result",
 	       	37=>"bmap", 38=>"bmapr",
 	       	21=>"immap",23=>"immapr");
 
-	foreach($nodes as $id=>$name)
+	foreach($nodes as $id => $name)
 		print_pre(get_node(1, $id), "<hr>$name");
-}
-
-function test()
-{
-	//print_pre(get_node_options(1,1));
-	$dict = array(0 => Array(
-				'link_text' => 'D',
-			 	'next_node' => 4,
-			 	'odul' => 5,
-			 	'ceza' => 3,
-			 	'response' => '', 
-				));
-	set_node_options(1,1,$dict);
 }
 
 function test_gui()
