@@ -16,6 +16,10 @@
   Hoca:     30000000001 - bal19<br/>
   ile ana sayfadan hocanın oturumunu açmak gerek
 </p>
+<p class="success" style="height:50px">
+  <b id="button-user"></b>« RAPORLAMA yapmak için ilgili raporun
+  ikonuna tıklayınız
+</p>
 
 <form name="login" action="author_caseform" method="POST" id="login">
   <table class="custom">
@@ -53,9 +57,9 @@
         <th>Olgu içerik</th>
         <F3:check if='{{@owner_select}}'>
         <F3:true><th>İşlemler</th></F3:true>
-        <F3:false><th>Olgu Sahibi</th>
-        </F3:false>
+        <F3:false><th>Olgu Sahibi</th></F3:false>
         </F3:check>
+        <th>İçerik-Rapor</th>
       </tr>
     </thead>
     <tbody>
@@ -64,24 +68,29 @@
         <td>{{@case.title}}</td>
         <td>{{@case.description}}</td>
         <F3:check if='{{@owner_select}}'>
-        <F3:true>
-          <td class="label" style="float:left;width:92px">
+          <F3:true>
+          <td>
             <a href="/a/cedit/{{@case.id}}" target="_blank">
               <input type="submit" id="button-edit" title="Düzenle" value="">
-            </a>
-            <a href="/a/creport/{{@case.id}}">
-              <input type="submit" id="button-user" title="Rapor" value=""/>
             </a>
             <a href="/a/cdelete/{{@case.id}}">
               <input type="submit" id="button-delete" title="Sil" value=""
                 onClick="return confirm('Silmek istediğinizden emin misiniz?');"/>
             </a>
           </td>
-        </F3:true>
-        <F3:false>
-        <td>{{@case.owner}}</td>
-        </F3:false>
+          </F3:true>
+          <F3:false>
+          <td>{{@case.owner}}</td>
+          </F3:false>
         </F3:check>
+        <td class="label" style="float:left;width:92px">
+          <a href="/a/cstart/{{@case.id}}" target="_blank">
+            <input type="submit" id="button-preview" title="Göster" value="">
+          </a>
+          <a href="/a/creport/{{@case.id}}">
+            <input type="submit" id="button-user" title="Rapor" value=""/>
+          </a>
+        </td>
       </tr>
       </F3:repeat>
     </tbody>
