@@ -42,7 +42,7 @@
 			case "Rapor":
 				jPrompt("Düğüm adı","düğüm","Düğüm", function(r){
 					if(r!="" && r!="düğüm") {
-						if(!addNode(r + ":" + key))
+						if(!addNode(new Element(r , key)))
 							$.notifyBar({html:"Düğüm zaten var, ekleyemedim.",cls:"error"});
 					}
 				});
@@ -82,7 +82,7 @@
 					var r = "<input type=\"hidden\" name = \"nodes\" id=\"nodes\"  value=\"";
 
 					for(var i=0; i < g.nodes.length; i++) {
-						r += g.nodes[i];
+						r += g.nodes[i].getName();
 						
 						if ( (i + 1) != g.nodes.length){	
 							r+=';';
@@ -127,14 +127,23 @@
 	var plot = function(){
 		$("#canvas").empty();
 		var gr = new Graph();
-		gr.addNodesFromArray(g.nodes);
+		var nodeNames = new Array();
+		for(var i=0;i<g.nodes.length;i++){
+			nodeNames.push(g.nodes[i].getName());
+		}
+		gr.addNodesFromArray(nodeNames);
 		var arr = new Array();
 		for(var i=0;i<g.edges.length;i++)
 			for(var j=0;j<g.edges[i].targets.length;j++)
-				if(typeof g.edges[i].targets[j] == "object")
-					arr.push([g.edges[i].node,g.edges[i].targets[j][0],{directed:true,label:g.edges[i].targets[j][1]}])
-				else
-					arr.push([g.edges[i].node,g.edges[i].targets[j],{directed:true}]);
+				if(typeof g.edges[i].targets[j] == "Element"){
+				
+					//console.log("bzaar  " + g.edges[i].node.getName()+ "   "  + g.edges[i].targets[j][1][1]);
+					arr.push([g.edges[i].node.getName(),g.edges[i].targets[j][0].getName(),{directed:true,label:g.edges[i].targets[j][1]}])
+				}
+				else{
+					//console.log("bzaar  " + g.edges[i].node.getName()+ "   "  + g.edges[i].targets[j][1][1]);
+					arr.push([g.edges[i].node.getName(),g.edges[i].targets[j][0].getName(),{directed:true,label:g.edges[i].targets[j][1]}]);
+				}
 		gr.addEdgesFromArray(arr);
 		var layouter = new Graph.Layout.Spring(gr);
 		layouter.layout();
@@ -253,12 +262,10 @@
 	};
 
 	var getNtitle = function(node){
-		tmp = node.split(':');
-		return tmp[0];
+		return node.getName();
 	};
 	var getNtype = function(node){
-		tmp = node.split(':');
-		return tmp[1];
+		return node.getType();
 	};
 	var getNID = function(node){
 		// FIXME
