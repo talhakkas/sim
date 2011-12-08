@@ -63,6 +63,8 @@ F3::route("GET /cadd", "cadd.php");
 F3::route("GET /cdelete/@cid", "cdelete.php");
 	F3::route("POST /cdelete/@cid", "cdelete.php");
 
+F3::route("GET /creport/@cid", "creport.php");
+
 F3::route("GET /test", "test");
 	F3::route("POST /test", "test");
 
