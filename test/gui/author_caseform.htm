@@ -51,9 +51,10 @@
       <tr>
         <th>Olgu adı</th>
         <th>Olgu içerik</th>
-        <th>Olgu Sagibi</th>
         <F3:check if='{{@owner_select}}'>
-        <th>İşlemeler</th>
+        <F3:true><th>İşlemler</th></F3:true>
+        <F3:false><th>Olgu Sahibi</th>
+        </F3:false>
         </F3:check>
       </tr>
     </thead>
@@ -62,13 +63,13 @@
       <tr>
         <td>{{@case.title}}</td>
         <td>{{@case.description}}</td>
-        <td>{{@case.owner}}</td>
         <F3:check if='{{@owner_select}}'>
+        <F3:true>
           <td class="label" style="float:left;width:92px">
             <a href="/a/cedit/{{@case.id}}" target="_blank">
               <input type="submit" id="button-edit" title="Düzenle" value="">
             </a>
-            <a href="#rapor">
+            <a href="/a/crapor/{{@case.id}}">
               <input type="submit" id="button-user" title="Rapor" value=""/>
             </a>
             <a href="/a/cdelete/{{@case.id}}">
@@ -76,13 +77,16 @@
                 onClick="return confirm('Silmek istediğinizden emin misiniz?');"/>
             </a>
           </td>
+        </F3:true>
+        <F3:false>
+        <td>{{@case.owner}}</td>
+        </F3:false>
         </F3:check>
       </tr>
       </F3:repeat>
     </tbody>
   </table>
 </div>
-
 <a href="/a/cadd/">
-    <input type="submit" class="button" value="Ekle" />
+  <input type="submit" class="button" value="Ekle" />
 </a>
