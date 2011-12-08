@@ -494,6 +494,8 @@ DirectedGraph.prototype = {
 		for(var i=0;i<length;i++){
 			if(this.hasEdgeFrom(this.nodes[i])){
 				var edge = this.edges[this.indexOfEdge(this.nodes[i])];
+				console.log("getMatrix:" + this.indexOfEdge(this.nodes[i]));
+
 				for(var j=0;j<length;j++){
 					if(edge.hasTarget(this.nodes[j])){
 						if(typeof edge.targets[edge.indexOfTarget(this.nodes[j])] == "Element" && w=="weighted")

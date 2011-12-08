@@ -132,15 +132,16 @@
 		$("#canvas").empty();
 		var gr = new Graph();
 		var nodeNames = new Array();
+
 		for(var i=0;i<g.nodes.length;i++){
 			nodeNames.push(g.nodes[i].getName());
 		}
 		gr.addNodesFromArray(nodeNames);
+
 		var arr = new Array();
 		for(var i=0;i<g.edges.length;i++)
 			for(var j=0;j<g.edges[i].targets.length;j++)
 				if(typeof g.edges[i].targets[j] == "Element"){
-				
 					//console.log("bzaar  " + g.edges[i].node.getName()+ "   "  + g.edges[i].targets[j][1][1]);
 					arr.push([g.edges[i].node.getName(),g.edges[i].targets[j][0].getName(),{directed:true,label:g.edges[i].targets[j][1]}])
 				}
