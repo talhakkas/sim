@@ -130,23 +130,33 @@ Edge.prototype = {
 /*
  * DirectedGraph
  */
- function Element(id,nType){
-	this.id = id;
-	this.nType = nType
+ function Element(name, nType){
+	this.name = name;
+	this.nType = nType;
+	this.id = null;
  }
  Element.prototype = {
 	constructor:Edge,
 	getName: function(){
-	return this.id;
+		return this.name;
 	},
 	getType: function(){
-	return this.nType;
+		return this.nType;
 	},
 	getDefination: function(){
-	var def = new Array();
-	def.push(this.id);
-	def.push(this.name);
-	return def;
+		var def = new Array();
+		def.push(this.id);
+		def.push(this.name);
+		return def;
+	},
+	getId: function(){
+		return this.id;
+	},
+	setId: function(id){
+		this.id = id;
+	},
+	toStr: function(){
+		return "name: " + this.getName() + ", id: " + this.getId() + ", ntype: " + this.getType();
 	}
 }
 	
