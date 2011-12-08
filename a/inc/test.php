@@ -22,7 +22,7 @@ function test4()
 	$tnode->save();
 }
 
-function test()
+function test2()
 {
 	print_pre(get_node_options(1, 1), 'options');
 
