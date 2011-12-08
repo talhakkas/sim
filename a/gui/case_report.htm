@@ -1,0 +1,28 @@
+<script type="text/javascript" src="/public/js/jquery.boxy.js"></script>
+<link rel="stylesheet" href="/public/css/boxy.css" type="text/css" />
+
+<h2>{{@page_title}} <a class="pdf" href="{{@SR}}/pdf/report" style="font-size:12px;" >Raporu İndir (pdf)</a></h2>
+
+<h3>"{{@case_title}}" Olgu Raporu</h3>
+
+<table id="rounded-corner">
+  <thead>
+    <tr>
+      <tr>
+        <th scope="col">Öğrenci</th>
+        <th scope="col">Puan</th>
+      </tr>
+    </tr>
+  </thead>
+  <tbody>
+    <F3:repeat group="{{@case_report}}" key="{{@gnl}}" value="{{@blg}}" 
+    counter="{{@ctr}}">
+    <tr>
+      <td class="sag">{{@gnl}}</td>
+      <td>{{@blg}}</td>
+    </tr>
+    </F3:repeat>
+  </tbody>
+</table>
+
+
