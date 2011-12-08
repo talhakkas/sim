@@ -51,6 +51,7 @@
 				if(g.nodes.length>0){
 					var r = "<input type=\"hidden\" name = \"edges\" id=\"edges\"  value=\"";
 					var matrix = g.getMatrix("weighted");
+
 					for(var i=0;i<g.nodes.length;i++){
 						for(var j=0;j<g.nodes.length;j++){
 							if(typeof matrix[i][j] != "boolean")
@@ -83,6 +84,7 @@
 
 					for(var i=0; i < g.nodes.length; i++) {
 						r += g.nodes[i].getName();
+						alert(g.nodes[i].toStr());
 						
 						if ( (i + 1) != g.nodes.length){	
 							r+=';';
@@ -96,8 +98,7 @@
 				}
 				else
 					$.notifyBar({html:"The graph is empty<br/>Try adding some nodes first",cls:"error"});
-			break;
-			
+				break;			
 			case "Uygulamayı yeniden başlat":
 				if(g.nodes.length>0)
 					jConfirm("All unsaved changes will be lost.<br/>Really reset?", "About to reset your graph", function(r){
@@ -111,13 +112,16 @@
 					});
 				else
 					$.notifyBar({html:"There's nothing to reset"});
-			break;
+				break;
 			case "Yeniden çiz":
 				if(g.nodes.length>0)
 					plot();
 				else
 					$.notifyBar({html:"There's nothing to draw or redraw<br/>Try adding some nodes first"});
-			break;
+				break;
+			case "Test":
+				alert(g.nodes[0].toStr());
+				break;
 		}
 	});
 			
@@ -261,24 +265,13 @@
 		return document.getElementById('cid').value;
 	};
 
-	var getNtitle = function(node){
-		return node.getName();
-	};
-	var getNtype = function(node){
-		return node.getType();
-	};
-	var getNID = function(node){
-		// FIXME
-		return 1;
-	};
-
 	// addNode
 	var addNode = function(node){
 		if(g.addNode(node)){
 			plot();
-			$.get('/a/ajax/add_node.php?cid=' + getCID() + '&ntype=' + getNtype(node) + '&title=' + getNtitle(node), function (data) {
+			$.get('/a/ajax/add_node.php?cid=' + getCID() + '&ntype=' + node.getType() + '&title=' + node.getName(), function (data) {
 				$.notifyBar({html:data});
-				// FIXME: nodes[title][id] = data;
+				node.setId(data);
 			});
 			return true;
 		}
