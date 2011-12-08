@@ -6,7 +6,7 @@
 	$sid  = F3::get('SESSION.user');
 
 	$ttet = new Axon('tet');
-	$datas = $ttet->afind("skey='$skey' AND cid='$cid' AND sid='$sid'");
+	$datas = $ttet->afind("skey='$skey' AND cid='$cid' AND sid='$sid'", 'zaman');
 
 	$tpuan = 100;
 	foreach($datas as $i=>$t) {

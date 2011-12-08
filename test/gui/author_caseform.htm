@@ -1,0 +1,88 @@
+<script type="text/javascript" src="/public/js/jquery.dataTables.js">
+</script>
+
+<script type="text/javascript" charset="utf-8">
+  $(document).ready(function() {
+      oTable = $('#example').dataTable({
+        "bJQueryUI": true,
+        "sPaginationType": "full_numbers"
+      });
+  } );
+</script>
+<h2>Olgular</h2>
+
+<p class="error">
+  TEST AŞAMASI OLDUGUNDAN<br/>
+  Hoca:     30000000001 - bal19<br/>
+  ile ana sayfadan hocanın oturumunu açmak gerek
+</p>
+
+<form name="login" action="author_caseform" method="POST" id="login">
+  <table class="custom">
+    <tr>
+      <td class="label">
+        <F3:check if='{{@owner_select}}'>
+        <F3:true>
+          Sahip olduğun olgular
+          <input type="radio" value="0" name="owner" 
+          onchange='this.form.submit()' checked/>
+          Diğer olgular
+          <input type="radio" value="1" name="owner" 
+          onchange='this.form.submit()'/>
+        </F3:true>
+        <F3:false>
+          Sahip olduğun olgular
+          <input type="radio" value="0" name="owner" 
+          onchange='this.form.submit()'/>
+          Diğer olgular
+          <input type="radio" value="1" name="owner"
+          onchange='this.form.submit()' checked/>
+        </F3:false>
+        </F3:check>
+      </td>
+      <td></td>
+    </tr>
+  </table>
+</form>
+
+<div class="dt_example module">
+  <table cellpadding="0" cellspacing="0" border="0" class="display" id="example">
+    <thead>
+      <tr>
+        <th>Olgu adı</th>
+        <th>Olgu içerik</th>
+        <th>Olgu Sagibi</th>
+        <F3:check if='{{@owner_select}}'>
+        <th>İşlemeler</th>
+        </F3:check>
+      </tr>
+    </thead>
+    <tbody>
+      <F3:repeat group="{{@case_list}}" key="{{@key}}" value="{{@case}}" >
+      <tr>
+        <td>{{@case.title}}</td>
+        <td>{{@case.description}}</td>
+        <td>{{@case.owner}}</td>
+        <F3:check if='{{@owner_select}}'>
+          <td class="label" style="float:left;width:92px">
+            <a href="/a/cedit/{{@case.id}}" target="_blank">
+              <input type="submit" id="button-edit" title="Düzenle" value="">
+            </a>
+            <a href="#rapor">
+              <input type="submit" id="button-user" title="Rapor" value=""/>
+            </a>
+            <a href="/a/cdelete/{{@case.id}}">
+              <input type="submit" id="button-delete" title="Sil" value=""
+                onClick="return confirm('Silmek istediğinizden emin misiniz?');"/>
+            </a>
+          </td>
+        </F3:check>
+      </tr>
+      </F3:repeat>
+    </tbody>
+  </table>
+</div>
+
+<a href="/a/cadd/">
+    <input type="submit" class="button" value="Ekle" />
+</a>

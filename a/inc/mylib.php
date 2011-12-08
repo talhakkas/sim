@@ -71,7 +71,7 @@ function get_drug($did)
 
 function get_preselected_drugs()
 {
-	$dict = F3::get('SESSION.data[opts][drugs]');
+	$dict = F3::get('SESSION.data[opts][response]');
 	$drugs = array_keys($dict);
 
 	$tdrug = new Axon("drugs");
@@ -561,7 +561,7 @@ function compute_mark($tid, $dbg=true)
 			$ceza = empty($dict['ceza']) ? 0 : $dict['ceza'];
 			if($dbg)	print_pre($dict, 'ilgili secenek');
 
-			if($dict['chkResponse'] == 'no') {
+			if($dict['response'] == 'null') {
 				$puan = $odul - $ceza;
 			} else {
 				$puan = isSimilar($tet['beklenen']['response'], $tet['soylenen']['response']) ? $odul : -$ceza;
@@ -710,7 +710,7 @@ function get_tea_sel_exams($cid, $enid)
 {
 	$node = get_node($cid, $enid);
 
-	$dict = $node['opts']['exams'];
+	$dict = $node['opts']['response'];
 	
 	return $dict;
 }
@@ -722,7 +722,10 @@ function get_tea_sel_bmap($cid, $bnid, $isFullList=false)
 	 */
 	$node = get_node($cid, $bnid);
 
-	$dict = $node['opts']['bmap'];
+	$dict = $node['opts']['response'];
+	
+	unset($dict['map']);
+	unset($dict['img']);
 
 	if(!$isFullList)
 		foreach($dict as $i => $d) {
@@ -741,7 +744,7 @@ function get_tea_sel_dal($cid, $id, $opt)
 	$node = get_node($cid, $id);
 	$t = $node['opts'][$opt];
 
-	$dict = $t['chkResponse'] == 'yes' ? $t['response'] : "null";
+	$dict = $t['response'] == '' ? "null" : $t['response'];
 
 	return $dict;
 }
@@ -753,14 +756,14 @@ function get_tea_sel_drugs($cid=null, $id=null)
 
 	$node = get_node($cid, $id);
 
-	return $node['opts']['drugs'];
+	return $node['opts']['response'];
 }
 
 function get_tea_sel_immap($cid, $nid)
 {
 	$node = get_node($cid, $nid);
 
-	$dict = $node['opts']['immap'];
+	$dict = $node['opts']['response'];
 	$dict['imgnm'] = $node['media'];
 
 	return $dict;
@@ -809,6 +812,11 @@ function get_stu_sel_exams($arr, $dbg=false)
 	 * - degilse ontanimli veriyi yukle
 	 *    + sql:sim:survey tablosundan sorgulanacak
 	 */
+	if(empty($arr)) {
+		F3::set('SESSION.error', 'Tahlil sayfası üzerinden buraya gelmeliydiniz');
+		return ;
+	}
+
 	$cid = $arr['cid'];
 	$id  = $arr['id'];
 
@@ -845,7 +853,7 @@ function get_stu_sel_bmap($arr)
 	/* secilen bolgelerin degerlerini dondurur.
 	 * a- $arr['selected'] => sbind
 	 * b- get_node(cid, id) -> node
-	 * c- node['opts']['bmap']
+	 * c- node['opts']['response']
 	 */
 
 	// a-sbind
@@ -856,11 +864,13 @@ function get_stu_sel_bmap($arr)
 	}
 	$sbind = preg_split('/,/', $sel);
 
+	// b-
 	$cid = $arr['cid'];
 	$id  = $arr['id'];
 	$node = get_node($cid, $id);
 
-	$dict = $node['opts']['bmap'];
+	// c-
+	$dict = $node['opts']['response'];
 
 	$rdict = array();
 	foreach($sbind as $i=>$si) {
@@ -1190,34 +1200,84 @@ function get_node_options($cid, $id)
 	 */
 	$nid = get_node_id($cid, $id);
 
-	DB::sql("SELECT connector.link_text, node.id AS next_node, connector.odul, connector.ceza, connector.response " . 
-		    "FROM connector, node WHERE connector.inp='$nid' AND node.nid=connector.oup");
+	DB::sql("SELECT connector.link_text, node.id AS node_link, connector.odul, connector.ceza, connector.response " . 
+		    "FROM connector, node WHERE connector.inp='$nid' AND node.nid=connector.oup ORDER BY connector.oup");
 
 	$opts = F3::get('DB->result');
-	
+
+	if(get_node_type($cid, $id) == 'dal')
+		foreach($opts as $i=>$v)
+			$opts[$i]['response'] = unserialize($opts[$i]['response']);
+	else {
+		$opts = $opts[0];
+		$opts['response'] = unserialize($opts['response']);
+	}
+
 	return $opts;
 }
 
-function set_node_options($cid, $id, $opts)
+function set_node_options($cid, $id, $opts, $sync=true)
 {
 	/* $opts sozlugunden connector tablosunu gunceller.
+	 * - yoksa ekler, varsa degerini gunceller.
+	 * - `sync` istenirse `connector` de daha onceden olusturulmus
+	 *   olan baglar silinir ve $opts ta gelenlerle olusturulur.
 	 */
 	$inp = get_node_id($cid, $id);
 
-	$tcon = new Axon('connector');
+	if($sync)	DB::sql("DELETE FROM connector WHERE inp='$inp'");
 
-	foreach($opts as $i=>$v) {
-		$oup = get_node_id($cid, $v['next_node']);
+	$tcon = new Axon('connector');
+	
+	if(get_node_type($cid, $id) == 'dal')
+		foreach($opts as $i=>$v) {
+			$oup = get_node_id($cid, $v['node_link']);
+
+			$tcon->load("inp='$inp' AND oup='$oup'");
+
+			$tcon->inp = $inp;
+			$tcon->oup = $oup;
+			$tcon->link_text = $v['link_text'];
+			$tcon->odul 	 = $v['odul'];
+			$tcon->ceza 	 = $v['ceza'];
+			$tcon->response  = serialize($v['response']);
+			$tcon->save();
+		}
+	else {
+		$oup = get_node_id($cid, $opts['node_link']);
 
 		$tcon->load("inp='$inp' AND oup='$oup'");
 
 		$tcon->inp = $inp;
 		$tcon->oup = $oup;
-		$tcon->link_text = $v['link_text'];
-		$tcon->odul = $v['odul'];
-		$tcon->ceza = $v['ceza'];
-		$tcon->response = $v['response'];
+		$tcon->link_text = $opts['link_text'];
+		$tcon->odul 	 = $opts['odul'];
+		$tcon->ceza 	 = $opts['ceza'];
+		$tcon->response  = serialize($opts['response']);
 		$tcon->save();
+	}
+}
+
+function migration_node2connector($dbg=true)
+{
+	/* db:node tablosu `options` u `db:connector` e donustur.
+	 */
+	$cid = 1;
+
+	DB::sql("SELECT id FROM node WHERE cid='$cid'");
+	$ids = F3::get('DB->result');
+	if($dbg)	print_pre($ids);
+
+	foreach($ids as $t) {
+		$id = $t['id'];
+
+		$node = get_node($cid, $id);
+		if($dbg)	print_pre($node, 'NODE');
+	
+		$opts = $node['opts'];
+		if(count($opts) < 1) continue;
+		
+		set_node_options($cid, $id, $opts);
 	}
 }
 
